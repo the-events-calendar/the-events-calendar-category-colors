@@ -1,5 +1,7 @@
 ## Concept
 
+Based on http://tri.be/coloring-your-category-events/
+
 Create plugin for Events Calendar that adds background color to any/all event categories. Limit text colors to black or white.
 
 How do I write functions for my plugin that may require variables from another plugin?
@@ -9,11 +11,11 @@ How do I write functions for my plugin that may require variables from another p
 * function for color picker for category background
 * function for color of category text (black or white)
 * warning if _The Events Calendar_ not installed
+* function to return event category slugs to array
 
 ### CSS
 
 * add this dynamic stylesheet to load only in calendar pages
-* function to return event category slugs to array
 * function to write out _custom_ css entries per category/color combination
 
 ### plugin
