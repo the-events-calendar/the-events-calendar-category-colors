@@ -23,6 +23,7 @@ echo <<<CSS
 font-weight: bold;
 }
 
+
 //write php function to write out the following css per event category
 
 .tribe-events-calendar .cat_$category_1 a,
