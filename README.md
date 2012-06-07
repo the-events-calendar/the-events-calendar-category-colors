@@ -13,7 +13,7 @@ How do I write functions for my plugin that may require variables from another p
 ### CSS
 
 * add this dynamic stylesheet to load only in calendar pages
-* function to return event category names to array
+* function to return event category slugs to array
 * function to write out _custom_ css entries per category/color combination
 
 ### plugin
