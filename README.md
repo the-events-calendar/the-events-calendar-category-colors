@@ -8,15 +8,14 @@ How do I write functions for my plugin that may require variables from another p
 
 ### Settings page
 
-* function for color picker for category background
-* function for color of category text (black or white)
 * warning if _The Events Calendar_ not installed
 * function to return event category slugs to array
+* function to fill array with slugs and colors
 
 ### CSS
 
 * add this dynamic stylesheet to load only in calendar pages
-* function to write out _custom_ css entries per category/color combination
+* <strike>function to write out _custom_ css entries per category/color combination</strike>
 
 ### plugin
 
