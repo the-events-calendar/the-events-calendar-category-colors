@@ -3,6 +3,8 @@ header("Content-type: text/css");
 
 //define the variables
 
+$catSlugs = array( "meeting", "event", "concert" );
+
 $cat_slugs = array(
 	array(
 		"slug" => "meeting",
@@ -17,9 +19,19 @@ $cat_slugs = array(
 		"background" => "#fed64c",
 		"text" => "#333" )
 	);
-	
 
-function writeCategoryCSS ($cat_slugs) {
+function writeCatSlugArray ($catSlugs) {
+	$count = count($catSlugs);
+	$cat_slugs = array();
+	for ($i = 0; $i < $count; $i++) {
+		$cat_slugs[] = array( "slug" => $catSlugs[$i], "background" => "", "text" => "" );
+	}
+	
+	print_r($cat_slugs);
+	
+}	
+
+function writeCategoryCSS ($cat_slugs) { // (writeCatSlugArray($catSlugs)
 	$count = count($cat_slugs);
 	$catCSS = array();
 	for ($i = 0; $i < $count; $i++) {
@@ -31,7 +43,8 @@ function writeCategoryCSS ($cat_slugs) {
 	return $content;
 }
 
-$content = writeCategoryCSS($cat_slugs);
+$catArray = writeCatSlugArray($catSlugs);
+$css = writeCategoryCSS($cat_slugs);
 
 echo <<<CSS
 
@@ -39,7 +52,7 @@ echo <<<CSS
 
 .tribe-events-calendar a { font-weight: bold; }
 
-$content
+$css
 
 /* --- end of css --- */
 
