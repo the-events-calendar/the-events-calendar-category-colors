@@ -147,11 +147,8 @@ function teccc_add_defaults() {
 	$tmp = get_option('teccc_options');
     if(($tmp['chk_default_options_db']=='1')||(!is_array($tmp))) {
 		delete_option('teccc_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
-// 		$arr = array(	//"textarea_one" => "#6da351",
-// 						"txt_one" => "#6da351",
-// 						"drp_select_box" => "black"
-// 		);
 		$arr = array();
+		//$arr = array(	"txt_one" => "#6da351", "drp_select_box" => "black" );
 		for ($i = 0; $i < $count; $i++) {
 			$arr["txt_one_$i"] =  "#6da351";
 			$arr["drp_select_box_$i"] = "black";
@@ -230,6 +227,8 @@ function teccc_render_form() {	?>
 							</select>
 						<span style="color:#666666;margin-left:2px;">Text color</span>
 					</td>
+					<td><span style="background:<?php echo $options[txt_one]; ?>;color:<?php echo $options['drp_select_box']; ?>">Category Slug</span>
+					</td>
 					
 					<?php $form = teccc_options_elements(); print $form; ?>
 				</tr>
@@ -244,6 +243,7 @@ function teccc_render_form() {	?>
 		
 		<?php $css = writeCategoryCSS();
 			$css = htmlentities($css);
+			print_r($options);
 			print ($css);
 		 ?>
 		</pre>
@@ -253,16 +253,18 @@ function teccc_render_form() {	?>
 
 //Render Options Form Elements
 function teccc_options_elements() {
+	//need to figure out how to get $options array variable to print into new array element
 	$catSlugs = getCategorySlugs();
 	$count = count($catSlugs);
 	$form_elements = array();
-	$form_elements[] = "<tr><td><strong>Category Slug</strong></td><td><strong>Background Color (hexadecimal)</strong></td><td><strong>Text Color</strong></td></tr>";
+	$form_elements[] = "<tr><td><strong>Category Slug</strong></td><td><strong>Background Color (hexadecimal)</strong></td><td><strong>Text Color</strong></td><td><strong>Current Display</strong></tr>";
 	for ($i = 0; $i < $count; $i++) {
-		//$form_elements[] = array( "slug" => $catSlugs[$i], "background" => "", "text" => "" );
+		//$form_elements[] = echo $options['txt_one_$i']; //Why doesn't this work?
 		$form_elements[] = "<tr>";
 		$form_elements[] = "<td>" . $catSlugs[$i] . "</td>";
 		$form_elements[] = "<td><input type=\"text\" size=\"7\" name=\"teccc_options[txt_one_" . $i . "]\" value=\"" . $options['txt_one_$i'] . "\" /></td>" ;
 		$form_elements[] = "<td><select name='teccc_options[drp_select_box_" . $i . "]'>" . "<option value='#333'" . selected('black', $options['drp_select_box_$i']). ">Black</option>" . "<option value='#fff' " . selected('white', $options['drp_select_box_$i']) . ">White</option>" . "</select></td>";
+		$form_elements[] = "<td><span style=\"background:" . $options['txt_one_$i'] . ";color:" . $options['drp_select_box_$i'] . "\">Category Slug</span></td>";
 		$form_elements[] = "</tr>";
 	}
 
