@@ -66,31 +66,37 @@ function getCatTestArray() {
 
 //write function to grab category slugs to array - this in settings page
 function getCategorySlugs() {
-	$catSlugs = array( "meeting", "event", "concert" );
+	//$catSlugs = array( "meeting", "event", "concert" );
+	$terms = get_terms("tribe_events_cat");
+	$catSlugs = array();
+	foreach ($terms as $term) {
+		$catSlugs[] = $term->slug;
+	}
+	//print_r($catSlugs);
 	return $catSlugs;
 }
 
-function writeCatSlugArray() {
-	$catSlugs = getCategorySlugs();
-	$count = count($catSlugs);
-	$cat_slugs = array();
-	for ($i = 0; $i < $count; $i++) {
-		$cat_slugs[] = array( "slug" => $catSlugs[$i], "background" => "", "text" => "" );
-	}
-	
-	print_r($cat_slugs);
-	
-}	
+// function writeCatSlugArray() {
+// 	$catSlugs = getCategorySlugs();
+// 	$count = count($catSlugs);
+// 	$cat_slugs = array();
+// 	for ($i = 0; $i < $count; $i++) {
+// 		$cat_slugs[] = array( "slug" => $catSlugs[$i], "background" => "", "text" => "" );
+// 	}
+// 	
+// 	print_r($cat_slugs);
+// 	
+// }	
 
 function writeCategoryCSS() { // (writeCatSlugArray($catSlugs)
-	$cat_slugs = getCatTestArray();
+	$cat_slugs = getCategorySlugs();
 	$count = count($cat_slugs);
 	$catCSS = array();
 	$catCSS[] = "<style type=\"text/css\" media=\"screen\">";
 	$catCSS[] = ".tribe-events-calendar a { font-weight: bold; }";
 	for ($i = 0; $i < $count; $i++) {
-		$catCSS[] = '.tribe-events-calendar .cat_' . $cat_slugs[$i]["slug"] . ' a { color: ' .  $cat_slugs[$i]["text"] . '; }' ;
-		$catCSS[] = '.tribe-events-calendar .cat_' . $cat_slugs[$i]["slug"] . ', .cat_' . $cat_slugs[$i]["slug"] . ' > .tribe-events-tooltip .tribe-events-event-title { background: ' . $cat_slugs[$i]["background"] . '; }' ;
+		$catCSS[] = '.tribe-events-calendar .cat_' . $cat_slugs[$i] . ' a { color: ' .  $options['drp_select_box_$i'] . '; }' ;
+		$catCSS[] = '.tribe-events-calendar .cat_' . $cat_slugs[$i] . ', .cat_' . $cat_slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background: ' . $options['txt_one_$i'] . '; }' ;
 	}
 	$catCSS[] = "</style>";
 	$content = implode( "\n", $catCSS );
@@ -101,6 +107,7 @@ function writeCategoryCSS() { // (writeCatSlugArray($catSlugs)
 //$catArray = writeCatSlugArray();
 //$css = writeCategoryCSS();
 add_action('wp_head', 'writeCategoryCSS');
+//add_action('wp_head', $css );
 
 // 'teccc_' prefix is derived from [tec]the events calendar [c]ategory [c]olors
 
@@ -152,6 +159,11 @@ function teccc_add_defaults() {
 		for ($i = 0; $i < $count; $i++) {
 			$arr["txt_one_$i"] =  "#6da351";
 			$arr["drp_select_box_$i"] = "black";
+			// $arr = array (
+// 				array ( "slug" => $catSlugs[$i],
+// 						"shade" => "txt_one_$i",
+// 						"text" =>  "drp_select_box_$i"
+// 						);
 		}
 		update_option('teccc_options', $arr);
 	}
@@ -179,7 +191,7 @@ function teccc_init(){
 
 // Add menu page
 function teccc_add_options_page() {
-	add_options_page('The Events Calendar Category Colors Options Page', 'The Events Calendar Category Colors', 'manage_options', __FILE__, 'teccc_render_form');
+	add_options_page('The Events Calendar Category Colors Options Page', 'TEC Category Colors', 'manage_options', __FILE__, 'teccc_render_form');
 }
 
 // ------------------------------------------------------------------------------
@@ -227,10 +239,18 @@ function teccc_render_form() {	?>
 							</select>
 						<span style="color:#666666;margin-left:2px;">Text color</span>
 					</td>
-					<td><span style="background:<?php echo $options[txt_one]; ?>;color:<?php echo $options['drp_select_box']; ?>">Category Slug</span>
+					<td><span style="background:<?php echo $options[txt_one]; ?>;color:<?php echo $options['drp_select_box']; ?>;padding:0.5em;">Category Slug</span>
 					</td>
 					
-					<?php $form = teccc_options_elements(); print $form; ?>
+					<?php
+						foreach ($options as $key => $val) { 
+							//echo $key->txt-one . " ";
+						}
+					
+					?>
+					<?php echo teccc_options_elements(); ?>
+					
+					
 				</tr>
 			</table>
 			<p class="submit">
@@ -251,20 +271,30 @@ function teccc_render_form() {	?>
 	<?php	
 }
 
+//Test Render Elements
+function testRender() {
+	$form_elements = array();
+	for ($i = 0; $i < 2; $i++) {
+		$form_elements[] = $options['txt_one_$i'];
+	}
+return "This is a test: ";
+print_r($form_elements);
+}
+
 //Render Options Form Elements
 function teccc_options_elements() {
 	//need to figure out how to get $options array variable to print into new array element
 	$catSlugs = getCategorySlugs();
 	$count = count($catSlugs);
 	$form_elements = array();
-	$form_elements[] = "<tr><td><strong>Category Slug</strong></td><td><strong>Background Color (hexadecimal)</strong></td><td><strong>Text Color</strong></td><td><strong>Current Display</strong></tr>";
+	$form_elements[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Background Color (hexadecimal)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
 	for ($i = 0; $i < $count; $i++) {
 		//$form_elements[] = echo $options['txt_one_$i']; //Why doesn't this work?
 		$form_elements[] = "<tr>";
 		$form_elements[] = "<td>" . $catSlugs[$i] . "</td>";
-		$form_elements[] = "<td><input type=\"text\" size=\"7\" name=\"teccc_options[txt_one_" . $i . "]\" value=\"" . $options['txt_one_$i'] . "\" /></td>" ;
+		$form_elements[] = "<td><input type=\"text\" size=\"7\" name=\"teccc_options[txt_one_" . $i . "]\" value=\"" . $options['shade']['txt_one_$i'] . "\" /></td>" ;
 		$form_elements[] = "<td><select name='teccc_options[drp_select_box_" . $i . "]'>" . "<option value='#333'" . selected('black', $options['drp_select_box_$i']). ">Black</option>" . "<option value='#fff' " . selected('white', $options['drp_select_box_$i']) . ">White</option>" . "</select></td>";
-		$form_elements[] = "<td><span style=\"background:" . $options['txt_one_$i'] . ";color:" . $options['drp_select_box_$i'] . "\">Category Slug</span></td>";
+		$form_elements[] = "<td><span style=\"background:" . $options['txt_one_$i'] . ";color:" . $options['drp_select_box_$i'] . ";padding:0.5em;\">Category Slug</span></td>";
 		$form_elements[] = "</tr>";
 	}
 
