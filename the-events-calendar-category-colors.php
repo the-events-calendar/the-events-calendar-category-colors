@@ -45,24 +45,6 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 /* Add your functions below this line */
 
 
-function getCatTestArray() {
-	$cat_slugs = array(
-		array(
-			"slug" => "meeting",
-			"background" => "#6da351",
-			"text" => "#fff" ),
-		array(
-			"slug" => "event",
-			"background" => "#68a7d3",
-			"text" => "#fff" ),
-		array(
-			"slug" => "concert",
-			"background" => "#fed64c",
-			"text" => "#333" )
-		);
-	return $cat_slugs;
-}
-
 function getCategorySlugs() {
 	$terms = get_terms("tribe_events_cat");
 	$catSlugs = array();
@@ -79,7 +61,6 @@ function writeCategoryCSS($options) {
 	$catCSS[] = "";
 	$catCSS[] = "<style type=\"text/css\" media=\"screen\">";
 	$catCSS[] = ".tribe-events-calendar a { font-weight: bold; }";
-	//for ($i = 0; $i < $count; $i++) {
 	foreach ($options as $key =>$value) {
 		//foreach ($value as $opt_element) {
 
@@ -202,8 +183,8 @@ function teccc_render_form() {	?>
 			<table class="form-table">
 
 						
-				
-					<?php echo teccc_options_elements($options); ?>
+				<!-- following function creates options for each category -->
+				<?php echo teccc_options_elements($options); ?>
 					
 				<tr><td colspan="4"><div style="margin-top:10px;"></div></td></tr>
 				<tr valign="top" style="border-top:#dddddd 1px solid;">
@@ -245,7 +226,6 @@ function teccc_options_elements($options) {
 	$count = count($slugs);
 	$form = array();
 	$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Background Color<br /> (hexadecimal)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
-	//for ($i = 0; $i < $count; $i++) {
 	foreach ($options as $key =>$value) {
 		//foreach ($value as $opt_element) {
 
@@ -267,6 +247,7 @@ function teccc_options_elements($options) {
 }
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
+//this was copied from plugin-options-starter-kit and likely needs to be fixed for this plugin
 function teccc_validate_options($input) {
 	 // strip html from textboxes
 	//$input['textarea_one'] =  wp_filter_nohtml_kses($input['textarea_one']); // Sanitize textarea input (strip html tags, and escape characters)
@@ -285,7 +266,6 @@ function teccc_plugin_action_links( $links, $file ) {
 
 	return $links;
 }
-
 
 
 ?>
