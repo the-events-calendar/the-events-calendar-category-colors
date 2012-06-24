@@ -9,7 +9,7 @@ How do I write functions for my plugin that may require variables from another p
 ### Settings page
 
 * warning if _The Events Calendar_ not installed
-* function to return event category slugs to array
+* Done - <strike>function to return event category slugs to array</strike>
 * function to fill array with slugs and colors
   * this is mostly working but I need to figure out how to place a value in the settings array as part of an element of another array
 

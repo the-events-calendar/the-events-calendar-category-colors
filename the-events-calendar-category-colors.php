@@ -1,4 +1,3 @@
-
 <?php
 /*
 Plugin Name: The Events Calendar Category Colors
@@ -64,47 +63,36 @@ function getCatTestArray() {
 	return $cat_slugs;
 }
 
-//write function to grab category slugs to array - this in settings page
 function getCategorySlugs() {
-	//$catSlugs = array( "meeting", "event", "concert" );
 	$terms = get_terms("tribe_events_cat");
 	$catSlugs = array();
 	foreach ($terms as $term) {
 		$catSlugs[] = $term->slug;
 	}
-	//print_r($catSlugs);
 	return $catSlugs;
 }
-
-// function writeCatSlugArray() {
-// 	$catSlugs = getCategorySlugs();
-// 	$count = count($catSlugs);
-// 	$cat_slugs = array();
-// 	for ($i = 0; $i < $count; $i++) {
-// 		$cat_slugs[] = array( "slug" => $catSlugs[$i], "background" => "", "text" => "" );
-// 	}
-// 	
-// 	print_r($cat_slugs);
-// 	
-// }	
-
-function writeCategoryCSS() { // (writeCatSlugArray($catSlugs)
-	$cat_slugs = getCategorySlugs();
-	$count = count($cat_slugs);
+	
+function writeCategoryCSS($options) { 
+	$slugs = getCategorySlugs();
+	$count = count($slugs);
 	$catCSS = array();
+	$catCSS[] = "";
 	$catCSS[] = "<style type=\"text/css\" media=\"screen\">";
 	$catCSS[] = ".tribe-events-calendar a { font-weight: bold; }";
-	for ($i = 0; $i < $count; $i++) {
-		$catCSS[] = '.tribe-events-calendar .cat_' . $cat_slugs[$i] . ' a { color: ' .  $options['drp_select_box_$i'] . '; }' ;
-		$catCSS[] = '.tribe-events-calendar .cat_' . $cat_slugs[$i] . ', .cat_' . $cat_slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background: ' . $options['txt_one_$i'] . '; }' ;
+	//for ($i = 0; $i < $count; $i++) {
+	foreach ($options as $key =>$value) {
+		//foreach ($value as $opt_element) {
+
+		$catCSS[] = '.tribe-events-calendar .cat_' . $key . ' a { color: ' .  $options[$key]["text"] . '; }' ;
+		$catCSS[] = '.tribe-events-calendar .cat_' . $key . ', .cat_' . $key . ' > .tribe-events-tooltip .tribe-events-event-title { background: ' . $options[$key]["background"] . '; }' ;
+		next($options);
+		//}
 	}
 	$catCSS[] = "</style>";
-	$content = implode( "\n", $catCSS );
-	//echo $content;
+	$content = implode( "\n", $catCSS ) . "\n";
 	return $content;
 }
 
-//$catArray = writeCatSlugArray();
 //$css = writeCategoryCSS();
 add_action('wp_head', 'writeCategoryCSS');
 //add_action('wp_head', $css );
@@ -154,16 +142,9 @@ function teccc_add_defaults() {
 	$tmp = get_option('teccc_options');
     if(($tmp['chk_default_options_db']=='1')||(!is_array($tmp))) {
 		delete_option('teccc_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
-		$arr = array();
-		//$arr = array(	"txt_one" => "#6da351", "drp_select_box" => "black" );
-		for ($i = 0; $i < $count; $i++) {
-			$arr["txt_one_$i"] =  "#6da351";
-			$arr["drp_select_box_$i"] = "black";
-			// $arr = array (
-// 				array ( "slug" => $catSlugs[$i],
-// 						"shade" => "txt_one_$i",
-// 						"text" =>  "drp_select_box_$i"
-// 						);
+			for ($i = 0; $i < $count; $i++) {
+				$arr[$catSlugs[$i]] = array ( "text" => "#333", "background" => "#fff" );
+			//$arr[$i] = array ( $catSlugs[$i] => array ( "text" => "#333", "background" => "#fff" ) );
 		}
 		update_option('teccc_options', $arr);
 	}
@@ -220,85 +201,68 @@ function teccc_render_form() {	?>
 			<!-- Each Plugin Option Defined on a New Table Row -->
 			<table class="form-table">
 
-				<!-- Textbox Control -->
-				<tr>
+						
 				
-					<td>
-						Add category slug here
-					</td>
-										
-					<td>
-						<input type="text" size="7" name="teccc_options[txt_one]" value="<?php echo $options['txt_one']; ?>" /><span style="color:#666666;margin-left:2px;">Background color in hexadecimal format.</span>
-					</td>
-
-				<!-- Select Drop-Down Control -->
-					<td>
-						<select name='teccc_options[drp_select_box]'>
-							<option value='#333' <?php selected('black', $options['drp_select_box']); ?>>Black</option>
-							<option value='#fff' <?php selected('white', $options['drp_select_box']); ?>>White</option>
-							</select>
-						<span style="color:#666666;margin-left:2px;">Text color</span>
-					</td>
-					<td><span style="background:<?php echo $options[txt_one]; ?>;color:<?php echo $options['drp_select_box']; ?>;padding:0.5em;">Category Slug</span>
-					</td>
+					<?php echo teccc_options_elements($options); ?>
 					
-					<?php
-						foreach ($options as $key => $val) { 
-							//echo $key->txt-one . " ";
-						}
-					
-					?>
-					<?php echo teccc_options_elements(); ?>
-					
-					
+				<tr><td colspan="4"><div style="margin-top:10px;"></div></td></tr>
+				<tr valign="top" style="border-top:#dddddd 1px solid;">
+					<th scope="row">Database Options</th>
+					<td colspan="4">
+						<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1" <?php if (isset($options['chk_default_options_db'])) { checked('1', $options['chk_default_options_db']); } ?> /> Restore defaults upon plugin deactivation/reactivation</label>
+						<br /><span style="color:#666666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</span>
+					</td>
 				</tr>
+		
 			</table>
-			<p class="submit">
-			<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-			</p>
+			<p class="submit"><input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" /></p>
 		</form>
 		
 		<pre style="border:1px #333 dotted">
 		Generated Header CSS
 		
-		<?php $css = writeCategoryCSS();
+		<?php $css = writeCategoryCSS($options);
 			$css = htmlentities($css);
-			print_r($options);
+			//$slugs = getCategorySlugs();		
 			print ($css);
+			var_dump($options);
+// 			foreach ($options as $key =>$value) {
+// 				foreach ($value as $opt_element) {
+// 				echo "Key: $key; Value: $opt_element<br />\n";
+// 				}
+// 			}
 		 ?>
 		</pre>
 	</div>
 	<?php	
 }
 
-//Test Render Elements
-function testRender() {
-	$form_elements = array();
-	for ($i = 0; $i < 2; $i++) {
-		$form_elements[] = $options['txt_one_$i'];
-	}
-return "This is a test: ";
-print_r($form_elements);
-}
 
+					
 //Render Options Form Elements
-function teccc_options_elements() {
-	//need to figure out how to get $options array variable to print into new array element
-	$catSlugs = getCategorySlugs();
-	$count = count($catSlugs);
-	$form_elements = array();
-	$form_elements[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Background Color (hexadecimal)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
-	for ($i = 0; $i < $count; $i++) {
-		//$form_elements[] = echo $options['txt_one_$i']; //Why doesn't this work?
-		$form_elements[] = "<tr>";
-		$form_elements[] = "<td>" . $catSlugs[$i] . "</td>";
-		$form_elements[] = "<td><input type=\"text\" size=\"7\" name=\"teccc_options[txt_one_" . $i . "]\" value=\"" . $options['shade']['txt_one_$i'] . "\" /></td>" ;
-		$form_elements[] = "<td><select name='teccc_options[drp_select_box_" . $i . "]'>" . "<option value='#333'" . selected('black', $options['drp_select_box_$i']). ">Black</option>" . "<option value='#fff' " . selected('white', $options['drp_select_box_$i']) . ">White</option>" . "</select></td>";
-		$form_elements[] = "<td><span style=\"background:" . $options['txt_one_$i'] . ";color:" . $options['drp_select_box_$i'] . ";padding:0.5em;\">Category Slug</span></td>";
-		$form_elements[] = "</tr>";
+function teccc_options_elements($options) {
+	$slugs = getCategorySlugs();
+	$count = count($slugs);
+	$form = array();
+	$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Background Color<br /> (hexadecimal)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
+	//for ($i = 0; $i < $count; $i++) {
+	foreach ($options as $key =>$value) {
+		//foreach ($value as $opt_element) {
+
+		$form[] = "<tr>";
+		$form[] = "<td>" . $key . "</td>";
+		$form[] = "<td><input type=\"text\" size=\"7\" name=\"teccc_options[" . $key . "['background']]\" value=\"" . $options[$key]['background'] . "\" /></td>" ;
+		$form[] = "<td><select name='teccc_options[" . $key . "['text'] '>" ;
+		$form[] = "<option value='#333'" . selected('#333', $options[$key]['text']). ">Black</option>";
+		$form[] = "<option value='#fff' " . selected('#fff', $options[$key]['text']) . ">White</option>" . "</select></td>";
+		//$form[] = "<td><label name='teccc_options[" . $options[key($options)]['text'] . "]' type='radio' value='#fff' " . checked('#fff', $options[key($options)]['text']) . "/> White Text</label><br />";
+ 
+		$form[] = "<td><span style=\"border:1px #ddd solid;background:" . $options[$key]['background'] . ";color:" . $options[$key]['text'] . ";padding:0.5em;\">Category Slug</span></td>";
+		$form[] = "</tr>";
+		next($options);
 	}
 
-	$content = implode ( "\n", $form_elements );
+	$content = implode ( "\n", $form );
 	return $content;
 }
 
@@ -306,7 +270,7 @@ function teccc_options_elements() {
 function teccc_validate_options($input) {
 	 // strip html from textboxes
 	//$input['textarea_one'] =  wp_filter_nohtml_kses($input['textarea_one']); // Sanitize textarea input (strip html tags, and escape characters)
-	$input['txt_one'] =  wp_filter_nohtml_kses($input['txt_one']); // Sanitize textbox input (strip html tags, and escape characters)
+	//$input[key($input)]['background'] =  wp_filter_nohtml_kses($input[key($input)]['background']); // Sanitize textbox input (strip html tags, and escape characters)
 	return $input;
 }
 
@@ -321,25 +285,6 @@ function teccc_plugin_action_links( $links, $file ) {
 
 	return $links;
 }
-
-// ------------------------------------------------------------------------------
-// SAMPLE USAGE FUNCTIONS:
-// ------------------------------------------------------------------------------
-// THE FOLLOWING FUNCTIONS SAMPLE USAGE OF THE PLUGINS OPTIONS DEFINED ABOVE. TRY
-// CHANGING THE DROPDOWN SELECT BOX VALUE AND SAVING THE CHANGES. THEN REFRESH
-// A PAGE ON YOUR SITE TO SEE THE UPDATED VALUE.
-// ------------------------------------------------------------------------------
-
-// As a demo let's add a paragraph of the select box value to the content output
-add_filter( "the_content", "teccc_add_content" );
-function teccc_add_content($text) {
-	$options = get_option('teccc_options');
-	$select = $options['drp_select_box'];
-	$text = "<p style=\"color: #777;border:1px dashed #999; padding: 6px;\">Select box Plugin option is: {$select}</p>{$text}";
-	return $text;
-}
-
-
 
 
 

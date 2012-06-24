@@ -11,7 +11,7 @@ Add background colors to month event view of The Events Calendar events.
 
 == Description ==
 
-
+Add background colors to event categories displayed in the month event view of The Events Calendar.
 
 == Installation ==
 
