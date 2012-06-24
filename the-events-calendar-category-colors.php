@@ -55,8 +55,8 @@ function getCategorySlugs() {
 }
 	
 function writeCategoryCSS($options) { 
-	$slugs = getCategorySlugs();
-	$count = count($slugs);
+	//$slugs = getCategorySlugs();
+	//$count = count($slugs);
 	$catCSS = array();
 	$catCSS[] = "";
 	$catCSS[] = "<style type=\"text/css\" media=\"screen\">";
@@ -118,14 +118,14 @@ function teccc_delete_plugin_options() {
 
 // Define default option settings
 function teccc_add_defaults() {
-	$catSlugs = getCategorySlugs();
-	$count = count($catSlugs);
+	$slugs = getCategorySlugs();
+	$count = count($slugs);
 	$tmp = get_option('teccc_options');
     if(($tmp['chk_default_options_db']=='1')||(!is_array($tmp))) {
 		delete_option('teccc_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
 			for ($i = 0; $i < $count; $i++) {
-				$arr[$catSlugs[$i]] = array ( "text" => "#333", "background" => "#fff" );
-			//$arr[$i] = array ( $catSlugs[$i] => array ( "text" => "#333", "background" => "#fff" ) );
+				$arr[$slugs[$i]] = array ( "text" => "#333", "background" => "#fff" );
+			//$arr[$i] = array ( $slugs[$i] => array ( "text" => "#333", "background" => "#fff" ) );
 		}
 		update_option('teccc_options', $arr);
 	}
@@ -222,8 +222,6 @@ function teccc_render_form() {	?>
 					
 //Render Options Form Elements
 function teccc_options_elements($options) {
-	$slugs = getCategorySlugs();
-	$count = count($slugs);
 	$form = array();
 	$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Background Color<br /> (hexadecimal)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
 	foreach ($options as $key =>$value) {
