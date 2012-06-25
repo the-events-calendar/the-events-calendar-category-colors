@@ -47,11 +47,11 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 function getCategorySlugs() {
 	$terms = get_terms("tribe_events_cat");
-	$catSlugs = array();
+	$slugs = array();
 	foreach ($terms as $term) {
-		$catSlugs[] = $term->slug;
+		$slugs[] = $term->slug;
 	}
-	return $catSlugs;
+	return $slugs;
 }
 	
 function writeCategoryCSS($options) { 
@@ -233,7 +233,6 @@ function teccc_options_elements($options) {
 		$form[] = "<td><select name='teccc_options[" . $key . "['text'] '>" ;
 		$form[] = "<option value='#333'" . selected('#333', $options[$key]['text']). ">Black</option>";
 		$form[] = "<option value='#fff' " . selected('#fff', $options[$key]['text']) . ">White</option>" . "</select></td>";
-		//$form[] = "<td><label name='teccc_options[" . $options[key($options)]['text'] . "]' type='radio' value='#fff' " . checked('#fff', $options[key($options)]['text']) . "/> White Text</label><br />";
  
 		$form[] = "<td><span style=\"border:1px #ddd solid;background:" . $options[$key]['background'] . ";color:" . $options[$key]['text'] . ";padding:0.5em;\">Category Slug</span></td>";
 		$form[] = "</tr>";
