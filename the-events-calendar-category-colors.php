@@ -54,29 +54,24 @@ function getCategorySlugs() {
 	return $slugs;
 }
 	
-function writeCategoryCSS($options) { 
-	//$slugs = getCategorySlugs();
-	//$count = count($slugs);
+function writeCategoryCSS() { 
+	$slugs = getCategorySlugs();
+	$count = count($slugs);
+	$options = get_option('teccc_options');
 	$catCSS = array();
-	$catCSS[] = "";
+	$catCSS[] = "<!-- The Events Calendar Category Colors generated CSS -->";
 	$catCSS[] = "<style type=\"text/css\" media=\"screen\">";
 	$catCSS[] = ".tribe-events-calendar a { font-weight: bold; }";
-	foreach ($options as $key =>$value) {
-		//foreach ($value as $opt_element) {
-
-		$catCSS[] = '.tribe-events-calendar .cat_' . $key . ' a { color: ' .  $options[$key]["text"] . '; }' ;
-		$catCSS[] = '.tribe-events-calendar .cat_' . $key . ', .cat_' . $key . ' > .tribe-events-tooltip .tribe-events-event-title { background: ' . $options[$key]["background"] . '; }' ;
-		next($options);
-		//}
+	for ($i = 0; $i < $count; $i++) {
+		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
+		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background: ' . $options[$slugs[$i].'-background'] . '; }' ;
 	}
 	$catCSS[] = "</style>";
 	$content = implode( "\n", $catCSS ) . "\n";
+	echo $content;
 	return $content;
 }
 
-//$css = writeCategoryCSS();
-add_action('wp_head', 'writeCategoryCSS');
-//add_action('wp_head', $css );
 
 // 'teccc_' prefix is derived from [tec]the events calendar [c]ategory [c]olors
 
@@ -123,9 +118,9 @@ function teccc_add_defaults() {
 	$tmp = get_option('teccc_options');
     if(($tmp['chk_default_options_db']=='1')||(!is_array($tmp))) {
 		delete_option('teccc_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
-			for ($i = 0; $i < $count; $i++) {
-				$arr[$slugs[$i]] = array ( "text" => "#333", "background" => "#fff" );
-			//$arr[$i] = array ( $slugs[$i] => array ( "text" => "#333", "background" => "#fff" ) );
+		for ($i = 0; $i < $count; $i++) {
+			$arr[$slugs[$i]."-text"] = "#333";
+			$arr[$slugs[$i]."-background"] = "#fff";
 		}
 		update_option('teccc_options', $arr);
 	}
@@ -172,7 +167,11 @@ function teccc_render_form() {	?>
 		<div class="icon32" id="icon-options-general"><br></div>
 		<h2>The Events Calendar Category Colors</h2>
 		<p>This is inspired by <a href="http://tri.be/coloring-your-category-events/">Coloring Your Category Events</a>.</p>
-
+		
+		<?php if (!current_user_can('manage_options')) {  
+    		wp_die('You do not have sufficient permissions to access this page.');  
+		} ?>
+		
 		<!-- Beginning of the Plugin Options Form -->
 		<form method="post" action="options.php">
 			<?php settings_fields('teccc_category_colors'); ?>
@@ -199,56 +198,50 @@ function teccc_render_form() {	?>
 			<p class="submit"><input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" /></p>
 		</form>
 		
-		<pre style="border:1px #333 dotted">
-		Generated Header CSS
-		
-		<?php $css = writeCategoryCSS($options);
+		<pre style="border:1px #333 dotted;white-space:pre-wrap;">
+		<?php $css = writeCategoryCSS();
 			$css = htmlentities($css);
-			//$slugs = getCategorySlugs();		
 			print ($css);
-			var_dump($options);
-// 			foreach ($options as $key =>$value) {
-// 				foreach ($value as $opt_element) {
-// 				echo "Key: $key; Value: $opt_element<br />\n";
-// 				}
-// 			}
+			//var_dump($options);
 		 ?>
 		</pre>
 	</div>
-	<?php	
-}
+<?php }
 
 
-					
-//Render Options Form Elements
 function teccc_options_elements($options) {
+	$slugs = getCategorySlugs();
+	$count = count($slugs);
 	$form = array();
 	$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Background Color<br /> (hexadecimal)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
-	foreach ($options as $key =>$value) {
-		//foreach ($value as $opt_element) {
-
+	for ($i = 0; $i < $count; $i++) {
 		$form[] = "<tr>";
-		$form[] = "<td>" . $key . "</td>";
-		$form[] = "<td><input type=\"text\" size=\"7\" name=\"teccc_options[" . $key . "['background']]\" value=\"" . $options[$key]['background'] . "\" /></td>" ;
-		$form[] = "<td><select name='teccc_options[" . $key . "['text'] '>" ;
-		$form[] = "<option value='#333'" . selected('#333', $options[$key]['text']). ">Black</option>";
-		$form[] = "<option value='#fff' " . selected('#fff', $options[$key]['text']) . ">White</option>" . "</select></td>";
+		$form[] = "<td>" . $slugs[$i] . "</td>";
+		$form[] = "<td><input type=\"text\" size=\"7\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
+		$form[] = "<td><select name='teccc_options[" . $slugs[$i] . "-text]'>" ;
+		$form[] = "<option value='#333'" . selected('#333', $options[$slugs[$i].'-text']) . ">Black</option>";
+		$form[] = "<option value='#fff'" . selected('#fff', $options[$slugs[$i].'-text']) . ">White</option>" . "</select></td>";
  
-		$form[] = "<td><span style=\"border:1px #ddd solid;background:" . $options[$key]['background'] . ";color:" . $options[$key]['text'] . ";padding:0.5em;\">Category Slug</span></td>";
+		$form[] = "<td><span style=\"border:1px #ddd solid;background:" . $options[$slugs[$i].'-background'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em;\">Category Slug</span></td>";
 		$form[] = "</tr>";
-		next($options);
 	}
-
 	$content = implode ( "\n", $form );
 	return $content;
 }
+					
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 //this was copied from plugin-options-starter-kit and likely needs to be fixed for this plugin
 function teccc_validate_options($input) {
 	 // strip html from textboxes
-	//$input['textarea_one'] =  wp_filter_nohtml_kses($input['textarea_one']); // Sanitize textarea input (strip html tags, and escape characters)
-	//$input[key($input)]['background'] =  wp_filter_nohtml_kses($input[key($input)]['background']); // Sanitize textbox input (strip html tags, and escape characters)
+	$slugs = getCategorySlugs();
+	$count = count($slugs);
+	for ($i = 0; $i < $count; $i++) {
+	// Sanitize textbox input (strip html tags, and escape characters)
+	$input[$slugs[$i].'-background'] =  wp_filter_nohtml_kses($input[$slugs[$i].'-background']);
+	// Sanitize dropdown input (make sure value is one of options allowed)
+	//$input[$slugs[$i].'-text'] 
+	}
 	return $input;
 }
 
@@ -260,9 +253,9 @@ function teccc_plugin_action_links( $links, $file ) {
 		// make the 'Settings' link appear first
 		array_unshift( $links, $teccc_links );
 	}
-
 	return $links;
 }
 
+add_action('wp_head', 'writeCategoryCSS');
 
 ?>

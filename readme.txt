@@ -35,8 +35,8 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 == Changelog ==
 
-= 1.0 =
+= 0.1 =
 * Initial release.
 
 == Upgrade Notice ==
-Please stay current with your WordPress installation, your active theme, and your plugins and especially _The Events Calendar_ and _The Events Calendar PRO_ plugins.
+Please stay current with your WordPress installation, your active theme, and your plugins and especially _The Events Calendar_.

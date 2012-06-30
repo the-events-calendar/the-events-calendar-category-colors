@@ -10,8 +10,7 @@ How do I write functions for my plugin that may require variables from another p
 
 * warning if _The Events Calendar_ not installed
 * Done - <strike>function to return event category slugs to array</strike>
-* function to fill array with slugs and colors
-  * this is mostly working but I need to figure out how to place a value in the settings array as part of an element of another array
+* Done - <strike>function to fill array with slugs and colors</strike>
 
 ### CSS
 
@@ -21,5 +20,3 @@ How do I write functions for my plugin that may require variables from another p
 ### plugin
 
 * make sure _The Events Calendar_ is installed or add warning to settings page
-* wp\_register\_style
-* wp\_enqueue\_style
