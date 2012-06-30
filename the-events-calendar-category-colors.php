@@ -256,6 +256,7 @@ function teccc_plugin_action_links( $links, $file ) {
 	return $links;
 }
 
+//if( tribe_is_month() && !is_tax() ) {
 add_action('wp_head', 'writeCategoryCSS');
-
+//}
 ?>
