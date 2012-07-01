@@ -2,7 +2,7 @@
 Contributors: afragen
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
-Tested up to: 3.3.2
+Tested up to: 3.4.1
 Stable tag: 0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,7 +11,7 @@ Add background colors to month event view of The Events Calendar events.
 
 == Description ==
 
-Add background colors to event categories displayed in the month event view of The Events Calendar.
+Add background colors to event categories displayed in the month event view of The Events Calendar. This is inspired by [Coloring Your Category Events](http://tri.be/coloring-your-category-events).
 
 == Installation ==
 
