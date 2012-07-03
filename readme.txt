@@ -3,7 +3,7 @@ Contributors: afragen
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 0.1
+Stable tag: 0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,6 @@ Add background colors to event categories displayed in the month event view of T
 
 1. Upload the entire `/the-events-calendar-category-colors/` folder to the `/wp-content/plugins/` directory.
 1. Activate the plugin.
-
 
 
 == Frequently Asked Questions ==
@@ -34,6 +33,11 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 
 == Changelog ==
+
+= 0.2 =
+* Bug fixes
+* default background color now transparent
+* updated sanitizing
 
 = 0.1 =
 * Initial release.

@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds background coloring to The Events Calendar plugin.
-Version: 0.1
+Version: 0.2
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -64,7 +64,7 @@ function writeCategoryCSS() {
 	$catCSS[] = ".tribe-events-calendar a { font-weight: bold; }";
 	for ($i = 0; $i < $count; $i++) {
 		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
-		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background: ' . $options[$slugs[$i].'-background'] . '; }' ;
+		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; }' ;
 	}
 	$catCSS[] = "</style>";
 	$content = implode( "\n", $catCSS ) . "\n";
@@ -120,7 +120,7 @@ function teccc_add_defaults() {
 		delete_option('teccc_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
 		for ($i = 0; $i < $count; $i++) {
 			$arr[$slugs[$i]."-text"] = "#333";
-			$arr[$slugs[$i]."-background"] = "#fff";
+			$arr[$slugs[$i]."-background"] = "transparent";
 		}
 		update_option('teccc_options', $arr);
 	}
@@ -202,7 +202,6 @@ function teccc_render_form() {	?>
 		<?php $css = writeCategoryCSS();
 			$css = htmlentities($css);
 			print ($css);
-			//var_dump($options);
 		 ?>
 		</pre>
 	</div>
@@ -213,16 +212,16 @@ function teccc_options_elements($options) {
 	$slugs = getCategorySlugs();
 	$count = count($slugs);
 	$form = array();
-	$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Background Color<br /> (hexadecimal)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
+	$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Background Color<br />(hex, rgb, color name)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
 	for ($i = 0; $i < $count; $i++) {
 		$form[] = "<tr>";
 		$form[] = "<td>" . $slugs[$i] . "</td>";
-		$form[] = "<td><input type=\"text\" size=\"7\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
+		$form[] = "<td><input type=\"text\" size=\"12\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
 		$form[] = "<td><select name='teccc_options[" . $slugs[$i] . "-text]'>" ;
-		$form[] = "<option value='#333'" . selected('#333', $options[$slugs[$i].'-text']) . ">Black</option>";
-		$form[] = "<option value='#fff'" . selected('#fff', $options[$slugs[$i].'-text']) . ">White</option>" . "</select></td>";
+		$form[] = "<option value='#333'" . selected('#333', $options[$slugs[$i].'-text'], false) . ">Black</option>";
+		$form[] = "<option value='#fff'" . selected('#fff', $options[$slugs[$i].'-text'], false) . ">White</option>" . "</select></td>";
  
-		$form[] = "<td><span style=\"border:1px #ddd solid;background:" . $options[$slugs[$i].'-background'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em;\">Category Slug</span></td>";
+		$form[] = "<td><span style=\"border:1px #ddd solid;background:" . $options[$slugs[$i].'-background'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:bold;\">Event Title</span></td>";
 		$form[] = "</tr>";
 	}
 	$content = implode ( "\n", $form );
@@ -231,16 +230,18 @@ function teccc_options_elements($options) {
 					
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
-//this was copied from plugin-options-starter-kit and likely needs to be fixed for this plugin
 function teccc_validate_options($input) {
-	 // strip html from textboxes
+	$text_colors = array("#fff", "#333");
 	$slugs = getCategorySlugs();
 	$count = count($slugs);
 	for ($i = 0; $i < $count; $i++) {
-	// Sanitize textbox input (strip html tags, and escape characters)
-	$input[$slugs[$i].'-background'] =  wp_filter_nohtml_kses($input[$slugs[$i].'-background']);
-	// Sanitize dropdown input (make sure value is one of options allowed)
-	//$input[$slugs[$i].'-text'] 
+		// Sanitize textbox input (strip html tags, and escape characters)
+		$input[$slugs[$i].'-background'] =  wp_filter_nohtml_kses($input[$slugs[$i].'-background']);
+		$input[$slugs[$i].'-background'] =  ereg_replace( "[^#A-Za-z0-9]", "", $input[$slugs[$i].'-background'] );
+		// Sanitize dropdown input (make sure value is one of options allowed)
+		if ( !in_array($input[$slugs[$i].'-text'], $text_colors, true) ) {
+			$input[$slugs[$i].'-text'] = "#333";
+		} 
 	}
 	return $input;
 }
@@ -256,7 +257,7 @@ function teccc_plugin_action_links( $links, $file ) {
 	return $links;
 }
 
-//if( tribe_is_month() && !is_tax() ) {
+//Todo - Selectively apply wp_head to month view only
 add_action('wp_head', 'writeCategoryCSS');
-//}
+
 ?>
