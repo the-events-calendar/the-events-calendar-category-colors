@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds background coloring to The Events Calendar plugin.
-Version: 0.2
+Version: 0.5
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -68,7 +68,7 @@ function writeCategoryCSS() {
 	}
 	$catCSS[] = "</style>";
 	$content = implode( "\n", $catCSS ) . "\n";
-	echo $content;
+	if ( !is_admin() ) { echo $content; }
 	return $content;
 }
 
@@ -86,8 +86,8 @@ function writeCategoryCSS() {
 register_activation_hook(__FILE__, 'teccc_add_defaults');
 register_uninstall_hook(__FILE__, 'teccc_delete_plugin_options');
 add_action('admin_init', 'teccc_init' );
-add_action('admin_menu', 'teccc_add_options_page');
-add_filter( 'plugin_action_links', 'teccc_plugin_action_links', 10, 2 );
+//add_action('admin_menu', 'teccc_add_options_page');
+//add_filter( 'plugin_action_links', 'teccc_plugin_action_links', 10, 2 );
 
 // --------------------------------------------------------------------------------------
 // CALLBACK FUNCTION FOR: register_uninstall_hook(__FILE__, 'teccc_delete_category_colors')
@@ -116,7 +116,7 @@ function teccc_add_defaults() {
 	$slugs = getCategorySlugs();
 	$count = count($slugs);
 	$tmp = get_option('teccc_options');
-    if(($tmp['chk_default_options_db']=='1')||(!is_array($tmp))) {
+	if(($tmp['chk_default_options_db']=='1')||(!is_array($tmp))) {
 		delete_option('teccc_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
 		for ($i = 0; $i < $count; $i++) {
 			$arr[$slugs[$i]."-text"] = "#333";
@@ -169,49 +169,45 @@ function teccc_render_form() {	?>
 		<p>This is inspired by <a href="http://tri.be/coloring-your-category-events/">Coloring Your Category Events</a>.</p>
 		
 		<?php if (!current_user_can('manage_options')) {  
-    		wp_die('You do not have sufficient permissions to access this page.');  
+			wp_die('You do not have sufficient permissions to access this page.');  
 		} ?>
 		
 		<!-- Beginning of the Plugin Options Form -->
 		<form method="post" action="options.php">
 			<?php settings_fields('teccc_category_colors'); ?>
-			<?php $options = get_option('teccc_options'); ?>
 
 			<!-- Table Structure Containing Form Controls -->
 			<!-- Each Plugin Option Defined on a New Table Row -->
-			<table class="form-table">
+			 <table class="form-table">
 
 						
 				<!-- following function creates options for each category -->
-				<?php echo teccc_options_elements($options); ?>
-					
-				<tr><td colspan="4"><div style="margin-top:10px;"></div></td></tr>
-				<tr valign="top" style="border-top:#dddddd 1px solid;">
-					<th scope="row">Database Options</th>
-					<td colspan="4">
-						<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1" <?php if (isset($options['chk_default_options_db'])) { checked('1', $options['chk_default_options_db']); } ?> /> Restore defaults upon plugin deactivation/reactivation</label>
-						<br /><span style="color:#666666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</span>
-					</td>
-				</tr>
-		
-			</table>
+				<?php echo teccc_options_elements(); ?>
+				
 			<p class="submit"><input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" /></p>
+
 		</form>
 		
+<!--
 		<pre style="border:1px #333 dotted;white-space:pre-wrap;">
-		<?php $css = writeCategoryCSS();
-			$css = htmlentities($css);
-			print ($css);
+		<?php //$css = writeCategoryCSS();
+			//$css = htmlentities($css);
+			//print ($css);
+			//var_dump($options);
 		 ?>
 		</pre>
+-->
 	</div>
 <?php }
 
 
-function teccc_options_elements($options) {
+function teccc_options_elements() {
 	$slugs = getCategorySlugs();
 	$count = count($slugs);
+	$options = get_option('teccc_options');
 	$form = array();
+	$form[] = '<table class="form-table">';
+	$form[] = '<style type="text/css">.form-table th { font-size: 12px; }</style>';
 	$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Background Color<br />(hex, rgb, color name)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
 	for ($i = 0; $i < $count; $i++) {
 		$form[] = "<tr>";
@@ -224,6 +220,10 @@ function teccc_options_elements($options) {
 		$form[] = "<td><span style=\"border:1px #ddd solid;background:" . $options[$slugs[$i].'-background'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:bold;\">Event Title</span></td>";
 		$form[] = "</tr>";
 	}
+	$form[] = '<tr><td colspan="4"><div style="margin-top:10px;"></div></td></tr><tr valign="top" style="border-top:#dddddd 1px solid;"><th scope="row">Database Options</th><td colspan="4">';
+	$form[] = '<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1"' . checked('1', $options['chk_default_options_db'], false) . " /> Restore defaults upon plugin deactivation/reactivation</label>";
+	$form[] = '<p style="color:#666666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</p></td></tr></table>';
+  
 	$content = implode ( "\n", $form );
 	return $content;
 }
@@ -246,6 +246,21 @@ function teccc_validate_options($input) {
 	return $input;
 }
 
+//Create Category Colors tab in The Events Calendar Settings
+add_action('tribe_settings_do_tabs', 'tribe_add_category_colors_tab');
+function tribe_add_category_colors_tab () {
+	include_once('category-colors-settings.php');
+	add_filter('tribe_settings_form_element', 'teccc_form_header');
+	add_action('tribe_settings_before_content', 'teccc_settings_fields');
+	new TribeSettingsTab( 'category-colors', __('Category Colors', 'tribe-events-calendar'), $categoryColorsTab);
+}
+function teccc_form_header() {
+	return '<form method="post" action="options.php">' ;
+}
+function teccc_settings_fields() {
+	settings_fields('teccc_category_colors');
+}
+
 // Display a Settings link on the main Plugins page
 function teccc_plugin_action_links( $links, $file ) {
 
@@ -258,6 +273,25 @@ function teccc_plugin_action_links( $links, $file ) {
 }
 
 //Todo - Selectively apply wp_head to month view only
+if( $query->query_vars['eventDisplay'] == 'upcoming' && $query->query_vars['post_type'] == TribeEvents::POSTTYPE && !is_tax(TribeEvents::TAXONOMY) && empty( $query->query_vars['suppress_filters'] ) ) {
+
+//upcoming event list
 add_action('wp_head', 'writeCategoryCSS');
+
+} elseif( $query->query_vars['eventDisplay'] == 'past' && $query->query_vars['post_type'] == TribeEvents::POSTTYPE && !is_tax(TribeEvents::TAXONOMY) && empty( $query->query_vars['suppress_filters'] ) ) {
+
+//past event list
+add_action('wp_head', 'writeCategoryCSS');
+
+} elseif( $query->query_vars['eventDisplay'] == 'month' && $query->query_vars['post_type'] == TribeEvents::POSTTYPE && !is_tax(TribeEvents::TAXONOMY) && empty( $query->query_vars['suppress_filters'] ) ) {
+
+//month view
+add_action('wp_head', 'writeCategoryCSS');
+
+}
+
+
+add_action('wp_head', 'writeCategoryCSS');
+
 
 ?>
