@@ -3,7 +3,7 @@ Contributors: afragen, jonahcoyote
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 0.6
+Stable tag: 0.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,13 +13,13 @@ Add background colors to month event view of The Events Calendar events.
 
 Add background colors to event categories displayed in the month event view of The Events Calendar. This is inspired by [Coloring Your Category Events](http://tri.be/coloring-your-category-events).
 
-Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page. 
+I still need to work on getting the settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page. 
 
 == Installation ==
 
 1. Upload the entire `/the-events-calendar-category-colors/` folder to the `/wp-content/plugins/` directory.
 1. Activate the plugin.
-1. Go to The Events Calendar Settings to adjust settings, `Settings > The Events Calendar > Category Colors`.
+1. Go to TEC Category Colors Settings to adjust settings, `Settings > TEC Category Colors`.
 
 
 == Frequently Asked Questions ==
@@ -38,7 +38,7 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 == Changelog ==
 
-= 0.6 =
+= 0.6.1 =
 * Reverted back to it's own settings page till I get a bug worked out.
 * Added option for 'Default' text color
 
@@ -55,7 +55,8 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 * Initial release.
 
 == Todo ==
-* No known bugs, please report any bugs or suggestions.
+* Need to fix for settings tab under The Events Calendar Settings page. I could really use an addition to the Tribe Settings API for a filter hook `tribe_settings_form_element_tab_{$currentTab}`
+* Please report any bugs or suggestions.
 * I need to fix the code so the CSS only shows up on the correct pages.
 
 == Upgrade Notice ==
