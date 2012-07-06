@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds background coloring to The Events Calendar plugin.
-Version: 0.5
+Version: 0.6
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -63,7 +63,9 @@ function writeCategoryCSS() {
 	$catCSS[] = "<style type=\"text/css\" media=\"screen\">";
 	$catCSS[] = ".tribe-events-calendar a { font-weight: bold; }";
 	for ($i = 0; $i < $count; $i++) {
-		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
+		if (!($options[$slugs[$i].'-text'] == "0")) {
+			$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
+		}
 		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; }' ;
 	}
 	$catCSS[] = "</style>";
@@ -86,8 +88,8 @@ function writeCategoryCSS() {
 register_activation_hook(__FILE__, 'teccc_add_defaults');
 register_uninstall_hook(__FILE__, 'teccc_delete_plugin_options');
 add_action('admin_init', 'teccc_init' );
-//add_action('admin_menu', 'teccc_add_options_page');
-//add_filter( 'plugin_action_links', 'teccc_plugin_action_links', 10, 2 );
+add_action('admin_menu', 'teccc_add_options_page');
+add_filter( 'plugin_action_links', 'teccc_plugin_action_links', 10, 2 );
 
 // --------------------------------------------------------------------------------------
 // CALLBACK FUNCTION FOR: register_uninstall_hook(__FILE__, 'teccc_delete_category_colors')
@@ -119,7 +121,7 @@ function teccc_add_defaults() {
 	if(($tmp['chk_default_options_db']=='1')||(!is_array($tmp))) {
 		delete_option('teccc_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
 		for ($i = 0; $i < $count; $i++) {
-			$arr[$slugs[$i]."-text"] = "#333";
+			$arr[$slugs[$i]."-text"] = "0";
 			$arr[$slugs[$i]."-background"] = "transparent";
 		}
 		update_option('teccc_options', $arr);
@@ -193,6 +195,7 @@ function teccc_render_form() {	?>
 		<?php //$css = writeCategoryCSS();
 			//$css = htmlentities($css);
 			//print ($css);
+			//$options = get_option('teccc_options');
 			//var_dump($options);
 		 ?>
 		</pre>
@@ -214,11 +217,18 @@ function teccc_options_elements() {
 		$form[] = "<td>" . $slugs[$i] . "</td>";
 		$form[] = "<td><input type=\"text\" size=\"12\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
 		$form[] = "<td><select name='teccc_options[" . $slugs[$i] . "-text]'>" ;
+		$form[] = "<option value='0'" . selected('0', $options[$slugs[$i].'-text'], false) . ">Default</option>";
 		$form[] = "<option value='#333'" . selected('#333', $options[$slugs[$i].'-text'], false) . ">Black</option>";
 		$form[] = "<option value='#fff'" . selected('#fff', $options[$slugs[$i].'-text'], false) . ">White</option>" . "</select></td>";
  
-		$form[] = "<td><span style=\"border:1px #ddd solid;background:" . $options[$slugs[$i].'-background'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:bold;\">Event Title</span></td>";
-		$form[] = "</tr>";
+		if(($options[$slugs[$i].'-text'] == '0')) {
+			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";padding:0.5em 1em;font-weight:bold;\">Event Title</span></td>";
+		}
+		else {
+			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:bold;\">Event Title</span></td>";
+		}
+		
+		$form[] = "</tr>\n";
 	}
 	$form[] = '<tr><td colspan="4"><div style="margin-top:10px;"></div></td></tr><tr valign="top" style="border-top:#dddddd 1px solid;"><th scope="row">Database Options</th><td colspan="4">';
 	$form[] = '<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1"' . checked('1', $options['chk_default_options_db'], false) . " /> Restore defaults upon plugin deactivation/reactivation</label>";
@@ -231,7 +241,7 @@ function teccc_options_elements() {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function teccc_validate_options($input) {
-	$text_colors = array("#fff", "#333");
+	$text_colors = array("0", "#fff", "#333");
 	$slugs = getCategorySlugs();
 	$count = count($slugs);
 	for ($i = 0; $i < $count; $i++) {
@@ -250,12 +260,13 @@ function teccc_validate_options($input) {
 add_action('tribe_settings_do_tabs', 'tribe_add_category_colors_tab');
 function tribe_add_category_colors_tab () {
 	include_once('category-colors-settings.php');
-	add_filter('tribe_settings_form_element', 'teccc_form_header');
-	add_action('tribe_settings_before_content', 'teccc_settings_fields');
-	new TribeSettingsTab( 'category-colors', __('Category Colors', 'tribe-events-calendar'), $categoryColorsTab);
+	//add_filter('tribe_settings_form_element', 'teccc_form_header');
+	add_action('tribe_settings_before_content_tab_category-colors', 'teccc_form_header');
+	add_action('tribe_settings_before_content_tab_category-colors', 'teccc_settings_fields');
+	//new TribeSettingsTab( 'category-colors', __('Category Colors', 'tribe-events-calendar'), $categoryColorsTab);
 }
 function teccc_form_header() {
-	return '<form method="post" action="options.php">' ;
+	echo '<form method="post" action="options.php">' ;
 }
 function teccc_settings_fields() {
 	settings_fields('teccc_category_colors');

@@ -3,7 +3,7 @@ Contributors: afragen, jonahcoyote
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 0.5
+Stable tag: 0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,10 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
  1. The Events Calendar Category Colors Settings
 
 == Changelog ==
+
+= 0.6 =
+* Reverted back to it's own settings page till I get a bug worked out.
+* Added option for 'Default' text color
 
 = 0.5 =
 * Added Category Colors settings tab to The Events Calendar Settings page using TribeSettings API
