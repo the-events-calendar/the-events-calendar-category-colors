@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds background coloring to The Events Calendar plugin.
-Version: 0.6.1
+Version: 0.7
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -88,7 +88,7 @@ function writeCategoryCSS() {
 register_activation_hook(__FILE__, 'teccc_add_defaults');
 register_uninstall_hook(__FILE__, 'teccc_delete_plugin_options');
 add_action('admin_init', 'teccc_init' );
-add_action('admin_menu', 'teccc_add_options_page');
+//add_action('admin_menu', 'teccc_add_options_page');
 //add_filter( 'plugin_action_links', 'teccc_plugin_action_links', 10, 2 );
 
 // --------------------------------------------------------------------------------------
@@ -261,9 +261,9 @@ add_action('tribe_settings_do_tabs', 'tribe_add_category_colors_tab');
 function tribe_add_category_colors_tab () {
 	include_once('category-colors-settings.php');
 	//add_filter('tribe_settings_form_element', 'teccc_form_header');
-	add_action('tribe_settings_before_content_tab_category-colors', 'teccc_form_header');
+	add_action('tribe_settings_above_form_element_tab_category-colors', 'teccc_form_header');
 	add_action('tribe_settings_before_content_tab_category-colors', 'teccc_settings_fields');
-	//new TribeSettingsTab( 'category-colors', __('Category Colors', 'tribe-events-calendar'), $categoryColorsTab);
+	new TribeSettingsTab( 'category-colors', __('Category Colors', 'tribe-events-calendar'), $categoryColorsTab);
 }
 function teccc_form_header() {
 	echo '<form method="post" action="options.php">' ;

@@ -19,10 +19,6 @@
 		'save-button' => array(
 			'type' => 'html',
 			'html' => '<p class="submit"><input type="submit" class="button-primary" value="' . __('Save Changes') . '" /></p>'
-			),
-		'form-end' =>array(
-			'type' => 'html',
-			'html' => '</form>'
 			)
 		)
 	);
