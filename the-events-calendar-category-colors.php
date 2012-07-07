@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds background coloring to The Events Calendar plugin.
-Version: 0.7
+Version: 0.8
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -190,7 +190,7 @@ function teccc_render_form() {	?>
 
 		</form>
 		
-<!--
+
 		<pre style="border:1px #333 dotted;white-space:pre-wrap;">
 		<?php //$css = writeCategoryCSS();
 			//$css = htmlentities($css);
@@ -199,7 +199,7 @@ function teccc_render_form() {	?>
 			//var_dump($options);
 		 ?>
 		</pre>
--->
+
 	</div>
 <?php }
 
@@ -218,13 +218,13 @@ function teccc_options_elements() {
 		$form[] = "<td><input type=\"text\" size=\"12\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
 		$form[] = "<td><select name='teccc_options[" . $slugs[$i] . "-text]'>" ;
 		$form[] = "<option value='0'" . selected('0', $options[$slugs[$i].'-text'], false) . ">Default</option>";
-		$form[] = "<option value='#333'" . selected('#333', $options[$slugs[$i].'-text'], false) . ">Black</option>";
+		$form[] = "<option value='#000'" . selected('#000', $options[$slugs[$i].'-text'], false) . ">Black</option>";
+		$form[] = "<option value='#999'" . selected('#999', $options[$slugs[$i].'-text'], false) . ">Gray</option>";
 		$form[] = "<option value='#fff'" . selected('#fff', $options[$slugs[$i].'-text'], false) . ">White</option>" . "</select></td>";
  
 		if(($options[$slugs[$i].'-text'] == '0')) {
 			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";padding:0.5em 1em;font-weight:bold;\">Event Title</span></td>";
-		}
-		else {
+		} else {
 			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:bold;\">Event Title</span></td>";
 		}
 		
@@ -241,7 +241,7 @@ function teccc_options_elements() {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function teccc_validate_options($input) {
-	$text_colors = array("0", "#fff", "#333");
+	$text_colors = array("0", "#fff", "#000", "#999");
 	$slugs = getCategorySlugs();
 	$count = count($slugs);
 	for ($i = 0; $i < $count; $i++) {
@@ -250,7 +250,7 @@ function teccc_validate_options($input) {
 		$input[$slugs[$i].'-background'] =  ereg_replace( "[^#A-Za-z0-9]", "", $input[$slugs[$i].'-background'] );
 		// Sanitize dropdown input (make sure value is one of options allowed)
 		if ( !in_array($input[$slugs[$i].'-text'], $text_colors, true) ) {
-			$input[$slugs[$i].'-text'] = "#333";
+			$input[$slugs[$i].'-text'] = "0";
 		} 
 	}
 	return $input;
@@ -283,26 +283,14 @@ function teccc_plugin_action_links( $links, $file ) {
 	return $links;
 }
 
-//Todo - Selectively apply wp_head to month view only
-if( $query->query_vars['eventDisplay'] == 'upcoming' && $query->query_vars['post_type'] == TribeEvents::POSTTYPE && !is_tax(TribeEvents::TAXONOMY) && empty( $query->query_vars['suppress_filters'] ) ) {
-
-//upcoming event list
-add_action('wp_head', 'writeCategoryCSS');
-
-} elseif( $query->query_vars['eventDisplay'] == 'past' && $query->query_vars['post_type'] == TribeEvents::POSTTYPE && !is_tax(TribeEvents::TAXONOMY) && empty( $query->query_vars['suppress_filters'] ) ) {
-
-//past event list
-add_action('wp_head', 'writeCategoryCSS');
-
-} elseif( $query->query_vars['eventDisplay'] == 'month' && $query->query_vars['post_type'] == TribeEvents::POSTTYPE && !is_tax(TribeEvents::TAXONOMY) && empty( $query->query_vars['suppress_filters'] ) ) {
-
-//month view
-add_action('wp_head', 'writeCategoryCSS');
-
+//This function determines month view for displaying CSS
+function add_CSS($query) {
+	//print $query->query_vars['eventDisplay'];
+	if ( ($query->query_vars['eventDisplay'] == 'month') ) {
+		add_action('wp_head', 'writeCategoryCSS');
+	}
 }
-
-
-add_action('wp_head', 'writeCategoryCSS');
-
+// 'pre_get_posts' hook needed to determine events page
+add_action('pre_get_posts', 'add_CSS');
 
 ?>

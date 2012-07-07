@@ -14,7 +14,7 @@ How do I write functions for my plugin that may require variables from another p
 
 ### CSS
 
-* add this dynamic CSS to load only in calendar pages header
+* Done - <strike>add this dynamic CSS to load only in calendar pages header</strike>
 * Done - <strike>function to write out _custom_ css entries per category/color combination</strike>
 
 ### plugin

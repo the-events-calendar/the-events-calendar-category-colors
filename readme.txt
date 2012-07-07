@@ -3,7 +3,7 @@ Contributors: afragen, jonahcoyote
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 0.7
+Stable tag: 0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,10 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 == Changelog ==
 
+= 0.8 =
+* CSS now only added to month view calendar page.
+* Added option for gray text.
+
 = 0.7 =
 * Bugs fixed. Back to Category Colors settings tab.
 
@@ -59,7 +63,6 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 == Todo ==
 * Please report any bugs or suggestions.
-* I need to fix the code so the CSS only shows up on the correct pages.
 
 == Upgrade Notice ==
 
