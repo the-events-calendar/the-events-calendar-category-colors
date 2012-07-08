@@ -2,8 +2,8 @@
 /*
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
-Description: This plugin adds background coloring to The Events Calendar plugin.
-Version: 0.8
+Description: This plugin adds background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
+Version: 0.9
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -44,6 +44,13 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 /* Add your functions below this line */
 
+global $teccc_text_colors;
+$teccc_text_colors = array(
+	"Default" => "0",
+	"Black" => "#000",
+	"White" => "#fff",
+	"Gray" => "#999"
+	);
 
 function getCategorySlugs() {
 	$terms = get_terms("tribe_events_cat");
@@ -205,6 +212,7 @@ function teccc_render_form() {	?>
 
 
 function teccc_options_elements() {
+	global $teccc_text_colors;
 	$slugs = getCategorySlugs();
 	$count = count($slugs);
 	$options = get_option('teccc_options');
@@ -216,18 +224,17 @@ function teccc_options_elements() {
 		$form[] = "<tr>";
 		$form[] = "<td>" . $slugs[$i] . "</td>";
 		$form[] = "<td><input type=\"text\" size=\"12\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
-		$form[] = "<td><select name='teccc_options[" . $slugs[$i] . "-text]'>" ;
-		$form[] = "<option value='0'" . selected('0', $options[$slugs[$i].'-text'], false) . ">Default</option>";
-		$form[] = "<option value='#000'" . selected('#000', $options[$slugs[$i].'-text'], false) . ">Black</option>";
-		$form[] = "<option value='#999'" . selected('#999', $options[$slugs[$i].'-text'], false) . ">Gray</option>";
-		$form[] = "<option value='#fff'" . selected('#fff', $options[$slugs[$i].'-text'], false) . ">White</option>" . "</select></td>";
- 
+		$form[] = "<td><select name='teccc_options[" . $slugs[$i] . "-text]'>" ;		
+
+		foreach ($teccc_text_colors as $key => $value) {
+			$form[] = "<option value='$value'" . selected($value, $options[$slugs[$i].'-text'], false) . ">$key</option>";
+		}
+ 		$form[] = "</select></td>";
 		if(($options[$slugs[$i].'-text'] == '0')) {
 			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";padding:0.5em 1em;font-weight:bold;\">Event Title</span></td>";
 		} else {
 			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:bold;\">Event Title</span></td>";
 		}
-		
 		$form[] = "</tr>\n";
 	}
 	$form[] = '<tr><td colspan="4"><div style="margin-top:10px;"></div></td></tr><tr valign="top" style="border-top:#dddddd 1px solid;"><th scope="row">Database Options</th><td colspan="4">';
@@ -241,7 +248,7 @@ function teccc_options_elements() {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function teccc_validate_options($input) {
-	$text_colors = array("0", "#fff", "#000", "#999");
+	global $teccc_text_colors;
 	$slugs = getCategorySlugs();
 	$count = count($slugs);
 	for ($i = 0; $i < $count; $i++) {
@@ -249,7 +256,7 @@ function teccc_validate_options($input) {
 		$input[$slugs[$i].'-background'] =  wp_filter_nohtml_kses($input[$slugs[$i].'-background']);
 		$input[$slugs[$i].'-background'] =  ereg_replace( "[^#A-Za-z0-9]", "", $input[$slugs[$i].'-background'] );
 		// Sanitize dropdown input (make sure value is one of options allowed)
-		if ( !in_array($input[$slugs[$i].'-text'], $text_colors, true) ) {
+		if ( !in_array($input[$slugs[$i].'-text'], $teccc_text_colors, true) ) {
 			$input[$slugs[$i].'-text'] = "0";
 		} 
 	}
@@ -285,9 +292,10 @@ function teccc_plugin_action_links( $links, $file ) {
 
 //This function determines month view for displaying CSS
 function add_CSS($query) {
-	//print $query->query_vars['eventDisplay'];
-	if ( ($query->query_vars['eventDisplay'] == 'month') ) {
-		add_action('wp_head', 'writeCategoryCSS');
+	if ( ($query->query_vars['post_type'] == 'tribe_events') ) {
+		if ( ($query->query_vars['eventDisplay'] == 'month') ) {
+			add_action('wp_head', 'writeCategoryCSS');
+		}
 	}
 }
 // 'pre_get_posts' hook needed to determine events page
