@@ -8,7 +8,7 @@ How do I write functions for my plugin that may require variables from another p
 
 ### Settings page
 
-* warning if _The Events Calendar_ not installed
+* Done - warning if _The Events Calendar_ not installed
 * Done - <strike>function to return event category slugs to array</strike>
 * Done - <strike>function to fill array with slugs and colors</strike>
 
@@ -19,4 +19,4 @@ How do I write functions for my plugin that may require variables from another p
 
 ### plugin
 
-* make sure _The Events Calendar_ is installed or add warning to settings page
+* Done - make sure _The Events Calendar_ is installed or add warning to settings page

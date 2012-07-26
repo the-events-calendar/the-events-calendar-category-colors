@@ -3,7 +3,7 @@ Contributors: afragen, jonahcoyote
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 0.9
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,11 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
  1. The Events Calendar Category Colors Settings tab
 
 == Changelog ==
+
+= 1.0 =
+* Added checks for TEC active
+* Fixed Save settings notification
+* Added option to bold/unbold text.
 
 = 0.9 =
 * Adjusted add_CSS function to query both post_type and eventDisplay.

@@ -2,8 +2,8 @@
 /*
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
-Description: This plugin adds background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 0.9
+Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
+Version: 1.0
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -44,12 +44,23 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 /* Add your functions below this line */
 
+$plugins = get_option('active_plugins');
+$required_plugin = 'the-events-calendar/the-events-calendar.php';
+if ( !in_array( $required_plugin , $plugins ) ) { wp_die('The Events Calendar plugin is not active.'); }
+
+
 global $teccc_text_colors;
 $teccc_text_colors = array(
 	"Default" => "0",
 	"Black" => "#000",
 	"White" => "#fff",
 	"Gray" => "#999"
+	);
+
+global $teccc_font_weights;
+$teccc_font_weights = array(
+	"Bold" => "bold",
+	"Normal" => "normal"
 	);
 
 function getCategorySlugs() {
@@ -68,7 +79,7 @@ function writeCategoryCSS() {
 	$catCSS = array();
 	$catCSS[] = "<!-- The Events Calendar Category Colors generated CSS -->";
 	$catCSS[] = "<style type=\"text/css\" media=\"screen\">";
-	$catCSS[] = ".tribe-events-calendar a { font-weight: bold; }";
+	$catCSS[] = ".tribe-events-calendar a { font-weight: " . $options['font_weight'] ."; }";
 	for ($i = 0; $i < $count; $i++) {
 		if (!($options[$slugs[$i].'-text'] == "0")) {
 			$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
@@ -131,6 +142,7 @@ function teccc_add_defaults() {
 			$arr[$slugs[$i]."-text"] = "0";
 			$arr[$slugs[$i]."-background"] = "transparent";
 		}
+		$arr['font_weight'] = "bold";
 		update_option('teccc_options', $arr);
 	}
 }
@@ -213,6 +225,7 @@ function teccc_render_form() {	?>
 
 function teccc_options_elements() {
 	global $teccc_text_colors;
+	global $teccc_font_weights;
 	$slugs = getCategorySlugs();
 	$count = count($slugs);
 	$options = get_option('teccc_options');
@@ -229,22 +242,30 @@ function teccc_options_elements() {
 		foreach ($teccc_text_colors as $key => $value) {
 			$form[] = "<option value='$value'" . selected($value, $options[$slugs[$i].'-text'], false) . ">$key</option>";
 		}
- 		$form[] = "</select></td>";
+		$form[] = "</select></td>";
 		if(($options[$slugs[$i].'-text'] == '0')) {
-			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";padding:0.5em 1em;font-weight:bold;\">Event Title</span></td>";
+			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";padding:0.5em 1em;font-weight:" . $options['font_weight'] . ";\">Event Title</span></td>";
 		} else {
-			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:bold;\">Event Title</span></td>";
+			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:" . $options['font_weight'] . ";\">Event Title</span></td>";
 		}
 		$form[] = "</tr>\n";
 	}
-	$form[] = '<tr><td colspan="4"><div style="margin-top:10px;"></div></td></tr><tr valign="top" style="border-top:#dddddd 1px solid;"><th scope="row">Database Options</th><td colspan="4">';
+	$form[] = '<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="4"></td></tr>';
+	$form[] = '<tr><th scope="row">Font-Weight Options</th>';
+	$form[] = "<td><select name='teccc_options[font_weight]'>" ;
+	foreach ( $teccc_font_weights as $key => $value ) {
+		$form[] = "<option value='$value'" . selected($value, $options['font_weight'], false) . ">$key</option>";
+		}
+	$form[] = "</select></td></tr>";
+	
+	$form[] = '<tr><th scope="row">Database Options</th><td colspan="4">';
 	$form[] = '<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1"' . checked('1', $options['chk_default_options_db'], false) . " /> Restore defaults upon plugin deactivation/reactivation</label>";
 	$form[] = '<p style="color:#666666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</p></td></tr></table>';
   
 	$content = implode ( "\n", $form );
 	return $content;
 }
-					
+
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function teccc_validate_options($input) {
@@ -267,7 +288,6 @@ function teccc_validate_options($input) {
 add_action('tribe_settings_do_tabs', 'tribe_add_category_colors_tab');
 function tribe_add_category_colors_tab () {
 	include_once('category-colors-settings.php');
-	//add_filter('tribe_settings_form_element', 'teccc_form_header');
 	add_action('tribe_settings_above_form_element_tab_category-colors', 'teccc_form_header');
 	add_action('tribe_settings_before_content_tab_category-colors', 'teccc_settings_fields');
 	new TribeSettingsTab( 'category-colors', __('Category Colors', 'tribe-events-calendar'), $categoryColorsTab);
@@ -281,7 +301,6 @@ function teccc_settings_fields() {
 
 // Display a Settings link on the main Plugins page
 function teccc_plugin_action_links( $links, $file ) {
-
 	if ( $file == plugin_basename( __FILE__ ) ) {
 		$teccc_links = '<a href="'.get_admin_url().'options-general.php?page=events-calendar-category-colors/the-events-calendar-category-colors.php">'.__('Settings').'</a>';
 		// make the 'Settings' link appear first
@@ -290,6 +309,8 @@ function teccc_plugin_action_links( $links, $file ) {
 	return $links;
 }
 
+// 'pre_get_posts' hook needed to determine events page
+add_action('pre_get_posts', 'add_CSS');
 //This function determines month view for displaying CSS
 function add_CSS($query) {
 	if ( ($query->query_vars['post_type'] == 'tribe_events') ) {
@@ -298,7 +319,16 @@ function add_CSS($query) {
 		}
 	}
 }
-// 'pre_get_posts' hook needed to determine events page
-add_action('pre_get_posts', 'add_CSS');
+
+
+add_action( 'tribe_settings_below_tabs_tab_category-colors', 'tecccIsSaved' );
+function tecccIsSaved () {
+	if ( isset( $_GET['settings-updated'] ) && ( $_GET['settings-updated'] ) ) {
+		$message = __( 'Settings saved.', 'tribe-events-calendar' );
+		$output = '<div id="message" class="updated"><p><strong>' . $message . '</strong></p></div>';
+		echo apply_filters( 'tribe_settings_success_message', $output, 'category-colors' );
+	}
+}
+
 
 ?>
