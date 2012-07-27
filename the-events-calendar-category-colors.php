@@ -44,9 +44,18 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 /* Add your functions below this line */
 
-$plugins = get_option('active_plugins');
-$required_plugin = 'the-events-calendar/the-events-calendar.php';
-if ( !in_array( $required_plugin , $plugins ) ) { wp_die('The Events Calendar plugin is not active.'); }
+function teccc_requires_tec() {
+	//$plugins = get_option('active_plugins');
+	$required_plugin = 'the-events-calendar/the-events-calendar.php';
+	$plugin = plugin_basename( __FILE__ );
+	$plugin_data = get_plugin_data( __FILE__, false );
+	//if ( !in_array( $required_plugin , $plugins ) ) { 
+	if ( !is_plugin_active( $required_plugin ) ) { 
+		deactivate_plugins( $plugin );
+		wp_die( "'".$plugin_data['Name']."' requires The Events Calendar plugin. Deactivating Plugin.<br /><br />Back to <a href='".admin_url()."'>WordPress admin</a>." );
+	}
+}
+add_action( 'admin_init', 'teccc_requires_tec' );
 
 
 global $teccc_text_colors;
