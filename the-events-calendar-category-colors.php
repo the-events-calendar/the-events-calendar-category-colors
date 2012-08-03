@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.0
+Version: 1.1
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -44,19 +44,15 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 /* Add your functions below this line */
 
+add_action( 'plugins_loaded', 'teccc_requires_tec' );
 function teccc_requires_tec() {
-	//$plugins = get_option('active_plugins');
-	$required_plugin = 'the-events-calendar/the-events-calendar.php';
-	$plugin = plugin_basename( __FILE__ );
-	$plugin_data = get_plugin_data( __FILE__, false );
-	//if ( !in_array( $required_plugin , $plugins ) ) { 
-	if ( !is_plugin_active( $required_plugin ) ) { 
-		deactivate_plugins( $plugin );
-		wp_die( "'".$plugin_data['Name']."' requires The Events Calendar plugin. Deactivating Plugin.<br /><br />Back to <a href='".admin_url()."'>WordPress admin</a>." );
+	if ( !class_exists( 'TribeEvents' ) ) { 
+		echo '<div class="error">
+       <p>The Events Calendar User CSS requires The Events Calendar plugin to be active.</p>
+    </div>';
+		deactivate_plugins(__FILE__);
 	}
 }
-add_action( 'admin_init', 'teccc_requires_tec' );
-
 
 global $teccc_text_colors;
 $teccc_text_colors = array(
@@ -233,8 +229,7 @@ function teccc_render_form() {	?>
 
 
 function teccc_options_elements() {
-	global $teccc_text_colors;
-	global $teccc_font_weights;
+	global $teccc_text_colors, $teccc_font_weights;
 	$slugs = getCategorySlugs();
 	$count = count($slugs);
 	$options = get_option('teccc_options');
