@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.2.1
+Version: 1.2.2
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -89,7 +89,7 @@ function writeCategoryCSS() {
 		if (!($options[$slugs[$i].'-text'] == "0")) {
 			$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
 		}
-		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; }' ;
+		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ' }' ;
 	}
 	$catCSS[] = "</style>";
 	$content = implode( "\n", $catCSS ) . "\n";
@@ -146,6 +146,7 @@ function teccc_add_defaults() {
 		for ($i = 0; $i < $count; $i++) {
 			$arr[$slugs[$i]."-text"] = "0";
 			$arr[$slugs[$i]."-background"] = "transparent";
+			$arr[$slugs[$i]."-border"] = "transparent";
 		}
 		$arr['font_weight'] = "bold";
 		update_option('teccc_options', $arr);
@@ -236,10 +237,11 @@ function teccc_options_elements() {
 	$form = array();
 	$form[] = '<table class="form-table">';
 	$form[] = '<style type="text/css">.form-table th { font-size: 12px; }</style>';
-	$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Background Color<br />(hex, rgb, color name)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
+	$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Border Color<br />(hex, rgb, color name)</strong></th><th><strong>Background Color<br />(hex, rgb, color name)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
 	for ($i = 0; $i < $count; $i++) {
 		$form[] = "<tr>";
 		$form[] = "<td>" . $slugs[$i] . "</td>";
+		$form[] = "<td><input type=\"text\" size=\"12\" name=\"teccc_options[" . $slugs[$i] . "-border]\" value=\"" . $options[$slugs[$i].'-border'] . "\" /></td>" ;
 		$form[] = "<td><input type=\"text\" size=\"12\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
 		$form[] = "<td><select name='teccc_options[" . $slugs[$i] . "-text]'>" ;		
 
@@ -248,9 +250,9 @@ function teccc_options_elements() {
 		}
 		$form[] = "</select></td>";
 		if(($options[$slugs[$i].'-text'] == '0')) {
-			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";padding:0.5em 1em;font-weight:" . $options['font_weight'] . ";\">Event Title</span></td>";
+			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";border-left: 5px solid " . $options[$slugs[$i].'-border'] . ";padding:0.5em 1em;font-weight:" . $options['font_weight'] . ";\">Event Title</span></td>";
 		} else {
-			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:" . $options['font_weight'] . ";\">Event Title</span></td>";
+			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";border-left: 5px solid " . $options[$slugs[$i].'-border'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:" . $options['font_weight'] . ";\">Event Title</span></td>";
 		}
 		$form[] = "</tr>\n";
 	}
@@ -280,6 +282,10 @@ function teccc_validate_options($input) {
 		// Sanitize textbox input (strip html tags, and escape characters)
 		$input[$slugs[$i].'-background'] =  wp_filter_nohtml_kses($input[$slugs[$i].'-background']);
 		$input[$slugs[$i].'-background'] =  ereg_replace( "[^#A-Za-z0-9]", "", $input[$slugs[$i].'-background'] );
+		if ( $input[$slugs[$i].'-background'] == '' ) { $input[$slugs[$i].'-background'] = 'transparent'; }
+		$input[$slugs[$i].'-border'] =  wp_filter_nohtml_kses($input[$slugs[$i].'-border']);
+		$input[$slugs[$i].'-border'] =  ereg_replace( "[^#A-Za-z0-9]", "", $input[$slugs[$i].'-border'] );
+		if ( $input[$slugs[$i].'-border'] == '' ) { $input[$slugs[$i].'-border'] = 'transparent'; }
 		// Sanitize dropdown input (make sure value is one of options allowed)
 		if ( !in_array($input[$slugs[$i].'-text'], $teccc_text_colors, true) ) {
 			$input[$slugs[$i].'-text'] = "0";
