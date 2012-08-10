@@ -3,7 +3,7 @@ Contributors: afragen, jonahcoyote
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,9 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
  1. The Events Calendar Category Colors Settings tab
 
 == Changelog ==
+
+= 1.2.3 =
+* Fixed tooltip bug
 
 = 1.2.2 =
 * Added option for colored left border, default is transparent.

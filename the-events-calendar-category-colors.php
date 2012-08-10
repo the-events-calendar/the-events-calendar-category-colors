@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.2.2
+Version: 1.2.3
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -88,8 +88,9 @@ function writeCategoryCSS() {
 	for ($i = 0; $i < $count; $i++) {
 		if (!($options[$slugs[$i].'-text'] == "0")) {
 			$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
+			$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . '; color: ' . $options[$slugs[$i].'-text'] . '; }' ;
 		}
-		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ' }' ;
+		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ';color:#000; }' ;
 	}
 	$catCSS[] = "</style>";
 	$content = implode( "\n", $catCSS ) . "\n";
