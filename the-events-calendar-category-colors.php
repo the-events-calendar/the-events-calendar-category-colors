@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.2.3
+Version: 1.2.4
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -89,8 +89,9 @@ function writeCategoryCSS() {
 		if (!($options[$slugs[$i].'-text'] == "0")) {
 			$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
 			$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . '; color: ' . $options[$slugs[$i].'-text'] . '; }' ;
-		}
+		} else {
 		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ';color:#000; }' ;
+		}
 	}
 	$catCSS[] = "</style>";
 	$content = implode( "\n", $catCSS ) . "\n";
@@ -257,7 +258,7 @@ function teccc_options_elements() {
 		}
 		$form[] = "</tr>\n";
 	}
-	$form[] = '<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="4"></td></tr>';
+	$form[] = '<tr valign="top" style="border-top:#dddddd 1px solid;"><td colspan="5"></td></tr>';
 	$form[] = '<tr><th scope="row">Font-Weight Options</th>';
 	$form[] = "<td><select name='teccc_options[font_weight]'>" ;
 	foreach ( $teccc_font_weights as $key => $value ) {
