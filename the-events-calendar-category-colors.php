@@ -104,13 +104,14 @@ function teccc_writeCategoryCSS() {
 		$catCSS[] = '.cat_' . $slugs[$i] . ', .tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ';color:#000; }' ;
 		}
 	}
-	if ( ( !isset($options['custom_legend_css']) ) ) {
+	if ( !isset($options['custom_legend_css']) ) {
 		$catCSS[] = "#legend_box {font-size:10px;margin-left:2em;padding:10px;}";
 		$catCSS[] = "#legend li {text-align:center;display:inline;list-style-type:none;line-height:2.5em;padding:7px;padding-left:2px;}";
 	}
 	$catCSS[] = "</style>";
 	$content = implode( "\n", $catCSS ) . "\n";
 	if ( !is_admin() ) { echo $content; }
+	if ( isset($options['add_legend']) ) { add_action( 'teccc_legend_hook', 'teccc_legend' ); }
 	return $content;
 }
 
@@ -189,12 +190,13 @@ function teccc_add_defaults() {
 	if(($tmp['chk_default_options_db']=='1')||(!is_array($tmp))) {
 		delete_option('teccc_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
 		for ($i = 0; $i < $count; $i++) {
-			$arr[$slugs[$i]."-text"] = "0";
+			$arr[$slugs[$i]."-text"] = "#000";
 			$arr[$slugs[$i]."-background"] = "transparent";
 			$arr[$slugs[$i]."-border"] = "transparent";
 		}
 		$arr['font_weight'] = "bold";
-		$arr['custom_legend_css'] = "0";
+		//$arr['custom_legend_css'] = "0";
+		//$arr['add_legend'] = "0";
 		update_option('teccc_options', $arr);
 	}
 }
@@ -306,6 +308,9 @@ function teccc_options_elements() {
 		}
 	$form[] = "</select></td></tr>";
 	
+	$form[] = '<tr><th scope="row">Add Category Legend</th><td colspan="5">';
+	$form[] = '<label><input name="teccc_options[add_legend]" type="checkbox" value="1"' . checked('1', $options['add_legend'], false) . " /> Check to add a Category Legend above the calendar.</label>";
+	
 	$form[] = '<tr><th scope="row">Custom Legend CSS</th><td colspan="5">';
 	$form[] = '<label><input name="teccc_options[custom_legend_css]" type="checkbox" value="1"' . checked('1', $options['custom_legend_css'], false) . " /> Check to use your own CSS for category legend.</label>";
 	
@@ -371,7 +376,6 @@ function add_CSS($query) {
 	if ( ($query->query_vars['post_type'] == 'tribe_events') ) {
 		if ( ($query->query_vars['eventDisplay'] == 'month') ) {
 			add_action('wp_head', 'teccc_writeCategoryCSS');
-			add_action( 'teccc_legend_hook', 'teccc_legend', 10 );
 		}
 	}
 }
