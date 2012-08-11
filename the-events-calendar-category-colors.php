@@ -104,8 +104,10 @@ function teccc_writeCategoryCSS() {
 		$catCSS[] = '.cat_' . $slugs[$i] . ', .tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ';color:#000; }' ;
 		}
 	}
-	$catCSS[] = "#legend_box {font-size:10px;margin-left:2em;padding:10px;}";
-	$catCSS[] = "#legend li {text-align:center;display:inline;list-style-type:none;line-height:1em;padding:7px;padding-left:2px;}";
+	if ( ( !isset($options['custom_legend_css']) ) ) {
+		$catCSS[] = "#legend_box {font-size:10px;margin-left:2em;padding:10px;}";
+		$catCSS[] = "#legend li {text-align:center;display:inline;list-style-type:none;line-height:2.5em;padding:7px;padding-left:2px;}";
+	}
 	$catCSS[] = "</style>";
 	$content = implode( "\n", $catCSS ) . "\n";
 	if ( !is_admin() ) { echo $content; }
@@ -192,6 +194,7 @@ function teccc_add_defaults() {
 			$arr[$slugs[$i]."-border"] = "transparent";
 		}
 		$arr['font_weight'] = "bold";
+		$arr['custom_legend_css'] = "0";
 		update_option('teccc_options', $arr);
 	}
 }
@@ -256,8 +259,8 @@ function teccc_render_form() {	?>
 			//$css = teccc_writeCategoryCSS();
 			//$css = htmlentities($css);
 			//print ($css);
-			//$options = get_option('teccc_options');
-			//var_dump($options);
+			$options = get_option('teccc_options');
+			var_dump($options);
 			//var_dump(teccc_getCategoryNames());
 			//echo teccc_legend();
 		 ?>
@@ -303,7 +306,10 @@ function teccc_options_elements() {
 		}
 	$form[] = "</select></td></tr>";
 	
-	$form[] = '<tr><th scope="row">Database Options</th><td colspan="4">';
+	$form[] = '<tr><th scope="row">Custom Legend CSS</th><td colspan="5">';
+	$form[] = '<label><input name="teccc_options[custom_legend_css]" type="checkbox" value="1"' . checked('1', $options['custom_legend_css'], false) . " /> Check to use your own CSS for category legend.</label>";
+	
+	$form[] = '<tr><th scope="row">Database Options</th><td colspan="5">';
 	$form[] = '<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1"' . checked('1', $options['chk_default_options_db'], false) . " /> Restore defaults upon plugin deactivation/reactivation</label>";
 	$form[] = '<p style="color:#666666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</p></td></tr></table>';
   
