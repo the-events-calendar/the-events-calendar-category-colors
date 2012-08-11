@@ -6,6 +6,7 @@
 PLUGINSLUG="the-events-calendar-category-colors"
 CURRENTDIR=`pwd`
 MAINFILE="the-events-calendar-category-colors.php" # this should be the name of your main php file in the wordpress plugin
+GITLOCAL="events-calendar-category-colors"
 
 # git config
 GITPATH="$CURRENTDIR/" # this file should be in the base of your git repository
@@ -45,8 +46,8 @@ git tag -a "$NEWVERSION1" -m "Tagging version $NEWVERSION1"
 
 # push to origin
 echo "Pushing latest commit to origin, with tags"
-git push master master
-git push master master --tags
+git push $GITLOCAL master
+git push $GITLOCAL master --tags
 
 # Export git contents to svn directory
 echo 
