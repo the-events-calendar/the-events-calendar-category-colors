@@ -6,14 +6,14 @@
 PLUGINSLUG="the-events-calendar-category-colors"
 CURRENTDIR=`pwd`
 MAINFILE="the-events-calendar-category-colors.php" # this should be the name of your main php file in the wordpress plugin
-GITLOCAL="events-calendar-category-colors"
 
 # git config
 GITPATH="$CURRENTDIR/" # this file should be in the base of your git repository
+GITREMOTE=`basename $(pwd)` # this should match name of remote git repository
 
 # svn config
 SVNPATH="/tmp/$PLUGINSLUG" # path to a temp SVN repo. No trailing slash required and don't add trunk.
-SVNURL="http://plugins.svn.wordpress.org/the-events-calendar-category-colors/" # Remote SVN repo on wordpress.org, with no trailing slash
+SVNURL="http://plugins.svn.wordpress.org/the-events-calendar-category-colors" # Remote SVN repo on wordpress.org, with no trailing slash
 SVNUSER="afragen" # your svn username
 
 
@@ -46,8 +46,8 @@ git tag -a "$NEWVERSION1" -m "Tagging version $NEWVERSION1"
 
 # push to origin
 echo "Pushing latest commit to origin, with tags"
-git push $GITLOCAL master
-git push $GITLOCAL master --tags
+git push $GITREMOTE master
+git push $GITREMOTE master --tags
 
 # Export git contents to svn directory
 echo 

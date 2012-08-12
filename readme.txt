@@ -3,7 +3,7 @@ Contributors: afragen, jonahcoyote
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,10 +40,13 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 == Screenshots ==
  
- 1. The Events Calendar Category Colors Settings tab
- 2. The Events Calendar Category Colors in action
+1. The Events Calendar Category Colors Settings tab
+2. The Events Calendar Category Colors in action
 
 == Changelog ==
+
+= 1.2.6 =
+* fixes for readme
 
 = 1.2.5 =
 * Added Category Color legend
