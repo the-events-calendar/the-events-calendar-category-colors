@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.2.6
+Version: 1.3
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -106,6 +106,7 @@ function teccc_writeCategoryCSS() {
 	}
 	if ( !isset($options['custom_legend_css']) ) {
 		$catCSS[] = "#legend_box {font-size:10px;margin-left:2em;padding:10px;}";
+		$catCSS[] = "#legend a {text-decoration:none;}";
 		$catCSS[] = "#legend li {text-align:center;display:inline;list-style-type:none;line-height:2.5em;padding:7px;padding-left:2px;}";
 	}
 	$catCSS[] = "</style>";
@@ -127,8 +128,9 @@ function teccc_legend() {
 	$legend[] = '<div id="legend_box">';
 	$legend[] = '<ul id="legend">';
 	for ($i = 0; $i < $count; $i++) {
-		$legend[] = '<li class="cat_' . $slugs[$i] . '">' . $cat_names[$i] . '</li>';
-	
+		//$legend[] = '<li class="cat_' . $slugs[$i] . '">' . $cat_names[$i] . '</li>';
+		$legend[] = '<a href="../category/' . $slugs[$i] . '"><li class="cat_' . $slugs[$i] . '">' . $cat_names[$i] . '</li></a>';
+
 	}
 	$legend[] = '</ul>';
 	$legend[] = '</div>';
