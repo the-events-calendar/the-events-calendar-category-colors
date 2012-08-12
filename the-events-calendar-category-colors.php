@@ -195,8 +195,6 @@ function teccc_add_defaults() {
 			$arr[$slugs[$i]."-border"] = "transparent";
 		}
 		$arr['font_weight'] = "bold";
-		//$arr['custom_legend_css'] = "0";
-		//$arr['add_legend'] = "0";
 		update_option('teccc_options', $arr);
 	}
 }
@@ -333,12 +331,14 @@ function teccc_validate_options($input) {
 		$input[$slugs[$i].'-background'] =  wp_filter_nohtml_kses($input[$slugs[$i].'-background']);
 		$input[$slugs[$i].'-background'] =  ereg_replace( "[^#A-Za-z0-9]", "", $input[$slugs[$i].'-background'] );
 		if ( $input[$slugs[$i].'-background'] == '' ) { $input[$slugs[$i].'-background'] = 'transparent'; }
+		
 		$input[$slugs[$i].'-border'] =  wp_filter_nohtml_kses($input[$slugs[$i].'-border']);
 		$input[$slugs[$i].'-border'] =  ereg_replace( "[^#A-Za-z0-9]", "", $input[$slugs[$i].'-border'] );
 		if ( $input[$slugs[$i].'-border'] == '' ) { $input[$slugs[$i].'-border'] = 'transparent'; }
+		
 		// Sanitize dropdown input (make sure value is one of options allowed)
 		if ( !in_array($input[$slugs[$i].'-text'], $teccc_text_colors, true) ) {
-			$input[$slugs[$i].'-text'] = "0";
+			$input[$slugs[$i].'-text'] = "#000";
 		} 
 	}
 	return $input;
