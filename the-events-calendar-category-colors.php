@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.3
+Version: 1.3.1
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -121,6 +121,7 @@ function teccc_legend_hook() {
 }
 
 function teccc_legend() {
+	$tribe_teccc = TribeEvents::instance();
 	$slugs = teccc_getCategorySlugs();
 	$count = count($slugs);
 	$cat_names = teccc_getCategoryNames();
@@ -128,8 +129,7 @@ function teccc_legend() {
 	$legend[] = '<div id="legend_box">';
 	$legend[] = '<ul id="legend">';
 	for ($i = 0; $i < $count; $i++) {
-		//$legend[] = '<li class="cat_' . $slugs[$i] . '">' . $cat_names[$i] . '</li>';
-		$legend[] = '<a href="../category/' . $slugs[$i] . '"><li class="cat_' . $slugs[$i] . '">' . $cat_names[$i] . '</li></a>';
+		$legend[] = '<a href="' . $tribe_teccc->getLink() . 'category/' . $slugs[$i] . '"><li class="cat_' . $slugs[$i] . '">' . $cat_names[$i] . '</li></a>';
 
 	}
 	$legend[] = '</ul>';
@@ -309,7 +309,8 @@ function teccc_options_elements() {
 	$form[] = "</select></td></tr>";
 	
 	$form[] = '<tr><th scope="row">Add Category Legend</th><td colspan="5">';
-	$form[] = '<label><input name="teccc_options[add_legend]" type="checkbox" value="1"' . checked('1', $options['add_legend'], false) . " /> Check to add a Category Legend above the calendar.</label>";
+	$form[] = '<label><input name="teccc_options[add_legend]" type="checkbox" value="1"' . checked('1', $options['add_legend'], false) . " /> Check to add a Category Legend to the calendar.</label>";
+	$form[] = '<p style="color:#666666;margin-left:2px;">Remember to add `&lt;?php teccc_legend_hook(); ?&gt;` to your template.</p></td></tr>';
 	
 	$form[] = '<tr><th scope="row">Custom Legend CSS</th><td colspan="5">';
 	$form[] = '<label><input name="teccc_options[custom_legend_css]" type="checkbox" value="1"' . checked('1', $options['custom_legend_css'], false) . " /> Check to use your own CSS for category legend.</label>";
