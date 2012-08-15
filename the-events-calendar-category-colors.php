@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.3.1
+Version: 1.3.2
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -93,6 +93,7 @@ function teccc_writeCategoryCSS() {
 	$count = count($slugs);
 	$options = get_option('teccc_options');
 	$catCSS = array();
+	$catCSS[] = '';
 	$catCSS[] = "<!-- The Events Calendar Category Colors generated CSS -->";
 	$catCSS[] = "<style type=\"text/css\" media=\"screen\">";
 	$catCSS[] = ".tribe-events-calendar a { font-weight: " . $options['font_weight'] ."; }";
@@ -310,7 +311,7 @@ function teccc_options_elements() {
 	
 	$form[] = '<tr><th scope="row">Add Category Legend</th><td colspan="5">';
 	$form[] = '<label><input name="teccc_options[add_legend]" type="checkbox" value="1"' . checked('1', $options['add_legend'], false) . " /> Check to add a Category Legend to the calendar.</label>";
-	$form[] = '<p style="color:#666666;margin-left:2px;">Remember to add `&lt;?php teccc_legend_hook(); ?&gt;` to your template.</p></td></tr>';
+	$form[] = '<p style="color:#666666;margin-left:2px;">Remember to add `&lt;?php teccc_legend_hook(); ?&gt;` to your ecp-page-template.php</p></td></tr>';
 	
 	$form[] = '<tr><th scope="row">Custom Legend CSS</th><td colspan="5">';
 	$form[] = '<label><input name="teccc_options[custom_legend_css]" type="checkbox" value="1"' . checked('1', $options['custom_legend_css'], false) . " /> Check to use your own CSS for category legend.</label>";
