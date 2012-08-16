@@ -4,9 +4,13 @@
 	'show_save' => false,
 	'parent_option' => 'teccc_options',
 	'fields' => array(
+// 		'miniColors-load' => array(
+// 			'type' => 'html',
+// 			'html' => teccc_miniColors()
+// 			),
 		'info-start' => array(
-			'type' => 'html',
-			'html' => '<h3>Category Colors Settings</h3>'
+			'type' => 'heading',
+			'label' => 'Category Colors Settings'
 			),
 		'blurb' => array(
 			'type' => 'html',
@@ -14,7 +18,7 @@
 			),
 		'legend' => array(
 			'type' => 'html',
-			'html' => '<p>To include a Category Color legend above your calendar you will need to place a copy of ecp-page-template.php in your theme\'s "events" directory, similar to <code>my-theme/events/ecp-page-template.php</code>. This file is found in The Events Calendar plugin\'s "views" directory. Please refer to <a href="http://tri.be/themers-guide-to-the-events-calendar/">Themer\'s Guide for The Events Calendar</a> for reference.</p><p>Within your copy of ecp-page-template.php you will need to insert <code>&lt;?php teccc_legend_hook(); ?&gt;</code> where you want the legend to appear.'
+			'html' => '<p>To include a Category Color legend above your calendar you will need to place a copy of ecp-page-template.php in your theme\'s <strong>events</strong> directory, similar to <code>my-theme/events/ecp-page-template.php</code>. This file is found in The Events Calendar plugin\'s <strong>views</strong> directory. Please refer to <a href="http://tri.be/themers-guide-to-the-events-calendar/">Themer\'s Guide for The Events Calendar</a> for reference.</p><p>Within your copy of ecp-page-template.php you will need to insert <code>&lt;?php teccc_legend_hook(); ?&gt;</code> where you want the legend to appear.'
 			),
 		'form-elements' => array(
 			'type' => 'html',

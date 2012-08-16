@@ -286,8 +286,10 @@ function teccc_options_elements() {
 	for ($i = 0; $i < $count; $i++) {
 		$form[] = "<tr>";
 		$form[] = "<td>" . $slugs[$i] . "</td>";
-		$form[] = "<td><input type=\"text\" size=\"12\" name=\"teccc_options[" . $slugs[$i] . "-border]\" value=\"" . $options[$slugs[$i].'-border'] . "\" /></td>" ;
-		$form[] = "<td><input type=\"text\" size=\"12\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
+		//$form[] = "<td><input type=\"text\" class=\"color-picker\" autocomplete=\"on\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-border]\" value=\"" . $options[$slugs[$i].'-border'] . "\" /></td>" ;
+		//$form[] = "<td><input type=\"text\" class=\"color-picker\" autocomplete=\"on\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
+		$form[] = "<td><input type=\"text\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-border]\" value=\"" . $options[$slugs[$i].'-border'] . "\" /></td>" ;
+		$form[] = "<td><input type=\"text\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
 		$form[] = "<td><select name='teccc_options[" . $slugs[$i] . "-text]'>" ;		
 
 		foreach ($teccc_text_colors as $key => $value) {
@@ -361,6 +363,13 @@ function teccc_form_header() {
 }
 function teccc_settings_fields() {
 	settings_fields('teccc_category_colors');
+}
+
+//load js and css for jquery-miniColors
+function teccc_miniColors() {
+	wp_enqueue_style( 'miniColors-css', plugin_dir_url(__FILE__) . 'resources/jquery-miniColors/jquery.miniColors.css' );
+	wp_enqueue_script( 'miniColors-js', plugin_dir_url(__FILE__) . 'resources/jquery-miniColors/jquery.miniColors.js' );
+	wp_enqueue_script( 'miniColors-init', plugin_dir_url(__FILE__) . 'resources/jquery-miniColors-init.js' );
 }
 
 // Display a Settings link on the main Plugins page
