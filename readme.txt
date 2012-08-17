@@ -21,12 +21,9 @@ Settings for The Events Calendar Category Colors plugin are located in their own
 1. Activate the plugin.
 1. Go to the Category Colors tab of The Event Calendar Settings page.
 
-To include a Category Color legend above your calendar you will need to place a copy of `ecp-page-template.php` in your theme's /events/ directory, similar to `my-theme/events/ecp-page-template.php`. This file is found in The Events Calendar plugin's `/views/` directory. Please refer to <a href="http://tri.be/themers-guide-to-the-events-calendar/">Themer's Guide for The Events Calendar</a> for reference.
+To include a Category Color legend above your calendar you will need to place a copy of `ecp-page-template.php` in your theme's **events** directory, similar to `my-theme/events/ecp-page-template.php`. This file is found in The Events Calendar plugin's **views** directory. Please refer to <a href="http://tri.be/themers-guide-to-the-events-calendar/">Themer's Guide for The Events Calendar</a> for reference.
 
 Within your copy of `ecp-page-template.php` you will need to insert `<?php teccc_legend_hook(); ?>` where you want the legend to appear.
-
-
-
 
 == Frequently Asked Questions ==
 
@@ -44,6 +41,10 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 2. The Events Calendar Category Colors in action
 
 == Changelog ==
+
+= 1.3.3 =
+* Prep for using jQuery color picker
+* minor CSS tweaks
 
 = 1.3.2 =
 * Added brief instructions for legend to settings page.
@@ -109,6 +110,12 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 = 0.1 =
 * Initial release.
+
+== Attribution ==
+
+This plugin uses <a href="https://github.com/claviska/jquery-miniColors">jQuery MiniColors</a> by Cory LaViska.
+
+Some icons by <a href="http://p.yusukekamiyamane.com/">Yusuke Kamiyamane</a>. All rights reserved.
 
 == Upgrade Notice ==
 

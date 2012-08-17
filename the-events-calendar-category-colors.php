@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.3.2
+Version: 1.3.3
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -45,6 +45,8 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 /* Add your functions below this line */
 
 // 'teccc_' prefix is derived from [tec]the events calendar [c]ategory [c]olors
+define(VERSION, "1.3.3");
+$useMiniColors = false;
 
 add_action( 'plugins_loaded', 'teccc_requires_tec' );
 function teccc_requires_tec() {
@@ -94,21 +96,21 @@ function teccc_writeCategoryCSS() {
 	$options = get_option('teccc_options');
 	$catCSS = array();
 	$catCSS[] = '';
-	$catCSS[] = "<!-- The Events Calendar Category Colors generated CSS -->";
+	$catCSS[] = "<!-- The Events Calendar Category Colors " . VERSION . " generated CSS -->";
 	$catCSS[] = "<style type=\"text/css\" media=\"screen\">";
 	$catCSS[] = ".tribe-events-calendar a { font-weight: " . $options['font_weight'] ."; }";
 	for ($i = 0; $i < $count; $i++) {
 		if (!($options[$slugs[$i].'-text'] == "0")) {
 			$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
-			$catCSS[] = '.cat_' . $slugs[$i] . ', .tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . '; color: ' . $options[$slugs[$i].'-text'] . '; }' ;
+			$catCSS[] = '.cat_' . $slugs[$i] . ', .tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ';border-right: 5px solid ' . $options[$slugs[$i].'-background'] . '; color: ' . $options[$slugs[$i].'-text'] . '; }' ;
 		} else {
 		$catCSS[] = '.cat_' . $slugs[$i] . ', .tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ';color:#000; }' ;
 		}
 	}
 	if ( !isset($options['custom_legend_css']) ) {
-		$catCSS[] = "#legend_box {font-size:10px;margin-left:2em;padding:10px;}";
-		$catCSS[] = "#legend a {text-decoration:none;}";
-		$catCSS[] = "#legend li {text-align:center;display:inline;list-style-type:none;line-height:2.5em;padding:7px;padding-left:2px;}";
+		$catCSS[] = "#legend_box { text-align:center; font-size:10px; padding:10px; }";
+		$catCSS[] = "#legend a { text-decoration:none; }";
+		$catCSS[] = "#legend li { text-align:center; display:inline; list-style-type:none; line-height:2.5em; padding:7px; margin-left:0.7em; }";
 	}
 	$catCSS[] = "</style>";
 	$content = implode( "\n", $catCSS ) . "\n";
@@ -274,6 +276,7 @@ function teccc_render_form() {	?>
 
 
 function teccc_options_elements() {
+	global $useMiniColors;
 	global $teccc_text_colors, $teccc_font_weights;
 	$slugs = teccc_getCategorySlugs();
 	$cat_names = teccc_getCategoryNames();
@@ -282,14 +285,21 @@ function teccc_options_elements() {
 	$form = array();
 	$form[] = '<table class="form-table">';
 	$form[] = '<style type="text/css">.form-table th { font-size: 12px; }</style>';
-	$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Border Color<br />(hex, rgb, color name)</strong></th><th><strong>Background Color<br />(hex, rgb, color name)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
+	if ( $useMiniColors ) {
+		$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Border Color</strong></th><th><strong>Background Color</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
+	} else {
+		$form[] = "<tr><th><strong>Category Slug</strong></th><th><strong>Border Color<br />(hex, rgb, color name)</strong></th><th><strong>Background Color<br />(hex, rgb, color name)</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>";
+	}
 	for ($i = 0; $i < $count; $i++) {
 		$form[] = "<tr>";
 		$form[] = "<td>" . $slugs[$i] . "</td>";
-		//$form[] = "<td><input type=\"text\" class=\"color-picker\" autocomplete=\"on\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-border]\" value=\"" . $options[$slugs[$i].'-border'] . "\" /></td>" ;
-		//$form[] = "<td><input type=\"text\" class=\"color-picker\" autocomplete=\"on\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
-		$form[] = "<td><input type=\"text\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-border]\" value=\"" . $options[$slugs[$i].'-border'] . "\" /></td>" ;
-		$form[] = "<td><input type=\"text\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
+		if ( $useMiniColors ) {
+			$form[] = "<td><input type=\"text\" class=\"color-picker\" autocomplete=\"on\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-border]\" value=\"" . $options[$slugs[$i].'-border'] . "\" /></td>" ;
+			$form[] = "<td><input type=\"text\" class=\"color-picker\" autocomplete=\"on\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
+		} else {
+			$form[] = "<td><input type=\"text\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-border]\" value=\"" . $options[$slugs[$i].'-border'] . "\" /></td>" ;
+			$form[] = "<td><input type=\"text\" size=\"6\" name=\"teccc_options[" . $slugs[$i] . "-background]\" value=\"" . $options[$slugs[$i].'-background'] . "\" /></td>" ;
+		}
 		$form[] = "<td><select name='teccc_options[" . $slugs[$i] . "-text]'>" ;		
 
 		foreach ($teccc_text_colors as $key => $value) {
@@ -299,7 +309,7 @@ function teccc_options_elements() {
 		if(($options[$slugs[$i].'-text'] == '0')) {
 			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";border-left: 5px solid " . $options[$slugs[$i].'-border'] . ";padding:0.5em 1em;font-weight:" . $options['font_weight'] . ";\">" . $cat_names[$i] . "</span></td>";
 		} else {
-			$form[] = "<td><span style=\"border:1px #ddd solid;background-color:" . $options[$slugs[$i].'-background'] . ";border-left: 5px solid " . $options[$slugs[$i].'-border'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:" . $options['font_weight'] . ";\">" . $cat_names[$i] . "</span></td>";
+			$form[] = "<td><span style=\"background-color:" . $options[$slugs[$i].'-background'] . ";border-left: 5px solid " . $options[$slugs[$i].'-border'] . ";color:" . $options[$slugs[$i].'-text'] . ";padding:0.5em 1em;font-weight:" . $options['font_weight'] . ";\">" . $cat_names[$i] . "</span></td>";
 		}
 		$form[] = "</tr>\n";
 	}

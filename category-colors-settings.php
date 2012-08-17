@@ -4,10 +4,10 @@
 	'show_save' => false,
 	'parent_option' => 'teccc_options',
 	'fields' => array(
-// 		'miniColors-load' => array(
-// 			'type' => 'html',
-// 			'html' => teccc_miniColors()
-// 			),
+		'miniColors-load' => array(
+			'type' => 'html',
+			'html' => teccc_miniColors()
+			),
 		'info-start' => array(
 			'type' => 'heading',
 			'label' => 'Category Colors Settings'
