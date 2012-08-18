@@ -3,7 +3,7 @@ Contributors: afragen, jonahcoyote
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,10 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 2. The Events Calendar Category Colors in action
 
 == Changelog ==
+
+= 1.3.4 =
+* settings display changes
+* change to tribe_settings_form_element_tab_{currentTab}, after all I did ask to have it put in. ;-)
 
 = 1.3.3 =
 * Prep for using jQuery color picker

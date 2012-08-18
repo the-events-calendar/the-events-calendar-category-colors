@@ -9,8 +9,12 @@
 			'html' => teccc_miniColors()
 			),
 		'info-start' => array(
-			'type' => 'heading',
-			'label' => 'Category Colors Settings'
+			'type' => 'html',
+			'html' => '<div id="modern-tribe-info">'
+			),
+		'title' => array(
+			'type' => 'html',
+			'html' => '<h2>Category Colors Settings</h2>'
 			),
 		'blurb' => array(
 			'type' => 'html',
@@ -19,6 +23,10 @@
 		'legend' => array(
 			'type' => 'html',
 			'html' => '<p>To include a Category Color legend above your calendar you will need to place a copy of ecp-page-template.php in your theme\'s <strong>events</strong> directory, similar to <code>my-theme/events/ecp-page-template.php</code>. This file is found in The Events Calendar plugin\'s <strong>views</strong> directory. Please refer to <a href="http://tri.be/themers-guide-to-the-events-calendar/">Themer\'s Guide for The Events Calendar</a> for reference.</p><p>Within your copy of ecp-page-template.php you will need to insert <code>&lt;?php teccc_legend_hook(); ?&gt;</code> where you want the legend to appear.'
+			),
+		'info-end' => array(
+			'type' => 'html',
+			'html' => '</div>'
 			),
 		'form-elements' => array(
 			'type' => 'html',
