@@ -46,7 +46,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 // 'teccc_' prefix is derived from [tec]the events calendar [c]ategory [c]olors
 define(VERSION, "1.3.3");
-$useMiniColors = true;
+$useMiniColors = false;
 
 add_action( 'plugins_loaded', 'teccc_requires_tec' );
 function teccc_requires_tec() {
