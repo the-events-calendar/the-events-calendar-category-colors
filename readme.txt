@@ -3,7 +3,7 @@ Contributors: afragen, jonahcoyote
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,10 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 2. The Events Calendar Category Colors in action
 
 == Changelog ==
+
+= 1.3.6 =
+* more legend CSS tweaks
+* more code cleanup
 
 = 1.3.5 =
 * convert space to nbsp in legend

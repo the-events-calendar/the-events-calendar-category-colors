@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.3.5
+Version: 1.3.6
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -45,7 +45,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 /* Add your functions below this line */
 
 // 'teccc_' prefix is derived from [tec]the events calendar [c]ategory [c]olors
-define(VERSION, '1.3.5');
+define(VERSION, '1.3.6');
 $useMiniColors = false;
 
 add_action( 'plugins_loaded', 'teccc_requires_tec' );
@@ -98,9 +98,9 @@ function teccc_write_category_css() {
 	$catCSS[] = '';
 	$catCSS[] = '<!-- The Events Calendar Category Colors ' . VERSION . ' generated CSS -->';
 	$catCSS[] = '<style type="text/css" media="screen">';
-	$catCSS[] = ".tribe-events-calendar a { font-weight: " . $options['font_weight'] ."; }";
+	$catCSS[] = '.tribe-events-calendar a { font-weight: ' . $options['font_weight'] .'; }';
 	for ($i = 0; $i < $count; $i++) {
-		if (!($options[$slugs[$i].'-text'] == "0")) {
+		if (!($options[$slugs[$i].'-text'] == '0')) {
 			$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
 			$catCSS[] = '.cat_' . $slugs[$i] . ', .tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ';border-right: 5px solid ' . $options[$slugs[$i].'-background'] . '; color: ' . $options[$slugs[$i].'-text'] . '; }' ;
 		} else {
@@ -108,9 +108,9 @@ function teccc_write_category_css() {
 		}
 	}
 	if ( !isset($options['custom_legend_css']) ) {
-		$catCSS[] = '#legend_box { text-align:center; font-size:10px; }';
-		$catCSS[] = '#legend a { text-decoration:none; }';
-		$catCSS[] = '#legend li { text-align:center; display:inline; list-style-type:none; line-height:4em; padding:7px; }';
+		$catCSS[] = '#legend_box { text-align: center; font-size: 10px; }';
+		$catCSS[] = '#legend a { text-decoration: none; font-weight: ' . $options['font_weight'] . '; }';
+		$catCSS[] = '#legend li { text-align: center; display: inline; list-style-type: none; line-height: 4em; padding: 7px; }';
 	}
 	$catCSS[] = '</style>';
 	$content = implode( "\n", $catCSS ) . "\n";
