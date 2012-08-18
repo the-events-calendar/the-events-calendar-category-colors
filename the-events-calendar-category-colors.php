@@ -85,7 +85,7 @@ function teccc_get_category_names() {
 	$terms = get_terms("tribe_events_cat");
 	$cat_names = array();
 	foreach ($terms as $term) {
-		$cat_names[] = $term->name;
+		$cat_names[] = preg_replace( '/\s/', '&nbsp;', $term->name );
 	}
 	return $cat_names;
 }
@@ -108,9 +108,9 @@ function teccc_write_category_css() {
 		}
 	}
 	if ( !isset($options['custom_legend_css']) ) {
-		$catCSS[] = "#legend_box { text-align:center; font-size:10px; padding:10px; }";
+		$catCSS[] = "#legend_box { text-align:center; font-size:10px; }";
 		$catCSS[] = "#legend a { text-decoration:none; }";
-		$catCSS[] = "#legend li { text-align:center; display:inline; list-style-type:none; line-height:2.5em; padding:7px; margin-left:0.7em; }";
+		$catCSS[] = "#legend li { text-align:center; display:inline; list-style-type:none; line-height:4em; padding:7px; }";
 	}
 	$catCSS[] = "</style>";
 	$content = implode( "\n", $catCSS ) . "\n";
