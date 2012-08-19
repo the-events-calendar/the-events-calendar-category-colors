@@ -24,6 +24,10 @@
 			'type' => 'html',
 			'html' => '<p>To include a Category Color legend above your calendar you will need to place a copy of ecp-page-template.php in your theme\'s <strong>events</strong> directory, similar to <code>my-theme/events/ecp-page-template.php</code>. This file is found in The Events Calendar plugin\'s <strong>views</strong> directory. Please refer to <a href="http://tri.be/themers-guide-to-the-events-calendar/">Themer\'s Guide for The Events Calendar</a> for reference.</p><p>Within your copy of ecp-page-template.php you will need to insert <code>&lt;?php teccc_legend_hook(); ?&gt;</code> where you want the legend to appear.'
 			),
+		'transparent' => array(
+			'type' => 'html',
+			'html' => '<p>When unsetting a transparent value to choose a color, you will need to save the unchecked state of <strong>Transparent</strong>, set the color and save again.</p>'
+			), 
 		'info-end' => array(
 			'type' => 'html',
 			'html' => '</div>'
