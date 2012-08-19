@@ -62,7 +62,6 @@ function teccc_requires_tec() {
 
 global $teccc_text_colors;
 $teccc_text_colors = array(
-	'Default' => '0',
 	'Black' => '#000',
 	'White' => '#fff',
 	'Gray' => '#999'
@@ -102,22 +101,18 @@ function teccc_write_category_css() {
 	$catCSS[] = '<style type="text/css" media="screen">';
 	$catCSS[] = '.tribe-events-calendar a { font-weight: ' . $options['font_weight'] .'; }';
 	for ($i = 0; $i < $count; $i++) {
-		if (!($options[$slugs[$i].'-text'] == '0')) {
-			$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
-			$catCSS[] = '.cat_' . $slugs[$i] . ', .tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ';border-right: 5px solid ' . $options[$slugs[$i].'-background'] . '; color: ' . $options[$slugs[$i].'-text'] . '; }' ;
-		} else {
-		$catCSS[] = '.cat_' . $slugs[$i] . ', .tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ';border-right: 5px solid ' . $options[$slugs[$i].'-background'] .'; color: #000; }' ;
-		}
+		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
+		$catCSS[] = '.cat_' . $slugs[$i] . ', .tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ';border-right: 5px solid ' . $options[$slugs[$i].'-background'] . '; color: ' . $options[$slugs[$i].'-text'] . '; }' ;		
 	}
-	if ( !isset($options['custom_legend_css']) ) {
+	if ( ! isset( $options['custom_legend_css']  ) ) {
 		$catCSS[] = '#legend_box { text-align: center; font-size: 10px; }';
 		$catCSS[] = '#legend a { text-decoration: none; font-weight: ' . $options['font_weight'] . '; }';
 		$catCSS[] = '#legend li { text-align: center; display: inline; list-style-type: none; line-height: 4em; padding: 7px; }';
 	}
 	$catCSS[] = '</style>';
 	$content = implode( "\n", $catCSS ) . "\n";
-	if ( !is_admin() ) { echo $content; }
-	if ( isset($options['add_legend']) ) { add_action( 'teccc_legend_hook', 'teccc_legend' ); }
+	if ( ! is_admin() ) { echo $content; }
+	if ( isset( $options['add_legend'] ) ) { add_action( 'teccc_legend_hook', 'teccc_legend' ); }
 }
 
 function teccc_legend_hook() {
@@ -209,7 +204,7 @@ function teccc_is_saved () {
 }
 
 function teccc_options_elements() {
-	global $teccc_text_colors, $teccc_font_weights, $teccc_debug;
+	global $teccc_text_colors, $teccc_font_weights;
 	$slugs = teccc_get_category_slugs();
 	$cat_names = teccc_get_category_names();
 	$count = count($slugs);
