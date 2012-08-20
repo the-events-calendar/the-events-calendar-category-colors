@@ -10,8 +10,6 @@ MAINFILE="the-events-calendar-category-colors.php" # this should be the name of 
 # git config
 GITPATH="$CURRENTDIR/" # this file should be in the base of your git repository
 GITREMOTE=`basename $(pwd)` # this should match name of remote git repository
-GITUSER="afragen"
-git remote set-url $GITREMOTE git@github.com:$GITUSER/$GITREMOTE.git
 
 # svn config
 SVNPATH="/tmp/$PLUGINSLUG" # path to a temp SVN repo. No trailing slash required and don't add trunk.
