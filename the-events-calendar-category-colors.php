@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.4
+Version: 1.4.1
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -45,7 +45,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 /* Add your functions below this line */
 
 // 'teccc_' prefix is derived from [tec]the events calendar [c]ategory [c]olors
-define(VERSION, '1.4');
+define(VERSION, '1.4.1');
 $teccc_debug = false;
 
 if ( $teccc_debug ) { var_dump(get_option('teccc_options')); }
@@ -95,35 +95,33 @@ function teccc_write_category_css() {
 	$slugs = teccc_get_category_slugs();
 	$count = count($slugs);
 	$options = get_option('teccc_options');
+	$legend = teccc_write_legend_css();
 	$catCSS = array();
 	$catCSS[] = '';
 	$catCSS[] = '<!-- The Events Calendar Category Colors ' . VERSION . ' generated CSS -->';
 	$catCSS[] = '<style type="text/css" media="screen">';
-	$catCSS[] = '.tribe-events-calendar a { font-weight: ' . $options['font_weight'] .'; }';
+	$catCSS[] = '.tribe-events-calendar a { font-weight:' . $options['font_weight'] .'; }';
 	for ($i = 0; $i < $count; $i++) {
-		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color: ' .  $options[$slugs[$i].'-text'] . '; }' ;
-		$catCSS[] = '.cat_' . $slugs[$i] . ', .tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color: ' . $options[$slugs[$i].'-background'] . '; border-left: 5px solid ' . $options[$slugs[$i].'-border'] . ';border-right: 5px solid ' . $options[$slugs[$i].'-background'] . '; color: ' . $options[$slugs[$i].'-text'] . '; }' ;		
+		$catCSS[] = '.tribe-events-calendar .cat_' . $slugs[$i] . ' a { color:' .  $options[$slugs[$i].'-text'] . '; }' ;
+		$catCSS[] = '.cat_' . $slugs[$i] . ', .tribe-events-calendar .cat_' . $slugs[$i] . ', .cat_' . $slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color:' . $options[$slugs[$i].'-background'] . '; border-left:5px solid ' . $options[$slugs[$i].'-border'] . '; border-right:5px solid ' . $options[$slugs[$i].'-background'] . '; color:' . $options[$slugs[$i].'-text'] . '; }' ;		
 	}
-	if ( ! isset( $options['custom_legend_css']  ) ) {
-		$catCSS[] = '#legend_box { text-align: center; font-size: 10px; }';
-		$catCSS[] = '#legend a { text-decoration: none; font-weight: ' . $options['font_weight'] . '; }';
-		$catCSS[] = '#legend li { text-align: center; display: inline; list-style-type: none; line-height: 4em; padding: 7px; }';
-	}
+	if ( ! isset( $options['custom_legend_css']  ) ) { $catCSS = array_merge( $catCSS, $legend ); }
 	$catCSS[] = '</style>';
 	$content = implode( "\n", $catCSS ) . "\n";
 	if ( ! is_admin() ) { echo $content; }
 	if ( isset( $options['add_legend'] ) ) { add_action( 'teccc_legend_hook', 'teccc_legend' ); }
 }
 
+// Create legend action hook, html and CSS
 function teccc_legend_hook() {
 	do_action( 'teccc_legend_hook' );
 }
 
 function teccc_legend() {
-	$tribe_teccc = TribeEvents::instance();
 	$slugs = teccc_get_category_slugs();
 	$count = count($slugs);
 	$cat_names = teccc_get_category_names();
+	$tribe_teccc = TribeEvents::instance();
 	$legend = array();
 	$legend[] = '<div id="legend_box">';
 	$legend[] = '<ul id="legend">';
@@ -134,6 +132,14 @@ function teccc_legend() {
 	$legend[] = '</div>';
 	$content = implode( "\n", $legend ) . "\n";
 	echo $content;
+}
+
+function teccc_write_legend_css() {
+	$arr = array();
+	$arr[] = '#legend_box { font:bold 10px/4em sans-serif; text-align:center; }';
+	$arr[] = '#legend a { text-decoration:none; }';
+	$arr[] = '#legend li { display:inline; list-style-type:none; padding:7px; margin-left:0.7em; text-align:center; text-transform:uppercase; }';
+	return $arr;
 }
 
 
@@ -148,7 +154,7 @@ function teccc_add_defaults() {
 	$count = count($slugs);
 	$tmp = get_option('teccc_options');
 	if(($tmp['chk_default_options_db']=='1')||(!is_array($tmp))) {
-		delete_option('teccc_options'); // so we don't have to reset all the 'off' checkboxes too! (don't think this is needed but leave for now)
+		delete_option('teccc_options');
 		for ($i = 0; $i < $count; $i++) {
 			$arr[$slugs[$i].'-text'] = '#000';
 			$arr[$slugs[$i].'-background'] = '#CFCFCF';
@@ -176,6 +182,7 @@ function teccc_validate_options($input) {
 	$count = count($slugs);
 	for ($i = 0; $i < $count; $i++) {
 		// Sanitize textbox input (strip html tags, and escape characters)
+		// May not be needed with jQuery color picker
 		$input[$slugs[$i].'-background'] =  wp_filter_nohtml_kses($input[$slugs[$i].'-background']);
 		$input[$slugs[$i].'-background'] =  ereg_replace( '[^#A-Za-z0-9]', '', $input[$slugs[$i].'-background'] );
 		if ( $input[$slugs[$i].'-background'] == '' ) { $input[$slugs[$i].'-background'] = '#CFCFCF'; }
@@ -187,9 +194,9 @@ function teccc_validate_options($input) {
 		// Sanitize dropdown input (make sure value is one of options allowed)
 		if ( !in_array($input[$slugs[$i].'-text'], $teccc_text_colors, true) ) { $input[$slugs[$i].'-text'] = '#000'; }
 		
+		// Helps to set value when checked
 		if ( isset( $input[$slugs[$i].'-border_transparent'] ) ) { $input[$slugs[$i].'-border'] = 'transparent'; }
-		if ( isset( $input[$slugs[$i].'-background_transparent'] ) ) { $input[$slugs[$i].'-background'] = 'transparent'; }
-		
+		if ( isset( $input[$slugs[$i].'-background_transparent'] ) ) { $input[$slugs[$i].'-background'] = 'transparent'; }	
 	}
 	return $input;
 }
