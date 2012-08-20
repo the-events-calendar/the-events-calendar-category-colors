@@ -45,7 +45,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 /* Add your functions below this line */
 
 // 'teccc_' prefix is derived from [tec]the events calendar [c]ategory [c]olors
-define(VERSION, '1.4.1');
+define(VERSION, '1.4.2');
 $teccc_debug = false;
 
 if ( $teccc_debug ) { var_dump(get_option('teccc_options')); }
@@ -138,7 +138,7 @@ function teccc_write_legend_css() {
 	$arr = array();
 	$arr[] = '#legend_box { font:bold 10px/4em sans-serif; text-align:center; }';
 	$arr[] = '#legend a { text-decoration:none; }';
-	$arr[] = '#legend li { display:inline; list-style-type:none; padding:7px; margin-left:0.7em; text-align:center; text-transform:uppercase; }';
+	$arr[] = '#legend li { display:inline; list-style-type:none; padding:7px; margin-left:0.7em; text-align:center; }';
 	return $arr;
 }
 
