@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.4.3
+Version: 1.4.4
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -45,7 +45,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 /* Add your functions below this line */
 
 // 'teccc_' prefix is derived from [tec]the events calendar [c]ategory [c]olors
-define(VERSION, '1.4.3');
+define(VERSION, '1.4.4');
 $teccc_debug = false;
 
 if ( $teccc_debug ) { var_dump(get_option('teccc_options')); }
@@ -53,10 +53,11 @@ if ( $teccc_debug ) { var_dump(get_option('teccc_options')); }
 add_action( 'plugins_loaded', 'teccc_requires_tec' );
 function teccc_requires_tec() {
 	if ( !class_exists( 'TribeEvents' ) ) { 
-		echo '<div class="error">
-       <p>The Events Calendar Category Colors requires The Events Calendar plugin to be active.</p>
-    </div>';
-		deactivate_plugins(__FILE__);
+		if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
+			echo '<div class="error">
+			<p>The Events Calendar Category Colors requires The Events Calendar plugin to be active.</p>
+			</div>';
+		}
 	}
 }
 
@@ -138,7 +139,7 @@ function teccc_write_legend_css() {
 	$arr = array();
 	$arr[] = '#legend_box { font:bold 10px/4em sans-serif; text-align:center; }';
 	$arr[] = '#legend a { text-decoration:none; }';
-	$arr[] = '#legend li { display:inline; list-style-type:none; padding:7px; margin-left:0.7em; text-align:center; }';
+	$arr[] = '#legend li { display:inline; list-style-type:none; padding:7px; margin-left:0.7em; }';
 	return $arr;
 }
 
