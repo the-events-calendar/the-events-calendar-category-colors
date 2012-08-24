@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.4.4
+Version: 1.4.5
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -45,18 +45,18 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 /* Add your functions below this line */
 
 // 'teccc_' prefix is derived from [tec]the events calendar [c]ategory [c]olors
-define(VERSION, '1.4.4');
+define(VERSION, '1.4.5');
 $teccc_debug = false;
 
 if ( $teccc_debug ) { var_dump(get_option('teccc_options')); }
 
-add_action( 'plugins_loaded', 'teccc_requires_tec' );
-function teccc_requires_tec() {
+add_action( 'plugins_loaded', 'teccc_fail_msg' );
+function teccc_fail_msg() {
 	if ( !class_exists( 'TribeEvents' ) ) { 
 		if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
-			echo '<div class="error">
-			<p>The Events Calendar Category Colors requires The Events Calendar plugin to be active.</p>
-			</div>';
+			$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
+			$title = __( 'The Events Calendar', 'the-events-calendar-category-colors' );
+			echo '<div class="error"><p>'.sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'tribe-events-calendar-pro' ),$url, $title ).'</p></div>';
 		}
 	}
 }
@@ -279,7 +279,12 @@ function teccc_options_elements() {
 
 
 //Create Category Colors tab in The Events Calendar Settings
-add_action('tribe_settings_do_tabs', 'tribe_add_category_colors_tab');
+add_action( 'plugins_loaded', 'teccc_load_settings_tab' );
+function teccc_load_settings_tab() {
+	if ( class_exists( 'TribeEvents' ) ) {
+		add_action('tribe_settings_do_tabs', 'tribe_add_category_colors_tab');
+	}
+}
 function tribe_add_category_colors_tab () {
 	include_once('category-colors-settings.php');
 	add_action('tribe_settings_form_element_tab_category-colors', 'teccc_form_header');
