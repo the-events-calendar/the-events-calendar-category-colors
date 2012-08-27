@@ -53,7 +53,7 @@ class TribeEventsCategoryColors {
 	public $text_colors;
 	public $font_weights;
 	public $slugs;
-	public $slug_count;
+	public $ct;
 	public $names;
 	public $legend_css;
 
@@ -78,7 +78,7 @@ class TribeEventsCategoryColors {
 		$terms = $this->get_category_terms();
 		$this->slugs = $terms['slugs'];
 		$this->names = $terms['names'];
-		$this->slug_count = count($this->slugs);
+		$this->ct = count($this->slugs);
 		
 	}	
 
@@ -120,7 +120,7 @@ function teccc_write_category_css() {
 	$catCSS[] = '<!-- The Events Calendar Category Colors ' . TribeEventsCategoryColors::VERSION . ' generated CSS -->';
 	$catCSS[] = '<style type="text/css" media="screen">';
 	$catCSS[] = '.tribe-events-calendar a { font-weight:' . $options['font_weight'] .'; }';
-	for ($i = 0; $i < $teccc->slug_count; $i++) {
+	for ($i = 0; $i < $teccc->ct; $i++) {
 		$catCSS[] = '.tribe-events-calendar .cat_' . $teccc->slugs[$i] . ' a { color:' .  $options[$teccc->slugs[$i].'-text'] . '; }' ;
 		$catCSS[] = '.cat_' . $teccc->slugs[$i] . ', .tribe-events-calendar .cat_' . $teccc->slugs[$i] . ', .cat_' . $teccc->slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color:' . $options[$teccc->slugs[$i].'-background'] . '; border-left:5px solid ' . $options[$teccc->slugs[$i].'-border'] . '; border-right:5px solid ' . $options[$teccc->slugs[$i].'-background'] . '; color:' . $options[$teccc->slugs[$i].'-text'] . '; }' ;		
 	}
@@ -142,7 +142,7 @@ function teccc_legend() {
 	$legend = array();
 	$legend[] = '<div id="legend_box">';
 	$legend[] = '<ul id="legend">';
-	for ($i = 0; $i < $teccc->slug_count; $i++) {
+	for ($i = 0; $i < $teccc->ct; $i++) {
 		$legend[] = '<a href="' . $tec->getLink() . 'category/' . $teccc->slugs[$i] . '"><li class="cat_' . $teccc->slugs[$i] . '">' . $teccc->names[$i] . '</li></a>';
 	}
 	$legend[] = '</ul>';
@@ -163,7 +163,7 @@ function teccc_add_defaults() {
 	$tmp = get_option('teccc_options');
 	if(($tmp['chk_default_options_db']=='1')||(!is_array($tmp))) {
 		delete_option('teccc_options');
-		for ($i = 0; $i < $teccc->slug_count; $i++) {
+		for ($i = 0; $i < $teccc->ct; $i++) {
 			$arr[$teccc->slugs[$i].'-text'] = '#000';
 			$arr[$teccc->slugs[$i].'-background'] = '#CFCFCF';
 			$arr[$teccc->slugs[$i].'-border'] = '#CFCFCF';
@@ -186,7 +186,7 @@ function teccc_init(){
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function teccc_validate_options($input) {
 	$teccc = new TribeEventsCategoryColors();
-	for ($i = 0; $i < $teccc->slug_count; $i++) {
+	for ($i = 0; $i < $teccc->ct; $i++) {
 		// Sanitize textbox input (strip html tags, and escape characters)
 		// May not be needed with jQuery color picker
 		$input[$teccc->slugs[$i].'-background'] =  wp_filter_nohtml_kses($input[$teccc->slugs[$i].'-background']);
@@ -224,7 +224,7 @@ function teccc_options_elements() {
 	$form[] = '<table class="form-table">';
 	$form[] = '<style type="text/css">.form-table th { font-size: 12px; }</style>';
 	$form[] = '<tr><th><strong>Category Slug</strong></th><th><strong>Border Color</strong></th><th><strong>Background Color</strong></th><th><strong>Text Color</strong></th><th><strong>Current Display</strong></th></tr>';
-	for ($i = 0; $i < $teccc->slug_count; $i++) {
+	for ($i = 0; $i < $teccc->ct; $i++) {
 		$form[] = '<tr>';
 		$form[] = '<td>' . $teccc->slugs[$i] . '</td>';
 		
