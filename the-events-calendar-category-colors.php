@@ -124,7 +124,9 @@ function teccc_write_category_css() {
 		$catCSS[] = '.tribe-events-calendar .cat_' . $teccc->slugs[$i] . ' a { color:' .  $options[$teccc->slugs[$i].'-text'] . '; }' ;
 		$catCSS[] = '.cat_' . $teccc->slugs[$i] . ', .tribe-events-calendar .cat_' . $teccc->slugs[$i] . ', .cat_' . $teccc->slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color:' . $options[$teccc->slugs[$i].'-background'] . '; border-left:5px solid ' . $options[$teccc->slugs[$i].'-border'] . '; border-right:5px solid ' . $options[$teccc->slugs[$i].'-background'] . '; color:' . $options[$teccc->slugs[$i].'-text'] . '; }' ;		
 	}
-	if ( ! isset( $options['custom_legend_css']  ) ) { $catCSS = array_merge( $catCSS, $teccc->legend_css ); }
+	if ( isset( $options['add_legend'] ) &&  !isset( $options['custom_legend_css'] ) ) {
+		$catCSS = array_merge( $catCSS, $teccc->legend_css );
+	}
 	$catCSS[] = '</style>';
 	$content = implode( "\n", $catCSS ) . "\n";
 	if ( ! is_admin() ) { echo $content; }
