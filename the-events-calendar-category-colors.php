@@ -45,13 +45,11 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 /* Add your functions below this line */
 
 // 'teccc_' prefix is derived from [tec]the events calendar [c]ategory [c]olors
-define(VERSION, '1.5');
-$teccc_debug = false;
-
-if ( $teccc_debug ) { var_dump(get_option('teccc_options')); }
 
 class TribeEventsCategoryColors {
 
+	const VERSION = '1.5';
+	public $debug = false;
 	public $text_colors;
 	public $font_weights;
 	public $slugs;
@@ -77,9 +75,9 @@ class TribeEventsCategoryColors {
 			'#legend li { display:inline; list-style-type:none; padding:7px; margin-left:0.7em; }'
 			);
 
-		$this->terms = $this->get_category_terms();
-		$this->slugs = $this->terms['slugs'];
-		$this->names = $this->terms['names'];
+		$terms = $this->get_category_terms();
+		$this->slugs = $terms['slugs'];
+		$this->names = $terms['names'];
 		$this->slug_count = count($this->slugs);
 		
 	}	
@@ -119,7 +117,7 @@ function teccc_write_category_css() {
 
 	$catCSS = array();
 	$catCSS[] = '';
-	$catCSS[] = '<!-- The Events Calendar Category Colors ' . VERSION . ' generated CSS -->';
+	$catCSS[] = '<!-- The Events Calendar Category Colors ' . TribeEventsCategoryColors::VERSION . ' generated CSS -->';
 	$catCSS[] = '<style type="text/css" media="screen">';
 	$catCSS[] = '.tribe-events-calendar a { font-weight:' . $options['font_weight'] .'; }';
 	for ($i = 0; $i < $teccc->slug_count; $i++) {
@@ -278,7 +276,9 @@ function teccc_options_elements() {
 	$form[] = '<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1"' . checked('1', $options['chk_default_options_db'], false) . " /> Restore defaults upon plugin deactivation/reactivation</label>";
 	$form[] = '<p style="color:#666666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</p></td></tr></table>';
   
+
 	$content = implode ( "\n", $form );
+	if ( $teccc->debug ) { $content .= '<pre>' . var_export($options, true) . '</pre>' ; }
 	return $content;
 }
 
