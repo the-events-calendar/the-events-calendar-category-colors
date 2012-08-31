@@ -44,6 +44,7 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 = 1.5 =
 * abstracted main script using new TribeEventsCategoryColors class
+* fail message to admin_notices
 
 = 1.4.5 =
 * load only with class TribeEvents

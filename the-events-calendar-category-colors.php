@@ -75,7 +75,7 @@ class TribeEventsCategoryColors {
 			'#legend li { display:inline; list-style-type:none; padding:7px; margin-left:0.7em; }'
 			);
 
-		$terms = $this->get_category_terms();
+		$terms = self::get_category_terms();
 		$this->slugs = $terms['slugs'];
 		$this->names = $terms['names'];
 		$this->ct = count($this->slugs);
@@ -99,7 +99,7 @@ class TribeEventsCategoryColors {
 } //end class TribeEventsCategoryColors
 
 
-add_action( 'plugins_loaded', 'teccc_fail_msg' );
+add_action( 'admin_notices', 'teccc_fail_msg' );
 function teccc_fail_msg() {
 	if ( !class_exists( 'TribeEvents' ) ) { 
 		if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
@@ -109,50 +109,6 @@ function teccc_fail_msg() {
 		}
 	}
 }
-
-// Write out CSS
-function teccc_write_category_css() { 
-	$teccc = new TribeEventsCategoryColors();
-	$options = get_option('teccc_options');
-
-	$catCSS = array();
-	$catCSS[] = '';
-	$catCSS[] = '<!-- The Events Calendar Category Colors ' . TribeEventsCategoryColors::VERSION . ' generated CSS -->';
-	$catCSS[] = '<style type="text/css" media="screen">';
-	$catCSS[] = '.tribe-events-calendar a { font-weight:' . $options['font_weight'] .'; }';
-	for ($i = 0; $i < $teccc->ct; $i++) {
-		$catCSS[] = '.tribe-events-calendar .cat_' . $teccc->slugs[$i] . ' a { color:' .  $options[$teccc->slugs[$i].'-text'] . '; }' ;
-		$catCSS[] = '.cat_' . $teccc->slugs[$i] . ', .tribe-events-calendar .cat_' . $teccc->slugs[$i] . ', .cat_' . $teccc->slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color:' . $options[$teccc->slugs[$i].'-background'] . '; border-left:5px solid ' . $options[$teccc->slugs[$i].'-border'] . '; border-right:5px solid ' . $options[$teccc->slugs[$i].'-background'] . '; color:' . $options[$teccc->slugs[$i].'-text'] . '; }' ;		
-	}
-	if ( isset( $options['add_legend'] ) &&  !isset( $options['custom_legend_css'] ) ) {
-		$catCSS = array_merge( $catCSS, $teccc->legend_css );
-	}
-	$catCSS[] = '</style>';
-	$content = implode( "\n", $catCSS ) . "\n";
-	if ( ! is_admin() ) { echo $content; }
-	if ( isset( $options['add_legend'] ) ) { add_action( 'teccc_legend_hook', 'teccc_legend' ); }
-}
-
-// Create legend action hook and html
-function teccc_legend_hook() {
-	do_action( 'teccc_legend_hook' );
-}
-function teccc_legend() {
-	$teccc = new TribeEventsCategoryColors();
-	$tec = TribeEvents::instance();
-	
-	$legend = array();
-	$legend[] = '<div id="legend_box">';
-	$legend[] = '<ul id="legend">';
-	for ($i = 0; $i < $teccc->ct; $i++) {
-		$legend[] = '<a href="' . $tec->getLink() . 'category/' . $teccc->slugs[$i] . '"><li class="cat_' . $teccc->slugs[$i] . '">' . $teccc->names[$i] . '</li></a>';
-	}
-	$legend[] = '</ul>';
-	$legend[] = '</div>';
-	$content = implode( "\n", $legend ) . "\n";
-	echo $content;
-}
-
 
 // Set-up Action and Filter Hooks
 register_activation_hook(__FILE__, 'teccc_add_defaults');
@@ -303,6 +259,50 @@ function teccc_form_header() {
 }
 function teccc_settings_fields() {
 	settings_fields('teccc_category_colors');
+}
+
+
+// Write out CSS
+function teccc_write_category_css() { 
+	$teccc = new TribeEventsCategoryColors();
+	$options = get_option('teccc_options');
+
+	$catCSS = array();
+	$catCSS[] = '';
+	$catCSS[] = '<!-- The Events Calendar Category Colors ' . TribeEventsCategoryColors::VERSION . ' generated CSS -->';
+	$catCSS[] = '<style type="text/css" media="screen">';
+	$catCSS[] = '.tribe-events-calendar a { font-weight:' . $options['font_weight'] .'; }';
+	for ($i = 0; $i < $teccc->ct; $i++) {
+		$catCSS[] = '.tribe-events-calendar .cat_' . $teccc->slugs[$i] . ' a { color:' .  $options[$teccc->slugs[$i].'-text'] . '; }' ;
+		$catCSS[] = '.cat_' . $teccc->slugs[$i] . ', .tribe-events-calendar .cat_' . $teccc->slugs[$i] . ', .cat_' . $teccc->slugs[$i] . ' > .tribe-events-tooltip .tribe-events-event-title { background-color:' . $options[$teccc->slugs[$i].'-background'] . '; border-left:5px solid ' . $options[$teccc->slugs[$i].'-border'] . '; border-right:5px solid ' . $options[$teccc->slugs[$i].'-background'] . '; color:' . $options[$teccc->slugs[$i].'-text'] . '; }' ;		
+	}
+	if ( isset( $options['add_legend'] ) &&  !isset( $options['custom_legend_css'] ) ) {
+		$catCSS = array_merge( $catCSS, $teccc->legend_css );
+	}
+	$catCSS[] = '</style>';
+	$content = implode( "\n", $catCSS ) . "\n";
+	if ( ! is_admin() ) { echo $content; }
+	if ( isset( $options['add_legend'] ) ) { add_action( 'teccc_legend_hook', 'teccc_legend' ); }
+}
+
+// Create legend action hook and html
+function teccc_legend_hook() {
+	do_action( 'teccc_legend_hook' );
+}
+function teccc_legend() {
+	$teccc = new TribeEventsCategoryColors();
+	$tec = TribeEvents::instance();
+	
+	$legend = array();
+	$legend[] = '<div id="legend_box">';
+	$legend[] = '<ul id="legend">';
+	for ($i = 0; $i < $teccc->ct; $i++) {
+		$legend[] = '<a href="' . $tec->getLink() . 'category/' . $teccc->slugs[$i] . '"><li class="cat_' . $teccc->slugs[$i] . '">' . $teccc->names[$i] . '</li></a>';
+	}
+	$legend[] = '</ul>';
+	$legend[] = '</div>';
+	$content = implode( "\n", $legend ) . "\n";
+	echo $content;
 }
 
 //load js and css for jquery-miniColors
