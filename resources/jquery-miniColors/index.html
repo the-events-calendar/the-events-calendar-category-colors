@@ -7,8 +7,13 @@
 		<style type="text/css">
 			BODY {
 				font-family: Arial, Helvetica, sans-serif;
-				font-size: 10pt;
+				font-size: 13px;
 				line-height: 1.5;
+			}
+			
+			INPUT {
+				vertical-align: middle;
+				font-size: 13px;
 			}
 		</style>
 		
@@ -21,86 +26,86 @@
 			
 			$(document).ready( function() {
 				
+				function init() {
+					
+					// Enabling miniColors
+					$('.color-picker').miniColors({
+						change: function(hex, rgb) {
+							$('#console').prepend('change: ' + hex + ', rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')<br>');
+						},
+						open: function(hex, rgb) {
+							$('#console').prepend('open: ' + hex + ', rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')<br>');
+						},
+						close: function(hex, rgb) {
+							$('#console').prepend('close: ' + hex + ', rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')<br>');
+						}
+					});
+					
+					// With opacity
+					$('.color-picker-opacity').miniColors({
+						opacity: true,
+						change: function(hex, rgba) {
+							$('#console').prepend('change: ' + hex + ', rgba(' + rgba.r + ', ' + rgba.g + ', ' + rgba.b + ', ' + rgba.a + ')<br>');
+						},
+						open: function(hex, rgba) {
+							$('#console').prepend('open: ' + hex + ', rgba(' + rgba.r + ', ' + rgba.g + ', ' + rgba.b + ', ' + rgba.a + ')<br>');
+						},
+						close: function(hex, rgba) {
+							$('#console').prepend('close: ' + hex + ', rgba(' + rgba.r + ', ' + rgba.g + ', ' + rgba.b + ', ' + rgba.a + ')<br>');
+						}
+					});
+					
+				}				
 				
-				//
-				// Enabling miniColors
-				//
+				init();
 				
-				$(".color-picker").miniColors({
-					letterCase: 'uppercase',
-					change: function(hex, rgb) {
-						logData('change', hex, rgb);
-					},
-					open: function(hex, rgb) {
-						logData('open', hex, rgb);
-					},
-					close: function(hex, rgb) {
-						logData('close', hex, rgb);
-					}
-				});
-				
-				
-				//
-				// Only for the demo
-				//
-				
-				function logData(type, hex, rgb) {
-					$("#console").prepend(type + ': HEX = ' + hex + ', RGB = (' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')<br />');
-				}
-				
-				$("#disable").click( function() {
-					$("#console").prepend('disable<br />');
-					$(".color-picker").miniColors('disabled', true);
+				$('#disable').click( function() {
+					$('#console').prepend('disable<br />');
+					$('.color-picker, .color-picker-opacity').miniColors('disabled', true);
 					$("#disable").prop('disabled', true);
 					$("#enable").prop('disabled', false);
 				});
 				
-				$("#enable").click( function() {
-					$("#console").prepend('enable<br />');
-					$(".color-picker").miniColors('disabled', false);
+				$('#enable').click( function() {
+					$('#console').prepend('enable<br />');
+					$('.color-picker, .color-picker-opacity').miniColors('disabled', false);
 					$("#disable").prop('disabled', false);
 					$("#enable").prop('disabled', true);
 				});
 				
-				$("#makeReadonly").click( function() {
-					$("#console").prepend('readonly = true<br />');
-					$(".color-picker").miniColors('readonly', true);
+				$('#makeReadonly').click( function() {
+					$('#console').prepend('readonly = true<br />');
+					$('.color-picker, .color-picker-opacity').miniColors('readonly', true);
 					$("#unmakeReadonly").prop('disabled', false);
 					$("#makeReadonly").prop('disabled', true);
 				});
 				
-				$("#unmakeReadonly").click( function() {
-					$("#console").prepend('readonly = false<br />');
-					$(".color-picker").miniColors('readonly', false);
+				$('#unmakeReadonly').click( function() {
+					$('#console').prepend('readonly = false<br />');
+					$('.color-picker, .color-picker-opacity').miniColors('readonly', false);
 					$("#unmakeReadonly").prop('disabled', true);
 					$("#makeReadonly").prop('disabled', false);
 				});
 				
-				$("#destroy").click( function() {
-					$("#console").prepend('destroy<br />');
-					$(".color-picker").miniColors('destroy');
+				$('#destroy').click( function() {
+					$('#console').prepend('destroy<br />');
+					$('.color-picker, .color-picker-opacity').miniColors('destroy');
 					$("INPUT[type=button]:not(#create)").prop('disabled', true);
 					$("#destroy").prop('disabled', true);
 					$("#create").prop('disabled', false);
 				});
 				
-				$("#create").click( function() {
-					$("#console").prepend('create<br />');
-					$(".color-picker").miniColors({
-						letterCase: 'uppercase',
-						change: function(hex, rgb) {
-							logData(hex, rgb);
-						}
-					});
+				$('#create').click( function() {
+					$('#console').prepend('create<br />');
+					init();
 					$("#makeReadonly, #disable, #destroy, #randomize").prop('disabled', false);
 					$("#destroy").prop('disabled', false);
 					$("#create").prop('disabled', true);
 				});
 				
-				$("#randomize").click( function() {
-					$(".color-picker").miniColors('value', '#' + Math.floor(Math.random() * 16777215).toString(16));
+				$('#randomize').click( function() {
+					$('.color-picker, .color-picker-opacity').miniColors('value', '#' + Math.floor(Math.random() * 16777215).toString(16));
 				});
-				
 				
 			});
 			
@@ -112,43 +117,48 @@
 	
 		<h1>jQuery miniColors</h1>
 		<p>
-			A miniature color selector for input elements.
+			A compact color selector for input elements.
 		</p>
 		
 		<div id="console" style="width: 500px; float: right; color: #FFF; background: #000; font: 12px monospace; padding: 1em; margin: 1em 0; height: 350px; overflow: auto;"></div>
 		
 		<p>
-			Default<br /><input type="text" name="color1" class="color-picker" size="6" autocomplete="on" maxlength="10" />
+			Default<br /><input type="text" name="color1" class="color-picker" size="7" autocomplete="on" value="#fff" />
 		</p>
 		
 		<p>
-			Black theme (set class=&quot;black&quot; on the input element)<br />
-			<input type="text" name="color2" class="color-picker black" size="6" />
+			Black theme (set class=&quot;black&quot; on the input)<br />
+			<input type="text" name="color2" class="color-picker black" size="7" />
 		</p>
 		
 		<p>
-			Preset value (set value attribute on the input element)<br />
-			<input type="text" name="color3" class="color-picker" size="6" value="#abCdeF" />
+			Preset HEX value (set value attribute for preset)<br />
+			<input type="text" name="color3" class="color-picker" size="7" value="#fff666" />
+		</p>
+
+		<p>
+			With Opacity (set data-opacity attribute for preset)<br />
+			<input type="text" name="color3" class="color-picker-opacity" size="7" value="#005294" data-opacity=".5" />
 		</p>
 		
 		<p>
 			Attached to a hidden input<br />
-			<input type="hidden" name="color4" class="color-picker" size="6" />
+			<input type="hidden" name="color4" class="color-picker" size="7" />
 		</p>
         
 		<p style="position: absolute; right: 0; top: 0; margin-right: 10px;">
 			Absolutely positioned in upper-right corner
-			<input type="hidden" name="color5" class="color-picker" size="6" />
+			<input type="hidden" name="color5" class="color-picker" size="7" />
 		</p>
 		
 		<p style="position: absolute; left: 0; bottom: 0; margin-left: 10px;">
-			<input type="hidden" name="color6" class="color-picker" size="6" />
+			<input type="hidden" name="color6" class="color-picker" size="7" />
 			Absolutely positioned in bottom-left corner			
 		</p>
 		
 		<p style="position: absolute; right: 0; bottom: 0; margin-right: 10px;">
 			Absolutely positioned in bottom-right corner			
-			<input type="hidden" name="color7" class="color-picker" size="6" />			
+			<input type="hidden" name="color7" class="color-picker" size="7" />			
 		</p>		
 		
 		<p style="margin-top: 50px;">

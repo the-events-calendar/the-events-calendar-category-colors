@@ -1,6 +1,6 @@
 # jQuery miniColors: A small color selector
 
-_Copyright 2011 Cory LaViska for A Beautiful Site, LLC. (http://abeautifulsite.net/)_
+_Copyright 2012 Cory LaViska for A Beautiful Site, LLC. (http://www.abeautifulsite.net/)_
 
 _Dual licensed under the MIT / GPLv2 licenses_
 
@@ -22,6 +22,7 @@ http://labs.abeautifulsite.net/jquery-miniColors/
 
 * __disabled__ _[true,false]_ - Disables the control on init
 * __readonly__ _[true,false]_ - Makes the control read-only on init
+* __opacity__ _[true, false]_ - Enables/disables the opacity slider
 
 
 ## Specify options on creation:
@@ -31,6 +32,14 @@ http://labs.abeautifulsite.net/jquery-miniColors/
 		optionName: value,
 		...
 	});
+
+__Preset color:__
+
+	<input type="text" name="color" value="#FFCC00" />
+
+__Preset color and opacity:__
+
+	<input type="text" name="color" value="#FFCC00" data-opacity=".5" />
 
 
 ## Methods
@@ -44,6 +53,8 @@ Methods are called using this syntax:
 * __letterCase__ _[uppercase|lowercase|null]_ - forces the hex value into upper or lowercase
 * __disabled__ _[true|false]_ - sets the disabled status
 * __readonly__ _[true|false]_ - sets the readonly status
+* __opacity__ _(none)_ - gets the opacity level (0-1)
+* __opacity__ _(0-1)_ - sets the opacity level
 * __value__ _(none)_ - gets the current value; guaranteed to return a valid hex color
 * __value__ _[hex value]_ - sets the control's value
 * __destroy__ _(none)_
@@ -55,15 +66,32 @@ Methods are called using this syntax:
 * __open__*(hex, rgb)* - called when the color picker is opened
 * __close__*(hex, rgb)* - called when the color picker is hidden
 
-*In all callbacks, 'this' refers to the original input element*
+* In all callbacks, `this` refers to the original input element.
+* `hex` is the hex color code of the selected color
+* `rgb` is an object containing red, green, and blue values; if opacity is enabled, it will also contain an alpha value (rgb.a)
 
 
-### Example
-
+### Examples
+	
+	// Get hex color code on change
 	$([selector]).miniColors({
-		change: function(hex, rgb) { ... }
+		change: function(hex, rgb) {
+			console.log(hex);
+		}
+	});
+	
+	// Get RGBA values on change
+	$([selector]).miniColors({
+		opacity: true,
+		change: function(hex, rgba) {
+			console.log('rgba(' + rgba.r + ', ' + rgba.g + ', ' + rgba.b + ', ' + rgba.a + ')');
+		}
 	});
 
+
+## Known Issues
+
+* IE7/8 do not show opacity in the trigger since it uses RGBA
 
 ## Attribution
 
