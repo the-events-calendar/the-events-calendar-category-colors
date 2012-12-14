@@ -1,8 +1,8 @@
 === The Events Calendar Category Colors ===
-Contributors: afragen, jonahcoyote
+Contributors: afragen, jonahcoyote, barryhughes
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
-Tested up to: 3.4.2
+Tested up to: 3.5
 Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -44,6 +44,8 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 = 1.5.1 =
 * code cleanup and switch to current version of jQuery-miniColors.
+* added function to remove first instance of category class tag added to article tag - Thanks Barry!
+* tested with WP 3.5
 
 = 1.5 =
 * abstracted main script using new TribeEventsCategoryColors class

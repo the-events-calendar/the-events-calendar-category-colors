@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: The Events Calendar Category Colors
-Plugin URI: http://wordpress.org/extend/plugins/the-events-calendar-category-colors/
+Plugin URI: https://github.com/afragen/events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
 Version: 1.5.1
 Text Domain: events-calendar-category-colors
@@ -309,6 +309,28 @@ function teccc_miniColors() {
 	wp_enqueue_style( 'miniColors-css', plugin_dir_url(__FILE__) . 'resources/jquery-miniColors/jquery.miniColors.css' );
 	wp_enqueue_script( 'miniColors-js', plugin_dir_url(__FILE__) . 'resources/jquery-miniColors/jquery.miniColors.js' );
 	wp_enqueue_script( 'miniColors-init', plugin_dir_url(__FILE__) . 'resources/jquery-miniColors-init.js' );
+}
+
+// Try to stop the first event category from being added to the article classes
+// (when the default page template is used) - Thanks Barry
+add_filter('post_class', 'remove_tribe_cat_once', 1);
+/**
+ * Removes the Tribe post_class filter on the first occasion that filter is
+ * used, then sets it up again for future calls.
+ *
+ * @param array $classes
+ * @return array
+ */
+function remove_tribe_cat_once(array $classes) {
+	static $count = 0;
+	if ($count++ === 0) {
+		remove_filter('post_class', array(TribeEvents::instance(), 'post_class'));
+	}
+	else {
+		add_filter('post_class', array(TribeEvents::instance(), 'post_class'));
+		remove_filter('post_class', 'remove_tribe_cat_once');
+	}
+	return $classes;
 }
 
 // 'pre_get_posts' hook needed to determine events page
