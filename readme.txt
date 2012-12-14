@@ -42,6 +42,9 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 == Changelog ==
 
+= 1.5.3 =
+* made fix to remove_tribe_cat_once a little safer
+
 = 1.5.2 =
 * fix to make function remove_tribe_cat_once selective only for default template (::fingers crossed::)
 
