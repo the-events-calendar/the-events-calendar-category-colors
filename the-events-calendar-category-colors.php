@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: https://github.com/afragen/events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.5.1
+Version: 1.5.2
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -48,7 +48,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 class TribeEventsCategoryColors {
 
-	const VERSION = '1.5.1';
+	const VERSION = '1.5.2';
 	public $debug = false;
 	public $text_colors;
 	public $font_weights;
@@ -323,6 +323,10 @@ add_filter('post_class', 'remove_tribe_cat_once', 1);
  */
 function remove_tribe_cat_once(array $classes) {
 	static $count = 0;
+	//insert only if using default page template
+	if ( class_exists( 'TribeEvents' ) ) {
+		if ( TribeEvents::getOption('tribeEventsTemplate') != "default" ) { $count++; }
+	}
 	if ($count++ === 0) {
 		remove_filter('post_class', array(TribeEvents::instance(), 'post_class'));
 	}
