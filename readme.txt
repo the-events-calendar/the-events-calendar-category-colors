@@ -3,7 +3,7 @@ Contributors: afragen, jonahcoyote, barryhughes
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.5
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,9 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 2. The Events Calendar Category Colors in action
 
 == Changelog ==
+
+= 1.5.4 =
+* making remove_tribe_cat_once even more specific
 
 = 1.5.3 =
 * made fix to remove_tribe_cat_once a little safer

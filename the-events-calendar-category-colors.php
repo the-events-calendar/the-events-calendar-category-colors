@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: https://github.com/afragen/events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.5.3
+Version: 1.5.4
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -48,7 +48,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 class TribeEventsCategoryColors {
 
-	const VERSION = '1.5.3';
+	const VERSION = '1.5.4';
 	public $debug = false;
 	public $text_colors;
 	public $font_weights;
@@ -322,19 +322,20 @@ add_filter('post_class', 'remove_tribe_cat_once', 1);
  * @return array
  */
 function remove_tribe_cat_once(array $classes) {
-	static $count = 0;
-	//insert only if using default page template
-	if ( class_exists( 'TribeEvents' ) ) {
-		if ( TribeEvents::getOption('tribeEventsTemplate') != "default" ) { return $classes; }
+	if( tribe_is_month() && !is_tax() ) { // The Main Calendar Page
+		//insert only if using default page template
+		if ( TribeEvents::getOption('tribeEventsTemplate') == "" ) { return $classes; }
+
+		static $count = 0;
+		if ($count++ === 0) {
+			remove_filter('post_class', array(TribeEvents::instance(), 'post_class'));
+		}
+		else {
+			add_filter('post_class', array(TribeEvents::instance(), 'post_class'));
+			remove_filter('post_class', 'remove_tribe_cat_once');
+		}
+		return $classes;
 	}
-	if ($count++ === 0) {
-		remove_filter('post_class', array(TribeEvents::instance(), 'post_class'));
-	}
-	else {
-		add_filter('post_class', array(TribeEvents::instance(), 'post_class'));
-		remove_filter('post_class', 'remove_tribe_cat_once');
-	}
-	return $classes;
 }
 
 // 'pre_get_posts' hook needed to determine events page
