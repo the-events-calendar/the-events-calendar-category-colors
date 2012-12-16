@@ -3,7 +3,7 @@
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: https://github.com/afragen/events-calendar-category-colors/
 Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version: 1.5.4
+Version: 1.5.5
 Text Domain: events-calendar-category-colors
 Author: Andy Fragen
 Author URI: http://thefragens.com/blog/
@@ -48,7 +48,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
 class TribeEventsCategoryColors {
 
-	const VERSION = '1.5.4';
+	const VERSION = '1.5.5';
 	public $debug = false;
 	public $text_colors;
 	public $font_weights;
@@ -226,10 +226,13 @@ function teccc_options_elements() {
 	$form[] = '<tr><th scope="row">Custom Legend CSS</th><td colspan="5">';
 	$form[] = '<label><input name="teccc_options[custom_legend_css]" type="checkbox" value="1"' . checked('1', $options['custom_legend_css'], false) . " /> Check to use your own CSS for category legend.</label>";
 	
+	$form[] = '<tr><th scope="row">Colored Calendar Fix</th><td colspan="5">';
+	$form[] = '<label><input name="teccc_options[calendar_colored]" type="checkbox" value="1"' . checked('1', $options['calendar_colored'], false) . " /> Check if calendar is taking styling of first event category of the month.</label>";
+
 	$form[] = '<tr><th scope="row">Database Options</th><td colspan="5">';
 	$form[] = '<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1"' . checked('1', $options['chk_default_options_db'], false) . " /> Restore defaults upon plugin deactivation/reactivation</label>";
 	$form[] = '<p style="color:#666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</p></td></tr></table>';
-
+	
 	$content = implode ( "\n", $form );
 	if ( $teccc->debug ) {
 		$tmp = get_option('teccc_options');
@@ -322,10 +325,10 @@ add_filter('post_class', 'remove_tribe_cat_once', 1);
  * @return array
  */
 function remove_tribe_cat_once(array $classes) {
+	$options = get_option('teccc_options');
 	if( tribe_is_month() && !is_tax() ) { // The Main Calendar Page
-		//insert only if using default page template
-		if ( TribeEvents::getOption('tribeEventsTemplate') == "" ) { return $classes; }
-
+		//insert only if needed
+		if ( ! $options['calendar_colored'] ) { return $classes; }
 		static $count = 0;
 		if ($count++ === 0) {
 			remove_filter('post_class', array(TribeEvents::instance(), 'post_class'));
