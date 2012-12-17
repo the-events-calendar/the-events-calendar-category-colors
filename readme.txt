@@ -43,6 +43,7 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 == Changelog ==
 
 = 1.6.0B =
+* still experimental!
 * refactoring work: changes under the hood for the benefit of mankind
 * the category legend can now have super-powers added to it
 
