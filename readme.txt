@@ -13,7 +13,7 @@ Add background colors to month event view of The Events Calendar events.
 
 Add background colors to event categories displayed in the month event view of The Events Calendar. This is inspired by [Coloring Your Category Events](http://tri.be/coloring-your-category-events).
 
-Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page. 
+Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page.
 
 == Installation ==
 
@@ -36,11 +36,16 @@ Yes. [The Events Calendar plugin](http://wordpress.org/extend/plugins/the-events
 Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
 
 == Screenshots ==
- 
+
 1. The Events Calendar Category Colors Settings tab
 2. The Events Calendar Category Colors in action
 
 == Changelog ==
+
+= 1.6.0B =
+* still experimental!
+* refactoring work: changes under the hood for the benefit of mankind
+* the category legend can now have super-powers added to it
 
 = 1.5.5 =
 * added preference to remove coloring if calendar is styled like first event of the month.
