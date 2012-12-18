@@ -3,7 +3,7 @@ Contributors: afragen, jonahcoyote, barryhughes
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.5
-Stable tag: 1.5.5
+Stable tag: 1.5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,12 +35,23 @@ Yes. [The Events Calendar plugin](http://wordpress.org/extend/plugins/the-events
 
 Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
 
+= My calendar is taking on the styling of my first event of the month =
+
+There are two things you can try.
+
+1. With help from Barry Hughes, I've adapted a function that will remove the category class tag that appears in the article tag on that page. Usually this is when the **Default Page Template** is selected in the Events Calendar Settings. Simply <a href="https://gist.github.com/4324054">add the code in this gist</a> to your theme's _functions.php_ file. If it causes problems, and it may, just remove the code and try #2.
+
+2. Using <a href="http://tri.be/support/documentation/events-calendar-themers-guide/">Themer's Guide for The Events Calendar</a> create a new _ecp-page-template.php_, adjust this new template to correspond to how you want your calendar displayed and choose **Default Events Template** from the Events Calendar Settings.
+
 == Screenshots ==
  
 1. The Events Calendar Category Colors Settings tab
 2. The Events Calendar Category Colors in action
 
 == Changelog ==
+
+= 1.5.6 =
+* removed function remove_tribe_cat_once and put it into a gist to use as needed. Please refer to FAQ for details.
 
 = 1.5.5 =
 * added preference to remove coloring if calendar is styled like first event of the month.
