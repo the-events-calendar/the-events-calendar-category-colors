@@ -3,7 +3,7 @@ Contributors: afragen, jonahcoyote, barryhughes
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.5
-Stable tag: 1.5.6
+Stable tag: 1.6.0B
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,19 +51,13 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 == Changelog ==
 
 = 1.6.0B =
-<<<<<<< HEAD
+* still experimental!
 * refactoring work: changes under the hood for the benefit of mankind
 * the category legend can now have super-powers added to it
 
 = 1.5.6 =
 * removed function remove_tribe_cat_once and put it into a gist to use as needed. Please refer to FAQ for details.
 
-=======
-* still experimental!
-* refactoring work: changes under the hood for the benefit of mankind
-* the category legend can now have super-powers added to it
-
->>>>>>> 9fc9d5c530bd19e41aaa1e2977738ef02dbc2c37
 = 1.5.5 =
 * added preference to remove coloring if calendar is styled like first event of the month.
 
