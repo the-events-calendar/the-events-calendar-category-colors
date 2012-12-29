@@ -52,7 +52,8 @@ class TribeEventsCategoryColors {
 
 
 	protected function get_category_terms() {
-		$terms = get_terms(TribeEvents::TAXONOMY);
+		//$terms = get_terms(TribeEvents::TAXONOMY);
+		$terms = get_terms('tribe_events_cat');
 		$slugs = array();
 		$names = array();
 
