@@ -6,6 +6,7 @@
 }
 
 <?php for ($i = 0; $i < $teccc->count; $i++): ?>
+
 .tribe-events-calendar .cat_<?php echo($teccc->slugs[$i]) ?> a {
 	color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 }
