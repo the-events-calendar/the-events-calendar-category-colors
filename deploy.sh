@@ -21,11 +21,11 @@ SVNUSER="afragen" # your svn username
 
 # Let's begin...
 echo ".........................................."
-echo 
+echo
 echo "Preparing to deploy wordpress plugin"
-echo 
+echo
 echo ".........................................."
-echo 
+echo
 
 # Check version in readme.txt is the same as plugin file
 NEWVERSION1=`grep "^Stable tag" $GITPATH/readme.txt | awk -F' ' '{print $3}'`
@@ -52,7 +52,7 @@ git push $GITREMOTE master
 git push $GITREMOTE master --tags
 
 # Export git contents to svn directory
-echo 
+echo
 echo "Creating local copy of SVN repo ..."
 svn co $SVNURL $SVNPATH
 

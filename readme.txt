@@ -44,19 +44,26 @@ There are two things you can try.
 Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
 
 == Screenshots ==
- 
+
 1. The Events Calendar Category Colors Settings tab
 2. The Events Calendar Category Colors in action
 
 == Changelog ==
 
 = 1.6.0B =
+<<<<<<< HEAD
 * refactoring work: changes under the hood for the benefit of mankind
 * the category legend can now have super-powers added to it
 
 = 1.5.6 =
 * removed function remove_tribe_cat_once and put it into a gist to use as needed. Please refer to FAQ for details.
 
+=======
+* still experimental!
+* refactoring work: changes under the hood for the benefit of mankind
+* the category legend can now have super-powers added to it
+
+>>>>>>> 9fc9d5c530bd19e41aaa1e2977738ef02dbc2c37
 = 1.5.5 =
 * added preference to remove coloring if calendar is styled like first event of the month.
 
