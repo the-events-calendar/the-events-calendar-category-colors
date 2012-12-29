@@ -12,3 +12,5 @@
 	padding: 7px;
 	margin-left: 0.7em;
 }
+
+#legend_box #legend li span { cursor: pointer; }
