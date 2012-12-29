@@ -87,13 +87,6 @@
 	</tr>
 
 	<tr>
-		<th scope="row"> Colored Calendar Fix </th>
-		<td colspan="5">
-			<label> <input name="teccc_options[calendar_colored]" type="checkbox" value="1" <?php echo checked('1', $options['calendar_colored'], false) ?> /> Check if calendar is taking styling of first event category of the month. </label>
-		</td>
-	</tr>
-
-	<tr>
 		<th scope="row">Database Options</th>
 		<td colspan="5">
 			<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1" <?php echo checked('1', $options['chk_default_options_db'], false) ?> /> Restore defaults upon plugin deactivation/reactivation </label>

@@ -11,7 +11,6 @@ class TribeEventsCategoryColorsPublic {
 		require_once TECCC_INCLUDES.'/templatetags.php';
 
 		add_action('pre_get_posts', array($this, 'add_colored_categories'));
-		add_filter('post_class', array($this, 'remove_tribe_cat_once'), 1);
 	}
 
 
@@ -59,34 +58,5 @@ class TribeEventsCategoryColorsPublic {
 		echo '<script type="text/javascript" src="'
 			.TECCC_RESOURCES.'/legend-superpowers.js'
 			.'"></script>"';
-	}
-
-
-	/**
-	 * Removes the Tribe post_class filter on the first occasion that filter is
-	 * used, then sets it up again for future calls.
-	 *
-	 * @todo Improve efficacy by detecting the start and end of Tribe templates, if possible
-	 *
-	 * @param array $classes
-	 * @return array
-	 */
-	public function remove_tribe_cat_once(array $classes) {
-		$options = get_option('teccc_options');
-
-		if( tribe_is_month() && !is_tax() ) { // The Main Calendar Page
-			//insert only if needed
-			if ( ! $options['calendar_colored'] ) { return $classes; }
-			static $count = 0;
-			if ($count++ === 0) {
-				remove_filter('post_class', array(TribeEvents::instance(), 'post_class'));
-			}
-			else {
-				add_filter('post_class', array(TribeEvents::instance(), 'post_class'));
-				remove_filter('post_class', array($this, 'remove_tribe_cat_once'));
-			}
-		}
-
-		return $classes;
 	}
 }

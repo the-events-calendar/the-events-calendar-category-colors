@@ -20,6 +20,17 @@ class TribeEventsCategoryColorsAdmin {
 	}
 
 
+	public function plugin_fail_msg() {
+		if ( !class_exists( 'TribeEvents' ) ) {
+			if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
+				$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
+				$title = __( 'The Events Calendar', 'the-events-calendar-category-colors' );
+				echo '<div class="error"><p>'.sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'tribe-events-calendar-pro' ),$url, $title ).'</p></div>';
+			}
+		}
+	}
+
+
 	/**
 	 * @todo streamline validation/sanitization work, replace deprecated function calls
 	 */
