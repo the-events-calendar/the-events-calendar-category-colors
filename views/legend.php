@@ -1,4 +1,4 @@
-<div id="legend_box">
+<div id="legend_box" class="tribe-events-calendar">
 
 	<ul id="legend">
 
