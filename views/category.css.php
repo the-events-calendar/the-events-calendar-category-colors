@@ -1,6 +1,8 @@
 
 <!-- The Events Calendar Category Colors <?php echo TribeEventsCategoryColors::VERSION ?> generated CSS -->
 <style type="text/css" media="screen">
+	#legend_box #legend li span { cursor: pointer; }
+
 	.tribe-events-calendar a {
 		font-weight: <?php echo $options['font_weight']  ?>;
 	}

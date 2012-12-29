@@ -1,5 +1,5 @@
 === The Events Calendar Category Colors ===
-Contributors: afragen, jonahcoyote, barryhughes
+Contributors: afragen, jonahcoyote, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.5
