@@ -3,13 +3,23 @@
  * document is ready then begin.
  */
 jQuery(document).ready(function($) {
-	var category = {
-		allEntries: $("table.tribe-events-calendar").find("td").find("div.hentry.tribe-events-event"),
-		opacity: 0.25,
-		selected: false,
-		speed: 500,
-		working: false
-	};
+	var legendEntries;
+    var status;
+
+
+    /**
+     * Sets up/restores the status and legendEntries objects to their defaults.
+     */
+    function defaultStatus() {
+        legendEntries = $("ul#legend").find("li");
+        status = {
+            allEntries: $("table.tribe-events-calendar").find("td").find("div.hentry.tribe-events-event"),
+            opacity: 0.25,
+            selected: false,
+            speed: 500,
+            working: false
+        };
+    }
 
 
 	/**
@@ -19,9 +29,9 @@ jQuery(document).ready(function($) {
 	 * @param slug
 	 */
 	function deselect(slug) {
-		$(category.allEntries).fadeTo(category.speed, 1, function() {
-			category.selected = false;
-			category.working = false;
+		$(status.allEntries).fadeTo(status.speed, 1, function() {
+			status.selected = false;
+			status.working = false;
 		});
 	}
 
@@ -33,28 +43,32 @@ jQuery(document).ready(function($) {
 	 */
 	function categorySelection(event) {
 		// If we're still working don't do anything - the visitor can wait
-		if (category.working) {
+		if (status.working) {
 			event.stopPropagation;
 			return;
 		}
-		else category.working = true;
+		else status.working = true;
 
 		// Look out for deselections!
 		var selection = $(this).data("categorySlug");
-		if (selection === category.selected) {
+		if (selection === status.selected) {
 			deselect(selection);
 			event.stopPropagation();
 			return;
 		}
 
 		// Handle selections: deselect existing selection first of all
-		deselect(category.selected);
+		deselect(status.selected);
 
 		// Now focus in on the new selection
 		var slug = ".cat_"+selection;
-		$(category.allEntries).not(slug).fadeTo(category.speed, category.opacity, function() {
-			category.selected = selection;
-			category.working = false;
+        document.slug = slug;
+        document.category = status;
+		$(status.allEntries).not(slug).fadeTo(status.speed, status.opacity, function() {
+			status.selected = selection;
+			status.working = false;
+            console.log("Completed");
+            console.log(this);
 		});
 
 		event.stopPropagation();
@@ -81,12 +95,21 @@ jQuery(document).ready(function($) {
 			.data('categorySlug', linkSlug);
 	}
 
-	// Reference to legend elements
-	var legendEntries = $("ul#legend").find("li");
 
-	// Convert all legend links to prepared span elements
-	$(legendEntries).each(prepareElement);
+    /**
+     * Prepares the legend and assigns superpowers.
+     */
+    function setup() {
+        defaultStatus();
+        $(legendEntries).each(prepareElement);
+        $(legendEntries).click(categorySelection);
+    }
 
-	// Look out for selections
-	$(legendEntries).click(categorySelection);
+
+    /**
+     * Setup should occur when the document is ready and following pjax
+     * operations.
+     */
+    setup();
+    $("#tribe-events-content").on('pjax:complete', setup);
 });
