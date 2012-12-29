@@ -52,8 +52,7 @@ class TribeEventsCategoryColors {
 
 
 	protected function get_category_terms() {
-		//$terms = get_terms(TribeEvents::TAXONOMY);
-		$terms = get_terms('tribe_events_cat');
+		$terms = get_terms('tribe_events_cat'); // TribeEvents not yet defined, so we can't use the class constant
 		$slugs = array();
 		$names = array();
 

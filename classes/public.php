@@ -59,6 +59,4 @@ class TribeEventsCategoryColorsPublic {
 			.TECCC_RESOURCES.'/legend-superpowers.js'
 			.'"></script>"';
 	}
-
-
 }

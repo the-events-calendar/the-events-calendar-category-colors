@@ -21,7 +21,7 @@ class TribeEventsCategoryColorsAdmin {
 
 
 	public function plugin_fail_msg() {
-		if ( !class_exists( 'TribeEvents' ) ) { 
+		if ( !class_exists( 'TribeEvents' ) ) {
 			if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
 				$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 				$title = __( 'The Events Calendar', 'the-events-calendar-category-colors' );
