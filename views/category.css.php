@@ -15,8 +15,7 @@
 
 	.cat_<?php echo $teccc->slugs[$i] ?>,
 	.tribe-events-calendar .cat_<?php echo $teccc->slugs[$i] ?>,
-	.cat_<?php echo $teccc->slugs[$i] ?>,
-	.tribe-events-tooltip .tribe-events-event-title {
+	.cat_<?php echo $teccc->slugs[$i] ?> > .tribe-events-tooltip .tribe-events-event-title {
 		background-color: <?php echo $options[$teccc->slugs[$i].'-background'] ?>;
 		border-left: 5px solid <?php echo $options[$teccc->slugs[$i].'-border'] ?>;
 		border-right: 5px solid transparent;
@@ -25,7 +24,7 @@
 	<?php endfor ?>
 
 	<?php if (isset($options['add_legend']) and !isset($options['custom_legend_css'])): ?>
-		<?php $teccc->view('legend.css') ?>
+	<?php $teccc->view('legend.css') ?>
 	<?php endif ?>
 
 </style>
