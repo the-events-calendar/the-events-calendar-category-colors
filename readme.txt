@@ -13,7 +13,7 @@ Add background colors to month event view of The Events Calendar events.
 
 Add background colors to event categories displayed in the month event view of The Events Calendar. This is inspired by [Coloring Your Category Events](http://tri.be/coloring-your-category-events).
 
-Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page. 
+Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page.
 
 == Installation ==
 
@@ -31,10 +31,6 @@ Within your copy of `ecp-page-template.php` you will need to insert `<?php teccc
 
 Yes. [The Events Calendar plugin](http://wordpress.org/extend/plugins/the-events-calendar/) is written by Modern Tribe, Inc. It requires at least The Events Calendar v2.0.5.
 
-= Where can I report bugs? =
-
-Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
-
 = My calendar is taking on the styling of my first event of the month =
 
 There are two things you can try.
@@ -43,12 +39,20 @@ There are two things you can try.
 
 2. Using <a href="http://tri.be/support/documentation/events-calendar-themers-guide/">Themer's Guide for The Events Calendar</a> create a new _ecp-page-template.php_, adjust this new template to correspond to how you want your calendar displayed and choose **Default Events Template** from the Events Calendar Settings.
 
+= Where can I report bugs? =
+
+Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
+
 == Screenshots ==
  
 1. The Events Calendar Category Colors Settings tab
 2. The Events Calendar Category Colors in action
 
 == Changelog ==
+
+= 1.6.0B =
+* refactoring work: changes under the hood for the benefit of mankind
+* the category legend can now have super-powers added to it
 
 = 1.5.6 =
 * removed function remove_tribe_cat_once and put it into a gist to use as needed. Please refer to FAQ for details.
