@@ -11,7 +11,6 @@ class TribeEventsCategoryColorsPublic {
 		require_once TECCC_INCLUDES.'/templatetags.php';
 
 		add_action('pre_get_posts', array($this, 'add_colored_categories'));
-		add_filter('post_class', array($this, 'remove_tribe_cat_once'), 1);
 	}
 
 
