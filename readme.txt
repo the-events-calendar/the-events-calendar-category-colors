@@ -1,5 +1,5 @@
 === The Events Calendar Category Colors ===
-Contributors: afragen, jonahcoyote, barryhughes
+Contributors: afragen, jonahcoyote, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.5
@@ -198,4 +198,3 @@ Some icons by <a href="http://p.yusukekamiyamane.com/">Yusuke Kamiyamane</a>. Al
 
 = 0.5 =
 This version integrates more tightly with The Events Calendar plugin putting settings on the same page.
-
