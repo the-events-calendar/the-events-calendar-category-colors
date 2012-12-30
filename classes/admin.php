@@ -134,5 +134,7 @@ class TribeEventsCategoryColorsAdmin {
 		wp_enqueue_style('minicolors-css', TECCC_RESOURCES.'/jquery-miniColors/jquery.miniColors.css' );
 		wp_enqueue_script('minicolors-js', TECCC_RESOURCES.'/jquery-miniColors/jquery.miniColors.js' );
 		wp_enqueue_script('minicolors-init', TECCC_RESOURCES.'/jquery-miniColors-init.js' );
+		wp_enqueue_style('minicolors-console', TECCC_RESOURCES.'/minicolors-console.css' );
 	}
+	
 }

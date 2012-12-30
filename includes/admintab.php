@@ -36,6 +36,10 @@ return array(
 			'type' => 'html',
 			'html' => TribeEventsCategoryColorsAdmin::options_elements()
 		),
+		'minicolors-console' => array(
+			'type' => 'html',
+			'html' => '<div id="console"></div>'
+		),
 		'save-button' => array(
 			'type' => 'html',
 			'html' => '<p class="submit"><input type="submit" class="button-primary" value="' . __('Save Changes') . '" /></p>'

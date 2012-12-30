@@ -1,23 +1,27 @@
 jQuery(document).ready( function() {
 
-	jQuery(".color-picker").miniColors({
-		letterCase: 'uppercase',
-    	//opacity: true,
-    	change: function(hex, rgba) {
-    		logData('change', hex, rgba);
-			//jQuery(this).val('rgba(' + rgba.r + ', ' + rgba.g + ', ' + rgba.b + ', ' + rgba.a + ')');
-		},
-		open: function(hex, rgba) {
-			logData('open', hex, rgba);
-		},
-		close: function(hex, rgba) {
-			logData('close', hex, rgba);
-		}
+	var consoleTimeout;
+
+	// Display the results of the change callback on any minicolors input
+	jQuery('INPUT[type=minicolors]').on('change', function() {
+
+		var input = jQuery(this),
+			hex = input.val(),
+			opacity = input.attr('data-opacity'),
+			text;
+
+		// Generate text to show in console
+		text = hex ? hex : 'transparent';
+		if( opacity ) text += ', ' + opacity;
+		text += ' / ' + jQuery.minicolors.rgbString(input)
+
+		// Show text in console; disappear after a few seconds
+		jQuery('#console').text(text).addClass('busy');
+		clearTimeout(consoleTimeout);
+		consoleTimeout = setTimeout( function() {
+			jQuery('#console').removeClass('busy');
+		}, 3000);
+
 	});
-	
-	function logData(type, hex, rgb, opacity) {
-		var text = type + ': ' + hex + ', rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ',  ' + rgb.a + ')';
-		jQuery("#console").prepend(text + '<br />');
-	}
-		
+
 });
