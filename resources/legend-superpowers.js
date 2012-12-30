@@ -2,24 +2,24 @@
  * The Events Calendar Category Colors - Legend Superpowers. Wait until the
  * document is ready then begin.
  */
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
 	var legendEntries;
-    var status;
+	var status;
 
 
-    /**
-     * Sets up/restores the status and legendEntries objects to their defaults.
-     */
-    function defaultStatus() {
-        legendEntries = $("ul#legend").find("li");
-        status = {
-            allEntries: $("table.tribe-events-calendar").find("td").find("div.hentry.tribe-events-event"),
-            opacity: 0.25,
-            selected: false,
-            speed: 500,
-            working: false
-        };
-    }
+	/**
+	 * Sets up/restores the status and legendEntries objects to their defaults.
+	 */
+	function defaultStatus() {
+		legendEntries = $("ul#legend").find("li");
+		status = {
+			allEntries: $("table.tribe-events-calendar").find("td").find("div.hentry.tribe-events-event"),
+			opacity: 0.25,
+			selected: false,
+			speed: 500,
+			working: false
+		};
+	}
 
 
 	/**
@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
 	 * @param slug
 	 */
 	function deselect(slug) {
-		$(status.allEntries).fadeTo(status.speed, 1, function() {
+		$(status.allEntries).fadeTo(status.speed, 1, function () {
 			status.selected = false;
 			status.working = false;
 		});
@@ -61,14 +61,10 @@ jQuery(document).ready(function($) {
 		deselect(status.selected);
 
 		// Now focus in on the new selection
-		var slug = ".cat_"+selection;
-        document.slug = slug;
-        document.category = status;
-		$(status.allEntries).not(slug).fadeTo(status.speed, status.opacity, function() {
+		var slug = ".cat_" + selection;
+		$(status.allEntries).not(slug).fadeTo(status.speed, status.opacity, function () {
 			status.selected = selection;
 			status.working = false;
-            console.log("Completed");
-            console.log(this);
 		});
 
 		event.stopPropagation();
@@ -81,6 +77,13 @@ jQuery(document).ready(function($) {
 	 */
 	function prepareElement() {
 		var link = $(this).find("a");
+
+		// If no anchor elements are found then the legend tpl tag is outside of the
+		// pjax/ajax refresh area and we need take no action, the intial preparation
+		// work will be extant
+		if (link.length === 0) return;
+
+		// Otherwise we need to convert the link(s) to span(s)
 		var linkAddr = $(link).attr("href");
 		var linkTitle = $(link).html();
 		var linkSlugField = $(this).find("input");
@@ -96,20 +99,20 @@ jQuery(document).ready(function($) {
 	}
 
 
-    /**
-     * Prepares the legend and assigns superpowers.
-     */
-    function setup() {
-        defaultStatus();
-        $(legendEntries).each(prepareElement);
-        $(legendEntries).click(categorySelection);
-    }
+	/**
+	 * Prepares the legend and assigns superpowers.
+	 */
+	function setup() {
+		defaultStatus();
+		$(legendEntries).each(prepareElement);
+		$(legendEntries).click(categorySelection);
+	}
 
 
-    /**
-     * Setup should occur when the document is ready and following pjax
-     * operations.
-     */
-    setup();
-    $("#tribe-events-content").on('pjax:complete', setup);
+	/**
+	 * Setup should occur when the document is ready and following pjax
+	 * operations.
+	 */
+	setup();
+	$("#tribe-events-content").on('pjax:complete', setup);
 });
