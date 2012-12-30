@@ -1,6 +1,6 @@
 <?php
 class TribeEventsCategoryColors {
-	const VERSION = '1.6.0B';
+	const VERSION = '1.6.1';
 
 	public $debug = false;
 

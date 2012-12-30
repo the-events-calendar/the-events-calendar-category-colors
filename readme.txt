@@ -1,9 +1,9 @@
 === The Events Calendar Category Colors ===
-Contributors: afragen, jonahcoyote, WebsiteBakery
+Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.5
-Stable tag: 1.6.0.1
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,11 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 2. The Events Calendar Category Colors in action
 
 == Changelog ==
+
+= 1.6.1 =
+* still experimental!
+* merge issue#3
+* fix for CSS superpowers and Ajax
 
 = 1.6.0.1 =
 * still experimental!
@@ -193,6 +198,10 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 This plugin uses <a href="https://github.com/claviska/jquery-miniColors">jQuery MiniColors</a> by Cory LaViska.
 
 Some icons by <a href="http://p.yusukekamiyamane.com/">Yusuke Kamiyamane</a>. All rights reserved.
+
+Thanks to jonahcoyote for some early help and direction.
+
+Big thanks to Barry Hughes (WebsiteBakery) for refactoring code and Legend Superpowers.
 
 == Upgrade Notice ==
 
