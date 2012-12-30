@@ -58,17 +58,14 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 == Changelog ==
 
 = 1.6.1 =
-* still experimental!
-* merge issue#3
-* fix for CSS superpowers and Ajax
-
-= 1.6.0.1 =
-* still experimental!
 * removed function remove_tribe_cat_once from merge
 * respaced rendered CSS so it looks better in 'view source'
 * added #legend_box.tribe-events-calendar to properly set category name text color
 * included function for checking TEC plugin active, missing from merge - OOPS
 * fixed PHP error in classes/categorycolors.php - TribeEvents not defined
+* merge issue#3
+* fix for CSS superpowers and Ajax
+* updated for miniColors 2.0
 
 = 1.6.0B =
 * still experimental!
