@@ -24,7 +24,7 @@
 	<?php endfor ?>
 
 	<?php if (isset($options['add_legend']) and !isset($options['custom_legend_css'])): ?>
-	<?php $teccc->view('legend.css') ?>
+		<?php $teccc->view('legend.css') ?>
 	<?php endif ?>
 
 </style>
