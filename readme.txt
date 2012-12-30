@@ -39,6 +39,12 @@ There are two things you can try.
 
 2. Using <a href="http://tri.be/support/documentation/events-calendar-themers-guide/">Themer's Guide for The Events Calendar</a> create a new _ecp-page-template.php_, adjust this new template to correspond to how you want your calendar displayed and choose **Default Events Template** from the Events Calendar Settings.
 
+= What are Legend Super-Powers? =
+
+Legend superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely.
+
+It needs to be enabled in the Category Colors settings page and the legend must also be enabled and in use for it to function.
+
 = Where can I report bugs? =
 
 Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
@@ -47,6 +53,7 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 1. The Events Calendar Category Colors Settings tab
 2. The Events Calendar Category Colors in action
+3. The Events Calendar Category Colors with Legend Super-Powers in action
 
 == Changelog ==
 
