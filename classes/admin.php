@@ -121,12 +121,19 @@ class TribeEventsCategoryColorsAdmin {
 			'teccc' => $teccc
 			), false);
 
+		add_action('admin_footer', array(__CLASS__, 'include_options_js'));
+
 		if ($teccc->debug) {
 			$tmp = get_option('teccc_options');
 			$content .= '<div id="console" style="width: 300px; float: right; color: #FFF; background: #000; font: 12px monospace; padding: 1em; margin: 1em 0; height: 350px; overflow: auto;"></div><pre>' . var_export($tmp, true) . '</pre>' ;
 		}
 
 		return $content;
+	}
+
+
+	public static function include_options_js() {
+		echo '<script type="text/javascript" src="'.TECCC_RESOURCES.'/teccc-admin.js"></script>';
 	}
 
 

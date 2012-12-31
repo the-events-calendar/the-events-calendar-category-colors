@@ -2,7 +2,7 @@
  * The Events Calendar Category Colors - Legend Superpowers. Wait until the
  * document is ready then begin.
  */
-jQuery(document).ready(function ($) {
+jQuery(document).ready(function($) {
 	var legendEntries;
 	var status;
 
