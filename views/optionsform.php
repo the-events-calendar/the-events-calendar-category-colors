@@ -71,7 +71,7 @@
 		</td>
 	</tr>
 	
-	<tr id="legend_superpowers_setting">
+	<tr class="legend_related">
 		<th scope="row"><!-- Add Legend Superpowers --></th>
 		<td colspan="5" style="padding-top:0;">
 			<label> <input name="teccc_options[legend_superpowers]" type="checkbox" value="1" <?php echo checked('1', $options['legend_superpowers'], false) ?> /> Check to add Legend Superpowers. </label>
@@ -79,8 +79,8 @@
 		</td>
 	</tr>
 
-	<tr id="legend_custom_css">
-		<th scope="row">Custom Legend CSS</th>
+	<tr class="legend_related">
+		<th scope="row"><label>Custom Legend CSS</label></th>
 		<td colspan="5">
 			<label> <input name="teccc_options[custom_legend_css]" type="checkbox" value="1" <?php echo checked('1', $options['custom_legend_css'], false) ?> /> Check to use your own CSS for category legend. </label>
 		</td>
