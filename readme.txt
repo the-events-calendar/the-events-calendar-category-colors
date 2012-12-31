@@ -45,6 +45,8 @@ Legend superpowers are an optional visual effect allowing visitors to focus only
 
 It needs to be enabled in the Category Colors settings page and the legend must also be enabled and in use for it to function.
 
+Click on the category of interest in the Legend to see the effect; click again to remove it.
+
 = Where can I report bugs? =
 
 Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
@@ -71,6 +73,7 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 * still experimental!
 * refactoring work: changes under the hood for the benefit of mankind
 * the category legend can now have super-powers added to it
+* from Barry Hughes
 
 = 1.5.6 =
 * removed function remove_tribe_cat_once and put it into a gist to use as needed. Please refer to FAQ for details.

@@ -75,7 +75,7 @@
 		<th scope="row"><!-- Add Legend Superpowers --></th>
 		<td colspan="5" style="padding-top:0;">
 			<label> <input name="teccc_options[legend_superpowers]" type="checkbox" value="1" <?php echo checked('1', $options['legend_superpowers'], false) ?> /> Check to add Legend Superpowers. </label>
-			<p style="color:#666;margin-left:2px;">Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for this effect. Click again to remove.</p>
+			<p style="color:#666;margin-left:2px;">Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it.</p>
 		</td>
 	</tr>
 
