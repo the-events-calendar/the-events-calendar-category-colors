@@ -64,18 +64,18 @@
 	</tr>
 
 	<tr>
-		<th scope="row"> Add Category Legend </th>
+		<th scope="row">Add Category Legend</th>
 		<td colspan="5">
 			<label><input name="teccc_options[add_legend]" type="checkbox" value="1" <?php echo checked('1', $options['add_legend'], false) ?> /> Check to add a Category Legend to the calendar. </label>
-			<p style="color:#666;margin-left:2px;">Remember to add `&lt;?php teccc_legend_hook(); ?&gt;` to your ecp-page-template.php</p>
+			<p style="color:#666;margin-left:2px;margin-bottom:0;">Remember to add `&lt;?php teccc_legend_hook(); ?&gt;` to your ecp-page-template.php</p>
 		</td>
 	</tr>
-
-
+	
 	<tr>
-		<th scope="row"> Add Super-Powers to Legend</th>
-		<td colspan="5">
-			<label> <input name="teccc_options[legend_superpowers]" type="checkbox" value="1" <?php echo checked('1', $options['legend_superpowers'], false) ?> /> Allows the user to focus on specific categories. </label>
+		<th scope="row"><!-- Add Legend Superpowers --></th>
+		<td colspan="5" style="padding-top:0;">
+			<label> <input name="teccc_options[legend_superpowers]" type="checkbox" value="1" <?php echo checked('1', $options['legend_superpowers'], false) ?> /> Check to add Legend Superpowers. </label>
+			<p style="color:#666;margin-left:2px;">Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely.</p>
 		</td>
 	</tr>
 
