@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
 		if ($(legendOption).attr("checked") === "checked")
 			$(relatedOptions).fadeTo(500, 1, function() { $(relatedOptions).show(); });
 		else
-			$(relatedOptions).fadeTo(500, 0, function () { $(relatedOptions).hide(); });
+			$(relatedOptions).fadeTo(500, 0, function() { $(relatedOptions).hide(); });
 	}
 
 	// Toggle Legend Superpowers visibility initially, after the page loads
