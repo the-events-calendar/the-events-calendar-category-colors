@@ -1,14 +1,15 @@
 <?php
 /*
- * Plugin Name: The Events Calendar Category Colors
- * Plugin URI: https://github.com/afragen/events-calendar-category-colors/
- * Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
- * Version: 1.6.1
- * Text Domain: events-calendar-category-colors
- * Author: Andy Fragen, Barry Hughes
- * Author URI: http://thefragens.com/blog/
- * License: GNU General Public License v2
- * License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+*
+Plugin Name: The Events Calendar Category Colors
+Plugin URI: https://github.com/afragen/events-calendar-category-colors/
+Description: This plugin adds event category background coloring to <a href="http://wordpress.org/extend/plugins/the-events-calendar/">The Events Calendar</a> plugin.
+Version: 1.6.1
+Text Domain: events-calendar-category-colors
+Author: Andy Fragen, Barry Hughes
+Author URI: http://thefragens.com/blog/
+License: GNU General Public License v2
+ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
  */
 
