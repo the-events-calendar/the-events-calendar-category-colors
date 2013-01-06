@@ -1,3 +1,4 @@
+<?php $teccc->view('optionsform.css') ?>
 <table class="form-table">
 
 	<style type="text/css">.form-table th { font-size: 12px; }</style>
@@ -51,47 +52,42 @@
 		<td colspan="5"> </td>
 	</tr>
 
-	<tr>
-		<th scope="row">Font-Weight Options</th>
-		<td> <select name="teccc_options[font_weight]">
+</table>
+
+<div id="teccc_options">
+
+	<div class="teccc_options_col1">Font-Weight Options</div>
+		<div class="teccc_options_col2">
+			<select name="teccc_options[font_weight]">
 			<?php foreach ( $teccc->font_weights as $key => $value ): ?>
 				<option value="<?php esc_attr_e($value) ?>" <?php echo selected($value, $options['font_weight'], false) ?>>
 					<?php esc_html_e($key) ?>
 				</option>
 			<?php endforeach ?>
 			</select>
-		</td>
-	</tr>
+		</div>
 
-	<tr id="category_legend_setting">
-		<th scope="row">Add Category Legend</th>
-		<td colspan="5">
+	<div class="teccc_options_col1">Add Category Legend</div>
+		<div id="category_legend_setting" class="teccc_options_col2">
 			<label><input name="teccc_options[add_legend]" type="checkbox" value="1" <?php echo checked('1', $options['add_legend'], false) ?> /> Check to add a Category Legend to the calendar. </label>
 			<p style="color:#666;margin-left:2px;margin-bottom:0;">Remember to add `&lt;?php teccc_legend_hook(); ?&gt;` to your ecp-page-template.php</p>
-		</td>
-	</tr>
+		</div>
 	
-	<tr class="legend_related">
-		<th scope="row"><!-- Add Legend Superpowers --></th>
-		<td colspan="5" style="padding-top:0;">
+	<div class="teccc_options_col1 legend_related"><!-- Add Legend Superpowers --></div>
+		<div class="teccc_options_col2 legend_related">
 			<label> <input name="teccc_options[legend_superpowers]" type="checkbox" value="1" <?php echo checked('1', $options['legend_superpowers'], false) ?> /> Check to add Legend Superpowers. </label>
 			<p style="color:#666;margin-left:2px;">Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it.</p>
-		</td>
-	</tr>
+		</div>
 
-	<tr class="legend_related">
-		<th scope="row"><label>Custom Legend CSS</label></th>
-		<td colspan="5">
+	<div class="teccc_options_col1 legend_related"><label>Custom Legend CSS</label></div>
+		<div class="teccc_options_col2 legend_related">
 			<label> <input name="teccc_options[custom_legend_css]" type="checkbox" value="1" <?php echo checked('1', $options['custom_legend_css'], false) ?> /> Check to use your own CSS for category legend. </label>
-		</td>
-	</tr>
-
-	<tr>
-		<th scope="row">Database Options</th>
-		<td colspan="5">
+		</div>
+ 
+	<div class="teccc_options_col1">Database Options</div>
+		<div class="teccc_options_col2">
 			<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1" <?php echo checked('1', $options['chk_default_options_db'], false) ?> /> Restore defaults upon plugin deactivation/reactivation </label>
-			<p style="color:#666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</p></td></tr></table>
-		</td>
-	</tr>
+			<p style="color:#666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</p>
+		</div>
 
-</table>
+</div>

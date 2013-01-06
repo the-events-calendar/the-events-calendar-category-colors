@@ -3,7 +3,7 @@
  */
 jQuery(document).ready(function($) {
 	var legendOption = $("#category_legend_setting").find("input");
-	var relatedOptions = $("tr.legend_related");
+	var relatedOptions = $(".legend_related");
 
 
 	/**
@@ -12,9 +12,9 @@ jQuery(document).ready(function($) {
 	 */
 	function toggleSuperpowersVisibility() {
 		if ($(legendOption).attr("checked") === "checked")
-			$(relatedOptions).fadeTo(500, 1, function() { $(relatedOptions).show(); });
+			$(relatedOptions).slideDown();
 		else
-			$(relatedOptions).fadeTo(500, 0, function() { $(relatedOptions).hide(); });
+			$(relatedOptions).slideUp();
 	}
 
 	// Toggle Legend Superpowers visibility initially, after the page loads
