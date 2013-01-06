@@ -70,13 +70,13 @@
 	<div class="teccc_options_col1">Add Category Legend</div>
 		<div id="category_legend_setting" class="teccc_options_col2">
 			<label><input name="teccc_options[add_legend]" type="checkbox" value="1" <?php echo checked('1', $options['add_legend'], false) ?> /> Check to add a Category Legend to the calendar. </label>
-			<p style="color:#666;margin-left:2px;margin-bottom:0;">Remember to add `&lt;?php teccc_legend_hook(); ?&gt;` to your ecp-page-template.php</p>
+			<p>Remember to add `&lt;?php teccc_legend_hook(); ?&gt;` to your ecp-page-template.php</p>
 		</div>
 	
 	<div class="teccc_options_col1 legend_related"><!-- Add Legend Superpowers --></div>
 		<div class="teccc_options_col2 legend_related">
 			<label> <input name="teccc_options[legend_superpowers]" type="checkbox" value="1" <?php echo checked('1', $options['legend_superpowers'], false) ?> /> Check to add Legend Superpowers. </label>
-			<p style="color:#666;margin-left:2px;">Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it.</p>
+			<p>Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it.</p>
 		</div>
 
 	<div class="teccc_options_col1 legend_related"><label>Custom Legend CSS</label></div>
@@ -87,7 +87,7 @@
 	<div class="teccc_options_col1">Database Options</div>
 		<div class="teccc_options_col2">
 			<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1" <?php echo checked('1', $options['chk_default_options_db'], false) ?> /> Restore defaults upon plugin deactivation/reactivation </label>
-			<p style="color:#666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</p>
+			<p>Only check this if you want to reset plugin settings upon Plugin reactivation</p>
 		</div>
 
 </div>
