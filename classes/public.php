@@ -57,6 +57,6 @@ class TribeEventsCategoryColorsPublic {
 	public function add_superpower_logic() {
 		echo '<script type="text/javascript" src="'
 			.TECCC_RESOURCES.'/legend-superpowers.js'
-			.'"></script>"';
+			.'"></script>';
 	}
 }
