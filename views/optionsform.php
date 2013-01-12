@@ -1,4 +1,3 @@
-<?php $teccc->view('optionsform.css') ?>
 <table class="form-table">
 
 	<style type="text/css">.form-table th { font-size: 12px; }</style>
