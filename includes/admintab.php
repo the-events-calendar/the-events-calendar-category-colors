@@ -4,10 +4,6 @@ return array(
 	'show_save' => false,
 	'parent_option' => 'teccc_options',
 	'fields' => array(
-		'miniColors-load' => array(
-			'type' => 'html',
-			'html' => TribeEventsCategoryColorsAdmin::mini_colors()
-		),
 		'info-start' => array(
 			'type' => 'html',
 			'html' => '<div id="modern-tribe-info">'
