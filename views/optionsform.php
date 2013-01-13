@@ -18,7 +18,7 @@
 			<?php if (isset($options[$teccc->slugs[$i].'-border_transparent'])):
 				$options[$teccc->slugs[$i].'-border'] = 'transparent';
 			else: ?>
-				<input type="minicolors" name="teccc_options[<?php esc_attr_e($teccc->slugs[$i]) ?>-border]" value="<?php esc_html_e($options[$teccc->slugs[$i].'-border']) ?>" /></td>
+				<input type="minicolors" name="teccc_options[<?php esc_attr_e($teccc->slugs[$i]) ?>-border]" value="<?php esc_html_e($options[$teccc->slugs[$i].'-border']) ?>" />
 			<?php endif ?>
 			</td>
 
