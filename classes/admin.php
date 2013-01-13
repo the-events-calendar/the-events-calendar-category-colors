@@ -138,5 +138,18 @@ class TribeEventsCategoryColorsAdmin {
 		wp_enqueue_script('teccc-admin', TECCC_RESOURCES.'/teccc-admin.js', false, false, true );
 		wp_enqueue_style('teccc-options', TECCC_RESOURCES.'/teccc-options.css' );
 		
+		wp_enqueue_script('teccc-test', TECCC_RESOURCES.'/teccc-test.js', false, false, true );
+		add_action('wp_head', array($this, 'add_colors_js'));
+		
 	}
+	
+	public function add_colors_js() {
+		//$teccc = TribeEventsCategoryColors::instance();
+
+		$this->teccc->view('borders.js', array(
+			'options' => $this->options,
+			'teccc' => $this->teccc
+		));
+	}
+
 }
