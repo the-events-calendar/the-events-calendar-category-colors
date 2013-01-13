@@ -2,10 +2,10 @@
  * The Events Calendar Category Colors - options form behaviours.
  */
 jQuery(document).ready(function($) {
-	var conferenceTransparent = $("#teccc_border_options-conference").find("input");
-	var conferenceColors = $("#teccc_border-conference");
-	var holidayTransparent = $("#teccc_border_options-holiday").find("input");
-	var holidayColors = $("#teccc_border-holiday");
+	var borderTransparent = $(".teccc_border_options").find("input");
+	var borderColors = $(".teccc_border");
+	var backgroundTransparent = $(".teccc_background_options").find("input");
+	var backgroundColors = $(".teccc_background");
 
 
 	/**
@@ -13,15 +13,15 @@ jQuery(document).ready(function($) {
 	 * option is displayed (or else it is hidden).
 	 */
 	function toggleSuperpowersVisibility() {
-		if ($(conferenceTransparent).attr("checked") === "checked")
-			$(conferenceColors).slideUp();
+		if ($(borderTransparent).attr("checked") === "checked")
+			$(borderColors).slideUp();
 		else
-			$(conferenceColors).slideDown();
+			$(bordereColors).slideDown();
 		
-		if ($(holidayTransparent).attr("checked") === "checked")
-			$(holidayColors).slideUp();
+		if ($(backgroundTransparent).attr("checked") === "checked")
+			$(backgroundColors).slideUp();
 		else
-			$(holidayColors).slideDown();
+			$(backgroundColors).slideDown();
 
 	}
 
@@ -29,6 +29,6 @@ jQuery(document).ready(function($) {
 	toggleSuperpowersVisibility();
 
 	// Subsequently toggle whenever the legend setting changes
-	$(conferenceTransparent).change(toggleSuperpowersVisibility);
-	$(holidayTransparent).change(toggleSuperpowersVisibility);
+	$(borderTransparent).change(toggleSuperpowersVisibility);
+	$(backgroundTransparent).change(toggleSuperpowersVisibility);
 });
