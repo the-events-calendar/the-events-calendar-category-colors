@@ -14,12 +14,6 @@
 		<tr>
 			<td> <?php esc_html_e($teccc->slugs[$i]) ?> </td>
 
-			<td> <label> <input name="teccc_options[<?php esc_attr_e($teccc->slugs[$i]) ?>-border_transparent]" type="checkbox" value="1" <?php echo checked('1', $options[$teccc->slugs[$i].'-border_transparent'], false) ?> /> Transparent </label> <br />
-			<?php if (isset($options[$teccc->slugs[$i].'-border_transparent'])):
-				$options[$teccc->slugs[$i].'-border'] = 'transparent';
-			else: ?>
-				<input type="minicolors" name="teccc_options[<?php esc_attr_e($teccc->slugs[$i]) ?>-border]" value="<?php esc_html_e($options[$teccc->slugs[$i].'-border']) ?>" />
-			<?php endif ?>
 			<td> 
 				<div id="teccc_border_options-<?php esc_html_e($teccc->slugs[$i]) ?>">
 					<label> <input name="teccc_options[<?php esc_attr_e($teccc->slugs[$i]) ?>-border_transparent]" type="checkbox" value="1" <?php echo checked('1', $options[$teccc->slugs[$i].'-border_transparent'], false) ?> /> Transparent </label> <br />
