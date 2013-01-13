@@ -59,6 +59,9 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 == Changelog ==
 
+= 1.6.3 =
+* add transition to Transparent/Color Picker option
+
 = 1.6.2 =
 * changed to slideUp/slideDown transition when Add Category Legend checked/unchecked
 * reorganized plugin specific javascript and CSS to load correctly via admin_enqueue_scripts, even to footer.
