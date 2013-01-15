@@ -1,4 +1,4 @@
-<table class="form-table">
+<table class="teccc form-table">
 
 	<style type="text/css">.form-table th { font-size: 12px; }</style>
 
@@ -14,26 +14,26 @@
 		<tr>
 			<td> <?php esc_html_e($teccc->slugs[$i]) ?> </td>
 
-			<td> 
-				<div class="teccc_border_options">
+			<td class="color-control">
+				<div class="transparency teccc_border_options">
 					<label> <input name="teccc_options[<?php esc_attr_e($teccc->slugs[$i]) ?>-border_transparent]" type="checkbox" value="1" <?php echo checked('1', $options[$teccc->slugs[$i].'-border_transparent'], false) ?> /> Transparent </label> <br />
 					<?php if (isset($options[$teccc->slugs[$i].'-border_transparent'])):
 						$options[$teccc->slugs[$i].'-border'] = 'transparent'; ?>
 					<?php endif ?>
  				</div>
-				<div class="teccc_border">
+				<div class="colorselector teccc_border">
 					<input type="minicolors" name="teccc_options[<?php esc_attr_e($teccc->slugs[$i]) ?>-border]" value="<?php esc_html_e($options[$teccc->slugs[$i].'-border']) ?>" />
  				</div>
 			</td>
 
-			<td>
-				<div class="teccc_background_options">
+			<td class="color-control">
+				<div class="transparency teccc_background_options">
 					<label> <input name="teccc_options[<?php esc_attr_e($teccc->slugs[$i]) ?>-background_transparent]" type="checkbox" value="1" <?php echo checked('1', $options[$teccc->slugs[$i].'-background_transparent'], false) ?> /> Transparent</label><br />
 					<?php if (isset( $options[$teccc->slugs[$i].'-background_transparent'])):
 						$options[$teccc->slugs[$i].'-background'] = 'transparent'; ?>
 					<?php endif ?>
 				</div>
-				<div class="teccc_background">
+				<div class="colorselector teccc_background">
 					<input type="minicolors" name="teccc_options[<?php esc_attr_e($teccc->slugs[$i]) ?>-background]" value="<?php esc_attr_e($options[$teccc->slugs[$i].'-background']) ?>" />
 				</div>
 			</td>

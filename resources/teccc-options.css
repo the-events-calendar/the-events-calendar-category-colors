@@ -20,3 +20,7 @@
 	color: #666;
 	margin-left: 1em;
 }
+
+table.teccc.form-table td {
+	vertical-align: top;
+}
