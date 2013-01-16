@@ -3,7 +3,7 @@ Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.5
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,8 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 = 1.6.3 =
 * add transition to Transparent/Color Picker option
+* use wp_enqueue_script for legend-superpowers.js
+* move most externally called javascript to load in footer
 
 = 1.6.2 =
 * changed to slideUp/slideDown transition when Add Category Legend checked/unchecked
