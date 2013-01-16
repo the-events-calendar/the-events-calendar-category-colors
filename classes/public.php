@@ -28,8 +28,7 @@ class TribeEventsCategoryColorsPublic {
 			add_action('teccc_legend_hook', array($this, 'legend_implementation'));
 
 		if (isset($this->options['legend_superpowers']) and $this->options['legend_superpowers'] === '1') {
-			wp_enqueue_script('jquery');
-			add_action('wp_footer', array($this, 'add_superpower_logic'));
+			wp_enqueue_script('legend_superpowers', TECCC_RESOURCES.'/legend-superpowers.js', array(jquery), TribeEventsCategoryColors::VERSION, true );
 		}
 	}
 
@@ -53,10 +52,4 @@ class TribeEventsCategoryColorsPublic {
 		));
 	}
 
-
-	public function add_superpower_logic() {
-		echo '<script type="text/javascript" src="'
-			.TECCC_RESOURCES.'/legend-superpowers.js'
-			.'"></script> ';
-	}
 }
