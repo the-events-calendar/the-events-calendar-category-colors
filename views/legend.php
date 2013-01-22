@@ -9,7 +9,7 @@
 					<?php esc_html_e($teccc->names[$i]) ?>
 				</a>
 				<?php if ($legendData): ?>
-					<input type="hidden" name="teccc->slugs[<?php echo $i ?>]" value="<?php esc_attr_e($teccc->slugs[$i]) ?>" />
+					<input type="hidden" value="<?php esc_attr_e($teccc->slugs[$i]) ?>" />
 				<?php endif ?>
 			</li>
 
