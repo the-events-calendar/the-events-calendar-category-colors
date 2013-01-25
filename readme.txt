@@ -63,6 +63,8 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 * add transition to Transparent/Color Picker option
 * use wp_enqueue_script for legend-superpowers.js
 * move most externally called javascript to load in footer
+* fix for language translation in Legend _category_ link
+* removed extraneous `name` attribute from legend.php
 
 = 1.6.2 =
 * changed to slideUp/slideDown transition when Add Category Legend checked/unchecked
