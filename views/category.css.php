@@ -13,7 +13,7 @@
 
 	.cat_<?php echo $teccc->slugs[$i] ?>,
 	.tribe-events-calendar .cat_<?php echo $teccc->slugs[$i] ?>,
-	.cat_<?php echo $teccc->slugs[$i] ?> > .tribe-events-tooltip h4.entry-title {
+	#tribe-events-content .cat_<?php echo $teccc->slugs[$i] ?> > .tribe-events-tooltip h4.entry-title {
 		background-color: <?php echo $options[$teccc->slugs[$i].'-background'] ?>;
 		border-left: 5px solid <?php echo $options[$teccc->slugs[$i].'-border'] ?>;
 		border-right: 5px solid transparent;
