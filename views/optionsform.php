@@ -76,7 +76,6 @@
 	<div class="teccc_options_col1">Add Category Legend</div>
 		<div id="category_legend_setting" class="teccc_options_col2">
 			<label><input name="teccc_options[add_legend]" type="checkbox" value="1" <?php echo checked('1', $options['add_legend'], false) ?> /> Check to add a Category Legend to the calendar. </label>
-			<p>Remember to add `&lt;?php teccc_legend_hook(); ?&gt;` to your ecp-page-template.php</p>
 		</div>
 	
 	<div class="teccc_options_col1 legend_related"><!-- Add Legend Superpowers --></div>
