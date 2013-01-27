@@ -3,12 +3,9 @@ class TribeEventsCategoryColorsPublic {
 	protected $teccc = null;
 	protected $options = array();
 
-
 	public function __construct(TribeEventsCategoryColors $teccc) {
 		$this->teccc = $teccc;
 		$this->options = get_option('teccc_options');
-
-		require_once TECCC_INCLUDES.'/templatetags.php';
 
 		add_action('pre_get_posts', array($this, 'add_colored_categories'));
 	}
@@ -39,31 +36,18 @@ class TribeEventsCategoryColorsPublic {
 	}
 
 
-	public function legend_implementation() {
-		if (isset($this->options['legend_superpowers']) and $this->options['legend_superpowers'] === '1')
-			$legend = true;
-
-		$this->teccc->view('legend', array(
-			'tec' => TribeEvents::instance(),
-			'teccc' => $this->teccc,
-			'legendData' => isset($legend) ? true : false
-		));
-	}
-
-	
-	public static function show_legend() {
-		$teccc = TribeEventsCategoryColors::instance();
-		$tec = TribeEvents::instance();
-		$teccc->options = get_option('teccc_options');
+	public function show_legend() {
+		//Needs to work both inside and outside of class
+		$teccc_options = get_option('teccc_options');
+		if (!(isset($teccc_options['add_legend']) and $teccc_options['add_legend'] === '1')) { return; }
 		
-		$content = $teccc->view('legend', array(
-			'options' => (array) get_option('teccc_options', array()),
-			'teccc' => $teccc,
-			'tec' => $tec
-			), false);
+		$content = TribeEventsCategoryColors::view('legend', array(
+			'options' => get_option('teccc_options'),
+			'teccc' => TribeEventsCategoryColors::instance(),
+			'tec' => TribeEvents::instance()
+			));
 
-		if (isset($teccc->options['add_legend']) and $teccc->options['add_legend'] === '1')
-			return $content;
+		return $content;
 	}
 
 }
