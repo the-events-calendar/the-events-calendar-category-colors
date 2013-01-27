@@ -42,7 +42,7 @@ class TribeEventsCategoryColorsPublic {
 		if (!(isset($teccc_options['add_legend']) and $teccc_options['add_legend'] === '1')) { return; }
 		
 		$content = TribeEventsCategoryColors::view('legend', array(
-			'options' => get_option('teccc_options'),
+			'options' => $teccc_options,
 			'teccc' => TribeEventsCategoryColors::instance(),
 			'tec' => TribeEvents::instance()
 			));
