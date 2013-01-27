@@ -23,9 +23,7 @@ class TribeEventsCategoryColorsPublic {
 
 	public function add_effects() {
 		add_action('wp_head', array($this, 'add_css'));
-
-		//if (isset($this->options['add_legend']) and $this->options['add_legend'] === '1')
-			add_filter('tribe_events_calendar_before_the_grid', array($this, 'show_legend'));
+		add_filter('tribe_events_calendar_before_the_grid', array($this, 'show_legend'));
 
 		if (isset($this->options['legend_superpowers']) and $this->options['legend_superpowers'] === '1')
 			wp_enqueue_script('legend_superpowers', TECCC_RESOURCES.'/legend-superpowers.js', array(jquery), TribeEventsCategoryColors::VERSION, true );
