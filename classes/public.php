@@ -24,7 +24,7 @@ class TribeEventsCategoryColorsPublic {
 	public function add_effects() {
 		add_action('wp_head', array($this, 'add_css'));
 
-		if (isset($this->options['add_legend']) and $this->options['add_legend'] === '1')
+		//if (isset($this->options['add_legend']) and $this->options['add_legend'] === '1')
 			add_filter('tribe_events_calendar_before_the_grid', array($this, 'show_legend'));
 
 		if (isset($this->options['legend_superpowers']) and $this->options['legend_superpowers'] === '1')
@@ -56,6 +56,7 @@ class TribeEventsCategoryColorsPublic {
 	public static function show_legend() {
 		$teccc = TribeEventsCategoryColors::instance();
 		$tec = TribeEvents::instance();
+		$teccc->options = get_option('teccc_options');
 		
 		$content = $teccc->view('legend', array(
 			'options' => (array) get_option('teccc_options', array()),
@@ -63,7 +64,8 @@ class TribeEventsCategoryColorsPublic {
 			'tec' => $tec
 			), false);
 
-		return $content;
+		if (isset($teccc->options['add_legend']) and $teccc->options['add_legend'] === '1')
+			return $content;
 	}
 
 }
