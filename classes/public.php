@@ -21,7 +21,8 @@ class TribeEventsCategoryColorsPublic {
 	public function add_effects() {
 		add_action('wp_head', array($this, 'add_css'));
 		add_filter('tribe_events_calendar_before_the_grid', array($this, 'show_legend'));
-
+		do_action('teccc_legend');
+		
 		if (isset($this->options['legend_superpowers']) and $this->options['legend_superpowers'] === '1')
 			wp_enqueue_script('legend_superpowers', TECCC_RESOURCES.'/legend-superpowers.js', array(jquery), TribeEventsCategoryColors::VERSION, true );
 
@@ -48,6 +49,15 @@ class TribeEventsCategoryColorsPublic {
 			));
 
 		return $content;
+	}
+
+	public function remove_default_legend() {
+		echo ">>>remove_default_legend";
+		remove_filter( 'tribe_events_calendar_before_the_grid', array($this, 'show_legend'));
+	}
+		
+	public function remove_default_legend() {
+		add_action('teccc_legend', array($this, 'remove_legend'));
 	}
 
 }
