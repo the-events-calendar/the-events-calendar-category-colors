@@ -18,7 +18,7 @@ return array(
 		),
  		'legend' => array(
  			'type' => 'html',
- 			'html' => '<p>The Category Colors legend is inserted using the new <i>tribe_events_calendar_before_the_grid</i> filter. To remove it from this default location and add it back using any of the new filters, add the following lines to your theme\'s functions.php file.</p><p><code>add_filter(\'tribe_events_calendar_before_the_grid\', \'\', 99);</code><br /><code>add_filter(\'tribe_events_calendar_filter_of_choice\', \'TribeEventsCategoryColorsPublic::show_legend\');</code></p><p>Obviously you will need to replace <i>tribe_events_calendar_filter_of_choice</i> with a real filter. Please refer to new TEC filter guide for  options.</p>'
+ 			'html' => '<p>The Category Colors legend is inserted using the new <i>tribe_events_calendar_before_the_grid</i> filter. To remove it from this default location and add it back using any of the new filters, add the following lines to your theme\'s functions.php file.</p><p><code>remove_filter(\'tribe_events_calendar_before_the_grid\', array(\'TribeEventsCategoryColorsPublic\', \'show_legend\'), 99);</code><br /><code>add_filter(\'tribe_events_calendar_filter_of_choice\', array(\'TribeEventsCategoryColorsPublic\', \'show_legend\'));</code></p><p>Obviously you will need to replace <i>tribe_events_calendar_filter_of_choice</i> with a real filter. Please refer to new TEC filter guide for options.</p>'
  		),
 		'info-end' => array(
 			'type' => 'html',
