@@ -1,6 +1,6 @@
 <?php
 class TribeEventsCategoryColors {
-	const VERSION = '1.6.3';
+	const VERSION = '1.7b';
 
 	public $text_colors = array(
 		'Black' => '#000',
@@ -142,6 +142,8 @@ class TribeEventsCategoryColors {
 				$arr[$teccc->slugs[$i].'-text'] = '#000';
 				$arr[$teccc->slugs[$i].'-background'] = '#CFCFCF';
 				$arr[$teccc->slugs[$i].'-border'] = '#CFCFCF';
+				$arr[$teccc->slugs[$i].'-border_transparent'] = '1';
+				$arr[$teccc->slugs[$i].'-background_transparent'] = '1';
 			}
 			$arr['font_weight'] = 'bold';
 			update_option('teccc_options', $arr);
