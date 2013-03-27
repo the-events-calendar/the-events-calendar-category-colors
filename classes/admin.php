@@ -118,11 +118,49 @@ class TribeEventsCategoryColorsAdmin {
 		$teccc = TribeEventsCategoryColors::instance();
 
 		$content = $teccc->view('optionsform', array(
-			'options' => (array) get_option('teccc_options', array()),
+			'options' => self::fetch_options($teccc),
 			'teccc' => $teccc
 			), false);
 
 		return $content;
+	}
+
+
+	/**
+	 * Retrieves the options and pre-processes them to ensure we aren't trying to access non-existent
+	 * indicies (can result in notices being emitted).
+	 *
+	 * @param $teccc
+	 * @return array
+	 */
+	protected static function fetch_options($teccc) {
+		$options = (array) get_option('teccc_options', array());
+		$categoryOptions = array(
+			'-background',
+			'-background_transparent',
+			'-border',
+			'-border_transparent',
+			'-text'
+		);
+
+		foreach($teccc->slugs as $slug)
+			foreach ($categoryOptions as $optionkey)
+				if (!isset($options[$slug.$optionkey]))
+					$options[$slug.$optionkey] = null;
+
+		$generalOptions = array(
+			'add_legend',
+			'chk_default_options_db',
+			'custom_legend_css',
+			'font_weight',
+			'legend_superpowers',
+		);
+
+		foreach ($generalOptions as $optionkey)
+			if (!isset($options[$optionkey]))
+				$options[$optionkey] = null;
+
+		return $options;
 	}
 	
 	
