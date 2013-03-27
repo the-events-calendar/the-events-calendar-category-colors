@@ -64,7 +64,7 @@
 
 	<div class="teccc_options_col1">Font-Weight Options</div>
 		<div class="teccc_options_col2">
-			<select name="teccc_options[font_weight]">
+			<select name="teccc_options[font_weight]" id="teccc_font_weight">
 			<?php foreach ( $teccc->font_weights as $key => $value ): ?>
 				<option value="<?php esc_attr_e($value) ?>" <?php echo selected($value, $options['font_weight'], false) ?>>
 					<?php esc_html_e($key) ?>

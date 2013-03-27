@@ -43,4 +43,95 @@ jQuery(document).ready(function($) {
 	// (and run once on page load)
 	$(transparencySwitches).change(toggleColorControls);
 	$(transparencySwitches).each(toggleColorControls);
+
+
+	/**
+	 * Returns the sampler element that belongs to the specified row element.
+	 *
+	 * @param rowElement
+	 * @return {*|jQuery}
+	 */
+	function getRowSampler(row) {
+		var lastCell = $(row).find("td:last-child");
+		var sampler = $(lastCell).find("span");
+		return sampler;
+	}
+
+
+	/**
+	 * Updates the display sampler that shares a row with the specified element.
+	 *
+	 * @param rowElement
+	 */
+	function updateRowSampler(rowElement) {
+		var row = $(rowElement).parents("tr");
+		var sampler = getRowSampler(row);
+
+		var borderColor = /-border]$/;
+		var backgroundColor = /-background]$/;
+		var borderTransparency = /-border_transparent]$/;
+		var backgroundTransparency = /-background_transparent]$/;
+		var fontColor = /-text]$/;
+		var fontWeight = $("select[name='teccc_options[font_weight]']").val();
+
+		var newBorderColor = "#aaf";
+		var newBackgroundColor = "#eef";
+		var newBorderTransparency = false;
+		var newBackgroundTransparency = false;
+		var newFontColor = "#000";
+
+		$(row).find("input").add($(row).find("select")).each(function() {
+			var inputName = $(this).attr("name");
+			console.log(inputName);
+			if (borderColor.test(inputName)) newBorderColor = $(this).val();
+			else if (backgroundColor.test(inputName)) newBackgroundColor = $(this).val();
+			else if (borderTransparency.test(inputName)) newBorderTransparency = ($(this).attr("checked") === "checked");
+			else if (backgroundTransparency.test(inputName)) newBackgroundTransparency = ($(this).attr("checked") === "checked");
+			else if (fontColor.test(inputName)) newFontColor = $(this).val();
+		});
+
+		if (newBorderTransparency) newBorderColor = "transparent";
+		if (newBackgroundTransparency) newBackgroundColor = "transparent";
+
+		$(sampler).css("border-left-color", newBorderColor)
+			.css("background-color", newBackgroundColor)
+			.css("color", newFontColor)
+			.css("font-weight", fontWeight);
+	}
+
+	// Live feedback: update background/border colors
+	var colorControls = $("table.teccc.form-table");
+	var colorInputs = $(colorControls).find("input");
+	var fontSelect = $(colorControls).find("select");
+
+	$(colorInputs).add(fontSelect).change(function() {
+		updateRowSampler(this);
+	});
+
+	// Live feedback: update font-weights
+	$("select[name='teccc_options[font_weight]']").change(function() {
+
+		$(colorControls).find("tr").find("td").each(function() {
+			updateRowSampler(this);
+		});
+	})
+
+	/*.change(function () {
+		var input = $(this).attr("name");
+		var newColor = $(this).val();
+		var sampler = findSamplerElement($(this));
+
+		var borderInputsPattern = /-border]$/;
+		var backgroundInputsPattern = /-background]$/;
+
+		if (borderInputsPattern.test(input))
+			$(sampler).css("border-left-color", newColor);
+
+		if (backgroundInputsPattern.test(input))
+			$(sampler).css("background-color", newColor);
+
+
+
+		console.log($(this).attr("name")+$(this).val());
+	})*/
 });
