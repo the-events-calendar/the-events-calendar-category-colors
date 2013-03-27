@@ -61,7 +61,7 @@ jQuery(document).ready(function($) {
 		deselect(status.selected);
 
 		// Now focus in on the new selection
-		var slug = ".cat_" + selection;
+		var slug = ".tribe-events-category-" + selection;
 		$(status.allEntries).not(slug).fadeTo(status.speed, status.opacity, function () {
 			status.selected = selection;
 			status.working = false;

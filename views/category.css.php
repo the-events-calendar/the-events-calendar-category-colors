@@ -7,13 +7,13 @@
 
 	<?php for ($i = 0; $i < $teccc->count; $i++): ?>
 
-	.tribe-events-calendar .cat_<?php echo($teccc->slugs[$i]) ?> a {
+	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->slugs[$i]) ?> a {
 		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 	}
 
-	.cat_<?php echo $teccc->slugs[$i] ?>,
-	.tribe-events-calendar .cat_<?php echo $teccc->slugs[$i] ?>,
-	#tribe-events-content .cat_<?php echo $teccc->slugs[$i] ?> > .tribe-events-tooltip h4.entry-title {
+	.tribe-events-category-<?php echo $teccc->slugs[$i] ?>,
+	.tribe-events-calendar .tribe-events-category-<?php echo $teccc->slugs[$i] ?>,
+	#tribe-events-content .tribe-events-category-<?php echo $teccc->slugs[$i] ?> > .tribe-events-tooltip h4.entry-title {
 		background-color: <?php echo $options[$teccc->slugs[$i].'-background'] ?>;
 		border-left: 5px solid <?php echo $options[$teccc->slugs[$i].'-border'] ?>;
 		border-right: 5px solid transparent;

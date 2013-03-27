@@ -29,7 +29,7 @@ Within your copy of `ecp-page-template.php` you will need to insert `<?php teccc
 
 = Does the plugin require The Events Calendar plugin? =
 
-Yes. [The Events Calendar plugin](http://wordpress.org/extend/plugins/the-events-calendar/) is written by Modern Tribe, Inc. It requires at least The Events Calendar v2.0.5.
+Yes. [The Events Calendar plugin](http://wordpress.org/extend/plugins/the-events-calendar/) is written by Modern Tribe, Inc. It requires at least The Events Calendar v3.0.
 
 = My calendar is taking on the styling of my first event of the month =
 
@@ -58,6 +58,9 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 1.7 =
+* updated for new TEC 3.0 code, will not work for TEC < 3.0
 
 = 1.6.3 =
 * add transition to Transparent/Color Picker option
