@@ -52,12 +52,17 @@ class TribeEventsCategoryColorsPublic {
 	}
 
 	public function remove_default_legend() {
-		echo ">>>remove_default_legend";
-		remove_filter( 'tribe_events_calendar_before_the_grid', array($this, 'show_legend'));
+		if (isset($query->query_vars['post_type']) and $query->query_vars['post_type'] == 'tribe_events')
+			if (isset($query->query_vars['eventDisplay']) and $query->query_vars['eventDisplay'] == 'month') {
+				echo ">>>remove_default_legend";
+				remove_filter( 'tribe_events_calendar_before_the_grid', array($this, 'show_legend'));
+			}
 	}
 		
 	public function remove_default_legend2() {
-		add_action('teccc_legend', array($this, 'remove_legend'));
+		if (isset($query->query_vars['post_type']) and $query->query_vars['post_type'] == 'tribe_events')
+			if (isset($query->query_vars['eventDisplay']) and $query->query_vars['eventDisplay'] == 'month')
+				add_action('teccc_legend', array($this, 'remove_legend'));
 	}
 
 }
