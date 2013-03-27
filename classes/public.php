@@ -12,8 +12,9 @@ class TribeEventsCategoryColorsPublic {
 
 
 	public function add_colored_categories($query) {
+		$views = array('month', 'upcoming', 'day');
 		if (isset($query->query_vars['post_type']) and $query->query_vars['post_type'] == 'tribe_events')
-			if (isset($query->query_vars['eventDisplay']) and ($query->query_vars['eventDisplay'] == 'month' or $query->query_vars['eventDisplay'] == 'upcoming'))
+			if (isset($query->query_vars['eventDisplay']) and (in_array($query->query_vars['eventDisplay'], $views)))
 				$this->add_effects();
 	}
 
