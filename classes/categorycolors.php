@@ -13,6 +13,7 @@ class TribeEventsCategoryColors {
 	);
 
 
+	public $IDs   = array();
 	public $slugs = array();
 	public $names = array();
 	public $count = 0;
@@ -43,6 +44,7 @@ class TribeEventsCategoryColors {
 
 	public function load_categories() {
 		$terms = $this->get_category_terms();
+		$this->IDs = $terms['IDs'];
 		$this->slugs = $terms['slugs'];
 		$this->names = $terms['names'];
 		$this->count = count($this->slugs);
@@ -51,15 +53,18 @@ class TribeEventsCategoryColors {
 
 	protected function get_category_terms() {
 		$terms = get_terms('tribe_events_cat'); // TribeEvents not yet defined, so we can't use the class constant
+		$IDs = array();
 		$slugs = array();
 		$names = array();
 
 		foreach ($terms as $term) {
+			$IDs[] = $term->ID;
 			$slugs[] = $term->slug;
 			$names[] = preg_replace('/\s/', '&nbsp;', $term->name);
 		}
 
 		return array(
+			'IDs'   => $IDs,
 			'slugs' => $slugs,
 			'names' => $names
 		);
