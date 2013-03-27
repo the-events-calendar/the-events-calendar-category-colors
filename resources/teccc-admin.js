@@ -110,28 +110,8 @@ jQuery(document).ready(function($) {
 
 	// Live feedback: update font-weights
 	$("select[name='teccc_options[font_weight]']").change(function() {
-
 		$(colorControls).find("tr").find("td").each(function() {
 			updateRowSampler(this);
 		});
 	})
-
-	/*.change(function () {
-		var input = $(this).attr("name");
-		var newColor = $(this).val();
-		var sampler = findSamplerElement($(this));
-
-		var borderInputsPattern = /-border]$/;
-		var backgroundInputsPattern = /-background]$/;
-
-		if (borderInputsPattern.test(input))
-			$(sampler).css("border-left-color", newColor);
-
-		if (backgroundInputsPattern.test(input))
-			$(sampler).css("background-color", newColor);
-
-
-
-		console.log($(this).attr("name")+$(this).val());
-	})*/
 });
