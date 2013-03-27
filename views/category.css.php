@@ -21,7 +21,7 @@
 	}
 	
 	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->IDs[$i]) ?> a {
-		color: <?php echo $options[$teccc->IDs[$i].'-text'] ?>;
+		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 	}
 
 	.tribe-events-category-<?php echo $teccc->IDs[$i] ?>,
