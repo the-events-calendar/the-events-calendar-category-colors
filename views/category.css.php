@@ -7,7 +7,8 @@
 
 	<?php for ($i = 0; $i < $teccc->count; $i++): ?>
 
-	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->slugs[$i]) ?> a {
+	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->slugs[$i]) ?> a,
+	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> h2.entry-title a {
 		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 	}
 
@@ -20,7 +21,8 @@
 		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 	}
 	
-	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->IDs[$i]) ?> a {
+	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->IDs[$i]) ?> a,
+	.tribe-events-category-<?php echo($teccc->IDs[$i]) ?> h2.entry-title a {
 		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 	}
 
