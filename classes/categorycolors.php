@@ -18,6 +18,11 @@ class TribeEventsCategoryColors {
 	public $names = array();
 	public $count = 0;
 
+	/**
+	 * @var TribeEventsCategoryColorsPublic
+	 */
+	public $public;
+
 	protected static $object = false;
 
 
@@ -25,6 +30,8 @@ class TribeEventsCategoryColors {
 	 * The TribeEventsCategoryColors object can be created/obtained via this
 	 * method - this prevents unncessary work in rebuilding the object and
 	 * querying to construct a list of categories, etc.
+	 *
+	 * @return TribeEventsCategoryColors
 	 */
 	public static function instance() {
 		$class = __CLASS__;
@@ -37,8 +44,20 @@ class TribeEventsCategoryColors {
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action('init', array($this, 'load_categories'), 20);
 
-		if (is_admin()) $this->load_admin();
+		if ($this->is_admin()) $this->load_admin();
 		else $this->load_public();
+	}
+
+
+	/**
+	 * Tests to see if the request relates to the admin environment or not. Due to the way
+	 * WordPress/The Events Calendar work in relation to ajax requests a simple is_admin()
+	 * can return a false positive in some situations (such as ajax calendar loads).
+	 *
+	 * @return bool
+	 */
+	protected function is_admin() {
+		return (is_admin() and (!defined('DOING_AJAX')));
 	}
 
 
@@ -79,7 +98,7 @@ class TribeEventsCategoryColors {
 
 	protected function load_public() {
 		require_once TECCC_CLASSES.'/public.php';
-		new TribeEventsCategoryColorsPublic($this);
+		$this->public = new TribeEventsCategoryColorsPublic($this);
 	}
 
 

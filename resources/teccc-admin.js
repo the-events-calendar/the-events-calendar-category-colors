@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
 	/**
 	 * Returns the sampler element that belongs to the specified row element.
 	 *
-	 * @param rowElement
+	 * @param row
 	 * @return {*|jQuery}
 	 */
 	function getRowSampler(row) {
