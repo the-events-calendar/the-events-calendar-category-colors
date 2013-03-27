@@ -56,7 +56,7 @@ class TribeEventsCategoryColorsPublic {
 		remove_filter( 'tribe_events_calendar_before_the_grid', array($this, 'show_legend'));
 	}
 		
-	public function remove_default_legend() {
+	public function remove_default_legend2() {
 		add_action('teccc_legend', array($this, 'remove_legend'));
 	}
 
