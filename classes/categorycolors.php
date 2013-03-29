@@ -45,7 +45,7 @@ class TribeEventsCategoryColors {
 		add_action('init', array($this, 'load_categories'), 20);
 
 		if ($this->is_admin()) $this->load_admin();
-		else $this->load_public();
+		$this->load_public(); // Always load public (in case template tags are in use with the theme)
 	}
 
 
@@ -71,8 +71,7 @@ class TribeEventsCategoryColors {
 
 
 	protected function get_category_terms() {
-		// TribeEvents not yet defined, so we can't use the class constant
-		$terms = get_terms('tribe_events_cat', array('parent' => 0)); //exclude subcategories
+		$terms = get_terms('tribe_events_cat'); // TribeEvents not yet defined, so we can't use the class constant
 		$IDs   = array();
 		$slugs = array();
 		$names = array();
