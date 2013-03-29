@@ -12,7 +12,7 @@
 		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 	}
 
-	.tribe-events-category-<?php echo $teccc->slugs[$i] ?>,
+	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> > h2.entry-title,
 	.tribe-events-calendar .tribe-events-category-<?php echo $teccc->slugs[$i] ?>,
 	#tribe-events-content .tribe-events-category-<?php echo $teccc->slugs[$i] ?> > .tribe-events-tooltip h4.entry-title {
 		background-color: <?php echo $options[$teccc->slugs[$i].'-background'] ?>;
@@ -26,7 +26,7 @@
 		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 	}
 
-	.tribe-events-category-<?php echo $teccc->IDs[$i] ?>,
+	.tribe-events-category-<?php echo($teccc->IDs[$i]) ?> > h2.entry-title,
 	.tribe-events-calendar .tribe-events-category-<?php echo $teccc->IDs[$i] ?>,
 	#tribe-events-content .tribe-events-category-<?php echo $teccc->IDs[$i] ?> > .tribe-events-tooltip h4.entry-title {
 		background-color: <?php echo $options[$teccc->slugs[$i].'-background'] ?>;
