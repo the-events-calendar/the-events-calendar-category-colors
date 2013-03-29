@@ -9,12 +9,12 @@
 
 	<?php for ($i = 0; $i < $teccc->count; $i++): ?>
 
-	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->slugs[$i]) ?> a,
-	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> h2.entry-title a {
+	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->slugs[$i]) ?> a {
 		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 	}
 
-	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> > h2.entry-title,
+	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> h2.entry-title a,
+	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> .tribe-events-event-details h2.entry-title a,
 	.tribe-events-calendar .tribe-events-category-<?php echo $teccc->slugs[$i] ?>,
 	#tribe-events-content .tribe-events-category-<?php echo $teccc->slugs[$i] ?> > .tribe-events-tooltip h4.entry-title {
 		background-color: <?php echo $options[$teccc->slugs[$i].'-background'] ?>;
@@ -24,13 +24,19 @@
 		padding-left: 5px;
 	}
 
+	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> h2.entry-title a,
+	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> .tribe-events-event-details h2.entry-title a {
+		width: 100%;
+		display: block;
+	}
+
 /*  CSS for IDs  */
-	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->IDs[$i]) ?> a,
-	.tribe-events-category-<?php echo($teccc->IDs[$i]) ?> h2.entry-title a {
+	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->IDs[$i]) ?> a {
 		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 	}
 
-	.tribe-events-category-<?php echo($teccc->IDs[$i]) ?> > h2.entry-title,
+	.tribe-events-category-<?php echo($teccc->IDs[$i]) ?> h2.entry-title a,
+	.tribe-events-category-<?php echo($teccc->IDs[$i]) ?> .tribe-events-event-details h2.entry-title a,
 	.tribe-events-calendar .tribe-events-category-<?php echo $teccc->IDs[$i] ?>,
 	#tribe-events-content .tribe-events-category-<?php echo $teccc->IDs[$i] ?> > .tribe-events-tooltip h4.entry-title {
 		background-color: <?php echo $options[$teccc->slugs[$i].'-background'] ?>;
@@ -38,6 +44,12 @@
 		border-right: 5px solid transparent;
 		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 		padding-left: 5px;
+	}
+
+	.tribe-events-category-<?php echo($teccc->IDs[$i]) ?> h2.entry-title a,
+	.tribe-events-category-<?php echo($teccc->IDs[$i]) ?> .tribe-events-event-details h2.entry-title a {
+		width: 100%;
+		display: block;
 	}
 
 	
