@@ -59,7 +59,7 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 * updated for new TEC 3.0 code, will not work for TEC < 3.0
 * new instant preview of Settings
 * excludes subcategories from plugin so you can avoid coloring conflicts if multiple categories are used.
-* coloring in Month, List and Day views
+* coloring in Month, List, Day and Photo views
 
 = 1.6.3 =
 * add transition to Transparent/Color Picker option
