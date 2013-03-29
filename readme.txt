@@ -3,7 +3,7 @@ Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.5
-Stable tag: 1.6.3
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,10 +20,6 @@ Settings for The Events Calendar Category Colors plugin are located in their own
 1. Upload the entire `/the-events-calendar-category-colors/` folder to the `/wp-content/plugins/` directory.
 1. Activate the plugin.
 1. Go to the Category Colors tab of The Event Calendar Settings page.
-
-To include a Category Color legend above your calendar you will need to place a copy of `ecp-page-template.php` in your theme's **events** directory, similar to `my-theme/events/ecp-page-template.php`. This file is found in The Events Calendar plugin's **views** directory. Please refer to <a href="http://tri.be/themers-guide-to-the-events-calendar/">Themer's Guide for The Events Calendar</a> for reference.
-
-Within your copy of `ecp-page-template.php` you will need to insert `<?php teccc_legend_hook(); ?>` where you want the legend to appear.
 
 == Frequently Asked Questions ==
 
@@ -61,6 +57,9 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 = 1.7 =
 * updated for new TEC 3.0 code, will not work for TEC < 3.0
+* new instant preview of Settings
+* excludes subcategories from plugin so you can avoid coloring conflicts if multiple categories are used.
+* coloring in Month, List and Day views
 
 = 1.6.3 =
 * add transition to Transparent/Color Picker option
