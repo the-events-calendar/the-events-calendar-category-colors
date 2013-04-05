@@ -11,6 +11,7 @@
 
 	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->slugs[$i]) ?> a {
 		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
+		text-decoration: none;
 	}
 
 	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> h2.entry-title a,
