@@ -30,7 +30,7 @@ class TribeEventsCategoryColorsPublic {
 		do_action('teccc_legend');
 		
 		if (isset($this->options['legend_superpowers']) and $this->options['legend_superpowers'] === '1')
-			wp_enqueue_script('legend_superpowers', TECCC_RESOURCES.'/legend-superpowers.js', array(jquery), TribeEventsCategoryColors::VERSION, true );
+			wp_enqueue_script('legend_superpowers', TECCC_RESOURCES.'/legend-superpowers.js', array('jquery'), TribeEventsCategoryColors::VERSION, true );
 
 	}
 
