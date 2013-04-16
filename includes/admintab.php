@@ -18,7 +18,7 @@ return array(
 		),
  		'legend' => array(
  			'type' => 'html',
- 			'html' => '<p>The Category Colors legend is inserted using the new <i>tribe_events_calendar_before_the_grid</i> filter. To remove it from this default location and add it back using any of the new filters, add the following lines to your theme\'s functions.php file.</p><p><code>teccc_reposition_legend(\'tribe_events_calendar_filter_of_choice\');</code></p><p>Obviously you will need to replace <i>tribe_events_calendar_filter_of_choice</i> with a real filter. Please refer to new TEC filter guide for options.</p>'
+ 			'html' => '<p>The Category Colors legend is inserted using the new <i>tribe_events_calendar_before_the_grid</i> filter. To remove it from this default location and add it back using any of the new filters, add the following line to your theme\'s functions.php file.</p><p><code>teccc_reposition_legend(\'tribe_events_calendar_filter_of_choice\');</code></p><p>Obviously you will need to replace <i>tribe_events_calendar_filter_of_choice</i> with a real filter. Please refer to new TEC filter guide for options.</p>'
  		),
 		'info-end' => array(
 			'type' => 'html',
