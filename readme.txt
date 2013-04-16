@@ -2,7 +2,7 @@
 Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
-Tested up to: 3.5
+Tested up to: 3.5.1
 Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -43,6 +43,10 @@ It needs to be enabled in the Category Colors settings page. The Category Legend
 
 Click on the category of interest in the Legend to see the effect; click again to remove it.
 
+= What if I use a version of The Events Calendar 2.x? =
+
+The last compatible version of this plugin that works with TEC 2.x is [The Events Calendar Category Colors v1.6.3](http://downloads.wordpress.org/plugin/the-events-calendar-category-colors.1.6.3.zip).
+
 = Where can I report bugs? =
 
 Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
@@ -59,6 +63,7 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 * updated for new TEC 3.0 code, will not work for TEC < 3.0
 * new instant preview of Settings
 * coloring in Month, List, Day and Photo views
+* coloring of tooltips in Week view
 
 = 1.6.3 =
 * add transition to Transparent/Color Picker option
