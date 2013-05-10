@@ -1,6 +1,6 @@
 <?php
 class TribeEventsCategoryColors {
-	const VERSION = '1.7b';
+	const VERSION = '1.7';
 
 	public $text_colors = array(
 		'Black' => '#000',
