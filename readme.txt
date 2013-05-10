@@ -27,14 +27,6 @@ Settings for The Events Calendar Category Colors plugin are located in their own
 
 Yes. [The Events Calendar plugin](http://wordpress.org/extend/plugins/the-events-calendar/) is written by Modern Tribe, Inc. It requires at least The Events Calendar v3.0.
 
-= My calendar is taking on the styling of my first event of the month =
-
-There are two things you can try.
-
-1. With help from Barry Hughes, I've adapted a function that will remove the category class tag that appears in the article tag on that page. Usually this is when the **Default Page Template** is selected in the Events Calendar Settings. Simply <a href="https://gist.github.com/4324054">add the code in this gist</a> to your theme's _functions.php_ file. If it causes problems, and it may, just remove the code and try #2.
-
-2. Using <a href="http://tri.be/support/documentation/events-calendar-themers-guide/">Themer's Guide for The Events Calendar</a> create a new _ecp-page-template.php_, adjust this new template to correspond to how you want your calendar displayed and choose **Default Events Template** from the Events Calendar Settings.
-
 = What are Legend Superpowers? =
 
 Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely.
