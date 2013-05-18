@@ -39,6 +39,17 @@ Click on the category of interest in the Legend to see the effect; click again t
 
 The last compatible version of this plugin that works with TEC 2.x is [The Events Calendar Category Colors v1.6.3](http://downloads.wordpress.org/plugin/the-events-calendar-category-colors.1.6.3.zip).
 
+= Filters and Hooks =
+
+If you want to make additions to the default legend CSS you can use the action hook _'teccc_add_legend_css'_. Call it from your theme's functions.php in the following syntax.
+
+`
+add_action( 'teccc_add_legend_css', 'my_extra_legend_css' );
+function my_extra_legend_css () {
+	echo '/* my extra CSS goes here */';
+}
+`
+
 = Where can I report bugs? =
 
 Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
@@ -56,6 +67,7 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 * new instant preview of Settings
 * coloring in Month, List, Day and Photo views
 * coloring of tooltips in Week view
+* added action 'teccc_add_legend_css' to accommodate minor user changes to default legend css.
 
 = 1.6.3 =
 * add transition to Transparent/Color Picker option

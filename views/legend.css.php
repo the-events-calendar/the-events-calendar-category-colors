@@ -14,3 +14,4 @@
 }
 
 #legend_box #legend li span { cursor: pointer; }
+

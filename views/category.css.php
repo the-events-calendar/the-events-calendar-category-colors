@@ -35,6 +35,7 @@
 
 	<?php if (isset($options['add_legend']) and !isset($options['custom_legend_css'])): ?>
 		<?php $teccc->view('legend.css') ?>
+		<?php do_action( 'teccc_add_legend_css', $extra_user_legend_css ) ?>
 	<?php endif ?>
 
 </style>
