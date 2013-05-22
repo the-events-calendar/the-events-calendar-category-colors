@@ -3,7 +3,7 @@ class TribeEventsCategoryColorsPublic {
 	protected $teccc = null;
 	protected $options = array();
 
-	protected $legendTargetFilter = 'tribe_events_calendar_before_the_grid';
+	protected $legendTargetFilter = 'tribe_events_month_before_the_grid';
 	protected $legendFilterHasRun = false;
 
 
@@ -17,17 +17,20 @@ class TribeEventsCategoryColorsPublic {
 
 
 	public function add_colored_categories($query) {
+		if (!isset($query->query_vars['post_type']) or !isset($query->query_vars['eventDisplay'])) return;
+
 		$eventDisplays = array('month', 'upcoming', 'day', 'photo');
-		if (isset($query->query_vars['post_type']) and $query->query_vars['post_type'] == 'tribe_events')
-			if (isset($query->query_vars['eventDisplay']) and in_array($query->query_vars['eventDisplay'], $eventDisplays))
-				$this->add_effects();
+
+		if ($query->query_vars['post_type'] === 'tribe_events' and in_array($query->query_vars['eventDisplay'], $eventDisplays, true)) {
+			$this->add_effects();
+			remove_action('pre_get_posts', array($this, 'add_colored_categories'));
+		}
 	}
 
 
 	public function add_effects() {
 		add_action('wp_head', array($this, 'add_css'));
 		add_filter($this->legendTargetFilter, array($this, 'show_legend'));
-		do_action('teccc_legend');
 		
 		if (isset($this->options['legend_superpowers']) and $this->options['legend_superpowers'] === '1')
 			wp_enqueue_script('legend_superpowers', TECCC_RESOURCES.'/legend-superpowers.js', array('jquery'), TribeEventsCategoryColors::VERSION, true );
@@ -46,7 +49,7 @@ class TribeEventsCategoryColorsPublic {
 	public function show_legend($existingContent = '') {
 		//Needs to work both inside and outside of class
 		$teccc_options = get_option('teccc_options');
-		if (!(isset($teccc_options['add_legend']) and $teccc_options['add_legend'] === '1')) { return; }
+		if (!(isset($teccc_options['add_legend']) and $teccc_options['add_legend'] === '1')) return;
 		
 		$content = $this->teccc->view('legend', array(
 			'options' => $teccc_options,
@@ -55,7 +58,7 @@ class TribeEventsCategoryColorsPublic {
 		));
 
 		$this->legendFilterHasRun = true;
-		return $existingContent.$content;
+		return $existingContent . apply_filters('teccc_legend_html', $content);
 	}
 
 
