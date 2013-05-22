@@ -8,9 +8,7 @@
 				<a href="<?php esc_attr_e($tec->getLink().trailingslashit(sanitize_title(__( 'category', 'tribe-events-calendar' ))).$teccc->slugs[$i]) ?>">
 					<?php esc_html_e($teccc->names[$i]) ?>
 				</a>
-				<?php if (isset($legendData) and $legendData): ?>
-					<input type="hidden" value="<?php esc_attr_e($teccc->slugs[$i]) ?>" />
-				<?php endif ?>
+				<input type="hidden" value="<?php esc_attr_e($teccc->slugs[$i]) ?>" />
 			</li>
 
 		<?php endfor ?>
