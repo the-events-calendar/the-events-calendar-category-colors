@@ -77,19 +77,16 @@ jQuery(document).ready(function($) {
 	 */
 	function prepareElement() {
 		var link = $(this).find("a");
+		if (link.length !== 1) return; // Quit if preparation has already been completed (no <a> elements found)
 
-		// If no anchor elements are found then the legend tpl tag is outside of the
-		// pjax/ajax refresh area and we need take no action, the intial preparation
-		// work will be extant
-		if (link.length === 0) return;
-
-		// Otherwise we need to convert the link(s) to span(s)
+		// Convert the link(s) to span(s) but store the links address and slug
 		var linkAddr = $(link).attr("href");
 		var linkTitle = $(link).html();
 		var linkSlugField = $(this).find("input");
 		var linkSlug = $(linkSlugField).val();
 		var replacementText = '<span>' + linkTitle + '</span>';
 
+		// Tidy up - remove unnecessary elements
 		$(link).remove();
 		$(linkSlugField).remove();
 
@@ -108,11 +105,19 @@ jQuery(document).ready(function($) {
 		$(legendEntries).click(categorySelection);
 	}
 
+	/**
+	 * Tries to ensure the setup procedure runs afresh following ajax operations (month to month navigation etc).
+	 */
+	function setupAfterAjax() {
+		if (typeof tribe_ev === "object" && tribe_ev.events !== undefined)
+			$(tribe_ev.events).on('tribe_ev_ajaxSuccess', setup);
+	}
 
 	/**
-	 * Setup should occur when the document is ready and following pjax
-	 * operations.
+	 * Setup should occur when the document is ready and following ajax loads.
 	 */
 	setup();
-	$("#tribe-events-content").on('pjax:complete', setup);
+	setupAfterAjax();
+
+	$("#tribe-events-content").ajaxComplete(setup);
 });
