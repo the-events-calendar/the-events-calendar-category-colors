@@ -17,6 +17,7 @@ class TribeEventsCategoryColors {
 	public $slugs = array();
 	public $names = array();
 	public $count = 0;
+	public $values = array();
 
 	/**
 	 * @var TribeEventsCategoryColorsPublic
@@ -71,10 +72,13 @@ class TribeEventsCategoryColors {
 
 
 	protected function get_category_terms() {
-		$terms = get_terms('tribe_events_cat'); // TribeEvents not yet defined, so we can't use the class constant
+		$terms = ( has_filter('teccc_omit_terms') ? apply_filters( 'teccc_omit_terms', array($this, 'filter_by_value')) : get_terms('tribe_events_cat') );
 		$IDs   = array();
 		$slugs = array();
 		$names = array();
+		
+		//$terms = $this->filter_by_value(array('important','meeting'));
+		//var_dump($terms);
 
 		foreach ($terms as $term) {
 			$IDs[]   = $term->term_id;
@@ -89,7 +93,20 @@ class TribeEventsCategoryColors {
 		);
 	}
 
-
+	public function filter_by_value( $values ) {
+		$array = get_terms('tribe_events_cat');
+		$index='slug';
+        if(is_array($array) && count($array)>0)
+            foreach(array_keys($array) as $key) { 
+                $temp[$key] = $array[$key]->$index;
+                if(is_array($values) && count($values)>0)
+                	foreach( $values as $value )
+                 		if ($temp[$key] == $value) unset($array[$key]); 
+            }
+      return $array; 
+    } 
+	
+	
 	protected function load_admin() {
 		require_once TECCC_CLASSES.'/admin.php';
 		new TribeEventsCategoryColorsAdmin($this);
