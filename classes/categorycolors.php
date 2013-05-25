@@ -103,7 +103,7 @@ class TribeEventsCategoryColors {
                 	foreach( $values as $value )
                  		if( $temp[ $key ] == $value ) unset( $array[ $key ] ); 
             }
-      return $array; 
+		return $array; 
     } 
 	
 	
