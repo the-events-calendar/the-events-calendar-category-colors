@@ -96,12 +96,12 @@ class TribeEventsCategoryColors {
 	public function filter_by_value( $values ) {
 		$array = get_terms('tribe_events_cat');
 		$index='slug';
-        if(is_array($array) && count($array)>0)
-            foreach(array_keys($array) as $key) { 
-                $temp[$key] = $array[$key]->$index;
-                if(is_array($values) && count($values)>0)
+        if( is_array( $array ) && count( $array ) >  0)
+            foreach( array_keys( $array ) as $key ) {
+                $temp[ $key ] = $array[ $key ]->$index;
+                if( is_array( $values ) && count( $values ) > 0 )
                 	foreach( $values as $value )
-                 		if ($temp[$key] == $value) unset($array[$key]); 
+                 		if( $temp[ $key ] == $value ) unset( $array[ $key ] ); 
             }
       return $array; 
     } 
