@@ -75,7 +75,7 @@ class TribeEventsCategoryColors {
 	protected function get_category_terms() {
 		if( ! has_filter('teccc_omit_terms') ) $terms = $this->filter_by_value();
 		if( has_filter('teccc_omit_terms') ) {
-			echo apply_filters( 'teccc_omit_terms' );
+			echo apply_filters( 'teccc_omit_terms', array($this, 'filter_by_value') );
 			$terms = $this->filter_by_value();
 		}
 
