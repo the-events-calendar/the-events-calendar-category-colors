@@ -63,15 +63,16 @@ class TribeEventsCategoryColors {
 
 	public function load_categories() {
 		$terms = $this->get_category_terms();
-		$this->IDs = $terms['IDs'];
-		$this->slugs = $terms['slugs'];
-		$this->names = $terms['names'];
+
+		foreach (array('IDs', 'slugs', 'names') as $property)
+			$this->$property = $terms[$property];
+
 		$this->count = count($this->slugs);
 	}
 
 
 	protected function get_category_terms() {
-		$terms = get_terms('tribe_events_cat'); // TribeEvents not yet defined, so we can't use the class constant
+		$terms = apply_filters('teccc_get_terms', get_terms('tribe_events_cat')); // TribeEvents not yet defined, so we can't use the class constant
 		$IDs   = array();
 		$slugs = array();
 		$names = array();

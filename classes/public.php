@@ -47,7 +47,6 @@ class TribeEventsCategoryColorsPublic {
 
 
 	public function show_legend($existingContent = '') {
-		//Needs to work both inside and outside of class
 		$teccc_options = get_option('teccc_options');
 		if (!(isset($teccc_options['add_legend']) and $teccc_options['add_legend'] === '1')) return;
 		
