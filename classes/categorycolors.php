@@ -1,22 +1,36 @@
 <?php
 class TribeEventsCategoryColors {
 	const VERSION = '1.7';
+	const SLUG = 0;
+	const NAME = 1;
 
 	public $text_colors = array(
 		'Black' => '#000',
 		'White' => '#fff',
 		'Gray' => '#999'
 	);
+
 	public $font_weights = array(
 		'Bold' => 'bold',
 		'Normal' => 'normal'
 	);
 
-
-	public $IDs   = array();
-	public $slugs = array();
-	public $names = array();
+	/**
+	 * Contains each term in an array structured as follows:
+	 *
+	 * 	[ id => [ slug, name ], ... ]
+	 *
+	 * @var array
+	 */
+	public $terms = array();
 	public $count = 0;
+
+	/**
+	 * Category IDs (ints) and slugs (strings) to ignore.
+	 *
+	 * @var array
+	 */
+	public $ignore_list = array();
 
 	/**
 	 * @var TribeEventsCategoryColorsPublic
@@ -62,32 +76,40 @@ class TribeEventsCategoryColors {
 
 
 	public function load_categories() {
-		$terms = $this->get_category_terms();
-
-		foreach (array('IDs', 'slugs', 'names') as $property)
-			$this->$property = $terms[$property];
-
-		$this->count = count($this->slugs);
+		add_filter('teccc_get_terms', array($this, 'remove_terms'));
+		$this->get_category_terms();
+		$this->count = count($this->terms);
 	}
 
 
 	protected function get_category_terms() {
-		$terms = apply_filters('teccc_get_terms', get_terms('tribe_events_cat')); // TribeEvents not yet defined, so we can't use the class constant
-		$IDs   = array();
-		$slugs = array();
-		$names = array();
+		if (!empty($this->terms)) return;
 
-		foreach ($terms as $term) {
-			$IDs[]   = $term->term_id;
-			$slugs[] = $term->slug;
-			$names[] = preg_replace('/\s/', '&nbsp;', $term->name);
+		// TribeEvents not yet defined, so we can't use the class constant
+		$term_list = apply_filters('teccc_get_terms', get_terms('tribe_events_cat'));
+
+		// Represent each term as an array [slug, name] indexed by term ID
+		foreach ($term_list as $term)
+			$this->terms[$term->term_id] = array($term->slug, preg_replace('/\s/', '&nbsp;', $term->name));
+	}
+
+
+	/**
+	 * Removes terms on the ignore list from the list of terms recognised by the plugin.
+	 *
+	 * @param $term_list
+	 * @return array
+	 */
+	public function remove_terms($term_list) {
+		$revised_list = array();
+
+		foreach ($term_list as $src_id => $src_term) {
+			if (in_array((int) $src_term->term_id, $this->ignore_list, true)) continue;
+			if (in_array((string) $src_term->slug, $this->ignore_list, true)) continue;
+			$revised_list[$src_id] = $src_term;
 		}
 
-		return array(
-			'IDs'   => $IDs,
-			'slugs' => $slugs,
-			'names' => $names
-		);
+		return $revised_list;
 	}
 
 
