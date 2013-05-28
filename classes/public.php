@@ -3,7 +3,7 @@ class TribeEventsCategoryColorsPublic {
 	protected $teccc = null;
 	protected $options = array();
 
-	protected $legendTargetFilter = 'tribe_events_month_before_the_grid';
+	protected $legendTargetHook = 'tribe_events_month_before_the_grid';
 	protected $legendFilterHasRun = false;
 
 
@@ -30,7 +30,7 @@ class TribeEventsCategoryColorsPublic {
 
 	public function add_effects() {
 		add_action('wp_head', array($this, 'add_css'));
-		add_filter($this->legendTargetFilter, array($this, 'show_legend'));
+		add_action($this->legendTargetHook, array($this, 'show_legend'));
 		
 		if (isset($this->options['legend_superpowers']) and $this->options['legend_superpowers'] === '1')
 			wp_enqueue_script('legend_superpowers', TECCC_RESOURCES.'/legend-superpowers.js', array('jquery'), TribeEventsCategoryColors::VERSION, true );
@@ -54,10 +54,10 @@ class TribeEventsCategoryColorsPublic {
 			'options' => $teccc_options,
 			'teccc' => TribeEventsCategoryColors::instance(),
 			'tec' => TribeEvents::instance()
-		));
+		), false);
 
 		$this->legendFilterHasRun = true;
-		return $existingContent . apply_filters('teccc_legend_html', $content);
+		echo $existingContent . apply_filters('teccc_legend_html', $content);
 	}
 
 
@@ -67,7 +67,7 @@ class TribeEventsCategoryColorsPublic {
 			'You are attempting to reposition the legend after it has already been rendered.', '1.6.4');
 
 		// Change the target filter (even if they are _doing_it_wrong, in case they have a special use case)
-		$this->legendTargetFilter = $tribeViewFilter;
+		$this->legendTargetHook = $tribeViewFilter;
 
 		// Indicate if they were doing it wrong (or not)
 		return (!$this->legendFilterHasRun);
@@ -80,7 +80,7 @@ class TribeEventsCategoryColorsPublic {
 			'You are attempting to remove the default legend after it has already been rendered.', '1.6.4');
 
 		// Remove the hook regardless of whether they are _doing_it_wrong or not (in case of creative usage)
-		$this->legendTargetFilter = null;
+		$this->legendTargetHook = null;
 
 		// Indicate if they were doing it wrong (or not)
 		return (!$this->legendFilterHasRun);
