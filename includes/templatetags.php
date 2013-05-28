@@ -56,3 +56,31 @@ function teccc_legend_hook() {
 	_doing_it_wrong('teccc_legend_hook', __('Use of this function is deprecated'), '1.6.0B');
 	teccc_insert_legend();
 }
+
+
+/**
+ * Registers an additional text color.
+ *
+ * The color value should be a valid CSS color value. For example, the following are all valid values for red:
+ *
+ * 	#f00
+ * 	#ff0000
+ * 	Red
+ *
+ * @param $name
+ * @param $value
+ */
+function teccc_add_text_color($name, $value) {
+	TribeEventsCategoryColors::instance()->text_colors[$name] = $value;
+}
+
+
+/**
+ * Sets categories (identified by their slugs) which should be ignored by the The Events Calendar Category Colors.
+ *
+ * @params $slug, $slug ...
+ */
+function teccc_ignore_slug() {
+	$slugs = func_get_args();
+	foreach ($slugs as $slug) TribeEventsCategoryColors::instance()->ignore_list[] = $slug;
+}
