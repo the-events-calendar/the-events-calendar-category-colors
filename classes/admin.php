@@ -38,23 +38,25 @@ class TribeEventsCategoryColorsAdmin {
 	public function validate_options($input) {
 		$teccc = $this->teccc;
 
-		for ($i = 0; $i < $teccc->count; $i++) {
+		foreach ($teccc->terms as $attributes) {
+			$slug = $attributes[TribeEventsCategoryColors::SLUG];
+			
 			// Sanitize textbox input (strip html tags, and escape characters)
 			// May not be needed with jQuery color picker
-			$input[$teccc->slugs[$i].'-background'] =  wp_filter_nohtml_kses($input[$teccc->slugs[$i].'-background']);
-			$input[$teccc->slugs[$i].'-background'] =  ereg_replace( '[^#A-Za-z0-9]', '', $input[$teccc->slugs[$i].'-background'] );
-			if ( $input[$teccc->slugs[$i].'-background'] == '' ) { $input[$teccc->slugs[$i].'-background'] = '#CFCFCF' ; }
+			$input[$slug.'-background'] =  wp_filter_nohtml_kses($input[$slug.'-background']);
+			$input[$slug.'-background'] =  ereg_replace( '[^#A-Za-z0-9]', '', $input[$slug.'-background'] );
+			if ( $input[$slug.'-background'] == '' ) { $input[$slug.'-background'] = '#CFCFCF' ; }
 
-			$input[$teccc->slugs[$i].'-border'] =  wp_filter_nohtml_kses($input[$teccc->slugs[$i].'-border']);
-			$input[$teccc->slugs[$i].'-border'] =  ereg_replace( '[^#A-Za-z0-9]', '', $input[$teccc->slugs[$i].'-border'] );
-			if ( $input[$teccc->slugs[$i].'-border'] == '' ) { $input[$teccc->slugs[$i].'-border'] = '#CFCFCF'; }
+			$input[$slug.'-border'] =  wp_filter_nohtml_kses($input[$slug.'-border']);
+			$input[$slug.'-border'] =  ereg_replace( '[^#A-Za-z0-9]', '', $input[$slug.'-border'] );
+			if ( $input[$slug.'-border'] == '' ) { $input[$slug.'-border'] = '#CFCFCF'; }
 
 			// Sets value when checked
-			if ( isset( $input[$teccc->slugs[$i].'-border_transparent'] ) ) { $input[$teccc->slugs[$i].'-border'] = 'transparent'; }
-			if ( isset( $input[$teccc->slugs[$i].'-background_transparent'] ) ) { $input[$teccc->slugs[$i].'-background'] = 'transparent'; }
+			if ( isset( $input[$slug.'-border_transparent'] ) ) { $input[$slug.'-border'] = 'transparent'; }
+			if ( isset( $input[$slug.'-background_transparent'] ) ) { $input[$slug.'-background'] = 'transparent'; }
 
 			// Sanitize dropdown input (make sure value is one of options allowed)
-			if ( !in_array($input[$teccc->slugs[$i].'-text'], $teccc->text_colors, true) ) { $input[$teccc->slugs[$i].'-text'] = '#000'; }
+			if ( !in_array($input[$slug.'-text'], $teccc->text_colors, true) ) { $input[$slug.'-text'] = '#000'; }
 		}
 
 		return $input;
