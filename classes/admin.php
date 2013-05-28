@@ -70,10 +70,12 @@ class TribeEventsCategoryColorsAdmin {
 		if ($tmp['chk_default_options_db'] == '1' or !is_array($tmp)) {
 			delete_option('teccc_options');
 
-			for ($i = 0; $i < $teccc->count; $i++) {
-				$arr[$teccc->slugs[$i].'-text'] = '#000';
-				$arr[$teccc->slugs[$i].'-background'] = '#CFCFCF';
-				$arr[$teccc->slugs[$i].'-border'] = '#CFCFCF';
+			foreach ($teccc->terms as $attributes) {
+				$slug = $attributes[TribeEventsCategoryColors::SLUG];
+
+				$arr[$slug.'-text'] = '#000';
+				$arr[$slug.'-background'] = '#CFCFCF';
+				$arr[$slug.'-border'] = '#CFCFCF';
 			}
 
 			$arr['font_weight'] = 'bold';
