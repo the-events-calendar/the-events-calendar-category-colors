@@ -143,13 +143,10 @@ class TribeEventsCategoryColorsAdmin {
 			'-text'
 		);
 
-		foreach ($teccc->terms as $attributes) {
-			$slug = $attributes[TribeEventsCategoryColors::SLUG];
-
+		foreach($teccc->slugs as $slug)
 			foreach ($categoryOptions as $optionkey)
-				if (!isset($options[$slug . $optionkey]))
-					$options[$slug . $optionkey] = null;
-		}
+				if (!isset($options[$slug.$optionkey]))
+					$options[$slug.$optionkey] = null;
 
 		$generalOptions = array(
 			'add_legend',

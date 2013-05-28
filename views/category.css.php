@@ -7,34 +7,31 @@
 	
 	.tribe-events-list .vevent.hentry h2 { padding-left: 5px; }
 
-	<?php foreach ($teccc->terms as $id => $attributes): ?>
-		<?php
-			$slug = esc_attr($attributes[TribeEventsCategoryColors::SLUG]);
-			$name = esc_attr($attributes[TribeEventsCategoryColors::NAME]);
-		?>
-	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a {
-		color: <?php echo $options[$slug.'-text'] ?>;
+	<?php for ($i = 0; $i < $teccc->count; $i++): ?>
+
+	.tribe-events-calendar .tribe-events-category-<?php echo($teccc->slugs[$i]) ?> a {
+		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 		text-decoration: none;
 	}
 
-	.tribe-events-category-<?php echo $slug ?> h2.entry-title a,
-	.tribe-events-category-<?php echo $slug ?> .tribe-events-event-details h2.entry-title a,
-	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
-	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.entry-title {
-		background-color: <?php echo $options[$slug.'-background'] ?>;
-		border-left: 5px solid <?php echo $options[$slug.'-border'] ?>;
+	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> h2.entry-title a,
+	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> .tribe-events-event-details h2.entry-title a,
+	.tribe-events-calendar .tribe-events-category-<?php echo $teccc->slugs[$i] ?>,
+	#tribe-events-content .tribe-events-category-<?php echo $teccc->slugs[$i] ?> > .tribe-events-tooltip h4.entry-title {
+		background-color: <?php echo $options[$teccc->slugs[$i].'-background'] ?>;
+		border-left: 5px solid <?php echo $options[$teccc->slugs[$i].'-border'] ?>;
 		border-right: 5px solid transparent;
-		color: <?php echo $options[$slug.'-text'] ?>;
+		color: <?php echo $options[$teccc->slugs[$i].'-text'] ?>;
 		padding-left: 5px;
 	}
 
-	.tribe-events-category-<?php echo $slug ?> h2.entry-title a,
-	.tribe-events-category-<?php echo $slug ?> .tribe-events-event-details h2.entry-title a {
+	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> h2.entry-title a,
+	.tribe-events-category-<?php echo($teccc->slugs[$i]) ?> .tribe-events-event-details h2.entry-title a {
 		width: 100%;
 		display: block;
 	}
 	
-	<?php endforeach ?>
+	<?php endfor ?>
 
 	<?php if (isset($options['add_legend']) and !isset($options['custom_legend_css'])): ?>
 		<?php $teccc->view('legend.css') ?>

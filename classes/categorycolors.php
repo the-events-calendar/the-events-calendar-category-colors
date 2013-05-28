@@ -71,7 +71,7 @@ class TribeEventsCategoryColors {
 	}
 
 	public function set_omit_terms($testvar) { $this->values = $testvar; }
-
+	
 	protected function get_category_terms() {
 		if( ! has_filter('teccc_omit_terms') ) $terms = $this->filter_by_value();
 		if( has_filter('teccc_omit_terms') ) {
@@ -82,7 +82,7 @@ class TribeEventsCategoryColors {
 		$IDs   = array();
 		$slugs = array();
 		$names = array();
-
+		
 		foreach ($terms as $term) {
 			$IDs[]   = $term->term_id;
 			$slugs[] = $term->slug;
@@ -100,18 +100,18 @@ class TribeEventsCategoryColors {
 		$array = get_terms( 'tribe_events_cat' );
 		$index='slug';
 		$values = $this->values;
-		if( is_array( $array ) && count( $array ) >  0)
-			foreach( array_keys( $array ) as $key ) {
-				$temp[ $key ] = $array[ $key ]->$index;
-				if( is_array( $values ) && count( $values ) > 0 )
-					foreach( $values as $value )
-						if( $temp[ $key ] == $value ) unset( $array[ $key ] );
-			}
+        if( is_array( $array ) && count( $array ) >  0)
+            foreach( array_keys( $array ) as $key ) {
+                $temp[ $key ] = $array[ $key ]->$index;
+                if( is_array( $values ) && count( $values ) > 0 )
+                	foreach( $values as $value )
+                 		if( $temp[ $key ] == $value ) unset( $array[ $key ] );
+            }
 
-		return $array;
-	}
-
-
+		return $array; 
+    } 
+	
+	
 	protected function load_admin() {
 		require_once TECCC_CLASSES.'/admin.php';
 		new TribeEventsCategoryColorsAdmin($this);
