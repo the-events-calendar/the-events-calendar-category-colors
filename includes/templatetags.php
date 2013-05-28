@@ -53,7 +53,7 @@ function teccc_insert_legend() {
  * @deprecated
  */
 function teccc_legend_hook() {
-	_doing_it_wrong('teccc_legend_hook', __('Use of this function is deprecated'), '1.6.0B');
+	_doing_it_wrong('teccc_legend_hook', __('Use of this function is deprecated', 'teccc'), '1.6.0B');
 	teccc_insert_legend();
 }
 

@@ -8,7 +8,7 @@
 				$name = esc_attr($attributes[TribeEventsCategoryColors::NAME]);
 			?>
 			<li class="tribe-events-category-<?php echo $slug ?> tribe-events-category-<?php esc_attr_e($id) ?>">
-				<a href="<?php esc_attr_e($tec->getLink().trailingslashit(sanitize_title(__( 'category', 'tribe-events-calendar' ))).$slug) ?>">
+				<a href="<?php esc_attr_e($tec->getLink().trailingslashit(sanitize_title(__( 'category', 'teccc' ))).$slug) ?>">
 					<?php echo $name ?>
 				</a>
 				<input type="hidden" value="<?php echo $slug ?>" />
