@@ -17,10 +17,10 @@
 		text-decoration: none;
 	}
 
-	.tribe-events-category-<?php echo $slug ?> h2.entry-title a,
-	.tribe-events-category-<?php echo $slug ?> .tribe-events-event-details h2.entry-title a,
+	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a,
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
-	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.entry-title {
+	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
+	.tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary {
 		background-color: <?php echo $options[$slug.'-background'] ?>;
 		border-left: 5px solid <?php echo $options[$slug.'-border'] ?>;
 		border-right: 5px solid transparent;
@@ -28,9 +28,8 @@
 		padding-left: 5px;
 	}
 
-	.tribe-events-category-<?php echo $slug ?> h2.entry-title a,
-	.tribe-events-category-<?php echo $slug ?> .tribe-events-event-details h2.entry-title a {
-		width: 100%;
+	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a {
+		width: 92%;
 		display: block;
 	}
 	
