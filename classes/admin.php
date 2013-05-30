@@ -22,11 +22,15 @@ class TribeEventsCategoryColorsAdmin {
 
 
 	public function plugin_fail_msg() {
-		if ( !class_exists( 'TribeEvents' ) ) {
-			if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
+		if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
+			if ( !class_exists( 'TribeEvents' ) ) {
 				$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 				$title = __( 'The Events Calendar', 'teccc' );
 				echo '<div class="error"><p>'.sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'teccc' ),$url, $title ).'</p></div>';
+			} elseif ( version_compare( TribeEvents::VERSION, '3.0', 'lt') ) {
+				$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
+				$title = __( 'The Events Calendar', 'teccc' );
+				echo '<div class="error"><p>'.sprintf( __( 'You have The Events Calendar v.' . TribeEvents::VERSION . '. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'teccc' ),$url, $title ).'</p></div>';
 			}
 		}
 	}
