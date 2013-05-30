@@ -1,4 +1,3 @@
-
 <!-- The Events Calendar Category Colors <?php echo TribeEventsCategoryColors::VERSION ?> generated CSS -->
 <style type="text/css" media="screen">
 	.tribe-events-calendar a {

@@ -63,27 +63,6 @@ class TribeEventsCategoryColorsAdmin {
 	}
 
 
-	public function add_defaults() {
-		$teccc = $this->teccc;
-		$tmp = get_option('teccc_options');
-
-		if ($tmp['chk_default_options_db'] == '1' or !is_array($tmp)) {
-			delete_option('teccc_options');
-
-			foreach ($teccc->terms as $attributes) {
-				$slug = $attributes[TribeEventsCategoryColors::SLUG];
-
-				$arr[$slug.'-text'] = '#000';
-				$arr[$slug.'-background'] = '#CFCFCF';
-				$arr[$slug.'-border'] = '#CFCFCF';
-			}
-
-			$arr['font_weight'] = 'bold';
-			update_option('teccc_options', $arr);
-		}
-	}
-
-
 	public function load_settings_tab() {
 		if (class_exists('TribeEvents')) {
 			add_action('tribe_settings_do_tabs', array($this, 'add_category_colors_tab'));
