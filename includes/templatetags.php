@@ -9,7 +9,7 @@
  * @return bool
  */
 function teccc_remove_default_legend() {
-	return TribeEventsCategoryColors::instance()->public->remove_default_legend();
+	return Tribe_Events_Category_Colors::instance()->public->remove_default_legend();
 }
 
 
@@ -26,7 +26,7 @@ function teccc_remove_default_legend() {
  * @return bool
  */
 function teccc_reposition_legend($viewFilter) {
-	return TribeEventsCategoryColors::instance()->public->reposition_legend($viewFilter);
+	return Tribe_Events_Category_Colors::instance()->public->reposition_legend($viewFilter);
 }
 
 
@@ -42,7 +42,7 @@ function teccc_reposition_legend($viewFilter) {
  */
 function teccc_insert_legend() {
 	do_action('teccc_legend_hook'); // Doesn't do anything now, retained for legacy purposes
-	TribeEventsCategoryColors::instance()->public->show_legend();
+	Tribe_Events_Category_Colors::instance()->public->show_legend();
 }
 
 
@@ -71,7 +71,7 @@ function teccc_legend_hook() {
  * @param $value
  */
 function teccc_add_text_color($name, $value) {
-	TribeEventsCategoryColors::instance()->text_colors[$name] = $value;
+	Tribe_Events_Category_Colors::instance()->text_colors[$name] = $value;
 }
 
 
@@ -82,5 +82,5 @@ function teccc_add_text_color($name, $value) {
  */
 function teccc_ignore_slug() {
 	$slugs = func_get_args();
-	foreach ($slugs as $slug) TribeEventsCategoryColors::instance()->ignore_list[] = $slug;
+	foreach ($slugs as $slug) Tribe_Events_Category_Colors::instance()->ignore_list[] = $slug;
 }

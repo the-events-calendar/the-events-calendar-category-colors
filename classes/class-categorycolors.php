@@ -1,6 +1,6 @@
 <?php
-class TribeEventsCategoryColors {
-	const VERSION = '1.7';
+class Tribe_Events_Category_Colors {
+	const VERSION = '2.0';
 	const SLUG = 0;
 	const NAME = 1;
 
@@ -33,7 +33,7 @@ class TribeEventsCategoryColors {
 	public $ignore_list = array();
 
 	/**
-	 * @var TribeEventsCategoryColorsPublic
+	 * @var Tribe_Events_Category_Colors_Public
 	 */
 	public $public;
 
@@ -41,11 +41,11 @@ class TribeEventsCategoryColors {
 
 
 	/**
-	 * The TribeEventsCategoryColors object can be created/obtained via this
+	 * The Tribe_Events_Category_Colors object can be created/obtained via this
 	 * method - this prevents unncessary work in rebuilding the object and
 	 * querying to construct a list of categories, etc.
 	 *
-	 * @return TribeEventsCategoryColors
+	 * @return Tribe_Events_Category_Colors
 	 */
 	public static function instance() {
 		$class = __CLASS__;
@@ -114,14 +114,14 @@ class TribeEventsCategoryColors {
 
 
 	protected function load_admin() {
-		require_once TECCC_CLASSES.'/admin.php';
-		new TribeEventsCategoryColorsAdmin($this);
+		require_once TECCC_CLASSES.'/class-admin.php';
+		new Tribe_Events_Category_Colors_Admin($this);
 	}
 
 
 	protected function load_public() {
-		require_once TECCC_CLASSES.'/public.php';
-		$this->public = new TribeEventsCategoryColorsPublic($this);
+		require_once TECCC_CLASSES.'/class-public.php';
+		$this->public = new Tribe_Events_Category_Colors_Public($this);
 	}
 
 
@@ -180,7 +180,7 @@ class TribeEventsCategoryColors {
 	 * Expected to run on activation; populates the default options.
 	 */
 	public static function add_defaults() {
-		$teccc = TribeEventsCategoryColors::instance();
+		$teccc = Tribe_Events_Category_Colors::instance();
 		$tmp = get_option('teccc_options');
 
 		if ($tmp['chk_default_options_db'] == '1' or !is_array($tmp)) {

@@ -1,12 +1,12 @@
 <?php
-class TribeEventsCategoryColorsAdmin {
+class Tribe_Events_Category_Colors_Admin {
 	const TAB_NAME = 'category-colors';
 	const UPDATE_ACTION = 'category-colors-update-options';
 	protected $teccc = null;
 
 
 
-	public function __construct(TribeEventsCategoryColors $teccc) {
+	public function __construct(Tribe_Events_Category_Colors $teccc) {
 		$this->teccc = $teccc;
 		add_action('admin_init', array($this, 'init'));
 		add_action('admin_notices', array($this, 'plugin_fail_msg'));
@@ -43,7 +43,7 @@ class TribeEventsCategoryColorsAdmin {
 		$teccc = $this->teccc;
 
 		foreach ($teccc->terms as $attributes) {
-			$slug = $attributes[TribeEventsCategoryColors::SLUG];
+			$slug = $attributes[Tribe_Events_Category_Colors::SLUG];
 			
 			// Sanitize textbox input (strip html tags, and escape characters)
 			// May not be needed with jQuery color picker
@@ -102,7 +102,7 @@ class TribeEventsCategoryColorsAdmin {
 
 
 	public static function options_elements() {
-		$teccc = TribeEventsCategoryColors::instance();
+		$teccc = Tribe_Events_Category_Colors::instance();
 
 		$content = $teccc->view('optionsform', array(
 			'options' => self::fetch_options($teccc),
@@ -131,7 +131,7 @@ class TribeEventsCategoryColorsAdmin {
 		);
 
 		foreach ($teccc->terms as $attributes) {
-			$slug = $attributes[TribeEventsCategoryColors::SLUG];
+			$slug = $attributes[Tribe_Events_Category_Colors::SLUG];
 
 			foreach ($categoryOptions as $optionkey)
 				if (!isset($options[$slug . $optionkey]))
@@ -162,8 +162,8 @@ class TribeEventsCategoryColorsAdmin {
 		wp_enqueue_script('minicolors-js', TECCC_RESOURCES.'/jquery-miniColors/jquery.miniColors.js', false, false, true );
 		wp_enqueue_script('minicolors-init', TECCC_RESOURCES.'/jquery-miniColors-init.js', false, false, true );
 		
-		wp_enqueue_script('teccc-admin', TECCC_RESOURCES.'/teccc-admin.js', false, TribeEventsCategoryColors::VERSION, true );
-		wp_enqueue_style('teccc-options', TECCC_RESOURCES.'/teccc-options.css', false, TribeEventsCategoryColors::VERSION );
+		wp_enqueue_script('teccc-admin', TECCC_RESOURCES.'/teccc-admin.js', false, Tribe_Events_Category_Colors::VERSION, true );
+		wp_enqueue_style('teccc-options', TECCC_RESOURCES.'/teccc-options.css', false, Tribe_Events_Category_Colors::VERSION );
 				
 	}
 	

@@ -1,4 +1,4 @@
-<!-- The Events Calendar Category Colors <?php echo TribeEventsCategoryColors::VERSION ?> generated CSS -->
+<!-- The Events Calendar Category Colors <?php echo Tribe_Events_Category_Colors::VERSION ?> generated CSS -->
 <style type="text/css" media="screen">
 	.tribe-events-calendar a {
 		font-weight: <?php echo $options['font_weight']  ?>;
@@ -8,8 +8,8 @@
 
 	<?php foreach ($teccc->terms as $id => $attributes): ?>
 		<?php
-			$slug = esc_attr($attributes[TribeEventsCategoryColors::SLUG]);
-			$name = esc_attr($attributes[TribeEventsCategoryColors::NAME]);
+			$slug = esc_attr($attributes[Tribe_Events_Category_Colors::SLUG]);
+			$name = esc_attr($attributes[Tribe_Events_Category_Colors::NAME]);
 		?>
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a {
 		color: <?php echo $options[$slug.'-text'] ?>;

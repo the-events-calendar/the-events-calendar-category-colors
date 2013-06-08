@@ -3,7 +3,7 @@ Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.5.1
-Stable tag: 1.7
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,32 +27,19 @@ Settings for The Events Calendar Category Colors plugin are located in their own
 
 Yes. [The Events Calendar plugin](http://wordpress.org/extend/plugins/the-events-calendar/) is written by Modern Tribe, Inc. It requires at least The Events Calendar v3.0.
 
-= What are Legend Superpowers? =
-
-Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely.
-
-It needs to be enabled in the Category Colors settings page. The Category Legend must also be enabled and in use for it to function.
-
-Click on the category of interest in the Legend to see the effect; click again to remove it.
 
 = What if I use a version of The Events Calendar 2.x? =
 
 The last compatible version of this plugin that works with TEC 2.x is [The Events Calendar Category Colors v1.6.3](http://downloads.wordpress.org/plugin/the-events-calendar-category-colors.1.6.3.zip).
 
-= Filters and Hooks =
+= Where can I get more help? =
 
-If you want to make additions to the default legend CSS you can use the action hook _'teccc_add_legend_css'_. Call it from your theme's functions.php in the following syntax.
-
-`
-add_action( 'teccc_add_legend_css', 'my_extra_legend_css' );
-function my_extra_legend_css () {
-	echo '/* my extra CSS goes here */';
-}
-`
+There is more extensive documentation of the plugins features and usage on the [The Events Calendar Category Colors wiki](https://github.com/afragen/events-calendar-category-colors/wiki).
 
 = Where can I report bugs? =
 
-Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
+1. Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
+2. Add a new issue on the [github repo](https://github.com/afragen/events-calendar-category-colors/issues?state=open).
 
 == Screenshots ==
 
@@ -62,12 +49,14 @@ Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-e
 
 == Changelog ==
 
-= 1.7 =
+= 2.0 =
 * updated for new TEC 3.0 code, will not work for TEC < 3.0
 * new instant preview of Settings
 * coloring in Month, List, Day and Photo views
 * coloring of tooltips in Week view
-* added action 'teccc_add_legend_css' to accommodate minor user changes to default legend css.
+* added some actions and filters, refer to wiki for listing
+* updated class and file naming to WordPress Coding Guidelines
+* new Help section of [Github Wiki](https://github.com/afragen/events-calendar-category-colors/wiki)
 
 = 1.6.3 =
 * add transition to Transparent/Color Picker option
