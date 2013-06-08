@@ -3,7 +3,7 @@ Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.1
 Tested up to: 3.5.1
-Stable tag: 2.0
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,7 +49,7 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
-= 2.0 =
+= 3.0 =
 * updated for new TEC 3.0 code, will not work for TEC < 3.0
 * new instant preview of Settings
 * coloring in Month, List, Day and Photo views
