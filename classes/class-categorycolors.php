@@ -7,11 +7,11 @@ class Tribe_Events_Category_Colors {
 	public $text_colors = array(
 		'Black' => '#000',
 		'White' => '#fff',
-		'Gray' => '#999'
+		'Gray'  => '#999'
 	);
 
 	public $font_weights = array(
-		'Bold' => 'bold',
+		'Bold'   => 'bold',
 		'Normal' => 'normal'
 	);
 
@@ -186,10 +186,10 @@ class Tribe_Events_Category_Colors {
 		if ($tmp['chk_default_options_db'] == '1' or !is_array($tmp)) {
 			delete_option('teccc_options');
 			for ($i = 0; $i < $teccc->count; $i++) {
-				$arr[$teccc->slugs[$i].'-text'] = '#000';
-				$arr[$teccc->slugs[$i].'-background'] = '#CFCFCF';
-				$arr[$teccc->slugs[$i].'-border'] = '#CFCFCF';
-				$arr[$teccc->slugs[$i].'-border_transparent'] = '1';
+				$arr[$teccc->slugs[$i].'-text']                   = '#000';
+				$arr[$teccc->slugs[$i].'-background']             = '#CFCFCF';
+				$arr[$teccc->slugs[$i].'-border']                 = '#CFCFCF';
+				$arr[$teccc->slugs[$i].'-border_transparent']     = '1';
 				$arr[$teccc->slugs[$i].'-background_transparent'] = '1';
 			}
 			$arr['font_weight'] = 'bold';

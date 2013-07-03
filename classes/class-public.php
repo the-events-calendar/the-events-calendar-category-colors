@@ -52,8 +52,8 @@ class Tribe_Events_Category_Colors_Public {
 		
 		$content = $this->teccc->view('legend', array(
 			'options' => $teccc_options,
-			'teccc' => Tribe_Events_Category_Colors::instance(),
-			'tec' => TribeEvents::instance()
+			'teccc'   => Tribe_Events_Category_Colors::instance(),
+			'tec'     => TribeEvents::instance()
 		), false);
 
 		$this->legendFilterHasRun = true;
