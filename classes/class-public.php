@@ -3,7 +3,7 @@ class Tribe_Events_Category_Colors_Public {
 	protected $teccc = null;
 	protected $options = array();
 
-	protected $legendTargetHook = 'tribe_events_month_before_the_grid';
+	protected $legendTargetHook = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
 
 
