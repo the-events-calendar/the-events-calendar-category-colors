@@ -41,7 +41,7 @@ class Tribe_Events_Category_Colors_Public {
 	public function add_css() {
 		$this->teccc->view('category.css', array(
 			'options' => $this->options,
-			'teccc' => $this->teccc
+			'teccc'   => $this->teccc
 		));
 	}
 
