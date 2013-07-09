@@ -1,6 +1,6 @@
 <!-- The Events Calendar Category Colors <?php echo Tribe_Events_Category_Colors::VERSION ?> generated CSS -->
 <style type="text/css" media="screen">
-	.tribe-events-calendar a {
+	.tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4 {
 		font-weight: <?php echo $options['font_weight']  ?>;
 	}
 	
@@ -28,7 +28,7 @@
 	}
 
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a {
-		width: 92%;
+		width: 93%;
 		display: block;
 	}
 	
