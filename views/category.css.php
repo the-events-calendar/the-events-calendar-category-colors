@@ -6,13 +6,13 @@
 	
 	.tribe-events-list .vevent.hentry h2 { padding-left: 5px; }
 
-	<?php foreach ($teccc->terms as $id => $attributes): ?>
+	<?php foreach ( $teccc->terms as $id => $attributes ): ?>
 		<?php
-			$slug = esc_attr($attributes[Tribe_Events_Category_Colors::SLUG]);
-			$name = esc_attr($attributes[Tribe_Events_Category_Colors::NAME]);
+			$slug = esc_attr( $attributes[Tribe_Events_Category_Colors::SLUG] );
+			$name = esc_attr( $attributes[Tribe_Events_Category_Colors::NAME] );
 		?>
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a {
-		color: <?php echo $options[$slug.'-text'] ?>;
+		color: <?php echo $options[ $slug.'-text' ] ?>;
 		text-decoration: none;
 	}
 
@@ -20,10 +20,10 @@
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
 	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
 	.tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary {
-		background-color: <?php echo $options[$slug.'-background'] ?>;
-		border-left: 5px solid <?php echo $options[$slug.'-border'] ?>;
+		background-color: <?php echo $options[ $slug.'-background' ] ?>;
+		border-left: 5px solid <?php echo $options[ $slug.'-border' ] ?>;
 		border-right: 5px solid transparent;
-		color: <?php echo $options[$slug.'-text'] ?>;
+		color: <?php echo $options[ $slug.'-text' ] ?>;
 		padding-left: 5px;
 	}
 
@@ -34,9 +34,9 @@
 	
 	<?php endforeach ?>
 
-	<?php if (isset($options['add_legend']) and !isset($options['custom_legend_css'])): ?>
+	<?php if( isset( $options['add_legend'] ) and !isset( $options['custom_legend_css'] ) ): ?>
 		<?php $teccc->view('legend.css') ?>
-		<?php do_action( 'teccc_add_legend_css', $extra_user_legend_css ) ?>
+		<?php if( isset( $extra_user_legend_css ) ) do_action( 'teccc_add_legend_css', $extra_user_legend_css ); ?>
 	<?php endif ?>
 
 </style>
