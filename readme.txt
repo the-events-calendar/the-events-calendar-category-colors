@@ -50,7 +50,7 @@ There is more extensive documentation of the plugins features and usage on the [
 == Changelog ==
 
 = 3.0.2 =
-* fixed warning error in category.css.php when !(isset($extra_user_legend_css))
+* sanity check in category.css.php when !(isset($extra_user_legend_css))
 
 = 3.0.1 =
 * fix for legend to display only on month view
