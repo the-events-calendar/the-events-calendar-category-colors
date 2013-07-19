@@ -84,3 +84,12 @@ function teccc_ignore_slug() {
 	$slugs = func_get_args();
 	foreach ($slugs as $slug) Tribe_Events_Category_Colors::instance()->ignore_list[] = $slug;
 }
+
+/**
+ * Shows the legend in an additional view.
+ *
+ * @param $view - 'upcoming', 'day', 'week', or 'photo'
+ */
+ function teccc_add_legend_view( $view ) {
+ 	Tribe_Events_Category_Colors::instance()->public->add_legend_view( $view );
+ }
