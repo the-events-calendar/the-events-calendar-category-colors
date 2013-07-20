@@ -5,7 +5,7 @@ class Tribe_Events_Category_Colors_Public {
 
 	protected $legendTargetHook = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
-	protected $legendExtraView = '';
+	protected $legendExtraView = array();
 
 
 	public function __construct( Tribe_Events_Category_Colors $teccc ) {
@@ -50,7 +50,7 @@ class Tribe_Events_Category_Colors_Public {
 	public function show_legend( $existingContent = '' ) {
 		$teccc_options = get_option( 'teccc_options' );
 		$eventDisplays = array( 'month' );
-		$eventDisplays[] = $this->legendExtraView;
+		$eventDisplays = array_merge( $eventDisplays, $this->legendExtraView );
 		if( ( get_query_var( 'post_type' ) === 'tribe_events' ) and !in_array( get_query_var( 'eventDisplay' ), $eventDisplays, true ) ) return;
 		if( !( isset( $teccc_options['add_legend'] ) and $teccc_options['add_legend'] === '1') ) return;
 		
@@ -92,7 +92,7 @@ class Tribe_Events_Category_Colors_Public {
 	
 	public function add_legend_view( $view ) {
 		//takes 'upcoming', 'day', 'week', 'photo' as parameters
-		$this->legendExtraView = $view;
+		$this->legendExtraView[] = $view;
 	}
 
 }
