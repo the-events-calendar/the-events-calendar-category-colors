@@ -3,11 +3,11 @@ Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add background colors to month event view of The Events Calendar events.
+Add event category background colors to The Events Calendar events.
 
 == Description ==
 
@@ -48,6 +48,10 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 3.0.3 =
+* added coloring to 'all' view
+* added `teccc_add_legend_view()`
 
 = 3.0.2 =
 * sanity check in category.css.php when !(isset($extra_user_legend_css))

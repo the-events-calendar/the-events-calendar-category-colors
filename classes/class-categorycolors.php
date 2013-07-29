@@ -1,6 +1,6 @@
 <?php
 class Tribe_Events_Category_Colors {
-	const VERSION = '3.0.2';
+	const VERSION = '3.0.3';
 	const SLUG = 0;
 	const NAME = 1;
 
