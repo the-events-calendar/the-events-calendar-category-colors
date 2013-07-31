@@ -19,8 +19,7 @@
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a,
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
 	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
-	.tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
-	table.tribe-mini-calendar td.tribe-events-category-<?php echo $slug ?> {
+	.tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary {
 		background-color: <?php echo $options[ $slug.'-background' ] ?>;
 		border-left: 5px solid <?php echo $options[ $slug.'-border' ] ?>;
 		border-right: 5px solid transparent;
