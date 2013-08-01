@@ -58,7 +58,7 @@
 		</tr>
 	<?php endforeach ?>
 
-	<tr>
+	<tr valign="top" style="border-top:#dddddd 1px solid;">
 		<td colspan="5"> </td>
 	</tr>
 
