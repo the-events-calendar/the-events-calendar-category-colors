@@ -31,7 +31,7 @@ class Tribe_Events_Category_Colors_Public {
 
 	public function add_effects() {
 		add_action( 'wp_head', array( $this, 'add_css' ) );
-		add_filter( 'tribe_mini_calendar_after_list_wrapper', array( $this, 'add_css' ) );
+		add_action( 'tribe_mini_calendar_after_list_wrapper', array( $this, 'add_css' ) );
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 		
 		if( isset( $this->options['legend_superpowers'] ) and $this->options['legend_superpowers'] === '1' )
