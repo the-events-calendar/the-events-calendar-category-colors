@@ -13,7 +13,9 @@
 		?>
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
 	.tribe-mini-calendar-event h2.tribe-events-category-<?php echo $slug ?> a,
-	.tribe-mini-calendar-event h2.tribe-events-category-<?php echo $slug ?> a:hover {
+	.tribe-mini-calendar-event h2.tribe-events-category-<?php echo $slug ?> a:hover,
+	.tribe-mini-calendar-event h2.tribe-events-category-<?php echo $slug ?> a:visited
+ {
 		color: <?php echo $options[ $slug.'-text' ] ?>;
 		text-decoration: none;
 	}
