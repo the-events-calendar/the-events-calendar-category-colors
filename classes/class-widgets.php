@@ -24,7 +24,7 @@ class Tribe_Events_Category_Colors_Widgets {
 		if( class_exists( 'TribeEventsPro' ) ) {
 			$css[] = '.tribe-events-adv-list-widget .tribe-events-category-' .  $slug . ' a:link,';
 			$css[] = '.tribe-events-adv-list-widget .tribe-events-category-' .  $slug . ' a:visited,';
-			$css[] = '.tribe-mini-calendar-list-wrapper .tribe-events-category-' .  $slug . ' a,';
+			$css[] = '.tribe-mini-calendar-list-wrapper .tribe-events-category-' .  $slug . ' a:link,';
 			$css[] = '.tribe-mini-calendar-list-wrapper .tribe-events-category-' .  $slug . ' a:visited,';
 		} else {
 			$css[] = '.tribe-events-list-widget .tribe-events-category-' .  $slug . ' a:link,';
