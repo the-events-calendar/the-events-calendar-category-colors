@@ -32,10 +32,7 @@ class Tribe_Events_Category_Colors_Public {
 
 	public function add_effects() {
 		add_action( 'wp_head', array( $this, 'add_css' ) );
-<<<<<<< HEAD
-=======
 		add_action( 'tribe_before_widget', array( $this, 'add_css' ) );
->>>>>>> refs/heads/widget
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 		
 		if ( isset( $this->options['legend_superpowers'] ) and $this->options['legend_superpowers'] === '1' )
