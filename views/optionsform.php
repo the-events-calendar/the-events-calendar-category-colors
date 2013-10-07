@@ -20,7 +20,7 @@
 
 			<td class="color-control">
 				<div class="transparency">
-					<label> <input name="teccc_options[<?php echo $slug ?>-border_transparent]" type="checkbox" value="1" <?php echo checked('1', $options[$slug.'-border_transparent'], false) ?> /> <?php _e('Transparent', 'teccc') ?> </label> <br />
+					<label> <input name="teccc_options[<?php echo $slug ?>-border_transparent]" type="checkbox" value="1" <?php echo checked('1', $options[$slug.'-border_transparent'], false) ?> /> <?php _e( 'Transparent', 'teccc' ) ?> </label> <br />
 					<?php if ( isset( $options[$slug.'-border_transparent'] ) ):
 						$options[$slug.'-border'] = 'transparent'; ?>
 					<?php endif ?>
@@ -88,7 +88,7 @@
 			<p> <?php _e( 'Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it.', 'teccc' ) ?> </p>
 		</div>
 
-	<div class="teccc_options_col1 legend_related"><label> <?php _e('Custom Legend CSS', 'teccc') ?> </label></div>
+	<div class="teccc_options_col1 legend_related"><label> <?php _e( 'Custom Legend CSS', 'teccc' ) ?> </label></div>
 		<div class="teccc_options_col2 legend_related">
 			<label> <input name="teccc_options[custom_legend_css]" type="checkbox" value="1" <?php echo checked( '1', $options['custom_legend_css'], false ) ?> /> <?php _e( 'Check to use your own CSS for category legend.', 'teccc' ) ?> </label>
 		</div>
