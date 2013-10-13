@@ -1,4 +1,5 @@
 jQuery(document).ready(function($){
+	"use-strict";
 
 	var myOptions = {
 		// you can declare a default color here,
@@ -13,7 +14,6 @@ jQuery(document).ready(function($){
 		// show a group of common colors beneath the square
 		// or, supply an array of colors to customize further
 		palettes: false,
-		width: 100,
 	};
  
 	$('.teccc-color-picker').wpColorPicker(myOptions);
