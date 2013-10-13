@@ -4,12 +4,10 @@
 }
 
 .iris-picker .iris-slider-offset {
-	opacity: .5;
 	top: 0 !important;
 }
 
-.iris-picker .iris-strip .ui-slider-handle {
-	opacity: .9 !important;
+.ui-widget-content {
+	background: transparent !important;
+	border: none !important;
 }
-
-.iris-strip .ui-slider-handle:before { border: 2px solid #000 !important; }
