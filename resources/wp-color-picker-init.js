@@ -23,7 +23,7 @@ jQuery(document).ready(function($){
 	$('.teccc-color-picker').iris({
 		width: 125,
 		color: false,
-	    mode: 'hsv',
+	    mode: 'hsl',
 	    controls: {
 			horiz: 's', // horizontal defaults to saturation
 	        vert: 'l', // vertical defaults to lightness
