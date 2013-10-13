@@ -19,6 +19,19 @@ jQuery(document).ready(function($){
 	$('.teccc-color-picker').wpColorPicker(myOptions);
 
 	$('.teccc-color-picker').wpColorPicker();
+	
+	$('.teccc-color-picker').iris({
+		width: 125,
+		color: false,
+	    mode: 'hsv',
+	    controls: {
+			horiz: 's', // horizontal defaults to saturation
+	        vert: 'l', // vertical defaults to lightness
+	        strip: 'h' // right strip defaults to hue
+	    },
+	    border: true, // draw a border around the collection of UI elements
+	    target: false, // a DOM element / jQuery selector that the element will be appended within. Only used when called on an input.
+	});
 
 });
 
