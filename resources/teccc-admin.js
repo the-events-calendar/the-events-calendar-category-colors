@@ -80,9 +80,9 @@ jQuery(document).ready(function($) {
 		var newBackgroundTransparency = false;
 		var newFontColor = "#000";
 
-		$(row).find("input").add($(row).find("select")).each(function() {
+        // Iterate across all input, select and anchor elements in the current row
+		row.find("input").add(row.find("select")).add(row.find("a")).each(function() {
 			var inputName = $(this).attr("name");
-			console.log(inputName);
 			if (borderColor.test(inputName)) newBorderColor = $(this).val();
 			else if (backgroundColor.test(inputName)) newBackgroundColor = $(this).val();
 			else if (borderTransparency.test(inputName)) newBorderTransparency = ($(this).attr("checked") === "checked");
@@ -101,10 +101,10 @@ jQuery(document).ready(function($) {
 
 	// Live feedback: update background/border colors
 	var colorControls = $("table.teccc.form-table");
-	var colorInputs = $(colorControls).find("input");
-	var fontSelect = $(colorControls).find("select");
+	var colorInputs = colorControls.find("input").add(colorControls.find("a"));
+	var fontSelect = colorControls.find("select");
 
-	$(colorInputs).add(fontSelect).change(function() {
+	$(colorInputs).add(fontSelect).click(function() {
 		updateRowSampler(this);
 	});
 
