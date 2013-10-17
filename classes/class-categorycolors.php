@@ -1,6 +1,6 @@
 <?php
 class Tribe_Events_Category_Colors {
-	const VERSION = '3.0.3';
+	const VERSION = '3.1.0';
 	const SLUG = 0;
 	const NAME = 1;
 
@@ -49,16 +49,16 @@ class Tribe_Events_Category_Colors {
 	 */
 	public static function instance() {
 		$class = __CLASS__;
-		if (self::$object === false) self::$object = new $class();
+		if ( false === self::$object ) self::$object = new $class();
 		return self::$object;
 	}
 
 
 	protected function __construct() {
 		// We need to wait until the taxonomy has been registered before building our list
-		add_action('init', array($this, 'load_categories'), 20);
+		add_action( 'init', array( $this, 'load_categories' ), 20 );
 
-		if ($this->is_admin()) $this->load_admin();
+		if ( $this->is_admin() ) $this->load_admin();
 		$this->load_public(); // Always load public (in case template tags are in use with the theme)
 	}
 
@@ -71,26 +71,26 @@ class Tribe_Events_Category_Colors {
 	 * @return bool
 	 */
 	protected function is_admin() {
-		return (is_admin() and (!defined('DOING_AJAX')));
+		return ( is_admin() and ( ! defined( 'DOING_AJAX' ) ) );
 	}
 
 
 	public function load_categories() {
-		add_filter('teccc_get_terms', array($this, 'remove_terms'));
+		add_filter( 'teccc_get_terms', array( $this, 'remove_terms' ) );
 		$this->get_category_terms();
-		$this->count = count($this->terms);
+		$this->count = count( $this->terms );
 	}
 
 
 	protected function get_category_terms() {
-		if (!empty($this->terms)) return;
+		if ( ! empty( $this->terms ) ) return;
 
 		// TribeEvents not yet defined, so we can't use the class constant
-		$term_list = apply_filters('teccc_get_terms', get_terms('tribe_events_cat'));
+		$term_list = apply_filters( 'teccc_get_terms', get_terms( 'tribe_events_cat' ) );
 
 		// Represent each term as an array [slug, name] indexed by term ID
-		foreach ($term_list as $term)
-			$this->terms[$term->term_id] = array($term->slug, preg_replace('/\s/', '&nbsp;', $term->name));
+		foreach ( $term_list as $term )
+			$this->terms[ $term->term_id ] = array( $term->slug, preg_replace( '/\s/', '&nbsp;', $term->name ) );
 	}
 
 
@@ -100,13 +100,13 @@ class Tribe_Events_Category_Colors {
 	 * @param $term_list
 	 * @return array
 	 */
-	public function remove_terms($term_list) {
+	public function remove_terms( $term_list ) {
 		$revised_list = array();
 
-		foreach ($term_list as $src_id => $src_term) {
-			if (in_array((int) $src_term->term_id, $this->ignore_list, true)) continue;
-			if (in_array((string) $src_term->slug, $this->ignore_list, true)) continue;
-			$revised_list[$src_id] = $src_term;
+		foreach ( $term_list as $src_id => $src_term ) {
+			if ( in_array( (int) $src_term->term_id, $this->ignore_list, true ) ) continue;
+			if ( in_array( (string) $src_term->slug, $this->ignore_list, true ) ) continue;
+			$revised_list[ $src_id ] = $src_term;
 		}
 
 		return $revised_list;
@@ -114,14 +114,14 @@ class Tribe_Events_Category_Colors {
 
 
 	protected function load_admin() {
-		require_once TECCC_CLASSES.'/class-admin.php';
-		new Tribe_Events_Category_Colors_Admin($this);
+		require_once TECCC_CLASSES . '/class-admin.php';
+		new Tribe_Events_Category_Colors_Admin( $this );
 	}
 
 
 	protected function load_public() {
-		require_once TECCC_CLASSES.'/class-public.php';
-		$this->public = new Tribe_Events_Category_Colors_Public($this);
+		require_once TECCC_CLASSES . '/class-public.php';
+		$this->public = new Tribe_Events_Category_Colors_Public( $this );
 	}
 
 
@@ -131,9 +131,9 @@ class Tribe_Events_Category_Colors {
 	 * @param $file
 	 * @return array
 	 */
-	public function load_config($file) {
-		$config = $this->load_config_array_file($file);
-		return (array) apply_filters("teccc-config-$file", $config);
+	public function load_config( $file ) {
+		$config = $this->load_config_array_file( $file );
+		return (array) apply_filters( "teccc-config-$file", $config );
 	}
 
 
@@ -146,9 +146,9 @@ class Tribe_Events_Category_Colors {
 	 * @param $file
 	 * @return array
 	 */
-	protected function load_config_array_file($file) {
-		$path = TECCC_INCLUDES."/$file.php";
-		if (file_exists($path))	return (array) include $path;
+	protected function load_config_array_file( $file ) {
+		$path = TECCC_INCLUDES . "/$file.php";
+		if ( file_exists( $path ) )	return (array) include $path;
 		else return array();
 	}
 
@@ -165,14 +165,14 @@ class Tribe_Events_Category_Colors {
 	 * @param bool $render
 	 * @return mixed
 	 */
-	public function view($template, array $vars = null, $render = true) {
-		$path = TECCC_VIEWS."/$template.php";
-		if (!file_exists($path)) return;
-		if ($vars !== null) extract($vars);
+	public function view( $template, array $vars = null, $render = true ) {
+		$path = TECCC_VIEWS . "/$template.php";
+		if ( ! file_exists( $path ) ) return;
+		if ( $vars !== null ) extract( $vars );
 
-		if (!$render) ob_start();
+		if ( ! $render ) ob_start();
 		include $path;
-		if (!$render) return ob_get_clean();
+		if ( ! $render ) return ob_get_clean();
 	}
 
 
@@ -181,19 +181,19 @@ class Tribe_Events_Category_Colors {
 	 */
 	public static function add_defaults() {
 		$teccc = Tribe_Events_Category_Colors::instance();
-		$tmp = get_option('teccc_options');
+		$tmp = get_option( 'teccc_options' );
 
-		if ($tmp['chk_default_options_db'] == '1' or !is_array($tmp)) {
-			delete_option('teccc_options');
-			for ($i = 0; $i < $teccc->count; $i++) {
-				$arr[$teccc->slugs[$i].'-text']                   = '#000';
-				$arr[$teccc->slugs[$i].'-background']             = '#CFCFCF';
-				$arr[$teccc->slugs[$i].'-border']                 = '#CFCFCF';
-				$arr[$teccc->slugs[$i].'-border_transparent']     = '1';
-				$arr[$teccc->slugs[$i].'-background_transparent'] = '1';
+		if ( $tmp['chk_default_options_db'] == '1' or ! is_array( $tmp ) ) {
+			delete_option( 'teccc_options' );
+			for ( $i = 0; $i < $teccc->count; $i++ ) {
+				$arr[ $teccc->slugs[$i].'-text' ]                   = '#000';
+				$arr[ $teccc->slugs[$i].'-background' ]             = '#CFCFCF';
+				$arr[ $teccc->slugs[$i].'-border' ]                 = '#CFCFCF';
+				$arr[ $teccc->slugs[$i].'-border_transparent' ]     = '1';
+				$arr[ $teccc->slugs[$i].'-background_transparent' ] = '1';
 			}
 			$arr['font_weight'] = 'bold';
-			update_option('teccc_options', $arr);
+			update_option( 'teccc_options', $arr );
 		}
 	}
 
@@ -202,6 +202,6 @@ class Tribe_Events_Category_Colors {
 	 * Expected to run on deactivation.
 	 */
 	public static function delete_plugin_options() {
-		delete_option('teccc_options');
+		delete_option( 'teccc_options' );
 	}
 }

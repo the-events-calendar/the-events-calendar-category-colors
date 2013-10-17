@@ -25,8 +25,8 @@ function teccc_remove_default_legend() {
  * @param $viewFilter
  * @return bool
  */
-function teccc_reposition_legend($viewFilter) {
-	return Tribe_Events_Category_Colors::instance()->public->reposition_legend($viewFilter);
+function teccc_reposition_legend( $viewFilter ) {
+	return Tribe_Events_Category_Colors::instance()->public->reposition_legend( $viewFilter );
 }
 
 
@@ -41,7 +41,7 @@ function teccc_reposition_legend($viewFilter) {
  * @deprecated
  */
 function teccc_insert_legend() {
-	do_action('teccc_legend_hook'); // Doesn't do anything now, retained for legacy purposes
+	do_action( 'teccc_legend_hook' ); // Doesn't do anything now, retained for legacy purposes
 	Tribe_Events_Category_Colors::instance()->public->show_legend();
 }
 
@@ -53,7 +53,7 @@ function teccc_insert_legend() {
  * @deprecated
  */
 function teccc_legend_hook() {
-	_doing_it_wrong('teccc_legend_hook', __('Use of this function is deprecated', 'teccc'), '1.6.0B');
+	_doing_it_wrong( 'teccc_legend_hook', __('Use of this function is deprecated', 'events-calendar-category-colors' ), '1.6.0B' );
 	teccc_insert_legend();
 }
 
@@ -70,7 +70,7 @@ function teccc_legend_hook() {
  * @param $name
  * @param $value
  */
-function teccc_add_text_color($name, $value) {
+function teccc_add_text_color( $name, $value ) {
 	Tribe_Events_Category_Colors::instance()->text_colors[$name] = $value;
 }
 
@@ -82,7 +82,7 @@ function teccc_add_text_color($name, $value) {
  */
 function teccc_ignore_slug() {
 	$slugs = func_get_args();
-	foreach ($slugs as $slug) Tribe_Events_Category_Colors::instance()->ignore_list[] = $slug;
+	foreach ( $slugs as $slug ) Tribe_Events_Category_Colors::instance()->ignore_list[] = $slug;
 }
 
 /**
@@ -90,6 +90,6 @@ function teccc_ignore_slug() {
  *
  * @param $view - 'upcoming', 'day', 'week', or 'photo'
  */
- function teccc_add_legend_view( $view ) {
- 	Tribe_Events_Category_Colors::instance()->public->add_legend_view( $view );
- }
+function teccc_add_legend_view( $view ) {
+	Tribe_Events_Category_Colors::instance()->public->add_legend_view( $view );
+}

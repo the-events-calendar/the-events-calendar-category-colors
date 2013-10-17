@@ -11,11 +11,15 @@
 			$slug = esc_attr( $attributes[Tribe_Events_Category_Colors::SLUG] );
 			$name = esc_attr( $attributes[Tribe_Events_Category_Colors::NAME] );
 		?>
-	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a {
+
+	<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug ); ?>
+	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a
+ {
 		color: <?php echo $options[ $slug.'-text' ] ?>;
 		text-decoration: none;
 	}
 
+	<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug ); ?>
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a,
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
 	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
@@ -27,6 +31,7 @@
 		padding-left: 5px;
 	}
 
+	<?php Tribe_Events_Category_Colors_Widgets::add_widget_display_css( $slug ); ?>
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a {
 		width: 93%;
 		display: block;
@@ -35,7 +40,7 @@
 	<?php endforeach ?>
 
 	<?php if( isset( $options['add_legend'] ) and !isset( $options['custom_legend_css'] ) ): ?>
-		<?php $teccc->view('legend.css') ?>
+		<?php $teccc->view( 'legend.css' ) ?>
 		<?php if( isset( $extra_user_legend_css ) ) do_action( 'teccc_add_legend_css', $extra_user_legend_css ); ?>
 	<?php endif ?>
 

@@ -2,8 +2,8 @@
 Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.5
-Tested up to: 3.6
-Stable tag: 3.0.3
+Tested up to: 3.7
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,7 +25,7 @@ Settings for The Events Calendar Category Colors plugin are located in their own
 
 = Does the plugin require The Events Calendar plugin? =
 
-Yes. [The Events Calendar plugin](http://wordpress.org/extend/plugins/the-events-calendar/) is written by Modern Tribe, Inc. It requires at least The Events Calendar v3.0.
+Yes. [The Events Calendar plugin](http://wordpress.org/plugins/the-events-calendar/) is written by Modern Tribe, Inc. It requires at least The Events Calendar v3.0.
 
 
 = What if I use a version of The Events Calendar 2.x? =
@@ -48,6 +48,12 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 3.0.4 =
+* widgets colorized (needs template overrides)
+* updated for WordPress Coding Guidelines
+* added error warning to Settings when no categorized events exist
+* setting up for localization
 
 = 3.0.3 =
 * added coloring to 'all' view
