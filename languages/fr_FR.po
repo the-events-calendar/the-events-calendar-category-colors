@@ -1,0 +1,168 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: The Events Calendar Category Colors\n"
+"POT-Creation-Date: 2013-10-16 09:24+0100\n"
+"PO-Revision-Date: 2013-10-16 09:48+0100\n"
+"Last-Translator: Rémy Perona <remperona@gmail.com>\n"
+"Language-Team: Rémy Perona <remperona@gmail.com>\n"
+"Language: français\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../classes/class-admin.php:27 ../classes/class-admin.php:31
+msgid "The Events Calendar"
+msgstr "The Events Calendar"
+
+#: ../classes/class-admin.php:28
+#, php-format
+msgid ""
+"To begin using The Events Calendar Category Colors, please install the "
+"latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events "
+"Calendar</a>."
+msgstr ""
+"Pour commencer à utiliser The Events Calendar Category Colors, veuillez "
+"installer la dernière version de The Events <a href=\"%s\" class=\"thickbox"
+"\" title=\"%s\">Calendar</a>."
+
+#: ../classes/class-admin.php:32
+msgid "You have The Events Calendar v."
+msgstr "Vous avez The  Events Calendar v."
+
+#: ../classes/class-admin.php:80
+msgid "Category Colors"
+msgstr "Couleurs de catégorie"
+
+#: ../classes/class-admin.php:96
+msgid "Settings saved."
+msgstr "Réglages sauvegardés"
+
+#: ../includes/admintab.php:13
+msgid "Category Colors Settings"
+msgstr "Réglages des couleurs de catégorie"
+
+#: ../includes/admintab.php:17
+msgid ""
+"The Events Calendar Category Colors plugin was inspired by the tutorial <a "
+"href=\"http://tri.be/coloring-your-category-events/\">Coloring Your Category "
+"Events</a>."
+msgstr ""
+"L'extension The Events Calendar Category Colors est inspirée du tutoriel a "
+"href=\"http://tri.be/coloring-your-category-events/\">Coloring Your Category "
+"Events (en)</a>."
+
+#: ../includes/admintab.php:21
+msgid ""
+"Instructions for <strong>filters</strong>, <strong>hooks</strong>, "
+"<strong>settings functions</strong>, and <strong>help</strong> are on <a "
+"href=\"https://github.com/afragen/events-calendar-category-colors/wiki\">The "
+"Events Calendar Category Colors wiki</a>."
+msgstr ""
+"Les instructions pour les <strong>filtres</strong>, <strong>hooks</strong>, "
+"<strong>fonctions de réglages</strong>, et <strong>l'aide</strong> sont sur "
+"le <a href=\"https://github.com/afragen/events-calendar-category-colors/wiki"
+"\"> wiki The Events Calendar Category Colors (en)</a>."
+
+#: ../includes/admintab.php:37
+msgid "Save Changes"
+msgstr "Sauvegarder les changements"
+
+#: ../includes/templatetags.php:56
+msgid "Use of this function is deprecated"
+msgstr "L'utilisation de cette fonction est dépréciée"
+
+#: ../views/legend.php:11
+msgid "category"
+msgstr "catégorie"
+
+#: ../views/optionsform.php:6
+msgid "Category Slug"
+msgstr "Identifiant de la catégorie"
+
+#: ../views/optionsform.php:7
+msgid "Border Color"
+msgstr "Couleur de la bordure"
+
+#: ../views/optionsform.php:8
+msgid "Background Color"
+msgstr "Couleur de fond"
+
+#: ../views/optionsform.php:9
+msgid "Text Color"
+msgstr "Couleur du texte"
+
+#: ../views/optionsform.php:10
+msgid "Current Display"
+msgstr "Affichage actuel"
+
+#: ../views/optionsform.php:14
+msgid ""
+"You must have at least one event with a category for The Events Calendar "
+"Category Colors plugin to function."
+msgstr ""
+"Vous devez avoir au moins un évènement avec une catégorie pour que "
+"l'extension The Events Calendar Category Colors fonctionne."
+
+#: ../views/optionsform.php:27 ../views/optionsform.php:39
+msgid "Transparent"
+msgstr "Transparent"
+
+#: ../views/optionsform.php:73
+msgid "Font-Weight Options"
+msgstr "Options d'épaisseur de la police"
+
+#: ../views/optionsform.php:84
+msgid "Add Category Legend"
+msgstr "Ajouter la légende de la catégorie"
+
+#: ../views/optionsform.php:86
+msgid "Check to add a Category Legend to the calendar."
+msgstr "Cochez pour ajouter la légende de la catégorie au calendrier."
+
+#: ../views/optionsform.php:91
+msgid "Check to add Legend Superpowers."
+msgstr "Cochez pour ajouter les superpouvoirs de la légende."
+
+#: ../views/optionsform.php:92
+msgid ""
+"Legend Superpowers are an optional visual effect allowing visitors to focus "
+"only on those events that belong to categories of interest - without "
+"reloading the page and without eliminating other categories from view "
+"completely. Click on the category of interest in the Legend for the effect; "
+"click again to remove it."
+msgstr ""
+"Les superpouvoirs de la légende sont un un effet visuel optionnel permettant "
+"aux visiteurs de se concentrer uniquement sur les évènements appartenant aux "
+"catégories qui les intéressent - sans recharger la page et sans complètement "
+"masquer les autres catégories. Cliquez sur la catégorie prévalente dans la "
+"légende pour faire effet; cliquez une nouvelle fois pour l'enlever."
+
+#: ../views/optionsform.php:95
+msgid "Custom Legend CSS"
+msgstr "CSS personnalisé pour la légende"
+
+#: ../views/optionsform.php:97
+msgid "Check to use your own CSS for category legend."
+msgstr "Cochez pour utiliser votre propre CSS pour la légende de la catégorie."
+
+#: ../views/optionsform.php:100
+msgid "Database Options"
+msgstr "Options de la base de données"
+
+#: ../views/optionsform.php:102
+msgid "Restore defaults upon plugin deactivation/reactivation"
+msgstr ""
+"Restaurer les valeurs par défaut à la désactivation/réactivation de "
+"l'extension"
+
+#: ../views/optionsform.php:103
+msgid ""
+"Only check this if you want to reset plugin settings upon Plugin reactivation"
+msgstr ""
+"Ne cochez ceci que si vous souhaitez réinitialiser les réglages de "
+"l'extension à la réactivation"
