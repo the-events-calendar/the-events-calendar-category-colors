@@ -19,7 +19,7 @@ define( 'TECCC_CLASSES', TECCC_DIR . '/classes' );
 define( 'TECCC_INCLUDES', TECCC_DIR . '/includes' );
 define( 'TECCC_VIEWS', TECCC_DIR . '/views' );
 define( 'TECCC_RESOURCES', plugin_dir_url(__FILE__) . 'resources' );
-
+define( 'TECCC_LANG', TECCC_DIR . '/lang' );
 // Load the base class
 require_once TECCC_CLASSES.'/class-categorycolors.php';
 

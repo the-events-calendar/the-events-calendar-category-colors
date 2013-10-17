@@ -12,6 +12,7 @@ class Tribe_Events_Category_Colors_Admin {
 		add_action( 'plugins_loaded', array( $this, 'load_settings_tab' ) );
 		add_action( 'tribe_settings_below_tabs_tab_category-colors', array( $this, 'is_saved' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_teccc_js_css' ) );
+		load_plugin_textdomain('events-calendar-category-colors', false, trailingslashit( TECCC_LANG ) );
 	}
 
 
@@ -24,12 +25,12 @@ class Tribe_Events_Category_Colors_Admin {
 		if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
 			if ( ! class_exists( 'TribeEvents' ) ) {
 				$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
-				$title = __( 'The Events Calendar', 'teccc' );
-				echo '<div class="error"><p>'.sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'teccc' ),$url, $title ).'</p></div>';
+				$title = __( 'The Events Calendar', 'events-calendar-category-colors' );
+				echo '<div class="error"><p>'.sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'events-calendar-category-colors' ),$url, $title ).'</p></div>';
 			} elseif ( version_compare( TribeEvents::VERSION, '3.0', 'lt') ) {
 				$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
-				$title = __( 'The Events Calendar', 'teccc' );
-				echo '<div class="error"><p>'.sprintf( __( 'You have The Events Calendar v.' . TribeEvents::VERSION . '. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'teccc' ),$url, $title ).'</p></div>';
+				$title = __( 'The Events Calendar', 'events-calendar-category-colors' );
+				echo '<div class="error"><p>'.sprintf( __( 'You have The Events Calendar v.' . TribeEvents::VERSION . '. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'events-calendar-category-colors' ),$url, $title ).'</p></div>';
 			}
 		}
 	}
@@ -77,7 +78,7 @@ class Tribe_Events_Category_Colors_Admin {
 		$categoryColorsTab = $this->teccc->load_config( 'admintab' );
 		add_action( 'tribe_settings_form_element_tab_category-colors', array( $this, 'form_header' ) );
 		add_action( 'tribe_settings_before_content_tab_category-colors', array( $this, 'settings_fields' ) );
-		new TribeSettingsTab( self::TAB_NAME, __( 'Category Colors', 'teccc' ), $categoryColorsTab );
+		new TribeSettingsTab( self::TAB_NAME, __( 'Category Colors', 'events-calendar-category-colors' ), $categoryColorsTab );
 	}
 
 
