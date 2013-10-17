@@ -49,10 +49,11 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
-= 3.1.0 =
-* widgets colorized
+= 3.0.4 =
+* widgets colorized (needs template overrides)
 * updated for WordPress Coding Guidelines
 * added error warning to Settings when no categorized events exist
+* setting up for localization
 
 = 3.0.3 =
 * added coloring to 'all' view
