@@ -30,7 +30,7 @@ jQuery(document).ready(function($){
 	
 	// this option doesn't seem to be picked up above
 	$('.teccc-color-picker').iris({
-		width: 125,
+		width: 150,
 	});
 
 });
