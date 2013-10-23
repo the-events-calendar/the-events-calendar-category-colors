@@ -14,6 +14,12 @@ jQuery(document).ready(function($){
 		// show a group of common colors beneath the square
 		// or, supply an array of colors to customize further
 		palettes: false,
+
+		
+	};
+	
+	var irisOptions = {
+			// the following option are available to iris not wpColorPicker
 		color: false,
 	    mode: 'hsl',
 	    controls: {
@@ -23,15 +29,13 @@ jQuery(document).ready(function($){
 	    },
 	    border: true, // draw a border around the collection of UI elements
 	    target: false, // a DOM element / jQuery selector that the element will be appended within. Only used when called on an input.
-//		width: 125,
+		width: 150,
+
 	};
  
 	$('.teccc-color-picker').wpColorPicker(myOptions);
-	
-	// this option doesn't seem to be picked up above
-	$('.teccc-color-picker').iris({
-		width: 150,
-	});
+//	$('.teccc-color-picker').iris(irisOptions);
+
 
 });
 
