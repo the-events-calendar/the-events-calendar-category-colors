@@ -34,7 +34,8 @@ jQuery(document).ready(function($){
 	};
  
 	$('.teccc-color-picker').wpColorPicker(myOptions);
-//	$('.teccc-color-picker').iris(irisOptions);
+//	$('.teccc-color-picker').iris();
+//	$('.teccc-color-picker').iris('option', 'mode', 'hsl');
 
 
 });
