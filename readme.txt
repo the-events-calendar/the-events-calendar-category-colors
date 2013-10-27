@@ -53,6 +53,7 @@ There is more extensive documentation of the plugins features and usage on the [
 * widgets colorized
 * updated for WordPress Coding Guidelines
 * added error warning to Settings when no categorized events exist
+* switched to built-in WP color picker
 
 = 3.0.3 =
 * added coloring to 'all' view
