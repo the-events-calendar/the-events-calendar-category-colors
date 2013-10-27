@@ -1,0 +1,15 @@
+.color-control .ui-slider-vertical {
+	height: 75px !important;
+	width: auto !important;
+}
+
+.color-control .iris-picker .iris-slider-offset {
+	top: 0 !important;
+	bottom: 3px !important;
+}
+
+.color-control .ui-widget-content {
+	background: transparent !important;
+	border: none !important;
+	height: auto !important;
+}
