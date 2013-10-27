@@ -61,11 +61,7 @@ There is more extensive documentation of the plugins features and usage on the [
 * widgets colorized (needs template overrides)
 * updated for WordPress Coding Guidelines
 * added error warning to Settings when no categorized events exist
-<<<<<<< HEAD
 * setting up for localization
-=======
-* switched to built-in WP color picker
->>>>>>> refs/heads/feature/iris
 
 = 3.0.3 =
 * added coloring to 'all' view
