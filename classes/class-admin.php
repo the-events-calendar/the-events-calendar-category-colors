@@ -12,7 +12,7 @@ class Tribe_Events_Category_Colors_Admin {
 		add_action( 'plugins_loaded', array( $this, 'load_settings_tab' ) );
 		add_action( 'tribe_settings_below_tabs_tab_category-colors', array( $this, 'is_saved' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_teccc_js_css' ) );
-		load_plugin_textdomain('events-calendar-category-colors', false, trailingslashit( TECCC_LANG ) );
+		load_plugin_textdomain('events-calendar-category-colors', false, TECCC_LANG );
 	}
 
 
