@@ -1,25 +1,24 @@
 # Copyright (C) 2013 The Events Calendar Category Colors
 # This file is distributed under the same license as the The Events Calendar Category Colors package.
 # Translators:
-# Francois-Xavier Bénard <fxb@wp-translations.org>, 2013
-# Francois-Xavier Bénard <fxb@wp-translations.org>, 2013
+# Csaba Orban <vicsabi@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Category Colors\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar-category-colors\n"
 "POT-Creation-Date: 2013-10-17 21:51:42+00:00\n"
-"PO-Revision-Date: 2013-11-07 16:20+0000\n"
+"PO-Revision-Date: 2013-11-04 07:15+0000\n"
 "Last-Translator: Francois-Xavier Bénard <fxb@wp-translations.org>\n"
-"Language-Team: French (France) (http://www.transifex.com/projects/p/wp-translations/language/fr_FR/)\n"
+"Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/wp-translations/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr_FR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: hu_HU\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: category-colors-settings.php:41 includes/admintab.php:37
 msgid "Save Changes"
-msgstr "Enregistrer les modifications"
+msgstr "Módosítások mentése"
 
 #: classes/admin.php:28 classes/class-admin.php:28 classes/class-admin.php:32
 msgid "The Events Calendar"
@@ -30,26 +29,26 @@ msgid ""
 "To begin using The Events Calendar Category Colors, please install the "
 "latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events "
 "Calendar</a>."
-msgstr "Pour commencer à utiliser The Events Calendar Category Colors, s'il vous plaît installer la dernière version de <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</a>."
+msgstr "Az Eseménynaptár Kategória Színek használata előtt kérjük telepítse az <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</a>legújabb verzióját."
 
 #: classes/admin.php:94 classes/class-admin.php:81
 msgid "Category Colors"
-msgstr "Category Colors"
+msgstr "Kategória színek"
 
 #: classes/admin.php:110 classes/class-admin.php:97
 msgid "Settings saved."
-msgstr "Réglages enregistrés."
+msgstr "Beállítások elmentve."
 
 #: includes/admintab.php:13
 msgid "Category Colors Settings"
-msgstr "Réglages de Category Colors"
+msgstr "Kategória színbeállítások"
 
 #: includes/admintab.php:17
 msgid ""
 "The Events Calendar Category Colors plugin was inspired by the tutorial <a "
 "href=\"http://tri.be/coloring-your-category-events/\">Coloring Your Category"
 " Events</a>."
-msgstr "L'extension Events Calendar Category Colors a été inspirée par ce tutoriel <a href=\"http://tri.be/coloring-your-category-events/\">Coloring Your Category Events</a>."
+msgstr "A Színes Kategória Esemény Naptár plugin megalkotását inspirálta a <a href=\"http://tri.be/coloring-your-category-events/\">A kategória események színesben</a> leírás."
 
 #: includes/admintab.php:21
 msgid ""
@@ -57,57 +56,57 @@ msgid ""
 "<strong>settings functions</strong>, and <strong>help</strong> are on <a "
 "href=\"https://github.com/afragen/events-calendar-category-colors/wiki\">The"
 " Events Calendar Category Colors wiki</a>."
-msgstr "Les instructions pour les <strong>filtres</strong>, <strong>hooks</strong>, <strong>réglages des fonctions</strong>, et <strong>l'aide</strong> se trouvent dans <a href=\"https://github.com/afragen/events-calendar-category-colors/wiki\">le wiki de The Events Calendar Category Colors</a>."
+msgstr "Útmutatás a <strong>szűrőkhöz</strong>, <strong>a használathoz</strong>, <strong>a beállításokhoz</strong>, és <strong>segítség</strong>érhető el a <a href=\"https://github.com/afragen/events-calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a> oldalán."
 
 #: includes/templatetags.php:56
 msgid "Use of this function is deprecated"
-msgstr "L'utilisation de cette fonction est dépréciée"
+msgstr "Ennek a funkciónak a használata elavult"
 
 #: views/optionsform.php:6
 msgid "Category Slug"
-msgstr "Identifiant de la catégorie"
+msgstr "Kategória slug"
 
 #: views/optionsform.php:7
 msgid "Border Color"
-msgstr "Couleur de la bordure"
+msgstr "Keret szín"
 
 #: views/optionsform.php:8
 msgid "Background Color"
-msgstr "Couleur de fond"
+msgstr "Háttérszín"
 
 #: views/optionsform.php:9
 msgid "Text Color"
-msgstr "Couleur du texte"
+msgstr "Szöveg színe"
 
 #: views/optionsform.php:10
 msgid "Current Display"
-msgstr "Affichage actuel"
+msgstr "A jelenlegi megjelenítés"
 
 #: views/optionsform.php:14
 msgid ""
 "You must have at least one event with a category for The Events Calendar "
 "Category Colors plugin to function."
-msgstr "Vous devez avoir au moins un événement avec une catégorie pour que l'extension The Events Calendar Category Colors fonctionne."
+msgstr "Meg kell adni legalább egy eseményt és egy kategóriát A Színes Kategória Esemény Naptár plugin működéséhez."
 
 #: views/optionsform.php:27 views/optionsform.php:39
 msgid "Transparent"
-msgstr "Transparent"
+msgstr "Átlátszó"
 
 #: views/optionsform.php:73
 msgid "Font-Weight Options"
-msgstr "Options d'épaisseur de la police"
+msgstr "Betűvastagság beállítások"
 
 #: views/optionsform.php:84
 msgid "Add Category Legend"
-msgstr "Ajouter la légende de catégorie"
+msgstr "Kategória magyarázat hozzáadása"
 
 #: views/optionsform.php:86
 msgid "Check to add a Category Legend to the calendar."
-msgstr "Cliquez pour ajouter la légende de catégorie au calendrier."
+msgstr "Ellenőrizze a kategória magyarázat hozzáadását a naptárban."
 
 #: views/optionsform.php:91
 msgid "Check to add Legend Superpowers."
-msgstr "Cliquez pour ajouter les Superpouvoirs de légende."
+msgstr "Ellenőrizze a Legend Superpowers hozzáadását."
 
 #: views/optionsform.php:92
 msgid ""
@@ -116,33 +115,33 @@ msgid ""
 "reloading the page and without eliminating other categories from view "
 "completely. Click on the category of interest in the Legend for the effect; "
 "click again to remove it."
-msgstr "les Superpouvoirs de légende sont un effet visuel optionnel permettant aux visiteurs de se concentrer uniquement sur les événements qui appartiennent à des catégories spécifiques - sans rechargement de la page et sans éliminer les autres catégories de l'affichage complètement. Cliquez sur la catégorie spécifique qui vous intéresse dans la Légende de l'effet; cliquez à nouveau pour la supprimer."
+msgstr ""
 
 #: views/optionsform.php:95
 msgid "Custom Legend CSS"
-msgstr "CSS personnalisé de la légende"
+msgstr "Egyéni CSS magyarázat"
 
 #: views/optionsform.php:97
 msgid "Check to use your own CSS for category legend."
-msgstr "Cliquez pour utiliser votre propre CSS pour la catégorie des légendes."
+msgstr ""
 
 #: views/optionsform.php:100
 msgid "Database Options"
-msgstr "Options de la base de données"
+msgstr "Adatbázis beállítások"
 
 #: views/optionsform.php:102
 msgid "Restore defaults upon plugin deactivation/reactivation"
-msgstr "Restaurer les réglages par défaut lors de la désactivation/réactivation de l'extension"
+msgstr "Alapértelmezés visszaállítása a bővítmény kikapcsolása/bekapcsolása után"
 
 #: views/optionsform.php:103
 msgid ""
 "Only check this if you want to reset plugin settings upon Plugin "
 "reactivation"
-msgstr "Ne cochez cela que si vous voulez réinitialiser les réglages de l'extension lors de sa réactivation"
+msgstr "Csak akkor válassza ezt, ha vissza szeretné állítani bővítmény beállításait miután a Plugin reaktiválta"
 
 #. Plugin Name of the plugin/theme
 msgid "The Events Calendar Category Colors"
-msgstr "The Events Calendar Category Colors"
+msgstr "A Színes Kategória Esemény Naptár"
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/afragen/events-calendar-category-colors/"
@@ -153,7 +152,7 @@ msgid ""
 "This plugin adds event category background coloring to <a "
 "href=\"http://wordpress.org/extend/plugins/the-events-calendar/\">The Events"
 " Calendar</a> plugin."
-msgstr "Cette extension ajoute une couleur de fond aux catégories d'événements de l'extension <a href=\"http://wordpress.org/extend/plugins/the-events-calendar/\">The Events Calendar</a>."
+msgstr "Ez a plugin színes hátteret ad hozzá az esemény kategóriához  a <a href=\"http://wordpress.org/extend/plugins/the-events-calendar/\">The Events Calendar</a> pluginban."
 
 #. Author of the plugin/theme
 msgid "Andy Fragen, Barry Hughes"
