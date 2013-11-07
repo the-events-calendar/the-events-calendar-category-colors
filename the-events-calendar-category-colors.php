@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: The Events Calendar Category Colors
 Plugin URI: https://github.com/afragen/events-calendar-category-colors/
