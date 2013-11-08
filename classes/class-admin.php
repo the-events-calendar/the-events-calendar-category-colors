@@ -12,7 +12,7 @@ class Tribe_Events_Category_Colors_Admin {
 		add_action( 'plugins_loaded', array( $this, 'load_settings_tab' ) );
 		add_action( 'tribe_settings_below_tabs_tab_category-colors', array( $this, 'is_saved' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_teccc_js_css' ) );
-		load_plugin_textdomain('events-calendar-category-colors', false, trailingslashit( TECCC_LANG ) );
+		load_plugin_textdomain('events-calendar-category-colors', false, TECCC_LANG );
 	}
 
 
@@ -152,19 +152,19 @@ class Tribe_Events_Category_Colors_Admin {
 
 		return $options;
 	}
-	
-	
+
+
 	public static function load_teccc_js_css( $hook ) {
 		if ( 'tribe_events_page_tribe-events-calendar' != $hook ) return;
 
-		wp_enqueue_style( 'minicolors-css', TECCC_RESOURCES.'/jquery-miniColors/jquery.miniColors.css' );
-		wp_enqueue_style( 'minicolors-console', TECCC_RESOURCES.'/minicolors-console.css' );
-		wp_enqueue_script( 'minicolors-js', TECCC_RESOURCES.'/jquery-miniColors/jquery.miniColors.js', false, false, true );
-		wp_enqueue_script( 'minicolors-init', TECCC_RESOURCES.'/jquery-miniColors-init.js', false, false, true );
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker-init', TECCC_RESOURCES.'/wp-color-picker-init.js', array( 'wp-color-picker' ), false, true );
+		wp_enqueue_style( 'teccc-iris', TECCC_RESOURCES.'/teccc-iris.css', false, Tribe_Events_Category_Colors::VERSION );
 		
 		wp_enqueue_script( 'teccc-admin', TECCC_RESOURCES.'/teccc-admin.js', false, Tribe_Events_Category_Colors::VERSION, true );
 		wp_enqueue_style( 'teccc-options', TECCC_RESOURCES.'/teccc-options.css', false, Tribe_Events_Category_Colors::VERSION );
-				
+
 	}
-	
+
 }

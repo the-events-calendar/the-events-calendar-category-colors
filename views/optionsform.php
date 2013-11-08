@@ -30,7 +30,7 @@
 					<?php endif ?>
  				</div>
 				<div class="colorselector">
-					<input type="minicolors" name="teccc_options[<?php echo $slug ?>-border]" value="<?php esc_html_e($options[$slug.'-border']) ?>" />
+					<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug ?>-border]" value="<?php esc_html_e($options[$slug.'-border']) ?>" />
  				</div>
 			</td>
 
@@ -42,7 +42,7 @@
 					<?php endif ?>
 				</div>
 				<div class="colorselector">
-					<input type="minicolors" name="teccc_options[<?php echo $slug ?>-background]" value="<?php esc_attr_e( $options[$slug.'-background'] ) ?>" />
+					<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug ?>-background]" value="<?php esc_attr_e( $options[$slug.'-background'] ) ?>" />
 				</div>
 			</td>
 

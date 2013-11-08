@@ -2,8 +2,8 @@
 Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.5
-Tested up to: 3.7beta
-Stable tag: 3.0.5
+Tested up to: 3.7.1
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,12 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 3.1.0 =
+* switched to native WordPress Iris Color Picker
+* fixed internationalization of category links in legend
+* fixes for internationalization (i18n)
+* many thanks to @fxbenard and the WP-Translations team.
 
 = 3.0.5 =
 * fixed messed up version number
