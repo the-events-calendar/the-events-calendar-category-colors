@@ -2,7 +2,7 @@
 class Tribe_Events_Category_Colors_Widgets {
 	protected $teccc = null;	
 
-	public function add_widget_link_css( $slug ) {
+	public static function add_widget_link_css( $slug ) {
 		$css = array();
 		if ( class_exists( 'TribeEventsPro' ) ) {
 			$css[] = '.tribe-events-adv-list-widget .tribe-events-category-' .  $slug . ' a:link,';
@@ -19,7 +19,7 @@ class Tribe_Events_Category_Colors_Widgets {
 	
 	}
 	
-	public function add_widget_background_css( $slug ) {
+	public static function add_widget_background_css( $slug ) {
 		$css = array();
 		if ( class_exists( 'TribeEventsPro' ) ) {
 			$css[] = '.tribe-events-adv-list-widget .tribe-events-category-' .  $slug . ' a:link,';
@@ -35,7 +35,7 @@ class Tribe_Events_Category_Colors_Widgets {
 		echo $css;
 	}
 	
-	public function add_widget_display_css( $slug ) {
+	public static function add_widget_display_css( $slug ) {
 		$css = array();
 		if ( class_exists( 'TribeEventsPro' ) ) {
 			$css[] = '.tribe-events-adv-list-widget .tribe-events-category-' .  $slug . ' a:link,';
