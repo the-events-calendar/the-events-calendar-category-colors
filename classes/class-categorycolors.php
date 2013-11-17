@@ -183,6 +183,7 @@ class Tribe_Events_Category_Colors {
 		$teccc = Tribe_Events_Category_Colors::instance();
 		$tmp = get_option( 'teccc_options' );
 
+		if ( ! isset( $tmp['chk_default_options_db'] ) ) return;
 		if ( $tmp['chk_default_options_db'] == '1' or ! is_array( $tmp ) ) {
 			delete_option( 'teccc_options' );
 			for ( $i = 0; $i < $teccc->count; $i++ ) {
