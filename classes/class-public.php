@@ -25,7 +25,6 @@ class Tribe_Events_Category_Colors_Public {
 
 		if ( $query->query_vars['post_type'] === 'tribe_events' and in_array( $query->query_vars['eventDisplay'], $eventDisplays, true ) ) {
 			$this->add_effects();
-			remove_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
 		}
 	}
 
@@ -46,6 +45,8 @@ class Tribe_Events_Category_Colors_Public {
 			'options' => $this->options,
 			'teccc'   => $this->teccc
 		) );
+
+		remove_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
 	}
 
 
