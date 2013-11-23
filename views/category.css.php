@@ -13,20 +13,20 @@
 			$name = esc_attr( $attributes[Tribe_Events_Category_Colors::NAME] );
 		?>
 
+	<?php Tribe_Events_Category_Colors_Extras::add_agenda_link_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug ); ?>
-	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
-	.tribe-events-category-<?php echo $slug ?> > .agenda-event-heading a
+	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a
 	{
 		color: <?php echo $options[ $slug.'-text' ] ?>;
 		text-decoration: none;
 	}
 
+	<?php Tribe_Events_Category_Colors_Extras::add_agenda_background_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug ); ?>
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a,
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
 	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
-	.tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
-	.tribe-events-category-<?php echo $slug ?> > .agenda-event-heading
+	.tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary
 	{
 		background-color: <?php echo $options[ $slug.'-background' ] ?>;
 		border-left: 5px solid <?php echo $options[ $slug.'-border' ] ?>;
@@ -35,6 +35,7 @@
 		padding-left: 5px;
 	}
 
+	<?php Tribe_Events_Category_Colors_Extras::add_agenda_display_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_display_css( $slug ); ?>
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a
 	{
