@@ -1,9 +1,10 @@
 <!-- The Events Calendar Category Colors <?php echo Tribe_Events_Category_Colors::VERSION ?> generated CSS -->
 <style type="text/css" media="screen">
-	.tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4 {
+	.tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
+	{
 		font-weight: <?php echo $options['font_weight']  ?>;
 	}
-	
+
 	.tribe-events-list .vevent.hentry h2 { padding-left: 5px; }
 
 	<?php foreach ( $teccc->terms as $id => $attributes ): ?>
@@ -13,8 +14,9 @@
 		?>
 
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug ); ?>
-	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a
- {
+	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
+	.tribe-events-category-<?php echo $slug ?> > .agenda-event-heading a
+	{
 		color: <?php echo $options[ $slug.'-text' ] ?>;
 		text-decoration: none;
 	}
@@ -23,7 +25,9 @@
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a,
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
 	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
-	.tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary {
+	.tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
+	.tribe-events-category-<?php echo $slug ?> > .agenda-event-heading
+	{
 		background-color: <?php echo $options[ $slug.'-background' ] ?>;
 		border-left: 5px solid <?php echo $options[ $slug.'-border' ] ?>;
 		border-right: 5px solid transparent;
@@ -32,11 +36,12 @@
 	}
 
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_display_css( $slug ); ?>
-	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a {
+	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a
+	{
 		width: 93%;
 		display: block;
 	}
-	
+
 	<?php endforeach ?>
 
 	<?php if( isset( $options['add_legend'] ) and !isset( $options['custom_legend_css'] ) ): ?>
