@@ -1,5 +1,6 @@
 <?php
 class Tribe_Events_Category_Colors_Admin {
+
 	const TAB_NAME = 'category-colors';
 	const UPDATE_ACTION = 'category-colors-update-options';
 	protected $teccc = null;
@@ -152,7 +153,6 @@ class Tribe_Events_Category_Colors_Admin {
 
 		return $options;
 	}
-
 
 	public static function load_teccc_js_css( $hook ) {
 		if ( 'tribe_events_page_tribe-events-calendar' != $hook ) return;
