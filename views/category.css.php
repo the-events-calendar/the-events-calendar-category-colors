@@ -15,7 +15,8 @@
 
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_link_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug ); ?>
-	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a
+	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
+	.tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title a
 	{
 		color: <?php echo $options[ $slug.'-text' ] ?>;
 		text-decoration: none;
