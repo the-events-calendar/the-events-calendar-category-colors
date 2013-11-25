@@ -23,7 +23,11 @@
 	}
 	
 	/* clear blue background from week view */
-	.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent { background-color: transparent; }
+	.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent,
+	.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent:hover
+	{
+		background-color: transparent;
+	}
 
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_background_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug ); ?>
