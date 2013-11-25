@@ -11,7 +11,7 @@ Add event category background colors to The Events Calendar events.
 
 == Description ==
 
-Add background colors to event categories displayed in the month event view of The Events Calendar. This is inspired by [Coloring Your Category Events](http://tri.be/coloring-your-category-events).
+Add background colors to event categories displayed in the month event view of The Events Calendar. This is inspired by the post <i>Coloring Your Category Events</i>.
 
 Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page.
 
