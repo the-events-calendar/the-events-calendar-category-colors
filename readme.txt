@@ -53,6 +53,7 @@ There is more extensive documentation of the plugins features and usage on the [
 * added support for [Agenda View plugin](https://github.com/moderntribe/tribe-events-agenda-view)
 * now loading of `class Tribe_Events_Category_Colors_Widgets` and `class Tribe_Events_Category_Colors_Extras` as extenders of `class Tribe_Events_Category_Colors_Public`.
 * removed link to tutorial inspiring this plugin as it now 404 :-(
+* added support for coloring weekly view
 
 = 3.1.2 =
 * bugfix for undefined index error
