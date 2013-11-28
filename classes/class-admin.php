@@ -159,7 +159,6 @@ class Tribe_Events_Category_Colors_Admin {
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_script( 'wp-color-picker-init', TECCC_RESOURCES.'/wp-color-picker-init.js', array( 'wp-color-picker' ), false, true );
 		wp_enqueue_style( 'teccc-iris', TECCC_RESOURCES.'/teccc-iris.css', false, Tribe_Events_Category_Colors::VERSION );
 		
 		wp_enqueue_script( 'teccc-admin', TECCC_RESOURCES.'/teccc-admin.js', false, Tribe_Events_Category_Colors::VERSION, true );
