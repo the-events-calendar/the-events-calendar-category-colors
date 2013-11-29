@@ -253,10 +253,6 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Attribution ==
 
-This plugin uses <a href="https://github.com/claviska/jquery-miniColors">jQuery MiniColors</a> by Cory LaViska.
-
-Some icons by <a href="http://p.yusukekamiyamane.com/">Yusuke Kamiyamane</a>. All rights reserved.
-
 Thanks to jonahcoyote for some early help and direction.
 
 Big thanks to Barry Hughes (WebsiteBakery) for refactoring code and Legend Superpowers.
@@ -265,3 +261,6 @@ Big thanks to Barry Hughes (WebsiteBakery) for refactoring code and Legend Super
 
 = 0.5 =
 This version integrates more tightly with The Events Calendar plugin putting settings on the same page.
+
+= 1.6.3 =
+This is the last version to work with The Events Calendar 2.x
