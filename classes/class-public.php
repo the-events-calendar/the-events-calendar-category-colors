@@ -1,5 +1,6 @@
 <?php
 class Tribe_Events_Category_Colors_Public {
+
 	protected $teccc = null;
 	protected $options = array();
 
@@ -12,7 +13,8 @@ class Tribe_Events_Category_Colors_Public {
 		$this->teccc = $teccc;
 		$this->options = get_option( 'teccc_options' );
 		require TECCC_INCLUDES . '/templatetags.php';
-		$this->load_widgets();
+		require_once TECCC_CLASSES . '/class-widgets.php';
+		require_once TECCC_CLASSES . '/class-extras.php';
 
 		add_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
 	}
@@ -21,7 +23,7 @@ class Tribe_Events_Category_Colors_Public {
 	public function add_colored_categories( $query ) {
 		if ( ! isset( $query->query_vars['post_type'] ) or ! isset( $query->query_vars['eventDisplay'] ) ) return;
 
-		$eventDisplays = array( 'month', 'upcoming', 'day', 'photo', 'week', 'all' );
+		$eventDisplays = array( 'month', 'upcoming', 'day', 'photo', 'week', 'all', 'agenda' );
 
 		if ( $query->query_vars['post_type'] === 'tribe_events' and in_array( $query->query_vars['eventDisplay'], $eventDisplays, true ) ) {
 			$this->add_effects();
@@ -96,11 +98,6 @@ class Tribe_Events_Category_Colors_Public {
 	public function add_legend_view( $view ) {
 		//takes 'upcoming', 'day', 'week', 'photo' as parameters
 		$this->legendExtraView[] = $view;
-	}
-
-	protected function load_widgets() {
-		require_once TECCC_CLASSES . '/class-widgets.php';
-		$this->widgets = new Tribe_Events_Category_Colors_Widgets( $this );
 	}
 
 }

@@ -14,7 +14,7 @@ return array(
 		),
 		'blurb' => array(
 			'type' => 'html',
-			'html' => '<p>'.__('The Events Calendar Category Colors plugin was inspired by the tutorial <a href="http://tri.be/coloring-your-category-events/">Coloring Your Category Events</a>.', 'events-calendar-category-colors').'</p>'
+			'html' => '<p>'.__('The Events Calendar Category Colors plugin was inspired by the tutorial <i>Coloring Your Category Events</i>.', 'events-calendar-category-colors').'</p>'
 		),
  		'legend' => array(
  			'type' => 'html',
