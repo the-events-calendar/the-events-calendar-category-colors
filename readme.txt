@@ -49,6 +49,9 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
+= 3.2.x =
+* added CSS for venue widget
+
 = 3.2.1 =
 * testing and works in WP 3.8 and The Events Calendar 3.3
 * adjusted widget CSS for TECPro 3.3
