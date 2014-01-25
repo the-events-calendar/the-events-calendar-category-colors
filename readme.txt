@@ -2,8 +2,8 @@
 Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.5
-Tested up to: 3.8
-Stable tag: 3.2.1
+Tested up to: 3.8.1
+Stable tag: 3.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,8 +49,10 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
-= 3.2.x =
+= 3.3.0 =
 * added CSS for venue widget
+* added coloring for Map view
+* changed deprecated `ereg_replace` to `preg_replace`
 
 = 3.2.1 =
 * testing and works in WP 3.8 and The Events Calendar 3.3
