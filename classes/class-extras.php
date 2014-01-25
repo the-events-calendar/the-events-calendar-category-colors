@@ -44,7 +44,7 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 		if ( ! class_exists( 'TribeEventsPro' ) ) return;
 		$css = array();
 		$css[] = '.tribe-events-category-' . $slug . ' > .tribe-events-map-event-title a:link,';
-		$css[] = '.tribe-events-category-' . $slug . ' > .tribe-events-map-event-title a:hover,';
+		$css[] = '.tribe-events-category-' . $slug . ' > .tribe-events-map-event-title a:visited,';
 		$css[] = '';
 		$css = implode( "\n", $css );
 		echo $css;
