@@ -50,9 +50,11 @@ There is more extensive documentation of the plugins features and usage on the [
 == Changelog ==
 
 = 3.3.0 =
-* added CSS for venue widget
+* added CSS for venue widget, though still need category class tags from Modern Tribe
 * added coloring for Map view
 * changed deprecated `ereg_replace` to `preg_replace`
+* removed widget coloring dependency upon template override, switching to new action hooks, `tribe_events_before_list_widget` and `tribe_events_mini_cal_after_the_grid` for TEC 3.4.x
+* new screenshots
 
 = 3.2.1 =
 * testing and works in WP 3.8 and The Events Calendar 3.3
