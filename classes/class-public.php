@@ -23,7 +23,7 @@ class Tribe_Events_Category_Colors_Public {
 	public function add_colored_categories( $query ) {
 		if ( ! isset( $query->query_vars['post_type'] ) or ! isset( $query->query_vars['eventDisplay'] ) ) return;
 
-		$eventDisplays = array( 'month', 'upcoming', 'day', 'photo', 'week', 'all', 'agenda' );
+		$eventDisplays = array( 'month', 'upcoming', 'day', 'photo', 'week', 'all', 'map', 'agenda' );
 
 		if ( $query->query_vars['post_type'] === 'tribe_events' and in_array( $query->query_vars['eventDisplay'], $eventDisplays, true ) ) {
 			$this->add_effects();
@@ -33,7 +33,9 @@ class Tribe_Events_Category_Colors_Public {
 
 	public function add_effects() {
 		add_action( 'wp_head', array( $this, 'add_css' ) );
-		add_action( 'tribe_before_widget', array( $this, 'add_css' ) );
+		add_action( 'tribe_events_before_list_widget', array( $this, 'add_css' ) );
+		add_action( 'tribe_events_mini_cal_after_the_grid', array( $this, 'add_css' ) );
+		add_action( 'tribe_events_venue_widget_before_the_title', array( $this, 'add_css' ) );
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 		
 		if ( isset( $this->options['legend_superpowers'] ) and $this->options['legend_superpowers'] === '1' )

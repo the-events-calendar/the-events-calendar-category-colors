@@ -14,6 +14,7 @@
 		?>
 
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_link_css( $slug ); ?>
+	<?php Tribe_Events_Category_Colors_Extras::add_map_link_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug ); ?>
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
 	.tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title a
@@ -30,6 +31,7 @@
 	}
 
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_background_css( $slug ); ?>
+	<?php Tribe_Events_Category_Colors_Extras::add_map_background_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug ); ?>
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a,
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
@@ -45,6 +47,7 @@
 	}
 
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_display_css( $slug ); ?>
+	<?php Tribe_Events_Category_Colors_Extras::add_map_display_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_display_css( $slug ); ?>
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a
 	{

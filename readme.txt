@@ -2,8 +2,8 @@
 Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.5
-Tested up to: 3.7.1
-Stable tag: 3.2.1
+Tested up to: 3.8.1
+Stable tag: 3.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,13 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 3.3.0 =
+* added CSS for venue widget, though still need category class tags from Modern Tribe
+* added coloring for Map view
+* changed deprecated `ereg_replace` to `preg_replace`
+* removed widget coloring dependency upon template override, switching to new action hooks, `tribe_events_before_list_widget` and `tribe_events_mini_cal_after_the_grid` for TEC 3.4.x
+* new screenshots
 
 = 3.2.1 =
 * testing and works in WP 3.8 and The Events Calendar 3.3

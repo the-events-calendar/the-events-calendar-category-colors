@@ -8,6 +8,8 @@ class Tribe_Events_Category_Colors_Widgets extends Tribe_Events_Category_Colors_
 			$css[] = '.tribe-events-adv-list-widget .tribe-events-category-' .  $slug . ' a:visited,';
 			$css[] = '.tribe-mini-calendar-list-wrapper .tribe-events-category-' .  $slug . ' h2 a:link,';
 			$css[] = '.tribe-mini-calendar-list-wrapper .tribe-events-category-' .  $slug . ' h2 a:visited,';
+			$css[] = '.tribe-venue-widget-list h4.tribe-events-category-' . $slug . ' a:link,';
+			$css[] = '.tribe-venue-widget-list h4.tribe-events-category-' . $slug . ' a:visited,';
 		} else {
 			$css[] = '.tribe-events-list-widget .tribe-events-category-' .  $slug . ' a:link,';
 			$css[] = '.tribe-events-list-widget .tribe-events-category-' .  $slug . ' a:visited,';
@@ -24,6 +26,8 @@ class Tribe_Events_Category_Colors_Widgets extends Tribe_Events_Category_Colors_
 			$css[] = '.tribe-events-adv-list-widget .tribe-events-category-' .  $slug . ' a:visited,';
 			$css[] = '.tribe-mini-calendar-list-wrapper .tribe-events-category-' .  $slug . ' h2 a:link,';
 			$css[] = '.tribe-mini-calendar-list-wrapper .tribe-events-category-' .  $slug . ' h2 a:visited,';
+			$css[] = '.tribe-venue-widget-list h4.tribe-events-category-' . $slug . ' a:link,';
+			$css[] = '.tribe-venue-widget-list h4.tribe-events-category-' . $slug . ' a:visited,';
 		} else {
 			$css[] = '.tribe-events-list-widget .tribe-events-category-' .  $slug . ' a:link,';
 			$css[] = '.tribe-events-list-widget .tribe-events-category-' .  $slug . ' a:visited,';
@@ -38,6 +42,7 @@ class Tribe_Events_Category_Colors_Widgets extends Tribe_Events_Category_Colors_
 		if ( class_exists( 'TribeEventsPro' ) ) {
 			$css[] = '.tribe-events-adv-list-widget .tribe-events-category-' .  $slug . ' a:link,';
 			$css[] = '.tribe-mini-calendar-list-wrapper .tribe-events-category-' .  $slug . ' h2 a:link,';
+			$css[] = '.tribe-venue-widget-list h4.tribe-events-category-' . $slug . ' a:link,';
 		} else {
 			$css[] = '.tribe-events-list-widget .tribe-events-category-' .  $slug . ' a:link,';
 		}
