@@ -145,6 +145,7 @@ class Tribe_Events_Category_Colors_Admin {
 			'custom_legend_css',
 			'font_weight',
 			'legend_superpowers',
+			'color_widgets',
 		);
 
 		foreach ( $generalOptions as $optionkey )
