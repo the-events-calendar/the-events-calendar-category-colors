@@ -29,7 +29,7 @@
 	.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent,
 	.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent:hover
 	{
-		background-color: transparent;
+		/* background-color: transparent; */
 	}
 
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_background_css( $slug ); ?>
