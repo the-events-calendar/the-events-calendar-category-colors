@@ -1,7 +1,7 @@
 <?php
 class Tribe_Events_Category_Colors {
 
-	const VERSION = '3.4.2';
+	const VERSION = '3.4.3';
 	const SLUG = 0;
 	const NAME = 1;
 
@@ -43,7 +43,7 @@ class Tribe_Events_Category_Colors {
 
 	/**
 	 * The Tribe_Events_Category_Colors object can be created/obtained via this
-	 * method - this prevents unncessary work in rebuilding the object and
+	 * method - this prevents unnecessary work in rebuilding the object and
 	 * querying to construct a list of categories, etc.
 	 *
 	 * @return Tribe_Events_Category_Colors
@@ -194,7 +194,8 @@ class Tribe_Events_Category_Colors {
 				$arr[ $teccc->slugs[$i].'-border_transparent' ]     = '1';
 				$arr[ $teccc->slugs[$i].'-background_transparent' ] = '1';
 			}
-			$arr['font_weight'] = 'bold';
+			$arr['font_weight']   = 'bold';
+			$arr['color_widgets'] = '0';
 			update_option( 'teccc_options', $arr );
 		}
 	}

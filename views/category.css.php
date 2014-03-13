@@ -15,7 +15,9 @@
 
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_link_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Extras::add_map_link_css( $slug ); ?>
-	<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug ); ?>
+	<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
+		<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug, $options ); ?>
+	<?php endif ?>
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
 	.tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title a
 	{
@@ -32,7 +34,9 @@
 
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_background_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Extras::add_map_background_css( $slug ); ?>
-	<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug ); ?>
+	<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
+		<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug, $options ); ?>
+	<?php endif ?>
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a,
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
 	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
@@ -48,7 +52,9 @@
 
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_display_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Extras::add_map_display_css( $slug ); ?>
-	<?php Tribe_Events_Category_Colors_Widgets::add_widget_display_css( $slug ); ?>
+	<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
+		<?php Tribe_Events_Category_Colors_Widgets::add_widget_display_css( $slug, $options ); ?>
+	<?php endif ?>
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a
 	{
 		width: 93%;
@@ -57,9 +63,9 @@
 
 	<?php endforeach ?>
 
-	<?php if( isset( $options['add_legend'] ) and !isset( $options['custom_legend_css'] ) ): ?>
+	<?php if ( isset( $options['add_legend'] ) and !isset( $options['custom_legend_css'] ) ): ?>
 		<?php $teccc->view( 'legend.css' ) ?>
-		<?php if( isset( $extra_user_legend_css ) ) do_action( 'teccc_add_legend_css', $extra_user_legend_css ); ?>
+		<?php if ( isset( $extra_user_legend_css ) ) do_action( 'teccc_add_legend_css', $extra_user_legend_css ); ?>
 	<?php endif ?>
 
 </style>
