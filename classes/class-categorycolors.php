@@ -1,7 +1,7 @@
 <?php
 class Tribe_Events_Category_Colors {
 
-	const VERSION = '3.4.3';
+	const VERSION = '3.4.4';
 	const SLUG = 0;
 	const NAME = 1;
 
@@ -194,8 +194,7 @@ class Tribe_Events_Category_Colors {
 				$arr[ $teccc->slugs[$i].'-border_transparent' ]     = '1';
 				$arr[ $teccc->slugs[$i].'-background_transparent' ] = '1';
 			}
-			$arr['font_weight']   = 'bold';
-			$arr['color_widgets'] = '0';
+			$arr['font_weight'] = 'bold';
 			update_option( 'teccc_options', $arr );
 		}
 	}
