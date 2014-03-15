@@ -3,7 +3,7 @@ Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 3.4.4
+Stable tag: 3.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,10 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 3.4.5 =
+* added colors for Venue and Organizer views of ECP
+* code more in line with WP Coding Guidelines
 
 = 3.4.4 =
 * switched off Week view background CSS change until ECP bug is fixed.

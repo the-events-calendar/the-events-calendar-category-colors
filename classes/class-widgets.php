@@ -15,7 +15,7 @@ class Tribe_Events_Category_Colors_Widgets extends Tribe_Events_Category_Colors_
 			$css[] = '.tribe-events-list-widget .tribe-events-category-' .  $slug . ' a:visited,';
 		}
 		$css[] = '';
-		$css = implode( "\n", $css );
+		$css   = implode( "\n", $css );
 		echo $css;
 	}
 
@@ -33,7 +33,7 @@ class Tribe_Events_Category_Colors_Widgets extends Tribe_Events_Category_Colors_
 			$css[] = '.tribe-events-list-widget .tribe-events-category-' .  $slug . ' a:visited,';
 		}
 		$css[] = '';
-		$css = implode( "\n", $css );
+		$css   = implode( "\n", $css );
 		echo $css;
 	}
 
@@ -47,7 +47,7 @@ class Tribe_Events_Category_Colors_Widgets extends Tribe_Events_Category_Colors_
 			$css[] = '.tribe-events-list-widget .tribe-events-category-' .  $slug . ' a:link,';
 		}
 		$css[] = '';
-		$css = implode( "\n", $css );
+		$css   = implode( "\n", $css );
 		echo $css;
 	}
 

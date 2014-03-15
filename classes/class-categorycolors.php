@@ -1,7 +1,7 @@
 <?php
 class Tribe_Events_Category_Colors {
 
-	const VERSION = '3.4.4';
+	const VERSION = '3.4.5';
 	const SLUG = 0;
 	const NAME = 1;
 
@@ -50,7 +50,7 @@ class Tribe_Events_Category_Colors {
 	 */
 	public static function instance() {
 		$class = __CLASS__;
-		if ( false === self::$object ) self::$object = new $class();
+		if ( false === self::$object ) { self::$object = new $class(); }
 		return self::$object;
 	}
 
@@ -59,7 +59,7 @@ class Tribe_Events_Category_Colors {
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
 
-		if ( $this->is_admin() ) $this->load_admin();
+		if ( $this->is_admin() ) { $this->load_admin(); }
 		$this->load_public(); // Always load public (in case template tags are in use with the theme)
 	}
 
@@ -84,14 +84,15 @@ class Tribe_Events_Category_Colors {
 
 
 	protected function get_category_terms() {
-		if ( ! empty( $this->terms ) ) return;
+		if ( ! empty( $this->terms ) ) { return false; }
 
 		// TribeEvents not yet defined, so we can't use the class constant
 		$term_list = apply_filters( 'teccc_get_terms', get_terms( 'tribe_events_cat' ) );
 
 		// Represent each term as an array [slug, name] indexed by term ID
-		foreach ( $term_list as $term )
+		foreach ( $term_list as $term ) {
 			$this->terms[ $term->term_id ] = array( $term->slug, preg_replace( '/\s/', '&nbsp;', $term->name ) );
+		}
 	}
 
 
@@ -105,8 +106,8 @@ class Tribe_Events_Category_Colors {
 		$revised_list = array();
 
 		foreach ( $term_list as $src_id => $src_term ) {
-			if ( in_array( (int) $src_term->term_id, $this->ignore_list, true ) ) continue;
-			if ( in_array( (string) $src_term->slug, $this->ignore_list, true ) ) continue;
+			if ( in_array( (int) $src_term->term_id, $this->ignore_list, true ) ) { continue; }
+			if ( in_array( (string) $src_term->slug, $this->ignore_list, true ) ) { continue; }
 			$revised_list[ $src_id ] = $src_term;
 		}
 
@@ -149,8 +150,11 @@ class Tribe_Events_Category_Colors {
 	 */
 	protected function load_config_array_file( $file ) {
 		$path = TECCC_INCLUDES . "/$file.php";
-		if ( file_exists( $path ) )	return (array) include $path;
-		else return array();
+		if ( file_exists( $path ) )	{
+			return (array) include $path;
+		} else {
+			return array();
+		}
 	}
 
 
@@ -168,12 +172,12 @@ class Tribe_Events_Category_Colors {
 	 */
 	public function view( $template, array $vars = null, $render = true ) {
 		$path = TECCC_VIEWS . "/$template.php";
-		if ( ! file_exists( $path ) ) return;
-		if ( $vars !== null ) extract( $vars );
+		if ( ! file_exists( $path ) ) { return false; }
+		if ( null !== $vars ) { extract( $vars ); }
 
-		if ( ! $render ) ob_start();
+		if ( ! $render ) { ob_start(); }
 		include $path;
-		if ( ! $render ) return ob_get_clean();
+		if ( ! $render ) { return ob_get_clean(); }
 	}
 
 
@@ -182,7 +186,7 @@ class Tribe_Events_Category_Colors {
 	 */
 	public static function add_defaults() {
 		$teccc = Tribe_Events_Category_Colors::instance();
-		$tmp = get_option( 'teccc_options' );
+		$tmp   = get_option( 'teccc_options' );
 
 		if ( ! isset( $tmp['chk_default_options_db'] ) ) return;
 		if ( $tmp['chk_default_options_db'] == '1' or ! is_array( $tmp ) ) {
