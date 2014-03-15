@@ -23,7 +23,8 @@ class Tribe_Events_Category_Colors_Public {
 	public function add_colored_categories( $query ) {
 		if ( ! isset( $query->query_vars['post_type'] ) ) return;
 
-		if ( 'tribe_events' === $query->query_vars['post_type'] ) {
+		$post_types = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
+		if ( in_array( $query->query_vars['post_type'], $post_types, true ) ) {
 			$this->add_effects();
 		}
 	}
@@ -31,6 +32,11 @@ class Tribe_Events_Category_Colors_Public {
 
 	public function add_effects() {
 		add_action( 'tribe_events_before_template', array( $this, 'add_css' ) );
+
+		//For Events Calendar PRO only
+		add_action( 'tribe_events_single_organizer_before_organizer', array( $this, 'add_css' ) );
+		add_action( 'tribe_events_single_venue_before_the_meta', array( $this, 'add_css' ) );
+
 		if ( isset( $this->options['color_widgets'] ) and '1' === $this->options['color_widgets'] ) {
 			add_action( 'tribe_events_before_list_widget', array( $this, 'add_css' ) );
 			add_action( 'tribe_events_mini_cal_after_the_grid', array( $this, 'add_css' ) );
