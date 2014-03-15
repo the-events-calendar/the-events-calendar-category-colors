@@ -25,11 +25,11 @@ class Tribe_Events_Category_Colors_Admin {
 	public function plugin_fail_msg() {
 		if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
 			if ( ! class_exists( 'TribeEvents' ) ) {
-				$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
+				$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 				$title = __( 'The Events Calendar', 'events-calendar-category-colors' );
 				echo '<div class="error"><p>'.sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'events-calendar-category-colors' ),$url, $title ).'</p></div>';
 			} elseif ( version_compare( TribeEvents::VERSION, '3.0', 'lt') ) {
-				$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
+				$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 				$title = __( 'The Events Calendar', 'events-calendar-category-colors' );
 				echo '<div class="error"><p>'.sprintf( __( 'You have The Events Calendar v.' . TribeEvents::VERSION . '. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'events-calendar-category-colors' ),$url, $title ).'</p></div>';
 			}
@@ -96,7 +96,7 @@ class Tribe_Events_Category_Colors_Admin {
 	public function is_saved() {
 		if ( isset( $_GET['settings-updated'] ) && ( $_GET['settings-updated'] ) ) {
 			$message = __( 'Settings saved.', 'tribe-events-calendar' );
-			$output = '<div id="message" class="updated"><p><strong>' . $message . '</strong></p></div>';
+			$output  = '<div id="message" class="updated"><p><strong>' . $message . '</strong></p></div>';
 			echo apply_filters( 'tribe_settings_success_message', $output, 'category-colors' );
 		}
 	}
@@ -107,7 +107,7 @@ class Tribe_Events_Category_Colors_Admin {
 
 		$content = $teccc->view( 'optionsform', array(
 			'options' => self::fetch_options($teccc),
-			'teccc' => $teccc
+			'teccc'   => $teccc
 			), false );
 
 		return $content;
@@ -134,9 +134,11 @@ class Tribe_Events_Category_Colors_Admin {
 		foreach ( $teccc->terms as $attributes ) {
 			$slug = $attributes[Tribe_Events_Category_Colors::SLUG];
 
-			foreach ( $categoryOptions as $optionkey )
-				if ( ! isset( $options[ $slug . $optionkey ] ) )
+			foreach ( $categoryOptions as $optionkey ) {
+				if ( ! isset( $options[ $slug . $optionkey ] ) ) {
 					$options[ $slug . $optionkey ] = null;
+				}
+			}
 		}
 
 		$generalOptions = array(
@@ -148,15 +150,17 @@ class Tribe_Events_Category_Colors_Admin {
 			'color_widgets',
 		);
 
-		foreach ( $generalOptions as $optionkey )
-			if ( ! isset( $options[ $optionkey ] ) )
+		foreach ( $generalOptions as $optionkey ) {
+			if ( ! isset( $options[ $optionkey ] ) ) {
 				$options[ $optionkey ] = null;
+			}
+		}
 
 		return $options;
 	}
 
 	public static function load_teccc_js_css( $hook ) {
-		if ( 'tribe_events_page_tribe-events-calendar' != $hook ) return;
+		if ( 'tribe_events_page_tribe-events-calendar' != $hook ) { return false; }
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );

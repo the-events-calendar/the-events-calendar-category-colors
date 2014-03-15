@@ -58,8 +58,8 @@ class Tribe_Events_Category_Colors_Public {
 		$teccc_options = get_option( 'teccc_options' );
 		$eventDisplays = array( 'month' );
 		$eventDisplays = array_merge( $eventDisplays, $this->legendExtraView );
-		if ( ( get_query_var( 'post_type' ) === 'tribe_events' ) and !in_array( get_query_var( 'eventDisplay' ), $eventDisplays, true ) ) return;
-		if ( ! ( isset( $teccc_options['add_legend'] ) and $teccc_options['add_legend'] === '1') ) return;
+		if ( ( 'tribe_events' === get_query_var( 'post_type' ) ) and ! in_array( get_query_var( 'eventDisplay' ), $eventDisplays, true ) ) { return false; }
+		if ( ! ( isset( $teccc_options['add_legend'] ) and '1' === $teccc_options['add_legend'] ) ) { return false; }
 		
 		$content = $this->teccc->view( 'legend', array(
 			'options' => $teccc_options,
