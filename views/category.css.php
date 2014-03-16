@@ -71,9 +71,15 @@
 	}
 	#tribe-geo-results .tribe-events-event-cost span
 	{
-		margin-top: 5%
+		margin-top: 5%;
 	}
-
+	/* iPhone [portrait + landscape] */
+	@media only screen and (max-device-width: 480px) {
+		#tribe-geo-results .tribe-events-event-cost span
+		{
+			margin-top: 10%;
+		}
+	}
 
 	<?php endforeach ?>
 
