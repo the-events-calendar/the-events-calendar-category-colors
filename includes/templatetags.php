@@ -82,7 +82,7 @@ function teccc_add_text_color( $name, $value ) {
  */
 function teccc_ignore_slug() {
 	$slugs = func_get_args();
-	foreach ( $slugs as $slug )  { Tribe_Events_Category_Colors::instance()->ignore_list[] = $slug; }
+	foreach ( $slugs as $slug ) { Tribe_Events_Category_Colors::instance()->ignore_list[] = $slug; }
 }
 
 /**
