@@ -47,7 +47,9 @@
 		border-left: 5px solid <?php echo $options[ $slug.'-border' ] ?>;
 		border-right: 5px solid transparent;
 		color: <?php echo $options[ $slug.'-text' ] ?>;
+		line-height: 1.4em;
 		padding-left: 5px;
+		padding-bottom: 2px;
 	}
 
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_display_css( $slug ); ?>
@@ -60,6 +62,19 @@
 		width: 93%;
 		display: block;
 	}
+
+	/* shift cost button down and under title coloring */
+	div.tribe-events-event-cost span
+	{
+		position: absolute;
+		right: 4.5%;
+		margin-top: 68px;
+	}
+	div#tribe-geo-results div.tribe-events-event-cost span
+	{
+		margin-top: 36px;
+	}
+
 
 	<?php endforeach ?>
 
