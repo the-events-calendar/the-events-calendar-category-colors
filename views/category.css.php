@@ -59,20 +59,19 @@
 	<?php endif ?>
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a
 	{
-		width: 93%;
+		width: auto;
 		display: block;
 	}
 
 	/* shift cost button down and under title coloring */
-	div.tribe-events-event-cost span
+	.tribe-events-list .tribe-events-event-cost span, #tribe-geo-results .tribe-events-event-cost span
 	{
 		position: absolute;
-		right: 4.5%;
-		margin-top: 68px;
+		right: 0;
 	}
-	div#tribe-geo-results div.tribe-events-event-cost span
+	#tribe-geo-results .tribe-events-event-cost span
 	{
-		margin-top: 36px;
+		margin-top: 5%
 	}
 
 
