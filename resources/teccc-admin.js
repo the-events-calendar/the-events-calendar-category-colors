@@ -113,5 +113,29 @@ jQuery(document).ready(function($) {
 		$(colorControls).find("tr").find("td").each(function() {
 			updateRowSampler(this);
 		});
-	})
+	});
+
+	// Options for Iris color picker
+	var myOptions = {
+		// Fires on change event: use to implement live preview ... this is a doubly awful hack:
+		//
+		// 1) the change will not have propagated back to the color input when this function runs,
+		//    so a fractional delay is used to workaround that
+		//
+		// 2) we're cycling through *all* the color inputs when we do get round to updating the
+		//    samplers - pretty inefficient, though not the very worst thing in the world
+		//
+		// We're going to want to do something a little more elegant before merging this back into
+		// develop.
+		change: function() {
+			setTimeout(function() { colorInputs.each(function() { updateRowSampler(this) }) }, 10 )
+		},
+		// Hide color picker controls on load
+		hide: true,
+		// No need for a common colors palette
+		palettes: false
+	};
+
+	// Implement color picker
+	$('.teccc-color-picker').wpColorPicker(myOptions);
 });
