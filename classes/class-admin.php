@@ -1,9 +1,9 @@
 <?php
 class Tribe_Events_Category_Colors_Admin {
 
-	const TAB_NAME = 'category-colors';
+	const TAB_NAME      = 'category-colors';
 	const UPDATE_ACTION = 'category-colors-update-options';
-	protected $teccc = null;
+	protected $teccc    = null;
 
 
 	public function __construct( Tribe_Events_Category_Colors $teccc ) {
@@ -61,7 +61,7 @@ class Tribe_Events_Category_Colors_Admin {
 			if ( isset( $input[ $slug.'-background_transparent' ] ) ) { $input[ $slug.'-background' ] = 'transparent'; }
 
 			// Sanitize dropdown input (make sure value is one of options allowed)
-			if ( !in_array( $input[ $slug.'-text' ], $teccc->text_colors, true ) ) { $input[ $slug.'-text' ] = '#000'; }
+			if ( ! in_array( $input[ $slug.'-text' ], $teccc->text_colors, true ) ) { $input[ $slug.'-text' ] = '#000'; }
 		}
 
 		return $input;
