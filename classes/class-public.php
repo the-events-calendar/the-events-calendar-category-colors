@@ -21,7 +21,7 @@ class Tribe_Events_Category_Colors_Public {
 
 
 	public function add_colored_categories( $query ) {
-		if ( ! isset( $query->query_vars['post_type'] ) ) return;
+		if ( ! isset( $query->query_vars['post_type'] ) ) { return false; }
 
 		$post_types = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
 		if ( in_array( $query->query_vars['post_type'], $post_types, true ) ) {

@@ -3,7 +3,7 @@ Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 3.4.8
+Stable tag: 3.4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,12 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 3.4.9 =
+* decided to remove CSS for Cost button as button not created by this plugin
+* update for live preview to admin settings
+* a few more spacing/braces updates for WP Coding Guidelines
+* fix to show empty categories in settings - props @KoenRijpstra via GitHub
 
 = 3.4.8 =
 * minor CSS fix for iPhone and Cost button
