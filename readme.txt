@@ -53,7 +53,7 @@ There is more extensive documentation of the plugins features and usage on the [
 * decided to remove CSS for Cost button as button not created by this plugin
 * update for live preview to admin settings
 * a few more spacing/braces updates for WP Coding Guidelines
-* fix to show empty categories in settings - props @KoenRijpstra via GitHub
+* fix to show empty categories in settings -- props @KoenRijpstra via GitHub
 
 = 3.4.8 =
 * minor CSS fix for iPhone and Cost button
@@ -305,8 +305,9 @@ Thanks to jonahcoyote for some early help and direction.
 Big thanks to Barry Hughes (WebsiteBakery) for refactoring code and Legend Superpowers.
 
 Translations courtesy of:
- * Francois-Xavier Bénard and the group at [WP-Translations](http://wp-translations.org)
- * Andrew Kurtis and [WebHostingHub](http://www.webhostinghub.com)
+
+* Francois-Xavier Bénard and the group at [WP-Translations](http://wp-translations.org)
+* Andrew Kurtis and [WebHostingHub](http://www.webhostinghub.com)
 
 == Upgrade Notice ==
 
