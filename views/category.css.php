@@ -7,6 +7,13 @@
 
 	.tribe-events-list .vevent.hentry h2 { padding-left: 5px; }
 
+	/* clear blue background from week view */
+	.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent,
+	.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent:hover
+	{
+		/* background-color: transparent; */
+	}
+
 	<?php foreach ( $teccc->terms as $id => $attributes ): ?>
 		<?php
 			$slug = esc_attr( $attributes[Tribe_Events_Category_Colors::SLUG] );
@@ -25,13 +32,6 @@
 		text-decoration: none;
 	}
 	
-	/* clear blue background from week view */
-	.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent,
-	.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent:hover
-	{
-		/* background-color: transparent; */
-	}
-
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_background_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Extras::add_map_background_css( $slug ); ?>
 	<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
@@ -61,24 +61,6 @@
 	{
 		width: auto;
 		display: block;
-	}
-
-	/* shift cost button down and under title coloring */
-	.tribe-events-list .tribe-events-event-cost span, #tribe-geo-results .tribe-events-event-cost span
-	{
-		position: absolute;
-		right: 0;
-	}
-	#tribe-geo-results .tribe-events-event-cost span
-	{
-		margin-top: 5%;
-	}
-	/* iPhone [portrait + landscape] */
-	@media only screen and (max-device-width: 480px) {
-		#tribe-geo-results .tribe-events-event-cost span
-		{
-			margin-top: 10%;
-		}
 	}
 
 	<?php endforeach ?>

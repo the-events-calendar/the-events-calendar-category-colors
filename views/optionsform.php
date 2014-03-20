@@ -10,10 +10,6 @@
 			<th> <strong><?php _e( 'Current Display', 'events-calendar-category-colors' ) ?></strong> </th>
 		</tr>
 
-		<?php if ( empty( $teccc->terms) ): ?>
-			<div class="error" style="text-align:center;padding:1em;"> <?php _e( 'You must have at least one event with a category for The Events Calendar Category Colors plugin to function.', 'events-calendar-category-colors' ) ?> </div>
-		<?php endif ?>
-
 		<?php foreach ( $teccc->terms as $id => $attributes ): ?>
 			<?php
 				$slug = esc_attr( $attributes[Tribe_Events_Category_Colors::SLUG] );
