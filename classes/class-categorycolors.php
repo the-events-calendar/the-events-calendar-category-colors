@@ -87,7 +87,7 @@ class Tribe_Events_Category_Colors {
 		if ( ! empty( $this->terms ) ) { return false; }
 
 		// TribeEvents not yet defined, so we can't use the class constant
-		$term_list = apply_filters( 'teccc_get_terms', get_terms( 'tribe_events_cat', array( 'hide_empty' => false ) ) );
+		$term_list = apply_filters( 'teccc_get_terms', get_terms( 'tribe_events_cat' ) );
 
 		// Represent each term as an array [slug, name] indexed by term ID
 		foreach ( $term_list as $term ) {
