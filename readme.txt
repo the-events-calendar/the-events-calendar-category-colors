@@ -3,7 +3,7 @@ Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 3.4.9
+Stable tag: 3.4.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,11 +49,15 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
+= 3.4.10 =
+* moved CSS for ECP into `class Tribe_Events_Category_Colors_Extras`
+* adjusted CSS for ECP Week view
+
 = 3.4.9 =
 * decided to remove CSS for Cost button as button not created by this plugin
 * update for live preview to admin settings
 * a few more spacing/braces updates for WP Coding Guidelines
-* fix to show empty categories in settings -- props @KoenRijpstra via GitHub
+* fix to show empty categories in settings - props @KoenRijpstra via GitHub
 
 = 3.4.8 =
 * minor CSS fix for iPhone and Cost button
@@ -305,9 +309,8 @@ Thanks to jonahcoyote for some early help and direction.
 Big thanks to Barry Hughes (WebsiteBakery) for refactoring code and Legend Superpowers.
 
 Translations courtesy of:
-
-* Francois-Xavier Bénard and the group at [WP-Translations](http://wp-translations.org)
-* Andrew Kurtis and [WebHostingHub](http://www.webhostinghub.com)
+ * Francois-Xavier Bénard and the group at [WP-Translations](http://wp-translations.org)
+ * Andrew Kurtis and [WebHostingHub](http://www.webhostinghub.com)
 
 == Upgrade Notice ==
 
