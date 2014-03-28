@@ -2,7 +2,7 @@
 Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.5
-Tested up to: 3.8.1
+Tested up to: 3.9
 Stable tag: 3.4.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -52,6 +52,7 @@ There is more extensive documentation of the plugins features and usage on the [
 = 3.4.10 =
 * moved CSS for ECP into `class Tribe_Events_Category_Colors_Extras`
 * adjusted CSS for ECP Week view
+* moved Category Colors settings tab before Help tab
 
 = 3.4.9 =
 * decided to remove CSS for Cost button as button not created by this plugin
