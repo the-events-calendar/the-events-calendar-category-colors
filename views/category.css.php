@@ -7,7 +7,7 @@
 
 	.tribe-events-list .vevent.hentry h2 { padding-left: 5px; }
 
-	<?php //Tribe_Events_Category_Colors_Extras::hide_default_week_background(); ?>
+	<?php Tribe_Events_Category_Colors_Extras::hide_default_week_background(); ?>
 
 	<?php foreach ( $teccc->terms as $id => $attributes ): ?>
 		<?php
