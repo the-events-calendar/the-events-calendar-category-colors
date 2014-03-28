@@ -1,6 +1,6 @@
 <?php
 return array(
-	'priority' => 70,
+	'priority' => 40,
 	'show_save' => false,
 	'parent_option' => 'teccc_options',
 	'fields' => array(

@@ -7,12 +7,7 @@
 
 	.tribe-events-list .vevent.hentry h2 { padding-left: 5px; }
 
-	/* clear blue background from week view */
-	.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent,
-	.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent:hover
-	{
-		/* background-color: transparent; */
-	}
+	<?php Tribe_Events_Category_Colors_Extras::hide_default_week_background(); ?>
 
 	<?php foreach ( $teccc->terms as $id => $attributes ): ?>
 		<?php
@@ -22,6 +17,7 @@
 
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_link_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Extras::add_map_link_css( $slug ); ?>
+	<?php Tribe_Events_Category_Colors_Extras::add_week_link_css( $slug ); ?>
 	<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
 		<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug, $options ); ?>
 	<?php endif ?>
@@ -34,13 +30,13 @@
 	
 	<?php Tribe_Events_Category_Colors_Extras::add_agenda_background_css( $slug ); ?>
 	<?php Tribe_Events_Category_Colors_Extras::add_map_background_css( $slug ); ?>
+	<?php Tribe_Events_Category_Colors_Extras::add_week_background_css( $slug ); ?>
 	<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
 		<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug, $options ); ?>
 	<?php endif ?>
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a,
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
-	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
-	.tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4.summary,
+	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4,
 	.tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title
 	{
 		background-color: <?php echo $options[ $slug.'-background' ] ?>;

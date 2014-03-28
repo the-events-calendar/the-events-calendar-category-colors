@@ -59,4 +59,36 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 		echo $css;
 	}
 
+	public static function add_week_background_css( $slug ) {
+		if ( ! class_exists( 'TribeEventsPro' ) ) { return false; }
+		$css   = array();
+		$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . '.hentry.vevent h3.entry-title,';
+		$css[] = '#tribe-events-content div.tribe-events-category-'. $slug . '.hentry.vevent .tribe-events-tooltip h4.entry-title,';
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
+	public static function hide_default_week_background() {
+		if ( ! class_exists( 'TribeEventsPro' ) ) { return false; }
+		$css   = array();
+		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent,';
+		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent:hover,';
+		$css[] = '.tribe-grid-allday div[id*="tribe-events-event-"].hentry.vevent div';
+		$css[] = '{ background-color: #fff; }';
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
+	public static function add_week_link_css( $slug ) {
+		if ( ! class_exists( 'TribeEventsPro' ) ) { return false; }
+		$css   = array();
+		$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . '.hentry.vevent h3.entry-title a,';
+		$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . '.hentry.vevent .tribe-events-tooltip h4.entry-title.summary,';
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
 }
