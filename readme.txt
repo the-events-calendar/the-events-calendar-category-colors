@@ -3,7 +3,7 @@ Contributors: afragen, WebsiteBakery
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.5
 Tested up to: 3.9
-Stable tag: 3.4.10
+Stable tag: 3.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,10 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 3.5.0 =
+* renamed `Tribe_Events_Category_Colors_Extras::hide_default_week_background` to `Tribe_Events_Category_Colors_Extras::fix_default_week_background`, a bit more descriptive.
+* updated CSS for new responsive views
 
 = 3.4.10 =
 * moved CSS for ECP into `class Tribe_Events_Category_Colors_Extras`
