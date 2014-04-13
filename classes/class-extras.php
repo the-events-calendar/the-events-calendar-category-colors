@@ -69,7 +69,7 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 		echo $css;
 	}
 
-	public static function hide_default_week_background() {
+	public static function fix_default_week_background() {
 		if ( ! class_exists( 'TribeEventsPro' ) ) { return false; }
 		$css   = array();
 		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent,';
