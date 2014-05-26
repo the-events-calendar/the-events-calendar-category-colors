@@ -1,7 +1,7 @@
 <?php
 class Tribe_Events_Category_Colors {
 
-	const VERSION = '3.5.0';
+	const VERSION = '3.5.1';
 	const SLUG = 0;
 	const NAME = 1;
 
