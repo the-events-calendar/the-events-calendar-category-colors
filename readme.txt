@@ -1,7 +1,8 @@
 === The Events Calendar Category Colors ===
 Contributors: afragen, WebsiteBakery
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=andy%40thefragens%2ecom&lc=US&item_name=The%20Events%20Calendar%20Category%20Colors%20Plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: events, color, modern tribe, tribe
-Requires at least: 3.5
+Requires at least: 3.7
 Tested up to: 3.9.1
 Stable tag: 3.5.1
 License: GPLv2 or later
@@ -50,7 +51,7 @@ There is more extensive documentation of the plugins features and usage on the [
 == Changelog ==
 
 = 3.5.1 =
-* fix for month view when using Events Calendar Pro
+* fixes for TEC/ECP 3.6 compatibility
 
 = 3.5.0 =
 * renamed `Tribe_Events_Category_Colors_Extras::hide_default_week_background` to `Tribe_Events_Category_Colors_Extras::fix_default_week_background`, a bit more descriptive.
