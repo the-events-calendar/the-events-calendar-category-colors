@@ -52,6 +52,7 @@ There is more extensive documentation of the plugins features and usage on the [
 
 = 3.5.2 =
 * adjust Legend CSS from `display: inline` to `display: inline-block`. This should fix wrapping issues.
+* fix for Legend causing events in responsive view to display above the grid. Thanks @rksystems for pointing it out and special thanks to @barry.hughes for fixing.
 
 = 3.5.1 =
 * fixes for TEC/ECP 3.6 compatibility

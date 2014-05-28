@@ -1,6 +1,6 @@
 <!-- The Events Calendar Category Colors <?php echo Tribe_Events_Category_Colors::VERSION ?> generated CSS -->
 <style type="text/css" media="screen">
-	.teccc legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
+	.teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
 	{
 		font-weight: <?php echo $options['font_weight']  ?>;
 	}
