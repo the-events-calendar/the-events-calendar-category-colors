@@ -1,6 +1,6 @@
 <!-- The Events Calendar Category Colors <?php echo Tribe_Events_Category_Colors::VERSION ?> generated CSS -->
 <style type="text/css" media="screen">
-	.tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
+	.teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
 	{
 		font-weight: <?php echo $options['font_weight']  ?>;
 	}
@@ -21,6 +21,7 @@
 	<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
 		<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug, $options ); ?>
 	<?php endif ?>
+	.teccc-legend .tribe-events-category-<?php echo $slug ?> a,
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
 	.tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title a,
 	.tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4 a
@@ -36,6 +37,7 @@
 		<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug, $options ); ?>
 	<?php endif ?>
 	.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a,
+	.teccc-legend .tribe-events-category-<?php echo $slug ?>,
 	.tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
 	#tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4,
 	.tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title,

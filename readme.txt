@@ -1,10 +1,10 @@
 === The Events Calendar Category Colors ===
-Contributors: afragen, WebsiteBakery
+Contributors: afragen, barry.hughes
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=andy%40thefragens%2ecom&lc=US&item_name=The%20Events%20Calendar%20Category%20Colors%20Plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.7
 Tested up to: 3.9.1
-Stable tag: 3.5.1
+Stable tag: 3.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,10 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 3.5.2 =
+* adjust Legend CSS from `display: inline` to `display: inline-block`. This should fix wrapping issues.
+* fix for Legend causing events in responsive view to display above the grid. Thanks @rksystems for pointing it out and special thanks to @barry.hughes for fixing.
 
 = 3.5.1 =
 * fixes for TEC/ECP 3.6 compatibility
