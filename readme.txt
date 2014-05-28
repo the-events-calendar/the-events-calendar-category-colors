@@ -1,5 +1,5 @@
 === The Events Calendar Category Colors ===
-Contributors: afragen, WebsiteBakery
+Contributors: afragen, barry.hughes
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=andy%40thefragens%2ecom&lc=US&item_name=The%20Events%20Calendar%20Category%20Colors%20Plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.7
