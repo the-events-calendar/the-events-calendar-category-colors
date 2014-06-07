@@ -72,9 +72,9 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 	public static function fix_default_week_background() {
 		if ( ! class_exists( 'TribeEventsPro' ) ) { return false; }
 		$css   = array();
-		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent,';
-		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"] .hentry.vevent:hover,';
-		$css[] = '.tribe-grid-allday div[id*="tribe-events-event-"].hentry.vevent div';
+		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"][class*="tribe-events-category-"] .hentry.vevent,';
+		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"][class*="tribe-events-category-"] .hentry.vevent:hover,';
+		$css[] = '.tribe-grid-allday div[id*="tribe-events-event-"][class*="tribe-events-category-"].hentry.vevent div';
 		$css[] = '{ background-color: #fff; }';
 		//$css[] = '.tribe-events-grid div[id*="tribe-events-event-"]';
 		//$css[] = '{ visibility: visible; }';
