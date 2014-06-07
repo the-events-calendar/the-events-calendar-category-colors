@@ -159,8 +159,11 @@ class Tribe_Events_Category_Colors {
 
 
 	/**
-	 * Loads the specified view, which is expected to exist within the views
-	 * directory. ".php" should *not* be appended.
+	 * Loads the specified view.
+	 *
+	 * The child theme/theme's directories are scanned first - so any view loaded through
+	 * this method can be overridden if a copy exists in a tribe-events/teccc/* folder within
+	 * the theme. Otherwise, the view is loaded from the plugin's own view directory.
 	 *
 	 * If the optional array of $vars are supplied they will be extracted and
 	 * pulled into the same scope as the template.
@@ -171,13 +174,15 @@ class Tribe_Events_Category_Colors {
 	 * @return mixed
 	 */
 	public function view( $template, array $vars = null, $render = true ) {
-		$path = TECCC_VIEWS . "/$template.php";
-		if ( ! file_exists( $path ) ) { return false; }
-		if ( null !== $vars ) { extract( $vars ); }
+		$path = locate_template( "tribe-events/teccc/$template.php" );
+		if ( empty( $path) ) $path = TECCC_VIEWS . "/$template.php";
 
-		if ( ! $render ) { ob_start(); }
+		if ( ! file_exists( $path ) ) return false;
+		if ( null !== $vars ) extract( $vars );
+
+		if ( ! $render ) ob_start();
 		include $path;
-		if ( ! $render ) { return ob_get_clean(); }
+		if ( ! $render ) return ob_get_clean();
 	}
 
 
