@@ -116,13 +116,13 @@ class Tribe_Events_Category_Colors {
 
 
 	protected function load_admin() {
-		require_once TECCC_CLASSES . '/class-admin.php';
+		require_once TECCC_CLASSES . '/admin.php';
 		new Tribe_Events_Category_Colors_Admin( $this );
 	}
 
 
 	protected function load_public() {
-		require_once TECCC_CLASSES . '/class-public.php';
+		require_once TECCC_CLASSES . '/public.php';
 		$this->public = new Tribe_Events_Category_Colors_Public( $this );
 	}
 
