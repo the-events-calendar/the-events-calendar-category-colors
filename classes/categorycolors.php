@@ -175,14 +175,14 @@ class Tribe_Events_Category_Colors {
 	 */
 	public function view( $template, array $vars = null, $render = true ) {
 		$path = locate_template( "tribe-events/teccc/$template.php" );
-		if ( empty( $path) ) $path = TECCC_VIEWS . "/$template.php";
+		if ( empty( $path) ) { $path = TECCC_VIEWS . "/$template.php"; }
 
-		if ( ! file_exists( $path ) ) return false;
-		if ( null !== $vars ) extract( $vars );
+		if ( ! file_exists( $path ) ) { return false; }
+		if ( null !== $vars ) { extract( $vars ); }
 
-		if ( ! $render ) ob_start();
+		if ( ! $render ) { ob_start(); }
 		include $path;
-		if ( ! $render ) return ob_get_clean();
+		if ( ! $render ) { return ob_get_clean(); }
 	}
 
 
@@ -193,7 +193,7 @@ class Tribe_Events_Category_Colors {
 		$teccc = Tribe_Events_Category_Colors::instance();
 		$tmp   = get_option( 'teccc_options' );
 
-		if ( ! isset( $tmp['chk_default_options_db'] ) ) return;
+		if ( ! isset( $tmp['chk_default_options_db'] ) ) { return false; }
 		if ( $tmp['chk_default_options_db'] == '1' or ! is_array( $tmp ) ) {
 			delete_option( 'teccc_options' );
 			for ( $i = 0; $i < $teccc->count; $i++ ) {
