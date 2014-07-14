@@ -13,8 +13,8 @@ class Tribe_Events_Category_Colors_Public {
 		$this->teccc = $teccc;
 		$this->options = get_option( 'teccc_options' );
 		require TECCC_INCLUDES . '/templatetags.php';
-		require_once TECCC_CLASSES . '/class-widgets.php';
-		require_once TECCC_CLASSES . '/class-extras.php';
+		require_once TECCC_CLASSES . '/widgets.php';
+		require_once TECCC_CLASSES . '/extras.php';
 
 		add_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
 	}
@@ -44,8 +44,9 @@ class Tribe_Events_Category_Colors_Public {
 		}
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 		
-		if ( isset( $this->options['legend_superpowers'] ) and '1' === $this->options['legend_superpowers']   )
+		if ( isset( $this->options['legend_superpowers'] ) and '1' === $this->options['legend_superpowers'] and ! wp_is_mobile() ) {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::VERSION, true );
+		}
 
 	}
 
@@ -80,8 +81,10 @@ class Tribe_Events_Category_Colors_Public {
 
 	public function reposition_legend( $tribeViewFilter ) {
 		// If the legend has already run they are probably doing something wrong
-		if ( $this->legendFilterHasRun ) _doing_it_wrong( 'Tribe_Events_Category_Colors_Public::reposition_legend',
+		if ( $this->legendFilterHasRun ) {
+			_doing_it_wrong( 'Tribe_Events_Category_Colors_Public::reposition_legend',
 			'You are attempting to reposition the legend after it has already been rendered.', '1.6.4' );
+		}
 
 		// Change the target filter (even if they are _doing_it_wrong, in case they have a special use case)
 		$this->legendTargetHook = $tribeViewFilter;
@@ -93,8 +96,10 @@ class Tribe_Events_Category_Colors_Public {
 
 	public function remove_default_legend() {
 		// If the legend has already run they are probably doing something wrong
-		if( $this->legendFilterHasRun ) _doing_it_wrong( 'Tribe_Events_Category_Colors_Public::reposition_legend',
+		if( $this->legendFilterHasRun ) {
+			_doing_it_wrong( 'Tribe_Events_Category_Colors_Public::reposition_legend',
 			'You are attempting to remove the default legend after it has already been rendered.', '1.6.4' );
+		}
 
 		// Remove the hook regardless of whether they are _doing_it_wrong or not (in case of creative usage)
 		$this->legendTargetHook = null;

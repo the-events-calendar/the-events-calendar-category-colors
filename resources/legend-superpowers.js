@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
 	function defaultStatus() {
 		legendEntries = $("ul#legend").find("li");
 		status = {
-			allEntries: $("table.tribe-events-calendar").find("td").find("div.hentry.type-tribe_events"),
+			allEntries: $("#tribe-events-content").find("div.hentry.type-tribe_events"),
 			opacity: 0.25,
 			selected: false,
 			speed: 500,
@@ -42,11 +42,12 @@ jQuery(document).ready(function($) {
 	 * @param event
 	 */
 	function categorySelection(event) {
-		// If we're still working don't do anything - the visitor can wait
-		if (status.working) {
-			event.stopPropagation;
+		// If we're still working (or we're in responsive mode) don't do anything - the visitor can wait
+		if (status.working || responsive_active()) {
+			event.stopPropagation();
 			return;
 		}
+		// Otherwise set the working flag so that we don't end up stacking - and delaying - effects
 		else status.working = true;
 
 		// Look out for deselections!
@@ -70,6 +71,9 @@ jQuery(document).ready(function($) {
 		event.stopPropagation();
 	}
 
+	function responsive_active() {
+		return $("body").hasClass("tribe-mobile");
+	}
 
 	/**
 	 * Converts a link to a span, storing the href URL in the jQuery cache

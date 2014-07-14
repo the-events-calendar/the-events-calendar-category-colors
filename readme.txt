@@ -1,10 +1,10 @@
 === The Events Calendar Category Colors ===
 Contributors: afragen, barry.hughes
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=andy%40thefragens%2ecom&lc=US&item_name=The%20Events%20Calendar%20Category%20Colors%20Plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
+Donate link: http://bit.ly/teccc-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.7
 Tested up to: 3.9.1
-Stable tag: 3.5.2
+Stable tag: 3.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,12 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 3.6.0 =
+* added template overrides for views, place override in `wp-content/themes/{your_theme}/tribe-events/teccc/`
+* legend superpowers now works in week view
+* adjusted CSS selector for non-categorized events in week view
+* adjust legend superpowers to not load in responsive views
 
 = 3.5.2 =
 * adjust Legend CSS from `display: inline` to `display: inline-block`. This should fix wrapping issues.
