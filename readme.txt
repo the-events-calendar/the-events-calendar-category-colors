@@ -4,7 +4,7 @@ Donate link: http://bit.ly/teccc-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.7
 Tested up to: 3.9.1
-Stable tag: 3.6.0
+Stable tag: 3.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,7 +50,7 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
-= 3.6.0 =
+= 3.6.1 =
 * added template overrides for views, place override in `wp-content/themes/{your_theme}/tribe-events/teccc/`
 * legend superpowers now works in week view
 * adjusted CSS selector for non-categorized events in week view
