@@ -13,8 +13,8 @@ class Tribe_Events_Category_Colors_Public {
 		$this->teccc = $teccc;
 		$this->options = get_option( 'teccc_options' );
 		require TECCC_INCLUDES . '/templatetags.php';
-		require_once TECCC_CLASSES . '/widgets.php';
-		require_once TECCC_CLASSES . '/extras.php';
+		require_once TECCC_CLASSES . '/class-widgets.php';
+		require_once TECCC_CLASSES . '/class-extras.php';
 
 		add_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
 	}
