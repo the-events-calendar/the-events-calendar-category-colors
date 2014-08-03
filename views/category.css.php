@@ -1,4 +1,4 @@
-<!-- The Events Calendar Category Colors <?php echo Tribe_Events_Category_Colors::VERSION ?> generated CSS -->
+<!-- The Events Calendar Category Colors <?php echo Tribe_Events_Category_Colors::$version ?> generated CSS -->
 <style type="text/css" media="screen">
 	.teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
 	{

@@ -45,7 +45,7 @@ class Tribe_Events_Category_Colors_Public {
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 		
 		if ( isset( $this->options['legend_superpowers'] ) and '1' === $this->options['legend_superpowers'] and ! wp_is_mobile() ) {
-			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::VERSION, true );
+			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
 		}
 
 	}

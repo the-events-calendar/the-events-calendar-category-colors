@@ -164,10 +164,10 @@ class Tribe_Events_Category_Colors_Admin {
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_style( 'teccc-iris', TECCC_RESOURCES.'/teccc-iris.css', false, Tribe_Events_Category_Colors::VERSION );
+		wp_enqueue_style( 'teccc-iris', TECCC_RESOURCES.'/teccc-iris.css', false, Tribe_Events_Category_Colors::$version );
 		
-		wp_enqueue_script( 'teccc-admin', TECCC_RESOURCES.'/teccc-admin.js', false, Tribe_Events_Category_Colors::VERSION, true );
-		wp_enqueue_style( 'teccc-options', TECCC_RESOURCES.'/teccc-options.css', false, Tribe_Events_Category_Colors::VERSION );
+		wp_enqueue_script( 'teccc-admin', TECCC_RESOURCES.'/teccc-admin.js', false, Tribe_Events_Category_Colors::$version, true );
+		wp_enqueue_style( 'teccc-options', TECCC_RESOURCES.'/teccc-options.css', false, Tribe_Events_Category_Colors::$version );
 
 	}
 
