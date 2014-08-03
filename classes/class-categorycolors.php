@@ -5,6 +5,8 @@ class Tribe_Events_Category_Colors {
 	const SLUG = 0;
 	const NAME = 1;
 
+	static $version;
+
 	public $text_colors = array(
 		'Black' => '#000',
 		'White' => '#fff',
@@ -215,4 +217,21 @@ class Tribe_Events_Category_Colors {
 	public static function delete_plugin_options() {
 		delete_option( 'teccc_options' );
 	}
+
+	/**
+	 * Returns current plugin version.
+	 *
+	 * @param $plugin_file
+	 *
+	 * @return string Plugin version
+	 */
+	public static function plugin_get_version( $plugin_file ) {
+		if ( ! function_exists( 'get_plugins' ) )
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		$plugin_base   = '/' . plugin_basename( trailingslashit( dirname( plugin_dir_path( __FILE__ ) ) ) );
+		$plugin_folder = get_plugins( $plugin_base );
+
+		return $plugin_folder[$plugin_file]['Version'];
+	}
+
 }
