@@ -4,7 +4,7 @@ class Tribe_Events_Category_Colors {
 	const SLUG = 0;
 	const NAME = 1;
 
-	static $version;
+	public static $version;
 
 	public $text_colors = array(
 		'Black' => '#000',
