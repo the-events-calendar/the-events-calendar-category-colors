@@ -10,7 +10,7 @@ Author URI:        http://thefragens.com
 License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 GitHub Plugin URI: https://github.com/afragen/the-events-calendar-category-colors
-GitHub Branch:     master
+GitHub Branch:     develop
 */
 
 
