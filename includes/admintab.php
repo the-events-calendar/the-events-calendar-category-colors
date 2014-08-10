@@ -1,7 +1,7 @@
 <?php
 return array(
-	'priority' => 40,
-	'show_save' => false,
+	'priority'      => 40,
+	'show_save'     => false,
 	'parent_option' => 'teccc_options',
 	'fields' => array(
 		'info-start' => array(

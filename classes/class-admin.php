@@ -13,11 +13,11 @@ class Tribe_Events_Category_Colors_Admin {
 		add_action( 'plugins_loaded', array( $this, 'load_settings_tab' ) );
 		add_action( 'tribe_settings_below_tabs_tab_category-colors', array( $this, 'is_saved' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_teccc_js_css' ) );
-		load_plugin_textdomain('events-calendar-category-colors', false, TECCC_LANG );
+		load_plugin_textdomain( 'events-calendar-category-colors', false, TECCC_LANG );
 	}
 
 
-	public function init(){
+	public function init() {
 		register_setting( 'teccc_category_colors', 'teccc_options', array( $this, 'validate_options' ) );
 	}
 
@@ -44,24 +44,34 @@ class Tribe_Events_Category_Colors_Admin {
 		$teccc = $this->teccc;
 
 		foreach ( $teccc->terms as $attributes ) {
-			$slug = $attributes[Tribe_Events_Category_Colors::SLUG];
+			$slug = $attributes[ Tribe_Events_Category_Colors::SLUG ];
 			
 			// Sanitize textbox input (strip html tags, and escape characters)
 			// May not be needed with jQuery color picker
 			$input[ $slug.'-background' ] =  wp_filter_nohtml_kses($input[$slug.'-background']);
 			$input[ $slug.'-background' ] =  preg_replace( '[^#A-Za-z0-9]', '', $input[$slug.'-background'] );
-			if ( $input[ $slug.'-background' ] == '' ) { $input[ $slug.'-background' ] = '#CFCFCF' ; }
+			if ( $input[ $slug.'-background' ] == '' ) {
+				$input[ $slug.'-background' ] = '#CFCFCF' ;
+			}
 
 			$input[ $slug.'-border' ] =  wp_filter_nohtml_kses( $input[$slug.'-border' ] );
 			$input[ $slug.'-border' ] =  preg_replace( '[^#A-Za-z0-9]', '', $input[$slug.'-border'] );
-			if ( $input[ $slug.'-border' ] == '' ) { $input[ $slug.'-border' ] = '#CFCFCF'; }
+			if ( $input[ $slug.'-border' ] == '' ) {
+				$input[ $slug.'-border' ] = '#CFCFCF';
+			}
 
 			// Sets value when checked
-			if ( isset( $input[ $slug.'-border_transparent' ] ) ) { $input[ $slug.'-border' ] = 'transparent'; }
-			if ( isset( $input[ $slug.'-background_transparent' ] ) ) { $input[ $slug.'-background' ] = 'transparent'; }
+			if ( isset( $input[ $slug.'-border_transparent' ] ) ) {
+				$input[ $slug.'-border' ] = 'transparent';
+			}
+			if ( isset( $input[ $slug.'-background_transparent' ] ) ) {
+				$input[ $slug.'-background' ] = 'transparent';
+			}
 
 			// Sanitize dropdown input (make sure value is one of options allowed)
-			if ( ! in_array( $input[ $slug.'-text' ], $teccc->text_colors, true ) ) { $input[ $slug.'-text' ] = '#000'; }
+			if ( ! in_array( $input[ $slug.'-text' ], $teccc->text_colors, true ) ) {
+				$input[ $slug.'-text' ] = '#000';
+			}
 		}
 
 		return $input;
@@ -103,7 +113,7 @@ class Tribe_Events_Category_Colors_Admin {
 
 
 	public static function options_elements() {
-		$teccc = Tribe_Events_Category_Colors::instance();
+		$teccc   = Tribe_Events_Category_Colors::instance();
 
 		$content = $teccc->view( 'optionsform', array(
 			'options' => self::fetch_options($teccc),
@@ -160,14 +170,16 @@ class Tribe_Events_Category_Colors_Admin {
 	}
 
 	public static function load_teccc_js_css( $hook ) {
-		if ( 'tribe_events_page_tribe-events-calendar' != $hook ) { return false; }
+		if ( 'tribe_events_page_tribe-events-calendar' != $hook ) {
+			return false;
+		}
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_style( 'teccc-iris', TECCC_RESOURCES.'/teccc-iris.css', false, Tribe_Events_Category_Colors::VERSION );
+		wp_enqueue_style( 'teccc-iris', TECCC_RESOURCES . '/teccc-iris.css', false, Tribe_Events_Category_Colors::$version );
 		
-		wp_enqueue_script( 'teccc-admin', TECCC_RESOURCES.'/teccc-admin.js', false, Tribe_Events_Category_Colors::VERSION, true );
-		wp_enqueue_style( 'teccc-options', TECCC_RESOURCES.'/teccc-options.css', false, Tribe_Events_Category_Colors::VERSION );
+		wp_enqueue_script( 'teccc-admin', TECCC_RESOURCES . '/teccc-admin.js', false, Tribe_Events_Category_Colors::$version, true );
+		wp_enqueue_style( 'teccc-options', TECCC_RESOURCES . '/teccc-options.css', false, Tribe_Events_Category_Colors::$version );
 
 	}
 

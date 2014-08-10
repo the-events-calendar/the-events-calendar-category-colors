@@ -1,9 +1,10 @@
 <?php
 class Tribe_Events_Category_Colors {
 
-	const VERSION = '3.6.1';
 	const SLUG = 0;
 	const NAME = 1;
+
+	static $version;
 
 	public $text_colors = array(
 		'Black' => '#000',
@@ -50,7 +51,10 @@ class Tribe_Events_Category_Colors {
 	 */
 	public static function instance() {
 		$class = __CLASS__;
-		if ( false === self::$object ) { self::$object = new $class(); }
+		if ( false === self::$object ) {
+			self::$object = new $class();
+		}
+
 		return self::$object;
 	}
 
@@ -59,7 +63,9 @@ class Tribe_Events_Category_Colors {
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
 
-		if ( $this->is_admin() ) { $this->load_admin(); }
+		if ( $this->is_admin() ) {
+			$this->load_admin();
+		}
 		$this->load_public(); // Always load public (in case template tags are in use with the theme)
 	}
 
@@ -84,7 +90,9 @@ class Tribe_Events_Category_Colors {
 
 
 	protected function get_category_terms() {
-		if ( ! empty( $this->terms ) ) { return false; }
+		if ( ! empty( $this->terms ) ) {
+			return false;
+		}
 
 		// TribeEvents not yet defined, so we can't use the class constant
 		$term_list = apply_filters( 'teccc_get_terms', get_terms( 'tribe_events_cat', array( 'hide_empty' => false ) ) );
@@ -106,8 +114,12 @@ class Tribe_Events_Category_Colors {
 		$revised_list = array();
 
 		foreach ( $term_list as $src_id => $src_term ) {
-			if ( in_array( (int) $src_term->term_id, $this->ignore_list, true ) ) { continue; }
-			if ( in_array( (string) $src_term->slug, $this->ignore_list, true ) ) { continue; }
+			if ( in_array( (int) $src_term->term_id, $this->ignore_list, true ) ) {
+				continue;
+			}
+			if ( in_array( (string) $src_term->slug, $this->ignore_list, true ) ) {
+				continue;
+			}
 			$revised_list[ $src_id ] = $src_term;
 		}
 
@@ -116,13 +128,13 @@ class Tribe_Events_Category_Colors {
 
 
 	protected function load_admin() {
-		require_once TECCC_CLASSES . '/admin.php';
+		require_once TECCC_CLASSES . '/class-admin.php';
 		new Tribe_Events_Category_Colors_Admin( $this );
 	}
 
 
 	protected function load_public() {
-		require_once TECCC_CLASSES . '/public.php';
+		require_once TECCC_CLASSES . '/class-public.php';
 		$this->public = new Tribe_Events_Category_Colors_Public( $this );
 	}
 
@@ -175,14 +187,24 @@ class Tribe_Events_Category_Colors {
 	 */
 	public function view( $template, array $vars = null, $render = true ) {
 		$path = locate_template( "tribe-events/teccc/$template.php" );
-		if ( empty( $path) ) { $path = TECCC_VIEWS . "/$template.php"; }
+		if ( empty( $path ) ) {
+			$path = TECCC_VIEWS . "/$template.php";
+		}
 
-		if ( ! file_exists( $path ) ) { return false; }
-		if ( null !== $vars ) { extract( $vars ); }
+		if ( ! file_exists( $path ) ) {
+			return false;
+		}
+		if ( null !== $vars ) {
+			extract( $vars );
+		}
 
-		if ( ! $render ) { ob_start(); }
+		if ( ! $render ) {
+			ob_start();
+		}
 		include $path;
-		if ( ! $render ) { return ob_get_clean(); }
+		if ( ! $render ) {
+			return ob_get_clean();
+		}
 	}
 
 
@@ -193,7 +215,9 @@ class Tribe_Events_Category_Colors {
 		$teccc = Tribe_Events_Category_Colors::instance();
 		$tmp   = get_option( 'teccc_options' );
 
-		if ( ! isset( $tmp['chk_default_options_db'] ) ) { return false; }
+		if ( ! isset( $tmp['chk_default_options_db'] ) ) {
+			return false;
+		}
 		if ( $tmp['chk_default_options_db'] == '1' or ! is_array( $tmp ) ) {
 			delete_option( 'teccc_options' );
 			for ( $i = 0; $i < $teccc->count; $i++ ) {
@@ -215,4 +239,21 @@ class Tribe_Events_Category_Colors {
 	public static function delete_plugin_options() {
 		delete_option( 'teccc_options' );
 	}
+
+	/**
+	 * Returns current plugin version.
+	 *
+	 * @param $plugin_file
+	 *
+	 * @return string Plugin version
+	 */
+	public static function plugin_get_version( $plugin_file ) {
+		if ( ! function_exists( 'get_plugins' ) )
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		$plugin_base   = '/' . plugin_basename( trailingslashit( dirname( plugin_dir_path( __FILE__ ) ) ) );
+		$plugin_folder = get_plugins( $plugin_base );
+
+		return $plugin_folder[$plugin_file]['Version'];
+	}
+
 }
