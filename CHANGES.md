@@ -1,4 +1,7 @@
 
+#### 3.6.4
+* can't use class variable to point to constant in PHP < 5.3
+
 #### 3.6.3
 * needed to declare $version as public static
 
