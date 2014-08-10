@@ -1,3 +1,7 @@
+
+#### 3.6.3
+* needed to declare $version as public static
+
 #### 3.6.2
 * updated for widget CSS changes in v3.7
 * programmatically add plugin version number
