@@ -53,6 +53,7 @@ There is more extensive documentation of the plugins features and usage on the [
 = 3.6.x =
 * updated for widget CSS changes in v3.7
 * programmatically add plugin version number
+* fix for legend not displaying in some views after AJAX call
 
 = 3.6.1 =
 * added template overrides for views, place override in `wp-content/themes/{your_theme}/tribe-events/teccc/`

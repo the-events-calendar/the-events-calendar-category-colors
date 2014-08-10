@@ -1,16 +1,16 @@
 <?php
 class Tribe_Events_Category_Colors_Public {
 
-	protected $teccc = null;
+	protected $teccc   = null;
 	protected $options = array();
 
-	protected $legendTargetHook = 'tribe_events_after_header';
+	protected $legendTargetHook   = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
-	protected $legendExtraView = array();
+	protected $legendExtraView    = array();
 
 
 	public function __construct( Tribe_Events_Category_Colors $teccc ) {
-		$this->teccc = $teccc;
+		$this->teccc   = $teccc;
 		$this->options = get_option( 'teccc_options' );
 		require TECCC_INCLUDES . '/templatetags.php';
 		require_once TECCC_CLASSES . '/class-widgets.php';
@@ -21,7 +21,9 @@ class Tribe_Events_Category_Colors_Public {
 
 
 	public function add_colored_categories( $query ) {
-		if ( ! isset( $query->query_vars['post_type'] ) ) { return false; }
+		if ( ! isset( $query->query_vars['post_type'] ) ) {
+			return false;
+		}
 
 		$post_types = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
 		if ( in_array( $query->query_vars['post_type'], $post_types, true ) ) {
