@@ -8,6 +8,8 @@ class Tribe_Events_Category_Colors_Public {
 	protected $legendFilterHasRun = false;
 	protected $legendExtraView    = array();
 
+	protected $css_added = false;
+
 
 	public function __construct( Tribe_Events_Category_Colors $teccc ) {
 		$this->teccc   = $teccc;
@@ -54,12 +56,15 @@ class Tribe_Events_Category_Colors_Public {
 
 
 	public function add_css() {
-		$this->teccc->view( 'category.css', array(
-			'options' => $this->options,
-			'teccc'   => $this->teccc
-		) );
+		if ( ! $this->css_added ) {
+			$this->teccc->view( 'category.css', array(
+				'options' => $this->options,
+				'teccc'   => $this->teccc
+			) );
 
-		remove_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
+			remove_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
+		}
+		$this->css_added = true;
 	}
 
 	public function show_legend( $existingContent = '' ) {
