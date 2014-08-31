@@ -1,4 +1,9 @@
 
+#### 3.6.5
+* added coloring to responsive month view
+* code cleanup
+* fix to only add CSS once per page load
+
 #### 3.6.4
 * can't use class variable to point to constant in PHP < 5.3
 
