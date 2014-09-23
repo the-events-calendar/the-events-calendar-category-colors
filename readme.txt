@@ -54,6 +54,7 @@ There is more extensive documentation of the plugins features and usage on the [
 * added coloring to responsive month view
 * code cleanup
 * fix to only add CSS once per page load
+* fix for `teccc_add_legend_css` action hook
 
 
 = 3.6.4 =
