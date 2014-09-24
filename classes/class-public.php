@@ -8,6 +8,8 @@ class Tribe_Events_Category_Colors_Public {
 	protected $legendFilterHasRun = false;
 	protected $legendExtraView    = array();
 
+	protected $css_added = false;
+
 
 	public function __construct( Tribe_Events_Category_Colors $teccc ) {
 		$this->teccc   = $teccc;
@@ -39,14 +41,14 @@ class Tribe_Events_Category_Colors_Public {
 		add_action( 'tribe_events_single_organizer_before_organizer', array( $this, 'add_css' ) );
 		add_action( 'tribe_events_single_venue_before_the_meta', array( $this, 'add_css' ) );
 
-		if ( isset( $this->options['color_widgets'] ) and '1' === $this->options['color_widgets'] ) {
+		if ( isset( $this->options['color_widgets'] ) && '1' === $this->options['color_widgets'] ) {
 			add_action( 'tribe_events_before_list_widget', array( $this, 'add_css' ) );
 			add_action( 'tribe_events_mini_cal_after_the_grid', array( $this, 'add_css' ) );
 			add_action( 'tribe_events_venue_widget_before_the_title', array( $this, 'add_css' ) );
 		}
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 		
-		if ( isset( $this->options['legend_superpowers'] ) and '1' === $this->options['legend_superpowers'] and ! wp_is_mobile() ) {
+		if ( isset( $this->options['legend_superpowers'] ) && '1' === $this->options['legend_superpowers'] && ! wp_is_mobile() ) {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
 		}
 
@@ -54,31 +56,34 @@ class Tribe_Events_Category_Colors_Public {
 
 
 	public function add_css() {
-		$this->teccc->view( 'category.css', array(
-			'options' => $this->options,
-			'teccc'   => $this->teccc
-		) );
+		if ( ! $this->css_added ) {
+			$this->teccc->view( 'category.css', array(
+				'options' => $this->options,
+				'teccc'   => $this->teccc
+			) );
 
-		remove_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
+			remove_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
+		}
+		$this->css_added = true;
 	}
-
 
 	public function show_legend( $existingContent = '' ) {
 		$tribe         = TribeEvents::instance();
-		$teccc_options = get_option( 'teccc_options' );
 		$eventDisplays = array( 'month' );
 		$eventDisplays = array_merge( $eventDisplays, $this->legendExtraView );
 		$tribe_view    = get_query_var( 'eventDisplay' );
-		if ( isset( $tribe->displaying ) && $tribe->displaying !== get_query_var( 'eventDisplay' ) ) {
+		if ( isset( $tribe->displaying ) && get_query_var( 'eventDisplay' ) !== $tribe->displaying ) {
 			$tribe_view = $tribe->displaying;
 		}
-		if ( ( 'tribe_events' === get_query_var( 'post_type' ) ) and ! in_array( $tribe_view, $eventDisplays, true ) ) { return false; }
-		if ( ! ( isset( $teccc_options['add_legend'] ) and '1' === $teccc_options['add_legend'] ) ) {
+		if ( ( 'tribe_events' === get_query_var( 'post_type' ) ) && ! in_array( $tribe_view, $eventDisplays, true ) ) {
+			return false;
+		}
+		if ( ! ( isset( $this->options['add_legend'] ) && '1' === $this->options['add_legend'] ) ) {
 			return false;
 		}
 
 		$content = $this->teccc->view( 'legend', array(
-			'options' => $teccc_options,
+			'options' => $this->options,
 			'teccc'   => Tribe_Events_Category_Colors::instance(),
 			'tec'     => TribeEvents::instance()
 		), false );

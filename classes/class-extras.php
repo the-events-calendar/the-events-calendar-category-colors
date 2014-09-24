@@ -76,7 +76,6 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 			return false;
 		}
 		$css   = array();
-		//$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . '.hentry.vevent h3.entry-title,';
 		$css[] = '#tribe-events-content div.tribe-events-category-'. $slug . '.hentry.vevent .tribe-events-tooltip h4.entry-title,';
 		$css[] = '';
 		$css   = implode( "\n", $css );
@@ -92,8 +91,6 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"][class*="tribe-events-category-"] .hentry.vevent:hover,';
 		$css[] = '.tribe-grid-allday div[id*="tribe-events-event-"][class*="tribe-events-category-"].hentry.vevent div';
 		$css[] = '{ background-color: #fff; }';
-		//$css[] = '.tribe-events-grid div[id*="tribe-events-event-"]';
-		//$css[] = '{ visibility: visible; }';
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;

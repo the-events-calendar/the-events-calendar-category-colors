@@ -7,6 +7,13 @@
 
 	.tribe-events-list .vevent.hentry h2 { padding-left: 5px; }
 
+	@media only screen and (max-width: 768px) {
+		.tribe-events-calendar td .hentry { display: block; }
+		h3.entry-title.summary,
+		.tribe-events-calendar .tribe-events-has-events:after
+			{ display: none; }
+	}
+
 	<?php Tribe_Events_Category_Colors_Extras::fix_default_week_background(); ?>
 
 	<?php foreach ( $teccc->terms as $id => $attributes ): ?>
@@ -67,7 +74,7 @@
 
 	<?php if ( isset( $options['add_legend'] ) and !isset( $options['custom_legend_css'] ) ): ?>
 		<?php $teccc->view( 'legend.css' ) ?>
-		<?php if ( isset( $extra_user_legend_css ) ) do_action( 'teccc_add_legend_css', $extra_user_legend_css ); ?>
+		<?php do_action( 'teccc_add_legend_css' ); ?>
 	<?php endif ?>
 
 </style>
