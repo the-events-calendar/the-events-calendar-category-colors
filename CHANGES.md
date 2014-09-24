@@ -1,5 +1,5 @@
 
-#### 3.6.5
+#### 3.7.0
 * added coloring to responsive month view
 * code cleanup
 * fix to only add CSS once per page load

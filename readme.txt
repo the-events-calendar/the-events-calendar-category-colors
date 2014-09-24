@@ -4,7 +4,7 @@ Donate link: http://bit.ly/teccc-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.7
 Tested up to: 4.0
-Stable tag: 3.6.5
+Stable tag: 3.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,7 +50,7 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
-= 3.6.5 =
+= 3.7.0 =
 * added coloring to responsive month view
 * code cleanup
 * fix to only add CSS once per page load
