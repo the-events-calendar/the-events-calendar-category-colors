@@ -86,28 +86,51 @@ class Tribe_Events_Category_Colors_Public {
 		if ( $this->css_added ) return;
 
 		echo '<style>';
-		$this->generate_css();
+		echo $this->generate_css();
 		echo '</style>';
 
 		$this->css_added = true;
 	}
 
 	public function do_css() {
-		$next_year = strtotime( '+1 year', time() );
+		// Use RFC 1123 date format for the expiry time
+		$next_year = date( DateTime::RFC1123, strtotime( '+1 year', time() ) );
+		$one_year  = 31536000;
+		$hash      = $this->options_hash();
 
 		header( "Content-type: text/css" );
 		header( "Expires: $next_year" );
+		header( "Cache-Control: public, max-age=$one_year" );
+		header( "Pragma: public" );
+		header( "Etag: $hash" );
 
-		$this->generate_css();
+		echo $this->generate_css();
 
 		exit();
 	}
 
 	protected function generate_css() {
+		// Look out for fresh_css requests
+		$fresh_css = isset( $_GET['fresh_css'] ) && $_GET['fresh_css'];
+
+		// Return cached CSS if available and if fresh CSS hasn't been requested
+		$cache_key = 'teccc_' . $this->options_hash();
+		$css = get_transient( $cache_key );
+		if ( $css && ! $fresh_css ) return $css;
+
+		// Else generate the CSS afresh
+		ob_start();
+
 		$this->teccc->view( 'category.css', array(
 			'options' => $this->options,
 			'teccc'   => $this->teccc
 		) );
+
+		$css = ob_get_clean();
+
+		// Store in transient
+		set_transient( $cache_key, $css );
+		return $css;
 	}
 
 	public function show_legend( $existingContent = '' ) {
