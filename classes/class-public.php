@@ -1,6 +1,8 @@
 <?php
 class Tribe_Events_Category_Colors_Public {
 
+	const CSS_HANDLE = 'teccc_css';
+
 	protected $teccc   = null;
 	protected $options = array();
 
@@ -14,6 +16,7 @@ class Tribe_Events_Category_Colors_Public {
 	public function __construct( Tribe_Events_Category_Colors $teccc ) {
 		$this->teccc   = $teccc;
 		$this->options = get_option( 'teccc_options' );
+
 		require TECCC_INCLUDES . '/templatetags.php';
 		require_once TECCC_CLASSES . '/class-widgets.php';
 		require_once TECCC_CLASSES . '/class-extras.php';
@@ -23,6 +26,10 @@ class Tribe_Events_Category_Colors_Public {
 
 
 	public function add_colored_categories( $query ) {
+		if ( isset( $_GET[self::CSS_HANDLE] ) ) {
+			$this->do_css();
+		}
+
 		if ( ! isset( $query->query_vars['post_type'] ) ) {
 			return false;
 		}
@@ -35,36 +42,72 @@ class Tribe_Events_Category_Colors_Public {
 
 
 	public function add_effects() {
-		add_action( 'tribe_events_before_template', array( $this, 'add_css' ) );
-
-		//For Events Calendar PRO only
-		add_action( 'tribe_events_single_organizer_before_organizer', array( $this, 'add_css' ) );
-		add_action( 'tribe_events_single_venue_before_the_meta', array( $this, 'add_css' ) );
-
+		// Possibly add our styles inline, if they are required only for a widgget
 		if ( isset( $this->options['color_widgets'] ) && '1' === $this->options['color_widgets'] ) {
-			add_action( 'tribe_events_before_list_widget', array( $this, 'add_css' ) );
-			add_action( 'tribe_events_mini_cal_after_the_grid', array( $this, 'add_css' ) );
-			add_action( 'tribe_events_venue_widget_before_the_title', array( $this, 'add_css' ) );
+			add_action( 'tribe_events_before_list_widget', array( $this, 'add_css_inline' ) );
+			add_action( 'tribe_events_mini_cal_after_the_grid', array( $this, 'add_css_inline' ) );
+			add_action( 'tribe_events_venue_widget_before_the_title', array( $this, 'add_css_inline' ) );
 		}
+
+		// Enqueue stylesheet
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_css' ), 50 );
+
+		// Show legend
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
-		
+
+		// Add legend superpowers
 		if ( isset( $this->options['legend_superpowers'] ) && '1' === $this->options['legend_superpowers'] && ! wp_is_mobile() ) {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
 		}
-
 	}
 
+	/**
+	 * By generating a unique hash of the plugin options if these change so will the
+	 * stylesheet URL, forcing the browser to grab an updated copy.
+	 *
+	 * @return string
+	 */
+	protected function options_hash() {
+		return hash( 'md5', join( '|', (array) $this->options ) );
+	}
 
 	public function add_css() {
-		if ( ! $this->css_added ) {
-			$this->teccc->view( 'category.css', array(
-				'options' => $this->options,
-				'teccc'   => $this->teccc
-			) );
-
-			remove_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
-		}
+		wp_enqueue_style( 'teccc_stylesheet', add_query_arg( self::CSS_HANDLE, $this->options_hash(), get_site_url( null ) ) );
 		$this->css_added = true;
+	}
+
+	/**
+	 * Adds our CSS inline on pages where we need category coloring for event widgets
+	 * but where our stylesheet hasn't been enqueued.
+	 *
+	 * @todo consider enqueuing assets everywhere and avoid inlining
+	 */
+	public function add_css_inline() {
+		if ( $this->css_added ) return;
+
+		echo '<style>';
+		$this->generate_css();
+		echo '</style>';
+
+		$this->css_added = true;
+	}
+
+	public function do_css() {
+		$next_year = strtotime( '+1 year', time() );
+
+		header( "Content-type: text/css" );
+		header( "Expires: $next_year" );
+
+		$this->generate_css();
+
+		exit();
+	}
+
+	protected function generate_css() {
+		$this->teccc->view( 'category.css', array(
+			'options' => $this->options,
+			'teccc'   => $this->teccc
+		) );
 	}
 
 	public function show_legend( $existingContent = '' ) {
