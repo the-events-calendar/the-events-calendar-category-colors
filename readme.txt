@@ -2,7 +2,7 @@
 Contributors: afragen, barry.hughes
 Donate link: http://bit.ly/teccc-donate
 Tags: events, color, modern tribe, tribe
-Requires at least: 3.7
+Requires at least: 3.8
 Tested up to: 4.0
 Stable tag: 3.7.0
 License: GPLv2 or later

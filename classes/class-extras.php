@@ -108,4 +108,15 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 		echo $css;
 	}
 
+	public static function add_filter_bar_background_css ( $slug ) {
+		if ( ! class_exists( 'TribeEventsFilterView' ) ) {
+			return false;
+		}
+		$css   = array();
+		$css[] = '#tribe-events-filters-content div.tribe-events-filter-group.tribe-events-filter-checkboxes label input[data-slug="' . $slug . '"],';
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
 }
