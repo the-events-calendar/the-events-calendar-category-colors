@@ -133,7 +133,7 @@ class Tribe_Events_Category_Colors_Public {
 		$css = ob_get_clean();
 
 		// Store in transient
-		set_transient( $cache_key, $css );
+		set_transient( $cache_key, $css, 4 * WEEK_IN_SECONDS );
 
 		return $css;
 	}
