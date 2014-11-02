@@ -1,4 +1,7 @@
 
+#### 3.9.0
+* now using generated CSS stylesheet for events pages - yeah @barryhughes
+
 #### 3.8.0
 * added coloring to Filter Bar in checkbox mode
 
