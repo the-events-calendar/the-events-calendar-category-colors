@@ -40,7 +40,6 @@
 <?php Tribe_Events_Category_Colors_Extras::add_map_background_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_week_background_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_filter_bar_background_css( $slug ); ?>
-
 <?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug, $options ); ?>
 <?php endif ?>
