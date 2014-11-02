@@ -1,4 +1,7 @@
 
+#### 3.8.0
+* added coloring to Filter Bar in checkbox mode
+
 #### 3.7.0
 * added coloring to responsive month view
 * code cleanup
