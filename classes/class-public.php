@@ -42,7 +42,7 @@ class Tribe_Events_Category_Colors_Public {
 
 
 	public function add_effects() {
-		// Possibly add our styles inline, if they are required only for a widgget
+		// Possibly add our styles inline, if they are required only for a widget
 		if ( isset( $this->options['color_widgets'] ) && '1' === $this->options['color_widgets'] ) {
 			add_action( 'tribe_events_before_list_widget', array( $this, 'add_css_inline' ) );
 			add_action( 'tribe_events_mini_cal_after_the_grid', array( $this, 'add_css_inline' ) );
@@ -83,7 +83,9 @@ class Tribe_Events_Category_Colors_Public {
 	 * @todo consider enqueuing assets everywhere and avoid inlining
 	 */
 	public function add_css_inline() {
-		if ( $this->css_added ) return;
+		if ( $this->css_added ) {
+			return true;
+		}
 
 		echo '<style>';
 		echo $this->generate_css();
@@ -111,12 +113,14 @@ class Tribe_Events_Category_Colors_Public {
 
 	protected function generate_css() {
 		// Look out for fresh_css requests
-		$fresh_css = isset( $_GET['fresh_css'] ) && $_GET['fresh_css'];
+		$fresh_css = isset( $_GET['fresh_css'] ) ? $_GET['fresh_css'] : false;
 
 		// Return cached CSS if available and if fresh CSS hasn't been requested
 		$cache_key = 'teccc_' . $this->options_hash();
 		$css = get_transient( $cache_key );
-		if ( $css && ! $fresh_css ) return $css;
+		if ( $css && ! $fresh_css ) {
+			return $css;
+		}
 
 		// Else generate the CSS afresh
 		ob_start();
@@ -130,6 +134,7 @@ class Tribe_Events_Category_Colors_Public {
 
 		// Store in transient
 		set_transient( $cache_key, $css );
+
 		return $css;
 	}
 

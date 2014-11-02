@@ -50,6 +50,9 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
+= 3.8.0 =
+* now using generated CSS stylesheet for events pages - yeah @barry.hughes
+
 = 3.7.0 =
 * added coloring to responsive month view
 * code cleanup

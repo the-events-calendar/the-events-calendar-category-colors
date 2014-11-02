@@ -1,4 +1,7 @@
 
+#### 3.8.0
+* now using generated CSS stylesheet for events pages - yeah @barryhughes
+
 #### 3.7.0
 * added coloring to responsive month view
 * code cleanup
