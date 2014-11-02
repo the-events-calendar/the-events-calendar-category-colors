@@ -1,5 +1,5 @@
 
-#### 3.8.0
+#### 3.9.0
 * now using generated CSS stylesheet for events pages - yeah @barryhughes
 
 #### 3.7.0
