@@ -50,7 +50,7 @@ class Tribe_Events_Category_Colors_Public {
 		}
 
 		// Enqueue stylesheet
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_css' ), 50 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_css' ), PHP_INT_MAX );
 
 		// Show legend
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
