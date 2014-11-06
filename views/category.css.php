@@ -24,9 +24,7 @@
 <?php Tribe_Events_Category_Colors_Extras::add_agenda_link_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_map_link_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_week_link_css( $slug ); ?>
-<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
-	<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug, $options ); ?>
-<?php endif ?>
+<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug, $options ); ?>
 .teccc-legend .tribe-events-category-<?php echo $slug ?> a,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
 .tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title a,
@@ -40,9 +38,7 @@
 <?php Tribe_Events_Category_Colors_Extras::add_map_background_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_week_background_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_filter_bar_background_css( $slug ); ?>
-<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
-	<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug, $options ); ?>
-<?php endif ?>
+<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug, $options ); ?>
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug ?>,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
@@ -61,9 +57,7 @@
 
 <?php Tribe_Events_Category_Colors_Extras::add_agenda_display_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_map_display_css( $slug ); ?>
-<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
-	<?php Tribe_Events_Category_Colors_Widgets::add_widget_display_css( $slug, $options ); ?>
-<?php endif ?>
+<?php Tribe_Events_Category_Colors_Widgets::add_widget_display_css( $slug, $options ); ?>
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a
 {
 	width: auto;

@@ -25,30 +25,19 @@ class Tribe_Events_Category_Colors_Public {
 	}
 
 
-	public function add_colored_categories( $query ) {
+	public function add_colored_categories() {
 		if ( isset( $_GET[self::CSS_HANDLE] ) ) {
 			$this->do_css();
 		}
 
-		if ( ! isset( $query->query_vars['post_type'] ) ) {
-			return false;
-		}
-
-		$post_types = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
-		if ( in_array( $query->query_vars['post_type'], $post_types, true ) ) {
-			$this->add_effects();
-		}
+		$this->add_effects();
 	}
 
 
+	/**
+	 * Enqueues scripts, legends, etc.
+	 */
 	public function add_effects() {
-		// Possibly add our styles inline, if they are required only for a widget
-		if ( isset( $this->options['color_widgets'] ) && '1' === $this->options['color_widgets'] ) {
-			add_action( 'tribe_events_before_list_widget', array( $this, 'add_css_inline' ) );
-			add_action( 'tribe_events_mini_cal_after_the_grid', array( $this, 'add_css_inline' ) );
-			add_action( 'tribe_events_venue_widget_before_the_title', array( $this, 'add_css_inline' ) );
-		}
-
 		// Enqueue stylesheet
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_css' ), PHP_INT_MAX );
 
@@ -71,29 +60,16 @@ class Tribe_Events_Category_Colors_Public {
 		return hash( 'md5', join( '|', (array) $this->options ) );
 	}
 
+	/**
+	 * Enqueue the stylesheet.
+	 */
 	public function add_css() {
-		wp_enqueue_style( 'teccc_stylesheet', add_query_arg( self::CSS_HANDLE, $this->options_hash(), get_site_url( null ) ) );
-		$this->css_added = true;
+		wp_enqueue_style( 'teccc_stylesheet', add_query_arg( self::CSS_HANDLE, $this->options_hash(), get_site_url( null ) ), false, Tribe_Events_Category_Colors::$version );
 	}
 
 	/**
-	 * Adds our CSS inline on pages where we need category coloring for event widgets
-	 * but where our stylesheet hasn't been enqueued.
-	 *
-	 * @todo consider enqueuing assets everywhere and avoid inlining
+	 * Create stylesheet.
 	 */
-	public function add_css_inline() {
-		if ( $this->css_added ) {
-			return true;
-		}
-
-		echo '<style>';
-		echo $this->generate_css();
-		echo '</style>';
-
-		$this->css_added = true;
-	}
-
 	public function do_css() {
 		// Use RFC 1123 date format for the expiry time
 		$next_year = date( DateTime::RFC1123, strtotime( '+1 year', time() ) );
@@ -111,6 +87,11 @@ class Tribe_Events_Category_Colors_Public {
 		exit();
 	}
 
+	/**
+	 * Create CSS for stylesheet
+	 *
+	 * @return mixed|string
+	 */
 	protected function generate_css() {
 		// Look out for fresh_css requests
 		$fresh_css = isset( $_GET['fresh_css'] ) ? $_GET['fresh_css'] : false;
@@ -138,6 +119,11 @@ class Tribe_Events_Category_Colors_Public {
 		return $css;
 	}
 
+	/**
+	 * Displays legend.
+	 *
+	 * @param string $existingContent
+	 */
 	public function show_legend( $existingContent = '' ) {
 		$tribe         = TribeEvents::instance();
 		$eventDisplays = array( 'month' );
@@ -164,6 +150,13 @@ class Tribe_Events_Category_Colors_Public {
 	}
 
 
+	/**
+	 * Move legend to different position.
+	 *
+	 * @param $tribeViewFilter
+	 *
+	 * @return bool
+	 */
 	public function reposition_legend( $tribeViewFilter ) {
 		// If the legend has already run they are probably doing something wrong
 		if ( $this->legendFilterHasRun ) {
@@ -179,6 +172,11 @@ class Tribe_Events_Category_Colors_Public {
 	}
 
 
+	/**
+	 * Remove default legend.
+	 *
+	 * @return bool
+	 */
 	public function remove_default_legend() {
 		// If the legend has already run they are probably doing something wrong
 		if( $this->legendFilterHasRun ) {
@@ -192,7 +190,12 @@ class Tribe_Events_Category_Colors_Public {
 		// Indicate if they were doing it wrong (or not)
 		return ( ! $this->legendFilterHasRun );
 	}
-	
+
+	/**
+	 * Add legend to additional views.
+	 *
+	 * @param $view
+	 */
 	public function add_legend_view( $view ) {
 		//takes 'upcoming', 'day', 'week', 'photo' as parameters
 		$this->legendExtraView[] = $view;
