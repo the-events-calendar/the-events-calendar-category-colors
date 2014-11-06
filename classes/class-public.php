@@ -99,7 +99,7 @@ class Tribe_Events_Category_Colors_Public {
 		// Return cached CSS if available and if fresh CSS hasn't been requested
 		$cache_key = 'teccc_' . $this->options_hash();
 		$css = get_transient( $cache_key );
-		if ( $css && ! $fresh_css ) {
+		if ( ! empty( $css ) && ! $fresh_css ) {
 			return $css;
 		}
 
