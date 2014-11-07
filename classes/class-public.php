@@ -10,8 +10,6 @@ class Tribe_Events_Category_Colors_Public {
 	protected $legendFilterHasRun = false;
 	protected $legendExtraView    = array();
 
-	protected $css_added = false;
-
 
 	public function __construct( Tribe_Events_Category_Colors $teccc ) {
 		$this->teccc   = $teccc;
