@@ -52,6 +52,7 @@ There is more extensive documentation of the plugins features and usage on the [
 
 = 3.9.0 =
 * now using generated CSS stylesheet for events pages - yeah @barry.hughes
+* no longer use inline styles, using generated stylesheet.
 
 = 3.8.0 =
 * add coloring to Filter Bar in checkbox mode
