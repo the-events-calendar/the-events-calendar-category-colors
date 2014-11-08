@@ -92,12 +92,12 @@ class Tribe_Events_Category_Colors_Public {
 	 */
 	protected function generate_css() {
 		// Look out for fresh_css requests
-		$fresh_css = isset( $_GET['fresh_css'] ) ? $_GET['fresh_css'] : false;
+		$refresh_css = isset( $_GET['refresh_css'] ) ? $_GET['refresh_css'] : false;
 
 		// Return cached CSS if available and if fresh CSS hasn't been requested
 		$cache_key = 'teccc_' . $this->options_hash();
 		$css = get_transient( $cache_key );
-		if ( ! empty( $css ) && ! $fresh_css ) {
+		if ( ! empty( $css ) && ! $refresh_css ) {
 			return $css;
 		}
 
