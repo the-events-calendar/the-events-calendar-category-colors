@@ -93,6 +93,11 @@
 			<label> <input name="teccc_options[custom_legend_css]" type="checkbox" value="1" <?php echo checked( '1', $options['custom_legend_css'], false ) ?> /> <?php _e( 'Check to use your own CSS for category legend.', 'events-calendar-category-colors' ) ?> </label>
 		</div>
 
+	<div class="teccc_options_col1"><?php _e( 'Colorize Widgets', 'events-calendar-category-colors' ) ?></div>
+		<div class="teccc_options_col2">
+			<label><input name="teccc_options[color_widgets]" type="checkbox" value="1" <?php echo checked( '1', $options['color_widgets'], false ) ?> /> <?php _e( 'Add Category Colors to widgets', 'events-calendar-category-colors' ) ?> </label>
+		</div>
+
 	<div class="teccc_options_col1"> <?php _e( 'Database Options', 'events-calendar-category-colors' ) ?> </div>
 		<div class="teccc_options_col2">
 			<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1" <?php echo checked( '1', $options['chk_default_options_db'], false ) ?> /> <?php _e( 'Restore defaults upon plugin deactivation/reactivation', 'events-calendar-category-colors' ) ?> </label>
