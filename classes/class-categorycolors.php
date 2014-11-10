@@ -101,6 +101,9 @@ class Tribe_Events_Category_Colors {
 		foreach ( $term_list as $term ) {
 			$this->terms[ $term->term_id ] = array( $term->slug, preg_replace( '/\s/', '&nbsp;', $term->name ) );
 		}
+		$options = get_option( 'teccc_options' );
+		$options['terms'] = $this->terms;
+		update_option( 'teccc_options', $options );
 	}
 
 

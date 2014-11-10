@@ -14,6 +14,7 @@
 }
 
 <?php Tribe_Events_Category_Colors_Extras::fix_default_week_background(); ?>
+<?php if ( empty( $this->terms ) ) { $this->terms = $options['terms']; } ?>
 
 <?php foreach ( $teccc->terms as $id => $attributes ): ?>
 	<?php
