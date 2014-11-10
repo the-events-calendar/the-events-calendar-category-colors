@@ -5,7 +5,7 @@ class Tribe_Events_Category_Colors_Public {
 
 	protected $teccc   = null;
 	protected $options = array();
-	private $query   = null;
+	private $query     = null;
 
 	protected $legendTargetHook   = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
@@ -25,6 +25,13 @@ class Tribe_Events_Category_Colors_Public {
 	}
 
 
+	/**
+	 * Create stylesheet under correct circumstances.
+	 * Show the legend.
+	 * Populate the @var $this->query as this called from pre_get_posts
+	 *
+	 * @param $query
+	 */
 	public function add_colored_categories( $query ) {
 		if ( isset( $_GET[self::CSS_HANDLE] ) ) {
 			$this->do_css();
@@ -33,27 +40,13 @@ class Tribe_Events_Category_Colors_Public {
 		// Show legend
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 
+		// Populate $query for use in add_scripts_styles()
 		$this->query = $query;
-		//$this->add_effects();
 	}
-
 
 	/**
-	 * Enqueues scripts, legends, etc.
+	 * Enqueue stylesheets and scripts as appropriate.
 	 */
-	public function add_effects() {
-		// Enqueue stylesheet
-		//add_action( 'wp_enqueue_scripts', array( $this, 'add_css' ), PHP_INT_MAX );
-
-		// Show legend
-		//add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
-
-		// Add legend superpowers
-		//if ( isset( $this->options['legend_superpowers'] ) && '1' === $this->options['legend_superpowers'] && ! wp_is_mobile() ) {
-			//wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
-		//}
-	}
-
 	public function add_scripts_styles() {
 		// Register stylesheet
 		wp_register_style( 'teccc_stylesheet', add_query_arg( self::CSS_HANDLE, $this->options_hash(), get_site_url( null ) ), false, Tribe_Events_Category_Colors::$version );
@@ -68,7 +61,10 @@ class Tribe_Events_Category_Colors_Public {
 		}
 
 		// Add legend superpowers
-		if ( isset( $this->options['legend_superpowers'] ) && '1' === $this->options['legend_superpowers'] && ! wp_is_mobile() ) {
+		if ( isset( $this->options['legend_superpowers'] ) &&
+			'1' === $this->options['legend_superpowers'] &&
+			! wp_is_mobile()
+			) {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
 		}
 	}
@@ -85,13 +81,6 @@ class Tribe_Events_Category_Colors_Public {
 		unset( $options['terms'] );
 
 		return hash( 'md5', join( '|', (array) $options ) );
-	}
-
-	/**
-	 * Enqueue the stylesheet.
-	 */
-	public function add_css() {
-		//wp_enqueue_style( 'teccc_stylesheet', add_query_arg( self::CSS_HANDLE, $this->options_hash(), get_site_url( null ) ), false, Tribe_Events_Category_Colors::$version );
 	}
 
 	/**

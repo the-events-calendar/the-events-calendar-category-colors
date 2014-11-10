@@ -169,6 +169,11 @@ class Tribe_Events_Category_Colors_Admin {
 		return $options;
 	}
 
+	/**
+	 * Enqueue admin scripts and styles
+	 *
+	 * @param $hook
+	 */
 	public static function load_teccc_js_css( $hook ) {
 		if ( 'tribe_events_page_tribe-events-calendar' != $hook ) {
 			return false;
