@@ -20,6 +20,7 @@ class Tribe_Events_Category_Colors_Public {
 		require_once TECCC_CLASSES . '/class-extras.php';
 
 		add_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX );
 	}
 
 
@@ -28,7 +29,10 @@ class Tribe_Events_Category_Colors_Public {
 			$this->do_css();
 		}
 
-		$this->add_effects();
+		// Show legend
+		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
+
+		//$this->add_effects();
 	}
 
 
@@ -37,15 +41,27 @@ class Tribe_Events_Category_Colors_Public {
 	 */
 	public function add_effects() {
 		// Enqueue stylesheet
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_css' ), PHP_INT_MAX );
+		//add_action( 'wp_enqueue_scripts', array( $this, 'add_css' ), PHP_INT_MAX );
 
 		// Show legend
-		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
+		//add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
+
+		// Add legend superpowers
+		//if ( isset( $this->options['legend_superpowers'] ) && '1' === $this->options['legend_superpowers'] && ! wp_is_mobile() ) {
+			//wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
+		//}
+	}
+
+	public function add_scripts_styles() {
+		// Enqueue stylesheet
+		//add_action( 'wp_enqueue_scripts', array( $this, 'add_css' ), PHP_INT_MAX );
+		wp_enqueue_style( 'teccc_stylesheet', add_query_arg( self::CSS_HANDLE, $this->options_hash(), get_site_url( null ) ), false, Tribe_Events_Category_Colors::$version );
 
 		// Add legend superpowers
 		if ( isset( $this->options['legend_superpowers'] ) && '1' === $this->options['legend_superpowers'] && ! wp_is_mobile() ) {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
 		}
+
 	}
 
 	/**
@@ -55,14 +71,18 @@ class Tribe_Events_Category_Colors_Public {
 	 * @return string
 	 */
 	protected function options_hash() {
-		return hash( 'md5', join( '|', (array) $this->options ) );
+		//remove $options['terms'] as it errors the join
+		$options = $this->options;
+		unset( $options['terms'] );
+
+		return hash( 'md5', join( '|', (array) $options ) );
 	}
 
 	/**
 	 * Enqueue the stylesheet.
 	 */
 	public function add_css() {
-		wp_enqueue_style( 'teccc_stylesheet', add_query_arg( self::CSS_HANDLE, $this->options_hash(), get_site_url( null ) ), false, Tribe_Events_Category_Colors::$version );
+		//wp_enqueue_style( 'teccc_stylesheet', add_query_arg( self::CSS_HANDLE, $this->options_hash(), get_site_url( null ) ), false, Tribe_Events_Category_Colors::$version );
 	}
 
 	/**
@@ -94,6 +114,8 @@ class Tribe_Events_Category_Colors_Public {
 		// Look out for fresh_css requests
 		$args = parse_url( $_SERVER['HTTP_REFERER'], PHP_URL_QUERY );
 		$refresh_css = ( false !== strpos( $args, 'refresh_css' ) ) ? true : false;
+		$refresh_css = ( $_GET['refresh_css'] ) ? true : false;
+
 
 		// Return cached CSS if available and if fresh CSS hasn't been requested
 		$cache_key = 'teccc_' . $this->options_hash();
