@@ -44,7 +44,7 @@
 <?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug, $options ); ?>
 <?php endif ?>
-.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a,
+.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug ?>,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
 #tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4,
@@ -65,7 +65,7 @@
 <?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_display_css( $slug, $options ); ?>
 <?php endif ?>
-.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a
+.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a
 {
 	width: auto;
 	display: block;
