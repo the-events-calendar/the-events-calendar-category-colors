@@ -49,7 +49,8 @@ class Tribe_Events_Category_Colors_Public {
 	 */
 	public function add_scripts_styles() {
 		// Register stylesheet
-		wp_register_style( 'teccc_stylesheet', add_query_arg( self::CSS_HANDLE, $this->options_hash(), get_site_url( null ) ), false, Tribe_Events_Category_Colors::$version );
+		$args = array( self::CSS_HANDLE => $this->options_hash(), $_GET );
+		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, get_site_url( null ) ), false, Tribe_Events_Category_Colors::$version );
 
 		$query = $this->query;
 		$post_types = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
@@ -62,9 +63,8 @@ class Tribe_Events_Category_Colors_Public {
 
 		// Add legend superpowers
 		if ( isset( $this->options['legend_superpowers'] ) &&
-			'1' === $this->options['legend_superpowers'] &&
-			! wp_is_mobile()
-			) {
+		     '1' === $this->options['legend_superpowers'] &&
+		     ! wp_is_mobile() ) {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
 		}
 	}
@@ -110,10 +110,7 @@ class Tribe_Events_Category_Colors_Public {
 	 */
 	protected function generate_css() {
 		// Look out for fresh_css requests
-		$args = parse_url( $_SERVER['HTTP_REFERER'], PHP_URL_QUERY );
-		$refresh_css = ( false !== strpos( $args, 'refresh_css' ) ) ? true : false;
-		$refresh_css = ( $_GET['refresh_css'] ) ? true : false;
-
+		$refresh_css = array_key_exists( 'refresh_css', $_GET ) ? true : false;
 
 		// Return cached CSS if available and if fresh CSS hasn't been requested
 		$cache_key = 'teccc_' . $this->options_hash();
