@@ -1,4 +1,10 @@
 
+#### 3.9.0
+* now using generated CSS stylesheet for events pages - yeah @barryhughes
+* no longer use inline styles, using generated stylesheet. Hopefully with browser caching it's faster.
+* correctly use `$echo` in `checked()` and `selected()` for settings.
+* don't kid yourselves, there may not be much to the changelog but this is a major update.
+
 #### 3.8.0
 * added coloring to Filter Bar in checkbox mode
 

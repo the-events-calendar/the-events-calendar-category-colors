@@ -1,72 +1,145 @@
 <?php
 class Tribe_Events_Category_Colors_Public {
 
+	const CSS_HANDLE = 'teccc_css';
+
 	protected $teccc   = null;
 	protected $options = array();
+	private $query     = null;
 
 	protected $legendTargetHook   = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
 	protected $legendExtraView    = array();
 
-	protected $css_added = false;
-
-
 	public function __construct( Tribe_Events_Category_Colors $teccc ) {
 		$this->teccc   = $teccc;
 		$this->options = get_option( 'teccc_options' );
+
 		require TECCC_INCLUDES . '/templatetags.php';
 		require_once TECCC_CLASSES . '/class-widgets.php';
 		require_once TECCC_CLASSES . '/class-extras.php';
 
 		add_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
+
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX );
 	}
 
 
+	/**
+	 * Create stylesheet under correct circumstances.
+	 * Show the legend.
+	 * Populate the @var $this->query as this called from pre_get_posts
+	 *
+	 * @param $query
+	 */
 	public function add_colored_categories( $query ) {
-		if ( ! isset( $query->query_vars['post_type'] ) ) {
-			return false;
+		if ( isset( $_GET[self::CSS_HANDLE] ) ) {
+			$this->do_css();
 		}
 
-		$post_types = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
-		if ( in_array( $query->query_vars['post_type'], $post_types, true ) ) {
-			$this->add_effects();
-		}
+		// Show legend
+		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
+
+		// Populate $query for use in add_scripts_styles()
+		$this->query = $query;
 	}
 
+	/**
+	 * Enqueue stylesheets and scripts as appropriate.
+	 */
+	public function add_scripts_styles() {
+		// Register stylesheet
+		$args = array( self::CSS_HANDLE => $this->options_hash(), $_GET );
+		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, get_site_url( null ) ), false, Tribe_Events_Category_Colors::$version );
 
-	public function add_effects() {
-		add_action( 'tribe_events_before_template', array( $this, 'add_css' ) );
-
-		//For Events Calendar PRO only
-		add_action( 'tribe_events_single_organizer_before_organizer', array( $this, 'add_css' ) );
-		add_action( 'tribe_events_single_venue_before_the_meta', array( $this, 'add_css' ) );
-
-		if ( isset( $this->options['color_widgets'] ) && '1' === $this->options['color_widgets'] ) {
-			add_action( 'tribe_events_before_list_widget', array( $this, 'add_css' ) );
-			add_action( 'tribe_events_mini_cal_after_the_grid', array( $this, 'add_css' ) );
-			add_action( 'tribe_events_venue_widget_before_the_title', array( $this, 'add_css' ) );
+		$query = $this->query;
+		$post_types = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
+		if ( isset( $query->query_vars['post_type'] ) && in_array( $query->query_vars['post_type'], $post_types, true ) ) {
+			wp_enqueue_style( 'teccc_stylesheet' );
 		}
-		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
-		
-		if ( isset( $this->options['legend_superpowers'] ) && '1' === $this->options['legend_superpowers'] && ! wp_is_mobile() ) {
+		if ( isset( $this->options['color_widgets'] ) && '1' === $this->options['color_widgets'] ) {
+			wp_enqueue_style( 'teccc_stylesheet' );
+		}
+
+		// Add legend superpowers
+		if ( isset( $this->options['legend_superpowers'] ) &&
+		     '1' === $this->options['legend_superpowers'] &&
+		     ! wp_is_mobile() ) {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
 		}
-
 	}
 
+	/**
+	 * By generating a unique hash of the plugin options if these change so will the
+	 * stylesheet URL, forcing the browser to grab an updated copy.
+	 *
+	 * @return string
+	 */
+	protected function options_hash() {
+		//remove $options['terms'] as it errors the join
+		$options = $this->options;
+		unset( $options['terms'] );
 
-	public function add_css() {
-		if ( ! $this->css_added ) {
-			$this->teccc->view( 'category.css', array(
-				'options' => $this->options,
-				'teccc'   => $this->teccc
-			) );
+		return hash( 'md5', join( '|', (array) $options ) );
+	}
 
-			remove_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
+	/**
+	 * Create stylesheet.
+	 */
+	public function do_css() {
+		// Use RFC 1123 date format for the expiry time
+		$next_year = date( DateTime::RFC1123, strtotime( '+1 year', time() ) );
+		$one_year  = 31536000;
+		$hash      = $this->options_hash();
+
+		header( "Content-type: text/css" );
+		header( "Expires: $next_year" );
+		header( "Cache-Control: public, max-age=$one_year" );
+		header( "Pragma: public" );
+		header( "Etag: $hash" );
+
+		echo $this->generate_css();
+
+		exit();
+	}
+
+	/**
+	 * Create CSS for stylesheet
+	 *
+	 * @return mixed|string
+	 */
+	protected function generate_css() {
+		// Look out for fresh_css requests
+		$refresh_css = array_key_exists( 'refresh_css', $_GET ) ? true : false;
+
+		// Return cached CSS if available and if fresh CSS hasn't been requested
+		$cache_key = 'teccc_' . $this->options_hash();
+		$css = get_transient( $cache_key );
+		if ( ! empty( $css ) && ! $refresh_css ) {
+			return $css;
 		}
-		$this->css_added = true;
+
+		// Else generate the CSS afresh
+		ob_start();
+
+		$this->teccc->view( 'category.css', array(
+			'options' => $this->options,
+			'teccc'   => $this->teccc
+		) );
+
+		$css = ob_get_clean();
+
+		// Store in transient
+		set_transient( $cache_key, $css, 4 * WEEK_IN_SECONDS );
+
+		return $css;
 	}
 
+	/**
+	 * Displays legend.
+	 *
+	 * @param string $existingContent
+	 */
 	public function show_legend( $existingContent = '' ) {
 		$tribe         = TribeEvents::instance();
 		$eventDisplays = array( 'month' );
@@ -93,6 +166,13 @@ class Tribe_Events_Category_Colors_Public {
 	}
 
 
+	/**
+	 * Move legend to different position.
+	 *
+	 * @param $tribeViewFilter
+	 *
+	 * @return bool
+	 */
 	public function reposition_legend( $tribeViewFilter ) {
 		// If the legend has already run they are probably doing something wrong
 		if ( $this->legendFilterHasRun ) {
@@ -108,6 +188,11 @@ class Tribe_Events_Category_Colors_Public {
 	}
 
 
+	/**
+	 * Remove default legend.
+	 *
+	 * @return bool
+	 */
 	public function remove_default_legend() {
 		// If the legend has already run they are probably doing something wrong
 		if( $this->legendFilterHasRun ) {
@@ -121,7 +206,12 @@ class Tribe_Events_Category_Colors_Public {
 		// Indicate if they were doing it wrong (or not)
 		return ( ! $this->legendFilterHasRun );
 	}
-	
+
+	/**
+	 * Add legend to additional views.
+	 *
+	 * @param $view
+	 */
 	public function add_legend_view( $view ) {
 		//takes 'upcoming', 'day', 'week', 'photo' as parameters
 		$this->legendExtraView[] = $view;

@@ -101,6 +101,9 @@ class Tribe_Events_Category_Colors {
 		foreach ( $term_list as $term ) {
 			$this->terms[ $term->term_id ] = array( $term->slug, preg_replace( '/\s/', '&nbsp;', $term->name ) );
 		}
+		$options = get_option( 'teccc_options' );
+		$options['terms'] = $this->terms;
+		update_option( 'teccc_options', $options );
 	}
 
 
@@ -147,6 +150,7 @@ class Tribe_Events_Category_Colors {
 	 */
 	public function load_config( $file ) {
 		$config = $this->load_config_array_file( $file );
+
 		return (array) apply_filters( "teccc-config-$file", $config );
 	}
 
