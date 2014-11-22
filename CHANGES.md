@@ -1,4 +1,7 @@
 
+#### 3.9.1
+* change `get_site_url()` to `home_url()` to fix 404 - thanks @marcphilipp
+
 #### 3.9.0
 * now using generated CSS stylesheet for events pages - yeah @barryhughes
 * no longer use inline styles, using generated stylesheet. Hopefully with browser caching it's faster.
