@@ -50,7 +50,7 @@ class Tribe_Events_Category_Colors_Public {
 	public function add_scripts_styles() {
 		// Register stylesheet
 		$args = array( self::CSS_HANDLE => $this->options_hash(), $_GET );
-		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, get_site_url( null ) ), false, Tribe_Events_Category_Colors::$version );
+		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url() ), false, Tribe_Events_Category_Colors::$version );
 
 		$query = $this->query;
 		$post_types = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
