@@ -4,7 +4,7 @@ Donate link: http://bit.ly/teccc-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Tested up to: 4.0.1
-Stable tag: 3.9.1
+Stable tag: 3.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,9 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 3.9.2 =
+* change query inspection and test for post type to main loop - yeah @barryhughes
 
 = 3.9.1 =
 * change `get_site_url()` to `home_url()` to fix 404 - thanks @marcphilipp
