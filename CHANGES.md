@@ -1,3 +1,5 @@
+#### 3.9.2
+* change query inspection and test for post type to main loop - yeah @barryhughes
 
 #### 3.9.1
 * change `get_site_url()` to `home_url()` to fix 404 - thanks @marcphilipp

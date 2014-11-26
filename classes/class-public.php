@@ -5,7 +5,6 @@ class Tribe_Events_Category_Colors_Public {
 
 	protected $teccc   = null;
 	protected $options = array();
-	private $query     = null;
 
 	protected $legendTargetHook   = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
@@ -19,29 +18,21 @@ class Tribe_Events_Category_Colors_Public {
 		require_once TECCC_CLASSES . '/class-widgets.php';
 		require_once TECCC_CLASSES . '/class-extras.php';
 
-		add_action( 'pre_get_posts', array( $this, 'add_colored_categories' ) );
-
+		add_action( 'init', array( $this, 'add_colored_categories' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX );
 	}
-
 
 	/**
 	 * Create stylesheet under correct circumstances.
 	 * Show the legend.
-	 * Populate the @var $this->query as this called from pre_get_posts
-	 *
-	 * @param $query
 	 */
-	public function add_colored_categories( $query ) {
+	public function add_colored_categories() {
 		if ( isset( $_GET[self::CSS_HANDLE] ) ) {
 			$this->do_css();
 		}
 
 		// Show legend
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
-
-		// Populate $query for use in add_scripts_styles()
-		$this->query = $query;
 	}
 
 	/**
@@ -52,16 +43,22 @@ class Tribe_Events_Category_Colors_Public {
 		$args = array( self::CSS_HANDLE => $this->options_hash(), $_GET );
 		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url() ), false, Tribe_Events_Category_Colors::$version );
 
-		$query = $this->query;
-		$post_types = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
-		if ( isset( $query->query_vars['post_type'] ) && in_array( $query->query_vars['post_type'], $post_types, true ) ) {
+		// Let's test to see if any event-related post types were requested
+		$event_types      = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
+		$requested_types  = (array) get_query_var( 'post_type' );
+		$found_types      = array_intersect( $event_types, $requested_types );
+
+		if ( ! empty( $found_types ) ) {
 			wp_enqueue_style( 'teccc_stylesheet' );
 		}
+
+		// If the color widgets setting is enabled we also need to enqueue styles
+		// This also enqueues styles all the time
 		if ( isset( $this->options['color_widgets'] ) && '1' === $this->options['color_widgets'] ) {
 			wp_enqueue_style( 'teccc_stylesheet' );
 		}
 
-		// Add legend superpowers
+		// Optionally add legend superpowers
 		if ( isset( $this->options['legend_superpowers'] ) &&
 		     '1' === $this->options['legend_superpowers'] &&
 		     ! wp_is_mobile() ) {
