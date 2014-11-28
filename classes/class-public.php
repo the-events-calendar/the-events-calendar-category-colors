@@ -61,7 +61,8 @@ class Tribe_Events_Category_Colors_Public {
 		// Optionally add legend superpowers
 		if ( isset( $this->options['legend_superpowers'] ) &&
 		     '1' === $this->options['legend_superpowers'] &&
-		     ! wp_is_mobile() ) {
+		     ! wp_is_mobile()
+		) {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
 		}
 	}
