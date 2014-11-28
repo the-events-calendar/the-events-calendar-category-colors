@@ -1,3 +1,6 @@
+#### 3.9.3
+* fix mobile to hide tooltips, @barryhughes does it again
+
 #### 3.9.2
 * change query inspection and test for post type to main loop - yeah @barryhughes
 
