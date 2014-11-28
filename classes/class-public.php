@@ -127,8 +127,9 @@ class Tribe_Events_Category_Colors_Public {
 		ob_start();
 
 		$this->teccc->view( 'category.css', array(
-			'options' => $this->options,
-			'teccc'   => $this->teccc
+			'options'    => $this->options,
+			'teccc'      => $this->teccc,
+			'breakpoint' => tribe_get_mobile_breakpoint()
 		) );
 
 		$css = ob_get_clean();
