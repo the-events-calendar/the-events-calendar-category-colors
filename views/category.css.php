@@ -6,11 +6,15 @@
 
 .tribe-events-list .vevent.hentry h2 { padding-left: 5px; }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: <?php echo $breakpoint ?>px) {
 	.tribe-events-calendar td .hentry { display: block; }
 	h3.entry-title.summary,
 	.tribe-events-calendar .tribe-events-has-events:after
 		{ display: none; }
+
+	.tribe-events-calendar .mobile-trigger .tribe-events-tooltip {
+		display: none !important;
+	}
 }
 
 <?php Tribe_Events_Category_Colors_Extras::fix_default_week_background(); ?>

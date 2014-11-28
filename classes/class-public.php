@@ -61,23 +61,31 @@ class Tribe_Events_Category_Colors_Public {
 		// Optionally add legend superpowers
 		if ( isset( $this->options['legend_superpowers'] ) &&
 		     '1' === $this->options['legend_superpowers'] &&
-		     ! wp_is_mobile() ) {
+		     ! wp_is_mobile()
+		) {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
 		}
 	}
 
 	/**
-	 * By generating a unique hash of the plugin options if these change so will the
-	 * stylesheet URL, forcing the browser to grab an updated copy.
+	 * By generating a unique hash of the plugin options and other relevant settings
+	 * if these change so will the stylesheet URL, forcing the browser to grab an
+	 * updated copy.
 	 *
 	 * @return string
 	 */
 	protected function options_hash() {
-		//remove $options['terms'] as it errors the join
-		$options = $this->options;
-		unset( $options['terms'] );
+		// Current options are the basis of the current config
+		$config = (array) $this->options;
 
-		return hash( 'md5', join( '|', (array) $options ) );
+		// Terms are relevant but need to be flattened out
+		if ( isset( $config['terms'] ) && is_array( $config) )
+			$config['terms'] = join( '|', array_keys( $config['terms'] ) );
+
+		// We also need to be cognizant of the mobile breakpoint
+		$config['breakpoint'] = tribe_get_mobile_breakpoint();
+
+		return hash( 'md5', join( '|', $config ) );
 	}
 
 	/**
@@ -120,8 +128,9 @@ class Tribe_Events_Category_Colors_Public {
 		ob_start();
 
 		$this->teccc->view( 'category.css', array(
-			'options' => $this->options,
-			'teccc'   => $this->teccc
+			'options'    => $this->options,
+			'teccc'      => $this->teccc,
+			'breakpoint' => tribe_get_mobile_breakpoint()
 		) );
 
 		$css = ob_get_clean();
