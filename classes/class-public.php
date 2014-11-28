@@ -81,7 +81,7 @@ class Tribe_Events_Category_Colors_Public {
 		if ( isset( $config['terms'] ) && is_array( $config) )
 			$config['terms'] = join( '|', array_keys( $config['terms'] ) );
 
-		// We also need to be cognizant of the mobile breakpont
+		// We also need to be cognizant of the mobile breakpoint
 		$config['breakpoint'] = tribe_get_mobile_breakpoint();
 
 		return hash( 'md5', join( '|', $config ) );
