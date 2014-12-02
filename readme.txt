@@ -50,6 +50,9 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
+= 3.9.4 =
+* remove Agenda view as not supported by Modern Tribe except as example template
+
 = 3.9.3 =
 * fix mobile to hide tooltips, @barryhughes does it again
 
