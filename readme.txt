@@ -52,6 +52,7 @@ There is more extensive documentation of the plugins features and usage on the [
 
 = 3.9.4 =
 * remove Agenda view as not supported by Modern Tribe except as example template
+* tested with WP 4.1
 
 = 3.9.3 =
 * fix mobile to hide tooltips, @barryhughes does it again
