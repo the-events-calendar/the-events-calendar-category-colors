@@ -26,7 +26,6 @@
 		$name = esc_attr( $attributes[Tribe_Events_Category_Colors::NAME] );
 	?>
 
-<?php Tribe_Events_Category_Colors_Extras::add_agenda_link_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_map_link_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_week_link_css( $slug ); ?>
 <?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
@@ -41,7 +40,6 @@
 	text-decoration: none;
 }
 
-<?php Tribe_Events_Category_Colors_Extras::add_agenda_background_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_map_background_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_week_background_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_filter_bar_background_css( $slug ); ?>
@@ -64,7 +62,6 @@
 	padding-bottom: 2px;
 }
 
-<?php Tribe_Events_Category_Colors_Extras::add_agenda_display_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_map_display_css( $slug ); ?>
 <?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_display_css( $slug, $options ); ?>
