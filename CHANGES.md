@@ -1,3 +1,6 @@
+#### 3.9.5
+* fix for new widget CSS selectors
+
 #### 3.9.4
 * remove Agenda view as not supported by Modern Tribe except as example template
 
