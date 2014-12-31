@@ -45,17 +45,17 @@ There is more extensive documentation of the plugins features and usage on the [
 ###1. The Events Calendar Category Colors Settings tab
 ###
 ![The Events Calendar Category Colors Settings tab
-](https://github.com/afragen/the-events-calendar-category-colors/blob/develop/assets/screenshot-1.png)
+](./assets/screenshot-1.png)
 
 ###2. The Events Calendar Category Colors in action
 ###
 ![The Events Calendar Category Colors in action
-](https://github.com/afragen/the-events-calendar-category-colors/blob/develop/assets/screenshot-2.png)
+](./assets/screenshot-2.png)
 
 ###3. The Events Calendar Category Colors with Legend Superpowers in action
 ###
 ![The Events Calendar Category Colors with Legend Superpowers in action
-](https://github.com/afragen/the-events-calendar-category-colors/blob/develop/assets/screenshot-3.png)
+](./assets/screenshot-3.png)
 
 
 ## Changelog ##
