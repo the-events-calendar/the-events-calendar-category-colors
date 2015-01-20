@@ -110,6 +110,8 @@ class Tribe_Events_Category_Colors_Public {
 
 	/**
 	 * Create CSS for stylesheet
+	 * Minify CSS when WP_DEBUG is false
+	 * @link https://gist.github.com/manastungare/2625128
 	 *
 	 * @return mixed|string
 	 */
@@ -135,11 +137,19 @@ class Tribe_Events_Category_Colors_Public {
 
 		$css = ob_get_clean();
 
-		// Minify CSS
-		// @link https://gist.github.com/manastungare/2625128
-		$css = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css);                      // Remove comments
-		$css = str_replace(': ', ':', $css);                                                 // Remove space after colons
-		$css = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $css); // Remove whitespace
+		if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) {
+			$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css ); // Remove comments
+			$css = str_replace( ': ', ':', $css ); // Remove space after colons
+			$css = str_replace( array(
+				"\r\n",
+				"\r",
+				"\n",
+				"\t",
+				'  ',
+				'   ',
+				'    ',
+			), '', $css ); // Remove whitespace
+		}
 
 		// Store in transient
 		set_transient( $cache_key, $css, 4 * WEEK_IN_SECONDS );
