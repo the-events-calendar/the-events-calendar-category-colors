@@ -50,6 +50,9 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
+= 3.9.6 =
+* add minification to stored CSS
+
 = 3.9.5 =
 * fix for new widget CSS selectors
 

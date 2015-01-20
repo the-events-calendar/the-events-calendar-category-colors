@@ -135,6 +135,11 @@ class Tribe_Events_Category_Colors_Public {
 
 		$css = ob_get_clean();
 
+		// Minify CSS
+		$css = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css);                      // Remove comments
+		$css = str_replace(': ', ':', $css);                                                 // Remove space after colons
+		$css = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $css); // Remove whitespace
+
 		// Store in transient
 		set_transient( $cache_key, $css, 4 * WEEK_IN_SECONDS );
 
@@ -145,6 +150,7 @@ class Tribe_Events_Category_Colors_Public {
 	 * Displays legend.
 	 *
 	 * @param string $existingContent
+	 * @return bool
 	 */
 	public function show_legend( $existingContent = '' ) {
 		$tribe         = TribeEvents::instance();

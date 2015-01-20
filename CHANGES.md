@@ -1,3 +1,6 @@
+#### 3.9.6
+* add minification to stored CSS
+
 #### 3.9.5
 * fix for new widget CSS selectors
 
