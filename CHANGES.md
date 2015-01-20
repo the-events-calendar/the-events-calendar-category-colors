@@ -1,3 +1,6 @@
+#### 3.9.7
+* minify CSS only if `WP_DEBUG` is not true
+
 #### 3.9.6
 * add minification to stored CSS
 
