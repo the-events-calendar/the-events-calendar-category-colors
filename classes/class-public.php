@@ -136,6 +136,7 @@ class Tribe_Events_Category_Colors_Public {
 		$css = ob_get_clean();
 
 		// Minify CSS
+		// @link https://gist.github.com/manastungare/2625128
 		$css = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css);                      // Remove comments
 		$css = str_replace(': ', ':', $css);                                                 // Remove space after colons
 		$css = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $css); // Remove whitespace
