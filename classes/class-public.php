@@ -118,6 +118,7 @@ class Tribe_Events_Category_Colors_Public {
 	protected function generate_css() {
 		// Look out for fresh_css requests
 		$refresh_css = array_key_exists( 'refresh_css', $_GET ) ? true : false;
+		$debug_css   = array_key_exists( 'debug_css', $_GET ) ? true : false;
 
 		// Return cached CSS if available and if fresh CSS hasn't been requested
 		$cache_key = 'teccc_' . $this->options_hash();
@@ -137,7 +138,7 @@ class Tribe_Events_Category_Colors_Public {
 
 		$css = ob_get_clean();
 
-		if ( ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) && ! $refresh_css ) {
+		if ( ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) && ! $debug_css ) {
 			$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css ); // Remove comments
 			$css = str_replace( ': ', ':', $css ); // Remove space after colons
 			$css = str_replace( array(

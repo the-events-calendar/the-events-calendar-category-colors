@@ -1,5 +1,5 @@
 #### 3.9.8
-* don't minify CSS when `$refresh_css` - this to help in debugging
+* don't minify CSS when `?debug_css` - this to help in debugging
 
 #### 3.9.7
 * minify CSS only if `WP_DEBUG` is not true
