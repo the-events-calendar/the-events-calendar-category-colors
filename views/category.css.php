@@ -28,7 +28,7 @@
 
 <?php Tribe_Events_Category_Colors_Extras::add_map_link_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_week_link_css( $slug ); ?>
-<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
+<?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_link_css( $slug, $options ); ?>
 <?php endif ?>
 .teccc-legend .tribe-events-category-<?php echo $slug ?> a,
@@ -43,7 +43,7 @@
 <?php Tribe_Events_Category_Colors_Extras::add_map_background_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_week_background_css( $slug ); ?>
 <?php Tribe_Events_Category_Colors_Extras::add_filter_bar_background_css( $slug ); ?>
-<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
+<?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_background_css( $slug, $options ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a,
@@ -63,7 +63,7 @@
 }
 
 <?php Tribe_Events_Category_Colors_Extras::add_map_display_css( $slug ); ?>
-<?php if ( isset( $options['color_widgets'] ) and '1' === $options['color_widgets'] ): ?>
+<?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
 	<?php Tribe_Events_Category_Colors_Widgets::add_widget_display_css( $slug, $options ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a
@@ -74,7 +74,7 @@
 
 <?php endforeach ?>
 
-<?php if ( isset( $options['add_legend'] ) and !isset( $options['custom_legend_css'] ) ): ?>
+<?php if ( isset( $options['add_legend'] ) && !isset( $options['custom_legend_css'] ) ): ?>
 	<?php $teccc->view( 'legend.css' ) ?>
 	<?php do_action( 'teccc_add_legend_css' ); ?>
 <?php endif ?>
