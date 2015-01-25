@@ -1,4 +1,5 @@
 <?php
+
 class Tribe_Events_Category_Colors {
 
 	const SLUG = 0;
@@ -41,7 +42,6 @@ class Tribe_Events_Category_Colors {
 
 	protected static $object = false;
 
-
 	/**
 	 * The Tribe_Events_Category_Colors object can be created/obtained via this
 	 * method - this prevents unnecessary work in rebuilding the object and
@@ -58,29 +58,45 @@ class Tribe_Events_Category_Colors {
 		return self::$object;
 	}
 
-
 	protected function __construct() {
+		if ( function_exists( 'spl_autoload_register' ) ) {
+			spl_autoload_register( array( $this, 'autoload' ) );
+		}
+
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
 
-		if ( $this->is_admin() ) {
-			$this->load_admin();
+		if ( is_admin() && ( ! defined( 'DOING_AJAX' ) ) ) {
+			new Tribe_Events_Category_Colors_Admin( $this );
 		}
-		$this->load_public(); // Always load public (in case template tags are in use with the theme)
-	}
 
+		$this->public = new Tribe_Events_Category_Colors_Public( $this );
+	}
 
 	/**
-	 * Tests to see if the request relates to the admin environment or not. Due to the way
-	 * WordPress/The Events Calendar work in relation to ajax requests a simple is_admin()
-	 * can return a false positive in some situations (such as ajax calendar loads).
+	 * Autoloader
 	 *
-	 * @return bool
+	 * @param $class
 	 */
-	protected function is_admin() {
-		return ( is_admin() and ( ! defined( 'DOING_AJAX' ) ) );
-	}
+	protected function autoload( $class ) {
+		$classes = array(
+			'tribe_events_category_colors_admin'   => trailingslashit( TECCC_CLASSES ) . 'class-admin.php',
+			'tribe_events_category_colors_public'  => trailingslashit( TECCC_CLASSES ) . 'class-public.php',
+			'tribe_events_category_colors_extras'  => trailingslashit( TECCC_CLASSES ) . 'class-extras.php',
+			'tribe_events_category_colors_widgets' => trailingslashit( TECCC_CLASSES ) . 'class-widgets.php',
+		);
 
+		foreach ( glob( TECCC_CLASSES . '/deprecated-classes/*.php' ) as $file ) {
+			$class_name = str_replace( '.php', '', basename( $file ) );
+			$classes[ strtolower( $class_name ) ] = $file;
+		}
+
+		$cn = strtolower( $class );
+
+		if ( isset( $classes[ $cn ] ) ) {
+			require_once( $classes[ $cn ] );
+		}
+	}
 
 	public function load_categories() {
 		add_filter( 'teccc_get_terms', array( $this, 'remove_terms' ) );
@@ -88,13 +104,12 @@ class Tribe_Events_Category_Colors {
 		$this->count = count( $this->terms );
 	}
 
-
 	protected function get_category_terms() {
 		if ( ! empty( $this->terms ) ) {
 			return false;
 		}
 
-		// TribeEvents not yet defined, so we can't use the class constant
+		// Tribe__Events__Events not yet defined, so we can't use the class constant
 		$term_list = apply_filters( 'teccc_get_terms', get_terms( 'tribe_events_cat', array( 'hide_empty' => false ) ) );
 
 		// Represent each term as an array [slug, name] indexed by term ID
@@ -128,19 +143,6 @@ class Tribe_Events_Category_Colors {
 
 		return $revised_list;
 	}
-
-
-	protected function load_admin() {
-		require_once TECCC_CLASSES . '/class-admin.php';
-		new Tribe_Events_Category_Colors_Admin( $this );
-	}
-
-
-	protected function load_public() {
-		require_once TECCC_CLASSES . '/class-public.php';
-		$this->public = new Tribe_Events_Category_Colors_Public( $this );
-	}
-
 
 	/**
 	 * Loads and returns the requested configuration array.
