@@ -2,7 +2,7 @@
 class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_Public {
 
 	public static function add_map_link_css( $slug ) {
-		if ( ! class_exists( 'TribeEventsPro' ) ) {
+		if ( ! class_exists( 'Tribe__Events__Pro__Events_Pro' ) ) {
 			return false;
 		}
 		$css   = array();
@@ -14,7 +14,7 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 	}
 	
 	public static function add_map_background_css( $slug ) {
-		if ( ! class_exists( 'TribeEventsPro' ) ) {
+		if ( ! class_exists( 'Tribe__Events__Pro__Events_Pro' ) ) {
 			return false;
 		}
 		$css   = array();
@@ -26,7 +26,7 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 	}
 
 	public static function add_map_display_css( $slug ) {
-		if ( ! class_exists( 'TribeEventsPro' ) ) {
+		if ( ! class_exists( 'Tribe__Events__Pro__Events_Pro' ) ) {
 			return false;
 		}
 		$css   = array();
@@ -37,7 +37,7 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 	}
 
 	public static function add_week_background_css( $slug ) {
-		if ( ! class_exists( 'TribeEventsPro' ) ) {
+		if ( ! class_exists( 'Tribe__Events__Pro__Events_Pro' ) ) {
 			return false;
 		}
 		$css   = array();
@@ -48,7 +48,7 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 	}
 
 	public static function fix_default_week_background() {
-		if ( ! class_exists( 'TribeEventsPro' ) ) {
+		if ( ! class_exists( 'Tribe__Events__Pro__Events_Pro' ) ) {
 			return false;
 		}
 		$css   = array();
@@ -62,7 +62,7 @@ class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_P
 	}
 
 	public static function add_week_link_css( $slug ) {
-		if ( ! class_exists( 'TribeEventsPro' ) ) {
+		if ( ! class_exists( 'Tribe__Events__Pro__Events_Pro' ) ) {
 			return false;
 		}
 		$css   = array();

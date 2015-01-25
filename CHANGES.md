@@ -1,5 +1,7 @@
-#### 3.9.8
+#### 3.9.x
 * don't minify CSS when `?debug_css` - this to help in debugging
+* add `spl_autoload_register` to autoload classes
+* autoload deprecated classes to maintain backwards compatibility
 
 #### 3.9.7
 * minify CSS only if `WP_DEBUG` is not true

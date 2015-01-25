@@ -163,7 +163,7 @@ class Tribe_Events_Category_Colors_Public {
 	 * @return bool
 	 */
 	public function show_legend( $existingContent = '' ) {
-		$tribe         = TribeEvents::instance();
+		$tribe         = Tribe__Events__Events::instance();
 		$eventDisplays = array( 'month' );
 		$eventDisplays = array_merge( $eventDisplays, $this->legendExtraView );
 		$tribe_view    = get_query_var( 'eventDisplay' );
@@ -180,7 +180,7 @@ class Tribe_Events_Category_Colors_Public {
 		$content = $this->teccc->view( 'legend', array(
 			'options' => $this->options,
 			'teccc'   => Tribe_Events_Category_Colors::instance(),
-			'tec'     => TribeEvents::instance()
+			'tec'     => Tribe__Events__Events::instance()
 		), false );
 
 		$this->legendFilterHasRun = true;
