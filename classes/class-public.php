@@ -14,9 +14,7 @@ class Tribe_Events_Category_Colors_Public {
 		$this->teccc   = $teccc;
 		$this->options = get_option( 'teccc_options' );
 
-		require TECCC_INCLUDES . '/templatetags.php';
-		require_once TECCC_CLASSES . '/class-widgets.php';
-		require_once TECCC_CLASSES . '/class-extras.php';
+		require_once TECCC_INCLUDES . '/templatetags.php';
 
 		add_action( 'init', array( $this, 'add_colored_categories' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX );
