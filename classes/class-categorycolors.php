@@ -86,7 +86,7 @@ class Tribe_Events_Category_Colors {
 			'tribe_events_category_colors_widgets' => trailingslashit( TECCC_CLASSES ) . 'class-widgets.php',
 		);
 
-		if ( ! class_exists( 'TribeEvents' ) ) {
+		if ( ! class_exists( 'Tribe__Events__Events' ) ) {
 			foreach ( glob( TECCC_CLASSES . '/310-classes/*.php' ) as $file ) {
 				$class_name = str_replace( '.php', '', basename( $file ) );
 				$classes[ strtolower( $class_name ) ] = $file;
