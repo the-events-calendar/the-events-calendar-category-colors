@@ -89,7 +89,8 @@ class Tribe_Events_Category_Colors_Admin {
 		$categoryColorsTab = $this->teccc->load_config( 'admintab' );
 		add_action( 'tribe_settings_form_element_tab_category-colors', array( $this, 'form_header' ) );
 		add_action( 'tribe_settings_before_content_tab_category-colors', array( $this, 'settings_fields' ) );
-		new Tribe__Events__Settings_Tab( self::TAB_NAME, __( 'Category Colors', 'events-calendar-category-colors' ), $categoryColorsTab );
+		//new Tribe__Events__Settings_Tab( self::TAB_NAME, __( 'Category Colors', 'events-calendar-category-colors' ), $categoryColorsTab );
+		new TribeSettingsTab( self::TAB_NAME, __( 'Category Colors', 'events-calendar-category-colors' ), $categoryColorsTab );
 	}
 
 

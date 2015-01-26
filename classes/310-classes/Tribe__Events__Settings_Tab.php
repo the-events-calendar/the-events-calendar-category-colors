@@ -1,5 +1,5 @@
 <?php
 
-	class Tribe__Events__Settings_Tab extends  TribeSettingsTab {
+	class Tribe__Events__Settings_Tab extends TribeSettingsTab {
 
 	}
