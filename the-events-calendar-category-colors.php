@@ -27,7 +27,6 @@ require_once TECCC_CLASSES . '/class-categorycolors.php';
 
 // Set-up Action and Filter Hooks
 register_activation_hook( __FILE__, array( 'Tribe_Events_Category_Colors', 'add_defaults' ) );
-register_uninstall_hook( __FILE__, array( 'Tribe_Events_Category_Colors', 'delete_plugin_options' ) );
 
 // Launch
 $teccc = Tribe_Events_Category_Colors::instance();
