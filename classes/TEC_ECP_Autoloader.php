@@ -2,8 +2,20 @@
 
 namespace TECCC;
 
+/**
+ * Class TEC_ECP_Autoloader
+ * generic autoload class for use with TEC/ECP add-on plugins
+ *
+ * Class aliases are in /classes/310-classes for user still on TEC/ECP 3.9 or lower
+ * To use with different plugins be sure to create a new namespace.
+ *
+ * @package TECCC
+ */
 class TEC_ECP_Autoloader {
 
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		spl_autoload_register( array( $this, 'autoload' ) );
 	}
