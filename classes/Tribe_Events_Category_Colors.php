@@ -59,10 +59,6 @@ class Tribe_Events_Category_Colors {
 	}
 
 	protected function __construct() {
-		if ( function_exists( 'spl_autoload_register' ) ) {
-			spl_autoload_register( array( $this, 'autoload' ) );
-		}
-
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
 
@@ -71,32 +67,6 @@ class Tribe_Events_Category_Colors {
 		}
 
 		$this->public = new Tribe_Events_Category_Colors_Public( $this );
-	}
-
-	/**
-	 * Autoloader
-	 *
-	 * @param $class
-	 */
-	protected function autoload( $class ) {
-		$classes = array(
-			'tribe_events_category_colors_admin'   => trailingslashit( TECCC_CLASSES ) . 'class-admin.php',
-			'tribe_events_category_colors_public'  => trailingslashit( TECCC_CLASSES ) . 'class-public.php',
-			'tribe_events_category_colors_extras'  => trailingslashit( TECCC_CLASSES ) . 'class-extras.php',
-			'tribe_events_category_colors_widgets' => trailingslashit( TECCC_CLASSES ) . 'class-widgets.php',
-		);
-
-		// @note - remove when we no longer worry about TEC/ECP 3.9 or lower
-		foreach ( glob( TECCC_CLASSES . '/310-classes/*.php' ) as $file ) {
-			$class_name = str_replace( '.php', '', basename( $file ) );
-			$classes[ strtolower( $class_name ) ] = $file;
-		}
-
-		$cn = strtolower( $class );
-
-		if ( isset( $classes[ $cn ] ) ) {
-			require_once( $classes[ $cn ] );
-		}
 	}
 
 	public function load_categories() {
@@ -237,14 +207,6 @@ class Tribe_Events_Category_Colors {
 			$arr['font_weight'] = 'bold';
 			update_option( 'teccc_options', $arr );
 		}
-	}
-
-
-	/**
-	 * Expected to run on deactivation.
-	 */
-	public static function delete_plugin_options() {
-		delete_option( 'teccc_options' );
 	}
 
 	/**

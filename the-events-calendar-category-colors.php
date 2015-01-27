@@ -11,6 +11,8 @@ License:           GNU General Public License v2
 License URI:       http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 GitHub Plugin URI: https://github.com/afragen/the-events-calendar-category-colors
 GitHub Branch:     autoload
+Requires PHP:      5.3
+Requires WP:       3.8
 */
 
 
@@ -22,8 +24,8 @@ define( 'TECCC_VIEWS', TECCC_DIR . '/views' );
 define( 'TECCC_RESOURCES', plugin_dir_url(__FILE__) . 'resources' );
 define( 'TECCC_LANG', basename(dirname(__FILE__)) . '/languages' );
 
-// Load the base class
-require_once TECCC_CLASSES . '/class-categorycolors.php';
+//Load autoloader class
+require_once TECCC_CLASSES . '/TEC_ECP_Autoloader.php';
 
 // Set-up Action and Filter Hooks
 register_activation_hook( __FILE__, array( 'Tribe_Events_Category_Colors', 'add_defaults' ) );
