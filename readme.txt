@@ -50,6 +50,10 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
+= 4.0.0 =
+* added autoloader class to handle classes and class aliases for users of ECP 3.9 or lower
+* requires PHP 5.3 or greater as autoload class requires namespacing
+
 = 3.9.7 =
 * minify CSS only if `WP_DEBUG` is not true
 

@@ -1,8 +1,7 @@
 #### 4.0.0
 * don't minify CSS when `?debug_css` - this to help in debugging
-* added  autoloader class
-* autoload deprecated classes when needed to maintain backwards compatibility
-* requires at least PHP 5.3 as we now use namespaces for autoloader
+* added autoloader class to handle classes and class aliases for users of ECP 3.9 or lower
+* requires PHP 5.3 or greater as autoload class requires namespacing
 
 #### 3.9.7
 * minify CSS only if `WP_DEBUG` is not true
