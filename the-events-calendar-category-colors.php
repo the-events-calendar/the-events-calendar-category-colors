@@ -25,7 +25,7 @@ define( 'TECCC_RESOURCES', plugin_dir_url(__FILE__) . 'resources' );
 define( 'TECCC_LANG', basename(dirname(__FILE__)) . '/languages' );
 
 //Load autoloader class
-require_once TECCC_CLASSES . '/TEC_ECP_Autoloader.php';
+require_once TECCC_CLASSES . '/Autoloader.php';
 
 // Set-up Action and Filter Hooks
 register_activation_hook( __FILE__, array( 'Tribe_Events_Category_Colors', 'add_defaults' ) );
