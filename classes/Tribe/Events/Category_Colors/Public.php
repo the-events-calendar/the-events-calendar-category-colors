@@ -1,5 +1,5 @@
 <?php
-class Tribe__Events__Category_Colors_Public {
+class Tribe_Events_Category_Colors_Public {
 
 	const CSS_HANDLE = 'teccc_css';
 
@@ -10,7 +10,7 @@ class Tribe__Events__Category_Colors_Public {
 	protected $legendFilterHasRun = false;
 	protected $legendExtraView    = array();
 
-	public function __construct( Tribe__Events__Category_Colors $teccc ) {
+	public function __construct( Tribe_Events_Category_Colors $teccc ) {
 		$this->teccc   = $teccc;
 		$this->options = get_option( 'teccc_options' );
 
@@ -39,7 +39,7 @@ class Tribe__Events__Category_Colors_Public {
 	public function add_scripts_styles() {
 		// Register stylesheet
 		$args = array( self::CSS_HANDLE => $this->options_hash(), $_GET );
-		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url() ), false, Tribe__Events__Category_Colors::$version );
+		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url() ), false, Tribe_Events_Category_Colors::$version );
 
 		// Let's test to see if any event-related post types were requested
 		$event_types      = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
@@ -61,7 +61,7 @@ class Tribe__Events__Category_Colors_Public {
 		     '1' === $this->options['legend_superpowers'] &&
 		     ! wp_is_mobile()
 		) {
-			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe__Events__Category_Colors::$version, true );
+			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
 		}
 	}
 
@@ -179,7 +179,7 @@ class Tribe__Events__Category_Colors_Public {
 
 		$content = $this->teccc->view( 'legend', array(
 			'options' => $this->options,
-			'teccc'   => Tribe__Events__Category_Colors::instance(),
+			'teccc'   => Tribe_Events_Category_Colors::instance(),
 			'tec'     => Tribe__Events__Events::instance()
 		), false );
 
@@ -198,7 +198,7 @@ class Tribe__Events__Category_Colors_Public {
 	public function reposition_legend( $tribeViewFilter ) {
 		// If the legend has already run they are probably doing something wrong
 		if ( $this->legendFilterHasRun ) {
-			_doing_it_wrong( 'Tribe__Events__Category_Colors_Public::reposition_legend',
+			_doing_it_wrong( 'Tribe_Events_Category_Colors_Public::reposition_legend',
 			'You are attempting to reposition the legend after it has already been rendered.', '1.6.4' );
 		}
 
@@ -218,7 +218,7 @@ class Tribe__Events__Category_Colors_Public {
 	public function remove_default_legend() {
 		// If the legend has already run they are probably doing something wrong
 		if( $this->legendFilterHasRun ) {
-			_doing_it_wrong( 'Tribe__Events__Category_Colors_Public::reposition_legend',
+			_doing_it_wrong( 'Tribe_Events_Category_Colors_Public::reposition_legend',
 			'You are attempting to remove the default legend after it has already been rendered.', '1.6.4' );
 		}
 

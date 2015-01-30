@@ -12,8 +12,8 @@
 
 		<?php foreach ( $teccc->terms as $id => $attributes ): ?>
 			<?php
-				$slug = esc_attr( $attributes[ Tribe__Events__Category_Colors::SLUG ] );
-				$name = esc_attr( $attributes[ Tribe__Events__Category_Colors::NAME ] );
+				$slug = esc_attr( $attributes[ Tribe_Events_Category_Colors::SLUG ] );
+				$name = esc_attr( $attributes[ Tribe_Events_Category_Colors::NAME ] );
 			?>
 		<tr>
 			<td> <?php echo $slug ?> </td>
