@@ -13,7 +13,7 @@ namespace TECCC;
  * @license   GPL-2.0+
  * @link      http://github.com/afragen/autoloader
  * @copyright 2015 Andy Fragen
- * @version   1.1.0
+ * @version   1.1.1
  *
  * @package TECCC
  */
