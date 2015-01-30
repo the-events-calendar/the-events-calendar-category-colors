@@ -212,17 +212,18 @@ class Tribe_Events_Category_Colors {
 	/**
 	 * Returns current plugin version.
 	 *
-	 * @param $plugin_file
+	 * @param $file
 	 *
 	 * @return string Plugin version
 	 */
-	public static function plugin_get_version( $plugin_file ) {
-		if ( ! function_exists( 'get_plugins' ) )
+	public static function plugin_get_version( $file ) {
+		if ( ! function_exists( 'get_plugins' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		$plugin_base   = '/' . plugin_basename( trailingslashit( dirname( plugin_dir_path( __FILE__ ) ) ) );
-		$plugin_folder = get_plugins( $plugin_base );
+		}
+		$plugin_folder = get_plugins( '/' . plugin_basename( dirname( $file ) ) );
+		$plugin_file   = basename( $file );
 
-		return $plugin_folder[$plugin_file]['Version'];
+		return $plugin_folder[ $plugin_file ]['Version'];
 	}
 
 }
