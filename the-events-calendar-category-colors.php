@@ -16,16 +16,16 @@ Requires WP:       3.8
 */
 
 
-// We'll use PHP 5.2 syntax to get the plugin directory
-define( 'TECCC_DIR', dirname(__FILE__) );
+// We'll use PHP 5.3 syntax to get the plugin directory
+define( 'TECCC_DIR', __DIR__ );
 define( 'TECCC_CLASSES', TECCC_DIR . '/classes' );
 define( 'TECCC_INCLUDES', TECCC_DIR . '/includes' );
 define( 'TECCC_VIEWS', TECCC_DIR . '/views' );
-define( 'TECCC_RESOURCES', plugin_dir_url(__FILE__) . 'resources' );
-define( 'TECCC_LANG', basename(dirname(__FILE__)) . '/languages' );
+define( 'TECCC_RESOURCES', plugin_dir_url( __FILE__ ) . 'resources' );
+define( 'TECCC_LANG', basename( dirname( __FILE__ ) ) . '/languages' );
 
 //Load autoloader class
-require_once TECCC_CLASSES . '/Autoloader.php';
+require_once( TECCC_CLASSES . '/Autoloader.php' );
 
 // Set-up Action and Filter Hooks
 register_activation_hook( __FILE__, array( 'Tribe__Events__Category_Colors', 'add_defaults' ) );
