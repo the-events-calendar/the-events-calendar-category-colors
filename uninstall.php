@@ -21,7 +21,7 @@
  *
  * @link       https://github.com/afragen/the-events-calendar-category-colors
  *
- * @package    Tribe_Events_Category_Colors
+ * @package    Tribe__Events__Category_Colors__Main
  */
 
 // If uninstall not called from WordPress, then exit.

@@ -26,7 +26,7 @@ return array(
 		),
 		'form-elements' => array(
 			'type' => 'html',
-			'html' => Tribe_Events_Category_Colors_Admin::options_elements()
+			'html' => Tribe__Events__Category_Colors__Admin::options_elements()
 		),
 		'minicolors-console' => array(
 			'type' => 'html',

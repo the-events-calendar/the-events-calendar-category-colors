@@ -28,10 +28,10 @@ define( 'TECCC_LANG', basename( dirname( __FILE__ ) ) . '/languages' );
 require_once( TECCC_CLASSES . '/Autoloader.php' );
 
 // Set-up Action and Filter Hooks
-register_activation_hook( __FILE__, array( 'Tribe_Events_Category_Colors', 'add_defaults' ) );
+register_activation_hook( __FILE__, array( 'Tribe__Events__Category_Colors__Main', 'add_defaults' ) );
 
 // Launch
-$teccc = Tribe_Events_Category_Colors::instance();
+$teccc = Tribe__Events__Category_Colors__Main::instance();
 
 // Get plugin version number from file
-Tribe_Events_Category_Colors::$version = $teccc->plugin_get_version( __FILE__ );
+Tribe__Events__Category_Colors__Main::$version = $teccc->plugin_get_version( __FILE__ );
