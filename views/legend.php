@@ -4,8 +4,8 @@
 
         <?php foreach ( $teccc->terms as $id => $attributes ): ?>
             <?php
-            $slug = esc_attr( $attributes[Tribe_Events_Category_Colors::SLUG ] );
-            $name = esc_attr( $attributes[ Tribe_Events_Category_Colors::NAME ] );
+            $slug = esc_attr( $attributes[ Tribe__Events__Category_Colors::SLUG ] );
+            $name = esc_attr( $attributes[ Tribe__Events__Category_Colors::NAME ] );
             $link = get_term_link( $id, Tribe__Events__Events::TAXONOMY );
             ?>
             <li class="tribe-events-category-<?php echo $slug ?> tribe-events-category-<?php esc_attr_e( $id ) ?>">

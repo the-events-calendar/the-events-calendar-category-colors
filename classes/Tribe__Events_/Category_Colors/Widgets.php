@@ -1,5 +1,5 @@
 <?php
-class Tribe_Events_Category_Colors_Widgets extends Tribe_Events_Category_Colors_Public {
+class Tribe__Events__Category_Colors_Widgets extends Tribe__Events__Category_Colors_Public {
 
 	public static function add_widget_link_css( $slug ) {
 		$css = array();

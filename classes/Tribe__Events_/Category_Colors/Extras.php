@@ -1,5 +1,5 @@
 <?php
-class Tribe_Events_Category_Colors_Extras extends Tribe_Events_Category_Colors_Public {
+class Tribe__Events__Category_Colors_Extras extends Tribe__Events__Category_Colors_Public {
 
 	public static function add_map_link_css( $slug ) {
 		if ( ! class_exists( 'Tribe__Events__Pro__Events_Pro' ) ) {
