@@ -1,7 +1,8 @@
 <?php
 namespace Fragen\Category_Colors;
 
-use Tribe__Events__Events;
+use DateTime,
+    Tribe__Events__Events;
 
 
 class Frontend {
