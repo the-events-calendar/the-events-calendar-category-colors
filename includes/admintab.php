@@ -1,4 +1,7 @@
 <?php
+namespace Fragen\Category_Colors;
+
+
 return array(
 	'priority'      => 40,
 	'show_save'     => false,
@@ -26,7 +29,7 @@ return array(
 		),
 		'form-elements' => array(
 			'type' => 'html',
-			'html' => Tribe__Events__Category_Colors__Admin::options_elements()
+			'html' => Admin::options_elements()
 		),
 		'minicolors-console' => array(
 			'type' => 'html',

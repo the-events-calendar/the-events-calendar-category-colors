@@ -1,4 +1,7 @@
-/* The Events Calendar Category Colors <?php echo Tribe__Events__Category_Colors__Main::$version ?> generated CSS */
+<?php
+namespace Fragen\Category_Colors;
+
+?>/* The Events Calendar Category Colors <?php echo Main::$version ?> generated CSS */
 .teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
 {
 	font-weight: <?php echo $options['font_weight']  ?>;
@@ -17,19 +20,19 @@
 	}
 }
 
-<?php Tribe__Events__Category_Colors__Extras::fix_default_week_background(); ?>
+<?php Extras::fix_default_week_background(); ?>
 <?php if ( empty( $this->terms ) ) { $this->terms = $options['terms']; } ?>
 
 <?php foreach ( $teccc->terms as $id => $attributes ): ?>
 	<?php
-		$slug = esc_attr( $attributes[ Tribe__Events__Category_Colors__Main::SLUG ] );
-		$name = esc_attr( $attributes[ Tribe__Events__Category_Colors__Main::NAME ] );
+		$slug = esc_attr( $attributes[ Main::SLUG ] );
+		$name = esc_attr( $attributes[ Main::NAME ] );
 	?>
 
-<?php Tribe__Events__Category_Colors__Extras::add_map_link_css( $slug ); ?>
-<?php Tribe__Events__Category_Colors__Extras::add_week_link_css( $slug ); ?>
+<?php Extras::add_map_link_css( $slug ); ?>
+<?php Extras::add_week_link_css( $slug ); ?>
 <?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
-	<?php Tribe__Events__Category_Colors__Widgets::add_widget_link_css( $slug, $options ); ?>
+	<?php Widgets::add_widget_link_css( $slug, $options ); ?>
 <?php endif ?>
 .teccc-legend .tribe-events-category-<?php echo $slug ?> a,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
@@ -40,11 +43,11 @@
 	text-decoration: none;
 }
 
-<?php Tribe__Events__Category_Colors__Extras::add_map_background_css( $slug ); ?>
-<?php Tribe__Events__Category_Colors__Extras::add_week_background_css( $slug ); ?>
-<?php Tribe__Events__Category_Colors__Extras::add_filter_bar_background_css( $slug ); ?>
+<?php Extras::add_map_background_css( $slug ); ?>
+<?php Extras::add_week_background_css( $slug ); ?>
+<?php Extras::add_filter_bar_background_css( $slug ); ?>
 <?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
-	<?php Tribe__Events__Category_Colors__Widgets::add_widget_background_css( $slug, $options ); ?>
+	<?php Widgets::add_widget_background_css( $slug, $options ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug ?>,
@@ -62,9 +65,9 @@
 	padding-bottom: 2px;
 }
 
-<?php Tribe__Events__Category_Colors__Extras::add_map_display_css( $slug ); ?>
+<?php Extras::add_map_display_css( $slug ); ?>
 <?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
-	<?php Tribe__Events__Category_Colors__Widgets::add_widget_display_css( $slug, $options ); ?>
+	<?php Widgets::add_widget_display_css( $slug, $options ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a
 {

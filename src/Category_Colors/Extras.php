@@ -1,5 +1,8 @@
 <?php
-class Tribe__Events__Category_Colors__Extras extends Tribe__Events__Category_Colors__Public {
+namespace Fragen\Category_Colors;
+
+
+class Extras extends Frontend {
 
 	public static function add_map_link_css( $slug ) {
 		if ( ! class_exists( 'Tribe__Events__Pro__Events_Pro' ) ) {

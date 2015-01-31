@@ -15,23 +15,46 @@ Requires PHP:      5.3
 Requires WP:       3.8
 */
 
+// Check for PHP 5.3 compatibility
+if ( version_compare( PHP_VERSION, '5.3', '<' ) ) {
+	return; // @todo add admin notice to inform user of failure
+}
 
 // We'll use PHP 5.3 syntax to get the plugin directory
 define( 'TECCC_DIR', __DIR__ );
-define( 'TECCC_CLASSES', TECCC_DIR . '/classes' );
+define( 'TECCC_FILE', __FILE__ );
+define( 'TECCC_CLASSES', TECCC_DIR . '/src' );
 define( 'TECCC_INCLUDES', TECCC_DIR . '/includes' );
 define( 'TECCC_VIEWS', TECCC_DIR . '/views' );
 define( 'TECCC_RESOURCES', plugin_dir_url( __FILE__ ) . 'resources' );
 define( 'TECCC_LANG', basename( dirname( __FILE__ ) ) . '/languages' );
 
-//Load autoloader class
-require_once( TECCC_CLASSES . '/Autoloader.php' );
+function teccc_init() {
+	global $teccc;
 
-// Set-up Action and Filter Hooks
-register_activation_hook( __FILE__, array( 'Tribe__Events__Category_Colors__Main', 'add_defaults' ) );
+	// Back compat classes
+	$compatibility = array(
+		'Tribe__Events__Events' => TECCC_CLASSES . '/Back_Compat/Events.php',
+		'Tribe__Events__Settings_Tab' => TECCC_CLASSES . '/Back_Compat/Settings_Tab.php',
+		'Tribe__Events__Pro__Events_Pro' => TECCC_CLASSES . '/Back_Compat/Events_Pro.php',
+	);
 
-// Launch
-$teccc = Tribe__Events__Category_Colors__Main::instance();
+	// Plugin namespace root
+	$root = array(
+		'Fragen\Category_Colors' => TECCC_CLASSES . '/Category_Colors'
+	);
 
-// Get plugin version number from file
-Tribe__Events__Category_Colors__Main::$version = $teccc->plugin_get_version( __FILE__ );
+	// Autoloading
+	require_once( TECCC_CLASSES . '/Category_Colors/Autoloader.php' );
+	$class_loader = 'Fragen\Category_Colors\Autoloader';
+	new $class_loader( $root, $compatibility );
+
+	// Set-up Action and Filter Hooks
+	register_activation_hook( __FILE__, array( 'Fragen\Category_Colors\Main', 'add_defaults' ) );
+
+	// Launch
+	$launch_method = array( 'Fragen\Category_Colors\Main', 'instance' );
+	$teccc = call_user_func( $launch_method );
+}
+
+teccc_init();

@@ -1,6 +1,8 @@
 <?php
+namespace Fragen\Category_Colors;
 
-class Tribe__Events__Category_Colors__Main {
+
+class Main {
 
 	const SLUG = 0;
 	const NAME = 1;
@@ -36,18 +38,18 @@ class Tribe__Events__Category_Colors__Main {
 	public $ignore_list = array();
 
 	/**
-	 * @var Tribe__Events__Category_Colors__Public
+	 * @var Frontend
 	 */
 	public $public;
 
 	protected static $object = false;
 
 	/**
-	 * The Tribe__Events__Category_Colors__Main object can be created/obtained via this
+	 * The Main object can be created/obtained via this
 	 * method - this prevents unnecessary work in rebuilding the object and
 	 * querying to construct a list of categories, etc.
 	 *
-	 * @return Tribe__Events__Category_Colors__Main
+	 * @return Main
 	 */
 	public static function instance() {
 		$class = __CLASS__;
@@ -63,10 +65,11 @@ class Tribe__Events__Category_Colors__Main {
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
 
 		if ( is_admin() && ( ! defined( 'DOING_AJAX' ) ) ) {
-			new Tribe__Events__Category_Colors__Admin( $this );
+			new Admin( $this );
 		}
 
-		$this->public = new Tribe__Events__Category_Colors__Public( $this );
+		self::$version = self::plugin_get_version( TECCC_FILE );
+		$this->public = new Frontend( $this );
 	}
 
 	public function load_categories() {
@@ -189,7 +192,7 @@ class Tribe__Events__Category_Colors__Main {
 	 * Expected to run on activation; populates the default options.
 	 */
 	public static function add_defaults() {
-		$teccc = Tribe__Events__Category_Colors__Main::instance();
+		$teccc = self::instance();
 		$tmp   = get_option( 'teccc_options' );
 
 		if ( ! isset( $tmp['chk_default_options_db'] ) ) {
