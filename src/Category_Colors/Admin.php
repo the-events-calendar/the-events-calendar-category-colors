@@ -14,9 +14,10 @@ class Admin {
 
 	public function __construct( Main $teccc ) {
 		$this->teccc = $teccc;
+		$this->load_settings_tab();
+
 		add_action( 'admin_init', array( $this, 'init' ) );
 		add_action( 'admin_notices', array( $this, 'plugin_fail_msg' ) );
-		add_action( 'plugins_loaded', array( $this, 'load_settings_tab' ) );
 		add_action( 'tribe_settings_below_tabs_tab_category-colors', array( $this, 'is_saved' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_teccc_js_css' ) );
 		load_plugin_textdomain( 'events-calendar-category-colors', false, TECCC_LANG );
