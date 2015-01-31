@@ -218,7 +218,7 @@ class Tribe__Events__Category_Colors__Main {
 	 */
 	public static function plugin_get_version( $file ) {
 		if ( ! function_exists( 'get_plugins' ) ) {
-			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			require_once(ABSPATH . 'wp-admin/includes/plugin.php');
 		}
 		$plugin_folder = get_plugins( '/' . plugin_basename( dirname( $file ) ) );
 		$plugin_file   = basename( $file );
