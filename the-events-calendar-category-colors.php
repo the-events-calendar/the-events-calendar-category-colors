@@ -15,10 +15,6 @@ Requires PHP:      5.3
 Requires WP:       3.8
 */
 
-// Check for PHP 5.3 compatibility
-if ( version_compare( PHP_VERSION, '5.3', '<' ) ) {
-	return; // @todo add admin notice to inform user of failure
-}
 
 // We'll use PHP 5.3 syntax to get the plugin directory
 define( 'TECCC_DIR', __DIR__ );
@@ -29,8 +25,27 @@ define( 'TECCC_VIEWS', TECCC_DIR . '/views' );
 define( 'TECCC_RESOURCES', plugin_dir_url( __FILE__ ) . 'resources' );
 define( 'TECCC_LANG', basename( dirname( __FILE__ ) ) . '/languages' );
 
+function teccc_load_failure() {
+	global $pagenow;
+
+	// Only show message on the plugin admin  screen
+	if ( 'plugins.php' !== $pagenow ) {
+		return;
+	}
+
+	// @todo more work may be needed for proper l10n here
+	$msg = __( 'The Events Calendar Category Colors could not run as it&#146;s minimum requirements were not met.', 'events-calendar-category-colors' );
+	echo '<div class="error"> <p>' . $msg . '</p> </div>';
+}
+
 function teccc_init() {
 	global $teccc;
+
+	// Check for PHP 5.3 compatibility
+	if ( version_compare( PHP_VERSION, '5.3', '<' ) ) {
+		add_action( 'admin_notices', 'teccc_load_failure' );
+		return;
+	}
 
 	// Back compat classes
 	$compatibility = array(
@@ -57,4 +72,4 @@ function teccc_init() {
 	$teccc = call_user_func( $launch_method );
 }
 
-teccc_init();
+add_action( 'plugins_loaded', 'teccc_init' );
