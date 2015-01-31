@@ -1,5 +1,8 @@
 <?php
-class Tribe__Events__Category_Colors__Public {
+namespace Fragen\Category_Colors;
+
+
+class Frontend {
 
 	const CSS_HANDLE = 'teccc_css';
 
@@ -10,7 +13,7 @@ class Tribe__Events__Category_Colors__Public {
 	protected $legendFilterHasRun = false;
 	protected $legendExtraView    = array();
 
-	public function __construct( Tribe__Events__Category_Colors__Main $teccc ) {
+	public function __construct( Main $teccc ) {
 		$this->teccc   = $teccc;
 		$this->options = get_option( 'teccc_options' );
 
