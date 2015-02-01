@@ -1,16 +1,23 @@
 <?php
-class Tribe__Events__Category_Colors__Admin {
+namespace Fragen\Category_Colors;
+
+use Tribe__Events__Events,
+    Tribe__Events__Settings_Tab;
+
+
+class Admin {
 
 	const TAB_NAME      = 'category-colors';
 	const UPDATE_ACTION = 'category-colors-update-options';
 	protected $teccc    = null;
 
 
-	public function __construct( Tribe__Events__Category_Colors__Main $teccc ) {
+	public function __construct( Main $teccc ) {
 		$this->teccc = $teccc;
+		$this->load_settings_tab();
+
 		add_action( 'admin_init', array( $this, 'init' ) );
 		add_action( 'admin_notices', array( $this, 'plugin_fail_msg' ) );
-		add_action( 'plugins_loaded', array( $this, 'load_settings_tab' ) );
 		add_action( 'tribe_settings_below_tabs_tab_category-colors', array( $this, 'is_saved' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_teccc_js_css' ) );
 		load_plugin_textdomain( 'events-calendar-category-colors', false, TECCC_LANG );
@@ -44,7 +51,7 @@ class Tribe__Events__Category_Colors__Admin {
 		$teccc = $this->teccc;
 
 		foreach ( $teccc->terms as $attributes ) {
-			$slug = $attributes[ Tribe__Events__Category_Colors__Main::SLUG ];
+			$slug = $attributes[ Main::SLUG ];
 			
 			// Sanitize textbox input (strip html tags, and escape characters)
 			// May not be needed with jQuery color picker
@@ -113,7 +120,7 @@ class Tribe__Events__Category_Colors__Admin {
 
 
 	public static function options_elements() {
-		$teccc   = Tribe__Events__Category_Colors__Main::instance();
+		$teccc = Main::instance();
 
 		$content = $teccc->view( 'optionsform', array(
 			'options' => self::fetch_options( $teccc ),
@@ -142,7 +149,7 @@ class Tribe__Events__Category_Colors__Admin {
 		);
 
 		foreach ( $teccc->terms as $attributes ) {
-			$slug = $attributes[ Tribe__Events__Category_Colors__Main::SLUG ];
+			$slug = $attributes[ Main::SLUG ];
 
 			foreach ( $categoryOptions as $optionkey ) {
 				if ( ! isset( $options[ $slug . $optionkey ] ) ) {
@@ -182,11 +189,9 @@ class Tribe__Events__Category_Colors__Admin {
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_style( 'teccc-iris', TECCC_RESOURCES . '/teccc-iris.css', false,
-Tribe__Events__Category_Colors__Main::$version );
-		wp_enqueue_script( 'teccc-admin', TECCC_RESOURCES . '/teccc-admin.js', false,
-Tribe__Events__Category_Colors__Main::$version, true );
-		wp_enqueue_style( 'teccc-options', TECCC_RESOURCES . '/teccc-options.css', false, Tribe__Events__Category_Colors__Main::$version );
+		wp_enqueue_style( 'teccc-iris', TECCC_RESOURCES . '/teccc-iris.css', false, Main::$version );
+		wp_enqueue_script( 'teccc-admin', TECCC_RESOURCES . '/teccc-admin.js', false, Main::$version, true );
+		wp_enqueue_style( 'teccc-options', TECCC_RESOURCES . '/teccc-options.css', false, Main::$version );
 
 	}
 
