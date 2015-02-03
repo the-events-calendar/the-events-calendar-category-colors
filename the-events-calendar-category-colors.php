@@ -28,7 +28,7 @@ define( 'TECCC_LANG', basename( dirname( __FILE__ ) ) . '/languages' );
 function teccc_load_failure() {
 	global $pagenow;
 
-	// Only show message on the plugin admin  screen
+	// Only show message on the plugin admin screen
 	if ( 'plugins.php' !== $pagenow ) {
 		return;
 	}

@@ -2,20 +2,19 @@
 namespace Fragen\Category_Colors;
 
 /**
- * Class Autoloader - generic autoload class
+ * Class Autoloader
+ * @package Fragen\Category_Colors
  *
  * To use with different plugins be sure to create a new namespace.
  *
  * @package   Autoloader
  * @author    Andy Fragen <andy@thefragens.com>
+ * @author    Barry Hughes <barry@codingkillsme.com>
  * @license   GPL-2.0+
  * @link      http://github.com/afragen/autoloader
  * @copyright 2015 Andy Fragen
- * @version   1.1.1
- *
- * @package TECCC
+ * @version   2.0.0
  */
-
 class Autoloader {
 	/**
 	 * Roots to scan when autoloading.
@@ -35,6 +34,9 @@ class Autoloader {
 
 	/**
 	 * Constructor
+	 *
+	 * @param array $roots
+	 * @param array $static_map
 	 */
 	public function __construct( array $roots, array $static_map = null ) {
 		$this->roots = $roots;
@@ -43,6 +45,8 @@ class Autoloader {
 	}
 
 	/**
+	 * Load classes
+	 *
 	 * @param $class
 	 */
 	protected function autoload( $class ) {
