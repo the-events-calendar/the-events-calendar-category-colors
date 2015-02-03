@@ -72,4 +72,4 @@ function teccc_init() {
 	$teccc = call_user_func( $launch_method );
 }
 
-add_action( 'plugins_loaded', 'teccc_init' );
+add_action( 'plugins_loaded', 'teccc_init', 15 );
