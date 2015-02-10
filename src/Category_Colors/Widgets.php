@@ -1,9 +1,12 @@
 <?php
-class Tribe_Events_Category_Colors_Widgets extends Tribe_Events_Category_Colors_Public {
+namespace Fragen\Category_Colors;
+
+
+class Widgets extends Frontend {
 
 	public static function add_widget_link_css( $slug ) {
 		$css = array();
-		if ( class_exists( 'TribeEventsPro' ) ) {
+		if ( class_exists( 'Tribe__Events__Pro__Events_Pro' ) ) {
 			$css[] = '.tribe-events-adv-list-widget li.tribe-events-category-' . $slug . ' h2 a:link,';
 			$css[] = '.tribe-events-adv-list-widget li.tribe-events-category-' . $slug . ' h2 a:visited,';
 			$css[] = '.tribe-mini-calendar-list-wrapper .tribe-events-category-' . $slug . ' h2 a:link,';
@@ -21,7 +24,7 @@ class Tribe_Events_Category_Colors_Widgets extends Tribe_Events_Category_Colors_
 
 	public static function add_widget_background_css( $slug ) {
 		$css = array();
-		if ( class_exists( 'TribeEventsPro' ) ) {
+		if ( class_exists( 'Tribe__Events__Pro__Events_Pro' ) ) {
 			$css[] = '.tribe-events-adv-list-widget .tribe-events-category-' . $slug . ' h2 a:link,';
 			$css[] = '.tribe-events-adv-list-widget .tribe-events-category-' . $slug . ' h2 a:visited,';
 			$css[] = '.tribe-mini-calendar-list-wrapper .tribe-events-category-' . $slug . ' h2 a:link,';
@@ -40,7 +43,7 @@ class Tribe_Events_Category_Colors_Widgets extends Tribe_Events_Category_Colors_
 
 	public static function add_widget_display_css( $slug ) {
 		$css = array();
-		if ( class_exists( 'TribeEventsPro' ) ) {
+		if ( class_exists( 'Tribe__Events__Pro__Events_Pro' ) ) {
 			$css[] = '.tribe-events-adv-list-widget .tribe-events-category-' . $slug . ' h2 a:link,';
 			$css[] = '.tribe-mini-calendar-list-wrapper .tribe-events-category-' . $slug . ' h2 a:link,';
 			$css[] = '.tribe-venue-widget-list li.tribe-events-category-' . $slug . ' a:link,';

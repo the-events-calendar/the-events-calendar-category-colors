@@ -1,5 +1,8 @@
 <?php
-class Tribe_Events_Category_Colors {
+namespace Fragen\Category_Colors;
+
+
+class Main {
 
 	const SLUG = 0;
 	const NAME = 1;
@@ -35,19 +38,18 @@ class Tribe_Events_Category_Colors {
 	public $ignore_list = array();
 
 	/**
-	 * @var Tribe_Events_Category_Colors_Public
+	 * @var Frontend
 	 */
 	public $public;
 
 	protected static $object = false;
 
-
 	/**
-	 * The Tribe_Events_Category_Colors object can be created/obtained via this
+	 * The Main object can be created/obtained via this
 	 * method - this prevents unnecessary work in rebuilding the object and
 	 * querying to construct a list of categories, etc.
 	 *
-	 * @return Tribe_Events_Category_Colors
+	 * @return Main
 	 */
 	public static function instance() {
 		$class = __CLASS__;
@@ -58,29 +60,17 @@ class Tribe_Events_Category_Colors {
 		return self::$object;
 	}
 
-
 	protected function __construct() {
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
 
-		if ( $this->is_admin() ) {
-			$this->load_admin();
+		if ( is_admin() && ( ! defined( 'DOING_AJAX' ) ) ) {
+			new Admin( $this );
 		}
-		$this->load_public(); // Always load public (in case template tags are in use with the theme)
+
+		self::$version = self::plugin_get_version( TECCC_FILE );
+		$this->public = new Frontend( $this );
 	}
-
-
-	/**
-	 * Tests to see if the request relates to the admin environment or not. Due to the way
-	 * WordPress/The Events Calendar work in relation to ajax requests a simple is_admin()
-	 * can return a false positive in some situations (such as ajax calendar loads).
-	 *
-	 * @return bool
-	 */
-	protected function is_admin() {
-		return ( is_admin() and ( ! defined( 'DOING_AJAX' ) ) );
-	}
-
 
 	public function load_categories() {
 		add_filter( 'teccc_get_terms', array( $this, 'remove_terms' ) );
@@ -88,13 +78,12 @@ class Tribe_Events_Category_Colors {
 		$this->count = count( $this->terms );
 	}
 
-
 	protected function get_category_terms() {
 		if ( ! empty( $this->terms ) ) {
 			return false;
 		}
 
-		// TribeEvents not yet defined, so we can't use the class constant
+		// Tribe__Events__Events not yet defined, so we can't use the class constant
 		$term_list = apply_filters( 'teccc_get_terms', get_terms( 'tribe_events_cat', array( 'hide_empty' => false ) ) );
 
 		// Represent each term as an array [slug, name] indexed by term ID
@@ -128,19 +117,6 @@ class Tribe_Events_Category_Colors {
 
 		return $revised_list;
 	}
-
-
-	protected function load_admin() {
-		require_once TECCC_CLASSES . '/class-admin.php';
-		new Tribe_Events_Category_Colors_Admin( $this );
-	}
-
-
-	protected function load_public() {
-		require_once TECCC_CLASSES . '/class-public.php';
-		$this->public = new Tribe_Events_Category_Colors_Public( $this );
-	}
-
 
 	/**
 	 * Loads and returns the requested configuration array.
@@ -216,7 +192,7 @@ class Tribe_Events_Category_Colors {
 	 * Expected to run on activation; populates the default options.
 	 */
 	public static function add_defaults() {
-		$teccc = Tribe_Events_Category_Colors::instance();
+		$teccc = self::instance();
 		$tmp   = get_option( 'teccc_options' );
 
 		if ( ! isset( $tmp['chk_default_options_db'] ) ) {
@@ -236,28 +212,21 @@ class Tribe_Events_Category_Colors {
 		}
 	}
 
-
-	/**
-	 * Expected to run on deactivation.
-	 */
-	public static function delete_plugin_options() {
-		delete_option( 'teccc_options' );
-	}
-
 	/**
 	 * Returns current plugin version.
 	 *
-	 * @param $plugin_file
+	 * @param $file
 	 *
 	 * @return string Plugin version
 	 */
-	public static function plugin_get_version( $plugin_file ) {
-		if ( ! function_exists( 'get_plugins' ) )
-			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		$plugin_base   = '/' . plugin_basename( trailingslashit( dirname( plugin_dir_path( __FILE__ ) ) ) );
-		$plugin_folder = get_plugins( $plugin_base );
+	public static function plugin_get_version( $file ) {
+		if ( ! function_exists( 'get_plugins' ) ) {
+			require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+		}
+		$plugin_folder = get_plugins( '/' . plugin_basename( dirname( $file ) ) );
+		$plugin_file   = basename( $file );
 
-		return $plugin_folder[$plugin_file]['Version'];
+		return $plugin_folder[ $plugin_file ]['Version'];
 	}
 
 }

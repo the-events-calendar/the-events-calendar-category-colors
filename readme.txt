@@ -4,7 +4,7 @@ Donate link: http://bit.ly/teccc-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 3.9.7
+Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,8 @@ Add event category background colors to The Events Calendar events.
 Add background colors to event categories displayed in the event views of The Events Calendar. This is inspired by the post <i>Coloring Your Category Events</i>.
 
 Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page.
+
+Requires PHP 5.3 or greater.
 
 == Installation ==
 
@@ -49,6 +51,12 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 4.0.0 =
+* don't minify CSS when `?debug_css` - this to help in debugging
+* requires PHP 5.3 or greater as requires namespacing 
+* class aliases for backwards compatibility for users of ECP 3.9 or lower
+* renamed directory and class names to allow for PSR 4 loading
 
 = 3.9.7 =
 * minify CSS only if `WP_DEBUG` is not true

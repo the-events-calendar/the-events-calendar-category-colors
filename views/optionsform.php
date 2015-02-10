@@ -1,3 +1,6 @@
+<?php
+namespace Fragen\Category_Colors;
+?>
 <table class="teccc form-table" xmlns="http://www.w3.org/1999/html">
 
 	<style type="text/css">.form-table th { font-size: 12px; }</style>
@@ -12,8 +15,8 @@
 
 		<?php foreach ( $teccc->terms as $id => $attributes ): ?>
 			<?php
-				$slug = esc_attr( $attributes[Tribe_Events_Category_Colors::SLUG] );
-				$name = esc_attr( $attributes[Tribe_Events_Category_Colors::NAME] );
+				$slug = esc_attr( $attributes[ Main::SLUG ] );
+				$name = esc_attr( $attributes[ Main::NAME ] );
 			?>
 		<tr>
 			<td> <?php echo $slug ?> </td>

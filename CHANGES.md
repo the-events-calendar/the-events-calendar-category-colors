@@ -1,5 +1,8 @@
-#### 3.9.8
+#### 4.0.0
 * don't minify CSS when `?debug_css` - this to help in debugging
+* requires PHP 5.3 or greater as requires namespacing 
+* class aliases for backwards compatibility for users of ECP 3.9 or lower
+* renamed directory and class names to allow for PSR 4 loading
 
 #### 3.9.7
 * minify CSS only if `WP_DEBUG` is not true

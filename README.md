@@ -14,6 +14,8 @@ Add background colors to event categories displayed in the event views of The Ev
 
 Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page.
 
+Requires PHP 5.3 or later
+
 ## Installation ##
 
 1. Upload the entire `/the-events-calendar-category-colors/` folder to the `/wp-content/plugins/` directory.
