@@ -77,7 +77,7 @@ namespace Fragen\Category_Colors;
 
 <?php endforeach ?>
 
-<?php if ( isset( $options['add_legend'] ) && !isset( $options['custom_legend_css'] ) ): ?>
+<?php if ( isset( $options['add_legend'] ) && ! isset( $options['custom_legend_css'] ) ): ?>
 	<?php $teccc->view( 'legend.css' ) ?>
 	<?php do_action( 'teccc_add_legend_css' ); ?>
 <?php endif ?>
