@@ -3,6 +3,7 @@
 * requires PHP 5.3 or greater as requires namespacing 
 * class aliases for backwards compatibility for users of ECP 3.9 or lower
 * renamed directory and class names to allow for PSR 4 loading
+* fix all text domain slugs and update POs
 
 #### 3.9.7
 * minify CSS only if `WP_DEBUG` is not true
@@ -167,4 +168,4 @@
 * coloring of tooltips in Week view
 * added some actions and filters, refer to wiki for listing
 * updated class and file naming to WordPress Coding Guidelines
-* new Help section of [Github Wiki](https://github.com/afragen/events-calendar-category-colors/wiki)
+* new Help section of [Github Wiki](https://github.com/afragen/the-events-calendar-category-colors	/wiki)

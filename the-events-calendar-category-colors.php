@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name:       The Events Calendar Category Colors
-Plugin URI:        https://github.com/afragen/events-calendar-category-colors
+Plugin URI:        https://github.com/afragen/the-events-calendar-category-colors
 Description:       This plugin adds event category background coloring to <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a> plugin.
 Version:           3.9.7.5
-Text Domain:       events-calendar-category-colors
+Text Domain:       the-events-calendar-category-colors
 Author:            Andy Fragen, Barry Hughes
 Author URI:        http://thefragens.com
 License:           GNU General Public License v2
@@ -34,7 +34,7 @@ function teccc_load_failure() {
 	}
 
 	// @todo more work may be needed for proper l10n here
-	$msg = __( 'The Events Calendar Category Colors could not run as it&#146;s minimum requirements were not met.', 'events-calendar-category-colors' );
+	$msg = __( 'The Events Calendar Category Colors could not run as it&#146;s minimum requirements were not met.', 'the-events-calendar-category-colors' );
 	echo '<div class="error"> <p>' . $msg . '</p> </div>';
 }
 
