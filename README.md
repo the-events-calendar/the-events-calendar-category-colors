@@ -35,12 +35,12 @@ The last compatible version of this plugin that works with TEC 2.x is [The Event
 
 ### Where can I get more help? ###
 
-There is more extensive documentation of the plugins features and usage on the [The Events Calendar Category Colors wiki](https://github.com/afragen/events-calendar-category-colors/wiki).
+There is more extensive documentation of the plugins features and usage on the [The Events Calendar Category Colors wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki).
 
 ### Where can I report bugs? ###
 
 1. Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
-2. Add a new issue on the [github repo](https://github.com/afragen/events-calendar-category-colors/issues?state=open).
+2. Add a new issue on the [github repo](https://github.com/afragen/the-events-calendar-category-colors/issues?state=open).
 
 ## Screenshots ##
 
