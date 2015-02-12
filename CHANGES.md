@@ -168,4 +168,4 @@
 * coloring of tooltips in Week view
 * added some actions and filters, refer to wiki for listing
 * updated class and file naming to WordPress Coding Guidelines
-* new Help section of [Github Wiki](https://github.com/afragen/the-events-calendar-category-colors	/wiki)
+* new Help section of [Github Wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki)
