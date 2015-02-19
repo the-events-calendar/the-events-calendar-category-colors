@@ -127,7 +127,7 @@ class Frontend {
 		// Return cached CSS if available and if fresh CSS hasn't been requested
 		$cache_key = 'teccc_' . $this->options_hash();
 		$css = get_transient( $cache_key );
-		if ( ! empty( $css ) && ! $refresh_css ) {
+		if ( ! empty( $css ) && ( ! $refresh_css && ! $debug_css ) ) {
 			return $css;
 		}
 
