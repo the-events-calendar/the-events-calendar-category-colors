@@ -44,18 +44,15 @@ There is more extensive documentation of the plugins features and usage on the [
 
 ## Screenshots ##
 
-###1. The Events Calendar Category Colors Settings tab
-###
+### 1. The Events Calendar Category Colors Settings tab
 ![The Events Calendar Category Colors Settings tab
 ](./assets/screenshot-1.png)
 
-###2. The Events Calendar Category Colors in action
-###
+### 2. The Events Calendar Category Colors in action
 ![The Events Calendar Category Colors in action
 ](./assets/screenshot-2.png)
 
-###3. The Events Calendar Category Colors with Legend Superpowers in action
-###
+### 3. The Events Calendar Category Colors with Legend Superpowers in action
 ![The Events Calendar Category Colors with Legend Superpowers in action
 ](./assets/screenshot-3.png)
 
