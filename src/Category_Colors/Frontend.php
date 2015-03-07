@@ -1,5 +1,11 @@
 <?php
-class Tribe_Events_Category_Colors_Public {
+namespace Fragen\Category_Colors;
+
+use DateTime,
+    Tribe__Events__Events;
+
+
+class Frontend {
 
 	const CSS_HANDLE = 'teccc_css';
 
@@ -10,13 +16,11 @@ class Tribe_Events_Category_Colors_Public {
 	protected $legendFilterHasRun = false;
 	protected $legendExtraView    = array();
 
-	public function __construct( Tribe_Events_Category_Colors $teccc ) {
+	public function __construct( Main $teccc ) {
 		$this->teccc   = $teccc;
 		$this->options = get_option( 'teccc_options' );
 
-		require TECCC_INCLUDES . '/templatetags.php';
-		require_once TECCC_CLASSES . '/class-widgets.php';
-		require_once TECCC_CLASSES . '/class-extras.php';
+		require_once TECCC_INCLUDES . '/templatetags.php';
 
 		add_action( 'init', array( $this, 'add_colored_categories' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX );
@@ -41,7 +45,7 @@ class Tribe_Events_Category_Colors_Public {
 	public function add_scripts_styles() {
 		// Register stylesheet
 		$args = array( self::CSS_HANDLE => $this->options_hash(), $_GET );
-		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url() ), false, Tribe_Events_Category_Colors::$version );
+		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url() ), false, Main::$version );
 
 		// Let's test to see if any event-related post types were requested
 		$event_types      = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
@@ -63,7 +67,7 @@ class Tribe_Events_Category_Colors_Public {
 		     '1' === $this->options['legend_superpowers'] &&
 		     ! wp_is_mobile()
 		) {
-			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Tribe_Events_Category_Colors::$version, true );
+			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
 		}
 	}
 
@@ -118,11 +122,12 @@ class Tribe_Events_Category_Colors_Public {
 	protected function generate_css() {
 		// Look out for fresh_css requests
 		$refresh_css = array_key_exists( 'refresh_css', $_GET ) ? true : false;
+		$debug_css   = array_key_exists( 'debug_css', $_GET ) ? true : false;
 
 		// Return cached CSS if available and if fresh CSS hasn't been requested
 		$cache_key = 'teccc_' . $this->options_hash();
 		$css = get_transient( $cache_key );
-		if ( ! empty( $css ) && ! $refresh_css ) {
+		if ( ! empty( $css ) && ( ! $refresh_css && ! $debug_css ) ) {
 			return $css;
 		}
 
@@ -137,7 +142,7 @@ class Tribe_Events_Category_Colors_Public {
 
 		$css = ob_get_clean();
 
-		if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) {
+		if ( ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) && ! $debug_css ) {
 			$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css ); // Remove comments
 			$css = str_replace( ': ', ':', $css ); // Remove space after colons
 			$css = str_replace( array(
@@ -164,7 +169,7 @@ class Tribe_Events_Category_Colors_Public {
 	 * @return bool
 	 */
 	public function show_legend( $existingContent = '' ) {
-		$tribe         = TribeEvents::instance();
+		$tribe         = Tribe__Events__Events::instance();
 		$eventDisplays = array( 'month' );
 		$eventDisplays = array_merge( $eventDisplays, $this->legendExtraView );
 		$tribe_view    = get_query_var( 'eventDisplay' );
@@ -180,8 +185,8 @@ class Tribe_Events_Category_Colors_Public {
 
 		$content = $this->teccc->view( 'legend', array(
 			'options' => $this->options,
-			'teccc'   => Tribe_Events_Category_Colors::instance(),
-			'tec'     => TribeEvents::instance()
+			'teccc'   => Main::instance(),
+			'tec'     => Tribe__Events__Events::instance()
 		), false );
 
 		$this->legendFilterHasRun = true;
@@ -199,7 +204,7 @@ class Tribe_Events_Category_Colors_Public {
 	public function reposition_legend( $tribeViewFilter ) {
 		// If the legend has already run they are probably doing something wrong
 		if ( $this->legendFilterHasRun ) {
-			_doing_it_wrong( 'Tribe_Events_Category_Colors_Public::reposition_legend',
+			_doing_it_wrong( __CLASS__ . '::' . __METHOD__,
 			'You are attempting to reposition the legend after it has already been rendered.', '1.6.4' );
 		}
 
@@ -219,7 +224,7 @@ class Tribe_Events_Category_Colors_Public {
 	public function remove_default_legend() {
 		// If the legend has already run they are probably doing something wrong
 		if( $this->legendFilterHasRun ) {
-			_doing_it_wrong( 'Tribe_Events_Category_Colors_Public::reposition_legend',
+			_doing_it_wrong( __CLASS__ . '::' . __METHOD__,
 			'You are attempting to remove the default legend after it has already been rendered.', '1.6.4' );
 		}
 

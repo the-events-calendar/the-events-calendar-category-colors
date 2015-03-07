@@ -1,111 +1,121 @@
-# Copyright (C) 2013 The Events Calendar Category Colors
-# This file is distributed under the same license as the The Events Calendar Category Colors package.
 msgid ""
 msgstr ""
-"Project-Id-Version: The Events Calendar Category Colors 3.0.4\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar-category-"
-"colors\n"
-"POT-Creation-Date: 2013-10-17 21:51:42+00:00\n"
+"Project-Id-Version: The Events Calendar Category Colors\n"
+"POT-Creation-Date: 2015-02-11 21:31-0800\n"
+"PO-Revision-Date: 2015-02-11 21:32-0800\n"
+"Last-Translator: Andy Fragen <andy@thefragens.com>\n"
+"Language-Team: Andy Fragen <andy@thefragens.com>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: category-colors-settings.php:41 includes/admintab.php:37
-msgid "Save Changes"
-msgstr ""
-
-#: classes/admin.php:28 classes/class-admin.php:28 classes/class-admin.php:32
-msgid "The Events Calendar"
-msgstr ""
-
-#: classes/admin.php:29 classes/class-admin.php:29
-msgid ""
-"To begin using The Events Calendar Category Colors, please install the "
-"latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events "
-"Calendar</a>."
-msgstr ""
-
-#: classes/admin.php:94 classes/class-admin.php:81
-msgid "Category Colors"
-msgstr ""
-
-#: classes/admin.php:110 classes/class-admin.php:97
-msgid "Settings saved."
-msgstr ""
-
-#: includes/admintab.php:13
+#: includes/admintab.php:16
 msgid "Category Colors Settings"
 msgstr ""
 
-#: includes/admintab.php:17
+#: includes/admintab.php:20
 msgid ""
-"The Events Calendar Category Colors plugin was inspired by the tutorial <a "
-"href=\"http://tri.be/coloring-your-category-events/\">Coloring Your Category "
-"Events</a>."
+"The Events Calendar Category Colors plugin was inspired by the tutorial "
+"<i>Coloring Your Category Events</i>."
 msgstr ""
 
-#: includes/admintab.php:21
+#: includes/admintab.php:24
 msgid ""
 "Instructions for <strong>filters</strong>, <strong>hooks</strong>, "
 "<strong>settings functions</strong>, and <strong>help</strong> are on <a "
-"href=\"https://github.com/afragen/events-calendar-category-colors/wiki\">The "
-"Events Calendar Category Colors wiki</a>."
+"href=\"https://github.com/afragen/the-events-calendar-category-colors/wiki"
+"\">The Events Calendar Category Colors wiki</a>."
+msgstr ""
+
+#: includes/admintab.php:40
+msgid "Save Changes"
 msgstr ""
 
 #: includes/templatetags.php:56
 msgid "Use of this function is deprecated"
 msgstr ""
 
-#: views/optionsform.php:6
-msgid "Category Slug"
+#: src/Category_Colors/Admin.php:36 src/Category_Colors/Admin.php:40
+msgid "The Events Calendar"
 msgstr ""
 
-#: views/optionsform.php:7
-msgid "Border Color"
+#: src/Category_Colors/Admin.php:37
+#, php-format
+msgid ""
+"To begin using The Events Calendar Category Colors, please install the "
+"latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events "
+"Calendar</a>."
 msgstr ""
 
-#: views/optionsform.php:8
-msgid "Background Color"
+#: src/Category_Colors/Admin.php:41
+msgid "You have The Events Calendar v."
+msgstr ""
+
+#: src/Category_Colors/Admin.php:99
+msgid "Category Colors"
+msgstr ""
+
+#: src/Category_Colors/Admin.php:115
+msgid "Settings saved."
+msgstr ""
+
+#: the-events-calendar-category-colors.php:37
+msgid ""
+"The Events Calendar Category Colors could not run as it&#146;s minimum "
+"requirements were not met."
 msgstr ""
 
 #: views/optionsform.php:9
-msgid "Text Color"
+msgid "Category Slug"
 msgstr ""
 
 #: views/optionsform.php:10
+msgid "Border Color"
+msgstr ""
+
+#: views/optionsform.php:11
+msgid "Background Color"
+msgstr ""
+
+#: views/optionsform.php:12
+msgid "Text Color"
+msgstr ""
+
+#: views/optionsform.php:13
 msgid "Current Display"
 msgstr ""
 
-#: views/optionsform.php:14
-msgid ""
-"You must have at least one event with a category for The Events Calendar "
-"Category Colors plugin to function."
-msgstr ""
-
-#: views/optionsform.php:27 views/optionsform.php:39
+#: views/optionsform.php:26 views/optionsform.php:38
 msgid "Transparent"
 msgstr ""
 
-#: views/optionsform.php:73
+#: views/optionsform.php:72
 msgid "Font-Weight Options"
 msgstr ""
 
-#: views/optionsform.php:84
+#: views/optionsform.php:83
 msgid "Add Category Legend"
 msgstr ""
 
-#: views/optionsform.php:86
+#: views/optionsform.php:85
 msgid "Check to add a Category Legend to the calendar."
 msgstr ""
 
-#: views/optionsform.php:91
+#: views/optionsform.php:90
 msgid "Check to add Legend Superpowers."
 msgstr ""
 
-#: views/optionsform.php:92
+#: views/optionsform.php:91
 msgid ""
 "Legend Superpowers are an optional visual effect allowing visitors to focus "
 "only on those events that belong to categories of interest - without "
@@ -114,46 +124,54 @@ msgid ""
 "click again to remove it."
 msgstr ""
 
-#: views/optionsform.php:95
+#: views/optionsform.php:94
 msgid "Custom Legend CSS"
 msgstr ""
 
-#: views/optionsform.php:97
+#: views/optionsform.php:96
 msgid "Check to use your own CSS for category legend."
 msgstr ""
 
-#: views/optionsform.php:100
+#: views/optionsform.php:99
+msgid "Colorize Widgets"
+msgstr ""
+
+#: views/optionsform.php:101
+msgid "Add Category Colors to widgets"
+msgstr ""
+
+#: views/optionsform.php:104
 msgid "Database Options"
 msgstr ""
 
-#: views/optionsform.php:102
+#: views/optionsform.php:106
 msgid "Restore defaults upon plugin deactivation/reactivation"
 msgstr ""
 
-#: views/optionsform.php:103
+#: views/optionsform.php:107
 msgid ""
 "Only check this if you want to reset plugin settings upon Plugin reactivation"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "The Events Calendar Category Colors"
-msgstr ""
+msgstr "The Events Calendar Category Colors"
 
 #. Plugin URI of the plugin/theme
-msgid "https://github.com/afragen/events-calendar-category-colors/"
-msgstr ""
+msgid "https://github.com/afragen/the-events-calendar-category-colors/"
+msgstr "https://github.com/afragen/the-events-calendar-category-colors/"
 
 #. Description of the plugin/theme
 msgid ""
-"This plugin adds event category background coloring to <a href=\"http://"
-"wordpress.org/extend/plugins/the-events-calendar/\">The Events Calendar</a> "
-"plugin."
-msgstr ""
+"This plugin adds event category background coloring to <a "
+"href=\"http://wordpress.org/extend/plugins/the-events-calendar/\">The Events"
+" Calendar</a> plugin."
+msgstr "This plugin adds event category background coloring to <a href=\"http://wordpress.org/extend/plugins/the-events-calendar/\">The Events Calendar</a> plugin."
 
 #. Author of the plugin/theme
 msgid "Andy Fragen, Barry Hughes"
-msgstr ""
+msgstr "Andy Fragen, Barry Hughes"
 
 #. Author URI of the plugin/theme
 msgid "http://thefragens.com/blog/"
-msgstr ""
+msgstr "http://thefragens.com/blog/"

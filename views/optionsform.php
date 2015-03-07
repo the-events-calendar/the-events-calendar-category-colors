@@ -1,26 +1,29 @@
+<?php
+namespace Fragen\Category_Colors;
+?>
 <table class="teccc form-table" xmlns="http://www.w3.org/1999/html">
 
 	<style type="text/css">.form-table th { font-size: 12px; }</style>
 
 		<tr>
-			<th> <strong><?php _e( 'Category Slug', 'events-calendar-category-colors' ) ?></strong> </th>
-			<th> <strong><?php _e( 'Border Color', 'events-calendar-category-colors' ) ?></strong> </th>
-			<th> <strong><?php _e( 'Background Color', 'events-calendar-category-colors' ) ?></strong> </th>
-			<th> <strong><?php _e( 'Text Color', 'events-calendar-category-colors' ) ?></strong> </th>
-			<th> <strong><?php _e( 'Current Display', 'events-calendar-category-colors' ) ?></strong> </th>
+			<th> <strong><?php _e( 'Category Slug', 'the-events-calendar-category-colors' ) ?></strong> </th>
+			<th> <strong><?php _e( 'Border Color', 'the-events-calendar-category-colors' ) ?></strong> </th>
+			<th> <strong><?php _e( 'Background Color', 'the-events-calendar-category-colors' ) ?></strong> </th>
+			<th> <strong><?php _e( 'Text Color', 'the-events-calendar-category-colors' ) ?></strong> </th>
+			<th> <strong><?php _e( 'Current Display', 'the-events-calendar-category-colors' ) ?></strong> </th>
 		</tr>
 
 		<?php foreach ( $teccc->terms as $id => $attributes ): ?>
 			<?php
-				$slug = esc_attr( $attributes[Tribe_Events_Category_Colors::SLUG] );
-				$name = esc_attr( $attributes[Tribe_Events_Category_Colors::NAME] );
+				$slug = esc_attr( $attributes[ Main::SLUG ] );
+				$name = esc_attr( $attributes[ Main::NAME ] );
 			?>
 		<tr>
 			<td> <?php echo $slug ?> </td>
 
 			<td class="color-control">
 				<div class="transparency">
-					<label> <input name="teccc_options[<?php echo $slug ?>-border_transparent]" type="checkbox" value="1" <?php checked('1', $options[$slug.'-border_transparent'], true) ?> /> <?php _e( 'Transparent', 'events-calendar-category-colors' ) ?> </label> <br />
+					<label> <input name="teccc_options[<?php echo $slug ?>-border_transparent]" type="checkbox" value="1" <?php checked('1', $options[$slug.'-border_transparent'], true) ?> /> <?php _e( 'Transparent', 'the-events-calendar-category-colors' ) ?> </label> <br />
 					<?php if ( isset( $options[$slug.'-border_transparent'] ) ):
 						$options[$slug.'-border'] = 'transparent'; ?>
 					<?php endif ?>
@@ -32,7 +35,7 @@
 
 			<td class="color-control">
 				<div class="transparency">
-					<label> <input name="teccc_options[<?php echo $slug ?>-background_transparent]" type="checkbox" value="1" <?php checked( '1', $options[$slug.'-background_transparent'], true ) ?> /> <?php _e( 'Transparent', 'events-calendar-category-colors' ) ?> </label><br />
+					<label> <input name="teccc_options[<?php echo $slug ?>-background_transparent]" type="checkbox" value="1" <?php checked( '1', $options[$slug.'-background_transparent'], true ) ?> /> <?php _e( 'Transparent', 'the-events-calendar-category-colors' ) ?> </label><br />
 					<?php if ( isset( $options[$slug.'-background_transparent'] ) ):
 						$options[$slug.'-background'] = 'transparent'; ?>
 					<?php endif ?>
@@ -66,7 +69,7 @@
 
 <div id="teccc_options">
 
-	<div class="teccc_options_col1"> <?php _e( 'Font-Weight Options', 'events-calendar-category-colors' ) ?> </div>
+	<div class="teccc_options_col1"> <?php _e( 'Font-Weight Options', 'the-events-calendar-category-colors' ) ?> </div>
 		<div class="teccc_options_col2">
 			<select name="teccc_options[font_weight]" id="teccc_font_weight">
 			<?php foreach ( $teccc->font_weights as $key => $value ): ?>
@@ -77,31 +80,31 @@
 			</select>
 		</div>
 
-	<div class="teccc_options_col1"> <?php _e( 'Add Category Legend', 'events-calendar-category-colors' ) ?> </div>
+	<div class="teccc_options_col1"> <?php _e( 'Add Category Legend', 'the-events-calendar-category-colors' ) ?> </div>
 		<div id="category_legend_setting" class="teccc_options_col2">
-			<label><input name="teccc_options[add_legend]" type="checkbox" value="1" <?php checked( '1', $options['add_legend'], true ) ?> /> <?php _e( 'Check to add a Category Legend to the calendar.', 'events-calendar-category-colors' ) ?> </label>
+			<label><input name="teccc_options[add_legend]" type="checkbox" value="1" <?php checked( '1', $options['add_legend'], true ) ?> /> <?php _e( 'Check to add a Category Legend to the calendar.', 'the-events-calendar-category-colors' ) ?> </label>
 		</div>
 	
 	<div class="teccc_options_col1 legend_related"><!-- Add Legend Superpowers --></div>
 		<div class="teccc_options_col2 legend_related">
-			<label> <input name="teccc_options[legend_superpowers]" type="checkbox" value="1" <?php checked( '1', $options['legend_superpowers'], true ) ?> /> <?php _e( 'Check to add Legend Superpowers.', 'events-calendar-category-colors' ) ?> </label>
-			<p> <?php _e( 'Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it.', 'events-calendar-category-colors' ) ?> </p>
+			<label> <input name="teccc_options[legend_superpowers]" type="checkbox" value="1" <?php checked( '1', $options['legend_superpowers'], true ) ?> /> <?php _e( 'Check to add Legend Superpowers.', 'the-events-calendar-category-colors' ) ?> </label>
+			<p> <?php _e( 'Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it.', 'the-events-calendar-category-colors' ) ?> </p>
 		</div>
 
-	<div class="teccc_options_col1 legend_related"><label> <?php _e( 'Custom Legend CSS', 'events-calendar-category-colors' ) ?> </label></div>
+	<div class="teccc_options_col1 legend_related"><label> <?php _e( 'Custom Legend CSS', 'the-events-calendar-category-colors' ) ?> </label></div>
 		<div class="teccc_options_col2 legend_related">
-			<label> <input name="teccc_options[custom_legend_css]" type="checkbox" value="1" <?php checked( '1', $options['custom_legend_css'], true ) ?> /> <?php _e( 'Check to use your own CSS for category legend.', 'events-calendar-category-colors' ) ?> </label>
+			<label> <input name="teccc_options[custom_legend_css]" type="checkbox" value="1" <?php checked( '1', $options['custom_legend_css'], true ) ?> /> <?php _e( 'Check to use your own CSS for category legend.', 'the-events-calendar-category-colors' ) ?> </label>
 		</div>
 
-	<div class="teccc_options_col1"><?php _e( 'Colorize Widgets', 'events-calendar-category-colors' ) ?></div>
+	<div class="teccc_options_col1"><?php _e( 'Colorize Widgets', 'the-events-calendar-category-colors' ) ?></div>
 		<div class="teccc_options_col2">
-			<label><input name="teccc_options[color_widgets]" type="checkbox" value="1" <?php checked( '1', $options['color_widgets'], true ) ?> /> <?php _e( 'Add Category Colors to widgets', 'events-calendar-category-colors' ) ?> </label>
+			<label><input name="teccc_options[color_widgets]" type="checkbox" value="1" <?php checked( '1', $options['color_widgets'], true ) ?> /> <?php _e( 'Add Category Colors to widgets', 'the-events-calendar-category-colors' ) ?> </label>
 		</div>
 
-	<div class="teccc_options_col1"> <?php _e( 'Database Options', 'events-calendar-category-colors' ) ?> </div>
+	<div class="teccc_options_col1"> <?php _e( 'Database Options', 'the-events-calendar-category-colors' ) ?> </div>
 		<div class="teccc_options_col2">
-			<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1" <?php checked( '1', $options['chk_default_options_db'], true ) ?> /> <?php _e( 'Restore defaults upon plugin deactivation/reactivation', 'events-calendar-category-colors' ) ?> </label>
-			<p> <?php _e( 'Only check this if you want to reset plugin settings upon Plugin reactivation', 'events-calendar-category-colors' ) ?> </p>
+			<label><input name="teccc_options[chk_default_options_db]" type="checkbox" value="1" <?php checked( '1', $options['chk_default_options_db'], true ) ?> /> <?php _e( 'Restore defaults upon plugin deactivation/reactivation', 'the-events-calendar-category-colors' ) ?> </label>
+			<p> <?php _e( 'Only check this if you want to reset plugin settings upon Plugin reactivation', 'the-events-calendar-category-colors' ) ?> </p>
 		</div>
 
 </div>

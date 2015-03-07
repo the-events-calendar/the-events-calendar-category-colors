@@ -14,6 +14,8 @@ Add background colors to event categories displayed in the event views of The Ev
 
 Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page.
 
+Requires PHP 5.3 or later
+
 ## Installation ##
 
 1. Upload the entire `/the-events-calendar-category-colors/` folder to the `/wp-content/plugins/` directory.
@@ -33,27 +35,24 @@ The last compatible version of this plugin that works with TEC 2.x is [The Event
 
 ### Where can I get more help? ###
 
-There is more extensive documentation of the plugins features and usage on the [The Events Calendar Category Colors wiki](https://github.com/afragen/events-calendar-category-colors/wiki).
+There is more extensive documentation of the plugins features and usage on the [The Events Calendar Category Colors wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki).
 
 ### Where can I report bugs? ###
 
 1. Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
-2. Add a new issue on the [github repo](https://github.com/afragen/events-calendar-category-colors/issues?state=open).
+2. Add a new issue on the [github repo](https://github.com/afragen/the-events-calendar-category-colors/issues?state=open).
 
 ## Screenshots ##
 
-###1. The Events Calendar Category Colors Settings tab
-###
+### 1. The Events Calendar Category Colors Settings tab
 ![The Events Calendar Category Colors Settings tab
 ](./assets/screenshot-1.png)
 
-###2. The Events Calendar Category Colors in action
-###
+### 2. The Events Calendar Category Colors in action
 ![The Events Calendar Category Colors in action
 ](./assets/screenshot-2.png)
 
-###3. The Events Calendar Category Colors with Legend Superpowers in action
-###
+### 3. The Events Calendar Category Colors with Legend Superpowers in action
 ![The Events Calendar Category Colors with Legend Superpowers in action
 ](./assets/screenshot-3.png)
 
