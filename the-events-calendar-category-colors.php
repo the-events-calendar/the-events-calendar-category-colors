@@ -42,7 +42,7 @@ function teccc_init() {
 	global $teccc;
 
 	// Check for PHP 5.3 compatibility
-	if ( version_compare( PHP_VERSION, '5.3', '<' ) ) {
+	if ( version_compare( PHP_VERSION, '5.3.0', '<' ) ) {
 		add_action( 'admin_notices', 'teccc_load_failure' );
 		return;
 	}
@@ -61,8 +61,7 @@ function teccc_init() {
 
 	// Autoloading
 	require_once( TECCC_CLASSES . '/Category_Colors/Autoloader.php' );
-	$class_loader = 'Fragen\Category_Colors\Autoloader';
-	new $class_loader( $root, $compatibility );
+	new Fragen\Category_Colors\Autoloader( $root, $compatibility );
 
 	// Set-up Action and Filter Hooks
 	register_activation_hook( __FILE__, array( 'Fragen\Category_Colors\Main', 'add_defaults' ) );
