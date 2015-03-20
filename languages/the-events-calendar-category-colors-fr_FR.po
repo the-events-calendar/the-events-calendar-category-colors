@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Category Colors\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar-category-colors\n"
-"POT-Creation-Date: 2015-02-11 21:31-0800\n"
-"PO-Revision-Date: 2015-02-11 21:36-0800\n"
+"POT-Creation-Date: 2015-03-19 18:31-0800\n"
+"PO-Revision-Date: 2015-03-19 18:36-0800\n"
 "Last-Translator: Andy Fragen <andy@thefragens.com>\n"
 "Language-Team: French (France) (http://www.transifex.com/projects/p/wp-translations/language/"
 "fr_FR/)\n"
@@ -77,9 +77,11 @@ msgstr "Category Colors"
 msgid "Settings saved."
 msgstr "Réglages enregistrés."
 
-#: the-events-calendar-category-colors.php:37
+#: vendor/WPUpdatePhp.php:96
+#, php-format
 msgid ""
-"The Events Calendar Category Colors could not run as it&#146;s minimum requirements were not met."
+"Unfortunately, %1$s can not run on PHP versions older than %2$s. Read more information about <a "
+"href=\"http://www.wpupdatephp.com/update/\">how you can update</a>."
 msgstr ""
 
 #: views/optionsform.php:9
@@ -150,7 +152,7 @@ msgstr ""
 #: views/optionsform.php:101
 #, fuzzy
 msgid "Add Category Colors to widgets"
-msgstr "Colores de Categoría "
+msgstr "Category Colors"
 
 #: views/optionsform.php:104
 msgid "Database Options"
@@ -186,8 +188,8 @@ msgid "Andy Fragen, Barry Hughes"
 msgstr "Andy Fragen, Barry Hughes"
 
 #. Author URI of the plugin/theme
-msgid "http://thefragens.com/blog/"
-msgstr "http://thefragens.com/blog/"
+msgid "http://thefragens.com/"
+msgstr "http://thefragens.com/"
 
 #~ msgid ""
 #~ "You must have at least one event with a category for The Events Calendar Category Colors plugin "
