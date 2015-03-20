@@ -93,7 +93,7 @@ class WPUpdatePhp {
 		?>
 		<div class="error">
 			<p>
-				<?php printf( __( 'Unfortunately, %1$s can not run on PHP versions older than %2$s. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.' ), $this->plugin_name, $this->minimum_version ); ?>
+				<?php printf( __( 'Unfortunately, %1$s can not run on PHP versions older than %2$s. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.', 'the-events-calendar-category-colors' ), $this->plugin_name, $this->minimum_version ); ?>
 			</p>
 		</div>
 	<?php

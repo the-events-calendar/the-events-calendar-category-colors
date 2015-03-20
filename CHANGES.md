@@ -1,3 +1,7 @@
+#### 4.0.1
+* don't use variable for class name
+* switch PHP version check to use WPUpdatePhp
+
 #### 4.0.0
 * don't minify CSS when `?debug_css` - this to help in debugging
 * requires PHP 5.3 or greater as requires namespacing 
