@@ -1,3 +1,6 @@
+#### 4.0.2
+* quick fix for fatal error, I think due to naming method in WPUpdatePhp
+
 #### 4.0.1
 * don't use variable for class name
 * switch PHP version check to use WPUpdatePhp
