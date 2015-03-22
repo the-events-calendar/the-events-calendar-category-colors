@@ -53,24 +53,13 @@ class WPUpdatePhp {
 	}
 
 	/**
-	 * @param $file
+	 * @param $plugin_name
 	 *
 	 * @return bool
 	 */
-	public function does_my_plugin_meet_required_php_version( $file ) {
-		$this->plugin_name = $this->set_plugin_name_from_file( $file );
+	public function does_my_plugin_meet_required_php_version( $plugin_name ) {
+		$this->plugin_name = $plugin_name;
 		return $this->does_it_meet_required_php_version();
-	}
-
-	/**
-	 * @param $file
-	 *
-	 * @return mixed
-	 */
-	private function set_plugin_name_from_file( $file ) {
-		include_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-		$headers = get_plugin_data( $file );
-		return $headers['Name'];
 	}
 
 	/**
