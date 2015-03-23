@@ -56,7 +56,8 @@ function teccc_init() {
 
 	// Autoloading
 	require_once( TECCC_CLASSES . '/Category_Colors/Autoloader.php' );
-	new Fragen\Category_Colors\Autoloader( $root, $compatibility );
+	$autoloader = 'Fragen\\Category_Colors\\Autoloader';
+	new $autoloader( $root, $compatibility );
 
 	// Set-up Action and Filter Hooks
 	register_activation_hook( __FILE__, array( 'Fragen\Category_Colors\Main', 'add_defaults' ) );
