@@ -1,3 +1,6 @@
+#### 4.0.3
+* fix for fatal error. Need to load namespaced class as variable as PHP < 5.3 chokes.
+
 #### 4.0.2
 * quick fix for fatal error, I think due to naming method in WPUpdatePhp
 
