@@ -27,8 +27,9 @@ class Main {
 	 *
 	 * @var array
 	 */
-	public $terms = array();
-	public $count = 0;
+	public $terms     = array();
+	public $all_terms = array();
+	public $count     = 0;
 
 	/**
 	 * Category IDs (ints) and slugs (strings) to ignore.
@@ -69,7 +70,7 @@ class Main {
 		}
 
 		self::$version = self::plugin_get_version( TECCC_FILE );
-		$this->public = new Frontend( $this );
+		$this->public  = new Frontend( $this );
 	}
 
 	public function load_categories() {
@@ -83,15 +84,26 @@ class Main {
 			return false;
 		}
 
-		// Tribe__Events__Events not yet defined, so we can't use the class constant
-		$term_list = apply_filters( 'teccc_get_terms', get_terms( 'tribe_events_cat', array( 'hide_empty' => false ) ) );
+		/**
+		 * Tribe__Events__Events not yet defined, so we can't use the class constant
+		 */
+		$all_terms = get_terms( 'tribe_events_cat', array( 'hide_empty' => false ) );
+		$terms     = apply_filters( 'teccc_get_terms', $all_terms );
 
-		// Represent each term as an array [slug, name] indexed by term ID
-		foreach ( $term_list as $term ) {
-			$this->terms[ $term->term_id ] = array( $term->slug, preg_replace( '/\s/', '&nbsp;', $term->name ) );
+		/**
+		 * Populate public variables.
+		 * Represent each term as an array [slug, name] indexed by term ID
+		 */
+		$term_lists = array( 'all_terms' => &$all_terms, 'terms' => &$terms );
+		foreach ( $term_lists as $list => $arr ) {
+			foreach ( $arr as $term ) {
+				$this->{$list}[ $term->term_id ] = array( $term->slug, preg_replace( '/\s/', '&nbsp;', $term->name ) );
+			}
 		}
-		$options = get_option( 'teccc_options' );
-		$options['terms'] = $this->terms;
+
+		$options              = get_option( 'teccc_options' );
+		$options['terms']     = $this->terms;
+		$options['all_terms'] = $this->all_terms;
 		update_option( 'teccc_options', $options );
 	}
 
@@ -103,7 +115,15 @@ class Main {
 	 * @return array
 	 */
 	public function remove_terms( $term_list ) {
+		$options      = get_option( 'teccc_options' );
 		$revised_list = array();
+
+		if ( ! isset( $options['hide'] ) ) {
+			$options['hide'] = array();
+		}
+
+		$this->ignore_list = array_merge( $this->ignore_list, (array) $options['hide'] );
+		$this->ignore_list = array_unique( $this->ignore_list );
 
 		foreach ( $term_list as $src_id => $src_term ) {
 			if ( in_array( (int) $src_term->term_id, $this->ignore_list, true ) ) {
@@ -206,6 +226,7 @@ class Main {
 				$arr[ $teccc->slugs[$i].'-border' ]                 = '#CFCFCF';
 				$arr[ $teccc->slugs[$i].'-border_transparent' ]     = '1';
 				$arr[ $teccc->slugs[$i].'-background_transparent' ] = '1';
+				$arr['hide'][ $teccc->slugs[$i] ]                   = null;
 			}
 			$arr['font_weight'] = 'bold';
 			update_option( 'teccc_options', $arr );

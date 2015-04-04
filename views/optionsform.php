@@ -6,6 +6,7 @@ namespace Fragen\Category_Colors;
 	<style type="text/css">.form-table th { font-size: 12px; }</style>
 
 		<tr>
+			<th style="width:10px;"> <strong><?php _e( 'Hide', 'the-events-calendar-category-colors' ) ?></strong></th>
 			<th> <strong><?php _e( 'Category Slug', 'the-events-calendar-category-colors' ) ?></strong> </th>
 			<th> <strong><?php _e( 'Border Color', 'the-events-calendar-category-colors' ) ?></strong> </th>
 			<th> <strong><?php _e( 'Background Color', 'the-events-calendar-category-colors' ) ?></strong> </th>
@@ -13,16 +14,26 @@ namespace Fragen\Category_Colors;
 			<th> <strong><?php _e( 'Current Display', 'the-events-calendar-category-colors' ) ?></strong> </th>
 		</tr>
 
-		<?php foreach ( $teccc->terms as $id => $attributes ): ?>
+		<?php foreach ( $teccc->all_terms as $id => $attributes ): ?>
 			<?php
 				$slug = esc_attr( $attributes[ Main::SLUG ] );
 				$name = esc_attr( $attributes[ Main::NAME ] );
 			?>
 		<tr>
+			<td>
+				<?php if ( ! isset( $options['hide'][ $slug] ) ) :
+					$options['hide'][ $slug ] = null; ?>
+				<?php endif ?>
+				<label> <input name="teccc_options[hide][<?php echo $slug ?>]" type="checkbox" value="<?php echo $slug ?>" <?php checked( $slug, $options['hide'][ $slug ], true ) ?> /> </label>
+			</td>
+
 			<td> <?php echo $slug ?> </td>
 
 			<td class="color-control">
 				<div class="transparency">
+					<?php if ( ! isset( $options[ $slug . '-border_transparent'] ) ) :
+						$options[ $slug . '-border_transparent'] = null; ?>
+					<?php endif ?>
 					<label> <input name="teccc_options[<?php echo $slug ?>-border_transparent]" type="checkbox" value="1" <?php checked('1', $options[$slug.'-border_transparent'], true) ?> /> <?php _e( 'Transparent', 'the-events-calendar-category-colors' ) ?> </label> <br />
 					<?php if ( isset( $options[$slug.'-border_transparent'] ) ):
 						$options[$slug.'-border'] = 'transparent'; ?>
@@ -35,6 +46,9 @@ namespace Fragen\Category_Colors;
 
 			<td class="color-control">
 				<div class="transparency">
+					<?php if ( ! isset( $options[ $slug . '-background_transparent'] ) ) :
+						$options[ $slug . '-background_transparent'] = null; ?>
+					<?php endif ?>
 					<label> <input name="teccc_options[<?php echo $slug ?>-background_transparent]" type="checkbox" value="1" <?php checked( '1', $options[$slug.'-background_transparent'], true ) ?> /> <?php _e( 'Transparent', 'the-events-calendar-category-colors' ) ?> </label><br />
 					<?php if ( isset( $options[$slug.'-background_transparent'] ) ):
 						$options[$slug.'-background'] = 'transparent'; ?>
