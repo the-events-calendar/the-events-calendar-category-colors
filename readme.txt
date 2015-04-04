@@ -4,7 +4,7 @@ Donate link: http://bit.ly/teccc-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 4.0.3
+Stable tag: 4.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,10 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 4.1.0 =
+* add setting to hide category on frontend
+* fix a number of PHP notices
 
 = 4.0.3 =
 * fix for fatal error. Need to load namespaced class as variable as PHP < 5.3 chokes.
