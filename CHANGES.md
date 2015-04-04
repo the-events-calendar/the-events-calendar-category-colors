@@ -1,3 +1,7 @@
+#### 4.1.0
+* add setting to hide category on frontend
+* fix a number of PHP notices
+
 #### 4.0.3
 * fix for fatal error. Need to load namespaced class as variable as PHP < 5.3 chokes.
 

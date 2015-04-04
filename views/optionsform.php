@@ -6,6 +6,7 @@ namespace Fragen\Category_Colors;
 	<style type="text/css">.form-table th { font-size: 12px; }</style>
 
 		<tr>
+			<th style="width:10px;"> <strong><?php _e( 'Hide', 'the-events-calendar-category-colors' ) ?></strong></th>
 			<th> <strong><?php _e( 'Category Slug', 'the-events-calendar-category-colors' ) ?></strong> </th>
 			<th> <strong><?php _e( 'Border Color', 'the-events-calendar-category-colors' ) ?></strong> </th>
 			<th> <strong><?php _e( 'Background Color', 'the-events-calendar-category-colors' ) ?></strong> </th>
@@ -13,12 +14,19 @@ namespace Fragen\Category_Colors;
 			<th> <strong><?php _e( 'Current Display', 'the-events-calendar-category-colors' ) ?></strong> </th>
 		</tr>
 
-		<?php foreach ( $teccc->terms as $id => $attributes ): ?>
+		<?php foreach ( $teccc->all_terms as $id => $attributes ): ?>
 			<?php
 				$slug = esc_attr( $attributes[ Main::SLUG ] );
 				$name = esc_attr( $attributes[ Main::NAME ] );
 			?>
 		<tr>
+			<td>
+				<?php if ( ! isset( $options['hide'][ $slug] ) ) :
+					$options['hide'][ $slug ] = null; ?>
+				<?php endif ?>
+				<label> <input name="teccc_options[hide][<?php echo $slug ?>]" type="checkbox" value="<?php echo $slug ?>" <?php checked( $slug, $options['hide'][ $slug ], true ) ?> /> </label>
+			</td>
+
 			<td> <?php echo $slug ?> </td>
 
 			<td class="color-control">
