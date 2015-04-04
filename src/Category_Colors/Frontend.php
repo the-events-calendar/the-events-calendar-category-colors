@@ -83,8 +83,11 @@ class Frontend {
 		$config = (array) $this->options;
 
 		// Terms are relevant but need to be flattened out
-		if ( isset( $config['terms'] ) && is_array( $config) )
-			$config['terms'] = join( '|', array_keys( $config['terms'] ) );
+		foreach ( $config as $key => $value ) {
+			if ( isset( $key ) && is_array( $value ) ) {
+				$config[ $key ] = join( '|', array_keys( $value ) );
+			}
+		}
 
 		// We also need to be cognizant of the mobile breakpoint
 		$config['breakpoint'] = tribe_get_mobile_breakpoint();
