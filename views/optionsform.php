@@ -23,6 +23,9 @@ namespace Fragen\Category_Colors;
 
 			<td class="color-control">
 				<div class="transparency">
+					<?php if ( ! isset( $options[ $slug . '-border_transparent'] ) ) :
+						$options[ $slug . '-border_transparent'] = null; ?>
+					<?php endif ?>
 					<label> <input name="teccc_options[<?php echo $slug ?>-border_transparent]" type="checkbox" value="1" <?php checked('1', $options[$slug.'-border_transparent'], true) ?> /> <?php _e( 'Transparent', 'the-events-calendar-category-colors' ) ?> </label> <br />
 					<?php if ( isset( $options[$slug.'-border_transparent'] ) ):
 						$options[$slug.'-border'] = 'transparent'; ?>
@@ -35,6 +38,9 @@ namespace Fragen\Category_Colors;
 
 			<td class="color-control">
 				<div class="transparency">
+					<?php if ( ! isset( $options[ $slug . '-background_transparent'] ) ) :
+						$options[ $slug . '-background_transparent'] = null; ?>
+					<?php endif ?>
 					<label> <input name="teccc_options[<?php echo $slug ?>-background_transparent]" type="checkbox" value="1" <?php checked( '1', $options[$slug.'-background_transparent'], true ) ?> /> <?php _e( 'Transparent', 'the-events-calendar-category-colors' ) ?> </label><br />
 					<?php if ( isset( $options[$slug.'-background_transparent'] ) ):
 						$options[$slug.'-background'] = 'transparent'; ?>
