@@ -76,11 +76,8 @@ class WPUpdatePhp {
 	 */
 	private function load_version_notice( $callback ) {
 		if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
-			if ( ! is_main_network() ) {
-				add_action( 'admin_notices', $callback );
-			} else {
-				add_action( 'admin_head', $callback );
-			}
+			add_action( 'admin_notices', $callback );
+			add_action( 'network_admin_notices', $callback );
 		}
 	}
 
@@ -90,7 +87,7 @@ class WPUpdatePhp {
 	 */
 	public function minimum_admin_notice() {
 		?>
-		<div class="error">
+		<div class="error notice is-dismissible">
 			<p>
 			<?php printf( __( 'Unfortunately, %1$s can not run on PHP versions older than %2$s.' ), $this->plugin_name, $this->minimum_version ); ?>
 			<br>
@@ -106,7 +103,7 @@ class WPUpdatePhp {
 	 */
 	public function recommended_admin_notice() {
 		?>
-		<div class="error">
+		<div class="error notice is-dismissible">
 			<p>
 				<?php printf( __( '%1$s recommends a PHP version greater than %2$s.'), ucfirst( $this->plugin_name ), $this->recommended_version ); ?>
 				<br>
