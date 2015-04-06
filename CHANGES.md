@@ -1,3 +1,6 @@
+#### 4.2.0
+* add setting to show hidden categories - for @mending
+
 #### 4.1.0
 * add setting to hide category on frontend
 * fix a number of PHP notices

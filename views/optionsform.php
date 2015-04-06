@@ -105,7 +105,12 @@ namespace Fragen\Category_Colors;
 			<p> <?php _e( 'Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it.', 'the-events-calendar-category-colors' ) ?> </p>
 		</div>
 
-	<div class="teccc_options_col1 legend_related"><label> <?php _e( 'Custom Legend CSS', 'the-events-calendar-category-colors' ) ?> </label></div>
+	<div class="teccc_options_col1 legend_related"><!-- Show Hidden Categories --></div>
+	<div class="teccc_options_col2 legend_related">
+		<label><input name="teccc_options[show_ignored_cats_legend]" type="checkbox" value="1" <?php checked( '1', $options['show_ignored_cats_legend'], true ) ?> /> <?php _e( 'Show hidden categories in legend.', 'the-events-calendar-category-colors' ) ?> </label>
+	</div>
+
+	<div class="teccc_options_col1 legend_related"><label><!-- Custom Legend CSS --></label></div>
 		<div class="teccc_options_col2 legend_related">
 			<label> <input name="teccc_options[custom_legend_css]" type="checkbox" value="1" <?php checked( '1', $options['custom_legend_css'], true ) ?> /> <?php _e( 'Check to use your own CSS for category legend.', 'the-events-calendar-category-colors' ) ?> </label>
 		</div>
