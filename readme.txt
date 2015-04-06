@@ -52,7 +52,7 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
-= 4.2.0
+= 4.2.0 =
  * add setting to show hidden categories - for @mending
 
 = 4.1.0 =
