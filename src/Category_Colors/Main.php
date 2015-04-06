@@ -27,9 +27,10 @@ class Main {
 	 *
 	 * @var array
 	 */
-	public $terms     = array();
-	public $all_terms = array();
-	public $count     = 0;
+	public $terms         = array();
+	public $all_terms     = array();
+	public $ignored_terms = array();
+	public $count         = 0;
 
 	/**
 	 * Category IDs (ints) and slugs (strings) to ignore.
@@ -101,9 +102,16 @@ class Main {
 			}
 		}
 
-		$options              = get_option( 'teccc_options' );
-		$options['terms']     = $this->terms;
-		$options['all_terms'] = $this->all_terms;
+		if ( ! empty( $this->ignore_list ) ) {
+			foreach ( $this->ignore_list as $ignored ) {
+				$name = ucwords( preg_replace( '/-/', ' ', $ignored ) );
+				$this->ignored_terms[] = array( $ignored, preg_replace( '/\s/', '&nbsp;', $name ) );
+			}
+		}
+
+		$options                 = get_option( 'teccc_options' );
+		$options['terms']        = $this->terms;
+		$options['all_terms']    = $this->all_terms;
 		update_option( 'teccc_options', $options );
 	}
 
