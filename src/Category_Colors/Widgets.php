@@ -37,12 +37,10 @@ class Widgets extends Frontend {
 			$css[] = '.tribe-venue-widget-list li.tribe-events-category-' . $slug . ' a:visited,';
 			$css[] = '.tribe-mini-calendar td.tribe-events-has-events.tribe-events-category-' . $slug . ',';
 		} else {
-			// 3.9
-			$css[] = '.tribe-events-list-widget li.tribe-events-category-' . $slug . ' a:link,';
-			$css[] = '.tribe-events-list-widget li.tribe-events-category-' . $slug . ' a:visited,';
-			// 3.10
-			$css[] = 'li.tribe-events-list-widget-events.tribe-events-category-' . $slug . ' a:link,';
-			$css[] = 'li.tribe-events-list-widget-events.tribe-events-category-' . $slug . ' a:visited,';
+			$css[] = '.tribe-events-list-widget li.tribe-events-category-' . $slug . ' a:link,'; // 3.9
+			$css[] = '.tribe-events-list-widget li.tribe-events-category-' . $slug . ' a:visited,'; // 3.9
+			$css[] = 'li.tribe-events-list-widget-events.tribe-events-category-' . $slug . ' a:link,'; // 3.10
+			$css[] = 'li.tribe-events-list-widget-events.tribe-events-category-' . $slug . ' a:visited,'; // 3.10
 		}
 		$css[] = '';
 		$css   = implode( "\n", $css );
