@@ -45,9 +45,9 @@ function teccc_init() {
 
 	// Back compat classes
 	$compatibility = array(
-		'Tribe__Events__Events'          => TECCC_CLASSES . '/Back_Compat/Events.php',
+		'Tribe__Events__Main'          => TECCC_CLASSES . '/Back_Compat/Events.php',
 		'Tribe__Events__Settings_Tab'    => TECCC_CLASSES . '/Back_Compat/Settings_Tab.php',
-		'Tribe__Events__Pro__Events_Pro' => TECCC_CLASSES . '/Back_Compat/Events_Pro.php',
+		'Tribe__Events__Pro__Main' => TECCC_CLASSES . '/Back_Compat/Events_Pro.php',
 	);
 
 	// Plugin namespace root

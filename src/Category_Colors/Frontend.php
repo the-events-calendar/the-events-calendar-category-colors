@@ -2,7 +2,7 @@
 namespace Fragen\Category_Colors;
 
 use DateTime,
-    Tribe__Events__Events;
+	Tribe__Events__Main;
 
 
 class Frontend {
@@ -172,7 +172,7 @@ class Frontend {
 	 * @return bool
 	 */
 	public function show_legend( $existingContent = '' ) {
-		$tribe         = Tribe__Events__Events::instance();
+		$tribe         = Tribe__Events__Main::instance();
 		$eventDisplays = array( 'month' );
 		$eventDisplays = array_merge( $eventDisplays, $this->legendExtraView );
 		$tribe_view    = get_query_var( 'eventDisplay' );
@@ -189,7 +189,7 @@ class Frontend {
 		$content = $this->teccc->view( 'legend', array(
 			'options' => $this->options,
 			'teccc'   => Main::instance(),
-			'tec'     => Tribe__Events__Events::instance()
+			'tec'     => Tribe__Events__Main::instance()
 		), false );
 
 		$this->legendFilterHasRun = true;

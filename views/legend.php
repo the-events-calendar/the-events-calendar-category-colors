@@ -1,7 +1,7 @@
 <?php
 namespace Fragen\Category_Colors;
 
-use Tribe__Events__Events;
+use Tribe__Events__Main;
 ?>
 <div id="legend_box" class="teccc-legend">
 
@@ -11,7 +11,7 @@ use Tribe__Events__Events;
             <?php
             $slug = esc_attr( $attributes[ Main::SLUG ] );
             $name = esc_attr( $attributes[ Main::NAME ] );
-            $link = get_term_link( $id, Tribe__Events__Events::TAXONOMY );
+            $link = get_term_link( $id, Tribe__Events__Main::TAXONOMY );
             ?>
             <li class="tribe-events-category-<?php echo $slug ?> tribe-events-category-<?php esc_attr_e( $id ) ?>">
                 <a href="<?php echo $link ?>">
@@ -27,7 +27,7 @@ use Tribe__Events__Events;
 			    <?php
 			    $slug = esc_attr( $ignored_term[0] );
 			    $name = esc_attr( $ignored_term[1] );
-			    $link = get_term_link( $ignored_term[0], Tribe__Events__Events::TAXONOMY );
+			    $link = get_term_link( $ignored_term[0], Tribe__Events__Main::TAXONOMY );
 			    ?>
 			    <li class="teccc-hidden-category">
 				    <a href="<?php echo $link ?>">

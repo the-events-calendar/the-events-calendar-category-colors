@@ -1,7 +1,7 @@
 <?php
 namespace Fragen\Category_Colors;
 
-use Tribe__Events__Events,
+use Tribe__Events__Main,
     Tribe__Events__Settings_Tab;
 
 
@@ -31,14 +31,14 @@ class Admin {
 
 	public function plugin_fail_msg() {
 		if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
-			if ( ! class_exists( 'Tribe__Events__Events' ) ) {
+			if ( ! class_exists( 'Tribe__Events__Main' ) ) {
 				$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 				$title = __( 'The Events Calendar', 'the-events-calendar-category-colors' );
 				echo '<div class="error"><p>'.sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ),$url, $title ).'</p></div>';
-			} elseif ( version_compare( Tribe__Events__Events::VERSION, '3.0', 'lt') ) {
+			} elseif ( version_compare( Tribe__Events__Main::VERSION, '3.0', 'lt') ) {
 				$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 				$title = __( 'The Events Calendar', 'the-events-calendar-category-colors' );
-				echo '<div class="error"><p>'.sprintf( __( 'You have The Events Calendar v.' . Tribe__Events__Events::VERSION . '. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ),$url, $title ).'</p></div>';
+				echo '<div class="error"><p>'.sprintf( __( 'You have The Events Calendar v.' . Tribe__Events__Main::VERSION . '. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ),$url, $title ).'</p></div>';
 			}
 		}
 	}
@@ -86,7 +86,7 @@ class Admin {
 
 
 	public function load_settings_tab() {
-		if ( class_exists( 'Tribe__Events__Events' ) ) {
+		if ( class_exists( 'Tribe__Events__Main' ) ) {
 			add_action( 'tribe_settings_do_tabs', array( $this, 'add_category_colors_tab' ) );
 		}
 	}
