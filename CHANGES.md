@@ -1,3 +1,6 @@
+#### 4.3.1
+* update for `Tribe__Events__Filterbar__View` with CSS fix too.
+
 #### 4.3.0
 * update for _new_ `Tribe__Events__Main` and `Tribe__Events__Pro__Main` classes
 * fix CSS for week view

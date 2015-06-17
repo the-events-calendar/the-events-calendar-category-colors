@@ -4,7 +4,7 @@ Donate link: http://bit.ly/teccc-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 4.3.0
+Stable tag: 4.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,12 +52,15 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
+= 4.3.1 =
+* update for `Tribe__Events__Filterbar__View` with CSS fix too.
+
 = 4.3.0 =
 * update for _new_ `Tribe__Events__Main` and `Tribe__Events__Pro__Main` classes
 * fix CSS for week view
 
 = 4.2.0 =
- * add setting to show hidden categories - for @mending
+* add setting to show hidden categories - for @mending
 
 = 4.1.0 =
 * add setting to hide category on frontend

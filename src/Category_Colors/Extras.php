@@ -45,7 +45,7 @@ class Extras extends Frontend {
 		}
 		$css   = array();
 		$css[] = '#tribe-events-content div.tribe-events-category-'. $slug . '.hentry.vevent .tribe-events-tooltip h4.entry-title,';
-		$css[] = '.tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-' . $slug . ','; // 3.10
+		$css[] = '.tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-' . $slug . ','; //3.10
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
@@ -78,11 +78,12 @@ class Extras extends Frontend {
 	}
 
 	public static function add_filter_bar_background_css ( $slug ) {
-		if ( ! class_exists( 'TribeEventsFilterView' ) ) {
+		if ( ! class_exists( 'Tribe__Events__Filterbar__View' ) ) {
 			return false;
 		}
 		$css   = array();
-		$css[] = '#tribe_events_filter_item_eventcategory li.tribe-events-category-' . $slug . ',';
+		$css[] = '#tribe_events_filter_item_eventcategory li.tribe-events-category-' . $slug . ','; //pre-3.10
+		$css[] = '.tribe_events_filter_group li.tribe-events-category-' . $slug . ','; //3.10
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
