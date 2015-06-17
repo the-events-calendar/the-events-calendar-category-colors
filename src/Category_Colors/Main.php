@@ -86,7 +86,7 @@ class Main {
 		}
 
 		/**
-		 * Tribe__Events__Events not yet defined, so we can't use the class constant
+		 * Tribe__Events__Main not yet defined, so we can't use the class constant
 		 */
 		$all_terms = get_terms( 'tribe_events_cat', array( 'hide_empty' => false ) );
 		$terms     = apply_filters( 'teccc_get_terms', $all_terms );

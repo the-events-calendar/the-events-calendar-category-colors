@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Category Colors\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar-category-colors\n"
-"POT-Creation-Date: 2015-03-19 18:31-0800\n"
-"PO-Revision-Date: 2015-03-19 18:36-0800\n"
+"POT-Creation-Date: 2015-06-16 17:40-0800\n"
+"PO-Revision-Date: 2015-06-16 17:40-0800\n"
 "Last-Translator: Andy Fragen <andy@thefragens.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/wp-translations/language/"
 "nl_NL/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 1.8.1\n"
 
 #: includes/admintab.php:16
 msgid "Category Colors Settings"
@@ -77,54 +77,71 @@ msgstr "Categoriekleuren"
 msgid "Settings saved."
 msgstr "Instellingen opgeslagen."
 
-#: vendor/WPUpdatePhp.php:96
+#: vendor/WPUpdatePhp.php:24
+#, fuzzy
+msgid "this plugin"
+msgstr "Herstel standaardwaarden bij het deactiveren/reactiveren van de plugin"
+
+#: vendor/WPUpdatePhp.php:92
 #, php-format
-msgid ""
-"Unfortunately, %1$s can not run on PHP versions older than %2$s. Read more information about <a "
-"href=\"http://www.wpupdatephp.com/update/\">how you can update</a>."
+msgid "Unfortunately, %1$s can not run on PHP versions older than %2$s."
+msgstr ""
+
+#: vendor/WPUpdatePhp.php:94 vendor/WPUpdatePhp.php:110
+#, php-format
+msgid "Read more information about %show you can update%s."
+msgstr ""
+
+#: vendor/WPUpdatePhp.php:108
+#, php-format
+msgid "%1$s recommends a PHP version greater than %2$s."
 msgstr ""
 
 #: views/optionsform.php:9
+msgid "Hide"
+msgstr ""
+
+#: views/optionsform.php:10
 msgid "Category Slug"
 msgstr "Categorie slug"
 
-#: views/optionsform.php:10
+#: views/optionsform.php:11
 msgid "Border Color"
 msgstr "Randkleur"
 
-#: views/optionsform.php:11
+#: views/optionsform.php:12
 msgid "Background Color"
 msgstr "Achtergrondkleur"
 
-#: views/optionsform.php:12
+#: views/optionsform.php:13
 msgid "Text Color"
 msgstr "Tekstkleur"
 
-#: views/optionsform.php:13
+#: views/optionsform.php:14
 msgid "Current Display"
 msgstr "Huidige scherm"
 
-#: views/optionsform.php:26 views/optionsform.php:38
+#: views/optionsform.php:37 views/optionsform.php:52
 msgid "Transparent"
 msgstr "Transparant"
 
-#: views/optionsform.php:72
+#: views/optionsform.php:86
 msgid "Font-Weight Options"
 msgstr "Font-Weight opties"
 
-#: views/optionsform.php:83
+#: views/optionsform.php:97
 msgid "Add Category Legend"
 msgstr "Categorie legenda toevoegen"
 
-#: views/optionsform.php:85
+#: views/optionsform.php:99
 msgid "Check to add a Category Legend to the calendar."
 msgstr "Voeg een categorielegenda aan de kalender toe."
 
-#: views/optionsform.php:90
+#: views/optionsform.php:104
 msgid "Check to add Legend Superpowers."
 msgstr "Voeg Legend Superpowers toe."
 
-#: views/optionsform.php:91
+#: views/optionsform.php:105
 msgid ""
 "Legend Superpowers are an optional visual effect allowing visitors to focus only on those events "
 "that belong to categories of interest - without reloading the page and without eliminating other "
@@ -136,32 +153,32 @@ msgstr ""
 "verbergen. Klik op de interessecategorie in de Legend voor het effect; nogmaals om het ongedaan te "
 "maken."
 
-#: views/optionsform.php:94
-msgid "Custom Legend CSS"
-msgstr "Aangepaste CSS legenda"
+#: views/optionsform.php:110
+msgid "Show hidden categories in legend."
+msgstr ""
 
-#: views/optionsform.php:96
+#: views/optionsform.php:115
 msgid "Check to use your own CSS for category legend."
 msgstr "Gebruik eigen CSS voor de categorielegenda."
 
-#: views/optionsform.php:99
+#: views/optionsform.php:118
 msgid "Colorize Widgets"
 msgstr ""
 
-#: views/optionsform.php:101
+#: views/optionsform.php:120
 #, fuzzy
 msgid "Add Category Colors to widgets"
 msgstr "Categoriekleuren"
 
-#: views/optionsform.php:104
+#: views/optionsform.php:123
 msgid "Database Options"
 msgstr "Database opties"
 
-#: views/optionsform.php:106
+#: views/optionsform.php:125
 msgid "Restore defaults upon plugin deactivation/reactivation"
 msgstr "Herstel standaardwaarden bij het deactiveren/reactiveren van de plugin"
 
-#: views/optionsform.php:107
+#: views/optionsform.php:126
 msgid "Only check this if you want to reset plugin settings upon Plugin reactivation"
 msgstr "Vink aan als je de standaardwaarden van de plugin wilt laden bij heractivatie"
 
@@ -170,13 +187,15 @@ msgid "The Events Calendar Category Colors"
 msgstr "The Events Calendar Category Colors"
 
 #. Plugin URI of the plugin/theme
-msgid "https://github.com/afragen/the-events-calendar-category-colors/"
+#, fuzzy
+msgid "https://github.com/afragen/the-events-calendar-category-colors"
 msgstr "https://github.com/afragen/the-events-calendar-category-colors/"
 
 #. Description of the plugin/theme
+#, fuzzy
 msgid ""
-"This plugin adds event category background coloring to <a href=\"http://wordpress.org/extend/"
-"plugins/the-events-calendar/\">The Events Calendar</a> plugin."
+"This plugin adds event category background coloring to <a href=\"http://wordpress.org/plugins/the-"
+"events-calendar/\">The Events Calendar</a> plugin."
 msgstr ""
 "Deze plugin voegt achtergrondkleuren voor categorie&euml;n toe aan <a href=\"http://wordpress.org/"
 "extend/plugins/the-events-calendar/\">The Events Calendar</a> plugin."
@@ -186,8 +205,12 @@ msgid "Andy Fragen, Barry Hughes"
 msgstr "Andy Fragen, Barry Hughes"
 
 #. Author URI of the plugin/theme
-msgid "http://thefragens.com/"
+#, fuzzy
+msgid "http://thefragens.com"
 msgstr "http://thefragens.com/"
+
+#~ msgid "Custom Legend CSS"
+#~ msgstr "Aangepaste CSS legenda"
 
 #~ msgid ""
 #~ "You must have at least one event with a category for The Events Calendar Category Colors plugin "

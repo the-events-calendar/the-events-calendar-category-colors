@@ -3,7 +3,7 @@
 Plugin Name:       The Events Calendar Category Colors
 Plugin URI:        https://github.com/afragen/the-events-calendar-category-colors
 Description:       This plugin adds event category background coloring to <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version:           4.2.0
+Version:           4.3.0
 Text Domain:       the-events-calendar-category-colors
 Author:            Andy Fragen, Barry Hughes
 Author URI:        http://thefragens.com
@@ -40,19 +40,22 @@ define( 'TECCC_VIEWS', TECCC_DIR . '/views' );
 define( 'TECCC_RESOURCES', plugin_dir_url( __FILE__ ) . 'resources' );
 define( 'TECCC_LANG', basename( dirname( __FILE__ ) ) . '/languages' );
 
+/**
+ * Initialization of plugin.
+ */
 function teccc_init() {
 	global $teccc;
 
 	// Back compat classes
 	$compatibility = array(
-		'Tribe__Events__Events'          => TECCC_CLASSES . '/Back_Compat/Events.php',
-		'Tribe__Events__Settings_Tab'    => TECCC_CLASSES . '/Back_Compat/Settings_Tab.php',
-		'Tribe__Events__Pro__Events_Pro' => TECCC_CLASSES . '/Back_Compat/Events_Pro.php',
+		'Tribe__Events__Main'         => TECCC_CLASSES . '/Back_Compat/Events.php',
+		'Tribe__Events__Settings_Tab' => TECCC_CLASSES . '/Back_Compat/Settings_Tab.php',
+		'Tribe__Events__Pro__Main'    => TECCC_CLASSES . '/Back_Compat/Events_Pro.php',
 	);
 
 	// Plugin namespace root
 	$root = array(
-		'Fragen\Category_Colors'         => TECCC_CLASSES . '/Category_Colors',
+		'Fragen\Category_Colors'      => TECCC_CLASSES . '/Category_Colors',
 	);
 
 	// Autoloading

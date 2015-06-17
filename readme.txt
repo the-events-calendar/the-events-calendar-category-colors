@@ -3,8 +3,8 @@ Contributors: afragen, barry.hughes
 Donate link: http://bit.ly/teccc-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
-Tested up to: 4.2
-Stable tag: 4.2.0
+Tested up to: 4.2.2
+Stable tag: 4.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,10 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 4.3.0 =
+* update for _new_ `Tribe__Events__Main` and `Tribe__Events__Pro__Main` classes
+* fix CSS for week view
 
 = 4.2.0 =
  * add setting to show hidden categories - for @mending
