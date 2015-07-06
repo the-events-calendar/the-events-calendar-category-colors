@@ -1,3 +1,6 @@
+#### 4.3.3
+* fix for PHP notice on Settings
+
 #### 4.3.2
 * fix for v3.10 all day week view.
 
