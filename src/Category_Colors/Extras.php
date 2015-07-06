@@ -46,6 +46,7 @@ class Extras extends Frontend {
 		$css   = array();
 		$css[] = '#tribe-events-content div.tribe-events-category-'. $slug . '.hentry.vevent .tribe-events-tooltip h4.entry-title,';
 		$css[] = '.tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-' . $slug . ','; //3.10
+		$css[] = '.tribe-grid-allday .tribe-events-week-allday-single.tribe-events-category-' . $slug . ','; //3.10
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;

@@ -1,3 +1,6 @@
+#### 4.3.2
+* fix for v3.10 all day week view.
+
 #### 4.3.1
 * update for `Tribe__Events__Filterbar__View` with CSS fix too.
 
