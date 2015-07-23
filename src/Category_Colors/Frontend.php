@@ -23,7 +23,7 @@ class Frontend {
 		require_once TECCC_INCLUDES . '/templatetags.php';
 
 		add_action( 'init', array( $this, 'add_colored_categories' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), ( PHP_INT_MAX - 100 ) );
 	}
 
 	/**
