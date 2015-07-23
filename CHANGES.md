@@ -1,3 +1,6 @@
+#### 4.3.4
+* change CSS load order to ( PHP_MAX_INT - 100 ) to allow for overriding
+
 #### 4.3.3
 * fix for PHP notice on Settings
 
