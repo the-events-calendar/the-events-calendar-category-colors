@@ -112,7 +112,7 @@ class Admin {
 
 	public function is_saved() {
 		if ( isset( $_GET['settings-updated'] ) && ( $_GET['settings-updated'] ) ) {
-			$message = __( 'Settings saved.', 'tribe-events-calendar' );
+			$message = __( 'Settings saved.', 'the-events-calendar-category-colors' );
 			$output  = '<div id="message" class="updated"><p><strong>' . $message . '</strong></p></div>';
 			echo apply_filters( 'tribe_settings_success_message', $output, 'category-colors' );
 		}
