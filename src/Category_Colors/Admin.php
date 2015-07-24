@@ -143,7 +143,7 @@ class Admin {
 			'-background_transparent',
 			'-border',
 			'-border_transparent',
-			'-text'
+			'-text',
 		);
 
 		foreach ( $teccc->terms as $attributes ) {
@@ -153,6 +153,10 @@ class Admin {
 				if ( ! isset( $options[ $slug . $optionkey ] ) ) {
 					$options[ $slug . $optionkey ] = null;
 				}
+			}
+
+			if ( ! isset( $options['hide'][ $slug ] ) ) {
+				$options['hide'][ $slug ] = null;
 			}
 		}
 
