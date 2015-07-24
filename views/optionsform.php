@@ -1,5 +1,9 @@
 <?php
 namespace Fragen\Category_Colors;
+
+$teccc   = Main::instance();
+$options = Admin::fetch_options( $teccc );
+
 ?>
 <table class="teccc form-table" xmlns="http://www.w3.org/1999/html">
 

@@ -1,7 +1,18 @@
 <?php
 namespace Fragen\Category_Colors;
 
-?>/* The Events Calendar Category Colors <?php echo Main::$version ?> generated CSS */
+/*
+ * Setup variables for CSS generation.
+ */
+$teccc   = Main::instance();
+$options = Admin::fetch_options( $teccc );
+if ( function_exists( 'tribe_get_mobile_breakpoint' ) ) {
+	$breakpoint = tribe_get_mobile_breakpoint();
+}
+
+?>
+
+/* The Events Calendar Category Colors <?php echo Main::$version ?> generated CSS */
 .teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
 {
 	font-weight: <?php echo $options['font_weight']  ?>;
@@ -32,7 +43,7 @@ namespace Fragen\Category_Colors;
 <?php Extras::add_map_link_css( $slug ); ?>
 <?php Extras::add_week_link_css( $slug ); ?>
 <?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
-	<?php Widgets::add_widget_link_css( $slug, $options ); ?>
+	<?php Widgets::add_widget_link_css( $slug ); ?>
 <?php endif ?>
 .teccc-legend .tribe-events-category-<?php echo $slug ?> a,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
@@ -47,7 +58,7 @@ namespace Fragen\Category_Colors;
 <?php Extras::add_week_background_css( $slug ); ?>
 <?php Extras::add_filter_bar_background_css( $slug ); ?>
 <?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
-	<?php Widgets::add_widget_background_css( $slug, $options ); ?>
+	<?php Widgets::add_widget_background_css( $slug ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug ?>,
@@ -68,7 +79,7 @@ namespace Fragen\Category_Colors;
 
 <?php Extras::add_map_display_css( $slug ); ?>
 <?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
-	<?php Widgets::add_widget_display_css( $slug, $options ); ?>
+	<?php Widgets::add_widget_display_css( $slug ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a
 {
