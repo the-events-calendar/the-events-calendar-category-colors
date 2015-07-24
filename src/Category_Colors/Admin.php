@@ -138,7 +138,7 @@ class Admin {
 	 * @param $teccc
 	 * @return array
 	 */
-	protected static function fetch_options( $teccc ) {
+	public static function fetch_options( $teccc ) {
 		$options = (array) get_option( 'teccc_options', array() );
 		$categoryOptions = array(
 			'-background',
