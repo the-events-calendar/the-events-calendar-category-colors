@@ -53,7 +53,7 @@ function teccc_insert_legend() {
  * @deprecated
  */
 function teccc_legend_hook() {
-	_doing_it_wrong( 'teccc_legend_hook', __('Use of this function is deprecated', 'the-events-calendar-category-colors' ), '1.6.0B' );
+	_doing_it_wrong( 'teccc_legend_hook', esc_html__('Use of this function is deprecated', 'the-events-calendar-category-colors' ), '1.6.0B' );
 	teccc_insert_legend();
 }
 

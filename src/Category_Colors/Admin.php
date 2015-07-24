@@ -31,14 +31,12 @@ class Admin {
 
 	public function plugin_fail_msg() {
 		if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
+			$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
+			$title = esc_html__( 'The Events Calendar', 'the-events-calendar-category-colors' );
 			if ( ! class_exists( 'Tribe__Events__Main' ) ) {
-				$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
-				$title = __( 'The Events Calendar', 'the-events-calendar-category-colors' );
-				echo '<div class="error"><p>'.sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ),$url, $title ).'</p></div>';
+				echo '<div class="error"><p>' . sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of %sThe Events Calendar%s.', 'the-events-calendar-category-colors' ), '<a href="' . $url . '" class="thickbox" title="' . $title . '">', '</a>' ) . '</p></div>';
 			} elseif ( version_compare( Tribe__Events__Main::VERSION, '3.0', 'lt') ) {
-				$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
-				$title = __( 'The Events Calendar', 'the-events-calendar-category-colors' );
-				echo '<div class="error"><p>'.sprintf( __( 'You have The Events Calendar v.' . Tribe__Events__Main::VERSION . '. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ),$url, $title ).'</p></div>';
+				echo '<div class="error"><p>' . sprintf( __( 'You have The Events Calendar v.%s. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ), Tribe__Events__Main::VERSION, '<a href="' . $url . '" class="thickbox" title="' . $title . '">', '</a>' ) . '</p></div>';
 			}
 		}
 	}
@@ -52,7 +50,7 @@ class Admin {
 
 		foreach ( $teccc->terms as $attributes ) {
 			$slug = $attributes[ Main::SLUG ];
-			
+
 			// Sanitize textbox input (strip html tags, and escape characters)
 			// May not be needed with jQuery color picker
 			$input[ $slug.'-background' ] =  wp_filter_nohtml_kses($input[$slug.'-background']);
@@ -112,7 +110,7 @@ class Admin {
 
 	public function is_saved() {
 		if ( isset( $_GET['settings-updated'] ) && ( $_GET['settings-updated'] ) ) {
-			$message = __( 'Settings saved.', 'the-events-calendar-category-colors' );
+			$message = esc_html__( 'Settings saved.', 'the-events-calendar-category-colors' );
 			$output  = '<div id="message" class="updated"><p><strong>' . $message . '</strong></p></div>';
 			echo apply_filters( 'tribe_settings_success_message', $output, 'category-colors' );
 		}

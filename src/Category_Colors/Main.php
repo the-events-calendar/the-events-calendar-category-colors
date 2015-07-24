@@ -1,7 +1,6 @@
 <?php
 namespace Fragen\Category_Colors;
 
-
 class Main {
 
 	const SLUG = 0;

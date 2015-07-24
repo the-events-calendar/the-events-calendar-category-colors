@@ -1,7 +1,6 @@
 <?php
 namespace Fragen\Category_Colors;
 
-
 class Extras extends Frontend {
 
 	public static function add_map_link_css( $slug ) {
@@ -15,7 +14,7 @@ class Extras extends Frontend {
 		$css   = implode( "\n", $css );
 		echo $css;
 	}
-	
+
 	public static function add_map_background_css( $slug ) {
 		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			return false;

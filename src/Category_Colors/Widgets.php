@@ -1,7 +1,6 @@
 <?php
 namespace Fragen\Category_Colors;
 
-
 class Widgets extends Frontend {
 
 	public static function add_widget_link_css( $slug ) {
