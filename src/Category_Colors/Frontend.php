@@ -4,6 +4,11 @@ namespace Fragen\Category_Colors;
 use DateTime,
 	Tribe__Events__Main;
 
+/**
+ * Class Frontend
+ *
+ * @package Fragen\Category_Colors
+ */
 class Frontend {
 
 	const CSS_HANDLE = 'teccc_css';

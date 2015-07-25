@@ -43,6 +43,7 @@ class Admin {
 
 
 	/**
+	 * @param $input
 	 * @todo streamline validation/sanitization work, replace deprecated function calls
 	 */
 	public function validate_options( $input ) {
@@ -133,10 +134,10 @@ class Admin {
 	 * Retrieves the options and pre-processes them to ensure we aren't trying to access non-existent
 	 * indicies (can result in notices being emitted).
 	 *
-	 * @param $teccc
+	 * @param Main $teccc
 	 * @return array
 	 */
-	public static function fetch_options( $teccc ) {
+	public static function fetch_options( Main $teccc ) {
 		$options = (array) get_option( 'teccc_options', array() );
 		$categoryOptions = array(
 			'-background',
