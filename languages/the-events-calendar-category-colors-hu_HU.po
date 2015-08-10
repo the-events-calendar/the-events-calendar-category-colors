@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Category Colors\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar-category-colors\n"
-"POT-Creation-Date: 2015-06-16 17:40-0800\n"
-"PO-Revision-Date: 2015-06-16 17:44-0800\n"
+"POT-Creation-Date: 2015-08-09 18:47-0700\n"
+"PO-Revision-Date: 2015-08-09 18:47-0700\n"
 "Last-Translator: Andy Fragen <andy@thefragens.com>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/wp-translations/language/"
 "hu_HU/)\n"
@@ -16,32 +16,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 1.8.3\n"
 
-#: includes/admintab.php:16
+#: includes/admintab.php:15
 msgid "Category Colors Settings"
 msgstr "Kategória színbeállítások"
 
-#: includes/admintab.php:20
-#, fuzzy
+#: includes/admintab.php:19
+#, fuzzy, php-format
 msgid ""
-"The Events Calendar Category Colors plugin was inspired by the tutorial <i>Coloring Your Category "
-"Events</i>."
+"The Events Calendar Category Colors plugin was inspired by the tutorial %sColoring Your Category "
+"Events%s."
 msgstr ""
 "A Színes Kategória Esemény Naptár plugin megalkotását inspirálta a <a href=\"http://tri.be/"
 "coloring-your-category-events/\">A kategória események színesben</a> leírás."
 
-#: includes/admintab.php:24
+#: includes/admintab.php:23
+#, php-format
 msgid ""
-"Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</"
-"strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-calendar-"
-"category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
+"Instructions for %1$sfilters%2$s, %1$shooks%2$s, %1$ssettings functions%2$s, and %1$shelp%2$s are "
+"on %3$sThe Events Calendar Category Colors wiki%4$s."
 msgstr ""
-"Útmutatás a <strong>szűrőkhöz</strong>, <strong>a használathoz</strong>, <strong>a beállításokhoz</"
-"strong>, és <strong>segítség</strong>érhető el a <a href=\"https://github.com/afragen/the-events-"
-"calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a> oldalán."
 
-#: includes/admintab.php:40
+#: includes/admintab.php:39
 msgid "Save Changes"
 msgstr "Módosítások mentése"
 
@@ -49,29 +46,34 @@ msgstr "Módosítások mentése"
 msgid "Use of this function is deprecated"
 msgstr "Ennek a funkciónak a használata elavult"
 
-#: src/Category_Colors/Admin.php:36 src/Category_Colors/Admin.php:40
+#: src/Category_Colors/Admin.php:35
 msgid "The Events Calendar"
 msgstr "The Events Calendar"
 
 #: src/Category_Colors/Admin.php:37
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"To begin using The Events Calendar Category Colors, please install the latest version of <a href="
-"\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</a>."
+"To begin using The Events Calendar Category Colors, please install the latest version of %sThe "
+"Events Calendar%s."
 msgstr ""
 "Az Eseménynaptár Kategória Színek használata előtt kérjük telepítse az <a href=\"%s\" class="
 "\"thickbox\" title=\"%s\">The Events Calendar</a>legújabb verzióját."
 
-#: src/Category_Colors/Admin.php:41
-#, fuzzy
-msgid "You have The Events Calendar v."
-msgstr "The Events Calendar"
+#: src/Category_Colors/Admin.php:39
+#, fuzzy, php-format
+msgid ""
+"You have The Events Calendar v.%s. To begin using The Events Calendar Category Colors, please "
+"install the latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</"
+"a>."
+msgstr ""
+"Az Eseménynaptár Kategória Színek használata előtt kérjük telepítse az <a href=\"%s\" class="
+"\"thickbox\" title=\"%s\">The Events Calendar</a>legújabb verzióját."
 
-#: src/Category_Colors/Admin.php:99
+#: src/Category_Colors/Admin.php:98
 msgid "Category Colors"
 msgstr "Kategória színek"
 
-#: src/Category_Colors/Admin.php:115
+#: src/Category_Colors/Admin.php:114
 msgid "Settings saved."
 msgstr "Beállítások elmentve."
 
@@ -85,60 +87,60 @@ msgid "Unfortunately, %1$s can not run on PHP versions older than %2$s."
 msgstr "A(z) %1$s sajnos, nem tudja futtatni a PHP verziója régebbi a(z) %2$s."
 
 #: vendor/WPUpdatePhp.php:94 vendor/WPUpdatePhp.php:110
-#, php-format
+#, fuzzy, php-format
 msgid "Read more information about %show you can update%s."
-msgstr ""
+msgstr "További tájékoztatás az Térkép %%s is frissítheti."
 
 #: vendor/WPUpdatePhp.php:108
 #, php-format
 msgid "%1$s recommends a PHP version greater than %2$s."
 msgstr "a(z) %1$s azt javasolja, hogy egy nagyobb, mint a(z) %2$s PHP változat."
 
-#: views/optionsform.php:9
+#: views/optionsform.php:13
 msgid "Hide"
 msgstr "Elrejtés"
 
-#: views/optionsform.php:10
+#: views/optionsform.php:14
 msgid "Category Slug"
 msgstr "Kategória slug"
 
-#: views/optionsform.php:11
+#: views/optionsform.php:15
 msgid "Border Color"
 msgstr "Keret szín"
 
-#: views/optionsform.php:12
+#: views/optionsform.php:16
 msgid "Background Color"
 msgstr "Háttérszín"
 
-#: views/optionsform.php:13
+#: views/optionsform.php:17
 msgid "Text Color"
 msgstr "Szöveg színe"
 
-#: views/optionsform.php:14
+#: views/optionsform.php:18
 msgid "Current Display"
 msgstr "A jelenlegi megjelenítés"
 
-#: views/optionsform.php:37 views/optionsform.php:52
+#: views/optionsform.php:35 views/optionsform.php:47
 msgid "Transparent"
 msgstr "Átlátszó"
 
-#: views/optionsform.php:86
+#: views/optionsform.php:81
 msgid "Font-Weight Options"
 msgstr "Betűvastagság beállítások"
 
-#: views/optionsform.php:97
+#: views/optionsform.php:92
 msgid "Add Category Legend"
 msgstr "Kategória magyarázat hozzáadása"
 
-#: views/optionsform.php:99
+#: views/optionsform.php:94
 msgid "Check to add a Category Legend to the calendar."
 msgstr "Ellenőrizze a kategória magyarázat hozzáadását a naptárban."
 
-#: views/optionsform.php:104
+#: views/optionsform.php:99
 msgid "Check to add Legend Superpowers."
 msgstr "Ellenőrizze a Legend Superpowers hozzáadását."
 
-#: views/optionsform.php:105
+#: views/optionsform.php:100
 msgid ""
 "Legend Superpowers are an optional visual effect allowing visitors to focus only on those events "
 "that belong to categories of interest - without reloading the page and without eliminating other "
@@ -150,32 +152,32 @@ msgstr ""
 "nélkül kiküszöbölő más kategóriák meg teljesen. Kettyenés-ra a kategóriáját a legenda, a hatás; "
 "kattintson újra, hogy távolítsa el azt."
 
-#: views/optionsform.php:110
+#: views/optionsform.php:105
 msgid "Show hidden categories in legend."
 msgstr "Rejtett kategóriák megjelenítése legenda."
 
-#: views/optionsform.php:115
+#: views/optionsform.php:110
 msgid "Check to use your own CSS for category legend."
 msgstr "Ellenőrizze, hogy használja a saját CSS magyarázat."
 
-#: views/optionsform.php:118
+#: views/optionsform.php:113
 msgid "Colorize Widgets"
 msgstr "Színezése kütyü"
 
-#: views/optionsform.php:120
+#: views/optionsform.php:115
 #, fuzzy
 msgid "Add Category Colors to widgets"
 msgstr "Kategória színek"
 
-#: views/optionsform.php:123
+#: views/optionsform.php:118
 msgid "Database Options"
 msgstr "Adatbázis beállítások"
 
-#: views/optionsform.php:125
+#: views/optionsform.php:120
 msgid "Restore defaults upon plugin deactivation/reactivation"
 msgstr "Alapértelmezés visszaállítása a bővítmény kikapcsolása/bekapcsolása után"
 
-#: views/optionsform.php:126
+#: views/optionsform.php:121
 msgid "Only check this if you want to reset plugin settings upon Plugin reactivation"
 msgstr ""
 "Csak akkor válassza ezt, ha vissza szeretné állítani bővítmény beállításait miután a Plugin "
@@ -207,6 +209,20 @@ msgstr "Andy Fragen, Barry Hughes"
 #, fuzzy
 msgid "http://thefragens.com"
 msgstr "http://thefragens.com/"
+
+#~ msgid ""
+#~ "Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</"
+#~ "strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-"
+#~ "calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
+#~ msgstr ""
+#~ "Útmutatás a <strong>szűrőkhöz</strong>, <strong>a használathoz</strong>, <strong>a "
+#~ "beállításokhoz</strong>, és <strong>segítség</strong>érhető el a <a href=\"https://github.com/"
+#~ "afragen/the-events-calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a> "
+#~ "oldalán."
+
+#, fuzzy
+#~ msgid "You have The Events Calendar v."
+#~ msgstr "The Events Calendar"
 
 #~ msgid "Custom Legend CSS"
 #~ msgstr "Egyéni CSS magyarázat"

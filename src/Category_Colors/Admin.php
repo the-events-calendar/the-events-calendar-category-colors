@@ -31,20 +31,19 @@ class Admin {
 
 	public function plugin_fail_msg() {
 		if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
+			$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
+			$title = esc_html__( 'The Events Calendar', 'the-events-calendar-category-colors' );
 			if ( ! class_exists( 'Tribe__Events__Main' ) ) {
-				$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
-				$title = __( 'The Events Calendar', 'the-events-calendar-category-colors' );
-				echo '<div class="error"><p>'.sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ),$url, $title ).'</p></div>';
+				echo '<div class="error"><p>' . sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of %sThe Events Calendar%s.', 'the-events-calendar-category-colors' ), '<a href="' . $url . '" class="thickbox" title="' . $title . '">', '</a>' ) . '</p></div>';
 			} elseif ( version_compare( Tribe__Events__Main::VERSION, '3.0', 'lt') ) {
-				$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
-				$title = __( 'The Events Calendar', 'the-events-calendar-category-colors' );
-				echo '<div class="error"><p>'.sprintf( __( 'You have The Events Calendar v.' . Tribe__Events__Main::VERSION . '. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ),$url, $title ).'</p></div>';
+				echo '<div class="error"><p>' . sprintf( __( 'You have The Events Calendar v.%s. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ), Tribe__Events__Main::VERSION, '<a href="' . $url . '" class="thickbox" title="' . $title . '">', '</a>' ) . '</p></div>';
 			}
 		}
 	}
 
 
 	/**
+	 * @param $input
 	 * @todo streamline validation/sanitization work, replace deprecated function calls
 	 */
 	public function validate_options( $input ) {
@@ -52,7 +51,7 @@ class Admin {
 
 		foreach ( $teccc->terms as $attributes ) {
 			$slug = $attributes[ Main::SLUG ];
-			
+
 			// Sanitize textbox input (strip html tags, and escape characters)
 			// May not be needed with jQuery color picker
 			$input[ $slug.'-background' ] =  wp_filter_nohtml_kses($input[$slug.'-background']);
@@ -96,7 +95,7 @@ class Admin {
 		$categoryColorsTab = $this->teccc->load_config( 'admintab' );
 		add_action( 'tribe_settings_form_element_tab_category-colors', array( $this, 'form_header' ) );
 		add_action( 'tribe_settings_before_content_tab_category-colors', array( $this, 'settings_fields' ) );
-		new Tribe__Events__Settings_Tab( self::TAB_NAME, __( 'Category Colors', 'the-events-calendar-category-colors' ), $categoryColorsTab );
+		new Tribe__Events__Settings_Tab( self::TAB_NAME, esc_html__( 'Category Colors', 'the-events-calendar-category-colors' ), $categoryColorsTab );
 	}
 
 
@@ -112,7 +111,7 @@ class Admin {
 
 	public function is_saved() {
 		if ( isset( $_GET['settings-updated'] ) && ( $_GET['settings-updated'] ) ) {
-			$message = __( 'Settings saved.', 'tribe-events-calendar' );
+			$message = esc_html__( 'Settings saved.', 'the-events-calendar-category-colors' );
 			$output  = '<div id="message" class="updated"><p><strong>' . $message . '</strong></p></div>';
 			echo apply_filters( 'tribe_settings_success_message', $output, 'category-colors' );
 		}
@@ -135,17 +134,17 @@ class Admin {
 	 * Retrieves the options and pre-processes them to ensure we aren't trying to access non-existent
 	 * indicies (can result in notices being emitted).
 	 *
-	 * @param $teccc
+	 * @param Main $teccc
 	 * @return array
 	 */
-	protected static function fetch_options( $teccc ) {
+	public static function fetch_options( Main $teccc ) {
 		$options = (array) get_option( 'teccc_options', array() );
 		$categoryOptions = array(
 			'-background',
 			'-background_transparent',
 			'-border',
 			'-border_transparent',
-			'-text'
+			'-text',
 		);
 
 		foreach ( $teccc->terms as $attributes ) {
@@ -155,6 +154,10 @@ class Admin {
 				if ( ! isset( $options[ $slug . $optionkey ] ) ) {
 					$options[ $slug . $optionkey ] = null;
 				}
+			}
+
+			if ( ! isset( $options['hide'][ $slug ] ) ) {
+				$options['hide'][ $slug ] = null;
 			}
 		}
 

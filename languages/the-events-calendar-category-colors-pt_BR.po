@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Category Colors\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/the-events-calendar-category-colors\n"
-"POT-Creation-Date: 2015-06-16 17:40-0800\n"
-"PO-Revision-Date: 2015-06-16 17:40-0800\n"
+"POT-Creation-Date: 2015-08-09 18:46-0700\n"
+"PO-Revision-Date: 2015-08-09 18:46-0700\n"
 "Last-Translator: Andy Fragen <andy@thefragens.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/wp-translations/language/"
 "pt_BR/)\n"
@@ -17,32 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 1.8.3\n"
 
-#: includes/admintab.php:16
+#: includes/admintab.php:15
 msgid "Category Colors Settings"
 msgstr "Configurações de Cores de Categoria"
 
-#: includes/admintab.php:20
-#, fuzzy
+#: includes/admintab.php:19
+#, fuzzy, php-format
 msgid ""
-"The Events Calendar Category Colors plugin was inspired by the tutorial <i>Coloring Your Category "
-"Events</i>."
+"The Events Calendar Category Colors plugin was inspired by the tutorial %sColoring Your Category "
+"Events%s."
 msgstr ""
 "O plugin Cores de Categoria do The Events Calendar foi inspirado no tutorial <a href=\"http://tri."
 "be/coloring-your-category-events/\">Colorindo Suas Categorias de Evento</a>."
 
-#: includes/admintab.php:24
+#: includes/admintab.php:23
+#, php-format
 msgid ""
-"Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</"
-"strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-calendar-"
-"category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
+"Instructions for %1$sfilters%2$s, %1$shooks%2$s, %1$ssettings functions%2$s, and %1$shelp%2$s are "
+"on %3$sThe Events Calendar Category Colors wiki%4$s."
 msgstr ""
-"Instruções para <strong>filtros</strong>, <strong>ganchos</strong>, <strong>funções de "
-"configuração</strong>, e <strong>ajuda</strong> estão no <a href=\"https://github.com/afragen/the-"
-"events-calendar-category-colors/wiki\">wiki do The Events Calendar Category Colors</a>."
 
-#: includes/admintab.php:40
+#: includes/admintab.php:39
 msgid "Save Changes"
 msgstr "Salvar Alterações"
 
@@ -50,29 +47,34 @@ msgstr "Salvar Alterações"
 msgid "Use of this function is deprecated"
 msgstr "O uso desta função está descontinuado"
 
-#: src/Category_Colors/Admin.php:36 src/Category_Colors/Admin.php:40
+#: src/Category_Colors/Admin.php:35
 msgid "The Events Calendar"
 msgstr "The Events Calendar"
 
 #: src/Category_Colors/Admin.php:37
-#, php-format
+#, fuzzy, php-format
 msgid ""
-"To begin using The Events Calendar Category Colors, please install the latest version of <a href="
-"\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</a>."
+"To begin using The Events Calendar Category Colors, please install the latest version of %sThe "
+"Events Calendar%s."
 msgstr ""
 "Para começar a usar as Cores de Categoria do The Events Calendar, por favor instale a versão mais "
 "recente do  <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</a>."
 
-#: src/Category_Colors/Admin.php:41
-#, fuzzy
-msgid "You have The Events Calendar v."
-msgstr "The Events Calendar"
+#: src/Category_Colors/Admin.php:39
+#, fuzzy, php-format
+msgid ""
+"You have The Events Calendar v.%s. To begin using The Events Calendar Category Colors, please "
+"install the latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</"
+"a>."
+msgstr ""
+"Para começar a usar as Cores de Categoria do The Events Calendar, por favor instale a versão mais "
+"recente do  <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</a>."
 
-#: src/Category_Colors/Admin.php:99
+#: src/Category_Colors/Admin.php:98
 msgid "Category Colors"
 msgstr "Cores de Categoria"
 
-#: src/Category_Colors/Admin.php:115
+#: src/Category_Colors/Admin.php:114
 msgid "Settings saved."
 msgstr "Configurações salvas."
 
@@ -95,51 +97,51 @@ msgstr ""
 msgid "%1$s recommends a PHP version greater than %2$s."
 msgstr ""
 
-#: views/optionsform.php:9
+#: views/optionsform.php:13
 msgid "Hide"
 msgstr ""
 
-#: views/optionsform.php:10
+#: views/optionsform.php:14
 msgid "Category Slug"
 msgstr "Slug da Categoria"
 
-#: views/optionsform.php:11
+#: views/optionsform.php:15
 msgid "Border Color"
 msgstr "Cor da Borda"
 
-#: views/optionsform.php:12
+#: views/optionsform.php:16
 msgid "Background Color"
 msgstr "Cor de fundo"
 
-#: views/optionsform.php:13
+#: views/optionsform.php:17
 msgid "Text Color"
 msgstr "Cor do texto"
 
-#: views/optionsform.php:14
+#: views/optionsform.php:18
 msgid "Current Display"
 msgstr "Exibição Atual"
 
-#: views/optionsform.php:37 views/optionsform.php:52
+#: views/optionsform.php:35 views/optionsform.php:47
 msgid "Transparent"
 msgstr "Transparente"
 
-#: views/optionsform.php:86
+#: views/optionsform.php:81
 msgid "Font-Weight Options"
 msgstr "Opções de Peso da Fonte"
 
-#: views/optionsform.php:97
+#: views/optionsform.php:92
 msgid "Add Category Legend"
 msgstr "Legenda de Adicionar Categoria"
 
-#: views/optionsform.php:99
+#: views/optionsform.php:94
 msgid "Check to add a Category Legend to the calendar."
 msgstr "Marque para adicionar uma Legenda de Categoria ao calendário."
 
-#: views/optionsform.php:104
+#: views/optionsform.php:99
 msgid "Check to add Legend Superpowers."
 msgstr "Marque para adicionar Super-Poderes da Legenda"
 
-#: views/optionsform.php:105
+#: views/optionsform.php:100
 msgid ""
 "Legend Superpowers are an optional visual effect allowing visitors to focus only on those events "
 "that belong to categories of interest - without reloading the page and without eliminating other "
@@ -151,32 +153,32 @@ msgstr ""
 "completamente as outras categorias da visualização. Clique na categoria de interesse na Legenda "
 "para ativar o efeito e clique novamente para dasativar."
 
-#: views/optionsform.php:110
+#: views/optionsform.php:105
 msgid "Show hidden categories in legend."
 msgstr ""
 
-#: views/optionsform.php:115
+#: views/optionsform.php:110
 msgid "Check to use your own CSS for category legend."
 msgstr "Marque para usar seu próprio CSS para a legenda da categoria."
 
-#: views/optionsform.php:118
+#: views/optionsform.php:113
 msgid "Colorize Widgets"
 msgstr ""
 
-#: views/optionsform.php:120
+#: views/optionsform.php:115
 #, fuzzy
 msgid "Add Category Colors to widgets"
 msgstr "Cores de Categoria"
 
-#: views/optionsform.php:123
+#: views/optionsform.php:118
 msgid "Database Options"
 msgstr "Opções de Banco de Dados"
 
-#: views/optionsform.php:125
+#: views/optionsform.php:120
 msgid "Restore defaults upon plugin deactivation/reactivation"
 msgstr "Restaure os valores padrão ao desativar/reativar o plugin"
 
-#: views/optionsform.php:126
+#: views/optionsform.php:121
 msgid "Only check this if you want to reset plugin settings upon Plugin reactivation"
 msgstr "Somente marque isto se você quiser redefinir as configurações padrão na reativação do plugin"
 
@@ -206,6 +208,19 @@ msgstr "Andy Fragen, Barry Hughes"
 #, fuzzy
 msgid "http://thefragens.com"
 msgstr "http://thefragens.com/"
+
+#~ msgid ""
+#~ "Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</"
+#~ "strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-"
+#~ "calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
+#~ msgstr ""
+#~ "Instruções para <strong>filtros</strong>, <strong>ganchos</strong>, <strong>funções de "
+#~ "configuração</strong>, e <strong>ajuda</strong> estão no <a href=\"https://github.com/afragen/"
+#~ "the-events-calendar-category-colors/wiki\">wiki do The Events Calendar Category Colors</a>."
+
+#, fuzzy
+#~ msgid "You have The Events Calendar v."
+#~ msgstr "The Events Calendar"
 
 #~ msgid "Custom Legend CSS"
 #~ msgstr "CSS Personalizado da Legenda"

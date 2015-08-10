@@ -1,3 +1,8 @@
+#### 4.3.5
+* escape all things for better security
+* tweak declaration/initiation of variables
+* tested to 4.3
+
 #### 4.3.4
 * change CSS load order to ( PHP_MAX_INT - 100 ) to allow for overriding
 

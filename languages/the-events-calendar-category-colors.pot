@@ -2,14 +2,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: The Events Calendar Category Colors\n"
-"POT-Creation-Date: 2015-06-16 17:39-0800\n"
+"POT-Creation-Date: 2015-08-09 18:45-0700\n"
 "PO-Revision-Date: 2015-06-16 17:38-0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 1.8.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: the-events-calendar-category-colors.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -19,25 +19,25 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: includes/admintab.php:16
+#: includes/admintab.php:15
 msgid "Category Colors Settings"
 msgstr ""
 
-#: includes/admintab.php:20
+#: includes/admintab.php:19
+#, php-format
 msgid ""
 "The Events Calendar Category Colors plugin was inspired by the tutorial "
-"<i>Coloring Your Category Events</i>."
+"%sColoring Your Category Events%s."
 msgstr ""
 
-#: includes/admintab.php:24
+#: includes/admintab.php:23
+#, php-format
 msgid ""
-"Instructions for <strong>filters</strong>, <strong>hooks</strong>, "
-"<strong>settings functions</strong>, and <strong>help</strong> are on <a "
-"href=\"https://github.com/afragen/the-events-calendar-category-colors/wiki"
-"\">The Events Calendar Category Colors wiki</a>."
+"Instructions for %1$sfilters%2$s, %1$shooks%2$s, %1$ssettings functions%2$s, "
+"and %1$shelp%2$s are on %3$sThe Events Calendar Category Colors wiki%4$s."
 msgstr ""
 
-#: includes/admintab.php:40
+#: includes/admintab.php:39
 msgid "Save Changes"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Use of this function is deprecated"
 msgstr ""
 
-#: src/Category_Colors/Admin.php:36 src/Category_Colors/Admin.php:40
+#: src/Category_Colors/Admin.php:35
 msgid "The Events Calendar"
 msgstr ""
 
@@ -53,19 +53,22 @@ msgstr ""
 #, php-format
 msgid ""
 "To begin using The Events Calendar Category Colors, please install the "
-"latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events "
-"Calendar</a>."
+"latest version of %sThe Events Calendar%s."
 msgstr ""
 
-#: src/Category_Colors/Admin.php:41
-msgid "You have The Events Calendar v."
+#: src/Category_Colors/Admin.php:39
+#, php-format
+msgid ""
+"You have The Events Calendar v.%s. To begin using The Events Calendar "
+"Category Colors, please install the latest version of <a href=\"%s\" class="
+"\"thickbox\" title=\"%s\">The Events Calendar</a>."
 msgstr ""
 
-#: src/Category_Colors/Admin.php:99
+#: src/Category_Colors/Admin.php:98
 msgid "Category Colors"
 msgstr ""
 
-#: src/Category_Colors/Admin.php:115
+#: src/Category_Colors/Admin.php:114
 msgid "Settings saved."
 msgstr ""
 
@@ -88,51 +91,51 @@ msgstr ""
 msgid "%1$s recommends a PHP version greater than %2$s."
 msgstr ""
 
-#: views/optionsform.php:9
+#: views/optionsform.php:13
 msgid "Hide"
 msgstr ""
 
-#: views/optionsform.php:10
+#: views/optionsform.php:14
 msgid "Category Slug"
 msgstr ""
 
-#: views/optionsform.php:11
+#: views/optionsform.php:15
 msgid "Border Color"
 msgstr ""
 
-#: views/optionsform.php:12
+#: views/optionsform.php:16
 msgid "Background Color"
 msgstr ""
 
-#: views/optionsform.php:13
+#: views/optionsform.php:17
 msgid "Text Color"
 msgstr ""
 
-#: views/optionsform.php:14
+#: views/optionsform.php:18
 msgid "Current Display"
 msgstr ""
 
-#: views/optionsform.php:37 views/optionsform.php:52
+#: views/optionsform.php:35 views/optionsform.php:47
 msgid "Transparent"
 msgstr ""
 
-#: views/optionsform.php:86
+#: views/optionsform.php:81
 msgid "Font-Weight Options"
 msgstr ""
 
-#: views/optionsform.php:97
+#: views/optionsform.php:92
 msgid "Add Category Legend"
 msgstr ""
 
-#: views/optionsform.php:99
+#: views/optionsform.php:94
 msgid "Check to add a Category Legend to the calendar."
 msgstr ""
 
-#: views/optionsform.php:104
+#: views/optionsform.php:99
 msgid "Check to add Legend Superpowers."
 msgstr ""
 
-#: views/optionsform.php:105
+#: views/optionsform.php:100
 msgid ""
 "Legend Superpowers are an optional visual effect allowing visitors to focus "
 "only on those events that belong to categories of interest - without "
@@ -141,31 +144,31 @@ msgid ""
 "click again to remove it."
 msgstr ""
 
-#: views/optionsform.php:110
+#: views/optionsform.php:105
 msgid "Show hidden categories in legend."
 msgstr ""
 
-#: views/optionsform.php:115
+#: views/optionsform.php:110
 msgid "Check to use your own CSS for category legend."
 msgstr ""
 
-#: views/optionsform.php:118
+#: views/optionsform.php:113
 msgid "Colorize Widgets"
 msgstr ""
 
-#: views/optionsform.php:120
+#: views/optionsform.php:115
 msgid "Add Category Colors to widgets"
 msgstr ""
 
-#: views/optionsform.php:123
+#: views/optionsform.php:118
 msgid "Database Options"
 msgstr ""
 
-#: views/optionsform.php:125
+#: views/optionsform.php:120
 msgid "Restore defaults upon plugin deactivation/reactivation"
 msgstr ""
 
-#: views/optionsform.php:126
+#: views/optionsform.php:121
 msgid ""
 "Only check this if you want to reset plugin settings upon Plugin reactivation"
 msgstr ""

@@ -4,7 +4,11 @@ namespace Fragen\Category_Colors;
 use DateTime,
 	Tribe__Events__Main;
 
-
+/**
+ * Class Frontend
+ *
+ * @package Fragen\Category_Colors
+ */
 class Frontend {
 
 	const CSS_HANDLE = 'teccc_css';
@@ -18,7 +22,7 @@ class Frontend {
 
 	public function __construct( Main $teccc ) {
 		$this->teccc   = $teccc;
-		$this->options = get_option( 'teccc_options' );
+		$this->options = Admin::fetch_options( $teccc );
 
 		require_once TECCC_INCLUDES . '/templatetags.php';
 

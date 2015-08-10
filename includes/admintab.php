@@ -1,7 +1,6 @@
 <?php
 namespace Fragen\Category_Colors;
 
-
 return array(
 	'priority'      => 40,
 	'show_save'     => false,
@@ -13,15 +12,15 @@ return array(
 		),
 		'title' => array(
 			'type' => 'html',
-			'html' => '<h2>'.__('Category Colors Settings', 'the-events-calendar-category-colors').'</h2>'
+			'html' => '<h2>' . esc_html__('Category Colors Settings', 'the-events-calendar-category-colors') . '</h2>'
 		),
 		'blurb' => array(
 			'type' => 'html',
-			'html' => '<p>'.__('The Events Calendar Category Colors plugin was inspired by the tutorial <i>Coloring Your Category Events</i>.', 'the-events-calendar-category-colors').'</p>'
+			'html' => '<p>' . sprintf( esc_html__('The Events Calendar Category Colors plugin was inspired by the tutorial %sColoring Your Category Events%s.', 'the-events-calendar-category-colors'), '<i>', '</i>' ). '</p>'
 		),
  		'legend' => array(
  			'type' => 'html',
- 			'html' => '<p>'.__('Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</strong>, and <strong>help</strong> are on <a href="https://github.com/afragen/the-events-calendar-category-colors/wiki">The Events Calendar Category Colors wiki</a>.', 'the-events-calendar-category-colors').'</p>'
+ 			'html' => '<p>' . sprintf( esc_html__('Instructions for %1$sfilters%2$s, %1$shooks%2$s, %1$ssettings functions%2$s, and %1$shelp%2$s are on %3$sThe Events Calendar Category Colors wiki%4$s.', 'the-events-calendar-category-colors'), '<strong>', '</strong>', '<a href="https://github.com/afragen/the-events-calendar-category-colors/wiki">', '</a>' ). '</p>'
  		),
 		'info-end' => array(
 			'type' => 'html',
@@ -37,7 +36,7 @@ return array(
 		),
 		'save-button' => array(
 			'type' => 'html',
-			'html' => '<p class="submit"><input type="submit" class="button-primary" value="' . __('Save Changes', 'the-events-calendar-category-colors') . '" /></p>'
+			'html' => '<p class="submit"><input type="submit" class="button-primary" value="' . esc_html__('Save Changes', 'the-events-calendar-category-colors') . '" /></p>'
 		)
 	)
 );

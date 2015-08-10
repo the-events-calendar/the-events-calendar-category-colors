@@ -1,15 +1,26 @@
 <?php
 namespace Fragen\Category_Colors;
 
-?>/* The Events Calendar Category Colors <?php echo Main::$version ?> generated CSS */
+/*
+ * Setup variables for CSS generation.
+ */
+$teccc   = Main::instance();
+$options = Admin::fetch_options( $teccc );
+if ( function_exists( 'tribe_get_mobile_breakpoint' ) ) {
+	$breakpoint = tribe_get_mobile_breakpoint();
+}
+
+?>
+
+/* The Events Calendar Category Colors <?php echo Main::$version ?> generated CSS */
 .teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
 {
-	font-weight: <?php echo $options['font_weight']  ?>;
+	font-weight: <?php esc_attr_e( $options['font_weight'] ) ?>;
 }
 
 .tribe-events-list .vevent.hentry h2 { padding-left: 5px; }
 
-@media only screen and (max-width: <?php echo $breakpoint ?>px) {
+@media only screen and (max-width: <?php esc_attr_e( $breakpoint ) ?>px) {
 	.tribe-events-calendar td .hentry { display: block; }
 	h3.entry-title.summary,
 	.tribe-events-calendar .tribe-events-has-events:after
@@ -31,23 +42,23 @@ namespace Fragen\Category_Colors;
 
 <?php Extras::add_map_link_css( $slug ); ?>
 <?php Extras::add_week_link_css( $slug ); ?>
-<?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
-	<?php Widgets::add_widget_link_css( $slug, $options ); ?>
+<?php if ( '1' === $options['color_widgets'] ): ?>
+	<?php Widgets::add_widget_link_css( $slug ); ?>
 <?php endif ?>
 .teccc-legend .tribe-events-category-<?php echo $slug ?> a,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
 .tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4 a
 {
-	color: <?php echo $options[ $slug.'-text' ] ?>;
+	color: <?php esc_attr_e( $options[ $slug.'-text' ] ) ?>;
 	text-decoration: none;
 }
 
 <?php Extras::add_map_background_css( $slug ); ?>
 <?php Extras::add_week_background_css( $slug ); ?>
 <?php Extras::add_filter_bar_background_css( $slug ); ?>
-<?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
-	<?php Widgets::add_widget_background_css( $slug, $options ); ?>
+<?php if ( '1' === $options['color_widgets'] ): ?>
+	<?php Widgets::add_widget_background_css( $slug ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug ?>,
@@ -57,18 +68,18 @@ namespace Fragen\Category_Colors;
 .tribe-events-category-<?php echo $slug ?> h2 a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4
 {
-	background-color: <?php echo $options[ $slug.'-background' ] ?>;
-	border-left: 5px solid <?php echo $options[ $slug.'-border' ] ?>;
+	background-color: <?php esc_attr_e( $options[ $slug.'-background' ] ) ?>;
+	border-left: 5px solid <?php esc_attr_e( $options[ $slug.'-border' ] ) ?>;
 	border-right: 5px solid transparent;
-	color: <?php echo $options[ $slug.'-text' ] ?>;
+	color: <?php esc_attr_e( $options[ $slug.'-text' ] ) ?>;
 	line-height: 1.4em;
 	padding-left: 5px;
 	padding-bottom: 2px;
 }
 
 <?php Extras::add_map_display_css( $slug ); ?>
-<?php if ( isset( $options['color_widgets'] ) && '1' === $options['color_widgets'] ): ?>
-	<?php Widgets::add_widget_display_css( $slug, $options ); ?>
+<?php if ( '1' === $options['color_widgets'] ): ?>
+	<?php Widgets::add_widget_display_css( $slug ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a
 {
@@ -78,7 +89,7 @@ namespace Fragen\Category_Colors;
 
 <?php endforeach ?>
 
-<?php if ( isset( $options['add_legend'] ) && ! isset( $options['custom_legend_css'] ) ): ?>
+<?php if ( ( '1' === $options['add_legend'] ) && is_null( $options['custom_legend_css'] ) ): ?>
 	<?php $teccc->view( 'legend.css' ) ?>
-	<?php do_action( 'teccc_add_legend_css' ); ?>
 <?php endif ?>
+<?php do_action( 'teccc_add_legend_css' ); ?>
