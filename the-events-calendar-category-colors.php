@@ -28,7 +28,7 @@ if ( ! class_exists( 'WPUpdatePhp' ) ) {
 }
 $updatePhp = new WPUpdatePhp( '5.3.0' );
 if ( method_exists( $updatePhp, 'set_plugin_name' ) ) {
-	$updatePhp->set_plugin_name( 'GitHub Updater' );
+	$updatePhp->set_plugin_name( 'The Events Calendar Category Colors' );
 }
 if ( ! $updatePhp->does_it_meet_required_php_version( PHP_VERSION ) ) {
 	return false;
