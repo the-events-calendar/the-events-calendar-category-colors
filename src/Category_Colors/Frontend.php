@@ -49,7 +49,7 @@ class Frontend {
 	public function add_scripts_styles() {
 		// Register stylesheet
 		$args = array( self::CSS_HANDLE => $this->options_hash(), $_GET );
-		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url() ), false, Main::$version );
+		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url('/') ), false, Main::$version );
 
 		// Let's test to see if any event-related post types were requested
 		$event_types      = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );

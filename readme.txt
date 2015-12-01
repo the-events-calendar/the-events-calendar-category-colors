@@ -3,8 +3,8 @@ Contributors: afragen, barry.hughes
 Donate link: http://bit.ly/teccc-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
-Tested up to: 4.3
-Stable tag: 4.3.5
+Tested up to: 4.4
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,11 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 == Changelog ==
+
+= 4.4.0 =
+* update for The Events Calendar 4.0
+* fix for WordPress installation in subfolder - thanks @IndigoStarfish
+* tested to WordPress 4.4
 
 = 4.3.5 =
 * escape all things for better security
@@ -436,3 +441,6 @@ This version integrates more tightly with The Events Calendar plugin putting set
 
 = 1.6.3 =
 This is the last version to work with The Events Calendar 2.x
+
+= 4.0.0 =
+Requires PHP 5.3 or greater

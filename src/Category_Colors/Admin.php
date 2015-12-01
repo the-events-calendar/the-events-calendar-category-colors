@@ -2,7 +2,7 @@
 namespace Fragen\Category_Colors;
 
 use Tribe__Events__Main,
-    Tribe__Events__Settings_Tab;
+	Tribe__Settings_Tab;
 
 
 class Admin {
@@ -95,7 +95,7 @@ class Admin {
 		$categoryColorsTab = $this->teccc->load_config( 'admintab' );
 		add_action( 'tribe_settings_form_element_tab_category-colors', array( $this, 'form_header' ) );
 		add_action( 'tribe_settings_before_content_tab_category-colors', array( $this, 'settings_fields' ) );
-		new Tribe__Events__Settings_Tab( self::TAB_NAME, esc_html__( 'Category Colors', 'the-events-calendar-category-colors' ), $categoryColorsTab );
+		new Tribe__Settings_Tab( self::TAB_NAME, esc_html__( 'Category Colors', 'the-events-calendar-category-colors' ), $categoryColorsTab );
 	}
 
 
@@ -187,7 +187,9 @@ class Admin {
 	 * @return bool|void
 	 */
 	public static function load_teccc_js_css( $hook ) {
-		if ( 'tribe_events_page_tribe-events-calendar' != $hook ) {
+		if ( 'tribe_events_page_tribe-events-calendar' != $hook &&
+		     'tribe_events_page_tribe-common' != $hook
+		) {
 			return false;
 		}
 
