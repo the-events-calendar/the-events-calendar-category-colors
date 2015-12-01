@@ -64,15 +64,15 @@ function teccc_init() {
 
 	// Autoloading
 	require_once( TECCC_CLASSES . '/Category_Colors/Autoloader.php' );
-	$teccc_loader = 'Fragen\\Category_Colors\\Autoloader';
-	new $teccc_loader( $root, $compatibility );
+	$loader = 'Fragen\\Category_Colors\\Autoloader';
+	new $loader( $root, $compatibility );
 
 	// Set-up Action and Filter Hooks
 	register_activation_hook( __FILE__, array( 'Fragen\\Category_Colors\\Main', 'add_defaults' ) );
 
 	// Launch
-	$teccc_launch_method = array( 'Fragen\\Category_Colors\\Main', 'instance' );
-	$teccc = call_user_func( $teccc_launch_method );
+	$launch_method = array( 'Fragen\\Category_Colors\\Main', 'instance' );
+	$teccc = call_user_func( $launch_method );
 }
 
 add_action( 'plugins_loaded', 'teccc_init', 15 );
