@@ -1,3 +1,6 @@
+#### 4.4.1
+* fix week view link color
+
 #### 4.4.0
 * update for The Events Calendar 4.0
 * fix for WordPress installation in subfolder - thanks @IndigoStarfish
