@@ -73,6 +73,7 @@ class Extras extends Frontend {
 		$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . '.hentry.vevent h3.entry-title a,';
 		$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . '.hentry.vevent .tribe-events-tooltip h4.entry-title.summary,';
 		$css[] = '.tribe-grid-body .tribe-events-category-' . $slug . ' a,';
+		$css[] = '.tribe-grid-allday .tribe-events-category-' . $slug . ' a,';
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;

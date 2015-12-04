@@ -1,3 +1,6 @@
+#### 4.4.2
+* fix week view all day color
+
 #### 4.4.1
 * fix week view link color
 
