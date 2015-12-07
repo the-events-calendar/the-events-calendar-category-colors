@@ -82,7 +82,8 @@ if ( function_exists( 'tribe_get_mobile_breakpoint' ) ) {
 <?php if ( '1' === $options['color_widgets'] ): ?>
 	<?php Widgets::add_widget_display_css( $slug ); ?>
 <?php endif ?>
-.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a
+.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a,
+.tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a
 {
 	width: auto;
 	display: block;
