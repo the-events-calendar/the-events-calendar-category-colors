@@ -52,6 +52,9 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
+= 4.4.3 =
+* fix for mobile TEC 4.0
+
 = 4.4.2 =
 * fix week view all day color
 
