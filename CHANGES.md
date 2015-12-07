@@ -1,3 +1,7 @@
+#### 4.4.4
+* fix to display title full width, most noticeable in photo view
+* sorry about all the quick updates, just trying to fix issues as I'm made aware of them.
+
 #### 4.4.3
 * fix for mobile TEC 4.0
 
