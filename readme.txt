@@ -52,6 +52,9 @@ There is more extensive documentation of the plugins features and usage on the [
 
 == Changelog ==
 
+= 4.4.5 =
+* fix superpowers to be more inclusive in find - thanks Lisa
+
 = 4.4.4 =
 * fix to display title full width, most noticeable in photo view
 * sorry about all the quick updates, just trying to fix issues as I'm made aware of them.

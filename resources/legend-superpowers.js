@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
 	function defaultStatus() {
 		legendEntries = $("ul#legend").find("li");
 		status = {
-			allEntries: $("#tribe-events-content").find("div.hentry.type-tribe_events"),
+			allEntries: $("#tribe-events-content").find("div[class^=tribe-events-category-]"),
 			opacity: 0.25,
 			selected: false,
 			speed: 500,
