@@ -1,6 +1,6 @@
 === The Events Calendar Category Colors ===
 Contributors: afragen, barry.hughes
-Donate link: http://bit.ly/teccc-donate
+Donate link: http://thefragens.com/category-colors-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Tested up to: 4.4
