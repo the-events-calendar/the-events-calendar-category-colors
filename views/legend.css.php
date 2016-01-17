@@ -1,3 +1,4 @@
+
 #legend_box { font: bold 10px/4em sans-serif; text-align: center; }
 
 #legend a { text-decoration: none; }
