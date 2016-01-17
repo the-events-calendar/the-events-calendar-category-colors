@@ -94,13 +94,9 @@ class Extras extends Frontend {
 	public static function add_mobile_css() {
 		$teccc = Main::instance();
 
-		ob_start();
-
-		$teccc->view( 'mobile.css', array(
+		$css = $teccc->view( 'mobile.css', array(
 			'breakpoint' => tribe_get_mobile_breakpoint()
-		) );
-
-		$css = ob_get_clean();
+		), false );
 
 		echo apply_filters( 'teccc_mobile_css', $css );
 	}
