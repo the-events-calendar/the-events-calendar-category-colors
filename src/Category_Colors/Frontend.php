@@ -139,15 +139,10 @@ class Frontend {
 		}
 
 		// Else generate the CSS afresh
-		ob_start();
-
-		$this->teccc->view( 'category.css', array(
+		$css = $this->teccc->view( 'category.css', array(
 			'options'    => $this->options,
 			'teccc'      => $this->teccc,
-			'breakpoint' => tribe_get_mobile_breakpoint()
-		) );
-
-		$css = ob_get_clean();
+		), false );
 
 		if ( ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) && ! $debug_css ) {
 			$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css ); // Remove comments
