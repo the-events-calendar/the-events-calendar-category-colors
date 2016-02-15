@@ -101,4 +101,16 @@ class Extras extends Frontend {
 		echo apply_filters( 'teccc_mobile_css', $css );
 	}
 
+	public static function fix_category_link_color( $slug ) {
+		/**
+		 * Filter to add CSS selector that is overriding link color.
+		 *
+		 * @since 4.5.0
+		 */
+		$selector = apply_filters( 'teccc_fix_category_link_color', null );
+		$css[] = $selector . ' .tribe-events-category-' . $slug . ' a,';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
 }

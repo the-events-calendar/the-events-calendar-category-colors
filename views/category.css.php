@@ -28,6 +28,7 @@ $options = Admin::fetch_options( $teccc );
 		$name = esc_attr( $attributes[ Main::NAME ] );
 	?>
 
+<?php Extras::fix_category_link_color( $slug ); ?>
 <?php Extras::add_map_link_css( $slug ); ?>
 <?php Extras::add_week_link_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ): ?>
