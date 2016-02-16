@@ -109,6 +109,7 @@ class Extras extends Frontend {
 		 */
 		$selector = apply_filters( 'teccc_fix_category_link_color', null );
 		$css[] = $selector . ' .tribe-events-category-' . $slug . ' a,';
+		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
 	}
