@@ -1,3 +1,6 @@
+#### 4.5.0
+* add filter `teccc_fix_category_link_color` for those pesky themes that override everything.
+
 #### 4.4.6
 * refactor mobile CSS and add filter `teccc_mobile_css`
 
