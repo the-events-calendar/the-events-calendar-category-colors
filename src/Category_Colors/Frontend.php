@@ -112,7 +112,7 @@ class Frontend {
 		header( "Expires: $next_year" );
 		header( "Cache-Control: public, max-age=$one_year" );
 		header( "Pragma: public" );
-		header( "Etag: $hash" );
+		header( "ETag: \"$hash\"" );
 
 		echo $this->generate_css();
 
