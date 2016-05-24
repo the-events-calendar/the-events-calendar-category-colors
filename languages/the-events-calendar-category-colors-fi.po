@@ -1,0 +1,216 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: The Events Calendar Category Colors\n"
+"POT-Creation-Date: 2015-08-09 18:45-0700\n"
+"PO-Revision-Date: 2016-05-24 14:07+0200\n"
+"Last-Translator: Roni Laukkarinen <roni@dude.fi>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: the-events-calendar-category-colors.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fi\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/admintab.php:15
+msgid "Category Colors Settings"
+msgstr "Kategorioiden väriasetukset"
+
+#: includes/admintab.php:19
+#, php-format
+msgid ""
+"The Events Calendar Category Colors plugin was inspired by the tutorial "
+"%sColoring Your Category Events%s."
+msgstr ""
+"The Events Calendarin kategorioiden värit -lisäosan inspiroi ohje: "
+"%sColoring Your Category Events%s."
+
+#: includes/admintab.php:23
+#, php-format
+msgid ""
+"Instructions for %1$sfilters%2$s, %1$shooks%2$s, %1$ssettings functions%2$s, "
+"and %1$shelp%2$s are on %3$sThe Events Calendar Category Colors wiki%4$s."
+msgstr ""
+"Ohjeet %1$sfiltereiden%2$s, %1$shookien%2$s, %1$sasetus-funktioiden%2$s ja "
+"%1$savun%2$s löytyy %3$sThe Events Calendar Category Colors wikistä%4$s."
+
+#: includes/admintab.php:39
+msgid "Save Changes"
+msgstr "Tallenna asetukset"
+
+#: includes/templatetags.php:56
+msgid "Use of this function is deprecated"
+msgstr "Tämä funktio on vanhentunut"
+
+#: src/Category_Colors/Admin.php:35
+msgid "The Events Calendar"
+msgstr "Tapahtumakalenteri"
+
+#: src/Category_Colors/Admin.php:37
+#, php-format
+msgid ""
+"To begin using The Events Calendar Category Colors, please install the "
+"latest version of %sThe Events Calendar%s."
+msgstr ""
+"Käyttääksesi The Events Calendar kategoriavärilisäosaa, asenna ensin uusin "
+"versio %sThe Events Calendar%s -lisäosasta."
+
+#: src/Category_Colors/Admin.php:39
+#, php-format
+msgid ""
+"You have The Events Calendar v.%s. To begin using The Events Calendar "
+"Category Colors, please install the latest version of <a href=\"%s\" class="
+"\"thickbox\" title=\"%s\">The Events Calendar</a>."
+msgstr ""
+"Sinulla on asennettuna The Events Calendar v.%s. Käyttääksesi The Events "
+"Calendar kategoriavärilisäosaa, asenna uusin versio <a href=\"%s\" class="
+"\"thickbox\" title=\"%s\">The Events Calendarista täältä</a>."
+
+#: src/Category_Colors/Admin.php:98
+msgid "Category Colors"
+msgstr "Kategorioiden värit"
+
+#: src/Category_Colors/Admin.php:114
+msgid "Settings saved."
+msgstr "Asetukset tallennettu."
+
+#: vendor/WPUpdatePhp.php:24
+msgid "this plugin"
+msgstr "tämä lisäosa"
+
+#: vendor/WPUpdatePhp.php:92
+#, php-format
+msgid "Unfortunately, %1$s can not run on PHP versions older than %2$s."
+msgstr "Valitettavasti %1$s ei pyöri PHP %2$s ja vanhemmilla."
+
+#: vendor/WPUpdatePhp.php:94 vendor/WPUpdatePhp.php:110
+#, php-format
+msgid "Read more information about %show you can update%s."
+msgstr "Lue lisää aiheesta %show you can update%s."
+
+#: vendor/WPUpdatePhp.php:108
+#, php-format
+msgid "%1$s recommends a PHP version greater than %2$s."
+msgstr "%1$s suosittelee uudempaa PHP versiota kuin %2$s."
+
+#: views/optionsform.php:13
+msgid "Hide"
+msgstr "Piilota"
+
+#: views/optionsform.php:14
+msgid "Category Slug"
+msgstr "Kategorian polkutunnus"
+
+#: views/optionsform.php:15
+msgid "Border Color"
+msgstr "Reunuksen väri"
+
+#: views/optionsform.php:16
+msgid "Background Color"
+msgstr "Taustaväri"
+
+#: views/optionsform.php:17
+msgid "Text Color"
+msgstr "Tekstin väri"
+
+#: views/optionsform.php:18
+msgid "Current Display"
+msgstr "Nykyinen esitystapa"
+
+#: views/optionsform.php:35 views/optionsform.php:47
+msgid "Transparent"
+msgstr "Läpinäkyvä"
+
+#: views/optionsform.php:81
+msgid "Font-Weight Options"
+msgstr "Fontin paksuuden asetukset"
+
+#: views/optionsform.php:92
+msgid "Add Category Legend"
+msgstr "Lisää uusi kategorialuokka"
+
+#: views/optionsform.php:94
+msgid "Check to add a Category Legend to the calendar."
+msgstr "Valitse kategorialuokka kalenteriin"
+
+#: views/optionsform.php:99
+msgid "Check to add Legend Superpowers."
+msgstr "Valitse lisätäksesi luokan supervoimat."
+
+#: views/optionsform.php:100
+msgid ""
+"Legend Superpowers are an optional visual effect allowing visitors to focus "
+"only on those events that belong to categories of interest - without "
+"reloading the page and without eliminating other categories from view "
+"completely. Click on the category of interest in the Legend for the effect; "
+"click again to remove it."
+msgstr ""
+"Luokan supervoimat ovat valinnainen visuaalinen efekti jotka mahdollistavat "
+"sen että kävijät voivat keskittyä ainoastaan niihin tapahtumiin jotka "
+"kiinnostavat - lataamatta sivua ja pyyhkimättä kategorianäkymää kokonaan. "
+"Klikkaa kiinnostavaa kategoriaa saadaksesi efektin aikaan, klikkaa uudestaan "
+"poistaaksesi sen."
+
+#: views/optionsform.php:105
+msgid "Show hidden categories in legend."
+msgstr "Näytä piilotetu kategoriat luokassa."
+
+#: views/optionsform.php:110
+msgid "Check to use your own CSS for category legend."
+msgstr "Valitse käyttääksesi omaa CSS:ää kategorialuokassa."
+
+#: views/optionsform.php:113
+msgid "Colorize Widgets"
+msgstr "Väritä vimpaimet"
+
+#: views/optionsform.php:115
+msgid "Add Category Colors to widgets"
+msgstr "Lisää kategorian värit vimpaimiin"
+
+#: views/optionsform.php:118
+msgid "Database Options"
+msgstr "Tietokannan asetukset"
+
+#: views/optionsform.php:120
+msgid "Restore defaults upon plugin deactivation/reactivation"
+msgstr "Palauta oletukset lisäosan deaktivoinnissa/uudelleenaktivoinnissa"
+
+#: views/optionsform.php:121
+msgid ""
+"Only check this if you want to reset plugin settings upon Plugin reactivation"
+msgstr ""
+"Valitse tämä vain jos haluat nollata lisäosan asetukset lisäosan "
+"uudelleenaktivoinnin aikana"
+
+#. Plugin Name of the plugin/theme
+msgid "The Events Calendar Category Colors"
+msgstr "The Events Calendar kategorioiden värit"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/afragen/the-events-calendar-category-colors"
+msgstr "https://github.com/afragen/the-events-calendar-category-colors"
+
+#. Description of the plugin/theme
+msgid ""
+"This plugin adds event category background coloring to <a href=\"http://"
+"wordpress.org/plugins/the-events-calendar/\">The Events Calendar</a> plugin."
+msgstr ""
+"Lisäosa lisää <a href=\"http://wordpress.org/plugins/the-events-calendar/"
+"\">The Events Calendar</a>-lisäosan tapahtumien kategorioille hienot "
+"taustavärit."
+
+#. Author of the plugin/theme
+msgid "Andy Fragen, Barry Hughes"
+msgstr "Andy Fragen, Barry Hughes"
+
+#. Author URI of the plugin/theme
+msgid "http://thefragens.com"
+msgstr "http://thefragens.com"
