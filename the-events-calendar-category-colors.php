@@ -3,7 +3,7 @@
 Plugin Name:       The Events Calendar Category Colors
 Plugin URI:        https://github.com/afragen/the-events-calendar-category-colors
 Description:       This plugin adds event category background coloring to <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-Version:           4.4.5.2
+Version:           4.4.5.3
 Text Domain:       the-events-calendar-category-colors
 Author:            Andy Fragen, Barry Hughes
 Author URI:        http://thefragens.com
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 if ( ! class_exists( 'WPUpdatePhp' ) ) {
-	require_once ( plugin_dir_path( __FILE__ ) . '/vendor/wp-update-php/src/WPUpdatePhp.php' );
+	require_once( plugin_dir_path( __FILE__ ) . '/vendor/wp-update-php/src/WPUpdatePhp.php' );
 }
 $updatePhp = new WPUpdatePhp( '5.3.0' );
 if ( method_exists( $updatePhp, 'set_plugin_name' ) ) {
@@ -51,15 +51,14 @@ function teccc_init() {
 
 	// Back compat classes
 	$compatibility = array(
-		'Tribe__Events__Main'            => TECCC_CLASSES . '/Back_Compat/Events.php',
-		'Tribe__Settings_Tab'            => TECCC_CLASSES . '/Back_Compat/Settings_Tab.php',
-		'Tribe__Events__Pro__Main'       => TECCC_CLASSES . '/Back_Compat/Events_Pro.php',
-		'Tribe__Events__Filterbar__View' => TECCC_CLASSES . '/Back_Compat/FilterView.php',
+		'Tribe__Events__Main'      => TECCC_CLASSES . '/Back_Compat/Events.php',
+		'Tribe__Settings_Tab'      => TECCC_CLASSES . '/Back_Compat/Settings_Tab.php',
+		'Tribe__Events__Pro__Main' => TECCC_CLASSES . '/Back_Compat/Events_Pro.php',
 	);
 
 	// Plugin namespace root
 	$root = array(
-		'Fragen\Category_Colors'         => TECCC_CLASSES . '/Category_Colors',
+		'Fragen\Category_Colors' => TECCC_CLASSES . '/Category_Colors',
 	);
 
 	// Autoloading
@@ -72,7 +71,7 @@ function teccc_init() {
 
 	// Launch
 	$launch_method = array( 'Fragen\\Category_Colors\\Main', 'instance' );
-	$teccc = call_user_func( $launch_method );
+	$teccc         = call_user_func( $launch_method );
 }
 
 add_action( 'plugins_loaded', 'teccc_init', 15 );

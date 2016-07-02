@@ -1,5 +1,7 @@
 #### 4.5.0
 * add filter `teccc_fix_category_link_color` for those pesky themes that override everything.
+* fix ETag header in CSS
+* removed Filter Bar coloring
 
 #### 4.4.6
 * refactor mobile CSS and add filter `teccc_mobile_css`

@@ -45,7 +45,6 @@ $options = Admin::fetch_options( $teccc );
 
 <?php Extras::add_map_background_css( $slug ); ?>
 <?php Extras::add_week_background_css( $slug ); ?>
-<?php Extras::add_filter_bar_background_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ): ?>
 	<?php Widgets::add_widget_background_css( $slug ); ?>
 <?php endif ?>

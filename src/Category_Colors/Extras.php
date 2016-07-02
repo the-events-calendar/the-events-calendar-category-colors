@@ -79,18 +79,6 @@ class Extras extends Frontend {
 		echo $css;
 	}
 
-	public static function add_filter_bar_background_css ( $slug ) {
-		if ( ! class_exists( 'Tribe__Events__Filterbar__View' ) ) {
-			return false;
-		}
-		$css   = array();
-		$css[] = '#tribe_events_filter_item_eventcategory li.tribe-events-category-' . $slug . ','; //pre-3.10
-		$css[] = '.tribe_events_filter_group li.tribe-events-category-' . $slug . ','; //3.10
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
-	}
-
 	public static function add_mobile_css() {
 		$teccc = Main::instance();
 
