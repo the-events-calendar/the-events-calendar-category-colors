@@ -79,13 +79,24 @@ class Extras extends Frontend {
 		echo $css;
 	}
 
-	public static function add_filter_bar_background_css ( $slug ) {
-		if ( ! class_exists( 'Tribe__Events__Filterbar__View' ) ) {
-			return false;
-		}
-		$css   = array();
-		$css[] = '#tribe_events_filter_item_eventcategory li.tribe-events-category-' . $slug . ','; //pre-3.10
-		$css[] = '.tribe_events_filter_group li.tribe-events-category-' . $slug . ','; //3.10
+	public static function add_mobile_css() {
+		$teccc = Main::instance();
+
+		$css = $teccc->view( 'mobile.css', array(
+			'breakpoint' => tribe_get_mobile_breakpoint()
+		), false );
+
+		echo apply_filters( 'teccc_mobile_css', $css );
+	}
+
+	public static function fix_category_link_color( $slug ) {
+		/**
+		 * Filter to add CSS selector that is overriding link color.
+		 *
+		 * @since 4.5.0
+		 */
+		$selector = apply_filters( 'teccc_fix_category_link_color', null );
+		$css[] = $selector . ' .tribe-events-category-' . $slug . ' a,';
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;

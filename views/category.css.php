@@ -6,9 +6,6 @@ namespace Fragen\Category_Colors;
  */
 $teccc   = Main::instance();
 $options = Admin::fetch_options( $teccc );
-if ( function_exists( 'tribe_get_mobile_breakpoint' ) ) {
-	$breakpoint = tribe_get_mobile_breakpoint();
-}
 
 ?>
 
@@ -20,17 +17,7 @@ if ( function_exists( 'tribe_get_mobile_breakpoint' ) ) {
 
 .tribe-events-list .vevent.hentry h2 { padding-left: 5px; }
 
-@media only screen and (max-width: <?php esc_attr_e( $breakpoint ) ?>px) {
-	.tribe-events-calendar td .hentry { display: block; }
-	h3.entry-title.summary,
-	h3.tribe-events-month-event-title,
-	.tribe-events-calendar .tribe-events-has-events:after
-		{ display: none; }
-
-	.tribe-events-calendar .mobile-trigger .tribe-events-tooltip {
-		display: none !important;
-	}
-}
+<?php Extras::add_mobile_css(); ?>
 
 <?php Extras::fix_default_week_background(); ?>
 <?php if ( empty( $this->terms ) ) { $this->terms = $options['terms']; } ?>
@@ -41,6 +28,7 @@ if ( function_exists( 'tribe_get_mobile_breakpoint' ) ) {
 		$name = esc_attr( $attributes[ Main::NAME ] );
 	?>
 
+<?php Extras::fix_category_link_color( $slug ); ?>
 <?php Extras::add_map_link_css( $slug ); ?>
 <?php Extras::add_week_link_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ): ?>
@@ -57,7 +45,6 @@ if ( function_exists( 'tribe_get_mobile_breakpoint' ) ) {
 
 <?php Extras::add_map_background_css( $slug ); ?>
 <?php Extras::add_week_background_css( $slug ); ?>
-<?php Extras::add_filter_bar_background_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ): ?>
 	<?php Widgets::add_widget_background_css( $slug ); ?>
 <?php endif ?>

@@ -112,7 +112,7 @@ class Frontend {
 		header( "Expires: $next_year" );
 		header( "Cache-Control: public, max-age=$one_year" );
 		header( "Pragma: public" );
-		header( "Etag: $hash" );
+		header( "ETag: \"$hash\"" );
 
 		echo $this->generate_css();
 
@@ -139,19 +139,15 @@ class Frontend {
 		}
 
 		// Else generate the CSS afresh
-		ob_start();
-
-		$this->teccc->view( 'category.css', array(
+		$css = $this->teccc->view( 'category.css', array(
 			'options'    => $this->options,
 			'teccc'      => $this->teccc,
-			'breakpoint' => tribe_get_mobile_breakpoint()
-		) );
-
-		$css = ob_get_clean();
+		), false );
 
 		if ( ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) && ! $debug_css ) {
 			$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css ); // Remove comments
 			$css = str_replace( ': ', ':', $css ); // Remove space after colons
+			$css = preg_replace( '/\s?({|})\s?/', '$1', $css ); // Remove space before/after braces
 			$css = str_replace( array(
 				"\r\n",
 				"\r",

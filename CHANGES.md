@@ -1,3 +1,12 @@
+#### 4.5.0
+* added filter `teccc_fix_category_link_color` for those pesky themes that override everything.
+* fixed ETag header in CSS
+* removed Filter Bar coloring
+* further optimized CSS minification
+
+#### 4.4.6
+* refactor mobile CSS and add filter `teccc_mobile_css`
+
 #### 4.4.5
 * fix superpowers to be more inclusive in find - thanks Lisa
 
