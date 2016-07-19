@@ -147,6 +147,7 @@ class Frontend {
 		if ( ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) && ! $debug_css ) {
 			$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css ); // Remove comments
 			$css = str_replace( ': ', ':', $css ); // Remove space after colons
+			$css = preg_replace( '/\s?({|})\s?/', '$1', $css ); // Remove space before/after braces
 			$css = str_replace( array(
 				"\r\n",
 				"\r",
