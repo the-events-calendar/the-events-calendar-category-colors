@@ -4,7 +4,7 @@ Donate link: http://thefragens.com/category-colors-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Tested up to: 4.6
-Stable tag: 4.4.5
+Stable tag: 4.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,12 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 4.5.0
+* added filter `teccc_fix_category_link_color` for those pesky themes that override everything.
+* fixed ETag header in CSS
+* removed Filter Bar coloring
+* further optimized CSS minification
 
 #### 4.4.6
 * refactor mobile CSS and add filter `teccc_mobile_css`
