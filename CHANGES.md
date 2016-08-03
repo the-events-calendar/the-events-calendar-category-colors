@@ -1,3 +1,6 @@
+#### 4.5.x
+* moved older changes into [CHANGES.md](CHANGES.md)
+
 #### 4.5.0
 * added filter `teccc_fix_category_link_color` for those pesky themes that override everything.
 * fixed ETag header in CSS
@@ -85,6 +88,7 @@
 
 #### 3.9.4
 * remove Agenda view as not supported by Modern Tribe except as example template
+* tested with WP 4.1
 
 #### 3.9.3
 * fix mobile to hide tooltips, @barryhughes does it again
@@ -96,7 +100,7 @@
 * change `get_site_url()` to `home_url()` to fix 404 - thanks @marcphilipp
 
 #### 3.9.0
-* now using generated CSS stylesheet for events pages - yeah @barryhughes
+* now using generated CSS stylesheet for events pages - yeah @barry.hughes
 * no longer use inline styles, using generated stylesheet. Hopefully with browser caching it's faster.
 * correctly use `$echo` in `checked()` and `selected()` for settings.
 * don't kid yourselves, there may not be much to the changelog but this is a major update.
@@ -238,3 +242,156 @@
 * added some actions and filters, refer to wiki for listing
 * updated class and file naming to WordPress Coding Guidelines
 * new Help section of [Github Wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki)
+
+#### 1.6.3
+* add transition to Transparent/Color Picker option
+* use wp_enqueue_script for legend-superpowers.js
+* move most externally called javascript to load in footer
+* fix for language translation in Legend _category_ link
+* removed extraneous `name` attribute from legend.php
+
+#### 1.6.2
+* changed to slideUp/slideDown transition when Add Category Legend checked/unchecked
+* reorganized plugin specific javascript and CSS to load correctly via admin_enqueue_scripts, even to footer.
+* removed extra closing td tag in admin section
+
+#### 1.6.1
+* removed function remove_tribe_cat_once from merge
+* respaced rendered CSS so it looks better in 'view source'
+* added #legend_box.tribe-events-calendar to properly set category name text color
+* included function for checking TEC plugin active, missing from merge - OOPS
+* fixed PHP error in classes/categorycolors.php - TribeEvents not defined
+* merge issue#3
+* fix for CSS superpowers and Ajax
+* updated for miniColors 2.0
+
+#### 1.6.0B
+* still experimental!
+* refactoring work: changes under the hood for the benefit of mankind
+* the category legend can now have super-powers added to it
+* from Barry Hughes
+
+#### 1.5.6
+* removed function remove_tribe_cat_once and put it into a gist to use as needed. Please refer to FAQ for details.
+
+#### 1.5.5
+* added preference to remove coloring if calendar is styled like first event of the month.
+
+#### 1.5.4
+* making remove_tribe_cat_once even more specific
+
+#### 1.5.3
+* made fix to remove_tribe_cat_once a little safer
+
+#### 1.5.2
+* fix to make function remove_tribe_cat_once selective only for default template (::fingers crossed::)
+
+#### 1.5.1
+* code cleanup and switch to current version of jQuery-miniColors.
+* added function to remove first instance of category class tag added to article tag - Thanks Barry!
+* tested with WP 3.5
+
+#### 1.5
+* abstracted main script using new TribeEventsCategoryColors class
+* fail message to admin_notices
+
+#### 1.4.5
+* load only with class TribeEvents
+* Continuity with fail message
+
+#### 1.4.4
+* simplify legend CSS some more
+* Don't deactivate plugin if TEC deactivated, just show error.
+
+#### 1.4.3
+* Removed text-transform:uppercase from legend, I don't want to make too many decisions. Easier to add than to remove.
+
+#### 1.4.1
+* Abstracted legend code a bit
+
+#### 1.4
+* jQuery color picker now default behaviour
+* Added checkbox for _transparent_ value
+
+#### 1.3.6
+* more legend CSS tweaks
+* more code cleanup
+
+#### 1.3.5
+* convert space to nbsp in legend
+* legend CSS tweaks
+* more code cleanup
+
+#### 1.3.4
+* settings display changes
+* change to tribe_settings_form_element_tab_{currentTab}, after all I did ask to have it put in. ;-)
+
+#### 1.3.3
+* Prep for using jQuery color picker
+* minor CSS tweaks
+* major code cleanup
+
+#### 1.3.2
+* Added brief instructions for legend to settings page.
+
+#### 1.3.1
+* fix for legend links
+
+#### 1.3
+* Added links to legend
+
+#### 1.2.6
+* fixes for readme
+
+#### 1.2.5
+* Added Category Color legend
+
+#### 1.2.4
+* Fixed another tooltip bug
+
+#### 1.2.3
+* Fixed tooltip bug
+
+#### 1.2.2
+* Added option for colored left border, default is transparent.
+
+#### 1.2.1
+* bump
+
+#### 1.2
+* fix typos
+
+#### 1.1
+* Cleaner check for TEC
+
+#### 1.0
+* Added checks for TEC active
+* Fixed Save settings notification
+* Added option to bold/unbold text.
+
+#### 0.9
+* Adjusted add_CSS function to query both post_type and eventDisplay.
+* Converted text color options to an global array for greater ability to add more choices.
+
+#### 0.8
+* CSS now only added to month view calendar page.
+* Added option for gray text.
+
+#### 0.7
+* Bugs fixed. Back to Category Colors settings tab.
+
+#### 0.6.1
+* Reverted back to it's own settings page till I get a bug worked out.
+* Added option for 'Default' text color
+
+#### 0.5
+* Added Category Colors settings tab to The Events Calendar Settings page using TribeSettings API
+* code cleanup
+
+#### 0.2
+* Bug fixes
+* default background color now transparent
+* updated sanitizing
+
+#### 0.1
+* Initial release.
