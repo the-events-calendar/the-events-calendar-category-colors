@@ -95,6 +95,7 @@ class Extras extends Frontend {
 		 *
 		 * @since 4.5.0
 		 * @return string string is returned not echoed.
+		 *                default return string is empty.
 		 */
 		$selector = apply_filters( 'teccc_fix_category_link_color', null );
 		$css[]    = $selector . ' .tribe-events-category-' . $slug . ' a,';
@@ -107,8 +108,9 @@ class Extras extends Frontend {
 		 * @param string .tribe-events-category-{$slug}
 		 *
 		 * @return string string is returned not echoed.
+		 *                default return string is empty.
 		 */
-		$complex_selector = apply_filters( 'teccc_fix_category_link_color_complex', '', '.tribe-events-category-' . $slug );
+		$complex_selector = apply_filters( 'teccc_fix_category_link_color_complex', null, '.tribe-events-category-' . $slug );
 		$css[] = $complex_selector;
 		$css[] = '';
 		$css   = implode( "\n", $css );
