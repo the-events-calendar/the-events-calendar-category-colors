@@ -54,8 +54,9 @@ There is more extensive documentation of the plugins features and usage on the [
 
 ## Changelog
 
-#### 4.5.x
+#### [unrelease]
 * moved older changes into [CHANGES.md](CHANGES.md)
+* added filter `teccc_fix_category_link_color_complex` for those **really** pesky themes.
 
 #### 4.5.0
 * added filter `teccc_fix_category_link_color` for those pesky themes that override everything.
