@@ -94,8 +94,9 @@ class Extras extends Frontend {
 		 * Filter to add CSS selector that is overriding link color.
 		 *
 		 * @since 4.5.0
+		 * @return string string is returned not echoed.
 		 */
-		$selector = apply_filters( 'teccc_fix_category_link_color', null );
+		$selector = apply_filters( 'teccc_fix_category_link_color', '__return_empty_string' );
 		$css[] = $selector . ' .tribe-events-category-' . $slug . ' a,';
 		$css[] = '';
 		$css   = implode( "\n", $css );
