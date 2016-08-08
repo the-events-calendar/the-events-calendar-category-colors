@@ -86,6 +86,13 @@ class Extras extends Frontend {
 			'breakpoint' => tribe_get_mobile_breakpoint(),
 		), false );
 
+
+		/**
+		 * Add CSS to mobile.css.php file for inclusion in category.css.php.
+		 *
+		 * @since 4.4.6
+		 * @return string $css Default string returned is mobile.css.php.
+		 */
 		echo apply_filters( 'teccc_mobile_css', $css );
 	}
 

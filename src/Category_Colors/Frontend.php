@@ -193,6 +193,13 @@ class Frontend {
 		), false );
 
 		$this->legendFilterHasRun = true;
+
+		/**
+		 * Filter legend html to return modified version.
+		 * Useful for appending text to legend.
+		 *
+		 * @return string $content
+		 */
 		echo $existingContent . apply_filters( 'teccc_legend_html', $content );
 	}
 
