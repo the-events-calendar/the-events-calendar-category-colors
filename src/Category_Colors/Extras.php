@@ -118,9 +118,9 @@ class Extras extends Frontend {
 		 *                default return string is empty.
 		 */
 		$complex_selector = apply_filters( 'teccc_fix_category_link_color_complex', null, '.tribe-events-category-' . $slug );
-		$css[] = $complex_selector;
-		$css[] = '';
-		$css   = implode( "\n", $css );
+		$css[]            = $complex_selector;
+		$css[]            = '';
+		$css              = implode( "\n", $css );
 		echo $css;
 	}
 
