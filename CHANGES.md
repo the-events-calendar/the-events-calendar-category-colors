@@ -1,6 +1,6 @@
 #### [unreleased]
 * moved older changes into [CHANGES.md](CHANGES.md)
-* added filter `teccc_fix_category_link_color_complex` for those **really** pesky themes.
+* modified filter `teccc_fix_category_link_color` for those **really** pesky themes. The modification will require an adjustment to the way the filter is called and returned. Refer to the [wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki/Filters-and-Hooks#teccc_fix_category_link_color) for details.
 
 #### 4.5.0
 * added filter `teccc_fix_category_link_color` for those pesky themes that override everything.

@@ -98,29 +98,22 @@ class Extras extends Frontend {
 
 	public static function fix_category_link_color( $slug ) {
 		/**
-		 * Filter to add simple CSS selector that is overriding link color.
+		 * Filter to add CSS selector that is overriding link color.
 		 *
 		 * @since 4.5.0
-		 * @return string string is returned not echoed.
-		 *                default return string is empty.
-		 */
-		$selector = apply_filters( 'teccc_fix_category_link_color', null );
-		$css[]    = $selector . ' .tribe-events-category-' . $slug . ' a,';
-
-		/**
-		 * Filter to add complex CSS selector that is overriding link color.
-		 *
-		 * @since 4.6.0
 		 *
 		 * @param string .tribe-events-category-{$slug}
 		 *
 		 * @return string string is returned not echoed.
 		 *                default return string is empty.
 		 */
-		$complex_selector = apply_filters( 'teccc_fix_category_link_color_complex', null, '.tribe-events-category-' . $slug );
-		$css[]            = $complex_selector;
-		$css[]            = '';
-		$css              = implode( "\n", $css );
+		$selector = apply_filters( 'teccc_fix_category_link_color', null, '.tribe-events-category-' . $slug );
+		if ( $selector ) {
+			$css[] = $selector;
+		}
+
+		$css[] = '';
+		$css   = implode( "\n", $css );
 		echo $css;
 	}
 
