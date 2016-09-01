@@ -4,7 +4,7 @@ Donate link: http://thefragens.com/category-colors-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Tested up to: 4.6
-Stable tag: 4.5.0
+Stable tag: 4.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,9 +54,10 @@ There is more extensive documentation of the plugins features and usage on the [
 
 ## Changelog
 
-#### [unrelease]
+#### 4.5.1
 * moved older changes into [CHANGES.md](CHANGES.md)
-* added filter `teccc_fix_category_link_color_complex` for those **really** pesky themes.
+* modified filter `teccc_fix_category_link_color` for those **really** pesky themes. The modification will require an adjustment to the way the filter is called and returned. Refer to the [wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki/Filters-and-Hooks#teccc_fix_category_link_color) for details.
+* above filter modification fixes issue with _Read More_ links.
 
 #### 4.5.0
 * added filter `teccc_fix_category_link_color` for those pesky themes that override everything.
