@@ -13,12 +13,12 @@ class Frontend {
 
 	const CSS_HANDLE = 'teccc_css';
 
-	protected $teccc   = null;
+	protected $teccc = null;
 	protected $options = array();
 
-	protected $legendTargetHook   = 'tribe_events_after_header';
+	protected $legendTargetHook = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
-	protected $legendExtraView    = array();
+	protected $legendExtraView = array();
 
 	public function __construct( Main $teccc ) {
 		$this->teccc   = $teccc;
@@ -35,7 +35,7 @@ class Frontend {
 	 * Show the legend.
 	 */
 	public function add_colored_categories() {
-		if ( isset( $_GET[self::CSS_HANDLE] ) ) {
+		if ( isset( $_GET[ self::CSS_HANDLE ] ) ) {
 			$this->do_css();
 		}
 
@@ -49,12 +49,12 @@ class Frontend {
 	public function add_scripts_styles() {
 		// Register stylesheet
 		$args = array( self::CSS_HANDLE => $this->options_hash(), $_GET );
-		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url('/') ), false, Main::$version );
+		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url( '/' ) ), false, Main::$version );
 
 		// Let's test to see if any event-related post types were requested
-		$event_types      = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
-		$requested_types  = (array) get_query_var( 'post_type' );
-		$found_types      = array_intersect( $event_types, $requested_types );
+		$event_types     = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
+		$requested_types = (array) get_query_var( 'post_type' );
+		$found_types     = array_intersect( $event_types, $requested_types );
 
 		if ( ! empty( $found_types ) ) {
 			wp_enqueue_style( 'teccc_stylesheet' );
@@ -122,6 +122,7 @@ class Frontend {
 	/**
 	 * Create CSS for stylesheet
 	 * Minify CSS when WP_DEBUG is false
+	 *
 	 * @link https://gist.github.com/manastungare/2625128
 	 *
 	 * @return mixed|string
@@ -133,15 +134,15 @@ class Frontend {
 
 		// Return cached CSS if available and if fresh CSS hasn't been requested
 		$cache_key = 'teccc_' . $this->options_hash();
-		$css = get_transient( $cache_key );
+		$css       = get_transient( $cache_key );
 		if ( ! empty( $css ) && ( ! $refresh_css && ! $debug_css ) ) {
 			return $css;
 		}
 
 		// Else generate the CSS afresh
 		$css = $this->teccc->view( 'category.css', array(
-			'options'    => $this->options,
-			'teccc'      => $this->teccc,
+			'options' => $this->options,
+			'teccc'   => $this->teccc,
 		), false );
 
 		if ( ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) && ! $debug_css ) {
@@ -169,6 +170,7 @@ class Frontend {
 	 * Displays legend.
 	 *
 	 * @param string $existingContent
+	 *
 	 * @return bool
 	 */
 	public function show_legend( $existingContent = '' ) {
@@ -189,10 +191,17 @@ class Frontend {
 		$content = $this->teccc->view( 'legend', array(
 			'options' => $this->options,
 			'teccc'   => Main::instance(),
-			'tec'     => Tribe__Events__Main::instance()
+			'tec'     => Tribe__Events__Main::instance(),
 		), false );
 
 		$this->legendFilterHasRun = true;
+
+		/**
+		 * Filter legend html to return modified version.
+		 * Useful for appending text to legend.
+		 *
+		 * @return string $content
+		 */
 		echo $existingContent . apply_filters( 'teccc_legend_html', $content );
 	}
 
@@ -208,7 +217,7 @@ class Frontend {
 		// If the legend has already run they are probably doing something wrong
 		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong( __CLASS__ . '::' . __METHOD__,
-			'You are attempting to reposition the legend after it has already been rendered.', '1.6.4' );
+				'You are attempting to reposition the legend after it has already been rendered.', '1.6.4' );
 		}
 
 		// Change the target filter (even if they are _doing_it_wrong, in case they have a special use case)
@@ -226,9 +235,9 @@ class Frontend {
 	 */
 	public function remove_default_legend() {
 		// If the legend has already run they are probably doing something wrong
-		if( $this->legendFilterHasRun ) {
+		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong( __CLASS__ . '::' . __METHOD__,
-			'You are attempting to remove the default legend after it has already been rendered.', '1.6.4' );
+				'You are attempting to remove the default legend after it has already been rendered.', '1.6.4' );
 		}
 
 		// Remove the hook regardless of whether they are _doing_it_wrong or not (in case of creative usage)

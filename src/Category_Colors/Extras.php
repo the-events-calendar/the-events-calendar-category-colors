@@ -43,7 +43,7 @@ class Extras extends Frontend {
 			return false;
 		}
 		$css   = array();
-		$css[] = '#tribe-events-content div.tribe-events-category-'. $slug . '.hentry.vevent .tribe-events-tooltip h4.entry-title,';
+		$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . '.hentry.vevent .tribe-events-tooltip h4.entry-title,';
 		$css[] = '.tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-' . $slug . ','; //3.10
 		$css[] = '.tribe-grid-allday .tribe-events-week-allday-single.tribe-events-category-' . $slug . ','; //3.10
 		$css[] = '';
@@ -83,9 +83,16 @@ class Extras extends Frontend {
 		$teccc = Main::instance();
 
 		$css = $teccc->view( 'mobile.css', array(
-			'breakpoint' => tribe_get_mobile_breakpoint()
+			'breakpoint' => tribe_get_mobile_breakpoint(),
 		), false );
 
+
+		/**
+		 * Add CSS to mobile.css.php file for inclusion in category.css.php.
+		 *
+		 * @since 4.4.6
+		 * @return string $css Default string returned is mobile.css.php.
+		 */
 		echo apply_filters( 'teccc_mobile_css', $css );
 	}
 
@@ -94,9 +101,17 @@ class Extras extends Frontend {
 		 * Filter to add CSS selector that is overriding link color.
 		 *
 		 * @since 4.5.0
+		 *
+		 * @param string .tribe-events-category-{$slug}
+		 *
+		 * @return string string is returned not echoed.
+		 *                default return string is empty.
 		 */
-		$selector = apply_filters( 'teccc_fix_category_link_color', null );
-		$css[] = $selector . ' .tribe-events-category-' . $slug . ' a,';
+		$selector = apply_filters( 'teccc_fix_category_link_color', null, '.tribe-events-category-' . $slug );
+		if ( $selector ) {
+			$css[] = $selector;
+		}
+
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
