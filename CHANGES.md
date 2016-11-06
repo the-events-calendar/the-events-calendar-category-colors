@@ -1,4 +1,5 @@
 #### [unreleased]
+* added our own PHP version check
 
 #### 4.5.1 / 2016-08-31
 * moved older changes into [CHANGES.md](CHANGES.md)
