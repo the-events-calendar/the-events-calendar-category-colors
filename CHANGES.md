@@ -1,5 +1,6 @@
 #### [unreleased]
 * added our own PHP version check
+* added filter `teccc_fix_category_background_color` for those pesky themes that have Events Calendar specific CSS, I'm looking at you Avada
 
 #### 4.5.1 / 2016-08-31
 * moved older changes into [CHANGES.md](CHANGES.md)

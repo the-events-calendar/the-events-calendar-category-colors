@@ -96,7 +96,7 @@ class Extras extends Frontend {
 		echo apply_filters( 'teccc_mobile_css', $css );
 	}
 
-	public static function fix_category_link_color( $slug ) {
+	public static function fix_category_link_css( $slug ) {
 		/**
 		 * Filter to add CSS selector that is overriding link color.
 		 *
@@ -107,14 +107,21 @@ class Extras extends Frontend {
 		 * @return string string is returned not echoed.
 		 *                default return string is empty.
 		 */
-		$selector = apply_filters( 'teccc_fix_category_link_color', null, '.tribe-events-category-' . $slug );
-		if ( $selector ) {
-			$css[] = $selector;
-		}
+		echo apply_filters( 'teccc_fix_category_link_color', null, '.tribe-events-category-' . $slug );
+	}
 
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+	public static function fix_category_background_css( $slug ) {
+		/**
+		 * Filter to add CSS selector that is overriding link color.
+		 *
+		 * @since 4.6.0
+		 *
+		 * @param string .tribe-events-category-{$slug}
+		 *
+		 * @return string string is returned not echoed.
+		 *                default return string is empty.
+		 */
+		echo apply_filters( 'teccc_fix_category_background_color', null, '.tribe-events-category-' . $slug );
 	}
 
 }
