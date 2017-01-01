@@ -1,5 +1,9 @@
 #### [unreleased]
 
+#### 4.6.0 / 2017-01-01
+* added our own PHP version check
+* added filter `teccc_fix_category_background_color` for those pesky themes that have Events Calendar specific CSS, I'm looking at you Avada
+
 #### 4.5.1 / 2016-08-31
 * moved older changes into [CHANGES.md](CHANGES.md)
 * modified filter `teccc_fix_category_link_color` for those **really** pesky themes. The modification will require an adjustment to the way the filter is called and returned. Refer to the [wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki/Filters-and-Hooks#teccc_fix_category_link_color) for details.

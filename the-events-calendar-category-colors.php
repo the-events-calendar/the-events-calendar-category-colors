@@ -3,7 +3,7 @@
 * Plugin Name:       The Events Calendar Category Colors
 * Plugin URI:        https://github.com/afragen/the-events-calendar-category-colors
 * Description:       This plugin adds event category background coloring to <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-* Version:           4.5.1
+* Version:           4.6.0
 * Text Domain:       the-events-calendar-category-colors
 * Author:            Andy Fragen, Barry Hughes
 * Author URI:        http://thefragens.com
@@ -15,7 +15,7 @@
 * Requires WP:       3.8
 */
 
-/**
+/*
  * Exit if called directly.
  * PHP version check and exit.
  */
@@ -23,14 +23,15 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( ! class_exists( 'WPUpdatePhp' ) ) {
-	require_once( plugin_dir_path( __FILE__ ) . '/vendor/wp-update-php/src/WPUpdatePhp.php' );
-}
-$updatePhp = new WPUpdatePhp( '5.3.0' );
-if ( method_exists( $updatePhp, 'set_plugin_name' ) ) {
-	$updatePhp->set_plugin_name( 'The Events Calendar Category Colors' );
-}
-if ( ! $updatePhp->does_it_meet_required_php_version( PHP_VERSION ) ) {
+if ( version_compare( '5.3.0', PHP_VERSION, '>=' ) ) {
+	?>
+	<div class="error notice is-dismissible">
+		<p>
+			<?php esc_html_e( 'The Events Calendar Category Colors cannot run on PHP versions older than 5.3.0. Please contact your hosting provider to update your site.', 'the-events-calendar-category-colors' ); ?>
+		</p>
+	</div>
+	<?php
+
 	return false;
 }
 
