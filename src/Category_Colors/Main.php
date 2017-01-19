@@ -1,6 +1,11 @@
 <?php
 namespace Fragen\Category_Colors;
 
+/**
+ * Class Main
+ *
+ * @package Fragen\Category_Colors
+ */
 class Main {
 
 	const SLUG = 0;
@@ -50,7 +55,7 @@ class Main {
 	 * method - this prevents unnecessary work in rebuilding the object and
 	 * querying to construct a list of categories, etc.
 	 *
-	 * @return Main
+	 * @return bool|object Main
 	 */
 	public static function instance() {
 		$class = __CLASS__;
@@ -61,6 +66,9 @@ class Main {
 		return self::$object;
 	}
 
+	/**
+	 * Main constructor.
+	 */
 	protected function __construct() {
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
@@ -73,12 +81,20 @@ class Main {
 		$this->public  = new Frontend( $this );
 	}
 
+	/**
+	 * Load categories.
+	 */
 	public function load_categories() {
 		add_filter( 'teccc_get_terms', array( $this, 'remove_terms' ) );
 		$this->get_category_terms();
 		$this->count = count( $this->terms );
 	}
 
+	/**
+	 * Get category terms.
+	 *
+	 * @return bool
+	 */
 	protected function get_category_terms() {
 		if ( ! empty( $this->terms ) ) {
 			return false;
