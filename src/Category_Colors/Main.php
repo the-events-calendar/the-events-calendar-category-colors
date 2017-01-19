@@ -91,6 +91,13 @@ class Main {
 		$terms     = apply_filters( 'teccc_get_terms', $all_terms );
 
 		/**
+		 * Add and remove terms via filters.
+		 * Should help with WPML.
+		 */
+		$this->add_terms();
+		$this->delete_terms( $all_terms );
+
+		/**
 		 * Populate public variables.
 		 * Represent each term as an array [slug, name] indexed by term ID
 		 */
@@ -114,6 +121,35 @@ class Main {
 		update_option( 'teccc_options', $options );
 	}
 
+	/**
+	 * Add category terms via filter.
+	 */
+	public function add_terms() {
+		$args = array();
+		$add_terms = apply_filters( 'teccc_add_terms', array() );
+		foreach ( (array) $add_terms as $add_term ) {
+			$args['name'] = ucwords( str_replace('-', ' ', $add_term ));
+			$args['slug'] = $add_term;
+			wp_insert_term( $args['name'],'tribe_events_cat', $args );
+		}
+	}
+
+	/**
+	 * Delete category terms via filter.
+	 *
+	 * @param $all_terms
+	 */
+	public function delete_terms( $all_terms ) {
+		$delete_terms = apply_filters( 'teccc_delete_terms', array() );
+		foreach ( (array) $delete_terms as $delete_term ) {
+			foreach( $all_terms as $term ) {
+				if ( $delete_term === $term->slug ) {
+					wp_delete_term( $term->term_id, 'tribe_events_cat');
+					break;
+				}
+			}
+		}
+	}
 
 	/**
 	 * Removes terms on the ignore list from the list of terms recognised by the plugin.
