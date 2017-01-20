@@ -1,4 +1,5 @@
 #### [unreleased]
+* added filters and functions to provide WPML compatibility
 
 #### 4.6.0 / 2017-01-01
 * added our own PHP version check

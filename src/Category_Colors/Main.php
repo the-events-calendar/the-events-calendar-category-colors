@@ -146,7 +146,9 @@ class Main {
 		foreach ( (array) $add_terms as $add_term ) {
 			$args['name'] = ucwords( str_replace('-', ' ', $add_term ));
 			$args['slug'] = $add_term;
-			wp_insert_term( $args['name'],'tribe_events_cat', $args );
+			if ( ! term_exists( $args['name'], 'tribe_events_cat' ) ) {
+				wp_insert_term( $args['name'],'tribe_events_cat', $args );
+			}
 		}
 	}
 
