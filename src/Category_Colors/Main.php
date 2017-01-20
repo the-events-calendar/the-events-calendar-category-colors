@@ -1,6 +1,11 @@
 <?php
 namespace Fragen\Category_Colors;
 
+/**
+ * Class Main
+ *
+ * @package Fragen\Category_Colors
+ */
 class Main {
 
 	const SLUG = 0;
@@ -50,7 +55,7 @@ class Main {
 	 * method - this prevents unnecessary work in rebuilding the object and
 	 * querying to construct a list of categories, etc.
 	 *
-	 * @return Main
+	 * @return bool|object Main
 	 */
 	public static function instance() {
 		$class = __CLASS__;
@@ -61,6 +66,9 @@ class Main {
 		return self::$object;
 	}
 
+	/**
+	 * Main constructor.
+	 */
 	protected function __construct() {
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
@@ -73,12 +81,20 @@ class Main {
 		$this->public  = new Frontend( $this );
 	}
 
+	/**
+	 * Load categories.
+	 */
 	public function load_categories() {
 		add_filter( 'teccc_get_terms', array( $this, 'remove_terms' ) );
 		$this->get_category_terms();
 		$this->count = count( $this->terms );
 	}
 
+	/**
+	 * Get category terms.
+	 *
+	 * @return bool
+	 */
 	protected function get_category_terms() {
 		if ( ! empty( $this->terms ) ) {
 			return false;
@@ -89,6 +105,13 @@ class Main {
 		 */
 		$all_terms = get_terms( 'tribe_events_cat', array( 'hide_empty' => false ) );
 		$terms     = apply_filters( 'teccc_get_terms', $all_terms );
+
+		/**
+		 * Add and remove terms via filters.
+		 * Should help with WPML.
+		 */
+		$this->add_terms();
+		$this->delete_terms( $all_terms );
 
 		/**
 		 * Populate public variables.
@@ -114,6 +137,37 @@ class Main {
 		update_option( 'teccc_options', $options );
 	}
 
+	/**
+	 * Add category terms via filter.
+	 */
+	public function add_terms() {
+		$args = array();
+		$add_terms = apply_filters( 'teccc_add_terms', array() );
+		foreach ( (array) $add_terms as $add_term ) {
+			$args['name'] = ucwords( str_replace('-', ' ', $add_term ));
+			$args['slug'] = $add_term;
+			if ( ! term_exists( $args['name'], 'tribe_events_cat' ) ) {
+				wp_insert_term( $args['name'],'tribe_events_cat', $args );
+			}
+		}
+	}
+
+	/**
+	 * Delete category terms via filter.
+	 *
+	 * @param $all_terms
+	 */
+	public function delete_terms( $all_terms ) {
+		$delete_terms = apply_filters( 'teccc_delete_terms', array() );
+		foreach ( (array) $delete_terms as $delete_term ) {
+			foreach( $all_terms as $term ) {
+				if ( $delete_term === $term->slug ) {
+					wp_delete_term( $term->term_id, 'tribe_events_cat');
+					break;
+				}
+			}
+		}
+	}
 
 	/**
 	 * Removes terms on the ignore list from the list of terms recognised by the plugin.
