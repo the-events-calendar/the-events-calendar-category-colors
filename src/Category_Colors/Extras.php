@@ -112,7 +112,7 @@ class Extras extends Frontend {
 
 	public static function fix_category_background_css( $slug ) {
 		/**
-		 * Filter to add CSS selector that is overriding link color.
+		 * Filter to add CSS selector that is overriding background color.
 		 *
 		 * @since 4.6.0
 		 *
