@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 4.6.2 / 2017-01-20
+* added CSS selector to override Customizer month view 
+
 #### 4.6.1 / 2017-01-19
 * added filters and functions to provide WPML compatibility thanks @jvier for testing
 

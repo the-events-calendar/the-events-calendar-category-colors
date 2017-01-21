@@ -49,6 +49,7 @@ $options = Admin::fetch_options( $teccc );
 <?php if ( '1' === $options['color_widgets'] ): ?>
 	<?php Widgets::add_widget_background_css( $slug ); ?>
 <?php endif ?>
+.events-archive.events-gridview #tribe-events-content table .type-tribe_events.tribe-events-category-<?php echo $slug ?>,
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug ?>,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug ?>,
