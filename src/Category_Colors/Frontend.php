@@ -56,7 +56,7 @@ class Frontend {
 		$requested_types = (array) get_query_var( 'post_type' );
 		$found_types     = array_intersect( $event_types, $requested_types );
 
-		if ( ! empty( $found_types ) ) {
+		if ( ! empty( $found_types ) || $this->has_tribe_shortcodes() ) {
 			wp_enqueue_style( 'teccc_stylesheet' );
 		}
 
@@ -74,6 +74,24 @@ class Frontend {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
 		}
 	}
+
+	/**
+	 * Find tribe shortcodes in post/page contents.
+	 *
+	 * @return bool
+	 */
+	private function has_tribe_shortcodes() {
+		$tribe_shortcodes = array( 'tribe_events', 'tribe_event_inline', 'tribe_mini_calendar' );
+
+		$current_post         = get_post( get_the_ID() );
+		$current_post_content = $current_post->post_content;
+
+		preg_match_all( "/\\[(.+?)( .+)?\\]/", $current_post_content, $matches );
+		$found_shortcodes = array_intersect( $matches[1], $tribe_shortcodes );
+
+		return ! empty( $found_shortcodes );
+	}
+
 
 	/**
 	 * By generating a unique hash of the plugin options and other relevant settings

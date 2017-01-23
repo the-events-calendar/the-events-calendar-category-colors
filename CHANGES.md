@@ -1,4 +1,5 @@
 #### [unreleased]
+* added support for tribe shortcodes
 
 #### 4.6.2 / 2017-01-20
 * added CSS selector to override Customizer month view 
