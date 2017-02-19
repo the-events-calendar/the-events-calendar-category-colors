@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 4.6.4 / 2017-02-19
+* move graceful exit to just before plugin initialization
+
 #### 4.6.3 / 2017-02-19
 * added support for tribe shortcodes
 * graceful failure if The Events Calendar is not active
