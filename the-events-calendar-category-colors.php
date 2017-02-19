@@ -35,6 +35,13 @@ if ( version_compare( '5.3.0', PHP_VERSION, '>=' ) ) {
 	return false;
 }
 
+/*
+ * The Events Calendar must be loaded.
+ */
+if ( ! class_exists( 'Tribe__Events__Main' ) ) {
+	return;
+}
+
 // We'll use PHP 5.3 syntax to get the plugin directory
 define( 'TECCC_DIR', __DIR__ );
 define( 'TECCC_FILE', __FILE__ );
