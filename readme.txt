@@ -4,7 +4,7 @@ Donate link: http://thefragens.com/category-colors-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Tested up to: 4.7
-Stable tag: 4.6.3
+Stable tag: 4.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 4.6.4
+* move graceful exit to just before plugin initialization
 
 #### 4.6.3
 * added support for tribe shortcodes
