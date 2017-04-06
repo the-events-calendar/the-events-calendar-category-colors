@@ -1,5 +1,5 @@
 #### [unreleased]
-* fix for ECP week view
+* fixed ECP week view
 * make Autoloader a drop-in
 
 #### 4.6.4 / 2017-02-19
