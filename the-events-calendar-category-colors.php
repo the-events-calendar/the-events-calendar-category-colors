@@ -3,7 +3,7 @@
 * Plugin Name:       The Events Calendar Category Colors
 * Plugin URI:        https://github.com/afragen/the-events-calendar-category-colors
 * Description:       This plugin adds event category background coloring to <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a> plugin.
-* Version:           4.6.4
+* Version:           4.6.5
 * Text Domain:       the-events-calendar-category-colors
 * Author:            Andy Fragen, Barry Hughes
 * Author URI:        http://thefragens.com
@@ -63,8 +63,8 @@ function teccc_init() {
 	);
 
 	// Autoloading
-	require_once( TECCC_CLASSES . '/Category_Colors/Autoloader.php' );
-	$loader = 'Fragen\\Category_Colors\\Autoloader';
+	require_once( TECCC_CLASSES . '/Autoloader.php' );
+	$loader = 'Fragen\\Autoloader';
 	new $loader( $root, $compatibility );
 
 	/*

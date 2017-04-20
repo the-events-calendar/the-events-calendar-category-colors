@@ -1,5 +1,10 @@
 #### [unreleased]
 
+#### 4.6.5 / 2017-04-20
+* fixed ECP week view
+* added support for ECP week view shortcode
+* make Autoloader a drop-in
+
 #### 4.6.4 / 2017-02-19
 * move graceful exit to just before plugin initialization
 
