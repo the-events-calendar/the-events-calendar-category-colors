@@ -1,4 +1,5 @@
 #### [unreleased]
+* added more shortcodes to list for support
 
 #### 4.6.5 / 2017-04-20
 * fixed ECP week view

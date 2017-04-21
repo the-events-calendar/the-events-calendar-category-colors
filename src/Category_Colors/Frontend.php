@@ -81,7 +81,7 @@ class Frontend {
 	 * @return bool
 	 */
 	private function has_tribe_shortcodes() {
-		$tribe_shortcodes = array( 'tribe_events', 'tribe_event_inline', 'tribe_mini_calendar' );
+		$tribe_shortcodes = array( 'tribe_events', 'tribe_event_inline', 'tribe_mini_calendar', 'tribe_this_week', 'tribe_events_list', 'tribe_featured_venue' );
 
 		$current_post         = get_post( get_the_ID() );
 		$current_post_content = $current_post->post_content;
