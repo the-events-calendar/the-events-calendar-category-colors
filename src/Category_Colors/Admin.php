@@ -49,7 +49,7 @@ class Admin {
 	public function validate_options( $input ) {
 		$teccc = $this->teccc;
 
-		foreach ( $teccc->terms as $attributes ) {
+		foreach ( $teccc->all_terms as $attributes ) {
 			$slug = $attributes[ Main::SLUG ];
 
 			// Sanitize textbox input (strip html tags, and escape characters)
