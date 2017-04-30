@@ -1,4 +1,5 @@
 <?php
+
 namespace Fragen\Category_Colors;
 
 class Extras extends Frontend {
@@ -42,7 +43,7 @@ class Extras extends Frontend {
 		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			return false;
 		}
-		$css   = array();
+		$css = array();
 		//$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . ' h3.entry-title.summary,';
 		$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . '.hentry.vevent .tribe-events-tooltip h4.entry-title,';
 		$css[] = '.tribe-grid-body .tribe-events-week-hourly-single:hover.tribe-events-category-' . $slug . ',';
@@ -62,6 +63,9 @@ class Extras extends Frontend {
 		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"][class*="tribe-events-category-"] .hentry.vevent:hover,';
 		$css[] = '.tribe-grid-allday div[id*="tribe-events-event-"][class*="tribe-events-category-"].hentry.vevent div';
 		$css[] = '{ background-color: #fff; }';
+		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"][class*="tribe-events-category-"].tribe-events-week-hourly-single';
+		$css[] = '';
+		$css[] = '{ border-right: 1px solid #000; }';
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
