@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 4.6.6 / 2017-04-30
 * added more shortcodes to list for support
 * updated some week view CSS
 
