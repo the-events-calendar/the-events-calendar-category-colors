@@ -1,4 +1,5 @@
 #### [unreleased]
+* fixed PHP Notice
 
 #### 4.6.6 / 2017-04-30
 * added more shortcodes to list for support
