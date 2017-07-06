@@ -34,6 +34,8 @@ $options = Admin::fetch_options( $teccc );
 <?php endif ?>
 .teccc-legend .tribe-events-category-<?php echo $slug ?> a,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
+#tribe-events-content .teccc-legend .tribe-events-category-<?php echo $slug ?> a,
+#tribe-events-content .tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
 .tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4 a
 {

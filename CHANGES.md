@@ -1,5 +1,6 @@
 #### [unreleased]
 * fixed PHP Notice
+* added additional link color CSS selector for `#tribe-events-content`
 
 #### 4.6.6 / 2017-04-30
 * added more shortcodes to list for support
