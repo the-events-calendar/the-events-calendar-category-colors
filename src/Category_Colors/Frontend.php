@@ -1,4 +1,5 @@
 <?php
+
 namespace Fragen\Category_Colors;
 
 use DateTime,
@@ -81,10 +82,17 @@ class Frontend {
 	 * @return bool
 	 */
 	private function has_tribe_shortcodes() {
-		$tribe_shortcodes = array( 'tribe_events', 'tribe_event_inline', 'tribe_mini_calendar', 'tribe_this_week', 'tribe_events_list', 'tribe_featured_venue' );
+		$tribe_shortcodes = array(
+			'tribe_events',
+			'tribe_event_inline',
+			'tribe_mini_calendar',
+			'tribe_this_week',
+			'tribe_events_list',
+			'tribe_featured_venue',
+		);
 
 		$current_post         = get_post( get_the_ID() );
-		$current_post_content = $current_post->post_content;
+		$current_post_content = property_exists( $current_post, 'post_content' ) ? $current_post->post_content : '';
 
 		preg_match_all( "/\\[(.+?)( .+)?\\]/", $current_post_content, $matches );
 		$found_shortcodes = array_intersect( $matches[1], $tribe_shortcodes );
