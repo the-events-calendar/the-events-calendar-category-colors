@@ -54,6 +54,10 @@ There is more extensive documentation of the plugins features and usage on the [
 
 ## Changelog
 
+#### 4.6.7
+* fixed PHP Notice
+* added additional link color CSS selector for `#tribe-events-content`
+
 #### 4.6.6
 * added more shortcodes to list for support
 * updated some week view CSS
