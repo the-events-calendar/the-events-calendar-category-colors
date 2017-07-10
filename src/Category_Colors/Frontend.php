@@ -92,7 +92,7 @@ class Frontend {
 		);
 
 		$current_post         = get_post( get_the_ID() );
-		$current_post_content = property_exists( $current_post, 'post_content' ) ? $current_post->post_content : '';
+		$current_post_content = $current_post instanceof \WP_Post ? $current_post->post_content : '';
 
 		preg_match_all( "/\\[(.+?)( .+)?\\]/", $current_post_content, $matches );
 		$found_shortcodes = array_intersect( $matches[1], $tribe_shortcodes );
