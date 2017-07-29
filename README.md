@@ -4,7 +4,7 @@
 **Tags:** events, color, modern tribe, tribe  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
-**Tested to:** 4.8  
+**Tested to:** 4.9  
   
 
 Add event category background colors to The Events Calendar events.

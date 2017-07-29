@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 4.6.8 / 2017-07-28
 * fixed PHP Notice with more specific test of WP_POST
 * fixed text color for featured events [#79](https://github.com/afragen/the-events-calendar-category-colors/issues/79)
 

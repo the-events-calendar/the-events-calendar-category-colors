@@ -3,8 +3,8 @@ Contributors: afragen, barry.hughes
 Donate link: http://thefragens.com/category-colors-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
-Tested up to: 4.8
-Stable tag: 4.6.7
+Tested up to: 4.9
+Stable tag: 4.6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 4.6.8
+* fixed PHP Notice with more specific test of WP_POST
+* fixed text color for featured events [#79](https://github.com/afragen/the-events-calendar-category-colors/issues/79)
 
 #### 4.6.7
 * fixed PHP Notice
