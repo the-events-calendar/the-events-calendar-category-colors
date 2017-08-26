@@ -31,6 +31,12 @@ $options = Admin::fetch_options( $teccc );
 				<label>
 					<input name="teccc_options[hide][<?php echo $slug ?>]" type="checkbox" value="<?php echo $slug ?>" <?php checked( $slug, $options['hide'][ $slug ] ) ?> />
 				</label>
+				<?php
+				if ( ! empty( $options['hide'][ $slug ] ) ) {
+					$options[ $slug . '-border_transparent' ]     = isset( $options[ $slug . '-border_transparent' ] ) ? $options[ $slug . '-border_transparent' ] : null;
+					$options[ $slug . '-background_transparent' ] = isset( $options[ $slug . '-background_transparent' ] ) ? $options[ $slug . '-background_transparent' ] : null;
+				}
+				?>
 			</td>
 
 			<td> <?php echo $slug ?> </td>
