@@ -41,7 +41,7 @@ define( 'TECCC_CLASSES', TECCC_DIR . '/src' );
 define( 'TECCC_INCLUDES', TECCC_DIR . '/includes' );
 define( 'TECCC_VIEWS', TECCC_DIR . '/views' );
 define( 'TECCC_RESOURCES', plugin_dir_url( __FILE__ ) . 'resources' );
-define( 'TECCC_LANG', basename( dirname( __FILE__ ) ) . '/languages' );
+define( 'TECCC_LANG', basename( __DIR__ ) . '/languages' );
 
 /**
  * Initialization of plugin.
@@ -62,7 +62,7 @@ function teccc_init() {
 	);
 
 	// Autoloading
-	require_once( TECCC_CLASSES . '/Autoloader.php' );
+	require_once TECCC_CLASSES . '/Autoloader.php';
 	$loader = 'Fragen\\Autoloader';
 	new $loader( $root, $compatibility );
 

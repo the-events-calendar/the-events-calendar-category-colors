@@ -43,8 +43,9 @@ class Admin {
 
 
 	/**
-	 * @param $input
+	 * @param array $input
 	 * @todo streamline validation/sanitization work, replace deprecated function calls
+	 * @return array $input
 	 */
 	public function validate_options( $input ) {
 		$teccc = $this->teccc;
@@ -56,13 +57,13 @@ class Admin {
 			// May not be needed with jQuery color picker
 			$input[ $slug.'-background' ] =  wp_filter_nohtml_kses($input[$slug.'-background']);
 			$input[ $slug.'-background' ] =  preg_replace( '[^#A-Za-z0-9]', '', $input[ $slug.'-background' ] );
-			if ( $input[ $slug.'-background' ] == '' ) {
+			if ( $input[ $slug.'-background' ] === '' ) {
 				$input[ $slug.'-background' ] = '#CFCFCF' ;
 			}
 
 			$input[ $slug.'-border' ] =  wp_filter_nohtml_kses( $input[$slug.'-border' ] );
 			$input[ $slug.'-border' ] =  preg_replace( '[^#A-Za-z0-9]', '', $input[ $slug.'-border' ] );
-			if ( $input[ $slug.'-border' ] == '' ) {
+			if ( $input[ $slug.'-border' ] === '' ) {
 				$input[ $slug.'-border' ] = '#CFCFCF';
 			}
 
@@ -110,7 +111,7 @@ class Admin {
 
 
 	public function is_saved() {
-		if ( isset( $_GET['settings-updated'] ) && ( $_GET['settings-updated'] ) ) {
+		if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) {
 			$message = esc_html__( 'Settings saved.', 'the-events-calendar-category-colors' );
 			$output  = '<div id="message" class="updated"><p><strong>' . $message . '</strong></p></div>';
 			echo apply_filters( 'tribe_settings_success_message', $output, 'category-colors' );
@@ -132,7 +133,7 @@ class Admin {
 
 	/**
 	 * Retrieves the options and pre-processes them to ensure we aren't trying to access non-existent
-	 * indicies (can result in notices being emitted).
+	 * indices (can result in notices being emitted).
 	 *
 	 * @param Main $teccc
 	 * @return array
@@ -184,11 +185,11 @@ class Admin {
 	 * Enqueue admin scripts and styles
 	 *
 	 * @param $hook
-	 * @return bool|void
+	 * @return bool
 	 */
 	public static function load_teccc_js_css( $hook ) {
-		if ( 'tribe_events_page_tribe-events-calendar' != $hook &&
-		     'tribe_events_page_tribe-common' != $hook
+		if ( 'tribe_events_page_tribe-events-calendar' !== $hook &&
+		     'tribe_events_page_tribe-common' !== $hook
 		) {
 			return false;
 		}
