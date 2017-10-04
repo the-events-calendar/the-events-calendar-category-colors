@@ -1,5 +1,6 @@
 #### [unreleased]
 * fixed PHP Notices when hide setting selected
+* update mobile CSS to override `display:none` in TEC mobile CSS
 
 #### 4.6.8 / 2017-07-28
 * fixed PHP Notice with more specific test of WP_POST
