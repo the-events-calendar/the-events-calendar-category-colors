@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 4.6.9 / 2017-11-19
 * fixed PHP Notices when hide setting selected
 * update mobile CSS to override `display:none` in TEC mobile CSS
 
