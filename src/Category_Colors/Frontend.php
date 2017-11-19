@@ -28,7 +28,7 @@ class Frontend {
 		require_once TECCC_INCLUDES . '/templatetags.php';
 
 		add_action( 'init', array( $this, 'add_colored_categories' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), ( PHP_INT_MAX - 100 ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX - 100 );
 	}
 
 	/**
@@ -115,14 +115,14 @@ class Frontend {
 		// Terms are relevant but need to be flattened out
 		foreach ( $config as $key => $value ) {
 			if ( isset( $key ) && is_array( $value ) ) {
-				$config[ $key ] = join( '|', array_keys( $value ) );
+				$config[ $key ] = implode( '|', array_keys( $value ) );
 			}
 		}
 
 		// We also need to be cognizant of the mobile breakpoint
 		$config['breakpoint'] = tribe_get_mobile_breakpoint();
 
-		return hash( 'md5', join( '|', $config ) );
+		return hash( 'md5', implode( '|', $config ) );
 	}
 
 	/**
