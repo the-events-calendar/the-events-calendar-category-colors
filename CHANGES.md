@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 4.6.10 / 2017-11-23
+* fix regex to [correctly parse nested shortcodes](https://wordpress.org/support/topic/using-the-events-calendar-pro-shortcodes-within-visual-composer/)
+
 #### 4.6.9 / 2017-11-19
 * fixed PHP Notices when hide setting selected
 * update mobile CSS to override `display:none` in TEC mobile CSS

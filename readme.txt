@@ -5,7 +5,7 @@ Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Requires PHP: 5.3
 Tested up to: 4.9
-Stable tag: 4.6.9
+Stable tag: 4.6.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,9 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 4.6.10
+* fix regex to [correctly parse nested shortcodes](https://wordpress.org/support/topic/using-the-events-calendar-pro-shortcodes-within-visual-composer/)
 
 #### 4.6.9
 * fixed PHP Notices when hide setting selected
