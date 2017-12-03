@@ -1,4 +1,5 @@
 #### [unreleased]
+* simplify check for shortcodes
 
 #### 4.6.10 / 2017-11-23
 * fix regex to [correctly parse nested shortcodes](https://wordpress.org/support/topic/using-the-events-calendar-pro-shortcodes-within-visual-composer/)
