@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 4.6.11 / 2017-12-17
 * simplify check for shortcodes
 
 #### 4.6.10 / 2017-11-23
