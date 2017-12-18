@@ -94,8 +94,9 @@ class Frontend {
 		$current_post         = get_post( get_the_ID() );
 		$current_post_content = $current_post instanceof \WP_Post ? $current_post->post_content : '';
 
-		preg_match_all( "/\\[(.+?)( .+)?+\\]/", $current_post_content, $matches );
-		$found_shortcodes = array_intersect( $matches[1], $tribe_shortcodes );
+		$found_shortcodes = array_filter( $tribe_shortcodes, function( $e ) use ( $current_post_content ) {
+			return has_shortcode( $current_post_content, $e );
+		} );
 
 		return ! empty( $found_shortcodes );
 	}
