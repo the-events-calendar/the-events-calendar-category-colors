@@ -1,4 +1,13 @@
 <?php
+/**
+ * Contains autoloading functionality.
+ *
+ * @package   Fragen\Autoloader
+ * @author    Andy Fragen <andy@thefragens.com>
+ * @license   GPL-2.0+
+ * @link      http://github.com/afragen/autoloader
+ * @copyright 2015 Andy Fragen
+ */
 
 namespace Fragen;
 
@@ -18,10 +27,9 @@ if ( ! class_exists( 'Fragen\\Autoloader' ) ) {
 	 * @package   Fragen\Autoloader
 	 * @author    Andy Fragen <andy@thefragens.com>
 	 * @author    Barry Hughes <barry@codingkillsme.com>
-	 * @license   GPL-2.0+
 	 * @link      http://github.com/afragen/autoloader
 	 * @copyright 2015 Andy Fragen
-	 * @version   2.0.0
+	 * @version   2.2.0
 	 */
 	class Autoloader {
 		/**
@@ -39,12 +47,14 @@ if ( ! class_exists( 'Fragen\\Autoloader' ) ) {
 		 */
 		protected $map = array();
 
-
 		/**
-		 * Constructor
+		 * Constructor.
 		 *
-		 * @param array $roots
-		 * @param array $static_map
+		 * @access public
+		 *
+		 * @param array      $roots            Roots to scan when autoloading.
+		 * @param array|null $static_map       Array of classes that deviate from convention.
+		 *                                     Defaults to null.
 		 */
 		public function __construct( array $roots, array $static_map = null ) {
 			$this->roots = $roots;
@@ -55,35 +65,69 @@ if ( ! class_exists( 'Fragen\\Autoloader' ) ) {
 		}
 
 		/**
-		 * Load classes
+		 * Load classes.
 		 *
-		 * @param $class
+		 * @access protected
+		 *
+		 * @param string $class The class name to autoload.
+		 *
+		 * @return void
 		 */
 		protected function autoload( $class ) {
-			// Check for a static mapping first of all
+			// Check for a static mapping first of all.
 			if ( isset( $this->map[ $class ] ) && file_exists( $this->map[ $class ] ) ) {
 				include_once $this->map[ $class ];
 
 				return;
 			}
 
-			// Else scan the namespace roots
+			// Else scan the namespace roots.
 			foreach ( $this->roots as $namespace => $root_dir ) {
-				// If the class doesn't belong to this namespace, move on to the next root
+				// If the class doesn't belong to this namespace, move on to the next root.
 				if ( 0 !== strpos( $class, $namespace ) ) {
 					continue;
 				}
 
-				// Determine the possible path to the class
-				$path = substr( $class, strlen( $namespace ) + 1 );
-				$path = str_replace( '\\', DIRECTORY_SEPARATOR, $path );
-				$path = $root_dir . DIRECTORY_SEPARATOR . $path . '.php';
+				$psr4_fname = substr( $class, strlen( $namespace ) + 1 );
+				$psr4_fname = str_replace( '\\', DIRECTORY_SEPARATOR, $psr4_fname );
 
-				// Test for its existence and load if present
-				if ( file_exists( $path ) ) {
-					include_once $path;
+				// Determine the possible path to the class, include all subdirectories.
+				$objects = new \RecursiveIteratorIterator( new \RecursiveDirectoryIterator( $root_dir ), \RecursiveIteratorIterator::SELF_FIRST );
+				foreach ( $objects as $name => $object ) {
+					if ( is_dir( $name ) ) {
+						$directories[] = rtrim( $name, './' );
+					}
+				}
+				$directories = array_unique( $directories );
+
+				$paths = $this->get_paths( $directories, array( $psr4_fname ) );
+
+				// Test for its existence and load if present.
+				foreach ( $paths as $path ) {
+					if ( file_exists( $path ) ) {
+						include_once $path;
+						break;
+					}
 				}
 			}
+		}
+
+		/**
+		 * Get and return an array of possible file paths.
+		 *
+		 * @param array $dirs       Array of plugin directories and subdirectories.
+		 * @param array $file_names Array of possible file names.
+		 *
+		 * @return mixed
+		 */
+		private function get_paths( $dirs, $file_names ) {
+			foreach ( $file_names as $file_name ) {
+				$paths[] = array_map( function( $dir ) use ( $file_name ) {
+					return $dir . DIRECTORY_SEPARATOR . $file_name . '.php';
+				}, $dirs );
+			}
+
+			return call_user_func_array( 'array_merge', $paths );
 		}
 	}
 }
