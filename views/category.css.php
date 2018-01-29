@@ -9,11 +9,14 @@ $options = Admin::fetch_options( $teccc );
 
 ?>
 
-/* The Events Calendar Category Colors <?php echo Main::$version ?> generated CSS */
-.teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
-{ font-weight: <?php esc_attr_e( $options['font_weight'] ) ?>; }
+/* The Events Calendar Category Colors  <?php echo Main::$version ?>   generated CSS */
+.teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4 {
+	font-weight: <?php esc_attr_e( $options['font_weight'] ) ?>;
+}
 
-.tribe-events-list .vevent.hentry h2 { padding-left: 5px; }
+.tribe-events-list .vevent.hentry h2 {
+	padding-left: 5px;
+}
 
 <?php Extras::add_mobile_css(); ?>
 
@@ -21,10 +24,10 @@ $options = Admin::fetch_options( $teccc );
 <?php if ( empty( $this->terms ) ) { $this->terms = $options['terms']; } ?>
 
 <?php foreach ( $teccc->terms as $id => $attributes ): ?>
-	<?php
-		$slug = esc_attr( $attributes[ Main::SLUG ] );
-		$name = esc_attr( $attributes[ Main::NAME ] );
-	?>
+<?php
+	$slug = esc_attr( $attributes[ Main::SLUG ] );
+	$name = esc_attr( $attributes[ Main::NAME ] );
+?>
 
 <?php Extras::fix_category_link_css( $slug ); ?>
 <?php Extras::add_map_link_css( $slug ); ?>
@@ -38,8 +41,7 @@ $options = Admin::fetch_options( $teccc );
 #tribe-events-content .teccc-legend .tribe-events-category-<?php echo $slug ?> a,
 #tribe-events-content .tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
 .tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title a,
-.tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4 a
-{
+.tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4 a {
 	color: <?php esc_attr_e( $options[ $slug.'-text' ] ) ?>;
 	text-decoration: none;
 }
@@ -57,10 +59,13 @@ $options = Admin::fetch_options( $teccc );
 #tribe-events-content .tribe-events-category-<?php echo $slug ?> > .tribe-events-tooltip h4,
 .tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title,
 .tribe-events-category-<?php echo $slug ?> h2 a,
-.tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4
-{
+.tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4 {
+<?php if ( 'transparent' !== $options[ $slug.'-background' ] ): ?>
 	background-color: <?php esc_attr_e( $options[ $slug.'-background' ] ) ?>;
-	border-left: 5px solid <?php esc_attr_e( $options[ $slug.'-border' ] ) ?>;
+<?php endif ?>
+<?php if ( 'transparent' !== $options[ $slug.'-border' ] ): ?>
+	border-left: 5px solid<?php esc_attr_e( $options[ $slug.'-border' ] ) ?>;
+<?php endif ?>
 	border-right: 5px solid transparent;
 	color: <?php esc_attr_e( $options[ $slug.'-text' ] ) ?>;
 	line-height: 1.4em;
