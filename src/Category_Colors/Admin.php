@@ -68,11 +68,11 @@ class Admin {
 			}
 
 			// Sets value when checked
-			if ( isset( $input[ $slug.'-border_transparent' ] ) ) {
-				$input[ $slug.'-border' ] = 'transparent';
+			if ( isset( $input[ $slug.'-border_none' ] ) ) {
+				$input[ $slug.'-border' ] = null;
 			}
-			if ( isset( $input[ $slug.'-background_transparent' ] ) ) {
-				$input[ $slug.'-background' ] = 'transparent';
+			if ( isset( $input[ $slug.'-background_none' ] ) ) {
+				$input[ $slug.'-background' ] = null;
 			}
 
 			// Sanitize dropdown input (make sure value is one of options allowed)
@@ -142,9 +142,9 @@ class Admin {
 		$options = (array) get_option( 'teccc_options', array() );
 		$categoryOptions = array(
 			'-background',
-			'-background_transparent',
+			'-background_none',
 			'-border',
-			'-border_transparent',
+			'-border_none',
 			'-text',
 		);
 

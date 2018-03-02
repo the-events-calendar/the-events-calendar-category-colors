@@ -60,10 +60,10 @@ $options = Admin::fetch_options( $teccc );
 .tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title,
 .tribe-events-category-<?php echo $slug ?> h2 a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4 {
-<?php if ( 'transparent' !== $options[ $slug.'-background' ] ): ?>
+<?php if ( null !== $options[ $slug.'-background' ] ): ?>
 	background-color: <?php esc_attr_e( $options[ $slug.'-background' ] ) ?>;
 <?php endif ?>
-<?php if ( 'transparent' !== $options[ $slug.'-border' ] ): ?>
+<?php if ( null !== $options[ $slug.'-border' ] ): ?>
 	border-left: 5px solid<?php esc_attr_e( $options[ $slug.'-border' ] ) ?>;
 <?php endif ?>
 	border-right: 5px solid transparent;
@@ -87,7 +87,7 @@ $options = Admin::fetch_options( $teccc );
 
 <?php endforeach ?>
 
-<?php if ( ( '1' === $options['add_legend'] ) && is_null( $options['custom_legend_css'] ) ): ?>
+<?php if ( ( '1' === $options['add_legend'] ) && null ===  $options['custom_legend_css'] ): ?>
 	<?php $teccc->view( 'legend.css' ) ?>
 <?php endif ?>
 <?php do_action( 'teccc_add_legend_css' ); ?>
