@@ -82,7 +82,14 @@ $options = Admin::fetch_options( $teccc );
 			</td>
 
 			<td>
-				<span style="background-color: <?php esc_attr_e( $options[ $slug . '-background' ] ) ?>; border-left: 5px solid <?php esc_attr_e( $options[ $slug . '-border' ] ) ?>; border-right: 5px solid transparent; color:<?php esc_attr_e( $options[ $slug . '-text' ] ) ?>; padding: 0.5em 1em; font-weight: <?php esc_attr_e( $options['font_weight'] ) ?>;">
+				<span style="
+				<?php if ( null !== $options[ $slug . '-background' ] ): ?>
+					background-color: <?php esc_attr_e( $options[ $slug . '-background' ] ) ?>;
+				<?php endif ?>
+				<?php if ( null !== $options[ $slug . '-border' ] ): ?>
+					border-left: 5px solid <?php esc_attr_e( $options[ $slug . '-border' ] ) ?>;
+				<?php endif ?>
+					border-right: 5px solid transparent; color:<?php esc_attr_e( $options[ $slug . '-text' ] ) ?>; padding: 0.5em 1em; font-weight: <?php esc_attr_e( $options['font_weight'] ) ?>;">
 					<?php echo $name ?>
 				</span>
 			</td>
