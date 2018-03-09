@@ -69,8 +69,8 @@ jQuery(document).ready(function($) {
 
 		var borderColor = /-border]$/;
 		var backgroundColor = /-background]$/;
-		var borderTransparency = /-border_transparent]$/;
-		var backgroundTransparency = /-background_transparent]$/;
+		var borderTransparency = /-border_none]$/;
+		var backgroundTransparency = /-background_none]$/;
 		var fontColor = /-text]$/;
 		var fontWeight = $("select[name='teccc_options[font_weight]']").val();
 

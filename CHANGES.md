@@ -1,5 +1,6 @@
 #### [unreleased]
 * updated autoloader
+* no longer add CSS for transparency, allows for minimal overlapping styles
 
 #### 4.6.11 / 2017-12-17
 * simplify check for shortcodes
