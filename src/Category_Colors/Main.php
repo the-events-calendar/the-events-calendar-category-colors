@@ -74,7 +74,7 @@ class Main {
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
 
-		if ( is_admin() && ( ! defined( 'DOING_AJAX' ) ) ) {
+		if ( ( ! defined( 'DOING_AJAX' ) ) && is_admin() ) {
 			new Admin( $this );
 		}
 
@@ -261,7 +261,7 @@ class Main {
 			return false;
 		}
 		if ( null !== $vars ) {
-			extract( $vars );
+			extract( $vars, EXTR_OVERWRITE );
 		}
 
 		if ( ! $render ) {
@@ -287,12 +287,12 @@ class Main {
 		if ( '1' === $tmp['chk_default_options_db'] || ! is_array( $tmp ) ) {
 			delete_option( 'teccc_options' );
 			for ( $i = 0; $i < $teccc->count; $i ++ ) {
-				$arr[ $teccc->slugs[ $i ] . '-text' ]                   = '#000';
-				$arr[ $teccc->slugs[ $i ] . '-background' ]             = '#CFCFCF';
-				$arr[ $teccc->slugs[ $i ] . '-border' ]                 = '#CFCFCF';
-				$arr[ $teccc->slugs[ $i ] . '-border_transparent' ]     = '1';
-				$arr[ $teccc->slugs[ $i ] . '-background_transparent' ] = '1';
-				$arr['hide'][ $teccc->slugs[ $i ] ]                     = null;
+				$arr[ $teccc->slugs[ $i ] . '-text' ]            = '#000';
+				$arr[ $teccc->slugs[ $i ] . '-background' ]      = '#CFCFCF';
+				$arr[ $teccc->slugs[ $i ] . '-border' ]          = '#CFCFCF';
+				$arr[ $teccc->slugs[ $i ] . '-border_none' ]     = '1';
+				$arr[ $teccc->slugs[ $i ] . '-background_none' ] = '1';
+				$arr['hide'][ $teccc->slugs[ $i ] ]              = null;
 			}
 			$arr['font_weight'] = 'bold';
 			update_option( 'teccc_options', $arr );

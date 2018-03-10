@@ -1,4 +1,5 @@
 <?php
+
 namespace Fragen\Category_Colors;
 
 class Widgets extends Frontend {
