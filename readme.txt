@@ -55,6 +55,10 @@ There is more extensive documentation of the plugins features and usage on the [
 
 ## Changelog
 
+#### 4.7.0
+* updated autoloader
+* no longer add CSS for transparency, allows for minimal overlapping styles
+
 #### 4.6.11
 * simplify check for shortcodes
 
