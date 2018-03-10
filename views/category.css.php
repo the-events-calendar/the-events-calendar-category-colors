@@ -9,7 +9,8 @@ $options = Admin::fetch_options( $teccc );
 
 ?>
 
-/* The Events Calendar Category Colors  <?php echo Main::$version ?>   generated CSS */
+/* The Events Calendar Category Colors
+<?php echo Main::$version ?>  generated CSS */
 .teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4 {
 	font-weight: <?php esc_attr_e( $options['font_weight'] ) ?>;
 }
@@ -33,7 +34,7 @@ $options = Admin::fetch_options( $teccc );
 <?php Extras::add_map_link_css( $slug ); ?>
 <?php Extras::add_week_link_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ): ?>
-	<?php Widgets::add_widget_link_css( $slug ); ?>
+<?php Widgets::add_widget_link_css( $slug ); ?>
 <?php endif ?>
 #tribe-events-content table.tribe-events-calendar .tribe-event-featured.tribe-events-category-<?php echo $slug ?> .tribe-events-month-event-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug ?> a,
@@ -50,7 +51,7 @@ $options = Admin::fetch_options( $teccc );
 <?php Extras::add_map_background_css( $slug ); ?>
 <?php Extras::add_week_background_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ): ?>
-	<?php Widgets::add_widget_background_css( $slug ); ?>
+<?php Widgets::add_widget_background_css( $slug ); ?>
 <?php endif ?>
 .events-archive.events-gridview #tribe-events-content table .type-tribe_events.tribe-events-category-<?php echo $slug ?>,
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a,
@@ -60,13 +61,9 @@ $options = Admin::fetch_options( $teccc );
 .tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title,
 .tribe-events-category-<?php echo $slug ?> h2 a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4 {
-<?php if ( null !== $options[ $slug.'-background' ] ): ?>
-	background-color: <?php esc_attr_e( $options[ $slug.'-background' ] ) ?>;
-<?php endif ?>
-<?php if ( null !== $options[ $slug.'-border' ] ): ?>
-	border-left: 5px solid<?php esc_attr_e( $options[ $slug.'-border' ] ) ?>;
-<?php endif ?>
-	border-right: 5px solid transparent;
+<?php if ( null !== $options[ $slug.'-background' ] ): ?> background-color: <?php esc_attr_e( $options[ $slug.'-background' ] ) ?>;
+<?php endif ?><?php if ( null !== $options[ $slug.'-border' ] ): ?> border-left: 5px solid<?php esc_attr_e( $options[ $slug.'-border' ] ) ?>;
+<?php endif ?> border-right: 5px solid transparent;
 	color: <?php esc_attr_e( $options[ $slug.'-text' ] ) ?>;
 	line-height: 1.4em;
 	padding-left: 5px;
@@ -77,7 +74,7 @@ $options = Admin::fetch_options( $teccc );
 
 <?php Extras::add_map_display_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ): ?>
-	<?php Widgets::add_widget_display_css( $slug ); ?>
+<?php Widgets::add_widget_display_css( $slug ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title.entry-title a,
 .tribe-events-category-<?php echo $slug ?> h2.tribe-events-list-event-title a {
@@ -88,6 +85,6 @@ $options = Admin::fetch_options( $teccc );
 <?php endforeach ?>
 
 <?php if ( ( '1' === $options['add_legend'] ) && null ===  $options['custom_legend_css'] ): ?>
-	<?php $teccc->view( 'legend.css' ) ?>
+<?php $teccc->view( 'legend.css' ) ?>
 <?php endif ?>
 <?php do_action( 'teccc_add_legend_css' ); ?>
