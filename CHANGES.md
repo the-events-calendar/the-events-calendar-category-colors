@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 4.7.0 / 2018-03-10
 * updated autoloader
 * no longer add CSS for transparency, allows for minimal overlapping styles
 
