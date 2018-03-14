@@ -1,4 +1,5 @@
 #### [unreleased]
+* add `'Default' => 'inherit'` as text color option
 
 #### 4.7.0 / 2018-03-10
 * updated autoloader
