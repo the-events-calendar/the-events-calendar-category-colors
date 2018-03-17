@@ -9,8 +9,7 @@ $options = Admin::fetch_options( $teccc );
 
 ?>
 
-/* The Events Calendar Category Colors
-<?php echo Main::$version ?>  generated CSS */
+/* The Events Calendar Category Colors <?php echo Main::$version ?> generated CSS */
 .teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4 {
 	font-weight: <?php esc_attr_e( $options['font_weight'] ) ?>;
 }
@@ -43,8 +42,8 @@ $options = Admin::fetch_options( $teccc );
 #tribe-events-content .tribe-events-calendar .tribe-events-category-<?php echo $slug ?> a,
 .tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4 a {
-	color: <?php esc_attr_e( $options[ $slug.'-text' ] ) ?>;
-	text-decoration: none;
+<?php if ( 'no_color' !== $options[ $slug . '-text' ]): ?> color: <?php esc_attr_e( $options[ $slug . '-text' ] ) ?>;
+<?php endif ?> text-decoration: none;
 }
 
 <?php Extras::fix_category_background_css( $slug ); ?>
@@ -61,11 +60,11 @@ $options = Admin::fetch_options( $teccc );
 .tribe-events-category-<?php echo $slug ?> > div.hentry.vevent > h3.entry-title,
 .tribe-events-category-<?php echo $slug ?> h2 a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4 {
-<?php if ( null !== $options[ $slug.'-background' ] ): ?> background-color: <?php esc_attr_e( $options[ $slug.'-background' ] ) ?>;
-<?php endif ?><?php if ( null !== $options[ $slug.'-border' ] ): ?> border-left: 5px solid<?php esc_attr_e( $options[ $slug.'-border' ] ) ?>;
+<?php if ( null !== $options[ $slug . '-background' ] ): ?> background-color: <?php esc_attr_e( $options[ $slug . '-background' ] ) ?>;
+<?php endif ?><?php if ( null !== $options[ $slug . '-border' ] ): ?> border-left: 5px solid<?php esc_attr_e( $options[ $slug . '-border' ] ) ?>;
 <?php endif ?> border-right: 5px solid transparent;
-	color: <?php esc_attr_e( $options[ $slug.'-text' ] ) ?>;
-	line-height: 1.4em;
+<?php if ( 'no_color' !== $options[ $slug . '-text' ] ): ?> color: <?php esc_attr_e( $options[ $slug . '-text' ] ) ?>;
+<?php endif ?> line-height: 1.4em;
 	padding-left: 5px;
 	padding-bottom: 2px;
 }

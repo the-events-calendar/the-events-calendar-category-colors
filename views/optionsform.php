@@ -90,7 +90,9 @@ $options = Admin::fetch_options( $teccc );
 					border-left: 5px solid <?php esc_attr_e( $options[ $slug . '-border' ] ) ?>;
 				<?php endif ?>
 					border-right: 5px solid transparent;
+				<?php if ( 'no_color' !== $options[ $slug . '-text' ] ): ?>
 					color:<?php esc_attr_e( $options[ $slug . '-text' ] ) ?>;
+				<?php endif ?>
 					padding: 0.5em 1em;
 					font-weight: <?php esc_attr_e( $options['font_weight'] ) ?>;">
 					<?php echo $name ?>

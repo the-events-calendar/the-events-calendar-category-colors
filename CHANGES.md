@@ -1,5 +1,5 @@
 #### [unreleased]
-* add `'Default' => 'inherit'` as text color option
+* add `Default` as text color option which removes CSS color tag
 
 #### 4.7.0 / 2018-03-10
 * updated autoloader
