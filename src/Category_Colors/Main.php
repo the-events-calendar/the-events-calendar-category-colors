@@ -15,9 +15,10 @@ class Main {
 	public static $version;
 
 	public $text_colors = array(
-		'Black' => '#000',
-		'White' => '#fff',
-		'Gray'  => '#999',
+		'Default' => 'no_color',
+		'Black'   => '#000',
+		'White'   => '#fff',
+		'Gray'    => '#999',
 	);
 
 	public $font_weights = array(

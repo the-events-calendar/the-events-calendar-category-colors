@@ -1,5 +1,9 @@
 #### [unreleased]
 
+#### 5.0.0 / 2018-03-19
+* add `Default` as text color option which removes CSS color tag
+* Settings will need to be re-saved due to the new settings options
+
 #### 4.7.0 / 2018-03-10
 * updated autoloader
 * no longer add CSS for transparency, allows for minimal overlapping styles
