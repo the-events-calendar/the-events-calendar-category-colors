@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: The Events Calendar Category Colors\n"
-"POT-Creation-Date: 2018-03-10 12:59-0800\n"
+"POT-Creation-Date: 2018-03-19 18:35-0700\n"
 "PO-Revision-Date: 2016-11-06 10:09-0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -112,23 +112,23 @@ msgstr ""
 msgid "No Background"
 msgstr ""
 
-#: views/optionsform.php:107
+#: views/optionsform.php:112
 msgid "Font-Weight Options"
 msgstr ""
 
-#: views/optionsform.php:118
+#: views/optionsform.php:123
 msgid "Add Category Legend"
 msgstr ""
 
-#: views/optionsform.php:121
+#: views/optionsform.php:126
 msgid "Check to add a Category Legend to the calendar."
 msgstr ""
 
-#: views/optionsform.php:128
+#: views/optionsform.php:133
 msgid "Check to add Legend Superpowers."
 msgstr ""
 
-#: views/optionsform.php:130
+#: views/optionsform.php:135
 msgid ""
 "Legend Superpowers are an optional visual effect allowing visitors to focus "
 "only on those events that belong to categories of interest - without "
@@ -137,31 +137,31 @@ msgid ""
 "click again to remove it."
 msgstr ""
 
-#: views/optionsform.php:136
+#: views/optionsform.php:141
 msgid "Show hidden categories in legend."
 msgstr ""
 
-#: views/optionsform.php:143
+#: views/optionsform.php:148
 msgid "Check to use your own CSS for category legend."
 msgstr ""
 
-#: views/optionsform.php:147
+#: views/optionsform.php:152
 msgid "Colorize Widgets"
 msgstr ""
 
-#: views/optionsform.php:150
+#: views/optionsform.php:155
 msgid "Add Category Colors to widgets"
 msgstr ""
 
-#: views/optionsform.php:154
+#: views/optionsform.php:159
 msgid "Database Options"
 msgstr ""
 
-#: views/optionsform.php:157
+#: views/optionsform.php:162
 msgid "Restore defaults upon plugin deactivation/reactivation"
 msgstr ""
 
-#: views/optionsform.php:159
+#: views/optionsform.php:164
 msgid ""
 "Only check this if you want to reset plugin settings upon Plugin reactivation"
 msgstr ""
