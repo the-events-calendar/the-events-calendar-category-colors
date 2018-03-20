@@ -5,7 +5,7 @@ Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Requires PHP: 5.3
 Tested up to: 4.9
-Stable tag: 4.7.0
+Stable tag: 5.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,10 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 5.0.0
+* add `Default` as text color option which removes CSS color tag
+* Settings will need to be re-saved due to the new settings options
 
 #### 4.7.0
 * updated autoloader
