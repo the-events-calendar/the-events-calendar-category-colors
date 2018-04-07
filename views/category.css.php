@@ -61,7 +61,7 @@ $options = Admin::fetch_options( $teccc );
 .tribe-events-category-<?php echo $slug ?> h2 a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug ?> h4 {
 <?php if ( null !== $options[ $slug . '-background' ] ): ?> background-color: <?php esc_attr_e( $options[ $slug . '-background' ] ) ?>;
-<?php endif ?><?php if ( null !== $options[ $slug . '-border' ] ): ?> border-left: 5px solid<?php esc_attr_e( $options[ $slug . '-border' ] ) ?>;
+<?php endif ?><?php if ( null !== $options[ $slug . '-border' ] ): ?> border-left: 5px solid <?php esc_attr_e( $options[ $slug . '-border' ] ) ?>;
 <?php endif ?> border-right: 5px solid transparent;
 <?php if ( 'no_color' !== $options[ $slug . '-text' ] ): ?> color: <?php esc_attr_e( $options[ $slug . '-text' ] ) ?>;
 <?php endif ?> line-height: 1.4em;
