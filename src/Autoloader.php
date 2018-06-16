@@ -122,9 +122,11 @@ if ( ! class_exists( 'Fragen\\Autoloader' ) ) {
 		 */
 		private function get_paths( $dirs, $file_names ) {
 			foreach ( $file_names as $file_name ) {
-				$paths[] = array_map( function( $dir ) use ( $file_name ) {
-					return $dir . DIRECTORY_SEPARATOR . $file_name . '.php';
-				}, $dirs );
+				$paths[] = array_map(
+					function( $dir ) use ( $file_name ) {
+							return $dir . DIRECTORY_SEPARATOR . $file_name . '.php';
+					}, $dirs
+				);
 			}
 
 			return call_user_func_array( 'array_merge', $paths );

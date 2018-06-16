@@ -44,11 +44,11 @@ class Extras extends Frontend {
 			return false;
 		}
 		$css = array();
-		//$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . ' h3.entry-title.summary,';
+		// $css[] = '#tribe-events-content div.tribe-events-category-' . $slug . ' h3.entry-title.summary,';
 		$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . '.hentry.vevent .tribe-events-tooltip h4.entry-title,';
 		$css[] = '.tribe-grid-body .tribe-events-week-hourly-single:hover.tribe-events-category-' . $slug . ',';
-		$css[] = '.tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-' . $slug . ','; //3.10
-		$css[] = '.tribe-grid-allday .tribe-events-week-allday-single.tribe-events-category-' . $slug . ','; //3.10
+		$css[] = '.tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-' . $slug . ','; // 3.10
+		$css[] = '.tribe-grid-allday .tribe-events-week-allday-single.tribe-events-category-' . $slug . ','; // 3.10
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
@@ -101,10 +101,11 @@ class Extras extends Frontend {
 	public static function add_mobile_css() {
 		$teccc = Main::instance();
 
-		$css = $teccc->view( 'mobile.css', array(
-			'breakpoint' => tribe_get_mobile_breakpoint(),
-		), false );
-
+		$css = $teccc->view(
+			'mobile.css', array(
+				'breakpoint' => tribe_get_mobile_breakpoint(),
+			), false
+		);
 
 		/**
 		 * Add CSS to mobile.css.php file for inclusion in category.css.php.
