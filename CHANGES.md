@@ -2,6 +2,7 @@
 
 #### 5.0.1 / 2018-04-06
 * needed a space between CSS parameters, PhpStorm reformat code error
+* update for new tooltip title as `h3`
 
 #### 5.0.0 / 2018-03-19
 * add `Default` as text color option which removes CSS color tag

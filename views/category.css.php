@@ -61,6 +61,7 @@ if ( empty( $this->terms ) ) {
 .teccc-legend .tribe-events-category-<?php echo $slug; ?>,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug; ?>,
 #tribe-events-content .tribe-events-category-<?php echo $slug; ?> > .tribe-events-tooltip h4,
+#tribe-events-content .tribe-events-category-<?php echo $slug; ?> > .tribe-events-tooltip h3,
 .tribe-events-category-<?php echo $slug; ?> > div.hentry.vevent > h3.entry-title,
 .tribe-events-category-<?php echo $slug; ?> h2 a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug; ?> h4 {
