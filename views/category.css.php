@@ -36,7 +36,7 @@ if ( empty( $this->terms ) ) {
 <?php Extras::add_map_link_css( $slug ); ?>
 <?php Extras::add_week_link_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ) : ?>
-<?php Widgets::add_widget_link_css( $slug ); ?>
+	<?php Widgets::add_widget_link_css( $slug ); ?>
 <?php endif ?>
 #tribe-events-content table.tribe-events-calendar .tribe-event-featured.tribe-events-category-<?php echo $slug; ?> .tribe-events-month-event-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug; ?> a,
@@ -45,10 +45,8 @@ if ( empty( $this->terms ) ) {
 #tribe-events-content .tribe-events-calendar .tribe-events-category-<?php echo $slug; ?> a,
 .tribe-events-category-<?php echo $slug; ?> > div.hentry.vevent > h3.entry-title a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug; ?> h4 a {
-<?php
-if ( 'no_color' !== $options[ $slug . '-text' ] ) :
-?>
- color: <?php esc_attr_e( $options[ $slug . '-text' ] ); ?>;
+<?php if ( 'no_color' !== $options[ $slug . '-text' ] ) : ?>
+	color: <?php esc_attr_e( $options[ $slug . '-text' ] ); ?>;
 <?php endif ?> text-decoration: none;
 }
 
@@ -66,20 +64,15 @@ if ( 'no_color' !== $options[ $slug . '-text' ] ) :
 .tribe-events-category-<?php echo $slug; ?> > div.hentry.vevent > h3.entry-title,
 .tribe-events-category-<?php echo $slug; ?> h2 a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug; ?> h4 {
-<?php
-if ( null !== $options[ $slug . '-background' ] ) :
-?>
- background-color: <?php esc_attr_e( $options[ $slug . '-background' ] ); ?>;
+<?php if ( null !== $options[ $slug . '-background' ] ) : ?>
+	background-color: <?php esc_attr_e( $options[ $slug . '-background' ] ); ?>;
 <?php endif ?>
-			<?php
-			if ( null !== $options[ $slug . '-border' ] ) :
-			?>
-			 border-left: 5px solid <?php esc_attr_e( $options[ $slug . '-border' ] ); ?>;
-<?php endif ?> border-right: 5px solid transparent;
-<?php
-if ( 'no_color' !== $options[ $slug . '-text' ] ) :
-?>
- color: <?php esc_attr_e( $options[ $slug . '-text' ] ); ?>;
+<?php if ( null !== $options[ $slug . '-border' ] ) : ?>
+	border-left: 5px solid <?php esc_attr_e( $options[ $slug . '-border' ] ); ?>;
+<?php endif ?>
+border-right: 5px solid transparent;
+<?php if ( 'no_color' !== $options[ $slug . '-text' ] ) : ?>
+	color: <?php esc_attr_e( $options[ $slug . '-text' ] ); ?>;
 <?php endif ?> line-height: 1.4em;
 	padding-left: 5px;
 	padding-bottom: 2px;
@@ -89,7 +82,7 @@ if ( 'no_color' !== $options[ $slug . '-text' ] ) :
 
 <?php Extras::add_map_display_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ) : ?>
-<?php Widgets::add_widget_display_css( $slug ); ?>
+	<?php Widgets::add_widget_display_css( $slug ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug; ?> h2.tribe-events-list-event-title.entry-title a,
 .tribe-events-category-<?php echo $slug; ?> h2.tribe-events-list-event-title a {
@@ -100,6 +93,6 @@ if ( 'no_color' !== $options[ $slug . '-text' ] ) :
 <?php endforeach ?>
 
 <?php if ( ( '1' === $options['add_legend'] ) && null === $options['custom_legend_css'] ) : ?>
-<?php $teccc->view( 'legend.css' ); ?>
+	<?php $teccc->view( 'legend.css' ); ?>
 <?php endif ?>
 <?php do_action( 'teccc_add_legend_css' ); ?>
