@@ -43,12 +43,9 @@ class Extras extends Frontend {
 		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			return false;
 		}
-		$css = array();
-		// $css[] = '#tribe-events-content div.tribe-events-category-' . $slug . ' h3.entry-title.summary,';
+		$css   = array();
 		$css[] = '#tribe-events-content div.tribe-events-category-' . $slug . '.hentry.vevent .tribe-events-tooltip h4.entry-title,';
 		$css[] = '.tribe-grid-body .tribe-events-week-hourly-single:hover.tribe-events-category-' . $slug . ',';
-		$css[] = '.tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-' . $slug . ','; // 3.10
-		$css[] = '.tribe-grid-allday .tribe-events-week-allday-single.tribe-events-category-' . $slug . ','; // 3.10
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
@@ -144,4 +141,24 @@ class Extras extends Frontend {
 		echo apply_filters( 'teccc_fix_category_background_color', null, '.tribe-events-category-' . $slug );
 	}
 
+	public static function add_deprecated_week_background_css( $slug ) {
+		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
+			return false;
+		}
+		$css = array();
+		// $css[] = '#tribe-events-content div.tribe-events-category-' . $slug . ' h3.entry-title.summary,';
+		$css[] = '.tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-' . $slug . ','; // 3.10
+		$css[] = '.tribe-grid-allday .tribe-events-week-allday-single.tribe-events-category-' . $slug . ','; // 3.10
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
+	public static function add_deprecated_background_css( $slug ) {
+		$css   = array();
+		$css[] = '#tribe-events-content .tribe-events-category-' . $slug . ' > .tribe-events-tooltip h4,';
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
 }

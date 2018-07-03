@@ -47,12 +47,15 @@ if ( empty( $this->terms ) ) {
 .tribe-events-mobile.tribe-events-category-<?php echo $slug; ?> h4 a {
 <?php if ( 'no_color' !== $options[ $slug . '-text' ] ) : ?>
 	color: <?php esc_attr_e( $options[ $slug . '-text' ] ); ?>;
-<?php endif ?> text-decoration: none;
+<?php endif ?>
+	text-decoration: none;
 }
 
 <?php Extras::fix_category_background_css( $slug ); ?>
 <?php Extras::add_map_background_css( $slug ); ?>
 <?php Extras::add_week_background_css( $slug ); ?>
+<?php Extras::add_deprecated_week_background_css( $slug ); ?>
+<?php Extras::add_deprecated_background_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ) : ?>
 <?php Widgets::add_widget_background_css( $slug ); ?>
 <?php endif ?>
@@ -60,7 +63,6 @@ if ( empty( $this->terms ) ) {
 .tribe-events-category-<?php echo $slug; ?> h2.tribe-events-list-event-title.entry-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug; ?>,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug; ?>,
-#tribe-events-content .tribe-events-category-<?php echo $slug; ?> > .tribe-events-tooltip h4,
 #tribe-events-content .tribe-events-category-<?php echo $slug; ?> > .tribe-events-tooltip h3,
 .tribe-events-category-<?php echo $slug; ?> > div.hentry.vevent > h3.entry-title,
 .tribe-events-category-<?php echo $slug; ?> h2 a,
@@ -71,10 +73,11 @@ if ( empty( $this->terms ) ) {
 <?php if ( null !== $options[ $slug . '-border' ] ) : ?>
 	border-left: 5px solid <?php esc_attr_e( $options[ $slug . '-border' ] ); ?>;
 <?php endif ?>
-border-right: 5px solid transparent;
+	border-right: 5px solid transparent;
 <?php if ( 'no_color' !== $options[ $slug . '-text' ] ) : ?>
 	color: <?php esc_attr_e( $options[ $slug . '-text' ] ); ?>;
-<?php endif ?> line-height: 1.4em;
+<?php endif ?>
+	line-height: 1.4em;
 	padding-left: 5px;
 	padding-bottom: 2px;
 }
