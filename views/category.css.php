@@ -35,6 +35,7 @@ if ( empty( $this->terms ) ) {
 <?php Extras::fix_category_link_css( $slug ); ?>
 <?php Extras::add_map_link_css( $slug ); ?>
 <?php Extras::add_week_link_css( $slug ); ?>
+<?php Extras::override_customizer( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ) : ?>
 	<?php Widgets::add_widget_link_css( $slug ); ?>
 <?php endif ?>
@@ -56,6 +57,7 @@ if ( empty( $this->terms ) ) {
 <?php Extras::add_week_background_css( $slug ); ?>
 <?php Extras::add_deprecated_week_background_css( $slug ); ?>
 <?php Extras::add_deprecated_background_css( $slug ); ?>
+<?php Extras::override_customizer( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ) : ?>
 <?php Widgets::add_widget_background_css( $slug ); ?>
 <?php endif ?>

@@ -161,4 +161,12 @@ class Extras extends Frontend {
 		$css   = implode( "\n", $css );
 		echo $css;
 	}
+
+	public static function override_customizer( $slug ) {
+		$css   = array();
+		$css[] = '.tribe-events-shortcode .tribe-events-month table .type-tribe_events.tribe-events-category-' . $slug . ',';
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
 }

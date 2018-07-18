@@ -205,7 +205,6 @@ class Admin {
 		wp_enqueue_style( 'teccc-iris', TECCC_RESOURCES . '/teccc-iris.css', false, Main::$version );
 		wp_enqueue_script( 'teccc-admin', TECCC_RESOURCES . '/teccc-admin.js', false, Main::$version, true );
 		wp_enqueue_style( 'teccc-options', TECCC_RESOURCES . '/teccc-options.css', false, Main::$version );
-
 	}
 
 }
