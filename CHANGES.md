@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 5.1.0 / 2018-07-21
 * update for new tooltip title as `h3`
 * added some functions for adding deprecated CSS
 * added function `Extras::override_customizer()` for when _Customizer_ settings need to be overridden
