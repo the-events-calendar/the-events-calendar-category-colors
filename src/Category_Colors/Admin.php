@@ -8,9 +8,9 @@ use Tribe__Events__Main,
 
 class Admin {
 
-	const TAB_NAME = 'category-colors';
+	const TAB_NAME      = 'category-colors';
 	const UPDATE_ACTION = 'category-colors-update-options';
-	protected $teccc = null;
+	protected $teccc    = null;
 
 
 	public function __construct( Main $teccc ) {
@@ -35,9 +35,9 @@ class Admin {
 			$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 			$title = esc_html__( 'The Events Calendar', 'the-events-calendar-category-colors' );
 			if ( ! class_exists( 'Tribe__Events__Main' ) ) {
-				echo '<div class="error"><p>' . sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of %sThe Events Calendar%s.', 'the-events-calendar-category-colors' ), '<a href="' . $url . '" class="thickbox" title="' . $title . '">', '</a>' ) . '</p></div>';
+				echo '<div class="error"><p>' . sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of %1$sThe Events Calendar%2$s.', 'the-events-calendar-category-colors' ), '<a href="' . $url . '" class="thickbox" title="' . $title . '">', '</a>' ) . '</p></div>';
 			} elseif ( version_compare( Tribe__Events__Main::VERSION, '3.0', 'lt' ) ) {
-				echo '<div class="error"><p>' . sprintf( __( 'You have The Events Calendar v.%s. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%s" class="thickbox" title="%s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ), Tribe__Events__Main::VERSION, '<a href="' . $url . '" class="thickbox" title="' . $title . '">', '</a>' ) . '</p></div>';
+				echo '<div class="error"><p>' . sprintf( __( 'You have The Events Calendar v.%1$s. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%2$s" class="thickbox" title="%3$s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ), Tribe__Events__Main::VERSION, '<a href="' . $url . '" class="thickbox" title="' . $title . '">', '</a>' ) . '</p></div>';
 			}
 		}
 	}
@@ -124,10 +124,12 @@ class Admin {
 	public static function options_elements() {
 		$teccc = Main::instance();
 
-		$content = $teccc->view( 'optionsform', array(
-			'options' => self::fetch_options( $teccc ),
-			'teccc'   => $teccc,
-		), false );
+		$content = $teccc->view(
+			'optionsform', array(
+				'options' => self::fetch_options( $teccc ),
+				'teccc'   => $teccc,
+			), false
+		);
 
 		return $content;
 	}
@@ -193,7 +195,7 @@ class Admin {
 	 */
 	public static function load_teccc_js_css( $hook ) {
 		if ( 'tribe_events_page_tribe-events-calendar' !== $hook &&
-		     'tribe_events_page_tribe-common' !== $hook
+			 'tribe_events_page_tribe-common' !== $hook
 		) {
 			return false;
 		}
@@ -203,7 +205,6 @@ class Admin {
 		wp_enqueue_style( 'teccc-iris', TECCC_RESOURCES . '/teccc-iris.css', false, Main::$version );
 		wp_enqueue_script( 'teccc-admin', TECCC_RESOURCES . '/teccc-admin.js', false, Main::$version, true );
 		wp_enqueue_style( 'teccc-options', TECCC_RESOURCES . '/teccc-options.css', false, Main::$version );
-
 	}
 
 }

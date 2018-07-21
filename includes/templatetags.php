@@ -53,7 +53,7 @@ function teccc_insert_legend() {
  * @deprecated
  */
 function teccc_legend_hook() {
-	_doing_it_wrong( 'teccc_legend_hook', esc_html__('Use of this function is deprecated', 'the-events-calendar-category-colors' ), '1.6.0B' );
+	_doing_it_wrong( 'teccc_legend_hook', esc_html__( 'Use of this function is deprecated', 'the-events-calendar-category-colors' ), '1.6.0B' );
 	teccc_insert_legend();
 }
 
@@ -63,15 +63,15 @@ function teccc_legend_hook() {
  *
  * The color value should be a valid CSS color value. For example, the following are all valid values for red:
  *
- * 	#f00
- * 	#ff0000
- * 	Red
+ *  #f00
+ *  #ff0000
+ *  Red
  *
  * @param $name
  * @param $value
  */
 function teccc_add_text_color( $name, $value ) {
-	Fragen\Category_Colors\Main::instance()->text_colors[$name] = $value;
+	Fragen\Category_Colors\Main::instance()->text_colors[ $name ] = $value;
 }
 
 

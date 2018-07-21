@@ -5,7 +5,7 @@ Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Requires PHP: 5.3
 Tested up to: 4.9
-Stable tag: 5.0.1
+Stable tag: 5.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,11 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 5.1.0
+* update for new tooltip title as `h3`
+* added some functions for adding deprecated CSS
+* added function `Extras::override_customizer()` for when _Customizer_ settings need to be overridden
 
 #### 5.0.1
 * needed a space between CSS parameters, PhpStorm reformat code error

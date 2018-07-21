@@ -33,10 +33,10 @@ class Main {
 	 *
 	 * @var array
 	 */
-	public $terms = array();
-	public $all_terms = array();
+	public $terms         = array();
+	public $all_terms     = array();
 	public $ignored_terms = array();
-	public $count = 0;
+	public $count         = 0;
 
 	/**
 	 * Category IDs (ints) and slugs (strings) to ignore.
@@ -119,7 +119,10 @@ class Main {
 		 * Populate public variables.
 		 * Represent each term as an array [slug, name] indexed by term ID
 		 */
-		$term_lists = array( 'all_terms' => &$all_terms, 'terms' => &$terms );
+		$term_lists = array(
+			'all_terms' => &$all_terms,
+			'terms'     => &$terms,
+		);
 		foreach ( $term_lists as $list => $arr ) {
 			foreach ( $arr as $term ) {
 				$this->{$list}[ $term->term_id ] = array( $term->slug, preg_replace( '/\s/', '&nbsp;', $term->name ) );
@@ -247,8 +250,8 @@ class Main {
 	 * pulled into the same scope as the template.
 	 *
 	 * @param       $template
-	 * @param array $vars
-	 * @param bool  $render
+	 * @param array    $vars
+	 * @param bool     $render
 	 *
 	 * @return mixed
 	 */

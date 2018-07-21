@@ -1,5 +1,10 @@
 #### [unreleased]
 
+#### 5.1.0 / 2018-07-21
+* update for new tooltip title as `h3`
+* added some functions for adding deprecated CSS
+* added function `Extras::override_customizer()` for when _Customizer_ settings need to be overridden
+
 #### 5.0.1 / 2018-04-06
 * needed a space between CSS parameters, PhpStorm reformat code error
 
@@ -46,7 +51,7 @@
 * graceful failure if The Events Calendar is not active
 
 #### 4.6.2 / 2017-01-20
-* added CSS selector to override Customizer month view 
+* added CSS selector to override Customizer month view
 
 #### 4.6.1 / 2017-01-19
 * added filters and functions to provide WPML compatibility thanks @jvier for testing

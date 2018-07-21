@@ -1,4 +1,4 @@
-@media only screen and (max-width: <?php esc_attr_e( $breakpoint ) ?>px) {
+@media only screen and (max-width: <?php esc_attr_e( $breakpoint ); ?>px) {
 	.tribe-events-calendar td .hentry,
 	.tribe-events-calendar td .type-tribe_events {
 		display: block;

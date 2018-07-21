@@ -14,12 +14,12 @@ class Frontend {
 
 	const CSS_HANDLE = 'teccc_css';
 
-	protected $teccc = null;
+	protected $teccc   = null;
 	protected $options = array();
 
-	protected $legendTargetHook = 'tribe_events_after_header';
+	protected $legendTargetHook   = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
-	protected $legendExtraView = array();
+	protected $legendExtraView    = array();
 
 	public function __construct( Main $teccc ) {
 		$this->teccc   = $teccc;
@@ -49,7 +49,10 @@ class Frontend {
 	 */
 	public function add_scripts_styles() {
 		// Register stylesheet
-		$args = array( self::CSS_HANDLE => $this->options_hash(), $_GET );
+		$args = array(
+			self::CSS_HANDLE => $this->options_hash(),
+			$_GET,
+		);
 		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url( '/' ) ), false, Main::$version );
 
 		// Let's test to see if any event-related post types were requested
@@ -69,8 +72,8 @@ class Frontend {
 
 		// Optionally add legend superpowers
 		if ( isset( $this->options['legend_superpowers'] ) &&
-		     '1' === $this->options['legend_superpowers'] &&
-		     ! wp_is_mobile()
+			'1' === $this->options['legend_superpowers'] &&
+			! wp_is_mobile()
 		) {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
 		}
@@ -94,9 +97,11 @@ class Frontend {
 		$current_post         = get_post( get_the_ID() );
 		$current_post_content = $current_post instanceof \WP_Post ? $current_post->post_content : '';
 
-		$found_shortcodes = array_filter( $tribe_shortcodes, function( $e ) use ( $current_post_content ) {
-			return has_shortcode( $current_post_content, $e );
-		} );
+		$found_shortcodes = array_filter(
+			$tribe_shortcodes, function( $e ) use ( $current_post_content ) {
+				return has_shortcode( $current_post_content, $e );
+			}
+		);
 
 		return ! empty( $found_shortcodes );
 	}
@@ -135,10 +140,10 @@ class Frontend {
 		$one_year  = 31536000;
 		$hash      = $this->options_hash();
 
-		header( "Content-type: text/css" );
+		header( 'Content-type: text/css' );
 		header( "Expires: $next_year" );
 		header( "Cache-Control: public, max-age=$one_year" );
-		header( "Pragma: public" );
+		header( 'Pragma: public' );
 		header( "ETag: \"$hash\"" );
 
 		echo $this->generate_css();
@@ -167,24 +172,28 @@ class Frontend {
 		}
 
 		// Else generate the CSS afresh
-		$css = $this->teccc->view( 'category.css', array(
-			'options' => $this->options,
-			'teccc'   => $this->teccc,
-		), false );
+		$css = $this->teccc->view(
+			'category.css', array(
+				'options' => $this->options,
+				'teccc'   => $this->teccc,
+			), false
+		);
 
 		if ( ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) && ! $debug_css ) {
 			$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css ); // Remove comments
 			$css = str_replace( ': ', ':', $css ); // Remove space after colons
 			$css = preg_replace( '/\s?({|})\s?/', '$1', $css ); // Remove space before/after braces
-			$css = str_replace( array(
-				"\r\n",
-				"\r",
-				"\n",
-				"\t",
-				'  ',
-				'   ',
-				'    ',
-			), '', $css ); // Remove whitespace
+			$css = str_replace(
+				array(
+					"\r\n",
+					"\r",
+					"\n",
+					"\t",
+					'  ',
+					'   ',
+					'    ',
+				), '', $css
+			); // Remove whitespace
 		}
 
 		// Store in transient
@@ -215,11 +224,13 @@ class Frontend {
 			return false;
 		}
 
-		$content = $this->teccc->view( 'legend', array(
-			'options' => $this->options,
-			'teccc'   => Main::instance(),
-			'tec'     => Tribe__Events__Main::instance(),
-		), false );
+		$content = $this->teccc->view(
+			'legend', array(
+				'options' => $this->options,
+				'teccc'   => Main::instance(),
+				'tec'     => Tribe__Events__Main::instance(),
+			), false
+		);
 
 		$this->legendFilterHasRun = true;
 
@@ -243,8 +254,10 @@ class Frontend {
 	public function reposition_legend( $tribeViewFilter ) {
 		// If the legend has already run they are probably doing something wrong
 		if ( $this->legendFilterHasRun ) {
-			_doing_it_wrong( __CLASS__ . '::' . __METHOD__,
-				'You are attempting to reposition the legend after it has already been rendered.', '1.6.4' );
+			_doing_it_wrong(
+				__CLASS__ . '::' . __METHOD__,
+				'You are attempting to reposition the legend after it has already been rendered.', '1.6.4'
+			);
 		}
 
 		// Change the target filter (even if they are _doing_it_wrong, in case they have a special use case)
@@ -263,8 +276,10 @@ class Frontend {
 	public function remove_default_legend() {
 		// If the legend has already run they are probably doing something wrong
 		if ( $this->legendFilterHasRun ) {
-			_doing_it_wrong( __CLASS__ . '::' . __METHOD__,
-				'You are attempting to remove the default legend after it has already been rendered.', '1.6.4' );
+			_doing_it_wrong(
+				__CLASS__ . '::' . __METHOD__,
+				'You are attempting to remove the default legend after it has already been rendered.', '1.6.4'
+			);
 		}
 
 		// Remove the hook regardless of whether they are _doing_it_wrong or not (in case of creative usage)
@@ -280,7 +295,7 @@ class Frontend {
 	 * @param $view
 	 */
 	public function add_legend_view( $view ) {
-		//takes 'upcoming', 'day', 'week', 'photo' as parameters
+		// takes 'upcoming', 'day', 'week', 'photo' as parameters
 		$this->legendExtraView[] = $view;
 	}
 
