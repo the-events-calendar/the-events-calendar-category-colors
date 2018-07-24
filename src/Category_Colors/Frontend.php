@@ -150,8 +150,8 @@ class Frontend {
 		$css_min = $this->minify_css( $css );
 
 		$css_path = WP_CONTENT_DIR . '/uploads/';
-		file_put_contents( $css_path . "{$this->cache_key}.css", $css );
-		file_put_contents( $css_path . "{$this->cache_key}.min.css", $css_min );
+		file_put_contents( "{$css_path}{$this->cache_key}.css", $css );
+		file_put_contents( "{$css_path}{$this->cache_key}.min.css", $css_min );
 
 		// Store in transient
 		set_transient( $this->cache_key, true, 4 * WEEK_IN_SECONDS );
@@ -162,7 +162,7 @@ class Frontend {
 	/**
 	 * Minify CSS.
 	 *
-	 * Removes comments, spaces after colons, spaces around braces, and whitespace.
+	 * Removes comments, spaces after commas and colons, spaces around braces, and reduce whitespace.
 	 *
 	 * @param string $css
 	 * @return string $css Minified CSS.
@@ -170,24 +170,16 @@ class Frontend {
 	private function minify_css( $css ) {
 		/**
 		 * 1. Remove comments.
-		 * 2. Remove space after colons.
-		 * 3. Remove space before and after braces.
-		 * 4. Remove whitespace.
+		 * 2. Remove tabs and line breaks.
+		 * 3. Remove space after colons.
+		 * 4. Remove space around braces and commas.
+		 * 5. Reduce multiple spaces to single space.
 		 */
 		$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css );
+		$css = preg_replace( '/[\n\r\t]/', '', $css );
 		$css = str_replace( ': ', ':', $css );
-		$css = preg_replace( '/\s?({|})\s?/', '$1', $css );
-		$css = str_replace(
-			array(
-				"\r\n",
-				"\r",
-				"\n",
-				"\t",
-				'  ',
-				'   ',
-				'    ',
-			), '', $css
-		);
+		$css = preg_replace( '/\s?(,|{|})\s?/', '$1', $css );
+		$css = preg_replace( '/ {2,}/', ' ', $css );
 
 		return $css;
 	}
