@@ -1,4 +1,6 @@
 #### [unreleased]
+* write standard and minified CSS to file
+* load minified CSS when WP_DEBUG is false
 
 #### 5.1.0 / 2018-07-21
 * update for new tooltip title as `h3`

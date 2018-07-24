@@ -215,9 +215,8 @@ class Main {
 	public function load_config( $file ) {
 		$config = $this->load_config_array_file( $file );
 
-		return (array) apply_filters( "teccc-config-$file", $config );
+		return (array) apply_filters( "teccc_config_{$file}", $config );
 	}
-
 
 	/**
 	 * Loads and returns an array of settings.
@@ -230,14 +229,13 @@ class Main {
 	 * @return array
 	 */
 	protected function load_config_array_file( $file ) {
-		$path = TECCC_INCLUDES . "/$file.php";
+		$path = TECCC_INCLUDES . "/{$file}.php";
 		if ( ! file_exists( $path ) ) {
 			return array();
 		}
 
 		return (array) include $path;
 	}
-
 
 	/**
 	 * Loads the specified view.
@@ -256,9 +254,9 @@ class Main {
 	 * @return mixed
 	 */
 	public function view( $template, array $vars = null, $render = true ) {
-		$path = locate_template( "tribe-events/teccc/$template.php" );
+		$path = locate_template( "tribe-events/teccc/{$template}.php" );
 		if ( empty( $path ) ) {
-			$path = TECCC_VIEWS . "/$template.php";
+			$path = TECCC_VIEWS . "/{$template}.php";
 		}
 
 		if ( ! file_exists( $path ) ) {
@@ -276,7 +274,6 @@ class Main {
 			return ob_get_clean();
 		}
 	}
-
 
 	/**
 	 * Expected to run on activation; populates the default options.
