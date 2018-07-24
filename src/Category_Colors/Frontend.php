@@ -43,7 +43,7 @@ class Frontend {
 	 */
 	public function add_scripts_styles() {
 		$min            = defined( 'WP_DEBUG' ) && WP_DEBUG ? null : '.min';
-		$stylesheet_url = WP_CONTENT_URL . "/uploads/{$this->cache_key}{$min}.css";
+		$stylesheet_url = "//{$_SERVER['HTTP_HOST']}/wp-content/uploads/{$this->cache_key}{$min}.css";
 		wp_register_style( 'teccc_stylesheet', $stylesheet_url, false, Main::$version );
 
 		// Let's test to see if any event-related post types were requested
