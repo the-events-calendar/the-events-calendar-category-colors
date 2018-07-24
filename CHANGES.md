@@ -1,5 +1,5 @@
 #### [unreleased]
-* write standard and minified CSS to file
+* write standard and minified CSS to files
 * load minified CSS when WP_DEBUG is false
 * improve minify code
 
