@@ -176,7 +176,7 @@ class Frontend {
 		 * 5. Reduce multiple spaces to single space.
 		 */
 		$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css );
-		$css = preg_replace( '/[\n\r\t]/', '', $css );
+		$css = preg_replace( "/[\n\r\t]/", '', $css );
 		$css = str_replace( ': ', ':', $css );
 		$css = preg_replace( '/\s?(,|{|})\s?/', '$1', $css );
 		$css = preg_replace( '/ {2,}/', ' ', $css );
