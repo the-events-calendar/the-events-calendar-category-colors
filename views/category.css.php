@@ -23,7 +23,8 @@ $options = Admin::fetch_options( $teccc );
 <?php Extras::fix_default_week_background(); ?>
 <?php
 if ( empty( $this->terms ) ) {
-	$this->terms = $options['terms']; }
+	$this->terms = $options['terms'];
+}
 ?>
 
 <?php foreach ( $teccc->terms as $id => $attributes ) : ?>
@@ -87,6 +88,7 @@ if ( empty( $this->terms ) ) {
 <?php Extras::fix_transparent_week_background( $slug ); ?>
 
 <?php Extras::add_map_display_css( $slug ); ?>
+
 <?php if ( '1' === $options['color_widgets'] ) : ?>
 	<?php Widgets::add_widget_display_css( $slug ); ?>
 <?php endif ?>
@@ -95,7 +97,6 @@ if ( empty( $this->terms ) ) {
 	width: auto;
 	display: block;
 }
-
 <?php endforeach ?>
 
 <?php if ( ( '1' === $options['add_legend'] ) && null === $options['custom_legend_css'] ) : ?>
