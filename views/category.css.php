@@ -9,7 +9,7 @@ $options = Admin::fetch_options( $teccc );
 
 ?>
 
-/* The Events Calendar Category Colors <?php echo Main::$version; ?> generated CSS */
+/* The Events Calendar Category Colors <?php echo Main::$version; ?> */
 .teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4 {
 	font-weight: <?php esc_attr_e( $options['font_weight'] ); ?>;
 }
