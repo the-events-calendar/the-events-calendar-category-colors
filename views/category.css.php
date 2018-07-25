@@ -87,9 +87,9 @@ if ( empty( $this->terms ) ) {
 
 <?php Extras::fix_transparent_week_background( $slug ); ?>
 
-<?php Extras::add_map_display_css( $slug ); ?>
+<?php Extras::add_map_link_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ) : ?>
-	<?php Widgets::add_widget_display_css( $slug ); ?>
+	<?php Widgets::add_widget_link_css( $slug ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug; ?> h2.tribe-events-list-event-title.entry-title a,
 .tribe-events-category-<?php echo $slug; ?> h2.tribe-events-list-event-title a {
