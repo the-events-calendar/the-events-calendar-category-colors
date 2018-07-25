@@ -37,6 +37,7 @@ if ( empty( $this->terms ) ) {
 <?php Extras::add_map_link_css( $slug ); ?>
 <?php Extras::add_week_link_css( $slug ); ?>
 <?php Extras::override_customizer( $slug ); ?>
+<?php Extras::add_deprecated_link_css( $slug ); ?>
 <?php if ( '1' === $options['color_widgets'] ) : ?>
 	<?php Widgets::add_widget_link_css( $slug ); ?>
 <?php endif ?>
