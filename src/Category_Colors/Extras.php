@@ -28,17 +28,6 @@ class Extras extends Frontend {
 		echo $css;
 	}
 
-	public static function add_map_display_css( $slug ) {
-		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
-			return false;
-		}
-		$css   = array();
-		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
-	}
-
 	public static function add_week_background_css( $slug ) {
 		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			return false;
@@ -157,7 +146,7 @@ class Extras extends Frontend {
 	public static function add_deprecated_background_css( $slug ) {
 		$css   = array();
 		$css[] = "#tribe-events-content .tribe-events-category-{$slug } > .tribe-events-tooltip h4,";
-		//$css[] = ".tribe-events-category-{$slug} h2 a,";
+		// $css[] = ".tribe-events-category-{$slug} h2 a,";
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
