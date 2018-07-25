@@ -47,8 +47,8 @@ if ( empty( $this->terms ) ) {
 #tribe-events-content .tribe-events-calendar .tribe-events-category-<?php echo $slug; ?> a,
 .tribe-events-category-<?php echo $slug; ?> > div.hentry.vevent > h3.entry-title a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug; ?> h4 a {
-<?php if ( 'no_color' !== $options[ $slug . '-text' ] ) : ?>
-	color: <?php esc_attr_e( $options[ $slug . '-text' ] ); ?>;
+<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
+	color: <?php esc_attr_e( $options[ "{$slug}-text" ] ); ?>;
 <?php endif ?>
 	text-decoration: none;
 }
@@ -70,15 +70,15 @@ if ( empty( $this->terms ) ) {
 .tribe-events-category-<?php echo $slug; ?> > div.hentry.vevent > h3.entry-title,
 .tribe-events-category-<?php echo $slug; ?> h3.tribe-events-list-event-title,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug; ?> h4 {
-<?php if ( null !== $options[ $slug . '-background' ] ) : ?>
-	background-color: <?php esc_attr_e( $options[ $slug . '-background' ] ); ?>;
+<?php if ( null !== $options[ "{$slug}-background" ] ) : ?>
+	background-color: <?php esc_attr_e( $options[ "{$slug}-background" ] ); ?>;
 <?php endif ?>
-<?php if ( null !== $options[ $slug . '-border' ] ) : ?>
-	border-left: 5px solid <?php esc_attr_e( $options[ $slug . '-border' ] ); ?>;
+<?php if ( null !== $options[ "{$slug}-border" ] ) : ?>
+	border-left: 5px solid <?php esc_attr_e( $options[ "{$slug}-border" ] ); ?>;
 <?php endif ?>
 	border-right: 5px solid transparent;
-<?php if ( 'no_color' !== $options[ $slug . '-text' ] ) : ?>
-	color: <?php esc_attr_e( $options[ $slug . '-text' ] ); ?>;
+<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
+	color: <?php esc_attr_e( $options[ "{$slug}-text" ] ); ?>;
 <?php endif ?>
 	line-height: 1.4em;
 	padding-left: 5px;

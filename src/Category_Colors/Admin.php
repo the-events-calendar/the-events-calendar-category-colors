@@ -57,29 +57,29 @@ class Admin {
 
 			// Sanitize textbox input (strip html tags, and escape characters)
 			// May not be needed with jQuery color picker
-			$input[ $slug . '-background' ] = wp_filter_nohtml_kses( $input[ $slug . '-background' ] );
-			$input[ $slug . '-background' ] = preg_replace( '[^#A-Za-z0-9]', '', $input[ $slug . '-background' ] );
-			if ( $input[ $slug . '-background' ] === '' ) {
-				$input[ $slug . '-background' ] = '#CFCFCF';
+			$input[ "{$slug}-background" ] = wp_filter_nohtml_kses( $input[ "{$slug}-background" ] );
+			$input[ "{$slug}-background" ] = preg_replace( '[^#A-Za-z0-9]', '', $input[ "{$slug}-background" ] );
+			if ( $input[ "{$slug}-background" ] === '' ) {
+				$input[ "{$slug}-background" ] = '#CFCFCF';
 			}
 
-			$input[ $slug . '-border' ] = wp_filter_nohtml_kses( $input[ $slug . '-border' ] );
-			$input[ $slug . '-border' ] = preg_replace( '[^#A-Za-z0-9]', '', $input[ $slug . '-border' ] );
-			if ( $input[ $slug . '-border' ] === '' ) {
-				$input[ $slug . '-border' ] = '#CFCFCF';
+			$input[ "{$slug}-border" ] = wp_filter_nohtml_kses( $input[ "{$slug}-border" ] );
+			$input[ "{$slug}-border" ] = preg_replace( '[^#A-Za-z0-9]', '', $input[ "{$slug}-border" ] );
+			if ( $input[ "{$slug}-border" ] === '' ) {
+				$input[ "{$slug}-border" ] = '#CFCFCF';
 			}
 
 			// Sets value when checked
-			if ( isset( $input[ $slug . '-border_none' ] ) ) {
-				$input[ $slug . '-border' ] = null;
+			if ( isset( $input[ "{$slug}-border_none" ] ) ) {
+				$input[ "{$slug}-border" ] = null;
 			}
-			if ( isset( $input[ $slug . '-background_none' ] ) ) {
-				$input[ $slug . '-background' ] = null;
+			if ( isset( $input[ "{$slug}-background_none" ] ) ) {
+				$input[ "{$slug}-background" ] = null;
 			}
 
 			// Sanitize dropdown input (make sure value is one of options allowed)
-			if ( ! in_array( $input[ $slug . '-text' ], $teccc->text_colors, true ) ) {
-				$input[ $slug . '-text' ] = '#000';
+			if ( ! in_array( $input[ "{$slug}-text" ], $teccc->text_colors, true ) ) {
+				$input[ "{$slug}-text" ] = '#000';
 			}
 		}
 
