@@ -2,6 +2,7 @@
 * write standard and minified CSS to files
 * load minified CSS when WP_DEBUG is false
 * improve minify code
+* update CSS selectors for list view
 
 #### 5.1.0 / 2018-07-21
 * update for new tooltip title as `h3`

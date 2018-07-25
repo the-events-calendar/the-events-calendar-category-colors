@@ -157,6 +157,7 @@ class Extras extends Frontend {
 	public static function add_deprecated_background_css( $slug ) {
 		$css   = array();
 		$css[] = '#tribe-events-content .tribe-events-category-' . $slug . ' > .tribe-events-tooltip h4,';
+		$css[] = '.tribe-events-category-' . $slug . ' h2 a';
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
