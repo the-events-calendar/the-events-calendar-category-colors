@@ -88,7 +88,6 @@ if ( empty( $this->terms ) ) {
 <?php Extras::fix_transparent_week_background( $slug ); ?>
 
 <?php Extras::add_map_display_css( $slug ); ?>
-
 <?php if ( '1' === $options['color_widgets'] ) : ?>
 	<?php Widgets::add_widget_display_css( $slug ); ?>
 <?php endif ?>
