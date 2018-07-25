@@ -132,11 +132,10 @@ class Frontend {
 	protected function generate_css() {
 		// Look out for refresh requests.
 		$refresh_css = array_key_exists( 'refresh_css', $_GET ) ? true : false;
-		$debug_css   = array_key_exists( 'debug_css', $_GET ) ? true : false;
 		$current     = get_transient( $this->cache_key );
 
 		// Return if fresh CSS hasn't been requested.
-		if ( $current && ( ! $refresh_css && ! $debug_css ) ) {
+		if ( $current && ! $refresh_css ) {
 			return false;
 		}
 
