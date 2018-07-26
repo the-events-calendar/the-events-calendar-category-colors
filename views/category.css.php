@@ -28,18 +28,18 @@ if ( empty( $this->terms ) ) {
 ?>
 
 <?php foreach ( $teccc->terms as $id => $attributes ) : ?>
-<?php
+	<?php
 	$slug = esc_attr( $attributes[ Main::SLUG ] );
 	$name = esc_attr( $attributes[ Main::NAME ] );
-?>
+	?>
 
-<?php Extras::fix_category_link_css( $slug ); ?>
-<?php Extras::add_map_link_css( $slug ); ?>
-<?php Extras::add_week_link_css( $slug ); ?>
-<?php Extras::override_customizer( $slug ); ?>
-<?php Extras::add_deprecated_link_css( $slug ); ?>
-<?php if ( '1' === $options['color_widgets'] ) : ?>
-	<?php Widgets::add_widget_link_css( $slug ); ?>
+	<?php Extras::fix_category_link_css( $slug ); ?>
+	<?php Extras::add_map_link_css( $slug ); ?>
+	<?php Extras::add_week_link_css( $slug ); ?>
+	<?php Extras::override_customizer( $slug ); ?>
+	<?php Extras::add_deprecated_link_css( $slug ); ?>
+	<?php if ( '1' === $options['color_widgets'] ) : ?>
+		<?php Widgets::add_widget_link_css( $slug ); ?>
 <?php endif ?>
 #tribe-events-content table.tribe-events-calendar .tribe-event-featured.tribe-events-category-<?php echo $slug; ?> .tribe-events-month-event-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug; ?> a,
@@ -49,20 +49,20 @@ if ( empty( $this->terms ) ) {
 .tribe-events-category-<?php echo $slug; ?> > div.hentry.vevent > h3.entry-title a,
 .tribe-events-category-<?php echo $slug; ?> h3.tribe-events-list-event-title a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug; ?> h4 a {
-<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
+	<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
 	color: <?php esc_attr_e( $options[ "{$slug}-text" ] ); ?>;
 <?php endif ?>
 	text-decoration: none;
 }
 
-<?php Extras::fix_category_background_css( $slug ); ?>
-<?php Extras::add_map_background_css( $slug ); ?>
-<?php Extras::add_week_background_css( $slug ); ?>
-<?php Extras::add_deprecated_week_background_css( $slug ); ?>
-<?php Extras::add_deprecated_background_css( $slug ); ?>
-<?php Extras::override_customizer( $slug ); ?>
-<?php if ( '1' === $options['color_widgets'] ) : ?>
-<?php Widgets::add_widget_background_css( $slug ); ?>
+	<?php Extras::fix_category_background_css( $slug ); ?>
+	<?php Extras::add_map_background_css( $slug ); ?>
+	<?php Extras::add_week_background_css( $slug ); ?>
+	<?php Extras::add_deprecated_week_background_css( $slug ); ?>
+	<?php Extras::add_deprecated_background_css( $slug ); ?>
+	<?php Extras::override_customizer( $slug ); ?>
+	<?php if ( '1' === $options['color_widgets'] ) : ?>
+		<?php Widgets::add_widget_background_css( $slug ); ?>
 <?php endif ?>
 .events-archive.events-gridview #tribe-events-content table .type-tribe_events.tribe-events-category-<?php echo $slug; ?>,
 .tribe-events-category-<?php echo $slug; ?> h2.tribe-events-list-event-title.entry-title a,
@@ -72,14 +72,14 @@ if ( empty( $this->terms ) ) {
 .tribe-events-category-<?php echo $slug; ?> > div.hentry.vevent > h3.entry-title,
 .tribe-events-category-<?php echo $slug; ?> h3.tribe-events-list-event-title,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug; ?> h4 {
-<?php if ( null !== $options[ "{$slug}-background" ] ) : ?>
+	<?php if ( null !== $options[ "{$slug}-background" ] ) : ?>
 	background-color: <?php esc_attr_e( $options[ "{$slug}-background" ] ); ?>;
 <?php endif ?>
-<?php if ( null !== $options[ "{$slug}-border" ] ) : ?>
+	<?php if ( null !== $options[ "{$slug}-border" ] ) : ?>
 	border-left: 5px solid <?php esc_attr_e( $options[ "{$slug}-border" ] ); ?>;
 <?php endif ?>
 	border-right: 5px solid transparent;
-<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
+	<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
 	color: <?php esc_attr_e( $options[ "{$slug}-text" ] ); ?>;
 <?php endif ?>
 	line-height: 1.4em;
@@ -87,11 +87,11 @@ if ( empty( $this->terms ) ) {
 	padding-bottom: 2px;
 }
 
-<?php Extras::fix_transparent_week_background( $slug ); ?>
+	<?php Extras::fix_transparent_week_background( $slug ); ?>
 
-<?php Extras::add_map_link_css( $slug ); ?>
-<?php if ( '1' === $options['color_widgets'] ) : ?>
-	<?php Widgets::add_widget_link_css( $slug ); ?>
+	<?php Extras::add_map_link_css( $slug ); ?>
+	<?php if ( '1' === $options['color_widgets'] ) : ?>
+		<?php Widgets::add_widget_link_css( $slug ); ?>
 <?php endif ?>
 .tribe-events-category-<?php echo $slug; ?> h2.tribe-events-list-event-title.entry-title a,
 .tribe-events-category-<?php echo $slug; ?> h2.tribe-events-list-event-title a {

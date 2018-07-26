@@ -59,13 +59,13 @@ class Admin {
 			// May not be needed with jQuery color picker
 			$input[ "{$slug}-background" ] = wp_filter_nohtml_kses( $input[ "{$slug}-background" ] );
 			$input[ "{$slug}-background" ] = preg_replace( '[^#A-Za-z0-9]', '', $input[ "{$slug}-background" ] );
-			if ( $input[ "{$slug}-background" ] === '' ) {
+			if ( empty( $input[ "{$slug}-background" ] ) ) {
 				$input[ "{$slug}-background" ] = '#CFCFCF';
 			}
 
 			$input[ "{$slug}-border" ] = wp_filter_nohtml_kses( $input[ "{$slug}-border" ] );
 			$input[ "{$slug}-border" ] = preg_replace( '[^#A-Za-z0-9]', '', $input[ "{$slug}-border" ] );
-			if ( $input[ "{$slug}-border" ] === '' ) {
+			if ( empty( $input[ "{$slug}-border" ] ) ) {
 				$input[ "{$slug}-border" ] = '#CFCFCF';
 			}
 
