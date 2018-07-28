@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 5.2.1 / 2018-7-28
+* cleanup old CSS files
+
 #### 5.2.0 / 2018-07-28
 * write standard and minified CSS to files
 * load minified CSS when WP_DEBUG is false

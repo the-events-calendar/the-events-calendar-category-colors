@@ -149,6 +149,9 @@ class Frontend {
 		$css_min = $this->minify_css( $css );
 
 		$css_path = WP_CONTENT_DIR . '/uploads/';
+		foreach ( glob( $css_path . "teccc*.{css}", GLOB_BRACE ) as $file ) {
+			unlink( $file );
+		}
 		file_put_contents( "{$css_path}{$this->cache_key}.css", $css );
 		file_put_contents( "{$css_path}{$this->cache_key}.min.css", $css_min );
 
