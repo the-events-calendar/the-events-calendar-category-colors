@@ -33,8 +33,8 @@ $options = Admin::fetch_options( $teccc );
 				</label>
 				<?php
 				if ( ! empty( $options['hide'][ $slug ] ) ) {
-					$options[ $slug . '-border_none' ]     = isset( $options[ $slug . '-border_none' ] ) ? $options[ $slug . '-border_none' ] : null;
-					$options[ $slug . '-background_none' ] = isset( $options[ $slug . '-background_none' ] ) ? $options[ $slug . '-background_none' ] : null;
+					$options[ "{$slug}-border_none" ]     = isset( $options[ "{$slug}-border_none" ] ) ? $options[ "{$slug}-border_none" ] : null;
+					$options[ "{$slug}-background_none" ] = isset( $options[ "{$slug}-background_none" ] ) ? $options[ "{$slug}-background_none" ] : null;
 				}
 				?>
 			</td>
@@ -44,17 +44,17 @@ $options = Admin::fetch_options( $teccc );
 			<td class="color-control">
 				<div class="transparency">
 					<label>
-						<input name="teccc_options[<?php echo $slug; ?>-border_none]" type="checkbox" value="1" <?php checked( '1', $options[ $slug . '-border_none' ] ); ?> /> <?php esc_html_e( 'No Border', 'the-events-calendar-category-colors' ); ?>
+						<input name="teccc_options[<?php echo $slug; ?>-border_none]" type="checkbox" value="1" <?php checked( '1', $options[ "{$slug}-border_none" ] ); ?> /> <?php esc_html_e( 'No Border', 'the-events-calendar-category-colors' ); ?>
 					</label> <br />
 					<?php
-					if ( '1' === $options[ $slug . '-border_none' ] ) :
-						$options[ $slug . '-border' ] = null;
+					if ( '1' === $options[ "{$slug}-border_none" ] ) :
+						$options[ "{$slug}-border" ] = null;
 						?>
 					<?php endif ?>
 				</div>
 				<div class="colorselector">
 					<label>
-						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug; ?>-border]" value="<?php esc_attr_e( $options[ $slug . '-border' ] ); ?>" />
+						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug; ?>-border]" value="<?php esc_attr_e( $options[ "{$slug}-border" ] ); ?>" />
 					</label>
 				</div>
 			</td>
@@ -62,17 +62,17 @@ $options = Admin::fetch_options( $teccc );
 			<td class="color-control">
 				<div class="transparency">
 					<label>
-						<input name="teccc_options[<?php echo $slug; ?>-background_none]" type="checkbox" value="1" <?php checked( '1', $options[ $slug . '-background_none' ] ); ?> /> <?php esc_html_e( 'No Background', 'the-events-calendar-category-colors' ); ?>
+						<input name="teccc_options[<?php echo $slug; ?>-background_none]" type="checkbox" value="1" <?php checked( '1', $options[ "{$slug}-background_none" ] ); ?> /> <?php esc_html_e( 'No Background', 'the-events-calendar-category-colors' ); ?>
 					</label> <br />
 					<?php
-					if ( '1' === $options[ $slug . '-background_none' ] ) :
-						$options[ $slug . '-background' ] = null;
+					if ( '1' === $options[ "{$slug}-background_none" ] ) :
+						$options[ "{$slug}-background" ] = null;
 						?>
 					<?php endif ?>
 				</div>
 				<div class="colorselector">
 					<label>
-						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug; ?>-background]" value="<?php esc_attr_e( $options[ $slug . '-background' ] ); ?>" />
+						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug; ?>-background]" value="<?php esc_attr_e( $options[ "{$slug}-background" ] ); ?>" />
 					</label>
 				</div>
 			</td>
@@ -80,22 +80,22 @@ $options = Admin::fetch_options( $teccc );
 			<td>
 				<label> <select name="teccc_options[<?php echo $slug; ?>-text]">
 						<?php foreach ( (array) $teccc->text_colors as $key => $value ) : ?>
-							<option value="<?php esc_attr_e( $value ); ?>" <?php selected( $value, $options[ $slug . '-text' ] ); ?> > <?php esc_html_e( $key ); ?> </option>
+							<option value="<?php esc_attr_e( $value ); ?>" <?php selected( $value, $options[ "{$slug}-text" ] ); ?> > <?php esc_html_e( $key ); ?> </option>
 						<?php endforeach ?>
 					</select> </label>
 			</td>
 
 			<td>
 				<span style="
-				<?php if ( null !== $options[ $slug . '-background' ] ) : ?>
+				<?php if ( null !== $options[ "{$slug}-background" ] ) : ?>
 					background-color: <?php esc_attr_e( $options[ $slug . '-background' ] ); ?>;
 				<?php endif ?>
-				<?php if ( null !== $options[ $slug . '-border' ] ) : ?>
-					border-left: 5px solid <?php esc_attr_e( $options[ $slug . '-border' ] ); ?>;
+				<?php if ( null !== $options[ "{$slug}-border" ] ) : ?>
+					border-left: 5px solid <?php esc_attr_e( $options[ "{$slug}-border" ] ); ?>;
 				<?php endif ?>
 					border-right: 5px solid transparent;
-				<?php if ( 'no_color' !== $options[ $slug . '-text' ] ) : ?>
-					color:<?php esc_attr_e( $options[ $slug . '-text' ] ); ?>;
+				<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
+					color:<?php esc_attr_e( $options[ "{$slug}-text" ] ); ?>;
 				<?php endif ?>
 					padding: 0.5em 1em;
 					font-weight: <?php esc_attr_e( $options['font_weight'] ); ?>;">
