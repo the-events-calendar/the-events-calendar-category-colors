@@ -40,7 +40,7 @@ if ( empty( $this->terms ) ) {
 	<?php Extras::add_deprecated_link_css( $slug ); ?>
 	<?php if ( '1' === $options['color_widgets'] ) : ?>
 		<?php Widgets::add_widget_link_css( $slug ); ?>
-<?php endif ?>
+	<?php endif ?>
 #tribe-events-content table.tribe-events-calendar .tribe-event-featured.tribe-events-category-<?php echo $slug; ?> .tribe-events-month-event-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug; ?> a,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug; ?> a,
