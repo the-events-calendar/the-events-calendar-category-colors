@@ -11,19 +11,18 @@ use DateTime,
  * @package Fragen\Category_Colors
  */
 class Frontend {
-
-	const CSS_HANDLE = 'teccc_css';
-
-	protected $teccc   = null;
-	protected $options = array();
+	protected $teccc     = null;
+	protected $options   = array();
+	protected $cache_key = null;
 
 	protected $legendTargetHook   = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
 	protected $legendExtraView    = array();
 
 	public function __construct( Main $teccc ) {
-		$this->teccc   = $teccc;
-		$this->options = Admin::fetch_options( $teccc );
+		$this->teccc     = $teccc;
+		$this->options   = Admin::fetch_options( $teccc );
+		$this->cache_key = 'teccc_' . $this->options_hash();
 
 		require_once TECCC_INCLUDES . '/templatetags.php';
 
@@ -32,15 +31,10 @@ class Frontend {
 	}
 
 	/**
-	 * Create stylesheet under correct circumstances.
-	 * Show the legend.
+	 * Create stylesheet and show legend.
 	 */
 	public function add_colored_categories() {
-		if ( isset( $_GET[ self::CSS_HANDLE ] ) ) {
-			$this->do_css();
-		}
-
-		// Show legend
+		$this->generate_css();
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 	}
 
@@ -48,12 +42,9 @@ class Frontend {
 	 * Enqueue stylesheets and scripts as appropriate.
 	 */
 	public function add_scripts_styles() {
-		// Register stylesheet
-		$args = array(
-			self::CSS_HANDLE => $this->options_hash(),
-			$_GET,
-		);
-		wp_register_style( 'teccc_stylesheet', add_query_arg( $args, home_url( '/' ) ), false, Main::$version );
+		$min            = defined( 'WP_DEBUG' ) && WP_DEBUG ? null : '.min';
+		$stylesheet_url = home_url() . "/wp-content/uploads/{$this->cache_key}{$min}.css";
+		wp_register_style( 'teccc_stylesheet', $stylesheet_url, false, Main::$version );
 
 		// Let's test to see if any event-related post types were requested
 		$event_types     = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
@@ -132,72 +123,62 @@ class Frontend {
 	}
 
 	/**
-	 * Create stylesheet.
-	 */
-	public function do_css() {
-		// Use RFC 1123 date format for the expiry time
-		$next_year = date( DateTime::RFC1123, strtotime( '+1 year', time() ) );
-		$one_year  = 31536000;
-		$hash      = $this->options_hash();
-
-		header( 'Content-type: text/css' );
-		header( "Expires: $next_year" );
-		header( "Cache-Control: public, max-age=$one_year" );
-		header( 'Pragma: public' );
-		header( "ETag: \"$hash\"" );
-
-		echo $this->generate_css();
-
-		exit();
-	}
-
-	/**
-	 * Create CSS for stylesheet
-	 * Minify CSS when WP_DEBUG is false
+	 * Create CSS for stylesheet, standard and minified.
 	 *
 	 * @link https://gist.github.com/manastungare/2625128
 	 *
 	 * @return mixed|string
 	 */
 	protected function generate_css() {
-		// Look out for fresh_css requests
+		// Look out for refresh requests.
 		$refresh_css = array_key_exists( 'refresh_css', $_GET ) ? true : false;
-		$debug_css   = array_key_exists( 'debug_css', $_GET ) ? true : false;
+		$current     = get_transient( $this->cache_key );
 
-		// Return cached CSS if available and if fresh CSS hasn't been requested
-		$cache_key = 'teccc_' . $this->options_hash();
-		$css       = get_transient( $cache_key );
-		if ( ! empty( $css ) && ( ! $refresh_css && ! $debug_css ) ) {
-			return $css;
+		// Return if fresh CSS hasn't been requested.
+		if ( $current && ! $refresh_css ) {
+			return false;
 		}
 
-		// Else generate the CSS afresh
-		$css = $this->teccc->view(
+		// Else generate the CSS afresh.
+		$css     = $this->teccc->view(
 			'category.css', array(
 				'options' => $this->options,
 				'teccc'   => $this->teccc,
 			), false
 		);
+		$css_min = $this->minify_css( $css );
 
-		if ( ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) && ! $debug_css ) {
-			$css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css ); // Remove comments
-			$css = str_replace( ': ', ':', $css ); // Remove space after colons
-			$css = preg_replace( '/\s?({|})\s?/', '$1', $css ); // Remove space before/after braces
-			$css = str_replace(
-				array(
-					"\r\n",
-					"\r",
-					"\n",
-					"\t",
-					'  ',
-					'   ',
-					'    ',
-				), '', $css
-			); // Remove whitespace
-		}
+		$css_path = WP_CONTENT_DIR . '/uploads/';
+		file_put_contents( "{$css_path}{$this->cache_key}.css", $css );
+		file_put_contents( "{$css_path}{$this->cache_key}.min.css", $css_min );
 
 		// Store in transient
-		set_transient( $cache_key, $css, 4 * WEEK_IN_SECONDS );
+		set_transient( $this->cache_key, true, 4 * WEEK_IN_SECONDS );
+
+		return true;
+	}
+
+	/**
+	 * Minify CSS.
+	 *
+	 * Removes comments, spaces after commas and colons, spaces around braces, and reduce whitespace.
+	 *
+	 * @param string $css
+	 * @return string $css Minified CSS.
+	 */
+	private function minify_css( $css ) {
+		/**
+		 * 1. Remove comments.
+		 * 2. Remove tabs and line breaks.
+		 * 3. Remove space after colons.
+		 * 4. Remove space around braces and commas.
+		 * 5. Reduce multiple spaces to single space.
+		 */
+		// $css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css );
+		$css = preg_replace( "/[\n\r\t]/", '', $css );
+		$css = str_replace( ': ', ':', $css );
+		$css = preg_replace( '/\s?(,|{|})\s?/', '$1', $css );
+		$css = preg_replace( '/ {2,}/', ' ', $css );
 
 		return $css;
 	}
