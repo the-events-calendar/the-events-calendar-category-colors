@@ -130,9 +130,16 @@ class Frontend {
 	 * @return mixed|string
 	 */
 	protected function generate_css() {
+		$css_path = WP_CONTENT_DIR . '/uploads/';
+
 		// Look out for refresh requests.
 		$refresh_css = array_key_exists( 'refresh_css', $_GET ) ? true : false;
 		$current     = get_transient( $this->cache_key );
+		// TODO: update for PHP 5.4+
+		$css_file = glob( $css_path . 'teccc*.{css}', GLOB_BRACE );
+		$current  = strpos( $css_file[0], $this->cache_key )
+			? $current
+			: false;
 
 		// Return if fresh CSS hasn't been requested.
 		if ( $current && ! $refresh_css ) {
@@ -140,16 +147,18 @@ class Frontend {
 		}
 
 		// Else generate the CSS afresh.
-		$css     = $this->teccc->view(
+		$css = $this->teccc->view(
 			'category.css', array(
 				'options' => $this->options,
 				'teccc'   => $this->teccc,
 			), false
 		);
+		if ( ! $css ) {
+			return false;
+		}
 		$css_min = $this->minify_css( $css );
 
-		$css_path = WP_CONTENT_DIR . '/uploads/';
-		foreach ( glob( $css_path . "teccc*.{css}", GLOB_BRACE ) as $file ) {
+		foreach ( glob( $css_path . 'teccc*.{css}', GLOB_BRACE ) as $file ) {
 			unlink( $file );
 		}
 		file_put_contents( "{$css_path}{$this->cache_key}.css", $css );

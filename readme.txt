@@ -5,7 +5,7 @@ Tags: events, color, modern tribe, tribe
 Requires at least: 3.8
 Requires PHP: 5.3
 Tested up to: 4.9
-Stable tag: 5.2.1
+Stable tag: 5.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,13 +13,11 @@ Add event category background colors to The Events Calendar events.
 
 ## Description
 
-Add background colors to event categories displayed in the event views of The Events Calendar. This is inspired by the post <i>Coloring Your Category Events</i>.
+Add background colors to event categories displayed in the event views of The Events Calendar. This is inspired by the post _Coloring Your Category Events_.
 
 Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page.
 
 To force a refresh of your CSS, add `?refresh_css` to the end of your events URL.
-
-Requires PHP 5.3 or greater.
 
 ## Installation
 
@@ -55,10 +53,13 @@ There is more extensive documentation of the plugins features and usage on the [
 
 ## Changelog
 
+#### 5.2.2 / 2018-07-28
+* fix to create CSS when files don't exist
+
 #### 5.2.1 / 2018-7-28
 * cleanup old CSS files
 
-#### 5.2.0
+#### 5.2.0 / 2018-07-28
 * write standard and minified CSS to files
 * load minified CSS when WP_DEBUG is false
 * improve minify code
