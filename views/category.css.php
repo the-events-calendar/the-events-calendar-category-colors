@@ -22,8 +22,10 @@ $options = Admin::fetch_options( $teccc );
 
 <?php Extras::fix_default_week_background(); ?>
 <?php
-if ( empty( $this->terms ) ) {
+if ( empty( $this->terms ) && ! empty( $options['terms'] ) ) {
 	$this->terms = $options['terms'];
+} else {
+	return false;
 }
 ?>
 

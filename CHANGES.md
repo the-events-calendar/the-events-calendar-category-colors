@@ -1,6 +1,9 @@
 #### [unreleased]
 
-#### 5.2.1 / 2018-7-28
+#### 5.2.2 / 2018-07-28
+* fix to create CSS when files don't exist
+
+#### 5.2.1 / 2018-07-28
 * cleanup old CSS files
 
 #### 5.2.0 / 2018-07-28
