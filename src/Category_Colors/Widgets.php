@@ -31,8 +31,8 @@ class Widgets extends Frontend {
 			$css[] = ".tribe-events-adv-list-widget .tribe-events-category-{$slug} h2,";
 			$css[] = ".tribe-venue-widget-list li.tribe-events-category-{$slug} h4,";
 		} else {
-			$css[] = ".tribe-events-list-widget li.tribe-events-category-{$slug},"; // 3.9
-			$css[] = "li.tribe-events-list-widget-events.tribe-events-category-{$slug},"; // 3.10
+			$css[] = ".tribe-events-list-widget li.tribe-events-category-{$slug} h4,";
+			$css[] = "li.tribe-events-list-widget-events.tribe-events-category-{$slug} h4,";
 		}
 		$css[] = '';
 		$css   = implode( "\n", $css );
