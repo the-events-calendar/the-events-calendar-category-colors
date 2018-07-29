@@ -45,15 +45,7 @@ class Frontend {
 		$min            = defined( 'WP_DEBUG' ) && WP_DEBUG ? null : '.min';
 		$stylesheet_url = home_url() . "/wp-content/uploads/{$this->cache_key}{$min}.css";
 		wp_register_style( 'teccc_stylesheet', $stylesheet_url, false, Main::$version );
-
-		// Let's test to see if any event-related post types were requested
-		$event_types     = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
-		$requested_types = (array) get_query_var( 'post_type' );
-		$found_types     = array_intersect( $event_types, $requested_types );
-
-		if ( ! empty( $found_types ) || $this->has_tribe_shortcodes() ) {
-			wp_enqueue_style( 'teccc_stylesheet' );
-		}
+		wp_enqueue_style( 'teccc_stylesheet' );
 
 		// Optionally add legend superpowers
 		if ( isset( $this->options['legend_superpowers'] ) &&
@@ -63,34 +55,6 @@ class Frontend {
 			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
 		}
 	}
-
-	/**
-	 * Find tribe shortcodes in post/page contents.
-	 *
-	 * @return bool
-	 */
-	private function has_tribe_shortcodes() {
-		$tribe_shortcodes = array(
-			'tribe_events',
-			'tribe_event_inline',
-			'tribe_mini_calendar',
-			'tribe_this_week',
-			'tribe_events_list',
-			'tribe_featured_venue',
-		);
-
-		$current_post         = get_post( get_the_ID() );
-		$current_post_content = $current_post instanceof \WP_Post ? $current_post->post_content : '';
-
-		$found_shortcodes = array_filter(
-			$tribe_shortcodes, function( $e ) use ( $current_post_content ) {
-				return has_shortcode( $current_post_content, $e );
-			}
-		);
-
-		return ! empty( $found_shortcodes );
-	}
-
 
 	/**
 	 * By generating a unique hash of the plugin options and other relevant settings
