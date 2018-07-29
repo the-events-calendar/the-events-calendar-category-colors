@@ -84,6 +84,24 @@ class Extras extends Frontend {
 		echo $css;
 	}
 
+	public static function add_list_link_css( $slug ) {
+		$css   = array();
+		$css[] = ".tribe-events-category-{$slug} h2.tribe-events-list-event-title.entry-title a,";
+		$css[] = ".tribe-events-category-{$slug} h2.tribe-events-list-event-title a,";
+		$css[] = ".tribe-events-category-{$slug} h3.tribe-events-list-event-title a,";
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
+	public static function add_list_background_css( $slug ) {
+		$css   = array();
+		$css[] = ".tribe-events-category-{$slug} h3.tribe-events-list-event-title,";
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
 	public static function add_mobile_css() {
 		$teccc = Main::instance();
 
