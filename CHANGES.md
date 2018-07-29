@@ -1,4 +1,5 @@
 #### [unreleased]
+* fixed widget CSS
 * move list CSS to `class Extras`
 
 #### 5.2.2 / 2018-07-28
