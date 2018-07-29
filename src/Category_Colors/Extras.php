@@ -152,10 +152,7 @@ class Extras extends Frontend {
 		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			return false;
 		}
-		$css = array();
-		// $css[] = "#tribe-events-content div.tribe-events-category-{$slug} h3.entry-title.summary,";
-		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-{$slug},"; // 3.10
-		$css[] = ".tribe-grid-allday .tribe-events-week-allday-single.tribe-events-category-{$slug},"; // 3.10
+		$css   = array();
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
@@ -163,8 +160,8 @@ class Extras extends Frontend {
 
 	public static function add_deprecated_background_css( $slug ) {
 		$css   = array();
-		$css[] = "#tribe-events-content .tribe-events-category-{$slug } > .tribe-events-tooltip h4,";
-		// $css[] = ".tribe-events-category-{$slug} h2 a,";
+		$css[] = "#tribe-events-content .tribe-events-category-{$slug} > .tribe-events-tooltip h4,";
+		$css[] = ".tribe-events-category-{$slug} h2,";
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
