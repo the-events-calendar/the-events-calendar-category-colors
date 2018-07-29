@@ -64,6 +64,7 @@ if ( empty( $this->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Extras::override_customizer( $slug ); ?>
 	<?php Widgets::add_widget_background_css( $slug ); ?>
 .events-archive.events-gridview #tribe-events-content table .type-tribe_events.tribe-events-category-<?php echo $slug; ?>,
+.type-tribe_events.tribe-events-category-<?php echo $slug; ?> h2,
 .teccc-legend .tribe-events-category-<?php echo $slug; ?>,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug; ?>,
 #tribe-events-content .tribe-events-category-<?php echo $slug; ?> > .tribe-events-tooltip h3,
