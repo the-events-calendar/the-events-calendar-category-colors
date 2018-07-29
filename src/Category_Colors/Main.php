@@ -2,6 +2,8 @@
 
 namespace Fragen\Category_Colors;
 
+use Tribe__Events__Main;
+
 /**
  * Class Main
  *
@@ -102,10 +104,7 @@ class Main {
 			return false;
 		}
 
-		/**
-		 * Tribe__Events__Main not yet defined, so we can't use the class constant
-		 */
-		$all_terms = get_terms( 'tribe_events_cat', array( 'hide_empty' => false ) );
+		$all_terms = get_terms( Tribe__Events__Main::TAXONOMY, array( 'hide_empty' => false ) );
 		$terms     = apply_filters( 'teccc_get_terms', $all_terms );
 
 		/**
@@ -151,8 +150,8 @@ class Main {
 		foreach ( (array) $add_terms as $add_term ) {
 			$args['name'] = ucwords( str_replace( '-', ' ', $add_term ) );
 			$args['slug'] = $add_term;
-			if ( ! term_exists( $args['name'], 'tribe_events_cat' ) ) {
-				wp_insert_term( $args['name'], 'tribe_events_cat', $args );
+			if ( ! term_exists( $args['name'], Tribe__Events__Main::TAXONOMY ) ) {
+				wp_insert_term( $args['name'], Tribe__Events__Main::TAXONOMY, $args );
 			}
 		}
 	}
@@ -167,7 +166,7 @@ class Main {
 		foreach ( (array) $delete_terms as $delete_term ) {
 			foreach ( (array) $all_terms as $term ) {
 				if ( $delete_term === $term->slug ) {
-					wp_delete_term( $term->term_id, 'tribe_events_cat' );
+					wp_delete_term( $term->term_id, Tribe__Events__Main::TAXONOMY );
 					break;
 				}
 			}

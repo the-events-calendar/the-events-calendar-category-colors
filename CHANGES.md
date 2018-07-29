@@ -3,6 +3,7 @@
 * move list CSS to `class Extras`
 * fixed week CSS
 * load stylesheet all the time, more efficient as external file
+* updated `class Main` to `use Tribe__Events__Main` can now use `Tribe__Events__Main::TAXONOMY`
 
 #### 5.2.2 / 2018-07-28
 * fixed to create CSS when files don't exist

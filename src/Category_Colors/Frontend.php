@@ -2,8 +2,8 @@
 
 namespace Fragen\Category_Colors;
 
-use DateTime,
-	Tribe__Events__Main;
+use DateTime;
+use Tribe__Events__Main;
 
 /**
  * Class Frontend
