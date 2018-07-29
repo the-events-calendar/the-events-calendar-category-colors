@@ -153,13 +153,6 @@ $options = Admin::fetch_options( $teccc );
 		</label>
 	</div>
 
-	<div class="teccc_options_col1"><?php esc_html_e( 'Colorize Widgets', 'the-events-calendar-category-colors' ); ?></div>
-	<div class="teccc_options_col2">
-		<label>
-			<input name="teccc_options[color_widgets]" type="checkbox" value="1" <?php checked( '1', $options['color_widgets'] ); ?> /> <?php esc_html_e( 'Add Category Colors to widgets', 'the-events-calendar-category-colors' ); ?>
-		</label>
-	</div>
-
 	<div class="teccc_options_col1"> <?php esc_html_e( 'Database Options', 'the-events-calendar-category-colors' ); ?> </div>
 	<div class="teccc_options_col2">
 		<label>

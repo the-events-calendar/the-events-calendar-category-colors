@@ -1,7 +1,10 @@
 #### [unreleased]
+* fixed widget CSS
+* move list CSS to `class Extras`
+* fixed week CSS
 
 #### 5.2.2 / 2018-07-28
-* fix to create CSS when files don't exist
+* fixed to create CSS when files don't exist
 
 #### 5.2.1 / 2018-07-28
 * cleanup old CSS files
