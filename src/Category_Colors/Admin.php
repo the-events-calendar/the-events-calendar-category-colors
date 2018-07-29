@@ -173,7 +173,6 @@ class Admin {
 			'custom_legend_css',
 			'font_weight',
 			'legend_superpowers',
-			'color_widgets',
 			'show_ignored_cats_legend',
 		);
 

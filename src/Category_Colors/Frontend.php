@@ -55,12 +55,6 @@ class Frontend {
 			wp_enqueue_style( 'teccc_stylesheet' );
 		}
 
-		// If the color widgets setting is enabled we also need to enqueue styles
-		// This also enqueues styles all the time
-		if ( isset( $this->options['color_widgets'] ) && '1' === $this->options['color_widgets'] ) {
-			wp_enqueue_style( 'teccc_stylesheet' );
-		}
-
 		// Optionally add legend superpowers
 		if ( isset( $this->options['legend_superpowers'] ) &&
 			'1' === $this->options['legend_superpowers'] &&
