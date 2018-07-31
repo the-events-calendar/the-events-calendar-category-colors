@@ -128,17 +128,29 @@ class Main {
 			}
 		}
 
-		if ( ! empty( $this->ignore_list ) ) {
-			foreach ( $this->ignore_list as $ignored ) {
-				$name                  = ucwords( str_replace( '/-/', ' ', $ignored ) );
-				$this->ignored_terms[] = array( $ignored, preg_replace( '/\s/', '&nbsp;', $name ) );
-			}
-		}
+		$this->ignored_terms = $this->get_ignored_terms( $this->ignore_list );
 
 		$options              = get_option( 'teccc_options' );
 		$options['terms']     = $this->terms;
 		$options['all_terms'] = $this->all_terms;
 		update_option( 'teccc_options', $options );
+	}
+
+	/**
+	 * Create array of ignored terms from $ignore_list.
+	 *
+	 * @param array $ignore_list
+	 * @return void
+	 */
+	public function get_ignored_terms( $ignore_list ) {
+		if ( ! empty( $ignore_list ) ) {
+			foreach ( $ignore_list as $ignored ) {
+				$name            = ucwords( str_replace( '-', ' ', $ignored ) );
+				$ignored_terms[] = array( $ignored, preg_replace( '/\s/', '&nbsp;', $name ) );
+			}
+		}
+
+		return $ignored_terms;
 	}
 
 	/**
