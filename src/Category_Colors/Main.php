@@ -154,6 +154,23 @@ class Main {
 	}
 
 	/**
+	 * Setup missing term data in Main.
+	 *
+	 * @param array $options
+	 * @return void
+	 */
+	public function setup_terms( $options ) {
+		$this->all_terms = ! empty( $this->all_terms ) ? $this->all_terms : $options['all_terms'];
+		if ( empty( $this->ignore_list ) ) {
+			$this->ignore_list = array_merge( $this->ignore_list, (array) $options['hide'] );
+			$this->ignore_list = array_unique( $this->ignore_list );
+		}
+		$this->ignored_terms = ! empty( $this->ignored_terms )
+		? $this->ignored_terms
+		: $this->get_ignored_terms( $this->ignore_list );
+	}
+
+	/**
 	 * Add category terms via filter.
 	 */
 	public function add_terms() {

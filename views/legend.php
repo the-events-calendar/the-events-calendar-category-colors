@@ -4,6 +4,7 @@ namespace Fragen\Category_Colors;
 use Tribe__Events__Main;
 
 $teccc = Main::instance();
+$teccc->setup_terms( $options );
 
 ?>
 <div id="legend_box" class="teccc-legend">

@@ -4,6 +4,7 @@ namespace Fragen\Category_Colors;
 $teccc            = Main::instance();
 $options          = Admin::fetch_options( $teccc );
 $teccc->all_terms = ! empty( $teccc->all_terms ) ? $teccc->all_terms : $options['all_terms'];
+$teccc->setup_terms( $options );
 
 ?>
 <table class="teccc form-table" xmlns="http://www.w3.org/1999/html">
