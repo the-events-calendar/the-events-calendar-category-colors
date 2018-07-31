@@ -4,6 +4,8 @@
 * fixed week CSS
 * load stylesheet all the time, more efficient as external file
 * updated `class Main` to `use Tribe__Events__Main` can now use `Tribe__Events__Main::TAXONOMY`
+* use `site_url()` for stylesheet to accomodate  subdirectory install
+* refactor setup of ignored terms and term data
 
 #### 5.2.2 / 2018-07-28
 * fixed to create CSS when files don't exist

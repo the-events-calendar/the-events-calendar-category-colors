@@ -1,14 +1,7 @@
 <?php
 namespace Fragen\Category_Colors;
 
-/*
- * Setup variables for CSS generation.
- */
-$teccc   = Main::instance();
-$options = Admin::fetch_options( $teccc );
-
 ?>
-
 /* The Events Calendar Category Colors <?php echo Main::$version; ?> */
 .teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4 {
 	font-weight: <?php esc_attr_e( $options['font_weight'] ); ?>;
@@ -22,8 +15,8 @@ $options = Admin::fetch_options( $teccc );
 
 <?php Extras::fix_default_week_background(); ?>
 <?php
-if ( empty( $this->terms ) && ! empty( $options['terms'] ) ) {
-	$this->terms = $options['terms'];
+if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
+	$teccc->terms = $options['terms'];
 } else {
 	return false;
 }

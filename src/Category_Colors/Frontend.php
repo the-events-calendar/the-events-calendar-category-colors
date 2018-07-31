@@ -178,8 +178,8 @@ class Frontend {
 		$content = $this->teccc->view(
 			'legend', array(
 				'options' => $this->options,
-				'teccc'   => Main::instance(),
-				'tec'     => Tribe__Events__Main::instance(),
+				'teccc'   => $this->teccc,
+				//'tec'     => Tribe__Events__Main::instance(),
 			), false
 		);
 

@@ -3,7 +3,6 @@ namespace Fragen\Category_Colors;
 
 use Tribe__Events__Main;
 
-$teccc = Main::instance();
 $teccc->setup_terms( $options );
 
 ?>
@@ -25,7 +24,6 @@ $teccc->setup_terms( $options );
 			</li>
 		<?php endforeach ?>
 
-		<?php $options = get_option( 'teccc_options' ); ?>
 		<?php if ( isset( $options['show_ignored_cats_legend'] ) ) : ?>
 			<?php foreach ( $teccc->ignored_terms as $ignored_term ) : ?>
 				<?php
