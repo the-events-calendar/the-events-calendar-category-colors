@@ -43,7 +43,7 @@ class Frontend {
 	 */
 	public function add_scripts_styles() {
 		$min            = defined( 'WP_DEBUG' ) && WP_DEBUG ? null : '.min';
-		$stylesheet_url = home_url() . "/wp-content/uploads/{$this->cache_key}{$min}.css";
+		$stylesheet_url = site_url() . "/wp-content/uploads/{$this->cache_key}{$min}.css";
 		wp_register_style( 'teccc_stylesheet', $stylesheet_url, false, Main::$version );
 		wp_enqueue_style( 'teccc_stylesheet' );
 
