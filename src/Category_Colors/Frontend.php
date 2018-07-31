@@ -52,7 +52,8 @@ class Frontend {
 			'1' === $this->options['legend_superpowers'] &&
 			! wp_is_mobile()
 		) {
-			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
+			wp_register_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
+			wp_enqueue_script( 'legend_superpowers' );
 		}
 	}
 
