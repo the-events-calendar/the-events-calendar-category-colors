@@ -40,6 +40,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 .tribe-events-calendar .tribe-events-category-<?php echo $slug; ?> a,
 #tribe-events-content .teccc-legend .tribe-events-category-<?php echo $slug; ?> a,
 #tribe-events-content .tribe-events-calendar .tribe-events-category-<?php echo $slug; ?> a,
+.type-tribe_events.tribe-events-category-<?php echo $slug; ?> h2 a,
 .tribe-events-category-<?php echo $slug; ?> > div.hentry.vevent > h3.entry-title a,
 .tribe-events-mobile.tribe-events-category-<?php echo $slug; ?> h4 a {
 	<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
