@@ -180,7 +180,6 @@ class Frontend {
 			'legend', array(
 				'options' => $this->options,
 				'teccc'   => $this->teccc,
-				//'tec'     => Tribe__Events__Main::instance(),
 			), false
 		);
 
