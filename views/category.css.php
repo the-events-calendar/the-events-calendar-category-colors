@@ -35,6 +35,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Extras::override_customizer( $slug ); ?>
 	<?php //Extras::add_deprecated_link_css( $slug ); ?>
 	<?php Widgets::add_widget_link_css( $slug ); ?>
+	<?php Extras::add_featured_event_link_css( $slug ); ?>
 #tribe-events-content table.tribe-events-calendar .tribe-event-featured.tribe-events-category-<?php echo $slug; ?> .tribe-events-month-event-title a,
 .teccc-legend .tribe-events-category-<?php echo $slug; ?> a,
 .tribe-events-calendar .tribe-events-category-<?php echo $slug; ?> a,
@@ -79,11 +80,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	padding-bottom: 2px;
 }
 
-.tribe-events-calendar .tribe-event-featured.tribe-events-category-<?php echo $slug; ?>,
-#tribe-events-content table.tribe-events-calendar .type-tribe_events.tribe-event-featured.tribe-events-category-<?php echo $slug; ?>,
-.tribe-grid-body div[id*="tribe-events-event-"][class*="tribe-events-category-"].tribe-events-week-hourly-single.tribe-event-featured {
-	border-right: 5px solid <?php esc_attr_e( $options['featured-event'] ); ?>;
-}
+	<?php Extras::add_featured_event_border_css( $slug, $options ); ?>
 
 	<?php Extras::fix_transparent_week_background( $slug ); ?>
 

@@ -106,6 +106,27 @@ class Extras extends Frontend {
 		echo $css;
 	}
 
+	public static function add_featured_event_link_css( $slug ) {
+		$css   = array();
+		$css[] = ".tribe-events-list .tribe-events-loop .tribe-event-featured.tribe-events-category-{$slug} h3.tribe-events-list-event-title a:hover,";
+		$css[] = "#tribe-events-content table.tribe-events-calendar .type-tribe_events.tribe-events-category-{$slug}.tribe-event-featured h3.tribe-events-month-event-title a:hover,";
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
+	public static function add_featured_event_border_css( $slug, $options ) {
+		$css   = array();
+		$css[] = ".tribe-events-calendar .tribe-event-featured.tribe-events-category-{$slug},";
+		$css[] = "#tribe-events-content table.tribe-events-calendar .type-tribe_events.tribe-event-featured.tribe-events-category-{$slug},";
+		$css[] = ".tribe-grid-body div[id*='tribe-events-event-'][class*='tribe-events-category-'].tribe-events-week-hourly-single.tribe-event-featured ";
+		$css[] = "{ border-right: 5px solid {$options['featured-event']} }";
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+
+	}
+
 	public static function add_mobile_css() {
 		$teccc = Main::instance();
 
