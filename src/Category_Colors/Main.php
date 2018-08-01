@@ -323,7 +323,8 @@ class Main {
 				$arr[ $teccc->slugs[ $i ] . '-background_none' ] = '1';
 				$arr['hide'][ $teccc->slugs[ $i ] ]              = null;
 			}
-			$arr['font_weight'] = 'bold';
+			$arr['font_weight']    = 'bold';
+			$arr['featured-event'] = '#0ea0d7';
 			update_option( 'teccc_options', $arr );
 		}
 	}

@@ -156,6 +156,8 @@ class Admin {
 		}
 
 		$generalOptions = array(
+			'featured-event',
+			'featured-event_none',
 			'add_legend',
 			'chk_default_options_db',
 			'custom_legend_css',
@@ -169,6 +171,8 @@ class Admin {
 				$options[ $optionkey ] = null;
 			}
 		}
+
+		$options['featured-event'] = ! empty( $options['featured-event_none'] ) ? 'transparent' : $options['featured-event'];
 
 		return $options;
 	}

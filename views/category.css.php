@@ -79,6 +79,12 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	padding-bottom: 2px;
 }
 
+.tribe-events-calendar .tribe-event-featured.tribe-events-category-<?php echo $slug; ?>,
+#tribe-events-content table.tribe-events-calendar .type-tribe_events.tribe-event-featured.tribe-events-category-<?php echo $slug; ?>,
+.tribe-grid-body div[id*="tribe-events-event-"][class*="tribe-events-category-"].tribe-events-week-hourly-single.tribe-event-featured {
+	border-right: 5px solid <?php esc_attr_e( $options['featured-event'] ); ?>;
+}
+
 	<?php Extras::fix_transparent_week_background( $slug ); ?>
 
 	<?php Extras::add_map_link_css( $slug ); ?>
