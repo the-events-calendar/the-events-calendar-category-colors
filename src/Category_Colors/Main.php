@@ -143,6 +143,7 @@ class Main {
 	 * @return void
 	 */
 	public function get_ignored_terms( $ignore_list ) {
+		$ignored_terms = array();
 		if ( ! empty( $ignore_list ) ) {
 			foreach ( $ignore_list as $ignored ) {
 				$name            = ucwords( str_replace( '-', ' ', $ignored ) );
@@ -161,8 +162,9 @@ class Main {
 	 */
 	public function setup_terms( $options ) {
 		$this->all_terms = ! empty( $this->all_terms ) ? $this->all_terms : $options['all_terms'];
+		$hide            = isset( $options['hide'] ) ? $options['hide'] : array();
 		if ( empty( $this->ignore_list ) ) {
-			$this->ignore_list = array_merge( $this->ignore_list, (array) $options['hide'] );
+			$this->ignore_list = array_merge( $this->ignore_list, (array) $hide );
 			$this->ignore_list = array_unique( $this->ignore_list );
 		}
 		$this->ignored_terms = ! empty( $this->ignored_terms )
