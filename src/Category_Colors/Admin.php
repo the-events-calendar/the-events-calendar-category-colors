@@ -45,7 +45,9 @@ class Admin {
 	 * @return array $input
 	 */
 	public function validate_options( $input ) {
-		$teccc = $this->teccc;
+		$teccc   = $this->teccc;
+		$options = get_option( 'teccc_options' );
+		$teccc->setup_terms( $options );
 
 		foreach ( $teccc->all_terms as $attributes ) {
 			$slug = $attributes[ Main::SLUG ];
@@ -76,6 +78,13 @@ class Admin {
 			if ( ! in_array( $input[ "{$slug}-text" ], $teccc->text_colors, true ) ) {
 				$input[ "{$slug}-text" ] = '#000';
 			}
+		}
+
+		// Set appropriate values for featured event.
+		if ( isset( $input['featured-event_none'] ) ) {
+			$input['featured-event'] = 'transparent';
+		} else {
+			$input['featured-event'] = '#0ea0d7';
 		}
 
 		return $input;
