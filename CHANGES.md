@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 5.3.0 / 2018-08-03
 * fixed widget CSS
 * move list CSS to `class Extras`
 * fixed week CSS
