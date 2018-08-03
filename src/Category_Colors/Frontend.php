@@ -24,12 +24,27 @@ class Frontend {
 		$this->teccc     = $teccc;
 		$this->options   = Admin::fetch_options( $teccc );
 		$this->cache_key = 'teccc_' . $this->options_hash();
-		$this->uploads   = wp_upload_dir();
+		$this->uploads   = $this->ssl_corrected_wp_upload_dir();
 
 		require_once TECCC_INCLUDES . '/templatetags.php';
 
 		add_action( 'init', array( $this, 'add_colored_categories' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX - 100 );
+	}
+
+	/**
+	 * Set SSL correct URLs in wp_upload_dir().
+	 *
+	 * @link https://core.trac.wordpress.org/ticket/25449
+	 *
+	 * @return array
+	 */
+	private function ssl_corrected_wp_upload_dir() {
+		$upload_dir            = wp_upload_dir();
+		$upload_dir['baseurl'] = set_url_scheme( $upload_dir['baseurl'] );
+		$upload_dir['url']     = set_url_scheme( $upload_dir['baseurl'] );
+
+		return $upload_dir;
 	}
 
 	/**
