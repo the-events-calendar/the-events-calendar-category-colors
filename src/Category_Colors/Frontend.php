@@ -14,6 +14,7 @@ class Frontend {
 	protected $teccc     = null;
 	protected $options   = array();
 	protected $cache_key = null;
+	protected $uploads   = null;
 
 	protected $legendTargetHook   = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
@@ -23,6 +24,7 @@ class Frontend {
 		$this->teccc     = $teccc;
 		$this->options   = Admin::fetch_options( $teccc );
 		$this->cache_key = 'teccc_' . $this->options_hash();
+		$this->uploads   = wp_upload_dir();
 
 		require_once TECCC_INCLUDES . '/templatetags.php';
 
@@ -42,8 +44,9 @@ class Frontend {
 	 * Enqueue stylesheets and scripts as appropriate.
 	 */
 	public function add_scripts_styles() {
+		$css_url        = $this->uploads['baseurl'];
 		$min            = defined( 'WP_DEBUG' ) && WP_DEBUG ? null : '.min';
-		$stylesheet_url = site_url() . "/wp-content/uploads/{$this->cache_key}{$min}.css";
+		$stylesheet_url = "{$css_url}/{$this->cache_key}{$min}.css";
 		wp_register_style( 'teccc_stylesheet', $stylesheet_url, false, Main::$version );
 		wp_enqueue_style( 'teccc_stylesheet' );
 
@@ -89,13 +92,12 @@ class Frontend {
 	 * @return mixed|string
 	 */
 	protected function generate_css() {
-		$css_path = WP_CONTENT_DIR . '/uploads/';
-
 		// Look out for refresh requests.
 		$refresh_css = array_key_exists( 'refresh_css', $_GET ) ? true : false;
 		$current     = get_transient( $this->cache_key );
 		// TODO: update for PHP 5.4+
-		$css_file = glob( $css_path . 'teccc*.{css}', GLOB_BRACE );
+		$css_dir  = $this->uploads['basedir'];
+		$css_file = glob( "{$css_dir}/teccc*.{css}", GLOB_BRACE );
 		$current  = strpos( $css_file[0], $this->cache_key )
 			? $current
 			: false;
@@ -117,11 +119,11 @@ class Frontend {
 		}
 		$css_min = $this->minify_css( $css );
 
-		foreach ( glob( $css_path . 'teccc*.{css}', GLOB_BRACE ) as $file ) {
+		foreach ( glob( "{$css_dir}/teccc*.{css}", GLOB_BRACE ) as $file ) {
 			unlink( $file );
 		}
-		file_put_contents( "{$css_path}{$this->cache_key}.css", $css );
-		file_put_contents( "{$css_path}{$this->cache_key}.min.css", $css_min );
+		file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );
+		file_put_contents( "{$css_dir}/{$this->cache_key}.min.css", $css_min );
 
 		// Store in transient
 		set_transient( $this->cache_key, true, 4 * WEEK_IN_SECONDS );
