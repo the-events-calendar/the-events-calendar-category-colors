@@ -7,7 +7,7 @@
 * refactor setup of ignored terms and term data
 * add `border-right` to featured events
 * updated validation code upon saving options
-* use `wp_upload_url()` to accomodate user install preferences
+* use `wp_upload_url()` to for stylesheet to accomodate user directory preferences
 
 #### 5.2.2 / 2018-07-28
 * fixed to create CSS when files don't exist
