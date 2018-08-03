@@ -11,6 +11,7 @@ class Widgets extends Frontend {
 			$css[] = ".tribe-events-adv-list-widget .tribe-events-category-{$slug} h2 a:visited,";
 			$css[] = ".tribe-mini-calendar-list-wrapper .tribe-events-category-{$slug} h2 a:link,";
 			$css[] = ".tribe-mini-calendar-list-wrapper .tribe-events-category-{$slug} h2 a:visited,";
+			$css[] =".tribe-events-category-{$slug}.tribe-event-featured .tribe-mini-calendar-event .tribe-events-title a,";
 			$css[] = ".tribe-venue-widget-list li.tribe-events-category-{$slug} h4 a:link,";
 			$css[] = ".tribe-venue-widget-list li.tribe-events-category-{$slug} h4 a:visited,";
 		} else {
