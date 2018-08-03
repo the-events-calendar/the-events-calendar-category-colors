@@ -35,6 +35,8 @@ class Extras extends Frontend {
 		$css   = array();
 		$css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent .tribe-events-tooltip h4.entry-title,";
 		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single:hover.tribe-events-category-{$slug},";
+		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-{$slug},";
+		$css[] = ".tribe-grid-allday .tribe-events-week-allday-single.tribe-events-category-{$slug},";
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
@@ -82,6 +84,47 @@ class Extras extends Frontend {
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
+	}
+
+	public static function add_list_link_css( $slug ) {
+		$css   = array();
+		$css[] = ".tribe-events-category-{$slug} h2.tribe-events-list-event-title.entry-title a,";
+		$css[] = ".tribe-events-category-{$slug} h2.tribe-events-list-event-title a,";
+		$css[] = ".tribe-events-category-{$slug} h3.tribe-events-list-event-title a,";
+		$css[] = ".tribe-event-featured .tribe-events-category-{$slug} h3.tribe-events-list-event-title a,";
+		$css[] = ".tribe-events-list .tribe-events-loop .tribe-event-featured.tribe-events-category-{$slug} h3.tribe-events-list-event-title a,";
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
+	public static function add_list_background_css( $slug ) {
+		$css   = array();
+		$css[] = ".tribe-events-category-{$slug} h3.tribe-events-list-event-title,";
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
+	public static function add_featured_event_link_css( $slug ) {
+		$css   = array();
+		$css[] = ".tribe-events-list .tribe-events-loop .tribe-event-featured.tribe-events-category-{$slug} h3.tribe-events-list-event-title a:hover,";
+		$css[] = "#tribe-events-content table.tribe-events-calendar .type-tribe_events.tribe-events-category-{$slug}.tribe-event-featured h3.tribe-events-month-event-title a:hover,";
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
+	public static function add_featured_event_border_css( $slug, $options ) {
+		$css   = array();
+		$css[] = ".tribe-events-calendar .tribe-event-featured.tribe-events-category-{$slug},";
+		$css[] = "#tribe-events-content table.tribe-events-calendar .type-tribe_events.tribe-event-featured.tribe-events-category-{$slug},";
+		$css[] = ".tribe-grid-body div[id*='tribe-events-event-'][class*='tribe-events-category-'].tribe-events-week-hourly-single.tribe-event-featured ";
+		$css[] = "{ border-right: 5px solid {$options['featured-event']} }";
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+
 	}
 
 	public static function add_mobile_css() {
@@ -134,10 +177,7 @@ class Extras extends Frontend {
 		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			return false;
 		}
-		$css = array();
-		// $css[] = "#tribe-events-content div.tribe-events-category-{$slug} h3.entry-title.summary,";
-		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-{$slug},"; // 3.10
-		$css[] = ".tribe-grid-allday .tribe-events-week-allday-single.tribe-events-category-{$slug},"; // 3.10
+		$css   = array();
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;
@@ -145,8 +185,8 @@ class Extras extends Frontend {
 
 	public static function add_deprecated_background_css( $slug ) {
 		$css   = array();
-		$css[] = "#tribe-events-content .tribe-events-category-{$slug } > .tribe-events-tooltip h4,";
-		// $css[] = ".tribe-events-category-{$slug} h2 a,";
+		$css[] = "#tribe-events-content .tribe-events-category-{$slug} > .tribe-events-tooltip h4,";
+		$css[] = ".tribe-events-category-{$slug} h2,";
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		echo $css;

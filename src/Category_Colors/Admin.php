@@ -2,16 +2,14 @@
 
 namespace Fragen\Category_Colors;
 
-use Tribe__Events__Main,
-	Tribe__Settings_Tab;
-
+use Tribe__Events__Main;
+use Tribe__Settings_Tab;
 
 class Admin {
 
 	const TAB_NAME      = 'category-colors';
 	const UPDATE_ACTION = 'category-colors-update-options';
 	protected $teccc    = null;
-
 
 	public function __construct( Main $teccc ) {
 		$this->teccc = $teccc;
@@ -24,11 +22,9 @@ class Admin {
 		load_plugin_textdomain( 'the-events-calendar-category-colors', false, TECCC_LANG );
 	}
 
-
 	public function init() {
 		register_setting( 'teccc_category_colors', 'teccc_options', array( $this, 'validate_options' ) );
 	}
-
 
 	public function plugin_fail_msg() {
 		if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
@@ -42,7 +38,6 @@ class Admin {
 		}
 	}
 
-
 	/**
 	 * @param array $input
 	 *
@@ -50,7 +45,9 @@ class Admin {
 	 * @return array $input
 	 */
 	public function validate_options( $input ) {
-		$teccc = $this->teccc;
+		$teccc   = $this->teccc;
+		$options = get_option( 'teccc_options' );
+		$teccc->setup_terms( $options );
 
 		foreach ( $teccc->all_terms as $attributes ) {
 			$slug = $attributes[ Main::SLUG ];
@@ -83,16 +80,21 @@ class Admin {
 			}
 		}
 
+		// Set appropriate values for featured event.
+		if ( isset( $input['featured-event_none'] ) ) {
+			$input['featured-event'] = 'transparent';
+		} else {
+			$input['featured-event'] = '#0ea0d7';
+		}
+
 		return $input;
 	}
-
 
 	public function load_settings_tab() {
 		if ( class_exists( 'Tribe__Events__Main' ) ) {
 			add_action( 'tribe_settings_do_tabs', array( $this, 'add_category_colors_tab' ) );
 		}
 	}
-
 
 	public function add_category_colors_tab() {
 		$categoryColorsTab = $this->teccc->load_config( 'admintab' );
@@ -101,16 +103,13 @@ class Admin {
 		new Tribe__Settings_Tab( self::TAB_NAME, esc_html__( 'Category Colors', 'the-events-calendar-category-colors' ), $categoryColorsTab );
 	}
 
-
 	public function form_header() {
 		echo '<form method="post" action="options.php">';
 	}
 
-
 	public function settings_fields() {
 		settings_fields( 'teccc_category_colors' );
 	}
-
 
 	public function is_saved() {
 		if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) {
@@ -119,7 +118,6 @@ class Admin {
 			echo apply_filters( 'tribe_settings_success_message', $output, 'category-colors' );
 		}
 	}
-
 
 	public static function options_elements() {
 		$teccc = Main::instance();
@@ -133,7 +131,6 @@ class Admin {
 
 		return $content;
 	}
-
 
 	/**
 	 * Retrieves the options and pre-processes them to ensure we aren't trying to access non-existent
@@ -168,12 +165,13 @@ class Admin {
 		}
 
 		$generalOptions = array(
+			'featured-event',
+			'featured-event_none',
 			'add_legend',
 			'chk_default_options_db',
 			'custom_legend_css',
 			'font_weight',
 			'legend_superpowers',
-			'color_widgets',
 			'show_ignored_cats_legend',
 		);
 
@@ -182,6 +180,8 @@ class Admin {
 				$options[ $optionkey ] = null;
 			}
 		}
+
+		$options['featured-event'] = ! empty( $options['featured-event_none'] ) ? 'transparent' : $options['featured-event'];
 
 		return $options;
 	}

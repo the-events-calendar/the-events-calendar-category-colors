@@ -16,7 +16,7 @@
 	padding-left: 205px;
 	padding-bottom: 15px;
 }
-.teccc_options_col2 p {
+.teccc_options_col2 p, table.teccc td p {
 	color: #666;
 	margin-left: 1em;
 }

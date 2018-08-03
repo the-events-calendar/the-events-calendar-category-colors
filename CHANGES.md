@@ -1,7 +1,19 @@
 #### [unreleased]
 
+#### 5.3.0 / 2018-08-03
+* fixed widget CSS
+* move list CSS to `class Extras`
+* fixed week CSS
+* load stylesheet all the time, more efficient as external file
+* updated `class Main` to `use Tribe__Events__Main` can now use `Tribe__Events__Main::TAXONOMY`
+* refactor setup of ignored terms and term data
+* add `border-right` to featured events
+* updated validation code upon saving options
+* use `wp_upload_url()` to for stylesheet to accomodate user directory preferences
+* set SSL corrected URLs for `wp_upload_url()`, <https://core.trac.wordpress.org/ticket/25449>
+
 #### 5.2.2 / 2018-07-28
-* fix to create CSS when files don't exist
+* fixed to create CSS when files don't exist
 
 #### 5.2.1 / 2018-07-28
 * cleanup old CSS files

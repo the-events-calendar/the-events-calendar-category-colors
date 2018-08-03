@@ -2,6 +2,8 @@
 
 namespace Fragen\Category_Colors;
 
+use Tribe__Events__Main;
+
 /**
  * Class Main
  *
@@ -102,10 +104,7 @@ class Main {
 			return false;
 		}
 
-		/**
-		 * Tribe__Events__Main not yet defined, so we can't use the class constant
-		 */
-		$all_terms = get_terms( 'tribe_events_cat', array( 'hide_empty' => false ) );
+		$all_terms = get_terms( Tribe__Events__Main::TAXONOMY, array( 'hide_empty' => false ) );
 		$terms     = apply_filters( 'teccc_get_terms', $all_terms );
 
 		/**
@@ -129,17 +128,48 @@ class Main {
 			}
 		}
 
-		if ( ! empty( $this->ignore_list ) ) {
-			foreach ( $this->ignore_list as $ignored ) {
-				$name                  = ucwords( str_replace( '/-/', ' ', $ignored ) );
-				$this->ignored_terms[] = array( $ignored, preg_replace( '/\s/', '&nbsp;', $name ) );
-			}
-		}
+		$this->ignored_terms = $this->get_ignored_terms( $this->ignore_list );
 
 		$options              = get_option( 'teccc_options' );
 		$options['terms']     = $this->terms;
 		$options['all_terms'] = $this->all_terms;
 		update_option( 'teccc_options', $options );
+	}
+
+	/**
+	 * Create array of ignored terms from $ignore_list.
+	 *
+	 * @param array $ignore_list
+	 * @return void
+	 */
+	public function get_ignored_terms( $ignore_list ) {
+		$ignored_terms = array();
+		if ( ! empty( $ignore_list ) ) {
+			foreach ( $ignore_list as $ignored ) {
+				$name            = ucwords( str_replace( '-', ' ', $ignored ) );
+				$ignored_terms[] = array( $ignored, preg_replace( '/\s/', '&nbsp;', $name ) );
+			}
+		}
+
+		return $ignored_terms;
+	}
+
+	/**
+	 * Setup missing term data in Main.
+	 *
+	 * @param array $options
+	 * @return void
+	 */
+	public function setup_terms( $options ) {
+		$this->all_terms = ! empty( $this->all_terms ) ? $this->all_terms : $options['all_terms'];
+		$hide            = isset( $options['hide'] ) ? $options['hide'] : array();
+		if ( empty( $this->ignore_list ) ) {
+			$this->ignore_list = array_merge( $this->ignore_list, (array) $hide );
+			$this->ignore_list = array_unique( $this->ignore_list );
+		}
+		$this->ignored_terms = ! empty( $this->ignored_terms )
+		? $this->ignored_terms
+		: $this->get_ignored_terms( $this->ignore_list );
 	}
 
 	/**
@@ -151,8 +181,8 @@ class Main {
 		foreach ( (array) $add_terms as $add_term ) {
 			$args['name'] = ucwords( str_replace( '-', ' ', $add_term ) );
 			$args['slug'] = $add_term;
-			if ( ! term_exists( $args['name'], 'tribe_events_cat' ) ) {
-				wp_insert_term( $args['name'], 'tribe_events_cat', $args );
+			if ( ! term_exists( $args['name'], Tribe__Events__Main::TAXONOMY ) ) {
+				wp_insert_term( $args['name'], Tribe__Events__Main::TAXONOMY, $args );
 			}
 		}
 	}
@@ -167,7 +197,7 @@ class Main {
 		foreach ( (array) $delete_terms as $delete_term ) {
 			foreach ( (array) $all_terms as $term ) {
 				if ( $delete_term === $term->slug ) {
-					wp_delete_term( $term->term_id, 'tribe_events_cat' );
+					wp_delete_term( $term->term_id, Tribe__Events__Main::TAXONOMY );
 					break;
 				}
 			}
@@ -295,7 +325,8 @@ class Main {
 				$arr[ $teccc->slugs[ $i ] . '-background_none' ] = '1';
 				$arr['hide'][ $teccc->slugs[ $i ] ]              = null;
 			}
-			$arr['font_weight'] = 'bold';
+			$arr['font_weight']    = 'bold';
+			$arr['featured-event'] = '#0ea0d7';
 			update_option( 'teccc_options', $arr );
 		}
 	}

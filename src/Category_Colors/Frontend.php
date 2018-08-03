@@ -2,8 +2,8 @@
 
 namespace Fragen\Category_Colors;
 
-use DateTime,
-	Tribe__Events__Main;
+use DateTime;
+use Tribe__Events__Main;
 
 /**
  * Class Frontend
@@ -14,6 +14,7 @@ class Frontend {
 	protected $teccc     = null;
 	protected $options   = array();
 	protected $cache_key = null;
+	protected $uploads   = null;
 
 	protected $legendTargetHook   = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
@@ -28,6 +29,24 @@ class Frontend {
 
 		add_action( 'init', array( $this, 'add_colored_categories' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX - 100 );
+		add_filter( 'upload_dir', array( $this, 'filter_upload_dir' ), 10, 1 );
+		$this->uploads = wp_get_upload_dir();
+	}
+
+	/**
+	 * Sets SSL corrected URLs in wp_upload_dir().
+	 *
+	 * @link https://core.trac.wordpress.org/ticket/25449
+	 *
+	 * @param array $upload_dir
+	 *
+	 * @return void
+	 */
+	public function filter_upload_dir( $upload_dir ) {
+		$upload_dir['url']     = set_url_scheme( $upload_dir['url'] );
+		$upload_dir['baseurl'] = set_url_scheme( $upload_dir['baseurl'] );
+
+		return $upload_dir;
 	}
 
 	/**
@@ -42,61 +61,21 @@ class Frontend {
 	 * Enqueue stylesheets and scripts as appropriate.
 	 */
 	public function add_scripts_styles() {
+		$css_url        = $this->uploads['baseurl'];
 		$min            = defined( 'WP_DEBUG' ) && WP_DEBUG ? null : '.min';
-		$stylesheet_url = home_url() . "/wp-content/uploads/{$this->cache_key}{$min}.css";
+		$stylesheet_url = "{$css_url}/{$this->cache_key}{$min}.css";
 		wp_register_style( 'teccc_stylesheet', $stylesheet_url, false, Main::$version );
-
-		// Let's test to see if any event-related post types were requested
-		$event_types     = array( 'tribe_events', 'tribe_organizer', 'tribe_venue' );
-		$requested_types = (array) get_query_var( 'post_type' );
-		$found_types     = array_intersect( $event_types, $requested_types );
-
-		if ( ! empty( $found_types ) || $this->has_tribe_shortcodes() ) {
-			wp_enqueue_style( 'teccc_stylesheet' );
-		}
-
-		// If the color widgets setting is enabled we also need to enqueue styles
-		// This also enqueues styles all the time
-		if ( isset( $this->options['color_widgets'] ) && '1' === $this->options['color_widgets'] ) {
-			wp_enqueue_style( 'teccc_stylesheet' );
-		}
+		wp_enqueue_style( 'teccc_stylesheet' );
 
 		// Optionally add legend superpowers
 		if ( isset( $this->options['legend_superpowers'] ) &&
 			'1' === $this->options['legend_superpowers'] &&
 			! wp_is_mobile()
 		) {
-			wp_enqueue_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
+			wp_register_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
+			wp_enqueue_script( 'legend_superpowers' );
 		}
 	}
-
-	/**
-	 * Find tribe shortcodes in post/page contents.
-	 *
-	 * @return bool
-	 */
-	private function has_tribe_shortcodes() {
-		$tribe_shortcodes = array(
-			'tribe_events',
-			'tribe_event_inline',
-			'tribe_mini_calendar',
-			'tribe_this_week',
-			'tribe_events_list',
-			'tribe_featured_venue',
-		);
-
-		$current_post         = get_post( get_the_ID() );
-		$current_post_content = $current_post instanceof \WP_Post ? $current_post->post_content : '';
-
-		$found_shortcodes = array_filter(
-			$tribe_shortcodes, function( $e ) use ( $current_post_content ) {
-				return has_shortcode( $current_post_content, $e );
-			}
-		);
-
-		return ! empty( $found_shortcodes );
-	}
-
 
 	/**
 	 * By generating a unique hash of the plugin options and other relevant settings
@@ -130,13 +109,12 @@ class Frontend {
 	 * @return mixed|string
 	 */
 	protected function generate_css() {
-		$css_path = WP_CONTENT_DIR . '/uploads/';
-
 		// Look out for refresh requests.
 		$refresh_css = array_key_exists( 'refresh_css', $_GET ) ? true : false;
 		$current     = get_transient( $this->cache_key );
 		// TODO: update for PHP 5.4+
-		$css_file = glob( $css_path . 'teccc*.{css}', GLOB_BRACE );
+		$css_dir  = $this->uploads['basedir'];
+		$css_file = glob( "{$css_dir}/teccc*.{css}", GLOB_BRACE );
 		$current  = strpos( $css_file[0], $this->cache_key )
 			? $current
 			: false;
@@ -158,11 +136,11 @@ class Frontend {
 		}
 		$css_min = $this->minify_css( $css );
 
-		foreach ( glob( $css_path . 'teccc*.{css}', GLOB_BRACE ) as $file ) {
+		foreach ( glob( "{$css_dir}/teccc*.{css}", GLOB_BRACE ) as $file ) {
 			unlink( $file );
 		}
-		file_put_contents( "{$css_path}{$this->cache_key}.css", $css );
-		file_put_contents( "{$css_path}{$this->cache_key}.min.css", $css_min );
+		file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );
+		file_put_contents( "{$css_dir}/{$this->cache_key}.min.css", $css_min );
 
 		// Store in transient
 		set_transient( $this->cache_key, true, 4 * WEEK_IN_SECONDS );
@@ -220,8 +198,7 @@ class Frontend {
 		$content = $this->teccc->view(
 			'legend', array(
 				'options' => $this->options,
-				'teccc'   => Main::instance(),
-				'tec'     => Tribe__Events__Main::instance(),
+				'teccc'   => $this->teccc,
 			), false
 		);
 

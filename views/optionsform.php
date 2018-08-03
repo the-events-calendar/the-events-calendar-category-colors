@@ -1,8 +1,7 @@
 <?php
 namespace Fragen\Category_Colors;
 
-$teccc   = Main::instance();
-$options = Admin::fetch_options( $teccc );
+$teccc->setup_terms( $options );
 
 ?>
 <table class="teccc form-table" xmlns="http://www.w3.org/1999/html">
@@ -45,7 +44,7 @@ $options = Admin::fetch_options( $teccc );
 				<div class="transparency">
 					<label>
 						<input name="teccc_options[<?php echo $slug; ?>-border_none]" type="checkbox" value="1" <?php checked( '1', $options[ "{$slug}-border_none" ] ); ?> /> <?php esc_html_e( 'No Border', 'the-events-calendar-category-colors' ); ?>
-					</label> <br />
+					</label><br>
 					<?php
 					if ( '1' === $options[ "{$slug}-border_none" ] ) :
 						$options[ "{$slug}-border" ] = null;
@@ -63,7 +62,7 @@ $options = Admin::fetch_options( $teccc );
 				<div class="transparency">
 					<label>
 						<input name="teccc_options[<?php echo $slug; ?>-background_none]" type="checkbox" value="1" <?php checked( '1', $options[ "{$slug}-background_none" ] ); ?> /> <?php esc_html_e( 'No Background', 'the-events-calendar-category-colors' ); ?>
-					</label> <br />
+					</label><br>
 					<?php
 					if ( '1' === $options[ "{$slug}-background_none" ] ) :
 						$options[ "{$slug}-background" ] = null;
@@ -105,6 +104,31 @@ $options = Admin::fetch_options( $teccc );
 		</tr>
 	<?php endforeach ?>
 
+	<tr>
+		<td  colspan="2">
+			<div><?php esc_html_e( 'Featured Event Color', 'the-events-calendar-category-colors' ); ?></div>
+		</td>
+		<td class="color-control">
+			<div class="transparency">
+				<label>
+					<input name="teccc_options[featured-event_none]" type="checkbox" value="1" <?php checked( '1', $options['featured-event_none'] ); ?> /> <?php esc_html_e( 'Transparent', 'the-events-calendar-category-colors' ); ?>
+				</label><br>
+				<?php
+				if ( '1' === $options['featured-event_none'] ) :
+					$options['featured-event'] = 'transparent';
+					?>
+				<?php endif ?>
+			</div>
+			<div class="colorselector">
+				<label>
+					<input class="teccc-color-picker" type="text" name="teccc_options[featured-event]" value="<?php esc_attr_e( $options['featured-event'] ); ?>" />
+				</label>
+			</div>
+		</td>
+		<td colspan="2">
+			<p><?php esc_html_e( 'Add right border for featured events.', 'the-events-calendar-category-colors' ); ?></p>
+		</td>
+	</tr>
 	<tr valign="top" style="border-top:#dddddd 1px solid;">
 		<td colspan="5"></td>
 	</tr>
@@ -150,13 +174,6 @@ $options = Admin::fetch_options( $teccc );
 	<div class="teccc_options_col2 legend_related">
 		<label>
 			<input name="teccc_options[custom_legend_css]" type="checkbox" value="1" <?php checked( '1', $options['custom_legend_css'] ); ?> /> <?php esc_html_e( 'Check to use your own CSS for category legend.', 'the-events-calendar-category-colors' ); ?>
-		</label>
-	</div>
-
-	<div class="teccc_options_col1"><?php esc_html_e( 'Colorize Widgets', 'the-events-calendar-category-colors' ); ?></div>
-	<div class="teccc_options_col2">
-		<label>
-			<input name="teccc_options[color_widgets]" type="checkbox" value="1" <?php checked( '1', $options['color_widgets'] ); ?> /> <?php esc_html_e( 'Add Category Colors to widgets', 'the-events-calendar-category-colors' ); ?>
 		</label>
 	</div>
 
