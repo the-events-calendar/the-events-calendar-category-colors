@@ -104,15 +104,17 @@ class Main {
 			return false;
 		}
 
+		$options   = get_option( 'teccc_options' );
 		$all_terms = get_terms( Tribe__Events__Main::TAXONOMY, array( 'hide_empty' => false ) );
-		$terms     = apply_filters( 'teccc_get_terms', $all_terms );
 
 		/**
 		 * Add and remove terms via filters.
 		 * Should help with WPML.
 		 */
-		$this->add_terms();
+		$options = $this->add_terms( $options );
 		$this->delete_terms( $all_terms );
+
+		$terms = apply_filters( 'teccc_get_terms', $all_terms );
 
 		/**
 		 * Populate public variables.
@@ -130,7 +132,6 @@ class Main {
 
 		$this->ignored_terms = $this->get_ignored_terms( $this->ignore_list );
 
-		$options              = get_option( 'teccc_options' );
 		$options['terms']     = $this->terms;
 		$options['all_terms'] = $this->all_terms;
 		update_option( 'teccc_options', $options );
@@ -174,8 +175,12 @@ class Main {
 
 	/**
 	 * Add category terms via filter.
+	 *
+	 * @param array $options TECCC options.
+	 *
+	 * @return array $options
 	 */
-	public function add_terms() {
+	public function add_terms( $options ) {
 		$args      = array();
 		$add_terms = apply_filters( 'teccc_add_terms', array() );
 		foreach ( (array) $add_terms as $add_term ) {
@@ -183,8 +188,13 @@ class Main {
 			$args['slug'] = $add_term;
 			if ( ! term_exists( $args['name'], Tribe__Events__Main::TAXONOMY ) ) {
 				wp_insert_term( $args['name'], Tribe__Events__Main::TAXONOMY, $args );
+				$options[ $add_term . '-text' ]       = '#000';
+				$options[ $add_term . '-background' ] = '#CFCFCF';
+				$options[ $add_term . '-border' ]     = '#CFCFCF';
 			}
 		}
+
+		return $options;
 	}
 
 	/**
@@ -318,12 +328,9 @@ class Main {
 		if ( '1' === $tmp['chk_default_options_db'] || ! is_array( $tmp ) ) {
 			delete_option( 'teccc_options' );
 			for ( $i = 0; $i < $teccc->count; $i ++ ) {
-				$arr[ $teccc->slugs[ $i ] . '-text' ]            = '#000';
-				$arr[ $teccc->slugs[ $i ] . '-background' ]      = '#CFCFCF';
-				$arr[ $teccc->slugs[ $i ] . '-border' ]          = '#CFCFCF';
-				$arr[ $teccc->slugs[ $i ] . '-border_none' ]     = '1';
-				$arr[ $teccc->slugs[ $i ] . '-background_none' ] = '1';
-				$arr['hide'][ $teccc->slugs[ $i ] ]              = null;
+				$arr[ $teccc->slugs[ $i ] . '-text' ]       = '#000';
+				$arr[ $teccc->slugs[ $i ] . '-background' ] = '#CFCFCF';
+				$arr[ $teccc->slugs[ $i ] . '-border' ]     = '#CFCFCF';
 			}
 			$arr['font_weight']    = 'bold';
 			$arr['featured-event'] = '#0ea0d7';
