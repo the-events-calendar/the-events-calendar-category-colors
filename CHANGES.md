@@ -1,6 +1,7 @@
 #### [unreleased]
 * move `teccc_get_terms` filter after filters `teccc_add_terms` and `teccc_delete_terms`
 * add default values when using `teccc_add_terms` filter
+* added `class Bootstrap` for plugin loading, now requires PHP 5.4+
 
 #### 5.3.0 / 2018-08-03
 * fixed widget CSS

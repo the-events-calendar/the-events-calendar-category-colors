@@ -73,7 +73,7 @@ class Main {
 	/**
 	 * Main constructor.
 	 */
-	protected function __construct() {
+	public function __construct() {
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
 
