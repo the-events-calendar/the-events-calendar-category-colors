@@ -40,7 +40,7 @@ class Admin {
 	/**
 	 * @param array $input
 	 *
-	 * @todo streamline validation/sanitization work, replace deprecated function calls
+	 * TODO: streamline validation/sanitization work, replace deprecated function calls
 	 * @return array $input
 	 */
 	public function validate_options( $input ) {
@@ -122,10 +122,12 @@ class Admin {
 		$teccc = Main::instance();
 
 		$content = $teccc->view(
-			'optionsform', array(
+			'optionsform',
+			array(
 				'options' => self::fetch_options( $teccc ),
 				'teccc'   => $teccc,
-			), false
+			),
+			false
 		);
 
 		return $content;

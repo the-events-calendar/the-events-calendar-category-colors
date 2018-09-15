@@ -110,12 +110,11 @@ class Frontend {
 	 */
 	protected function generate_css() {
 		// Look out for refresh requests.
-		$refresh_css = array_key_exists( 'refresh_css', $_GET ) ? true : false;
+		$refresh_css = array_key_exists( 'refresh_css', $_GET );
 		$current     = get_transient( $this->cache_key );
-		// TODO: update for PHP 5.4+
-		$css_dir  = $this->uploads['basedir'];
-		$css_file = glob( "{$css_dir}/teccc*.{css}", GLOB_BRACE );
-		$current  = strpos( $css_file[0], $this->cache_key )
+		$css_dir     = $this->uploads['basedir'];
+		$css_file    = glob( "{$css_dir}/teccc*.{css}", GLOB_BRACE );
+		$current     = strpos( $css_file[0], $this->cache_key )
 			? $current
 			: false;
 
@@ -126,10 +125,12 @@ class Frontend {
 
 		// Else generate the CSS afresh.
 		$css = $this->teccc->view(
-			'category.css', array(
+			'category.css',
+			array(
 				'options' => $this->options,
 				'teccc'   => $this->teccc,
-			), false
+			),
+			false
 		);
 		if ( ! $css ) {
 			return false;
@@ -196,10 +197,12 @@ class Frontend {
 		}
 
 		$content = $this->teccc->view(
-			'legend', array(
+			'legend',
+			array(
 				'options' => $this->options,
 				'teccc'   => $this->teccc,
-			), false
+			),
+			false
 		);
 
 		$this->legendFilterHasRun = true;
@@ -226,7 +229,8 @@ class Frontend {
 		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong(
 				__CLASS__ . '::' . __METHOD__,
-				'You are attempting to reposition the legend after it has already been rendered.', '1.6.4'
+				'You are attempting to reposition the legend after it has already been rendered.',
+				'1.6.4'
 			);
 		}
 
@@ -248,7 +252,8 @@ class Frontend {
 		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong(
 				__CLASS__ . '::' . __METHOD__,
-				'You are attempting to remove the default legend after it has already been rendered.', '1.6.4'
+				'You are attempting to remove the default legend after it has already been rendered.',
+				'1.6.4'
 			);
 		}
 
