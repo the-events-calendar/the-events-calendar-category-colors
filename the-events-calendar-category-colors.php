@@ -12,7 +12,7 @@
  * License URI:       http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * GitHub Plugin URI: https://github.com/afragen/the-events-calendar-category-colors
  * Requires PHP:      5.4
- * Requires WP:       4.8
+ * Requires WP:       4.6
  */
 
 /*
