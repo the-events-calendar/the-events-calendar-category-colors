@@ -13,6 +13,14 @@ add_action(
 	15
 );
 
+add_action(
+	'init',
+	function() {
+		load_plugin_textdomain( 'the-events-calendar-category-colors', false, TECCC_LANG );
+
+	}
+);
+
 /**
  * Class Bootstrap
  */
@@ -41,9 +49,6 @@ class Bootstrap {
 		// Autoloading
 		require_once TECCC_DIR . '/src/Autoloader.php';
 		new \Fragen\Autoloader( $root, $compatibility );
-
-		// Load translation files. This is loaded in 'plugins_loaded'.
-		load_plugin_textdomain( 'the-events-calendar-category-colors', false, TECCC_LANG );
 
 		// Set-up Action and Filter Hooks
 		register_activation_hook( TECCC_FILE, array( 'Fragen\Category_Colors\Main', 'add_defaults' ) );
