@@ -51,16 +51,14 @@ class Admin {
 		foreach ( $teccc->all_terms as $attributes ) {
 			$slug = $attributes[ Main::SLUG ];
 
-			// Sanitize textbox input (strip html tags, and escape characters)
-			// May not be needed with jQuery color picker
-			$input[ "{$slug}-background" ] = wp_filter_nohtml_kses( $input[ "{$slug}-background" ] );
-			$input[ "{$slug}-background" ] = preg_replace( '[^#A-Za-z0-9]', '', $input[ "{$slug}-background" ] );
+			// Sanitize textbox input.
+			// May not be needed with jQuery color picker.
+			$input[ "{$slug}-background" ] = sanitize_hex_color( $input[ "{$slug}-background" ] );
 			if ( empty( $input[ "{$slug}-background" ] ) ) {
 				$input[ "{$slug}-background" ] = '#CFCFCF';
 			}
 
-			$input[ "{$slug}-border" ] = wp_filter_nohtml_kses( $input[ "{$slug}-border" ] );
-			$input[ "{$slug}-border" ] = preg_replace( '[^#A-Za-z0-9]', '', $input[ "{$slug}-border" ] );
+			$input[ "{$slug}-border" ] = sanitize_hex_color( $input[ "{$slug}-border" ] );
 			if ( empty( $input[ "{$slug}-border" ] ) ) {
 				$input[ "{$slug}-border" ] = '#CFCFCF';
 			}
