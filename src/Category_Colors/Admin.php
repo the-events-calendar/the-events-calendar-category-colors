@@ -78,9 +78,8 @@ class Admin {
 		}
 
 		// Set appropriate values for featured event.
-		if ( isset( $input['featured-event_none'] ) ) {
-			$input['featured-event'] = 'transparent';
-		} else {
+		$input['featured-event'] = isset( $input['featured-event_none'] ) ? 'transparent' : sanitize_hex_color( $input['featured-event'] );
+		if ( empty( $input['featured-event'] ) ) {
 			$input['featured-event'] = '#0ea0d7';
 		}
 
