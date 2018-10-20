@@ -19,7 +19,6 @@ class Admin {
 		add_action( 'admin_notices', array( $this, 'plugin_fail_msg' ) );
 		add_action( 'tribe_settings_below_tabs_tab_category-colors', array( $this, 'is_saved' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_teccc_js_css' ) );
-		load_plugin_textdomain( 'the-events-calendar-category-colors', false, TECCC_LANG );
 	}
 
 	public function init() {
@@ -41,7 +40,7 @@ class Admin {
 	/**
 	 * @param array $input
 	 *
-	 * @todo streamline validation/sanitization work, replace deprecated function calls
+	 * TODO: streamline validation/sanitization work, replace deprecated function calls
 	 * @return array $input
 	 */
 	public function validate_options( $input ) {
@@ -52,16 +51,14 @@ class Admin {
 		foreach ( $teccc->all_terms as $attributes ) {
 			$slug = $attributes[ Main::SLUG ];
 
-			// Sanitize textbox input (strip html tags, and escape characters)
-			// May not be needed with jQuery color picker
-			$input[ "{$slug}-background" ] = wp_filter_nohtml_kses( $input[ "{$slug}-background" ] );
-			$input[ "{$slug}-background" ] = preg_replace( '[^#A-Za-z0-9]', '', $input[ "{$slug}-background" ] );
+			// Sanitize textbox input.
+			// May not be needed with jQuery color picker.
+			$input[ "{$slug}-background" ] = sanitize_hex_color( $input[ "{$slug}-background" ] );
 			if ( empty( $input[ "{$slug}-background" ] ) ) {
 				$input[ "{$slug}-background" ] = '#CFCFCF';
 			}
 
-			$input[ "{$slug}-border" ] = wp_filter_nohtml_kses( $input[ "{$slug}-border" ] );
-			$input[ "{$slug}-border" ] = preg_replace( '[^#A-Za-z0-9]', '', $input[ "{$slug}-border" ] );
+			$input[ "{$slug}-border" ] = sanitize_hex_color( $input[ "{$slug}-border" ] );
 			if ( empty( $input[ "{$slug}-border" ] ) ) {
 				$input[ "{$slug}-border" ] = '#CFCFCF';
 			}
@@ -81,9 +78,8 @@ class Admin {
 		}
 
 		// Set appropriate values for featured event.
-		if ( isset( $input['featured-event_none'] ) ) {
-			$input['featured-event'] = 'transparent';
-		} else {
+		$input['featured-event'] = isset( $input['featured-event_none'] ) ? 'transparent' : sanitize_hex_color( $input['featured-event'] );
+		if ( empty( $input['featured-event'] ) ) {
 			$input['featured-event'] = '#0ea0d7';
 		}
 
@@ -123,10 +119,12 @@ class Admin {
 		$teccc = Main::instance();
 
 		$content = $teccc->view(
-			'optionsform', array(
+			'optionsform',
+			array(
 				'options' => self::fetch_options( $teccc ),
 				'teccc'   => $teccc,
-			), false
+			),
+			false
 		);
 
 		return $content;

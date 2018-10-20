@@ -29,7 +29,9 @@ jQuery( document ).ready(
 		 */
 		function deselect(slug) {
 			$( status.allEntries ).fadeTo(
-				status.speed, 1, function () {
+				status.speed,
+				1,
+				function () {
 					status.selected = false;
 					status.working  = false;
 				}
@@ -65,7 +67,9 @@ jQuery( document ).ready(
 			// Now focus in on the new selection
 			var slug = ".tribe-events-category-" + selection;
 			$( status.allEntries ).not( slug ).fadeTo(
-				status.speed, status.opacity, function () {
+				status.speed,
+				status.opacity,
+				function () {
 					status.selected = selection;
 					status.working  = false;
 				}

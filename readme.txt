@@ -2,10 +2,10 @@
 Contributors: afragen, barry.hughes
 Donate link: http://thefragens.com/category-colors-donate
 Tags: events, color, modern tribe, tribe
-Requires at least: 3.8
-Requires PHP: 5.3
-Tested up to: 4.9
-Stable tag: 5.3.0
+Requires at least: 4.6
+Requires PHP: 5.4
+Tested up to: 5.0
+Stable tag: 6.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,12 +18,6 @@ Add background colors to event categories displayed in the event views of The Ev
 Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page.
 
 To force a refresh of your CSS, add `?refresh_css` to the end of your events URL.
-
-## Installation
-
-1. Upload the entire `/the-events-calendar-category-colors/` folder to the `/wp-content/plugins/` directory.
-1. Activate the plugin.
-1. Go to the Category Colors tab of The Event Calendar Settings page.
 
 ## Frequently Asked Questions
 
@@ -52,6 +46,13 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 6.0.0 / 2018-10-20
+* move `teccc_get_terms` filter after filters `teccc_add_terms` and `teccc_delete_terms`
+* add default values when using `teccc_add_terms` filter
+* added `class Bootstrap` for plugin loading, now requires PHP 5.4+
+* use `sanitize_hex_color()` for validation of color picker data
+* fixed coloring for _featured events_
 
 #### 5.3.0 / 2018-08-03
 * fixed widget CSS

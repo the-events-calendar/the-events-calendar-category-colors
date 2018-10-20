@@ -125,7 +125,8 @@ if ( ! class_exists( 'Fragen\\Autoloader' ) ) {
 				$paths[] = array_map(
 					function( $dir ) use ( $file_name ) {
 							return $dir . DIRECTORY_SEPARATOR . $file_name . '.php';
-					}, $dirs
+					},
+					$dirs
 				);
 			}
 

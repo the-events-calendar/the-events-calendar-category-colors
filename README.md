@@ -5,9 +5,9 @@
 * Tags: events, color, modern tribe, tribe
 * License: GPLv2 or later
 * License URI: <http://www.gnu.org/licenses/gpl-2.0.html>
-* Requires at least: 3.8
+* Requires at least: 4.6
 * Tested to: 4.9
-* Requires PHP: 5.3
+* Requires PHP: 5.4
 
 Add event category background colors to The Events Calendar events.
 
