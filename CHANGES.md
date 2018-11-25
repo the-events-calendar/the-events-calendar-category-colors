@@ -1,5 +1,10 @@
 #### [unreleased]
 
+#### 6.1.0 / 2018-11-25
+* use composer autoloader
+* remove `Back_Compat` shims, now in TEC
+* SSL readme links
+
 #### 6.0.0 / 2018-10-20
 * move `teccc_get_terms` filter after filters `teccc_add_terms` and `teccc_delete_terms`
 * add default values when using `teccc_add_terms` filter
