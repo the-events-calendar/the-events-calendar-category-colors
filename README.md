@@ -6,7 +6,6 @@
 * License: GPLv2 or later
 * License URI: <https://www.gnu.org/licenses/gpl-2.0.html>
 * Requires at least: 4.6
-* Tested to: 4.9
 * Requires PHP: 5.4
 
 Add event category background colors to The Events Calendar events.
