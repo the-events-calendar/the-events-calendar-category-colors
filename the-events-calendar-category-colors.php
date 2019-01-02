@@ -29,7 +29,7 @@ if ( version_compare( '5.4.0', PHP_VERSION, '>=' ) ) {
 		/* translators: 1: minimum PHP version required, 2: Upgrade PHP URL */
 		wp_kses_post( __( 'The Events Calendar Category Colors cannot run on PHP versions older than %1$s. <a href="%2$s">Learn about upgrading your PHP.</a>', 'the-events-calendar-category-colors' ) ),
 		'5.4.0',
-		esc_url( __( 'https://wordpress.org/support/upgrade-php/' ) )
+		esc_url( __( 'https://wordpress.org/support/update-php/' ) )
 	);
 	echo '</p></div>';
 
