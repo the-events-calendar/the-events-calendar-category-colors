@@ -1,5 +1,6 @@
 #### [unreleased]
 
+* fix PHP notice [#102](https://github.com/afragen/the-events-calendar-category-colors/pull/102)
 #### 6.1.0 / 2018-11-25
 * use composer autoloader
 * remove `Back_Compat` shims, now in TEC
