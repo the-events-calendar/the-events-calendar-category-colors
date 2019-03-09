@@ -114,7 +114,7 @@ class Frontend {
 		$current     = get_transient( $this->cache_key );
 		$css_dir     = $this->uploads['basedir'];
 		$css_file    = glob( "{$css_dir}/teccc*.{css}", GLOB_BRACE );
-		$current     = strpos( $css_file[0], $this->cache_key )
+		$current     = ! empty( $css_file ) && strpos( $css_file[0], $this->cache_key )
 			? $current
 			: false;
 

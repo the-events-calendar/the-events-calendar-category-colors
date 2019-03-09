@@ -4,7 +4,7 @@ Donate link: https://thefragens.com/category-colors-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 4.6
 Requires PHP: 5.4
-Tested up to: 5.0
+Tested up to: 5.1
 Stable tag: 6.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -46,6 +46,11 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 6.1.1 / 2019-03-09
+* fix PHP notice [#102](https://github.com/afragen/the-events-calendar-category-colors/pull/102)
+* updated `composer.json`
+* update message incompatible PHP version for consistency with WP core
 
 #### 6.0.0 / 2018-10-20
 * move `teccc_get_terms` filter after filters `teccc_add_terms` and `teccc_delete_terms`

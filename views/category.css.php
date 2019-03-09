@@ -33,7 +33,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Extras::add_week_link_css( $slug ); ?>
 	<?php Extras::add_list_link_css( $slug ); ?>
 	<?php Extras::override_customizer( $slug ); ?>
-	<?php //Extras::add_deprecated_link_css( $slug ); ?>
+	<?php // Extras::add_deprecated_link_css( $slug ); ?>
 	<?php Widgets::add_widget_link_css( $slug ); ?>
 	<?php Extras::add_featured_event_link_css( $slug ); ?>
 #tribe-events-content table.tribe-events-calendar .tribe-event-featured.tribe-events-category-<?php echo $slug; ?> .tribe-events-month-event-title a,
@@ -54,8 +54,8 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Extras::add_map_background_css( $slug ); ?>
 	<?php Extras::add_week_background_css( $slug ); ?>
 	<?php Extras::add_list_background_css( $slug ); ?>
-	<?php //Extras::add_deprecated_week_background_css( $slug ); ?>
-	<?php //Extras::add_deprecated_background_css( $slug ); ?>
+	<?php // Extras::add_deprecated_week_background_css( $slug ); ?>
+	<?php // Extras::add_deprecated_background_css( $slug ); ?>
 	<?php Extras::override_customizer( $slug ); ?>
 	<?php Widgets::add_widget_background_css( $slug ); ?>
 .events-archive.events-gridview #tribe-events-content table .type-tribe_events.tribe-events-category-<?php echo $slug; ?>,
