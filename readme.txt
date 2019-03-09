@@ -47,6 +47,11 @@ There is more extensive documentation of the plugins features and usage on the [
 
 ## Changelog
 
+#### 6.1.1 / 2019-03-09
+* fix PHP notice [#102](https://github.com/afragen/the-events-calendar-category-colors/pull/102)
+* updated `composer.json`
+* update message incompatible PHP version for consistency with WP core
+
 #### 6.0.0 / 2018-10-20
 * move `teccc_get_terms` filter after filters `teccc_add_terms` and `teccc_delete_terms`
 * add default values when using `teccc_add_terms` filter
