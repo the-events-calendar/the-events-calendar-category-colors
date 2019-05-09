@@ -3,4 +3,3 @@
 .gitattributes export-ignore
 .gitignore export-ignore
 composer.json export-ignore
-.svnignore export-ignore
