@@ -64,7 +64,8 @@ class Frontend {
 		$css_url        = $this->uploads['baseurl'];
 		$min            = defined( 'WP_DEBUG' ) && WP_DEBUG ? null : '.min';
 		$stylesheet_url = "{$css_url}/{$this->cache_key}{$min}.css";
-		wp_register_style( 'teccc_stylesheet', $stylesheet_url, false, Main::$version );
+		$version        = array_key_exists( 'refresh_css', $_GET ) ? microtime( true ) : Main::$version;
+		wp_register_style( 'teccc_stylesheet', $stylesheet_url, false, $version );
 		wp_enqueue_style( 'teccc_stylesheet' );
 
 		// Optionally add legend superpowers

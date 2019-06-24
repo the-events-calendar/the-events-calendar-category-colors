@@ -1,4 +1,5 @@
 #### [unreleased]
+* bust CSS browser cache with `?refresh_css`
 
 #### 6.1.1 / 2019-03-09
 * fix PHP notice [#102](https://github.com/afragen/the-events-calendar-category-colors/pull/102)
