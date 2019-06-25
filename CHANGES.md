@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 6.1.2 / 2019-06-25
 * bust CSS browser cache with `?refresh_css`
 * some WPCS fixes
 
