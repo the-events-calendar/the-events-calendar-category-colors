@@ -16,11 +16,17 @@ return array(
 		),
 		'blurb'              => array(
 			'type' => 'html',
-			'html' => '<p>' . sprintf( esc_html__( 'The Events Calendar Category Colors plugin was inspired by the tutorial %1$sColoring Your Category Events%2$s.', 'the-events-calendar-category-colors' ), '<i>', '</i>' ) . '</p>',
+			'html' => '<p>' . sprintf(
+				wp_kses_post(
+					__( 'The Events Calendar Category Colors plugin was inspired by the tutorial <i>Coloring Your Category Events</i>.', 'the-events-calendar-category-colors' )
+				)
+			) . '</p>',
 		),
 		'legend'             => array(
 			'type' => 'html',
-			'html' => '<p>' . sprintf( esc_html__( 'Instructions for %1$sfilters%2$s, %1$shooks%2$s, %1$ssettings functions%2$s, and %1$shelp%2$s are on %3$sThe Events Calendar Category Colors wiki%4$s.', 'the-events-calendar-category-colors' ), '<strong>', '</strong>', '<a href="https://github.com/afragen/the-events-calendar-category-colors/wiki">', '</a>' ) . '</p>',
+			'html' => '<p>' . sprintf(
+				wp_kses_post( __( 'Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</strong>, and <strong>help</strong> are on <a href="https://github.com/afragen/the-events-calendar-category-colors/wiki">The Events Calendar Category Colors wiki</a>.', 'the-events-calendar-category-colors' ) )
+			) . '</p>',
 		),
 		'info-end'           => array(
 			'type' => 'html',

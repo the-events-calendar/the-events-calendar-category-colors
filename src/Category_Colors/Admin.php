@@ -30,9 +30,26 @@ class Admin {
 			$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 			$title = esc_html__( 'The Events Calendar', 'the-events-calendar-category-colors' );
 			if ( ! class_exists( 'Tribe__Events__Main' ) ) {
-				echo '<div class="error"><p>' . sprintf( __( 'To begin using The Events Calendar Category Colors, please install the latest version of %1$sThe Events Calendar%2$s.', 'the-events-calendar-category-colors' ), '<a href="' . $url . '" class="thickbox" title="' . $title . '">', '</a>' ) . '</p></div>';
+				echo '<div class="error"><p>' . sprintf(
+					wp_kses_post(
+						/* translators: %1$s, %2$s: href to The Events Calendar */
+						__( 'To begin using The Events Calendar Category Colors, please install the latest version of %1$sThe Events Calendar%2$.', 'the-events-calendar-category-colors' )
+					),
+					'<a href="' . $url . '" class="thickbox" title="' . $title . '">',
+					'</a>'
+				)
+				. '</p></div>';
 			} elseif ( version_compare( Tribe__Events__Main::VERSION, '3.0', 'lt' ) ) {
-				echo '<div class="error"><p>' . sprintf( __( 'You have The Events Calendar v.%1$s. To begin using The Events Calendar Category Colors, please install the latest version of <a href="%2$s" class="thickbox" title="%3$s">The Events Calendar</a>.', 'the-events-calendar-category-colors' ), Tribe__Events__Main::VERSION, '<a href="' . $url . '" class="thickbox" title="' . $title . '">', '</a>' ) . '</p></div>';
+				echo '<div class="error"><p>' . sprintf(
+					wp_kses_post(
+						/* translators: %1$s: TEC version, %2$s, %3$s: href to Events Calendar */
+						__( 'You have The Events Calendar v.%1$s. To begin using The Events Calendar Category Colors, please install the latest version of %2$sThe Events Calendar%3$s.', 'the-events-calendar-category-colors' )
+					),
+					Tribe__Events__Main::VERSION,
+					'<a href="' . $url . '" class="thickbox" title="' . $title . '">',
+					'</a>'
+				)
+				. '</p></div>';
 			}
 		}
 	}

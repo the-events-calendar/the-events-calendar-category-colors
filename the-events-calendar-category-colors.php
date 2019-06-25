@@ -36,7 +36,7 @@ if ( version_compare( '5.4.0', PHP_VERSION, '>=' ) ) {
 	return false;
 }
 
-// We'll use PHP 5.3 syntax to get the plugin directory
+// We'll use PHP 5.3 syntax to get the plugin directory.
 define( 'TECCC_DIR', __DIR__ );
 define( 'TECCC_FILE', __FILE__ );
 define( 'TECCC_CLASSES', TECCC_DIR . '/src' );
