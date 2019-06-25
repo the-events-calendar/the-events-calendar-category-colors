@@ -1,5 +1,9 @@
 #### [unreleased]
 
+#### 6.1.2 / 2019-06-25
+* bust CSS browser cache with `?refresh_css`
+* some WPCS fixes
+
 #### 6.1.1 / 2019-03-09
 * fix PHP notice [#102](https://github.com/afragen/the-events-calendar-category-colors/pull/102)
 * updated `composer.json`
