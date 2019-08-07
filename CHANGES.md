@@ -1,4 +1,5 @@
 #### [unreleased]
+* add filter to set options hash, hopefully this solves an issue with load balancers not having current files
 
 #### 6.1.2 / 2019-06-25
 * bust CSS browser cache with `?refresh_css`

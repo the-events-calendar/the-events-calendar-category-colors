@@ -99,7 +99,14 @@ class Frontend {
 		// We also need to be cognizant of the mobile breakpoint
 		$config['breakpoint'] = tribe_get_mobile_breakpoint();
 
-		return hash( 'md5', implode( '|', $config ) );
+		$hash = hash( 'md5', implode( '|', $config ) );
+
+		/**
+		 * Filter options hash.
+		 *
+		 * @return string $hash
+		 */
+		return apply_filters( 'teccc_set_options_hash', $hash );
 	}
 
 	/**
