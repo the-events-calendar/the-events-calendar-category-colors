@@ -30,7 +30,7 @@ class Frontend {
 		add_action( 'init', array( $this, 'add_colored_categories' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX - 100 );
 		add_filter( 'upload_dir', array( $this, 'filter_upload_dir' ), 10, 1 );
-		$this->uploads = wp_get_upload_dir();
+		$this->uploads = wp_upload_dir();
 	}
 
 	/**
