@@ -30,7 +30,7 @@ class Frontend {
 		add_action( 'init', array( $this, 'add_colored_categories' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX - 100 );
 		add_filter( 'upload_dir', array( $this, 'filter_upload_dir' ), 10, 1 );
-		$this->uploads = wp_get_upload_dir();
+		$this->uploads = wp_upload_dir();
 	}
 
 	/**
@@ -99,7 +99,14 @@ class Frontend {
 		// We also need to be cognizant of the mobile breakpoint
 		$config['breakpoint'] = tribe_get_mobile_breakpoint();
 
-		return hash( 'md5', implode( '|', $config ) );
+		$hash = hash( 'md5', implode( '|', $config ) );
+
+		/**
+		 * Filter options hash.
+		 *
+		 * @return string $hash
+		 */
+		return apply_filters( 'teccc_set_options_hash', $hash );
 	}
 
 	/**
