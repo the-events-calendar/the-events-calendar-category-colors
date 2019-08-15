@@ -47,6 +47,11 @@ There is more extensive documentation of the plugins features and usage on the [
 
 ## Changelog
 
+#### 6.2.0
+* add filter to set options hash, hopefully this solves an issue with load balancers not having current files
+* change `wp_get_updload_dir()` to `wp_upload_dir()` so that if the directory doesn't exist it is created
+* the above fixes [Writing to CSS file failing](https://wordpress.org/support/topic/writing-to-css-file-failing/), thanks @dpegasusm
+
 #### 6.1.1 / 2019-03-09
 * fix PHP notice [#102](https://github.com/afragen/the-events-calendar-category-colors/pull/102)
 * updated `composer.json`
