@@ -25,7 +25,7 @@ class Frontend {
 		$this->options   = Admin::fetch_options( $teccc );
 		$this->cache_key = 'teccc_' . $this->options_hash();
 
-		require_once TECCC_INCLUDES . '/templatetags.php';
+		require_once $teccc->functions_dir . '/templatetags.php';
 
 		add_action( 'init', array( $this, 'add_colored_categories' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX - 100 );
@@ -73,7 +73,7 @@ class Frontend {
 			'1' === $this->options['legend_superpowers'] &&
 			! wp_is_mobile()
 		) {
-			wp_register_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
+			wp_register_script( 'legend_superpowers', $this->teccc->resources_url . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
 			wp_enqueue_script( 'legend_superpowers' );
 		}
 	}

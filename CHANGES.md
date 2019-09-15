@@ -1,4 +1,6 @@
 #### [unreleased]
+* structural reorganization of plugin
+* update WordPress and PHP requirements to align with The Events Calendar
 
 #### 6.2.0
 * add filter to set options hash, hopefully this solves an issue with load balancers not having current files

@@ -3,7 +3,8 @@
 
 #legend a { text-decoration: none; }
 
-#tribe-events #legend li {
+#tribe-events #legend li
+{
 	display: inline-block;
 	list-style-type: none;
 	padding: 7px;
