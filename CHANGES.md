@@ -1,6 +1,7 @@
 #### [unreleased]
 * structural reorganization of plugin
 * update WordPress and PHP requirements to align with The Events Calendar
+* remove `GLOB_BRACE` as unneeded and limiting [#108](https://github.com/afragen/the-events-calendar-category-colors/pull/108), thanks @DakuTree
 
 #### 6.2.0
 * add filter to set options hash, hopefully this solves an issue with load balancers not having current files
