@@ -2,16 +2,16 @@
 # This file is distributed under the same license as the The Events Calendar Category Colors plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: The Events Calendar Category Colors 6.2.0\n"
+"Project-Id-Version: The Events Calendar Category Colors 6.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/the-events-calendar-category-colors\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-08-15T16:51:39+00:00\n"
+"POT-Creation-Date: 2019-10-04T17:06:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.2.0\n"
+"X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: the-events-calendar-category-colors\n"
 
 #. Plugin Name of the plugin
@@ -34,115 +34,6 @@ msgstr ""
 msgid "http://thefragens.com"
 msgstr ""
 
-#: includes/admintab.php:15
-msgid "Category Colors Settings"
-msgstr ""
-
-#: includes/admintab.php:21
-msgid "The Events Calendar Category Colors plugin was inspired by the tutorial <i>Coloring Your Category Events</i>."
-msgstr ""
-
-#: includes/admintab.php:28
-msgid "Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
-msgstr ""
-
-#: includes/admintab.php:45
-msgid "Save Changes"
-msgstr ""
-
-#: includes/templatetags.php:56
-msgid "Use of this function is deprecated"
-msgstr ""
-
-#. translators: 1: minimum PHP version required, 2: Upgrade PHP URL
-#: the-events-calendar-category-colors.php:30
-msgid "The Events Calendar Category Colors cannot run on PHP versions older than %1$s. <a href=\"%2$s\">Learn about updating your PHP.</a>"
-msgstr ""
-
-#: views/optionsform.php:14
-msgid "Hide"
-msgstr ""
-
-#: views/optionsform.php:16
-msgid "Category Slug"
-msgstr ""
-
-#: views/optionsform.php:17
-msgid "Border Color"
-msgstr ""
-
-#: views/optionsform.php:18
-msgid "Background Color"
-msgstr ""
-
-#: views/optionsform.php:19
-msgid "Text Color"
-msgstr ""
-
-#: views/optionsform.php:20
-msgid "Current Display"
-msgstr ""
-
-#: views/optionsform.php:46
-msgid "No Border"
-msgstr ""
-
-#: views/optionsform.php:64
-msgid "No Background"
-msgstr ""
-
-#: views/optionsform.php:109
-msgid "Featured Event Color"
-msgstr ""
-
-#: views/optionsform.php:114
-msgid "Transparent"
-msgstr ""
-
-#: views/optionsform.php:129
-msgid "Add right border for featured events."
-msgstr ""
-
-#: views/optionsform.php:140
-msgid "Font-Weight Options"
-msgstr ""
-
-#: views/optionsform.php:151
-msgid "Add Category Legend"
-msgstr ""
-
-#: views/optionsform.php:154
-msgid "Check to add a Category Legend to the calendar."
-msgstr ""
-
-#: views/optionsform.php:161
-msgid "Check to add Legend Superpowers."
-msgstr ""
-
-#: views/optionsform.php:163
-msgid "Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it."
-msgstr ""
-
-#: views/optionsform.php:169
-msgid "Show hidden categories in legend."
-msgstr ""
-
-#: views/optionsform.php:176
-msgid "Check to use your own CSS for category legend."
-msgstr ""
-
-#: views/optionsform.php:180
-msgid "Database Options"
-msgstr ""
-
-#: views/optionsform.php:183
-msgid "Restore defaults upon plugin deactivation/reactivation"
-msgstr ""
-
-#: views/optionsform.php:185
-msgid "Only check this if you want to reset plugin settings upon Plugin reactivation"
-msgstr ""
-
 #: src/Category_Colors/Admin.php:31
 msgid "The Events Calendar"
 msgstr ""
@@ -163,4 +54,113 @@ msgstr ""
 
 #: src/Category_Colors/Admin.php:129
 msgid "Settings saved."
+msgstr ""
+
+#: src/functions/admintab.php:15
+msgid "Category Colors Settings"
+msgstr ""
+
+#: src/functions/admintab.php:21
+msgid "The Events Calendar Category Colors plugin was inspired by the tutorial <i>Coloring Your Category Events</i>."
+msgstr ""
+
+#: src/functions/admintab.php:28
+msgid "Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
+msgstr ""
+
+#: src/functions/admintab.php:45
+msgid "Save Changes"
+msgstr ""
+
+#: src/functions/templatetags.php:56
+msgid "Use of this function is deprecated"
+msgstr ""
+
+#: src/views/optionsform.php:14
+msgid "Hide"
+msgstr ""
+
+#: src/views/optionsform.php:16
+msgid "Category Slug"
+msgstr ""
+
+#: src/views/optionsform.php:17
+msgid "Border Color"
+msgstr ""
+
+#: src/views/optionsform.php:18
+msgid "Background Color"
+msgstr ""
+
+#: src/views/optionsform.php:19
+msgid "Text Color"
+msgstr ""
+
+#: src/views/optionsform.php:20
+msgid "Current Display"
+msgstr ""
+
+#: src/views/optionsform.php:46
+msgid "No Border"
+msgstr ""
+
+#: src/views/optionsform.php:64
+msgid "No Background"
+msgstr ""
+
+#: src/views/optionsform.php:109
+msgid "Featured Event Color"
+msgstr ""
+
+#: src/views/optionsform.php:114
+msgid "Transparent"
+msgstr ""
+
+#: src/views/optionsform.php:129
+msgid "Add right border for featured events."
+msgstr ""
+
+#: src/views/optionsform.php:140
+msgid "Font-Weight Options"
+msgstr ""
+
+#: src/views/optionsform.php:151
+msgid "Add Category Legend"
+msgstr ""
+
+#: src/views/optionsform.php:154
+msgid "Check to add a Category Legend to the calendar."
+msgstr ""
+
+#: src/views/optionsform.php:161
+msgid "Check to add Legend Superpowers."
+msgstr ""
+
+#: src/views/optionsform.php:163
+msgid "Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it."
+msgstr ""
+
+#: src/views/optionsform.php:169
+msgid "Show hidden categories in legend."
+msgstr ""
+
+#: src/views/optionsform.php:176
+msgid "Check to use your own CSS for category legend."
+msgstr ""
+
+#: src/views/optionsform.php:180
+msgid "Database Options"
+msgstr ""
+
+#: src/views/optionsform.php:183
+msgid "Restore defaults upon plugin deactivation/reactivation"
+msgstr ""
+
+#: src/views/optionsform.php:185
+msgid "Only check this if you want to reset plugin settings upon Plugin reactivation"
+msgstr ""
+
+#. translators: 1: minimum PHP version required, 2: Upgrade PHP URL
+#: the-events-calendar-category-colors.php:31
+msgid "The Events Calendar Category Colors cannot run on PHP versions older than %1$s. <a href=\"%2$s\">Learn about updating your PHP.</a>"
 msgstr ""

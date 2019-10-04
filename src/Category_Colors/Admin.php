@@ -208,7 +208,7 @@ class Admin {
 	 *
 	 * @return bool
 	 */
-	public static function load_teccc_js_css( $hook ) {
+	public function load_teccc_js_css( $hook ) {
 		if ( 'tribe_events_page_tribe-events-calendar' !== $hook &&
 			'tribe_events_page_tribe-common' !== $hook
 		) {
@@ -217,9 +217,9 @@ class Admin {
 
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		wp_enqueue_style( 'teccc-iris', TECCC_RESOURCES . '/teccc-iris.css', false, Main::$version );
-		wp_enqueue_script( 'teccc-admin', TECCC_RESOURCES . '/teccc-admin.js', false, Main::$version, true );
-		wp_enqueue_style( 'teccc-options', TECCC_RESOURCES . '/teccc-options.css', false, Main::$version );
+		wp_enqueue_style( 'teccc-iris', $this->teccc->resources_url . '/teccc-iris.css', false, Main::$version );
+		wp_enqueue_script( 'teccc-admin', $this->teccc->resources_url . '/teccc-admin.js', false, Main::$version, true );
+		wp_enqueue_style( 'teccc-options', $this->teccc->resources_url . '/teccc-options.css', false, Main::$version );
 	}
 
 }

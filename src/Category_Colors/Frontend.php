@@ -25,7 +25,7 @@ class Frontend {
 		$this->options   = Admin::fetch_options( $teccc );
 		$this->cache_key = 'teccc_' . $this->options_hash();
 
-		require_once TECCC_INCLUDES . '/templatetags.php';
+		require_once $teccc->functions_dir . '/templatetags.php';
 
 		add_action( 'init', array( $this, 'add_colored_categories' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX - 100 );
@@ -73,7 +73,7 @@ class Frontend {
 			'1' === $this->options['legend_superpowers'] &&
 			! wp_is_mobile()
 		) {
-			wp_register_script( 'legend_superpowers', TECCC_RESOURCES . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
+			wp_register_script( 'legend_superpowers', $this->teccc->resources_url . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
 			wp_enqueue_script( 'legend_superpowers' );
 		}
 	}
@@ -121,7 +121,7 @@ class Frontend {
 		$refresh_css = array_key_exists( 'refresh_css', $_GET );
 		$current     = get_transient( $this->cache_key );
 		$css_dir     = $this->uploads['basedir'];
-		$css_file    = glob( "{$css_dir}/teccc*.{css}", GLOB_BRACE );
+		$css_file    = glob( "{$css_dir}/teccc*.css" );
 		$current     = ! empty( $css_file ) && strpos( $css_file[0], $this->cache_key )
 			? $current
 			: false;
@@ -145,7 +145,7 @@ class Frontend {
 		}
 		$css_min = $this->minify_css( $css );
 
-		foreach ( glob( "{$css_dir}/teccc*.{css}", GLOB_BRACE ) as $file ) {
+		foreach ( glob( "{$css_dir}/teccc*.css" ) as $file ) {
 			unlink( $file );
 		}
 		file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );

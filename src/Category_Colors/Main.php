@@ -15,6 +15,9 @@ class Main {
 	const NAME = 1;
 
 	public static $version;
+	public $functions_dir;
+	public $views_dir;
+	public $resources_url;
 
 	public $text_colors = array(
 		'Default' => 'no_color',
@@ -74,6 +77,10 @@ class Main {
 	 * Main constructor.
 	 */
 	public function __construct() {
+		$this->functions_dir = TECCC_DIR . '/src/functions';
+		$this->views_dir     = TECCC_DIR . '/src/views';
+		$this->resources_url = plugin_dir_url( TECCC_FILE ) . 'src/resources';
+
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
 
@@ -269,7 +276,7 @@ class Main {
 	 * @return array
 	 */
 	protected function load_config_array_file( $file ) {
-		$path = TECCC_INCLUDES . "/{$file}.php";
+		$path = $this->functions_dir . "/{$file}.php";
 		if ( ! file_exists( $path ) ) {
 			return array();
 		}
@@ -296,7 +303,7 @@ class Main {
 	public function view( $template, array $vars = null, $render = true ) {
 		$path = locate_template( "tribe-events/teccc/{$template}.php" );
 		if ( empty( $path ) ) {
-			$path = TECCC_VIEWS . "/{$template}.php";
+			$path = $this->views_dir . "/{$template}.php";
 		}
 
 		if ( ! file_exists( $path ) ) {

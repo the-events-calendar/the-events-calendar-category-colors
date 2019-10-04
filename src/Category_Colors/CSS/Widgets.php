@@ -1,8 +1,8 @@
 <?php
 
-namespace Fragen\Category_Colors;
+namespace Fragen\Category_Colors\CSS;
 
-class Widgets extends Frontend {
+class Widgets {
 
 	public static function add_widget_link_css( $slug ) {
 		$css = array();
