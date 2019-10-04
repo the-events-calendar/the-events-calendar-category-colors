@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 6.3.0 / 2019-10-04
 * structural reorganization of plugin
 * update WordPress and PHP requirements to align with The Events Calendar
 * remove `GLOB_BRACE` as unneeded and limiting [#108](https://github.com/afragen/the-events-calendar-category-colors/pull/108), thanks @DakuTree
