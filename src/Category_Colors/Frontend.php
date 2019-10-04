@@ -121,7 +121,7 @@ class Frontend {
 		$refresh_css = array_key_exists( 'refresh_css', $_GET );
 		$current     = get_transient( $this->cache_key );
 		$css_dir     = $this->uploads['basedir'];
-		$css_file    = glob( "{$css_dir}/teccc*.{css}", GLOB_BRACE );
+		$css_file    = glob( "{$css_dir}/teccc*.css" );
 		$current     = ! empty( $css_file ) && strpos( $css_file[0], $this->cache_key )
 			? $current
 			: false;
@@ -145,7 +145,7 @@ class Frontend {
 		}
 		$css_min = $this->minify_css( $css );
 
-		foreach ( glob( "{$css_dir}/teccc*.{css}", GLOB_BRACE ) as $file ) {
+		foreach ( glob( "{$css_dir}/teccc*.css" ) as $file ) {
 			unlink( $file );
 		}
 		file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );
