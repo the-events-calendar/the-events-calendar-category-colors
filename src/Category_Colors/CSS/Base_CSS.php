@@ -27,7 +27,7 @@ class Base_CSS {
 		$css[] = ".teccc-legend .tribe-events-category-{$slug},";
 		$css[] = ".tribe-events-calendar .tribe-events-category-{$slug},";
 		$css[] = "#tribe-events-content .tribe-events-category-{$slug} > .tribe-events-tooltip h3,";
-		$css[] = ".type-tribe_events.tribe-events-category-.tribe-events-category-{$slug} h2,";
+		$css[] = ".type-tribe_events.tribe-events-category-{$slug} h2,";
 		$css[] = ".tribe-events-category-{$slug} > div.hentry.vevent > h3.entry-title,";
 		$css[] = ".tribe-events-mobile.tribe-events-category-{$slug} h4";
 
