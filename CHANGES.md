@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 6.3.1 / 2019-10-24
+* fixed incorrect CSS selector for background colors
+
 #### 6.3.0 / 2019-10-04
 * structural reorganization of plugin
 * update WordPress and PHP requirements to align with The Events Calendar
