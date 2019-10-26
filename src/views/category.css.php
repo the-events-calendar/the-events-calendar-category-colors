@@ -5,6 +5,7 @@ use Fragen\Category_Colors\CSS\Base_CSS;
 use Fragen\Category_Colors\CSS\Extras;
 use Fragen\Category_Colors\CSS\Widgets;
 use Fragen\Category_Colors\CSS\Pro;
+use Fragen\Category_Colors\CSS\Shiny;
 
 ?>
 /* The Events Calendar Category Colors <?php echo Main::$version; ?> */
