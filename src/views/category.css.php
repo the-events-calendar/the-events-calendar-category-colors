@@ -34,6 +34,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	$name = esc_attr( $attributes[ Main::NAME ] );
 	?>
 
+	<?php Shiny::add_link_css( $slug ); ?>
 	<?php Extras::fix_category_link_css( $slug ); ?>
 	<?php Pro::add_map_link_css( $slug ); ?>
 	<?php Pro::add_week_link_css( $slug ); ?>
@@ -50,6 +51,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	text-decoration: none;
 }
 
+	<?php Shiny::add_background_css( $slug ); ?>
 	<?php Extras::fix_category_background_css( $slug ); ?>
 	<?php Pro::add_map_background_css( $slug ); ?>
 	<?php Pro::add_week_background_css( $slug ); ?>
