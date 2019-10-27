@@ -31,7 +31,8 @@ class Shiny {
 		//$css[] = ".tribe-events-category-{$slug} > div.hentry.vevent > h3.entry-title,";
         //$css[] = ".tribe-events-mobile.tribe-events-category-{$slug} h4";
 
-        $css[] = "article.tribe_events_cat-{$slug} h3 a,";
+		$css[] = "article.tribe_events_cat-{$slug} h3 a,";
+		$css[] = "article.tribe_events_cat-farmers-market a.tribe-events-calendar-month__multiday-event-inner,";
 
 		$css[] = '';
 		$css   = implode( "\n", $css );
