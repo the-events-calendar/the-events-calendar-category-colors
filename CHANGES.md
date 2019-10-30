@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 6.3.2 / 2019-10-30
+* fixed storage of `cache_key` transient
+
 #### 6.3.1 / 2019-10-24
 * fixed incorrect CSS selector for background colors
 
