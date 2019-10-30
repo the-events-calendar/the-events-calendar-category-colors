@@ -119,7 +119,7 @@ class Frontend {
 	protected function generate_css() {
 		// Look out for refresh requests.
 		$refresh_css = array_key_exists( 'refresh_css', $_GET );
-		$current     = get_transient( $this->cache_key );
+		$current     = get_transient( 'teccc_cache_key' );
 		$css_dir     = $this->uploads['basedir'];
 		$css_file    = glob( "{$css_dir}/teccc*.css" );
 		$current     = ! empty( $css_file ) && strpos( $css_file[0], $this->cache_key )
@@ -152,7 +152,7 @@ class Frontend {
 		file_put_contents( "{$css_dir}/{$this->cache_key}.min.css", $css_min );
 
 		// Store in transient
-		set_transient( $this->cache_key, true, 4 * WEEK_IN_SECONDS );
+		set_transient( 'teccc_cache_key', $this->cache_key, 4 * WEEK_IN_SECONDS );
 
 		return true;
 	}
