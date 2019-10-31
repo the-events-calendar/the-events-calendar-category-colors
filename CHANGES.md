@@ -1,4 +1,5 @@
 #### [unreleased]
+* explicitly set file permissions to 644 for CSS files
 
 #### 6.3.2 / 2019-10-30
 * fixed storage of `cache_key` transient

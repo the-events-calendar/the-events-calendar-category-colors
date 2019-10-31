@@ -150,6 +150,8 @@ class Frontend {
 		}
 		file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );
 		file_put_contents( "{$css_dir}/{$this->cache_key}.min.css", $css_min );
+		chmod( "{$css_dir}/{$this->cache_key}.css", 0644 );
+		chmod( "{$css_dir}/{$this->cache_key}.min.css", 0644 );
 
 		// Store in transient
 		set_transient( 'teccc_cache_key', $this->cache_key, 4 * WEEK_IN_SECONDS );
