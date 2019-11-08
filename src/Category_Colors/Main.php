@@ -348,18 +348,17 @@ class Main {
 	/**
 	 * Returns current plugin version.
 	 *
-	 * @param $file
+	 * @param $file Path to main plugin file.
 	 *
 	 * @return string Plugin version
 	 */
 	public static function plugin_get_version( $file ) {
-		if ( ! function_exists( 'get_plugins' ) ) {
+		if ( ! function_exists( 'get_plugin_data' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
-		$plugin_folder = get_plugins( '/' . plugin_basename( dirname( $file ) ) );
-		$plugin_file   = basename( $file );
+		$plugin_data = \get_plugin_data( $file );
 
-		return $plugin_folder[ $plugin_file ]['Version'];
+		return $plugin_data['Version'];
 	}
 
 }
