@@ -31,6 +31,47 @@ class Frontend {
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX - 100 );
 		add_filter( 'upload_dir', array( $this, 'filter_upload_dir' ), 10, 1 );
 		$this->uploads = wp_upload_dir();
+		add_action(
+			'init',
+			function() {
+				add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 2 );
+			}
+		);
+	}
+
+	/**
+	 * Set legend target hook.
+	 *
+	 * @param [type] $file
+	 * @param [type] $name
+	 * @param [type] $template
+	 *
+	 * @return bool|void
+	 */
+	public function set_legend_target_hook( $file, $name ) {
+		$hook_name = false;
+		if ( count( $name ) > 1 ) {
+			return false;
+		}
+		switch ( $name[0] ) {
+			case 'month':
+				$hook_name = 'events/month/top-bar';
+				break;
+			case 'list':
+				$hook_name = 'events/list/top-bar';
+				break;
+			case 'photo':
+				$hook_name = 'events/photo/top-bar';
+				break;
+			case 'week':
+				$hook_name = 'events/week/top-bar';
+				break;
+		}
+
+		if ( $hook_name ) {
+			$this->legendTargetHook = "tribe_template_before_include:{$hook_name}";
+			add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
+		}
 	}
 
 	/**
@@ -54,6 +95,18 @@ class Frontend {
 	 */
 	public function add_colored_categories() {
 		$this->generate_css();
+
+		$tribe         = Tribe__Events__Main::instance();
+		$eventDisplays = array( 'month' );
+		$eventDisplays = array_merge( $eventDisplays, $this->legendExtraView );
+		$tribe_view    = get_query_var( 'eventDisplay' );
+		$tribe_post    = get_query_var( 'post_type' );
+		if ( ! empty( $tribe->displaying ) && $tribe_view !== $tribe->displaying ) {
+			$tribe_view = $tribe->displaying;
+		}
+		if ( ( 'tribe_events' === $tribe_post ) && ! in_array( $tribe_view, $eventDisplays, true ) ) {
+			return false;
+		}
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 	}
 
@@ -185,19 +238,10 @@ class Frontend {
 	/**
 	 * Displays legend.
 	 *
-	 * @param string $existingContent
-	 *
 	 * @return bool
 	 */
-	public function show_legend( $existingContent = '' ) {
-		$tribe         = Tribe__Events__Main::instance();
-		$eventDisplays = array( 'month' );
-		$eventDisplays = array_merge( $eventDisplays, $this->legendExtraView );
-		$tribe_view    = get_query_var( 'eventDisplay' );
-		if ( isset( $tribe->displaying ) && get_query_var( 'eventDisplay' ) !== $tribe->displaying ) {
-			$tribe_view = $tribe->displaying;
-		}
-		if ( ( 'tribe_events' === get_query_var( 'post_type' ) ) && ! in_array( $tribe_view, $eventDisplays, true ) ) {
+	public function show_legend() {
+		if ( $this->legendFilterHasRun ) {
 			return false;
 		}
 		if ( ! ( isset( $this->options['add_legend'] ) && '1' === $this->options['add_legend'] ) ) {
@@ -221,9 +265,8 @@ class Frontend {
 		 *
 		 * @return string $content
 		 */
-		echo $existingContent . apply_filters( 'teccc_legend_html', $content );
+		echo apply_filters( 'teccc_legend_html', $content );
 	}
-
 
 	/**
 	 * Move legend to different position.

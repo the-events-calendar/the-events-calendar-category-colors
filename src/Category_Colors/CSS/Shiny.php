@@ -37,6 +37,7 @@ class Shiny {
 		// $css[] = "article.tribe_events_cat-farmers-market a.tribe-events-calendar-month__multiday-event-inner,";
 		$css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} a.tribe-events-calendar-month__multiday-event-inner,";
 		// $css[] = "article.tribe-events-calendar-month__multiday-event.tribe-events-calendar-month__multiday-event--start.tribe_events_cat-{$slug} a.tribe-events-calendar-month__multiday-event-inner,";
+		$css[] = "article.tribe_events_cat-{$slug} .tribe-events-calendar-month__multiday-event-bar-inner";
 
 		$css[] = '';
 		$css   = implode( "\n", $css );
