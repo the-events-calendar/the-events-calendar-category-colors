@@ -12,13 +12,14 @@ use Tribe__Events__Main;
  */
 class Frontend {
 	protected $teccc     = null;
-	protected $options   = array();
+	protected $options   = [];
 	protected $cache_key = null;
 	protected $uploads   = null;
 
 	protected $legendTargetHook   = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
-	protected $legendExtraView    = array();
+	protected $legendExtraView    = [ 'month' ];
+	protected $currentDisplay     = null;
 
 	public function __construct( Main $teccc ) {
 		$this->teccc     = $teccc;
@@ -26,17 +27,35 @@ class Frontend {
 		$this->cache_key = 'teccc_' . $this->options_hash();
 
 		require_once $teccc->functions_dir . '/templatetags.php';
-
-		add_action( 'init', array( $this, 'add_colored_categories' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX - 100 );
-		add_filter( 'upload_dir', array( $this, 'filter_upload_dir' ), 10, 1 );
 		$this->uploads = wp_upload_dir();
-		add_action(
-			'init',
-			function() {
-				add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 2 );
-			}
-		);
+		$this->run();
+	}
+
+	/**
+	 * Load hooks and generate CSS.
+	 *
+	 * @return void
+	 */
+	public function run() {
+		add_action( 'parse_query', [ $this, 'get_current_event_display' ] );
+		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
+		add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 2 );
+		add_action( 'wp_enqueue_scripts', [ $this, 'add_scripts_styles' ], PHP_INT_MAX - 100 );
+		add_filter( 'upload_dir', [ $this, 'filter_upload_dir' ], 10, 1 );
+		$this->generate_css();
+	}
+
+	/**
+	 * Get current event display from `parse_query` filter.
+	 *
+	 * @param \WP_Query $query
+	 *
+	 * @return void
+	 */
+	public function get_current_event_display( \WP_Query $query ) {
+		if ( isset( $query->query_vars['eventDisplay'] ) ) {
+			$this->currentDisplay = $query->query_vars['eventDisplay'];
+		}
 	}
 
 	/**
@@ -51,6 +70,9 @@ class Frontend {
 	public function set_legend_target_hook( $file, $name ) {
 		$hook_name = false;
 		if ( count( $name ) > 1 ) {
+			return false;
+		}
+		if ( ! in_array( $name[0], $this->legendExtraView, true ) ) {
 			return false;
 		}
 		switch ( $name[0] ) {
@@ -94,20 +116,9 @@ class Frontend {
 	 * Create stylesheet and show legend.
 	 */
 	public function add_colored_categories() {
-		$this->generate_css();
+		//$this->generate_css();
 
-		$tribe         = Tribe__Events__Main::instance();
-		$eventDisplays = array( 'month' );
-		$eventDisplays = array_merge( $eventDisplays, $this->legendExtraView );
-		$tribe_view    = get_query_var( 'eventDisplay' );
-		$tribe_post    = get_query_var( 'post_type' );
-		if ( ! empty( $tribe->displaying ) && $tribe_view !== $tribe->displaying ) {
-			$tribe_view = $tribe->displaying;
-		}
-		if ( ( 'tribe_events' === $tribe_post ) && ! in_array( $tribe_view, $eventDisplays, true ) ) {
-			return false;
-		}
-		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
+		//add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 	}
 
 	/**
@@ -241,6 +252,9 @@ class Frontend {
 	 * @return bool
 	 */
 	public function show_legend() {
+		if ( ! in_array( $this->currentDisplay, $this->legendExtraView, true ) ) {
+			return false;
+		}
 		if ( $this->legendFilterHasRun ) {
 			return false;
 		}
