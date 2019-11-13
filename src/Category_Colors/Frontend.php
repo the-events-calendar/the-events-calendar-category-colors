@@ -90,6 +90,8 @@ class Frontend {
 				break;
 		}
 
+		$this->currentDisplay = $name[0] === $this->currentDisplay ? $this->currentDisplay : $name[0];
+
 		if ( $hook_name ) {
 			$this->legendTargetHook = "tribe_template_before_include:{$hook_name}";
 			add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
@@ -240,10 +242,12 @@ class Frontend {
 	/**
 	 * Displays legend.
 	 *
-	 * @return bool
+	 * @return bool|string
 	 */
 	public function show_legend() {
-		if ( ! in_array( $this->currentDisplay, $this->legendExtraView, true ) ) {
+		$v2_viewable   = false !== strpos( $this->legendTargetHook, $this->currentDisplay );
+		$is_extra_view = in_array( $this->currentDisplay, $this->legendExtraView, true );
+		if ( ! $v2_viewable && ! $is_extra_view ) {
 			return false;
 		}
 		if ( $this->legendFilterHasRun ) {
