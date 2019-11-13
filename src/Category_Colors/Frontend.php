@@ -41,8 +41,8 @@ class Frontend {
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 		add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 2 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'add_scripts_styles' ], PHP_INT_MAX - 100 );
+		add_action( 'init', [ $this, 'generate_css' ] );
 		add_filter( 'upload_dir', [ $this, 'filter_upload_dir' ], 10, 1 );
-		$this->generate_css();
 	}
 
 	/**
@@ -113,15 +113,6 @@ class Frontend {
 	}
 
 	/**
-	 * Create stylesheet and show legend.
-	 */
-	public function add_colored_categories() {
-		//$this->generate_css();
-
-		//add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
-	}
-
-	/**
 	 * Enqueue stylesheets and scripts as appropriate.
 	 */
 	public function add_scripts_styles() {
@@ -180,7 +171,7 @@ class Frontend {
 	 *
 	 * @return mixed|string
 	 */
-	protected function generate_css() {
+	public function generate_css() {
 		// Look out for refresh requests.
 		$refresh_css = array_key_exists( 'refresh_css', $_GET );
 		$current     = get_transient( 'teccc_cache_key' );
