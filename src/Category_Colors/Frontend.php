@@ -141,17 +141,17 @@ class Frontend {
 	 * @return string
 	 */
 	protected function options_hash() {
-		// Current options are the basis of the current config
+		// Current options are the basis of the current config.
 		$config = (array) $this->options;
 
-		// Terms are relevant but need to be flattened out
+		// Terms are relevant but need to be flattened out.
 		foreach ( $config as $key => $value ) {
 			if ( isset( $key ) && is_array( $value ) ) {
 				$config[ $key ] = implode( '|', array_keys( $value ) );
 			}
 		}
 
-		// We also need to be cognizant of the mobile breakpoint
+		// We also need to be cognizant of the mobile breakpoint.
 		$config['breakpoint'] = tribe_get_mobile_breakpoint();
 
 		$hash = hash( 'md5', implode( '|', $config ) );
@@ -206,7 +206,7 @@ class Frontend {
 		file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );
 		file_put_contents( "{$css_dir}/{$this->cache_key}.min.css", $css_min );
 
-		// Store in transient
+		// Store in transient.
 		set_transient( 'teccc_cache_key', $this->cache_key, 4 * WEEK_IN_SECONDS );
 
 		return true;
@@ -281,7 +281,7 @@ class Frontend {
 	 * @return bool
 	 */
 	public function reposition_legend( $tribeViewFilter ) {
-		// If the legend has already run they are probably doing something wrong
+		// If the legend has already run they are probably doing something wrong.
 		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong(
 				__CLASS__ . '::' . __METHOD__,
@@ -290,10 +290,10 @@ class Frontend {
 			);
 		}
 
-		// Change the target filter (even if they are _doing_it_wrong, in case they have a special use case)
+		// Change the target filter (even if they are _doing_it_wrong, in case they have a special use case).
 		$this->legendTargetHook = $tribeViewFilter;
 
-		// Indicate if they were doing it wrong (or not)
+		// Indicate if they were doing it wrong (or not).
 		return ( ! $this->legendFilterHasRun );
 	}
 
@@ -304,7 +304,7 @@ class Frontend {
 	 * @return bool
 	 */
 	public function remove_default_legend() {
-		// If the legend has already run they are probably doing something wrong
+		// If the legend has already run they are probably doing something wrong.
 		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong(
 				__CLASS__ . '::' . __METHOD__,
@@ -313,10 +313,10 @@ class Frontend {
 			);
 		}
 
-		// Remove the hook regardless of whether they are _doing_it_wrong or not (in case of creative usage)
+		// Remove the hook regardless of whether they are _doing_it_wrong or not (in case of creative usage).
 		$this->legendTargetHook = null;
 
-		// Indicate if they were doing it wrong (or not)
+		// Indicate if they were doing it wrong (or not).
 		return ( ! $this->legendFilterHasRun );
 	}
 
@@ -326,7 +326,7 @@ class Frontend {
 	 * @param $view
 	 */
 	public function add_legend_view( $view ) {
-		// takes 'upcoming', 'day', 'week', 'photo' as parameters
+		// takes 'list', 'day', 'week', 'photo' as parameters.
 		$this->legendExtraView[] = $view;
 	}
 
