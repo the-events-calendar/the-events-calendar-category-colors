@@ -27,7 +27,7 @@ class Bootstrap {
 			}
 		);
 		// Launch
-		Main::instance();
+		Main::instance()->run();
 	}
 
 }

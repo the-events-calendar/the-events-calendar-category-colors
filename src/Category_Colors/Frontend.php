@@ -28,7 +28,6 @@ class Frontend {
 
 		require_once $teccc->functions_dir . '/templatetags.php';
 		$this->uploads = wp_upload_dir();
-		$this->run();
 	}
 
 	/**

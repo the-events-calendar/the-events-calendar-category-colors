@@ -80,16 +80,24 @@ class Main {
 		$this->functions_dir = TECCC_DIR . '/src/functions';
 		$this->views_dir     = TECCC_DIR . '/src/views';
 		$this->resources_url = plugin_dir_url( TECCC_FILE ) . 'src/resources';
+		self::$version       = self::plugin_get_version( TECCC_FILE );
+	}
 
+	/**
+	 * Let's get going.
+	 *
+	 * @return void
+	 */
+	public function run() {
 		// We need to wait until the taxonomy has been registered before building our list
 		add_action( 'init', array( $this, 'load_categories' ), 20 );
 
 		if ( ( ! defined( 'DOING_AJAX' ) ) && is_admin() ) {
-			new Admin( $this );
+			( new Admin( $this ) )->load_hooks();
 		}
 
-		self::$version = self::plugin_get_version( TECCC_FILE );
-		$this->public  = new Frontend( $this );
+		$this->public = new Frontend( $this );
+		$this->public->run();
 	}
 
 	/**

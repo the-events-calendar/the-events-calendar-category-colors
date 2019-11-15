@@ -1,4 +1,5 @@
 #### [unreleased]
+* updated for new v2 views or TEC and ECP
 
 #### 6.3.2 / 2019-10-30
 * fixed storage of `cache_key` transient

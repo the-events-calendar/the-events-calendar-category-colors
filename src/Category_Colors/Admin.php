@@ -14,7 +14,9 @@ class Admin {
 	public function __construct( Main $teccc ) {
 		$this->teccc = $teccc;
 		$this->load_settings_tab();
+	}
 
+	public function load_hooks() {
 		add_action( 'admin_init', array( $this, 'init' ) );
 		add_action( 'admin_notices', array( $this, 'plugin_fail_msg' ) );
 		add_action( 'tribe_settings_below_tabs_tab_category-colors', array( $this, 'is_saved' ) );
