@@ -17,13 +17,13 @@ class Admin {
 	}
 
 	public function load_hooks() {
-		add_action( 'admin_init', array( $this, 'init' ) );
+		add_action( 'admin_init', array( $this, 'register_setting' ) );
 		add_action( 'admin_notices', array( $this, 'plugin_fail_msg' ) );
 		add_action( 'tribe_settings_below_tabs_tab_category-colors', array( $this, 'is_saved' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_teccc_js_css' ) );
 	}
 
-	public function init() {
+	public function register_setting() {
 		register_setting( 'teccc_category_colors', 'teccc_options', array( $this, 'validate_options' ) );
 	}
 
