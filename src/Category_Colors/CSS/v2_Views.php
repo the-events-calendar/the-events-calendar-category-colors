@@ -5,8 +5,9 @@ class v2_Views {
 	public static function add_link_css( $slug ) {
 		$css = array();
 
-		$css[] = "article.tribe_events_cat-{$slug} h3 a,";
-		$css[] = "article.tribe_events_cat-{$slug} h3 a:link,";
+		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a,";
+		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a:link,";
+
 		// $css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} h3,";
 		// $css[] = "article.tribe_events_cat-{$slug} .tribe-events-calendar-month__calendar-event-datetime";
 
