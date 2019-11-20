@@ -19,7 +19,7 @@ class Frontend {
 	protected $legendTargetHook   = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
 	protected $legendExtraView    = [ 'month' ];
-	protected $currentDisplay     = null;
+	public $currentDisplay        = null;
 
 	public function __construct( Main $teccc ) {
 		$this->teccc     = $teccc;

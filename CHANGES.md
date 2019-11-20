@@ -1,5 +1,6 @@
 #### [unreleased]
 * updated for new v2 views or TEC and ECP
+* make legend superpowers work for new v2 views
 
 #### 6.3.2 / 2019-10-30
 * fixed storage of `cache_key` transient
