@@ -38,7 +38,7 @@ class Frontend {
 	public function run() {
 		add_action( 'parse_query', [ $this, 'get_current_event_display' ] );
 		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
-		add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 2 );
+		add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 3 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'add_scripts_styles' ], PHP_INT_MAX - 100 );
 		add_action( 'init', [ $this, 'generate_css' ] );
 		add_filter( 'upload_dir', [ $this, 'filter_upload_dir' ], 10, 1 );
@@ -60,21 +60,19 @@ class Frontend {
 	/**
 	 * Set legend target hook.
 	 *
-	 * @param [type] $file
-	 * @param [type] $name
-	 * @param [type] $template
+	 * @param string                          $file     File path.
+	 * @param array                           $name     Array of view data.
+	 * @param \Tribe\Events\Views\V2\Template $template Template object.
 	 *
 	 * @return bool|void
 	 */
-	public function set_legend_target_hook( $file, $name ) {
+	public function set_legend_target_hook( $file, $name, $template ) {
+		$this->currentDisplay = $template->get_view()->get_slug();
 		$hook_name = false;
-		if ( count( $name ) > 1 ) {
+		if ( ! in_array( $this->currentDisplay, $this->legendExtraView, true ) ) {
 			return false;
 		}
-		if ( ! in_array( $name[0], $this->legendExtraView, true ) ) {
-			return false;
-		}
-		switch ( $name[0] ) {
+		switch ( $this->currentDisplay ) {
 			case 'month':
 				$hook_name = 'events/month/top-bar';
 				break;
@@ -88,9 +86,6 @@ class Frontend {
 				$hook_name = 'events/week/top-bar';
 				break;
 		}
-
-		$this->currentDisplay = $name[0] === $this->currentDisplay ? $this->currentDisplay : $name[0];
-
 		if ( $hook_name ) {
 			$this->legendTargetHook = "tribe_template_before_include:{$hook_name}";
 			add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
@@ -329,7 +324,7 @@ class Frontend {
 	 * @param $view
 	 */
 	public function add_legend_view( $view ) {
-		// takes 'list', 'day', 'week', 'photo' as parameters.
+		// 'list', 'day', 'week', 'photo', 'map' as parameters.
 		$this->legendExtraView[] = $view;
 	}
 
