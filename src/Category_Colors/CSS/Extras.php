@@ -48,9 +48,7 @@ class Extras {
 	}
 
 	public static function add_mobile_css() {
-		$teccc = Main::instance();
-
-		$css = $teccc->view(
+		$css = Main::instance()->view(
 			'mobile.css',
 			array(
 				'breakpoint' => tribe_get_mobile_breakpoint(),

@@ -68,7 +68,7 @@ class Frontend {
 	 */
 	public function set_legend_target_hook( $file, $name, $template ) {
 		$this->currentDisplay = $template->get_view()->get_slug();
-		$hook_name = false;
+		$hook_name            = false;
 		if ( ! in_array( $this->currentDisplay, $this->legendExtraView, true ) ) {
 			return false;
 		}
