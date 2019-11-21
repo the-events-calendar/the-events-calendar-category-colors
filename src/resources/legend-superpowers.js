@@ -123,17 +123,24 @@ jQuery(document).ready(
 		 * Tries to ensure the setup procedure runs afresh following ajax operations (month to month navigation etc).
 		 */
 		function setupAfterAjax() {
+			//console.log(tribe);
 			if (typeof tribe_ev === "object" && tribe_ev.events !== undefined) {
+				console.log('run setup tribe_ev');
 				$(tribe_ev.events).on('tribe_ev_ajaxSuccess', setup);
+			}
+			if (typeof tribe === "object" && tribe.events !== undefined) {
+				console.log('run setup tribe');
+				$(tribe.events).on('tribe_ajaxSuccess', setup);
 			}
 		}
 
 		/**
-	 * Setup should occur when the document is ready and following ajax loads.
-	 */
+	   * Setup should occur when the document is ready and following ajax loads.
+	   */
 		setup();
 		setupAfterAjax();
 
-		$("#tribe-events-content", ".tribe-events").ajaxComplete(setup);
+		//$("#tribe-events-content").ajaxComplete(setup);
+		$(document).ajaxComplete(setup);
 	}
 );
