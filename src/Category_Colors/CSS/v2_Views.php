@@ -8,7 +8,6 @@ class v2_Views {
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a,";
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a:link,";
 		$css[] = ".teccc-legend .tribe_events_cat-{$slug} a,";
-		$css[] = ".tribe-common .tribe_events_cat-{$slug} a,";
 
 		// $css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} h3,";
 		// $css[] = "article.tribe_events_cat-{$slug} .tribe-events-calendar-month__calendar-event-datetime";
@@ -31,7 +30,6 @@ class v2_Views {
 		$css[] = "article.tribe-events-pro-week-mobile-events__event.tribe_events_cat-{$slug} h3,";
 
 		$css[] = ".teccc-legend .tribe_events_cat-{$slug},";
-		$css[] = ".tribe-common .tribe_events_cat-{$slug},";
 
 		// $css[] = "article.tribe-events-calendar-day__event.tribe_events_cat-{$slug} header.tribe-events-calendar-day__event-header h3.tribe-events-calendar-day__event-title";
 		// $css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} a.tribe-events-calendar-month__multiday-event-inner,";
