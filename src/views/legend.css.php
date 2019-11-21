@@ -13,7 +13,7 @@
 	display: inline-block;
 	list-style-type: none;
 	padding: 7px;
-	margin-left: 0.7em;
+	margin: 0 0 1em 0.7em;
 }
 
 #legend_box #legend li span { cursor: pointer; }
