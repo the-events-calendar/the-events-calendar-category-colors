@@ -369,4 +369,12 @@ class Main {
 		return $plugin_data['Version'];
 	}
 
+	/**
+	 * Are the v2 views active.
+	 *
+	 * @return bool
+	 */
+	public static function is_v2_active() {
+		return function_exists( 'tribe_events_views_v2_is_enabled' ) && \tribe_events_views_v2_is_enabled();
+	}
 }
