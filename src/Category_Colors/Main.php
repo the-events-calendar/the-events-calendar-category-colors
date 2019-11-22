@@ -80,7 +80,7 @@ class Main {
 		$this->functions_dir = TECCC_DIR . '/src/functions';
 		$this->views_dir     = TECCC_DIR . '/src/views';
 		$this->resources_url = plugin_dir_url( TECCC_FILE ) . 'src/resources';
-		self::$version       = self::plugin_get_version( TECCC_FILE );
+		self::$version       = self::get_plugin_version( TECCC_FILE );
 	}
 
 	/**
@@ -360,7 +360,7 @@ class Main {
 	 *
 	 * @return string Plugin version
 	 */
-	public static function plugin_get_version( $file ) {
+	public static function get_plugin_version( $file ) {
 		if ( ! function_exists( 'get_plugin_data' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
