@@ -123,14 +123,8 @@ jQuery(document).ready(
 		 * Tries to ensure the setup procedure runs afresh following ajax operations (month to month navigation etc).
 		 */
 		function setupAfterAjax() {
-			//console.log(tribe);
 			if (typeof tribe_ev === "object" && tribe_ev.events !== undefined) {
-				console.log('run setup tribe_ev');
 				$(tribe_ev.events).on('tribe_ev_ajaxSuccess', setup);
-			}
-			if (typeof tribe === "object" && tribe.events !== undefined) {
-				console.log('run setup tribe');
-				$(tribe.events).on('tribe_ajaxSuccess', setup);
 			}
 		}
 
@@ -141,6 +135,12 @@ jQuery(document).ready(
 		setupAfterAjax();
 
 		//$("#tribe-events-content").ajaxComplete(setup);
-		$(document).ajaxComplete(setup);
+		$(document).find("#tribe-events-content").ajaxComplete(setup);
+		$(document).on('afterSetup.tribeEvents', tribe.events.views.manager.selectors.container, function () {
+			var $container = $(this);
+			// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
+			// thanks Gustavo! <3
+			setup();
+		});
 	}
 );
