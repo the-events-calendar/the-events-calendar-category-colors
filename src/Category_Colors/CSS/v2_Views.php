@@ -10,7 +10,7 @@ class v2_Views {
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a:link,";
 
 		// $css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} .tribe-events-calendar-month__multiday-event-bar-inner h3,";
-		 $css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} h3,";
 		// $css[] = "article.tribe_events_cat-{$slug} .tribe-events-calendar-month__calendar-event-datetime";
 
 		$css[] = '';
@@ -39,6 +39,17 @@ class v2_Views {
 		// $css[] = "article.tribe_events_cat-{$slug} .tribe-events-calendar-month__calendar-event-details,";
 		// $css[] = "article.tribe-events-calendar-month__calendar-event.tribe_events_cat-{$slug} .tribe-events-calendar-month__calendar-event-datetime,";
 		// $css[] = '.tribe-events article.tribe-events-calendar-month__calendar-event-datetime';
+
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
+	public static function remove_v2_multiday_background_color() {
+		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event-bar,';
+		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event-bar-inner,';
+		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event--past .tribe-events-calendar-month__multiday-event-bar-inner';
+		$css[] = '{ background-color: transparent; }';
 
 		$css[] = '';
 		$css   = implode( "\n", $css );

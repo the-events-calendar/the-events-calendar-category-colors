@@ -35,6 +35,8 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	$name = esc_attr( $attributes[ Main::NAME ] );
 	?>
 
+	<?php v2_Views::remove_v2_multiday_background_color(); ?>
+
 	<?php v2_Views::add_link_css( $slug ); ?>
 	<?php Extras::fix_category_link_css( $slug ); ?>
 	<?php Pro::add_map_link_css( $slug ); ?>
