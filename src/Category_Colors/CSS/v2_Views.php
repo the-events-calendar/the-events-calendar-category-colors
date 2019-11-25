@@ -47,8 +47,7 @@ class v2_Views {
 
 	public static function remove_v2_multiday_background_color() {
 		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event-bar,';
-		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event-bar-inner,';
-		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event--past .tribe-events-calendar-month__multiday-event-bar-inner';
+		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event-bar-inner';
 		$css[] = '{ background-color: transparent; }';
 
 		$css[] = '';
