@@ -20,7 +20,7 @@ use Fragen\Category_Colors\CSS\v2_Views;
 
 <?php Extras::add_mobile_css(); ?>
 <?php Pro::fix_default_week_background(); ?>
-<?php v2_Views::remove_v2_multiday_background_color(); ?>
+<?php v2_Views::add_v2_multiday_background_color(); ?>
 
 <?php
 if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {

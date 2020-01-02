@@ -24,6 +24,7 @@ class v2_Views {
 		$css[] = ".teccc-legend .tribe_events_cat-{$slug},";
 		$css[] = "article.tribe-events-calendar-month__calendar-event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} .tribe-events-calendar-month__multiday-event-bar-inner,";
+		// $css[] = ".tribe-events-calendar-month__multiday-event-wrapper article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug},";
 		$css[] = "article.tribe-events-calendar-month-mobile-events__mobile-event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-calendar-day__event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-calendar-list__event.tribe_events_cat-{$slug} h3,";
@@ -31,6 +32,7 @@ class v2_Views {
 		$css[] = "article.tribe-events-pro-map__event-card.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-week-grid__event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-week-mobile-events__event.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} h3,";
 
 		// $css[] = "article.tribe-events-calendar-day__event.tribe_events_cat-{$slug} header.tribe-events-calendar-day__event-header h3.tribe-events-calendar-day__event-title";
 		// $css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} a.tribe-events-calendar-month__multiday-event-inner,";
@@ -45,10 +47,14 @@ class v2_Views {
 		echo $css;
 	}
 
-	public static function remove_v2_multiday_background_color() {
+	public static function add_v2_multiday_background_color() {
 		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event-bar,';
-		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event-bar-inner';
-		$css[] = '{ background-color: transparent; }';
+		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event-bar-inner,';
+		$css[] = '.tribe-events-calendar-month__multiday-event-wrapper,';
+		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-bar,';
+		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-bar-inner,';
+		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-wrapper';
+		$css[] = '{ background-color: #F7F6F6; }';
 
 		$css[] = '';
 		$css   = implode( "\n", $css );
