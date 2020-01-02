@@ -41,7 +41,7 @@ function teccc_reposition_legend( $viewFilter ) {
  * @deprecated
  */
 function teccc_insert_legend() {
-	do_action( 'teccc_legend_hook' ); // Doesn't do anything now, retained for legacy purposes
+	do_action( 'teccc_legend_hook' ); // Doesn't do anything now, retained for legacy purposes.
 	Fragen\Category_Colors\Main::instance()->public->show_legend();
 }
 

@@ -10,7 +10,6 @@ use Tribe__Events__Main;
  * @package Fragen\Category_Colors
  */
 class Main {
-
 	const SLUG = 0;
 	const NAME = 1;
 
@@ -89,7 +88,7 @@ class Main {
 	 * @return void
 	 */
 	public function run() {
-		// We need to wait until the taxonomy has been registered before building our list
+		// We need to wait until the taxonomy has been registered before building our list.
 		add_action( 'init', [ $this, 'load_categories' ], 20 );
 
 		if ( ( ! defined( 'DOING_AJAX' ) ) && is_admin() ) {
@@ -155,8 +154,8 @@ class Main {
 	/**
 	 * Create array of ignored terms from $ignore_list.
 	 *
-	 * @param array $ignore_list
-	 * @return void
+	 * @param  array $ignore_list
+	 * @return array $ignored_terms
 	 */
 	public function get_ignored_terms( $ignore_list ) {
 		$ignored_terms = [];
@@ -173,7 +172,7 @@ class Main {
 	/**
 	 * Setup missing term data in Main.
 	 *
-	 * @param array $options
+	 * @param  array $options
 	 * @return void
 	 */
 	public function setup_terms( $options ) {
@@ -342,7 +341,7 @@ class Main {
 		}
 		if ( '1' === $tmp['chk_default_options_db'] || ! is_array( $tmp ) ) {
 			delete_option( 'teccc_options' );
-			for ( $i = 0; $i < $teccc->count; $i ++ ) {
+			for ( $i = 0; $i < $teccc->count; $i++ ) {
 				$arr[ $teccc->slugs[ $i ] . '-text' ]       = '#000';
 				$arr[ $teccc->slugs[ $i ] . '-background' ] = '#CFCFCF';
 				$arr[ $teccc->slugs[ $i ] . '-border' ]     = '#CFCFCF';

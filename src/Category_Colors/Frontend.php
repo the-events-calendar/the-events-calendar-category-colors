@@ -2,9 +2,6 @@
 
 namespace Fragen\Category_Colors;
 
-use DateTime;
-use Tribe__Events__Main;
-
 /**
  * Class Frontend
  *
@@ -99,7 +96,7 @@ class Frontend {
 	 *
 	 * @param array $upload_dir
 	 *
-	 * @return void
+	 * @return array $upload_dir
 	 */
 	public function filter_upload_dir( $upload_dir ) {
 		$upload_dir['url']     = set_url_scheme( $upload_dir['url'] );
@@ -213,7 +210,7 @@ class Frontend {
 	 *
 	 * Removes comments, spaces after commas and colons, spaces around braces, and reduce whitespace.
 	 *
-	 * @param string $css
+	 * @param  string $css
 	 * @return string $css Minified CSS.
 	 */
 	private function minify_css( $css ) {
@@ -292,9 +289,8 @@ class Frontend {
 		$this->legendTargetHook = $tribeViewFilter;
 
 		// Indicate if they were doing it wrong (or not).
-		return ( ! $this->legendFilterHasRun );
+		return ! $this->legendFilterHasRun;
 	}
-
 
 	/**
 	 * Remove default legend.
@@ -315,7 +311,7 @@ class Frontend {
 		$this->legendTargetHook = null;
 
 		// Indicate if they were doing it wrong (or not).
-		return ( ! $this->legendFilterHasRun );
+		return ! $this->legendFilterHasRun;
 	}
 
 	/**
@@ -327,5 +323,4 @@ class Frontend {
 		// 'list', 'day', 'week', 'photo', 'map' as parameters.
 		$this->legendExtraView[] = $view;
 	}
-
 }

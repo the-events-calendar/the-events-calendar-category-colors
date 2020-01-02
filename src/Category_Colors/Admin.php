@@ -6,7 +6,6 @@ use Tribe__Events__Main;
 use Tribe__Settings_Tab;
 
 class Admin {
-
 	const TAB_NAME      = 'category-colors';
 	const UPDATE_ACTION = 'category-colors-update-options';
 	protected $teccc    = null;
@@ -59,7 +58,7 @@ class Admin {
 	/**
 	 * @param array $input
 	 *
-	 * TODO: streamline validation/sanitization work, replace deprecated function calls
+	 * TODO: streamline validation/sanitization work, replace deprecated function calls.
 	 * @return array $input
 	 */
 	public function validate_options( $input ) {
@@ -82,7 +81,7 @@ class Admin {
 				$input[ "{$slug}-border" ] = '#CFCFCF';
 			}
 
-			// Sets value when checked
+			// Sets value when checked.
 			if ( isset( $input[ "{$slug}-border_none" ] ) ) {
 				$input[ "{$slug}-border" ] = null;
 			}
@@ -90,7 +89,7 @@ class Admin {
 				$input[ "{$slug}-background" ] = null;
 			}
 
-			// Sanitize dropdown input (make sure value is one of options allowed)
+			// Sanitize dropdown input (make sure value is one of options allowed).
 			if ( ! in_array( $input[ "{$slug}-text" ], $teccc->text_colors, true ) ) {
 				$input[ "{$slug}-text" ] = '#000';
 			}
@@ -204,7 +203,7 @@ class Admin {
 	}
 
 	/**
-	 * Enqueue admin scripts and styles
+	 * Enqueue admin scripts and styles.
 	 *
 	 * @param $hook
 	 *
@@ -223,5 +222,4 @@ class Admin {
 		wp_enqueue_script( 'teccc-admin', $this->teccc->resources_url . '/teccc-admin.js', false, Main::$version, true );
 		wp_enqueue_style( 'teccc-options', $this->teccc->resources_url . '/teccc-options.css', false, Main::$version );
 	}
-
 }
