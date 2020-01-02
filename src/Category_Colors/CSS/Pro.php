@@ -12,21 +12,21 @@ class Pro {
 	}
 
 	public static function add_map_link_css( $slug ) {
-		$css   = array();
+		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:visited,";
 		self::echo_css( $css );
 	}
 
 	public static function add_map_background_css( $slug ) {
-		$css   = array();
+		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:visited,";
 		self::echo_css( $css );
 	}
 
 	public static function add_week_background_css( $slug ) {
-		$css   = array();
+		$css   = [];
 		$css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent .tribe-events-tooltip h4.entry-title,";
 		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single:hover.tribe-events-category-{$slug},";
 		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-{$slug},";
@@ -35,7 +35,7 @@ class Pro {
 	}
 
 	public static function fix_default_week_background() {
-		$css   = array();
+		$css   = [];
 		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"][class*="tribe-events-category-"].tribe-events-week-hourly-single';
 		$css[] = '{ border-right: 1px solid #000; }';
 		self::echo_css( $css );
@@ -43,7 +43,7 @@ class Pro {
 
 	public static function fix_transparent_week_background( $slug ) {
 		$options = get_option( 'teccc_options' );
-		$css     = array();
+		$css     = [];
 		$css[]   = ".tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-{$slug},";
 		$css[]   = ".tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-{$slug}:hover";
 		$css[]   = '{ background-color: #fff; }';
@@ -54,7 +54,7 @@ class Pro {
 	}
 
 	public static function add_week_link_css( $slug ) {
-		$css   = array();
+		$css   = [];
 		$css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent h3.entry-title a,";
 		$css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent .tribe-events-tooltip h4.entry-title.summary,";
 		$css[] = ".tribe-grid-body .tribe-events-category-{$slug} a,";
@@ -64,7 +64,7 @@ class Pro {
 	}
 
 	public static function add_deprecated_week_background_css( $slug ) {
-		$css = array();
+		$css = [];
 		self::echo_css( $css );
 	}
 }

@@ -19,17 +19,17 @@ class Main {
 	public $views_dir;
 	public $resources_url;
 
-	public $text_colors = array(
+	public $text_colors = [
 		'Default' => 'no_color',
 		'Black'   => '#000',
 		'White'   => '#fff',
 		'Gray'    => '#999',
-	);
+	];
 
-	public $font_weights = array(
+	public $font_weights = [
 		'Bold'   => 'bold',
 		'Normal' => 'normal',
-	);
+	];
 
 	/**
 	 * Contains each term in an array structured as follows:
@@ -38,9 +38,9 @@ class Main {
 	 *
 	 * @var array
 	 */
-	public $terms         = array();
-	public $all_terms     = array();
-	public $ignored_terms = array();
+	public $terms         = [];
+	public $all_terms     = [];
+	public $ignored_terms = [];
 	public $count         = 0;
 
 	/**
@@ -48,7 +48,7 @@ class Main {
 	 *
 	 * @var array
 	 */
-	public $ignore_list = array();
+	public $ignore_list = [];
 
 	/**
 	 * @var Frontend
@@ -90,7 +90,7 @@ class Main {
 	 */
 	public function run() {
 		// We need to wait until the taxonomy has been registered before building our list
-		add_action( 'init', array( $this, 'load_categories' ), 20 );
+		add_action( 'init', [ $this, 'load_categories' ], 20 );
 
 		if ( ( ! defined( 'DOING_AJAX' ) ) && is_admin() ) {
 			( new Admin( $this ) )->load_hooks();
@@ -104,7 +104,7 @@ class Main {
 	 * Load categories.
 	 */
 	public function load_categories() {
-		add_filter( 'teccc_get_terms', array( $this, 'remove_terms' ) );
+		add_filter( 'teccc_get_terms', [ $this, 'remove_terms' ] );
 		$this->get_category_terms();
 		$this->count = count( $this->terms );
 	}
@@ -120,7 +120,7 @@ class Main {
 		}
 
 		$options   = get_option( 'teccc_options' );
-		$all_terms = get_terms( Tribe__Events__Main::TAXONOMY, array( 'hide_empty' => false ) );
+		$all_terms = get_terms( Tribe__Events__Main::TAXONOMY, [ 'hide_empty' => false ] );
 
 		/**
 		 * Add and remove terms via filters.
@@ -135,13 +135,13 @@ class Main {
 		 * Populate public variables.
 		 * Represent each term as an array [slug, name] indexed by term ID
 		 */
-		$term_lists = array(
+		$term_lists = [
 			'all_terms' => &$all_terms,
 			'terms'     => &$terms,
-		);
+		];
 		foreach ( $term_lists as $list => $arr ) {
 			foreach ( $arr as $term ) {
-				$this->{$list}[ $term->term_id ] = array( $term->slug, preg_replace( '/\s/', '&nbsp;', $term->name ) );
+				$this->{$list}[ $term->term_id ] = [ $term->slug, preg_replace( '/\s/', '&nbsp;', $term->name ) ];
 			}
 		}
 
@@ -159,11 +159,11 @@ class Main {
 	 * @return void
 	 */
 	public function get_ignored_terms( $ignore_list ) {
-		$ignored_terms = array();
+		$ignored_terms = [];
 		if ( ! empty( $ignore_list ) ) {
 			foreach ( $ignore_list as $ignored ) {
 				$name            = ucwords( str_replace( '-', ' ', $ignored ) );
-				$ignored_terms[] = array( $ignored, preg_replace( '/\s/', '&nbsp;', $name ) );
+				$ignored_terms[] = [ $ignored, preg_replace( '/\s/', '&nbsp;', $name ) ];
 			}
 		}
 
@@ -178,7 +178,7 @@ class Main {
 	 */
 	public function setup_terms( $options ) {
 		$this->all_terms = ! empty( $this->all_terms ) ? $this->all_terms : $options['all_terms'];
-		$hide            = isset( $options['hide'] ) ? $options['hide'] : array();
+		$hide            = isset( $options['hide'] ) ? $options['hide'] : [];
 		if ( empty( $this->ignore_list ) ) {
 			$this->ignore_list = array_merge( $this->ignore_list, (array) $hide );
 			$this->ignore_list = array_unique( $this->ignore_list );
@@ -196,8 +196,8 @@ class Main {
 	 * @return array $options
 	 */
 	public function add_terms( $options ) {
-		$args      = array();
-		$add_terms = apply_filters( 'teccc_add_terms', array() );
+		$args      = [];
+		$add_terms = apply_filters( 'teccc_add_terms', [] );
 		foreach ( (array) $add_terms as $add_term ) {
 			$args['name'] = ucwords( str_replace( '-', ' ', $add_term ) );
 			$args['slug'] = $add_term;
@@ -218,7 +218,7 @@ class Main {
 	 * @param $all_terms
 	 */
 	public function delete_terms( $all_terms ) {
-		$delete_terms = apply_filters( 'teccc_delete_terms', array() );
+		$delete_terms = apply_filters( 'teccc_delete_terms', [] );
 		foreach ( (array) $delete_terms as $delete_term ) {
 			foreach ( (array) $all_terms as $term ) {
 				if ( $delete_term === $term->slug ) {
@@ -238,10 +238,10 @@ class Main {
 	 */
 	public function remove_terms( $term_list ) {
 		$options      = get_option( 'teccc_options' );
-		$revised_list = array();
+		$revised_list = [];
 
 		if ( ! isset( $options['hide'] ) ) {
-			$options['hide'] = array();
+			$options['hide'] = [];
 		}
 
 		$this->ignore_list = array_merge( $this->ignore_list, (array) $options['hide'] );
@@ -286,7 +286,7 @@ class Main {
 	protected function load_config_array_file( $file ) {
 		$path = $this->functions_dir . "/{$file}.php";
 		if ( ! file_exists( $path ) ) {
-			return array();
+			return [];
 		}
 
 		return (array) include $path;

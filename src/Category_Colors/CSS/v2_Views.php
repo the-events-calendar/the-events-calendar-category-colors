@@ -3,7 +3,7 @@ namespace Fragen\Category_Colors\CSS;
 
 class v2_Views {
 	public static function add_link_css( $slug ) {
-		$css = array();
+		$css = [];
 
 		$css[] = ".teccc-legend .tribe_events_cat-{$slug} a,";
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a,";
@@ -19,7 +19,7 @@ class v2_Views {
 	}
 
 	public static function add_background_css( $slug ) {
-		$css = array();
+		$css = [];
 
 		$css[] = ".teccc-legend .tribe_events_cat-{$slug},";
 		$css[] = "article.tribe-events-calendar-month__calendar-event.tribe_events_cat-{$slug} h3,";

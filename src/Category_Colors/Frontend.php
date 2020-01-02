@@ -37,7 +37,7 @@ class Frontend {
 	 */
 	public function run() {
 		add_action( 'parse_query', [ $this, 'get_current_event_display' ] );
-		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
+		add_action( $this->legendTargetHook, [ $this, 'show_legend' ] );
 		add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 3 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'add_scripts_styles' ], PHP_INT_MAX - 100 );
 		add_action( 'init', [ $this, 'generate_css' ] );
@@ -88,7 +88,7 @@ class Frontend {
 		}
 		if ( $hook_name ) {
 			$this->legendTargetHook = "tribe_template_before_include:{$hook_name}";
-			add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
+			add_action( $this->legendTargetHook, [ $this, 'show_legend' ] );
 		}
 	}
 
@@ -124,7 +124,7 @@ class Frontend {
 			'1' === $this->options['legend_superpowers'] &&
 			! wp_is_mobile()
 		) {
-			wp_register_script( 'legend_superpowers', $this->teccc->resources_url . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
+			wp_register_script( 'legend_superpowers', $this->teccc->resources_url . '/legend-superpowers.js', [ 'jquery' ], Main::$version, true );
 			wp_enqueue_script( 'legend_superpowers' );
 		}
 	}
@@ -185,10 +185,10 @@ class Frontend {
 		// Else generate the CSS afresh.
 		$css = $this->teccc->view(
 			'category.css',
-			array(
+			[
 				'options' => $this->options,
 				'teccc'   => $this->teccc,
-			),
+			],
 			false
 		);
 		if ( ! $css ) {
@@ -253,10 +253,10 @@ class Frontend {
 
 		$content = $this->teccc->view(
 			'legend',
-			array(
+			[
 				'options' => $this->options,
 				'teccc'   => $this->teccc,
-			),
+			],
 			false
 		);
 

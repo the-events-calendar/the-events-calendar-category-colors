@@ -17,7 +17,7 @@ class Bootstrap {
 		require_once TECCC_DIR . '/vendor/autoload.php';
 
 		// Set-up Action and Filter Hooks
-		register_activation_hook( TECCC_FILE, array( 'Fragen\Category_Colors\Main', 'add_defaults' ) );
+		register_activation_hook( TECCC_FILE, [ 'Fragen\Category_Colors\Main', 'add_defaults' ] );
 
 		add_action(
 			'init',

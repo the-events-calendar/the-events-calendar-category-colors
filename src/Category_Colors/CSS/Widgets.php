@@ -5,7 +5,7 @@ namespace Fragen\Category_Colors\CSS;
 class Widgets {
 
 	public static function add_widget_link_css( $slug ) {
-		$css = array();
+		$css = [];
 		if ( class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			$css[] = ".tribe-events-adv-list-widget .tribe-events-category-{$slug} h2 a:link,";
 			$css[] = ".tribe-events-adv-list-widget .tribe-events-category-{$slug} h2 a:visited,";
@@ -26,7 +26,7 @@ class Widgets {
 	}
 
 	public static function add_widget_background_css( $slug ) {
-		$css = array();
+		$css = [];
 		if ( class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			$css[] = ".tribe-mini-calendar td.tribe-events-has-events.tribe-events-category-{$slug},";
 			$css[] = ".tribe-events-adv-list-widget .tribe-events-category-{$slug} h2,";
