@@ -2,9 +2,6 @@
 
 namespace Fragen\Category_Colors;
 
-use DateTime;
-use Tribe__Events__Main;
-
 /**
  * Class Frontend
  *
@@ -12,13 +9,14 @@ use Tribe__Events__Main;
  */
 class Frontend {
 	protected $teccc     = null;
-	protected $options   = array();
+	protected $options   = [];
 	protected $cache_key = null;
 	protected $uploads   = null;
 
 	protected $legendTargetHook   = 'tribe_events_after_header';
 	protected $legendFilterHasRun = false;
-	protected $legendExtraView    = array();
+	protected $legendExtraView    = [ 'month' ];
+	public $currentDisplay        = null;
 
 	public function __construct( Main $teccc ) {
 		$this->teccc     = $teccc;
@@ -26,11 +24,69 @@ class Frontend {
 		$this->cache_key = 'teccc_' . $this->options_hash();
 
 		require_once $teccc->functions_dir . '/templatetags.php';
-
-		add_action( 'init', array( $this, 'add_colored_categories' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts_styles' ), PHP_INT_MAX - 100 );
-		add_filter( 'upload_dir', array( $this, 'filter_upload_dir' ), 10, 1 );
 		$this->uploads = wp_upload_dir();
+	}
+
+	/**
+	 * Load hooks and generate CSS.
+	 *
+	 * @return void
+	 */
+	public function run() {
+		add_action( 'parse_query', [ $this, 'get_current_event_display' ] );
+		add_action( $this->legendTargetHook, [ $this, 'show_legend' ] );
+		add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 3 );
+		add_action( 'wp_enqueue_scripts', [ $this, 'add_scripts_styles' ], PHP_INT_MAX - 100 );
+		add_action( 'init', [ $this, 'generate_css' ] );
+		add_filter( 'upload_dir', [ $this, 'filter_upload_dir' ], 10, 1 );
+	}
+
+	/**
+	 * Get current event display from `parse_query` filter.
+	 *
+	 * @param \WP_Query $query
+	 *
+	 * @return void
+	 */
+	public function get_current_event_display( \WP_Query $query ) {
+		if ( isset( $query->query_vars['eventDisplay'] ) ) {
+			$this->currentDisplay = $query->query_vars['eventDisplay'];
+		}
+	}
+
+	/**
+	 * Set legend target hook.
+	 *
+	 * @param string                          $file     File path.
+	 * @param array                           $name     Array of view data.
+	 * @param \Tribe\Events\Views\V2\Template $template Template object.
+	 *
+	 * @return bool|void
+	 */
+	public function set_legend_target_hook( $file, $name, $template ) {
+		$this->currentDisplay = $template->get_view()->get_slug();
+		$hook_name            = false;
+		if ( ! in_array( $this->currentDisplay, $this->legendExtraView, true ) ) {
+			return false;
+		}
+		switch ( $this->currentDisplay ) {
+			case 'month':
+				$hook_name = 'events/month/top-bar';
+				break;
+			case 'list':
+				$hook_name = 'events/list/top-bar';
+				break;
+			case 'photo':
+				$hook_name = 'events/photo/top-bar';
+				break;
+			case 'week':
+				$hook_name = 'events/week/top-bar';
+				break;
+		}
+		if ( $hook_name ) {
+			$this->legendTargetHook = "tribe_template_before_include:{$hook_name}";
+			add_action( $this->legendTargetHook, [ $this, 'show_legend' ] );
+		}
 	}
 
 	/**
@@ -40,21 +96,13 @@ class Frontend {
 	 *
 	 * @param array $upload_dir
 	 *
-	 * @return void
+	 * @return array $upload_dir
 	 */
 	public function filter_upload_dir( $upload_dir ) {
 		$upload_dir['url']     = set_url_scheme( $upload_dir['url'] );
 		$upload_dir['baseurl'] = set_url_scheme( $upload_dir['baseurl'] );
 
 		return $upload_dir;
-	}
-
-	/**
-	 * Create stylesheet and show legend.
-	 */
-	public function add_colored_categories() {
-		$this->generate_css();
-		add_action( $this->legendTargetHook, array( $this, 'show_legend' ) );
 	}
 
 	/**
@@ -73,7 +121,7 @@ class Frontend {
 			'1' === $this->options['legend_superpowers'] &&
 			! wp_is_mobile()
 		) {
-			wp_register_script( 'legend_superpowers', $this->teccc->resources_url . '/legend-superpowers.js', array( 'jquery' ), Main::$version, true );
+			wp_register_script( 'legend_superpowers', $this->teccc->resources_url . '/legend-superpowers.js', [ 'jquery' ], Main::$version, true );
 			wp_enqueue_script( 'legend_superpowers' );
 		}
 	}
@@ -86,17 +134,17 @@ class Frontend {
 	 * @return string
 	 */
 	protected function options_hash() {
-		// Current options are the basis of the current config
+		// Current options are the basis of the current config.
 		$config = (array) $this->options;
 
-		// Terms are relevant but need to be flattened out
+		// Terms are relevant but need to be flattened out.
 		foreach ( $config as $key => $value ) {
 			if ( isset( $key ) && is_array( $value ) ) {
 				$config[ $key ] = implode( '|', array_keys( $value ) );
 			}
 		}
 
-		// We also need to be cognizant of the mobile breakpoint
+		// We also need to be cognizant of the mobile breakpoint.
 		$config['breakpoint'] = tribe_get_mobile_breakpoint();
 
 		$hash = hash( 'md5', implode( '|', $config ) );
@@ -116,7 +164,7 @@ class Frontend {
 	 *
 	 * @return mixed|string
 	 */
-	protected function generate_css() {
+	public function generate_css() {
 		// Look out for refresh requests.
 		$refresh_css = array_key_exists( 'refresh_css', $_GET );
 		$current     = get_transient( 'teccc_cache_key' );
@@ -134,10 +182,10 @@ class Frontend {
 		// Else generate the CSS afresh.
 		$css = $this->teccc->view(
 			'category.css',
-			array(
+			[
 				'options' => $this->options,
 				'teccc'   => $this->teccc,
-			),
+			],
 			false
 		);
 		if ( ! $css ) {
@@ -150,8 +198,10 @@ class Frontend {
 		}
 		file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );
 		file_put_contents( "{$css_dir}/{$this->cache_key}.min.css", $css_min );
+		chmod( "{$css_dir}/{$this->cache_key}.css", 0644 );
+		chmod( "{$css_dir}/{$this->cache_key}.min.css", 0644 );
 
-		// Store in transient
+		// Store in transient.
 		set_transient( 'teccc_cache_key', $this->cache_key, 4 * WEEK_IN_SECONDS );
 
 		return true;
@@ -162,7 +212,7 @@ class Frontend {
 	 *
 	 * Removes comments, spaces after commas and colons, spaces around braces, and reduce whitespace.
 	 *
-	 * @param string $css
+	 * @param  string $css
 	 * @return string $css Minified CSS.
 	 */
 	private function minify_css( $css ) {
@@ -185,19 +235,15 @@ class Frontend {
 	/**
 	 * Displays legend.
 	 *
-	 * @param string $existingContent
-	 *
-	 * @return bool
+	 * @return bool|string
 	 */
-	public function show_legend( $existingContent = '' ) {
-		$tribe         = Tribe__Events__Main::instance();
-		$eventDisplays = array( 'month' );
-		$eventDisplays = array_merge( $eventDisplays, $this->legendExtraView );
-		$tribe_view    = get_query_var( 'eventDisplay' );
-		if ( isset( $tribe->displaying ) && get_query_var( 'eventDisplay' ) !== $tribe->displaying ) {
-			$tribe_view = $tribe->displaying;
+	public function show_legend() {
+		$v2_viewable   = false !== strpos( $this->legendTargetHook, $this->currentDisplay );
+		$is_extra_view = in_array( $this->currentDisplay, $this->legendExtraView, true );
+		if ( ! $v2_viewable && ! $is_extra_view ) {
+			return false;
 		}
-		if ( ( 'tribe_events' === get_query_var( 'post_type' ) ) && ! in_array( $tribe_view, $eventDisplays, true ) ) {
+		if ( $this->legendFilterHasRun ) {
 			return false;
 		}
 		if ( ! ( isset( $this->options['add_legend'] ) && '1' === $this->options['add_legend'] ) ) {
@@ -206,10 +252,10 @@ class Frontend {
 
 		$content = $this->teccc->view(
 			'legend',
-			array(
+			[
 				'options' => $this->options,
 				'teccc'   => $this->teccc,
-			),
+			],
 			false
 		);
 
@@ -221,9 +267,8 @@ class Frontend {
 		 *
 		 * @return string $content
 		 */
-		echo $existingContent . apply_filters( 'teccc_legend_html', $content );
+		echo apply_filters( 'teccc_legend_html', $content );
 	}
-
 
 	/**
 	 * Move legend to different position.
@@ -233,7 +278,7 @@ class Frontend {
 	 * @return bool
 	 */
 	public function reposition_legend( $tribeViewFilter ) {
-		// If the legend has already run they are probably doing something wrong
+		// If the legend has already run they are probably doing something wrong.
 		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong(
 				__CLASS__ . '::' . __METHOD__,
@@ -242,13 +287,12 @@ class Frontend {
 			);
 		}
 
-		// Change the target filter (even if they are _doing_it_wrong, in case they have a special use case)
+		// Change the target filter (even if they are _doing_it_wrong, in case they have a special use case).
 		$this->legendTargetHook = $tribeViewFilter;
 
-		// Indicate if they were doing it wrong (or not)
-		return ( ! $this->legendFilterHasRun );
+		// Indicate if they were doing it wrong (or not).
+		return ! $this->legendFilterHasRun;
 	}
-
 
 	/**
 	 * Remove default legend.
@@ -256,7 +300,7 @@ class Frontend {
 	 * @return bool
 	 */
 	public function remove_default_legend() {
-		// If the legend has already run they are probably doing something wrong
+		// If the legend has already run they are probably doing something wrong.
 		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong(
 				__CLASS__ . '::' . __METHOD__,
@@ -265,11 +309,11 @@ class Frontend {
 			);
 		}
 
-		// Remove the hook regardless of whether they are _doing_it_wrong or not (in case of creative usage)
+		// Remove the hook regardless of whether they are _doing_it_wrong or not (in case of creative usage).
 		$this->legendTargetHook = null;
 
-		// Indicate if they were doing it wrong (or not)
-		return ( ! $this->legendFilterHasRun );
+		// Indicate if they were doing it wrong (or not).
+		return ! $this->legendFilterHasRun;
 	}
 
 	/**
@@ -278,8 +322,7 @@ class Frontend {
 	 * @param $view
 	 */
 	public function add_legend_view( $view ) {
-		// takes 'upcoming', 'day', 'week', 'photo' as parameters
+		// 'list', 'day', 'week', 'photo', 'map' as parameters.
 		$this->legendExtraView[] = $view;
 	}
-
 }

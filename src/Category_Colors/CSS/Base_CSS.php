@@ -4,7 +4,7 @@ namespace Fragen\Category_Colors\CSS;
 class Base_CSS {
 
 	public static function add_link_css( $slug ) {
-		$css = array();
+		$css = [];
 
 		$css[] = "#tribe-events-content table.tribe-events-calendar .tribe-event-featured.tribe-events-category-{$slug} .tribe-events-month-event-title a,";
 		$css[] = ".teccc-legend .tribe-events-category-{$slug} a,";
@@ -21,7 +21,7 @@ class Base_CSS {
 	}
 
 	public static function add_background_css( $slug ) {
-		$css = array();
+		$css = [];
 
 		$css[] = ".events-archive.events-gridview #tribe-events-content table .type-tribe_events.tribe-events-category-{$slug},";
 		$css[] = ".teccc-legend .tribe-events-category-{$slug},";

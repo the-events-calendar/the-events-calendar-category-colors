@@ -5,6 +5,7 @@ use Fragen\Category_Colors\CSS\Base_CSS;
 use Fragen\Category_Colors\CSS\Extras;
 use Fragen\Category_Colors\CSS\Widgets;
 use Fragen\Category_Colors\CSS\Pro;
+use Fragen\Category_Colors\CSS\v2_Views;
 
 ?>
 /* The Events Calendar Category Colors <?php echo Main::$version; ?> */
@@ -18,8 +19,9 @@ use Fragen\Category_Colors\CSS\Pro;
 }
 
 <?php Extras::add_mobile_css(); ?>
-
 <?php Pro::fix_default_week_background(); ?>
+<?php v2_Views::add_v2_multiday_background_color(); ?>
+
 <?php
 if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	$teccc->terms = $options['terms'];
@@ -34,6 +36,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	$name = esc_attr( $attributes[ Main::NAME ] );
 	?>
 
+	<?php v2_Views::add_link_css( $slug ); ?>
 	<?php Extras::fix_category_link_css( $slug ); ?>
 	<?php Pro::add_map_link_css( $slug ); ?>
 	<?php Pro::add_week_link_css( $slug ); ?>
@@ -50,6 +53,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	text-decoration: none;
 }
 
+	<?php v2_Views::add_background_css( $slug ); ?>
 	<?php Extras::fix_category_background_css( $slug ); ?>
 	<?php Pro::add_map_background_css( $slug ); ?>
 	<?php Pro::add_week_background_css( $slug ); ?>

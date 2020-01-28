@@ -2,8 +2,8 @@
  * The Events Calendar Category Colors - Legend Superpowers. Wait until the
  * document is ready then begin.
  */
-jQuery( document ).ready(
-	function($) {
+jQuery(document).ready(
+	function ($) {
 		var legendEntries;
 		var status;
 
@@ -11,9 +11,10 @@ jQuery( document ).ready(
 		 * Sets up/restores the status and legendEntries objects to their defaults.
 		 */
 		function defaultStatus() {
-			legendEntries = $( "ul#legend" ).find( "li" );
-			status        = {
-				allEntries: $( "#tribe-events-content" ).find( "div[class^=tribe-events-category-]" ),
+			legendEntries = $("ul#legend").find("li");
+			status = {
+				//allEntries: $( "#tribe-events-content" ).find( "div[class^=tribe-events-category-]" ),
+				allEntries: document.querySelectorAll("#tribe-events-content div[class^=tribe-events-category-],.tribe-events article[class*=tribe_events_cat-]"),
 				opacity: 0.25,
 				selected: false,
 				speed: 500,
@@ -28,12 +29,12 @@ jQuery( document ).ready(
 		 * @param slug
 		 */
 		function deselect(slug) {
-			$( status.allEntries ).fadeTo(
+			$(status.allEntries).fadeTo(
 				status.speed,
 				1,
 				function () {
 					status.selected = false;
-					status.working  = false;
+					status.working = false;
 				}
 			);
 		}
@@ -54,24 +55,25 @@ jQuery( document ).ready(
 			}
 
 			// Look out for deselections!
-			var selection = $( this ).data( "categorySlug" );
+			var selection = $(this).data("categorySlug");
 			if (selection === status.selected) {
-				deselect( selection );
+				deselect(selection);
 				event.stopPropagation();
 				return;
 			}
 
 			// Handle selections: deselect existing selection first of all
-			deselect( status.selected );
+			deselect(status.selected);
 
 			// Now focus in on the new selection
 			var slug = ".tribe-events-category-" + selection;
-			$( status.allEntries ).not( slug ).fadeTo(
+			var slugv2 = ".tribe_events_cat-" + selection;
+			$(status.allEntries).not(slug).not(slugv2).fadeTo(
 				status.speed,
 				status.opacity,
 				function () {
 					status.selected = selection;
-					status.working  = false;
+					status.working = false;
 				}
 			);
 
@@ -79,7 +81,7 @@ jQuery( document ).ready(
 		}
 
 		function responsive_active() {
-			return $( "body" ).hasClass( "tribe-mobile" );
+			return $("body").hasClass("tribe-mobile");
 		}
 
 		/**
@@ -87,25 +89,25 @@ jQuery( document ).ready(
 		 * object for future use.
 		 */
 		function prepareElement() {
-			var link = $( this ).find( "a" );
+			var link = $(this).find("a");
 			if (link.length !== 1) {
 				return; // Quit if preparation has already been completed (no <a> elements found)
 			}
 
 			// Convert the link(s) to span(s) but store the links address and slug
-			var linkAddr        = $( link ).attr( "href" );
-			var linkTitle       = $( link ).html();
-			var linkSlugField   = $( this ).find( "input" );
-			var linkSlug        = $( linkSlugField ).val();
+			var linkAddr = $(link).attr("href");
+			var linkTitle = $(link).html();
+			var linkSlugField = $(this).find("input");
+			var linkSlug = $(linkSlugField).val();
 			var replacementText = '<span>' + linkTitle + '</span>';
 
 			// Tidy up - remove unnecessary elements
-			$( link ).remove();
-			$( linkSlugField ).remove();
+			$(link).remove();
+			$(linkSlugField).remove();
 
-			$( this ).html( replacementText )
-			.data( 'categoryURL', linkAddr )
-			.data( 'categorySlug', linkSlug );
+			$(this).html(replacementText)
+				.data('categoryURL', linkAddr)
+				.data('categorySlug', linkSlug);
 		}
 
 		/**
@@ -113,8 +115,8 @@ jQuery( document ).ready(
 		 */
 		function setup() {
 			defaultStatus();
-			$( legendEntries ).each( prepareElement );
-			$( legendEntries ).click( categorySelection );
+			$(legendEntries).each(prepareElement);
+			$(legendEntries).click(categorySelection);
 		}
 
 		/**
@@ -122,16 +124,23 @@ jQuery( document ).ready(
 		 */
 		function setupAfterAjax() {
 			if (typeof tribe_ev === "object" && tribe_ev.events !== undefined) {
-				$( tribe_ev.events ).on( 'tribe_ev_ajaxSuccess', setup );
+				$(tribe_ev.events).on('tribe_ev_ajaxSuccess', setup);
 			}
 		}
 
 		/**
-	 * Setup should occur when the document is ready and following ajax loads.
-	 */
+	   * Setup should occur when the document is ready and following ajax loads.
+	   */
 		setup();
 		setupAfterAjax();
 
-		$( "#tribe-events-content" ).ajaxComplete( setup );
+		//$("#tribe-events-content").ajaxComplete(setup);
+		$(document).find("#tribe-events-content").ajaxComplete(setup);
+		$(document).on('afterSetup.tribeEvents', tribe.events.views.manager.selectors.container, function () {
+			var $container = $(this);
+			// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
+			// thanks Gustavo! <3
+			setup();
+		});
 	}
 );

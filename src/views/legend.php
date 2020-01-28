@@ -16,7 +16,7 @@ $teccc->setup_terms( $options );
 			$name = esc_attr( $attributes[ Main::NAME ] );
 			$link = get_term_link( $id, Tribe__Events__Main::TAXONOMY );
 			?>
-			<li class="tribe-events-category-<?php echo $slug; ?> tribe-events-category-<?php esc_attr_e( $id ); ?>">
+			<li class="tribe-events-category-<?php echo $slug; ?> tribe_events_cat-<?php echo $slug; ?>">
 				<a href="<?php echo $link; ?>">
 					<?php echo $name; ?>
 				</a>

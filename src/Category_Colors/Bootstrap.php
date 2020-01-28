@@ -6,28 +6,25 @@ namespace Fragen\Category_Colors;
  * Class Bootstrap
  */
 class Bootstrap {
-
-		/**
-		 * Start it up.
-		 *
-		 * @return void
-		 */
+	/**
+	 * Start it up.
+	 *
+	 * @return void
+	 */
 	public function run() {
-		// Autoloading
+		// Autoloading.
 		require_once TECCC_DIR . '/vendor/autoload.php';
 
-		// Set-up Action and Filter Hooks
-		register_activation_hook( TECCC_FILE, array( 'Fragen\Category_Colors\Main', 'add_defaults' ) );
+		// Set-up Action and Filter Hooks.
+		register_activation_hook( TECCC_FILE, [ 'Fragen\Category_Colors\Main', 'add_defaults' ] );
 
 		add_action(
 			'init',
-			function() {
+			function () {
 				load_plugin_textdomain( 'the-events-calendar-category-colors', false, TECCC_DIR . '/languages' );
-
 			}
 		);
-		// Launch
-		Main::instance();
+		// Launch.
+		Main::instance()->run();
 	}
-
 }
