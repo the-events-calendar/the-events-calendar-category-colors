@@ -6,7 +6,6 @@ use Tribe__Events__Main;
 use Tribe__Settings_Tab;
 
 class Admin {
-
 	const TAB_NAME      = 'category-colors';
 	const UPDATE_ACTION = 'category-colors-update-options';
 	protected $teccc    = null;
@@ -14,15 +13,17 @@ class Admin {
 	public function __construct( Main $teccc ) {
 		$this->teccc = $teccc;
 		$this->load_settings_tab();
-
-		add_action( 'admin_init', array( $this, 'init' ) );
-		add_action( 'admin_notices', array( $this, 'plugin_fail_msg' ) );
-		add_action( 'tribe_settings_below_tabs_tab_category-colors', array( $this, 'is_saved' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'load_teccc_js_css' ) );
 	}
 
-	public function init() {
-		register_setting( 'teccc_category_colors', 'teccc_options', array( $this, 'validate_options' ) );
+	public function load_hooks() {
+		add_action( 'admin_init', [ $this, 'register_setting' ] );
+		add_action( 'admin_notices', [ $this, 'plugin_fail_msg' ] );
+		add_action( 'tribe_settings_below_tabs_tab_category-colors', [ $this, 'is_saved' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'load_teccc_js_css' ] );
+	}
+
+	public function register_setting() {
+		register_setting( 'teccc_category_colors', 'teccc_options', [ $this, 'validate_options' ] );
 	}
 
 	public function plugin_fail_msg() {
@@ -57,7 +58,7 @@ class Admin {
 	/**
 	 * @param array $input
 	 *
-	 * TODO: streamline validation/sanitization work, replace deprecated function calls
+	 * TODO: streamline validation/sanitization work, replace deprecated function calls.
 	 * @return array $input
 	 */
 	public function validate_options( $input ) {
@@ -80,7 +81,7 @@ class Admin {
 				$input[ "{$slug}-border" ] = '#CFCFCF';
 			}
 
-			// Sets value when checked
+			// Sets value when checked.
 			if ( isset( $input[ "{$slug}-border_none" ] ) ) {
 				$input[ "{$slug}-border" ] = null;
 			}
@@ -88,7 +89,7 @@ class Admin {
 				$input[ "{$slug}-background" ] = null;
 			}
 
-			// Sanitize dropdown input (make sure value is one of options allowed)
+			// Sanitize dropdown input (make sure value is one of options allowed).
 			if ( ! in_array( $input[ "{$slug}-text" ], $teccc->text_colors, true ) ) {
 				$input[ "{$slug}-text" ] = '#000';
 			}
@@ -105,14 +106,14 @@ class Admin {
 
 	public function load_settings_tab() {
 		if ( class_exists( 'Tribe__Events__Main' ) ) {
-			add_action( 'tribe_settings_do_tabs', array( $this, 'add_category_colors_tab' ) );
+			add_action( 'tribe_settings_do_tabs', [ $this, 'add_category_colors_tab' ] );
 		}
 	}
 
 	public function add_category_colors_tab() {
 		$categoryColorsTab = $this->teccc->load_config( 'admintab' );
-		add_action( 'tribe_settings_form_element_tab_category-colors', array( $this, 'form_header' ) );
-		add_action( 'tribe_settings_before_content_tab_category-colors', array( $this, 'settings_fields' ) );
+		add_action( 'tribe_settings_form_element_tab_category-colors', [ $this, 'form_header' ] );
+		add_action( 'tribe_settings_before_content_tab_category-colors', [ $this, 'settings_fields' ] );
 		new Tribe__Settings_Tab( self::TAB_NAME, esc_html__( 'Category Colors', 'the-events-calendar-category-colors' ), $categoryColorsTab );
 	}
 
@@ -137,10 +138,10 @@ class Admin {
 
 		$content = $teccc->view(
 			'optionsform',
-			array(
+			[
 				'options' => self::fetch_options( $teccc ),
 				'teccc'   => $teccc,
-			),
+			],
 			false
 		);
 
@@ -156,14 +157,14 @@ class Admin {
 	 * @return array
 	 */
 	public static function fetch_options( Main $teccc ) {
-		$options         = (array) get_option( 'teccc_options', array() );
-		$categoryOptions = array(
+		$options         = (array) get_option( 'teccc_options', [] );
+		$categoryOptions = [
 			'-background',
 			'-background_none',
 			'-border',
 			'-border_none',
 			'-text',
-		);
+		];
 
 		foreach ( $teccc->terms as $attributes ) {
 			$slug = $attributes[ Main::SLUG ];
@@ -179,7 +180,7 @@ class Admin {
 			}
 		}
 
-		$generalOptions = array(
+		$generalOptions = [
 			'featured-event',
 			'featured-event_none',
 			'add_legend',
@@ -188,7 +189,7 @@ class Admin {
 			'font_weight',
 			'legend_superpowers',
 			'show_ignored_cats_legend',
-		);
+		];
 
 		foreach ( $generalOptions as $optionkey ) {
 			if ( ! isset( $options[ $optionkey ] ) ) {
@@ -202,7 +203,7 @@ class Admin {
 	}
 
 	/**
-	 * Enqueue admin scripts and styles
+	 * Enqueue admin scripts and styles.
 	 *
 	 * @param $hook
 	 *
@@ -221,5 +222,4 @@ class Admin {
 		wp_enqueue_script( 'teccc-admin', $this->teccc->resources_url . '/teccc-admin.js', false, Main::$version, true );
 		wp_enqueue_style( 'teccc-options', $this->teccc->resources_url . '/teccc-options.css', false, Main::$version );
 	}
-
 }

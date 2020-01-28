@@ -7,7 +7,7 @@ use Fragen\Category_Colors\Main;
 class Extras {
 
 	public static function add_list_link_css( $slug ) {
-		$css   = array();
+		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} h2.tribe-events-list-event-title.entry-title a,";
 		$css[] = ".tribe-events-category-{$slug} h2.tribe-events-list-event-title a,";
 		$css[] = ".tribe-events-category-{$slug} h3.tribe-events-list-event-title a,";
@@ -19,7 +19,7 @@ class Extras {
 	}
 
 	public static function add_list_background_css( $slug ) {
-		$css   = array();
+		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} h3.tribe-events-list-event-title,";
 		$css[] = '';
 		$css   = implode( "\n", $css );
@@ -27,7 +27,7 @@ class Extras {
 	}
 
 	public static function add_featured_event_link_css( $slug ) {
-		$css   = array();
+		$css   = [];
 		$css[] = ".tribe-events-list .tribe-events-loop .tribe-event-featured.tribe-events-category-{$slug} h3.tribe-events-list-event-title a:hover,";
 		$css[] = "#tribe-events-content table.tribe-events-calendar .type-tribe_events.tribe-events-category-{$slug}.tribe-event-featured h3.tribe-events-month-event-title a:hover,";
 		$css[] = '';
@@ -36,7 +36,7 @@ class Extras {
 	}
 
 	public static function add_featured_event_border_css( $slug, $options ) {
-		$css   = array();
+		$css   = [];
 		$css[] = ".tribe-events-calendar .tribe-event-featured.tribe-events-category-{$slug},";
 		$css[] = "#tribe-events-content table.tribe-events-calendar .type-tribe_events.tribe-event-featured.tribe-events-category-{$slug},";
 		$css[] = ".tribe-grid-body div[id*='tribe-events-event-'][class*='tribe-events-category-'].tribe-events-week-hourly-single.tribe-event-featured ";
@@ -48,13 +48,11 @@ class Extras {
 	}
 
 	public static function add_mobile_css() {
-		$teccc = Main::instance();
-
-		$css = $teccc->view(
+		$css = Main::instance()->view(
 			'mobile.css',
-			array(
+			[
 				'breakpoint' => tribe_get_mobile_breakpoint(),
-			),
+			],
 			false
 		);
 
@@ -96,7 +94,7 @@ class Extras {
 	}
 
 	public static function add_deprecated_background_css( $slug ) {
-		$css   = array();
+		$css   = [];
 		$css[] = "#tribe-events-content .tribe-events-category-{$slug} > .tribe-events-tooltip h4,";
 		$css[] = ".tribe-events-category-{$slug} h2,";
 		$css[] = '';
@@ -105,7 +103,7 @@ class Extras {
 	}
 
 	public static function add_deprecated_link_css( $slug ) {
-		$css   = array();
+		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} h2 a,";
 		$css[] = ".tribe-events-category-{$slug} h2.tribe-events-list-event-title.entry-title a,";
 		$css[] = '';
@@ -115,7 +113,7 @@ class Extras {
 	}
 
 	public static function override_customizer( $slug ) {
-		$css   = array();
+		$css   = [];
 		$css[] = ".tribe-events-shortcode .tribe-events-month table .type-tribe_events.tribe-events-category-{$slug},";
 		$css[] = '';
 		$css   = implode( "\n", $css );

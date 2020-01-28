@@ -1,5 +1,7 @@
 #### [unreleased]
 * explicitly set file permissions to 644 for CSS files
+* updated for new v2 views or TEC and ECP
+* make legend superpowers work for new v2 views, thanks Gustavo!!
 
 #### 6.3.2 / 2019-10-30
 * fixed storage of `cache_key` transient
