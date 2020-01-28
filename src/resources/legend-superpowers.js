@@ -136,11 +136,13 @@ jQuery(document).ready(
 
 		//$("#tribe-events-content").ajaxComplete(setup);
 		$(document).find("#tribe-events-content").ajaxComplete(setup);
-		$(document).on('afterSetup.tribeEvents', tribe.events.views.manager.selectors.container, function () {
-			var $container = $(this);
-			// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
-			// thanks Gustavo! <3
-			setup();
-		});
+		if (typeof tribe !== 'undefined') {
+			$(document).on('afterSetup.tribeEvents', tribe.events.views.manager.selectors.container, function () {
+				var $container = $(this);
+				// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
+				// thanks Gustavo! <3
+				setup();
+			});
+		}
 	}
 );

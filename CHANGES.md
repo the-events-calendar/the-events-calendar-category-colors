@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 6.4.2 / 2020-01-28
+* fix Superpowers JS error, `ReferenceError: Can't find variable: tribe`
+
 #### 6.4.1 / 2020-01-28
 * test explicity for `$template instanceof \Tribe\Events\Views\V2\Template`, fixes bug when also using Events Tickets
 
