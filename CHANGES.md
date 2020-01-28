@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 6.4.1 / 2020-01-28
+* test explicity for `$template instanceof \Tribe\Events\Views\V2\Template`, fixes bug when also using Events Tickets
+
 #### 6.4.0 / 2020-01-27
 * explicitly set file permissions to 644 for CSS files
 * updated for new v2 views or TEC and ECP
