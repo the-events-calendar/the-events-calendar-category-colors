@@ -64,6 +64,9 @@ class Frontend {
 	 * @return bool|void
 	 */
 	public function set_legend_target_hook( $file, $name, $template ) {
+		if ( ! $template instanceof \Tribe\Events\Views\V2\Template ) {
+			return false;
+		}
 		$this->currentDisplay = $template->get_view()->get_slug();
 		$hook_name            = false;
 		if ( ! in_array( $this->currentDisplay, $this->legendExtraView, true ) ) {
