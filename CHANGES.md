@@ -25,7 +25,7 @@
 
 #### 6.2.0
 * add filter to set options hash, hopefully this solves an issue with load balancers not having current files
-* change `wp_get_updload_dir()` to `wp_upload_dir()` so that if the directory doesn't exist it is created
+* change `wp_get_upload_dir()` to `wp_upload_dir()` so that if the directory doesn't exist it is created
 * the above fixes [Writing to CSS file failing](https://wordpress.org/support/topic/writing-to-css-file-failing/), thanks @dpegasusm
 
 #### 6.1.2 / 2019-06-25
