@@ -38,6 +38,8 @@ class Frontend {
 		add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 3 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'add_scripts_styles' ], PHP_INT_MAX - 100 );
 		add_action( 'init', [ $this, 'generate_css' ] );
+
+		// Not sure this is needed.
 		add_filter( 'upload_dir', [ $this, 'filter_upload_dir' ], 10, 1 );
 	}
 
@@ -109,10 +111,25 @@ class Frontend {
 	}
 
 	/**
+	 * Strips HTTP scheme from URL, avoids mixed media error.
+	 *
+	 * @param string $url URL.
+	 *
+	 * @return string $url
+	 */
+	private function strip_url_scheme( $url ) {
+		$url_args = parse_url( $url );
+		unset( $url_args['scheme'] );
+		$url = '//' . implode( '/', $url_args );
+
+		return $url;
+	}
+
+	/**
 	 * Enqueue stylesheets and scripts as appropriate.
 	 */
 	public function add_scripts_styles() {
-		$css_url        = $this->uploads['baseurl'];
+		$css_url        = $this->strip_url_scheme( $this->uploads['baseurl'] );
 		$min            = defined( 'WP_DEBUG' ) && WP_DEBUG ? null : '.min';
 		$stylesheet_url = "{$css_url}/{$this->cache_key}{$min}.css";
 		$version        = array_key_exists( 'refresh_css', $_GET ) ? microtime( true ) : Main::$version;
