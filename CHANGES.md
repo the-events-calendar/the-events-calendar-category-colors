@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 6.4.4 / 2020-01-30
+* now strip CSS URL scheme to avoid mixed media errors from server
+
 #### 6.4.1 - 6.4.3 / 2020-01-28
 * test explicity for `$template instanceof \Tribe\Events\Views\V2\Template`, fixes bug when also using Events Tickets
 * fix Superpowers JS error, `ReferenceError: Can't find variable: tribe` and `views`
