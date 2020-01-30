@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 6.4.4 / 2020-01-30
 * now strip CSS URL scheme to avoid mixed media errors from server
 
 #### 6.4.1 - 6.4.3 / 2020-01-28
