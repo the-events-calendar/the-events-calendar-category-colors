@@ -1,4 +1,5 @@
 #### [unreleased]
+* make JS conditional more specific so legend superpowers continue to work after prev/next
 
 #### 6.4.4 / 2020-01-30
 * now strip CSS URL scheme to avoid mixed media errors from server
