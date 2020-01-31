@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 6.4.5 / 2020-01-31
 * make JS conditional more specific so legend superpowers continue to work after prev/next
 
 #### 6.4.4 / 2020-01-30

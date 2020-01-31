@@ -5,7 +5,7 @@ Tags: events, color, modern tribe, tribe
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.4
-Stable tag: 6.4.4
+Stable tag: 6.4.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,9 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 6.4.5 / 2020-01-31
+* make JS conditional more specific so legend superpowers continue to work after prev/next
 
 #### 6.4.4 / 2020-01-30
 * now strip CSS URL scheme to avoid mixed media errors from server
