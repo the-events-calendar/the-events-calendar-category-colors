@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 6.4.6 / 2020-02-03
+* improve JS conditional to prevent JS error on non-calendar pages
+
 #### 6.4.5 / 2020-01-31
 * make JS conditional more specific so legend superpowers continue to work after prev/next
 
