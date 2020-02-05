@@ -1,4 +1,5 @@
 #### [unreleased]
+* separate JS conditionals
 
 #### 6.4.6 / 2020-02-03
 * improve JS conditional to prevent JS error on non-calendar pages
