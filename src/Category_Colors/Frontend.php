@@ -118,8 +118,12 @@ class Frontend {
 	 * @return string $url
 	 */
 	private function strip_url_scheme( $url ) {
-		$url_args = parse_url( $url );
+		$url_args         = parse_url( $url );
+		$url_args['path'] = ltrim( $url_args['path'], '/' );
 		unset( $url_args['scheme'] );
+		if ( empty( $url_args['host'] ) ) {
+			unset( $url_args['host'] );
+		}
 		$url = '//' . implode( '/', $url_args );
 
 		return $url;
