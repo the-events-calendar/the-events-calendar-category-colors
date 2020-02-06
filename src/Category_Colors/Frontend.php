@@ -124,7 +124,8 @@ class Frontend {
 		if ( empty( $url_args['host'] ) ) {
 			unset( $url_args['host'] );
 		}
-		$url = '//' . implode( '/', $url_args );
+		$protocol_relative = isset( $url_args['host'] ) ? '//' : '/';
+		$url               = $protocol_relative . implode( '/', $url_args );
 
 		return $url;
 	}
