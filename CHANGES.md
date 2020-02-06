@@ -1,5 +1,9 @@
 #### [unreleased]
 
+#### 6.4.7 / 2020-02-06
+* separate JS conditionals
+* fix stylesheet URL for protocol relative link when host missing
+
 #### 6.4.6 / 2020-02-03
 * improve JS conditional to prevent JS error on non-calendar pages
 
