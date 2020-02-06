@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 6.4.7 / 2020-02-06
 * separate JS conditionals
 * fix stylesheet URL for protocol relative link when host missing
 
