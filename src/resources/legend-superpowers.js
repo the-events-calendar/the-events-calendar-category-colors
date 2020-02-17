@@ -124,15 +124,15 @@ jQuery(document).ready(
 	   */
 		setup();
 
-		//if (typeof tribe.events !== 'undefined') {
-		$(document).on('afterSetup.tribeEvents', tribe.events.views.manager.selectors.container, function () {
+		//$(document).on('afterSetup.tribeEvents', tribe.events.views.manager.selectors.container, function () {
+		$(document).on('afterSetup.tribeEvents', function () {
 			var $container = $(this);
 			// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
 			// thanks Gustavo! <3
 			if (typeof $container !== 'undefined') {
+				console.log('setup');
 				setup();
 			}
 		});
-		//}
 	}
 );
