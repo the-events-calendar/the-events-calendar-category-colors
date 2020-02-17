@@ -120,31 +120,19 @@ jQuery(document).ready(
 		}
 
 		/**
-		 * Tries to ensure the setup procedure runs afresh following ajax operations (month to month navigation etc).
-		 */
-		function setupAfterAjax() {
-			if (typeof tribe_ev === "object" && tribe_ev.events !== undefined) {
-				$(tribe_ev.events).on('tribe_ev_ajaxSuccess', setup);
-			}
-		}
-
-		/**
 	   * Setup should occur when the document is ready and following ajax loads.
 	   */
 		setup();
-		setupAfterAjax();
 
-		//$("#tribe-events-content").ajaxComplete(setup);
-		$(document).find("#tribe-events-content").ajaxComplete(setup);
-		if (typeof tribe !== 'undefined') {
-			if (typeof views !== 'undefined') {
-				$(document).on('afterSetup.tribeEvents', tribe.events.views.manager.selectors.container, function () {
-					var $container = $(this);
-					// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
-					// thanks Gustavo! <3
-					setup();
-				});
+		//if (typeof tribe.events !== 'undefined') {
+		$(document).on('afterSetup.tribeEvents', tribe.events.views.manager.selectors.container, function () {
+			var $container = $(this);
+			// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
+			// thanks Gustavo! <3
+			if (typeof $container !== 'undefined') {
+				setup();
 			}
-		}
+		});
+		//}
 	}
 );
