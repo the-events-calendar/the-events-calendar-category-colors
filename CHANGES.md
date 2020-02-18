@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 6.4.8 / 2020-02-17 - Happy Birthday Dad! 🎂
+* simplify jQuery `on()` for reloading legend superpowers `setup()` and remove conditionals 🤞
+
 #### 6.4.7 / 2020-02-06
 * separate JS conditionals
 * fix stylesheet URL for protocol relative link when host missing
