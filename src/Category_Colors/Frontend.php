@@ -82,7 +82,7 @@ class Frontend {
 				$hook_name = 'events/list/top-bar';
 				break;
 			case 'photo':
-				$hook_name = 'events/photo/top-bar';
+				$hook_name = 'events-pro/v2/photo/top-bar';
 				break;
 			case 'week':
 				$hook_name = 'events/week/top-bar';

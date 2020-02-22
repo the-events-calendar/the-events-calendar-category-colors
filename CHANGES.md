@@ -1,4 +1,5 @@
 #### [unreleased]
+* fix ECP Photo view hook name for showing legend
 
 #### 6.4.8 / 2020-02-17 - Happy Birthday Dad! 🎂
 * simplify jQuery `on()` for reloading legend superpowers `setup()` and remove conditionals 🤞
