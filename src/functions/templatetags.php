@@ -26,7 +26,8 @@ function teccc_remove_default_legend() {
  * @return bool
  */
 function teccc_reposition_legend( $viewFilter ) {
-	return Fragen\Category_Colors\Main::instance()->public->reposition_legend( $viewFilter );
+	_doing_it_wrong( 'teccc_reposition_legend', esc_html__( 'Use of this function is deprecated for TEC v2 views.', 'the-events-calendar-category-colors' ), '6.4.8.3' );
+	//return Fragen\Category_Colors\Main::instance()->public->reposition_legend( $viewFilter );
 }
 
 
