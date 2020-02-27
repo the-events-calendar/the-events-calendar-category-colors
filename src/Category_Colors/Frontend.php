@@ -304,6 +304,7 @@ class Frontend {
 	/**
 	 * Move legend to different position.
 	 *
+	 * @deprecated 6.8.4.3
 	 * @param $tribeViewFilter
 	 *
 	 * @return bool
@@ -327,6 +328,8 @@ class Frontend {
 
 	/**
 	 * Remove default legend.
+	 *
+	 * @deprecated 6.8.4.3
 	 *
 	 * @return bool
 	 */
