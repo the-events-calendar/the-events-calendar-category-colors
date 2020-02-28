@@ -5,7 +5,7 @@ Tags: events, color, modern tribe, tribe
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.4
-Stable tag: 6.4.8
+Stable tag: 6.4.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,11 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 6.4.9 / 2020-02-28
+* updated all v2 views hook names for showing legend
+* deprecate `teccc_reposition_legend()` with v2
+* deprecate `teccc_remove_default_legend`, just uncheck the setting
 
 #### 6.4.8 / 2020-02-17 - Happy Birthday Dad! 🎂
 * simplify jQuery `on()` for reloading legend superpowers `setup()` and remove conditionals 🤞
