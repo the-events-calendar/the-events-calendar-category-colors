@@ -76,16 +76,22 @@ class Frontend {
 		}
 		switch ( $this->currentDisplay ) {
 			case 'month':
-				$hook_name = 'events/month/top-bar';
+				$hook_name = 'events/v2/month/top-bar';
 				break;
 			case 'list':
-				$hook_name = 'events/list/top-bar';
+				$hook_name = 'events/v2/list/top-bar';
+				break;
+			case 'day':
+				$hook_name = 'events/v2/day/top-bar';
 				break;
 			case 'photo':
-				$hook_name = 'events/photo/top-bar';
+				$hook_name = 'events-pro/v2/photo/top-bar';
 				break;
 			case 'week':
-				$hook_name = 'events/week/top-bar';
+				$hook_name = 'events-pro/v2/week/top-bar';
+				break;
+			case 'map':
+				$hook_name = 'events-pro/v2/map/top-bar';
 				break;
 		}
 		if ( $hook_name ) {
@@ -298,6 +304,7 @@ class Frontend {
 	/**
 	 * Move legend to different position.
 	 *
+	 * @deprecated 6.8.4.3
 	 * @param $tribeViewFilter
 	 *
 	 * @return bool
@@ -321,6 +328,8 @@ class Frontend {
 
 	/**
 	 * Remove default legend.
+	 *
+	 * @deprecated 6.8.4.3
 	 *
 	 * @return bool
 	 */

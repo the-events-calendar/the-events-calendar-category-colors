@@ -130,7 +130,6 @@ jQuery(document).ready(
 			// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
 			// thanks Gustavo! <3
 			if (typeof $container !== 'undefined') {
-				console.log('setup');
 				setup();
 			}
 		});

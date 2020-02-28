@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the The Events Calendar Category Colors plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: The Events Calendar Category Colors 6.4.8\n"
+"Project-Id-Version: The Events Calendar Category Colors 6.4.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/the-events-calendar-category-colors\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-18T00:09:52+00:00\n"
+"POT-Creation-Date: 2020-02-28T18:49:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: the-events-calendar-category-colors\n"
@@ -72,7 +72,12 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: src/functions/templatetags.php:56
+#: src/functions/templatetags.php:13
+#: src/functions/templatetags.php:32
+msgid "Use of this function is deprecated for TEC v2 views."
+msgstr ""
+
+#: src/functions/templatetags.php:60
 msgid "Use of this function is deprecated"
 msgstr ""
 

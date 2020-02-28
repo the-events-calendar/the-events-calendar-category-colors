@@ -6,10 +6,12 @@
  * If you are doing it wrong (ie, if the legend has already been displayed) then
  * this will return (bool) false, else it returns true on success.
  *
+ * @deprecated 6.8.4.3
  * @return bool
  */
 function teccc_remove_default_legend() {
-	return Fragen\Category_Colors\Main::instance()->public->remove_default_legend();
+	_doing_it_wrong( 'teccc_remove_default_legend', esc_html__( 'Use of this function is deprecated for TEC v2 views.', 'the-events-calendar-category-colors' ), '6.4.8.3' );
+	// return Fragen\Category_Colors\Main::instance()->public->remove_default_legend();
 }
 
 
@@ -22,11 +24,13 @@ function teccc_remove_default_legend() {
  * not guarantee the legend will be displayed (if for instance you have specified the
  * wrong hook or a hook that has already run.
  *
+ * @deprecated 6.4.8.3
  * @param $viewFilter
  * @return bool
  */
 function teccc_reposition_legend( $viewFilter ) {
-	return Fragen\Category_Colors\Main::instance()->public->reposition_legend( $viewFilter );
+	_doing_it_wrong( 'teccc_reposition_legend', esc_html__( 'Use of this function is deprecated for TEC v2 views.', 'the-events-calendar-category-colors' ), '6.4.8.3' );
+	// return Fragen\Category_Colors\Main::instance()->public->reposition_legend( $viewFilter );
 }
 
 
@@ -90,7 +94,7 @@ function teccc_ignore_slug() {
 /**
  * Shows the legend in an additional view.
  *
- * @param $view - 'upcoming', 'day', 'week', or 'photo'
+ * @param $view - 'list', 'day', 'week', or 'photo'
  */
 function teccc_add_legend_view( $view ) {
 	Fragen\Category_Colors\Main::instance()->public->add_legend_view( $view );

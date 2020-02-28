@@ -1,5 +1,10 @@
 #### [unreleased]
 
+#### 6.4.9 / 2020-02-28
+* updated all v2 views hook names for showing legend
+* deprecate `teccc_reposition_legend()` with v2
+* deprecate `teccc_remove_default_legend`, just uncheck the setting
+
 #### 6.4.8 / 2020-02-17 - Happy Birthday Dad! 🎂
 * simplify jQuery `on()` for reloading legend superpowers `setup()` and remove conditionals 🤞
 
