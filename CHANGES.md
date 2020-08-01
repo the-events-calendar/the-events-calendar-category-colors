@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 6.4.10 / 2020-08-01
+* silence `unlink()`
+
 #### 6.4.9 / 2020-02-28
 * updated all v2 views hook names for showing legend
 * deprecate `teccc_reposition_legend()` with v2
@@ -227,7 +230,7 @@
 
 #### 4.0.0
 * don't minify CSS when `?debug_css` - this to help in debugging
-* requires PHP 5.3 or greater as requires namespacing 
+* requires PHP 5.3 or greater as requires namespacing
 * class aliases for backwards compatibility for users of ECP 3.9 or lower
 * renamed directory and class names to allow for PSR 4 loading
 * fix all text domain slugs and update POs

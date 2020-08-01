@@ -225,7 +225,7 @@ class Frontend {
 		$css_min = $this->minify_css( $css );
 
 		foreach ( glob( "{$css_dir}/teccc*.css" ) as $file ) {
-			unlink( $file );
+			@unlink( $file );
 		}
 		file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );
 		file_put_contents( "{$css_dir}/{$this->cache_key}.min.css", $css_min );
