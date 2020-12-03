@@ -1,4 +1,5 @@
 #### [unreleased]
+* update for widget list
 
 #### 6.4.10 / 2020-08-01
 * silence `unlink()`
