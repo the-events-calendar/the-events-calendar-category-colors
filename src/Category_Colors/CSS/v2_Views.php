@@ -22,7 +22,7 @@ class v2_Views {
 		$css = [];
 
 		$css[] = ".teccc-legend .tribe_events_cat-{$slug},";
-		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe_events_cat-{$slug} header.tribe-events-widget-events-list__event-header h3,";
 		$css[] = "article.tribe-events-calendar-month__calendar-event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} .tribe-events-calendar-month__multiday-event-bar-inner,";
 		// $css[] = ".tribe-events-calendar-month__multiday-event-wrapper article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug},";

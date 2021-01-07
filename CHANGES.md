@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 6.4.12 / 2021-01-07
+* fix conflict between widget list and multiday events
+
 #### 6.4.11 / 2020-12-5
 * update for widget list [#119](https://github.com/afragen/the-events-calendar-category-colors/issues/119)
 

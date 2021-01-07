@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'db4fcd2dee3da11a04a45ce3ecce1d32edf27fce',
+    'reference' => '95b90b26f595e0c49bca7638d992e27ad77760e1',
     'name' => 'afragen/the-events-calendar-category-colors',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'db4fcd2dee3da11a04a45ce3ecce1d32edf27fce',
+      'reference' => '95b90b26f595e0c49bca7638d992e27ad77760e1',
     ),
   ),
 );

@@ -5,7 +5,7 @@ Tags: events, color, modern tribe, tribe
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.6
-Stable tag: 6.4.11
+Stable tag: 6.4.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,9 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 6.4.12 / 2021-01-07
+* fix conflict between widget list and multiday events
 
 #### 6.4.11 / 2020-12-5
 * update for widget list [#119](https://github.com/afragen/the-events-calendar-category-colors/issues/119)
