@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 6.4.12 / 2021-01-07
 * fix conflict between widget list and multiday events
 
 #### 6.4.11 / 2020-12-5
