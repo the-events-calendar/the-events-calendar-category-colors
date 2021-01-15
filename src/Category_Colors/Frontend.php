@@ -131,7 +131,11 @@ class Frontend {
 			unset( $url_args['host'] );
 		}
 		$protocol_relative = isset( $url_args['host'] ) ? '//' : '/';
-		$url               = $protocol_relative . implode( '/', $url_args );
+		if ( isset( $url_args['port'] ) ) {
+			$url_args['host'] = $url_args['host'] . ':' . $url_args['port'];
+			unset( $url_args['port'] );
+		}
+		$url = $protocol_relative . implode( '/', $url_args );
 
 		return $url;
 	}
