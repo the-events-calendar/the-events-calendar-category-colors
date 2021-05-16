@@ -1,24 +1,24 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => 'dev-develop',
-    'version' => 'dev-develop',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => '2b0f260be754e14759beaf6043046d04ff491574',
+    'reference' => '95b90b26f595e0c49bca7638d992e27ad77760e1',
     'name' => 'afragen/the-events-calendar-category-colors',
   ),
   'versions' => 
   array (
     'afragen/the-events-calendar-category-colors' => 
     array (
-      'pretty_version' => 'dev-develop',
-      'version' => 'dev-develop',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => '2b0f260be754e14759beaf6043046d04ff491574',
+      'reference' => '95b90b26f595e0c49bca7638d992e27ad77760e1',
     ),
   ),
 );
