@@ -131,7 +131,11 @@ class Frontend {
 			unset( $url_args['host'] );
 		}
 		$protocol_relative = isset( $url_args['host'] ) ? '//' : '/';
-		$url               = $protocol_relative . implode( '/', $url_args );
+		if ( isset( $url_args['port'] ) ) {
+			$url_args['host'] = $url_args['host'] . ':' . $url_args['port'];
+			unset( $url_args['port'] );
+		}
+		$url = $protocol_relative . implode( '/', $url_args );
 
 		return $url;
 	}
@@ -199,9 +203,17 @@ class Frontend {
 		// Look out for refresh requests.
 		$refresh_css = array_key_exists( 'refresh_css', $_GET );
 		$current     = get_transient( 'teccc_cache_key' );
-		$css_dir     = $this->uploads['basedir'];
-		$css_file    = glob( "{$css_dir}/teccc*.css" );
-		$current     = ! empty( $css_file ) && strpos( $css_file[0], $this->cache_key )
+
+		/**
+		 * Filter the path to `wp-content/uploads` for CSS.
+		 *
+		 * @since 6.4.13
+		 * @param string $this->uploads['basedir'] Path to uploads dir.
+		 */
+		$css_dir  = apply_filters( 'teccc_uploads_dir', $this->uploads['basedir'] );
+		$css_dir  = untrailingslashit( $css_dir );
+		$css_file = glob( "{$css_dir}/teccc*.css" );
+		$current  = ! empty( $css_file ) && strpos( $css_file[0], $this->cache_key )
 			? $current
 			: false;
 

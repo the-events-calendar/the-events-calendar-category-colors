@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '95b90b26f595e0c49bca7638d992e27ad77760e1',
+    'reference' => '03772b97cb2297fe940e81837b14ac75ec3f217d',
     'name' => 'afragen/the-events-calendar-category-colors',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '95b90b26f595e0c49bca7638d992e27ad77760e1',
+      'reference' => '03772b97cb2297fe940e81837b14ac75ec3f217d',
     ),
   ),
 );

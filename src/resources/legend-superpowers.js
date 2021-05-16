@@ -45,8 +45,11 @@ jQuery(document).ready(
 		 * @param event
 		 */
 		function categorySelection(event) {
+			var isV2Ative = 0 !== $('.tribe-events-view').length;
+			var isV1Mobile = responsive_active();
 			// If we're still working (or we're in responsive mode) don't do anything - the visitor can wait
-			if (status.working || responsive_active()) {
+			if (status.working || (!isV2Ative && isV1Mobile)) {
+				// If we're still working (or we're in responsive mode) don't do anything - the visitor can wait
 				event.stopPropagation();
 				return;
 			} // Otherwise set the working flag so that we don't end up stacking - and delaying - effects
@@ -120,8 +123,8 @@ jQuery(document).ready(
 		}
 
 		/**
-	   * Setup should occur when the document is ready and following ajax loads.
-	   */
+		 * Setup should occur when the document is ready and following ajax loads.
+		 */
 		setup();
 
 		//$(document).on('afterSetup.tribeEvents', tribe.events.views.manager.selectors.container, function () {

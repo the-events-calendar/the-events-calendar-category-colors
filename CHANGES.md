@@ -1,5 +1,11 @@
 #### [unreleased]
 
+#### 6.5.0 / 2021-05-16
+* updated to fix CSS url if running on non-standard port
+* updated legend superpowers to work with shortcode, thanks @gustavo
+* add filter `teccc_uploads_dir` to filter the `wp-content/uploads` path.
+* added legend views to Settings, thanks @andrasguseo
+
 #### 6.4.12 / 2021-01-07
 * fix conflict between widget list and multiday events
 

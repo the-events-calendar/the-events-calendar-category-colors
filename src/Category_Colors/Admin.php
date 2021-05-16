@@ -184,12 +184,24 @@ class Admin {
 			'featured-event',
 			'featured-event_none',
 			'add_legend',
+			'add_legend_list_view',
+			'add_legend_day_view',
 			'chk_default_options_db',
 			'custom_legend_css',
 			'font_weight',
 			'legend_superpowers',
 			'show_ignored_cats_legend',
 		];
+
+		if ( class_exists( 'Tribe__Events__Pro__Main' ) ) {
+			$ecp_settings = [
+				'add_legend_week_view',
+				'add_legend_photo_view',
+				'add_legend_map_view',
+			];
+
+			$generalOptions = array_merge( $generalOptions, $ecp_settings );
+		}
 
 		foreach ( $generalOptions as $optionkey ) {
 			if ( ! isset( $options[ $optionkey ] ) ) {
