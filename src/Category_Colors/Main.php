@@ -105,21 +105,21 @@ class Main {
 	 * Add legend on the selected views
 	 */
 	public function show_legend_on_views() {
-		$options   = get_option( 'teccc_options' );
+		$options = get_option( 'teccc_options' );
 
-		if ( ! empty( $options['add_legend_list_view'] ) && $options['add_legend_list_view'] ){
+		if ( ! empty( $options['add_legend_list_view'] ) && $options['add_legend_list_view'] ) {
 			teccc_add_legend_view( 'list' );
 		}
-		if ( ! empty( $options['add_legend_day_view'] ) && $options['add_legend_day_view'] ){
+		if ( ! empty( $options['add_legend_day_view'] ) && $options['add_legend_day_view'] ) {
 			teccc_add_legend_view( 'day' );
 		}
-		if ( ! empty( $options['add_legend_week_view'] ) && $options['add_legend_week_view'] ){
+		if ( ! empty( $options['add_legend_week_view'] ) && $options['add_legend_week_view'] ) {
 			teccc_add_legend_view( 'week' );
 		}
-		if ( ! empty( $options['add_legend_photo_view'] ) && $options['add_legend_photo_view'] ){
+		if ( ! empty( $options['add_legend_photo_view'] ) && $options['add_legend_photo_view'] ) {
 			teccc_add_legend_view( 'photo' );
 		}
-		if ( ! empty( $options['add_legend_map_view'] ) && $options['add_legend_map_view'] ){
+		if ( ! empty( $options['add_legend_map_view'] ) && $options['add_legend_map_view'] ) {
 			teccc_add_legend_view( 'map' );
 		}
 
