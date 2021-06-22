@@ -1,4 +1,5 @@
 #### [unreleased]
+* add @10up GitHub Actions for WordPress SVN integration
 
 #### 6.5.0 / 2021-05-16
 * updated to fix CSS url if running on non-standard port

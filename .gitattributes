@@ -4,3 +4,4 @@
 .gitignore export-ignore
 composer.json export-ignore
 /.wordpress-org export-ignore
+/.github export-ignore
