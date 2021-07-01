@@ -137,6 +137,21 @@ $teccc->setup_terms( $options );
 
 <div id="teccc_options">
 
+	<div class="teccc_options_col1"> <?php esc_html_e( 'Reset Button', 'the-events-calendar-category-colors' ); ?> </div>
+	<div class="teccc_options_col2">
+		<input name="teccc_options[reset_show]" type="checkbox" value="1" <?php checked( '1', $options['reset_show'] ); ?> />
+		<label for="teccc_options[reset_show]"><?php esc_html_e( 'Show reset button', 'the-events-calendar-category-colors' ); ?></label>
+	</div>
+	<div class="teccc_options_col2">
+		<input name="teccc_options[reset_label]" type="text" placeholder="Reset" value="<?php echo $options['reset_label']; ?>" />
+		<label for="teccc_options[reset_label]">Reset button label</label>
+	</div>
+	<div class="teccc_options_col2">
+		<input name="teccc_options[reset_url]" type="text" placeholder="<?php echo tribe_get_events_link(); ?>" value="<?php echo $options['reset_url']; ?>" />
+		<label for="teccc_options[reset_url]">Reset button URL</label>
+		<p>By default the reset button will point to the default calendar URL.</p>
+	</div>
+
 	<div class="teccc_options_col1"> <?php esc_html_e( 'Font-Weight Options', 'the-events-calendar-category-colors' ); ?> </div>
 	<div class="teccc_options_col2">
 		<label> <select name="teccc_options[font_weight]" id="teccc_font_weight">
