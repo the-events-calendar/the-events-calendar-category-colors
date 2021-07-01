@@ -17,3 +17,9 @@
 }
 
 #legend_box #legend li span { cursor: pointer; }
+
+#tribe-events #legend li.teccc-reset,
+.tribe-events #legend li.teccc-reset
+{
+	line-height: 1.4px;
+}
