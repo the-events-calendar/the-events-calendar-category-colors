@@ -43,10 +43,10 @@ $teccc->setup_terms( $options );
 		<?php if ( isset( $options['reset_show'] ) ) : ?>
 			<li class="teccc-reset">
 				<a href="
-				<?php if ( ! isset( $options['reset_url'] ) || $options['reset_url'] == '' ) {
+				<?php
+				if ( ! isset( $options['reset_url'] ) || $options['reset_url'] == '' ) {
 					echo tribe_get_events_link();
-				}
-				else {
+				} else {
 					echo esc_html( $options['reset_url'] );
 
 				}
@@ -55,8 +55,7 @@ $teccc->setup_terms( $options );
 					<?php
 					if ( ! isset( $options['reset_label'] ) || $options['reset_label'] == '' ) {
 						esc_html_e( 'Reset', 'the-events-calendar-category-colors' );
-					}
-					else {
+					} else {
 						echo esc_html( $options['reset_label'] );
 					}
 					?>
