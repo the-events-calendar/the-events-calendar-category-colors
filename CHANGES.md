@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 6.6.0 / 2021-07-07
 * add @10up GitHub Actions for WordPress SVN integration
 * **Reset** button added to legend in settings, navigate back to main calendar, thanks @andrasgueso
 
