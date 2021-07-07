@@ -1,5 +1,9 @@
 #### [unreleased]
 
+#### 6.6.0 / 2021-07-07
+* add @10up GitHub Actions for WordPress SVN integration
+* **Reset** button added to legend in settings, navigate back to main calendar, thanks @andrasgueso
+
 #### 6.5.0 / 2021-05-16
 * updated to fix CSS url if running on non-standard port
 * updated legend superpowers to work with shortcode, thanks @gustavo

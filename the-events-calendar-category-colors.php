@@ -3,7 +3,7 @@
  * Plugin Name:       The Events Calendar Category Colors
  * Plugin URI:        https://github.com/afragen/the-events-calendar-category-colors
  * Description:       This plugin adds event category background coloring to <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a> plugin.
- * Version:           6.5.0
+ * Version:           6.6.0
  * Text Domain:       the-events-calendar-category-colors
  * Domain Path:       /languages
  * Author:            Andy Fragen, Barry Hughes

@@ -5,7 +5,7 @@ Tags: events, color, modern tribe, tribe
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.8
-Stable tag: 6.5.0
+Stable tag: 6.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,10 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 6.6.0 / 2021-07-07
+* add @10up GitHub Actions for WordPress SVN integration
+* **Reset** button added to legend in settings, navigate back to main calendar, thanks @andrasgueso
 
 #### 6.5.0 / 2021-05-16
 * updated to fix CSS url if running on non-standard port
