@@ -12,7 +12,7 @@ jQuery( document ).ready(
 		 * option is displayed (or else it is hidden).
 		 */
 		function toggleSuperpowersVisibility() {
-			if ($( legendOption ).prop( "checked" ) === "checked") {
+			if ( true === $( legendOption ).prop( "checked" )) {
 				$( relatedOptions ).slideDown();
 			} else {
 				$( relatedOptions ).slideUp();
