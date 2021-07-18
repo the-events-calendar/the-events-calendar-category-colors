@@ -93,6 +93,9 @@ class Frontend {
 			case 'map':
 				$hook_name = 'events-pro/v2/map/top-bar';
 				break;
+			case 'summary':
+				$hook_name = 'events-pro/v2/summary/top-bar';
+				break;
 		}
 		if ( $hook_name ) {
 			$this->legendTargetHook = "tribe_template_before_include:{$hook_name}";
