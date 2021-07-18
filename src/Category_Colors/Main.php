@@ -122,6 +122,9 @@ class Main {
 		if ( ! empty( $options['add_legend_map_view'] ) && $options['add_legend_map_view'] ) {
 			teccc_add_legend_view( 'map' );
 		}
+		if ( ! empty( $options['add_legend_summary_view'] ) && $options['add_legend_summary_view'] ) {
+			teccc_add_legend_view( 'summary' );
+		}
 
 	}
 

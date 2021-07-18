@@ -190,6 +190,10 @@ $teccc->setup_terms( $options );
 		<input id="teccc_options[add_legend_map_view]" name="teccc_options[add_legend_map_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_map_view'] ); ?>>
 		<label for="teccc_options[add_legend_map_view]"><?php esc_html_e( 'Map view', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
+	<div id="category_legend_setting_summary_view" class="teccc_options_col2">
+		<input id="teccc_options[add_legend_summary_view]" name="teccc_options[add_legend_summary_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_summary_view'] ); ?>>
+		<label for="teccc_options[add_legend_summary_view]"><?php esc_html_e( 'Summary view', 'the-events-calendar-category-colors' ); ?></label>
+	</div>
 	<?php endif; ?>
 
 	<!-- Add Legend Superpowers -->

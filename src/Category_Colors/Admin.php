@@ -201,6 +201,7 @@ class Admin {
 				'add_legend_week_view',
 				'add_legend_photo_view',
 				'add_legend_map_view',
+				'add_legend_summary_view',
 			];
 
 			$generalOptions = array_merge( $generalOptions, $ecp_settings );
