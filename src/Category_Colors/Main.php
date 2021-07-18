@@ -118,7 +118,7 @@ class Main {
 		];
 
 		if ( !is_array( $options['add_legend'] ) ) {
-			$this->update_view_options( $views, $options );
+			$options = $this->update_view_options( $views, $options );
 		}
 
 		foreach ( $views as $view ) {
@@ -425,5 +425,7 @@ class Main {
 		}
 
 		update_option( 'teccc_options', $options );
+
+		return $options;
 	}
 }
