@@ -4,6 +4,9 @@
 jQuery( document ).ready(
 	function($) {
 		var legendOption         = $( "#category_legend_setting" ).find( "input" );
+		var legendOptions        = $( '#category_legend_checkboxes input[type=checkbox]' );
+		var legendOptionsCheckedInitial = $( '#category_legend_checkboxes input[type=checkbox]:checked' ).length;
+		var legendOptionsCheckedPrev;
 		var relatedOptions       = $( ".legend_related" );
 		var transparencySwitches = $( "td.color-control" ).find( "input[type='checkbox']" );
 
@@ -12,11 +15,21 @@ jQuery( document ).ready(
 		 * option is displayed (or else it is hidden).
 		 */
 		function toggleSuperpowersVisibility() {
-			if ( true === $( legendOption ).prop( "checked" )) {
-				$( relatedOptions ).slideDown();
-			} else {
+			var legendOptionsCheckedNow = $( '#category_legend_checkboxes input[type=checkbox]:checked' ).length;
+
+			if ( legendOptionsCheckedNow == 0 ) {
+				$( '.legend_related_notice' ).slideDown();
 				$( relatedOptions ).slideUp();
 			}
+			else if ( legendOptionsCheckedPrev == 0 && legendOptionsCheckedNow > 0 ){
+				$( '.legend_related_notice' ).slideUp();
+				$( relatedOptions ).slideDown();
+			}
+			else {
+				$( '.legend_related_notice' ).slideUp();
+			}
+
+			legendOptionsCheckedPrev = legendOptionsCheckedNow;
 		}
 
 		/**
@@ -36,7 +49,8 @@ jQuery( document ).ready(
 		// Toggle Legend Superpowers visibility initially, after the page loads
 		// (and run once on page load)
 		toggleSuperpowersVisibility();
-		$( legendOption ).change( toggleSuperpowersVisibility );
+		// $( legendOption ).change( toggleSuperpowersVisibility );
+		$( legendOptions ).change( toggleSuperpowersVisibility );
 
 		// Hide/show color selectors, according to whether transparency is checked
 		// (and run once on page load)
