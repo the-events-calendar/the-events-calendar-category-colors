@@ -117,8 +117,12 @@ class Main {
 			'summary',
 		];
 
+		if ( !is_array( $options['add_legend'] ) ) {
+			$this->update_view_options( $views, $options );
+		}
+
 		foreach ( $views as $view ) {
-			if ( in_array( $view, $options['add_legend']) ) {
+			if ( in_array( $view, (array) $options['add_legend']) ) {
 				teccc_add_legend_view( $view );
 			}
 		}
@@ -400,5 +404,26 @@ class Main {
 	 */
 	public static function is_v2_active() {
 		return function_exists( 'tribe_events_views_v2_is_enabled' ) && \tribe_events_views_v2_is_enabled();
+	}
+
+	/**
+	 * Update the view options from single options to array
+	 *
+	 * @param $views
+	 * @param $options
+	 */
+	private function update_view_options( $views, $options ) {
+		if ( ! is_array( $options['add_legend'] ) && $options['add_legend'] == 1 ) {
+			$transfer[] = [ 'month' ];
+
+			foreach ( $views as $view ) {
+				if ( ! empty( $options["add_legend_{$view}_view"] ) ) {
+					$transfer[] = $view;
+				}
+			}
+			$options['add_legend'] = $transfer;
+		}
+
+		update_option( 'teccc_options', $options );
 	}
 }
