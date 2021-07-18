@@ -12,7 +12,7 @@ jQuery( document ).ready(
 		 * option is displayed (or else it is hidden).
 		 */
 		function toggleSuperpowersVisibility() {
-			if ($( legendOption ).attr( "checked" ) === "checked") {
+			if ($( legendOption ).prop( "checked" ) === "checked") {
 				$( relatedOptions ).slideDown();
 			} else {
 				$( relatedOptions ).slideUp();
@@ -26,7 +26,7 @@ jQuery( document ).ready(
 		function toggleColorControls() {
 			var colorSelector = $( this ).parents( "td" ).find( ".colorselector" );
 
-			if ($( this ).attr( "checked" )) {
+			if ($( this ).prop( "checked" )) {
 				$( colorSelector ).slideUp();
 			} else {
 				$( colorSelector ).slideDown();
@@ -86,9 +86,9 @@ jQuery( document ).ready(
 					} else if (backgroundColor.test( inputName )) {
 						newBackgroundColor = $( this ).val();
 					} else if (borderTransparency.test( inputName )) {
-						newBorderTransparency = ($( this ).attr( "checked" ) === "checked");
+						newBorderTransparency = ($( this ).prop( "checked" ) === "checked");
 					} else if (backgroundTransparency.test( inputName )) {
-						newBackgroundTransparency = ($( this ).attr( "checked" ) === "checked");
+						newBackgroundTransparency = ($( this ).prop( "checked" ) === "checked");
 					} else if (fontColor.test( inputName )) {
 						newFontColor = $( this ).val();
 					}
