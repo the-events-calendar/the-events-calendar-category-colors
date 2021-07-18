@@ -162,7 +162,7 @@ $teccc->setup_terms( $options );
 				<?php endforeach ?>
 			</select> </label>
 	</div>
-
+<div id="category_legend_checkboxes">
 	<div class="teccc_options_col1"> <?php esc_html_e( 'Show Category Legend', 'the-events-calendar-category-colors' ); ?> </div>
 	<div id="category_legend_setting" class="teccc_options_col2">
 		<input id="add_legend_month_view" name="teccc_options[add_legend][]" type="checkbox" value="month" <?php checked( 1, in_array('month', $options['add_legend'] ) ); ?>>
@@ -195,14 +195,17 @@ $teccc->setup_terms( $options );
 		<label for="add_legend_summary_view"><?php esc_html_e( 'Summary view', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<?php endif; ?>
-
+</div>
 	<!-- Add Legend Superpowers -->
 	<div class="teccc_options_col1"> <?php esc_html_e( 'Legend Superpowers', 'the-events-calendar-category-colors' ); ?> </div>
+	<div class="teccc_options_col2 legend_related_notice">
+		<?php esc_html_e( 'For this option you have to show the category legend at least on one view.', 'the-events-calendar-category-colors' ); ?>
+	</div>
 	<div class="teccc_options_col2 legend_related">
 		<label>
 			<input name="teccc_options[legend_superpowers]" type="checkbox" value="1" <?php checked( '1', $options['legend_superpowers'] ); ?> /> <?php esc_html_e( 'Check to add Legend Superpowers.', 'the-events-calendar-category-colors' ); ?>
 		</label>
-		<p> <?php esc_html_e( 'Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it.', 'the-events-calendar-category-colors' ); ?> </p>
+		<p><?php esc_html_e( 'Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it.', 'the-events-calendar-category-colors' ); ?> </p>
 	</div>
 
 	<div class="teccc_options_col1 legend_related"><!-- Show Hidden Categories --></div>
