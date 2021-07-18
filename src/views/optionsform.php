@@ -190,13 +190,13 @@ $teccc->setup_terms( $options );
 		<label for="teccc_options[reset_show]"><?php esc_html_e( 'Show reset button', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<div class="teccc_options_col2">
-		<input name="teccc_options[reset_label]" type="text" placeholder="Reset" value="<?php echo $options['reset_label']; ?>" />
-		<label for="teccc_options[reset_label]">Reset button label</label>
+		<input name="teccc_options[reset_label]" type="text" placeholder="<?php esc_html_e( 'Reset', 'the-events-calendar-category-colors' ); ?>" value="<?php echo $options['reset_label']; ?>" />
+		<label for="teccc_options[reset_label]"><?php esc_html_e( 'Reset button label', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<div class="teccc_options_col2">
 		<input name="teccc_options[reset_url]" type="text" placeholder="<?php echo tribe_get_events_link(); ?>" value="<?php echo $options['reset_url']; ?>" />
-		<label for="teccc_options[reset_url]">Reset button URL</label>
-		<p>By default the reset button will point to the default calendar URL.</p>
+		<label for="teccc_options[reset_url]"><?php esc_html_e( 'Reset button URL', 'the-events-calendar-category-colors' ); ?></label>
+		<p><?php esc_html_e( 'By default the reset button will point to the default calendar URL.', 'the-events-calendar-category-colors' ); ?></p>
 	</div>
 
 	<!-- Add Legend Superpowers -->
