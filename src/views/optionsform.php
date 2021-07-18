@@ -165,36 +165,30 @@ $teccc->setup_terms( $options );
 
 	<div class="teccc_options_col1"> <?php esc_html_e( 'Show Category Legend', 'the-events-calendar-category-colors' ); ?> </div>
 	<div id="category_legend_setting" class="teccc_options_col2">
-		<label>
-			<input name="teccc_options[add_legend]" type="checkbox" value="1" <?php checked( '1', $options['add_legend'] ); ?> /> <?php esc_html_e( 'Month view', 'the-events-calendar-category-colors' ); ?>
-		</label>
+		<input id="teccc_options[add_legend_month_view]" name="teccc_options[add_legend]" type="checkbox" value="1" <?php checked( '1', $options['add_legend'] ); ?>>
+		<label for="teccc_options[add_legend_month_view]"><?php esc_html_e( 'Month view', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<div id="category_legend_setting_list_view" class="teccc_options_col2">
-		<label>
-			<input name="teccc_options[add_legend_list_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_list_view'] ); ?> /> <?php esc_html_e( 'List view', 'the-events-calendar-category-colors' ); ?>
-		</label>
+		<input id="teccc_options[add_legend_list_view]" name="teccc_options[add_legend_list_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_list_view'] ); ?>>
+		<label for="teccc_options[add_legend_list_view]"><?php esc_html_e( 'List view', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<div id="category_legend_setting_day_view" class="teccc_options_col2">
-		<label>
-			<input name="teccc_options[add_legend_day_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_day_view'] ); ?> /> <?php esc_html_e( 'Day view', 'the-events-calendar-category-colors' ); ?>
-		</label>
+		<input id="teccc_options[add_legend_day_view]" name="teccc_options[add_legend_day_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_day_view'] ); ?>>
+		<label for="teccc_options[add_legend_day_view]"><?php esc_html_e( 'Day view', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 
 	<?php if ( class_exists( 'Tribe__Events__Pro__Main' ) ) : ?>
 	<div id="category_legend_setting_week_view" class="teccc_options_col2">
-		<label>
-			<input name="teccc_options[add_legend_week_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_week_view'] ); ?> /> <?php esc_html_e( 'Week view', 'the-events-calendar-category-colors' ); ?>
-		</label>
+		<input id="teccc_options[add_legend_week_view]" name="teccc_options[add_legend_week_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_week_view'] ); ?>>
+		<label for="teccc_options[add_legend_week_view]"><?php esc_html_e( 'Week view', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<div id="category_legend_setting_photo_view" class="teccc_options_col2">
-		<label>
-			<input name="teccc_options[add_legend_photo_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_photo_view'] ); ?> /> <?php esc_html_e( 'Photo view', 'the-events-calendar-category-colors' ); ?>
-		</label>
+		<input id="teccc_options[add_legend_photo_view]" name="teccc_options[add_legend_photo_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_photo_view'] ); ?>>
+		<label for="teccc_options[add_legend_photo_view]"><?php esc_html_e( 'Photo view', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<div id="category_legend_setting_map_view" class="teccc_options_col2">
-		<label>
-			<input name="teccc_options[add_legend_map_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_map_view'] ); ?> /> <?php esc_html_e( 'Map view', 'the-events-calendar-category-colors' ); ?>
-		</label>
+		<input id="teccc_options[add_legend_map_view]" name="teccc_options[add_legend_map_view]" type="checkbox" value="1" <?php checked( '1', $options['add_legend_map_view'] ); ?>>
+		<label for="teccc_options[add_legend_map_view]"><?php esc_html_e( 'Map view', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<?php endif; ?>
 
