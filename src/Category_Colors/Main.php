@@ -107,25 +107,21 @@ class Main {
 	public function show_legend_on_views() {
 		$options = get_option( 'teccc_options' );
 
-		if ( ! empty( $options['add_legend_list_view'] ) && $options['add_legend_list_view'] ) {
-			teccc_add_legend_view( 'list' );
-		}
-		if ( ! empty( $options['add_legend_day_view'] ) && $options['add_legend_day_view'] ) {
-			teccc_add_legend_view( 'day' );
-		}
-		if ( ! empty( $options['add_legend_week_view'] ) && $options['add_legend_week_view'] ) {
-			teccc_add_legend_view( 'week' );
-		}
-		if ( ! empty( $options['add_legend_photo_view'] ) && $options['add_legend_photo_view'] ) {
-			teccc_add_legend_view( 'photo' );
-		}
-		if ( ! empty( $options['add_legend_map_view'] ) && $options['add_legend_map_view'] ) {
-			teccc_add_legend_view( 'map' );
-		}
-		if ( ! empty( $options['add_legend_summary_view'] ) && $options['add_legend_summary_view'] ) {
-			teccc_add_legend_view( 'summary' );
-		}
+		$views = [
+			'list',
+			'month',
+			'day',
+			'week',
+			'photo',
+			'map',
+			'summary',
+		];
 
+		foreach ( $views as $view ) {
+			if ( in_array( $view, $options['add_legend']) ) {
+				teccc_add_legend_view( $view );
+			}
+		}
 	}
 
 	/**
