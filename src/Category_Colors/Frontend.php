@@ -298,7 +298,11 @@ class Frontend {
 		/*if ( ! ( isset( $this->options['add_legend'] ) && '1' === $this->options['add_legend'] ) ) {
 			//return false;
 		}*/
-		if ( ! isset( $this->options['add_legend'] ) || null === $this->options['add_legend'] ) {
+		if (
+			! isset( $this->options['add_legend'] )
+			|| null === $this->options['add_legend']
+			|| ! in_array( $this->currentDisplay, $this->options['add_legend'] )
+		) {
 			return false;
 		}
 
