@@ -92,7 +92,9 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 }
 <?php endforeach ?>
 
-<?php if ( ( '1' === $options['add_legend'] ) && null === $options['custom_legend_css'] ) : ?>
-	<?php $teccc->view( 'legend.css' ); ?>
-<?php endif ?>
+<?php
+if ( ! empty( $options['add_legend'] ) && null === $options['custom_legend_css'] ) {
+	$teccc->view( 'legend.css' );
+}
+?>
 <?php do_action( 'teccc_add_legend_css' ); ?>
