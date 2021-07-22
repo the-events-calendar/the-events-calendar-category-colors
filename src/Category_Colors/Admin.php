@@ -209,7 +209,7 @@ class Admin {
 
 		foreach ( $generalOptions as $optionkey ) {
 			if ( ! isset( $options[ $optionkey ] ) ) {
-				$options[ $optionkey ] = null;
+				$options[ $optionkey ] = 'add_legend' === $optionkey ? [] : null;
 			}
 		}
 
