@@ -301,7 +301,7 @@ class Frontend {
 		if (
 			! isset( $this->options['add_legend'] )
 			|| null === $this->options['add_legend']
-			|| ! in_array( $this->currentDisplay, $this->options['add_legend'] )
+			|| ! in_array( $this->currentDisplay, $this->options['add_legend'], true )
 		) {
 			return false;
 		}

@@ -117,12 +117,12 @@ class Main {
 			'summary',
 		];
 
-		if ( !is_array( $options['add_legend'] ) ) {
+		if ( ! is_array( $options['add_legend'] ) ) {
 			$options = $this->update_view_options( $views, $options );
 		}
 
 		foreach ( $views as $view ) {
-			if ( in_array( $view, (array) $options['add_legend']) ) {
+			if ( in_array( $view, (array) $options['add_legend'], true ) ) {
 				teccc_add_legend_view( $view );
 			}
 		}
@@ -417,7 +417,7 @@ class Main {
 			$transfer[] = 'month';
 
 			foreach ( $views as $view ) {
-				if ( ! empty( $options["add_legend_{$view}_view"] ) ) {
+				if ( ! empty( $options[ "add_legend_{$view}_view" ] ) ) {
 					$transfer[] = $view;
 				}
 			}
