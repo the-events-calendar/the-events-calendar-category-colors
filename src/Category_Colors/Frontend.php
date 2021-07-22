@@ -311,6 +311,7 @@ class Frontend {
 			[
 				'options' => $this->options,
 				'teccc'   => $this->teccc,
+				'view'    => $this->currentDisplay,
 			],
 			false
 		);
