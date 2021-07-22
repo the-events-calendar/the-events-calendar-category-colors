@@ -1,4 +1,7 @@
 #### [unreleased]
+* update JS for jQuery 3.0, thanks @andrasguseo
+* add Reset button for legend, thanks @andrasguseo
+* add legend for Summary view, thanks @andrasguseo
 
 #### 6.6.0 / 2021-07-07
 * add @10up GitHub Actions for WordPress SVN integration
