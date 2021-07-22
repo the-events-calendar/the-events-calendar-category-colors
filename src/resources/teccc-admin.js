@@ -1,35 +1,60 @@
 /**
  * The Events Calendar Category Colors - options form behaviours.
  */
-jQuery( document ).ready(
-	function($) {
-		var legendOption         = $( "#category_legend_setting" ).find( "input" );
-		var legendOptions        = $( '#category_legend_checkboxes input[type=checkbox]' );
-		var legendOptionsCheckedInitial = $( '#category_legend_checkboxes input[type=checkbox]:checked' ).length;
+jQuery(document).ready(
+	function ($) {
+		var legendOption = $("#category_legend_setting").find("input");
+		var legendOptions = $('#category_legend_checkboxes input[type=checkbox]');
+		var legendOptionsCheckedInitial = $('#category_legend_checkboxes input[type=checkbox]:checked').length;
 		var legendOptionsCheckedPrev;
-		var relatedOptions       = $( ".legend_related" );
-		var transparencySwitches = $( "td.color-control" ).find( "input[type='checkbox']" );
+		//var superpowersOptions   = $( '.legend_related_superpowers input[type=checkbox]' );
+		var superpowersOptions = $('#category_legend_superpowers .legend_superpowers input[type=checkbox]');
+		var superpowersCheckedPrev;
+		var relatedOptions = $(".legend_related");
+		var relatedSuperpowers = $(".legend_related_superpowers");
+		var transparencySwitches = $("td.color-control").find("input[type='checkbox']");
 
 		/**
 		 * Checks if the legend has been turned on. If so, the Legend Superpowers
 		 * option is displayed (or else it is hidden).
 		 */
 		function toggleSuperpowersVisibility() {
-			var legendOptionsCheckedNow = $( '#category_legend_checkboxes input[type=checkbox]:checked' ).length;
+			var legendOptionsCheckedNow = $('#category_legend_checkboxes input[type=checkbox]:checked').length;
 
-			if ( legendOptionsCheckedNow == 0 ) {
-				$( '.legend_related_notice' ).slideDown();
-				$( relatedOptions ).slideUp();
+			if (legendOptionsCheckedNow == 0) {
+				$('.legend_related_notice').slideDown();
+				$(relatedOptions).slideUp();
 			}
-			else if ( legendOptionsCheckedPrev == 0 && legendOptionsCheckedNow > 0 ){
-				$( '.legend_related_notice' ).slideUp();
-				$( relatedOptions ).slideDown();
+			else if (legendOptionsCheckedPrev == 0 && legendOptionsCheckedNow > 0) {
+				$('.legend_related_notice').slideUp();
+				$(relatedOptions).slideDown();
 			}
 			else {
-				$( '.legend_related_notice' ).slideUp();
+				$('.legend_related_notice').slideUp();
 			}
 
 			legendOptionsCheckedPrev = legendOptionsCheckedNow;
+		}
+
+		/**
+		 * Checks if Legend Superpowers is on. If so, Legend Superpowers options
+		 * are displayed (or else they are hidden).
+		 */
+		function toggleSuperpowersOptions() {
+			var superpowersCheckedNow = $('#category_legend_superpowers .legend_superpowers input[type=checkbox]:checked').length;
+			var resetButton = $('#legend_reset_button');
+
+			if (superpowersCheckedNow == 0) {
+				$(relatedSuperpowers).slideUp();
+				$(resetButton).slideDown();
+			} else if (superpowersCheckedPrev == 0 && superpowersCheckedNow > 0) {
+				$(relatedSuperpowers).slideDown();
+				$(resetButton).slideUp();
+			} else {
+				$(resetButton).slideUp();
+			}
+
+			superpowersCheckedPrev = superpowersCheckedNow
 		}
 
 		/**
@@ -37,12 +62,12 @@ jQuery( document ).ready(
 		 * too).
 		 */
 		function toggleColorControls() {
-			var colorSelector = $( this ).parents( "td" ).find( ".colorselector" );
+			var colorSelector = $(this).parents("td").find(".colorselector");
 
-			if ($( this ).prop( "checked" )) {
-				$( colorSelector ).slideUp();
+			if ($(this).prop("checked")) {
+				$(colorSelector).slideUp();
 			} else {
-				$( colorSelector ).slideDown();
+				$(colorSelector).slideDown();
 			}
 		}
 
@@ -50,12 +75,17 @@ jQuery( document ).ready(
 		// (and run once on page load)
 		toggleSuperpowersVisibility();
 		// $( legendOption ).change( toggleSuperpowersVisibility );
-		$( legendOptions ).change( toggleSuperpowersVisibility );
+		$(legendOptions).change(toggleSuperpowersVisibility);
+
+		// Toggle Legend Superpowers options visibility initially, after the page loads
+		// (and run once on page load)
+		toggleSuperpowersOptions();
+		$(superpowersOptions).change(toggleSuperpowersOptions);
 
 		// Hide/show color selectors, according to whether transparency is checked
 		// (and run once on page load)
-		$( transparencySwitches ).change( toggleColorControls );
-		$( transparencySwitches ).each( toggleColorControls );
+		$(transparencySwitches).change(toggleColorControls);
+		$(transparencySwitches).each(toggleColorControls);
 
 		/**
 		 * Returns the sampler element that belongs to the specified row element.
@@ -64,8 +94,8 @@ jQuery( document ).ready(
 		 * @return {*|jQuery}
 		 */
 		function getRowSampler(row) {
-			var lastCell = $( row ).find( "td:last-child" );
-			var sampler  = $( lastCell ).find( "span" );
+			var lastCell = $(row).find("td:last-child");
+			var sampler = $(lastCell).find("span");
 			return sampler;
 		}
 
@@ -75,36 +105,36 @@ jQuery( document ).ready(
 		 * @param rowElement
 		 */
 		function updateRowSampler(rowElement) {
-			var row     = $( rowElement ).parents( "tr" );
-			var sampler = getRowSampler( row );
+			var row = $(rowElement).parents("tr");
+			var sampler = getRowSampler(row);
 
-			var borderColor            = /-border]$/;
-			var backgroundColor        = /-background]$/;
-			var borderTransparency     = /-border_none]$/;
+			var borderColor = /-border]$/;
+			var backgroundColor = /-background]$/;
+			var borderTransparency = /-border_none]$/;
 			var backgroundTransparency = /-background_none]$/;
-			var fontColor              = /-text]$/;
-			var fontWeight             = $( "select[name='teccc_options[font_weight]']" ).val();
+			var fontColor = /-text]$/;
+			var fontWeight = $("select[name='teccc_options[font_weight]']").val();
 
-			var newBorderColor            = "#aaf";
-			var newBackgroundColor        = "#eef";
-			var newBorderTransparency     = false;
+			var newBorderColor = "#aaf";
+			var newBackgroundColor = "#eef";
+			var newBorderTransparency = false;
 			var newBackgroundTransparency = false;
-			var newFontColor              = "#000";
+			var newFontColor = "#000";
 
 			// Iterate across all input, select and anchor elements in the current row
-			row.find( "input" ).add( row.find( "select" ) ).add( row.find( "a" ) ).each(
-				function() {
-					var inputName = $( this ).attr( "name" );
-					if (borderColor.test( inputName )) {
-						newBorderColor = $( this ).val();
-					} else if (backgroundColor.test( inputName )) {
-						newBackgroundColor = $( this ).val();
-					} else if (borderTransparency.test( inputName )) {
-						newBorderTransparency = ($( this ).prop( "checked" ) === "checked");
-					} else if (backgroundTransparency.test( inputName )) {
-						newBackgroundTransparency = ($( this ).prop( "checked" ) === "checked");
-					} else if (fontColor.test( inputName )) {
-						newFontColor = $( this ).val();
+			row.find("input").add(row.find("select")).add(row.find("a")).each(
+				function () {
+					var inputName = $(this).attr("name");
+					if (borderColor.test(inputName)) {
+						newBorderColor = $(this).val();
+					} else if (backgroundColor.test(inputName)) {
+						newBackgroundColor = $(this).val();
+					} else if (borderTransparency.test(inputName)) {
+						newBorderTransparency = ($(this).prop("checked") === "checked");
+					} else if (backgroundTransparency.test(inputName)) {
+						newBackgroundTransparency = ($(this).prop("checked") === "checked");
+					} else if (fontColor.test(inputName)) {
+						newFontColor = $(this).val();
 					}
 				}
 			);
@@ -116,29 +146,29 @@ jQuery( document ).ready(
 				newBackgroundColor = "transparent";
 			}
 
-			$( sampler ).css( "border-left-color", newBorderColor )
-			.css( "background-color", newBackgroundColor )
-			.css( "color", newFontColor )
-			.css( "font-weight", fontWeight );
+			$(sampler).css("border-left-color", newBorderColor)
+				.css("background-color", newBackgroundColor)
+				.css("color", newFontColor)
+				.css("font-weight", fontWeight);
 		}
 
 		// Live feedback: update background/border colors
-		var colorControls = $( "table.teccc.form-table" );
-		var colorInputs   = colorControls.find( "input" ).add( colorControls.find( "a" ) );
-		var fontSelect    = colorControls.find( "select" );
+		var colorControls = $("table.teccc.form-table");
+		var colorInputs = colorControls.find("input").add(colorControls.find("a"));
+		var fontSelect = colorControls.find("select");
 
-		$( colorInputs ).add( fontSelect ).click(
-			function() {
-				updateRowSampler( this );
+		$(colorInputs).add(fontSelect).click(
+			function () {
+				updateRowSampler(this);
 			}
 		);
 
 		// Live feedback: update font-weights
-		$( "select[name='teccc_options[font_weight]']" ).change(
-			function() {
-				$( colorControls ).find( "tr" ).find( "td" ).each(
-					function() {
-						updateRowSampler( this );
+		$("select[name='teccc_options[font_weight]']").change(
+			function () {
+				$(colorControls).find("tr").find("td").each(
+					function () {
+						updateRowSampler(this);
 					}
 				);
 			}
@@ -156,8 +186,8 @@ jQuery( document ).ready(
 			//
 			// We're going to want to do something a little more elegant before merging this back into
 			// develop.
-			change: function() {
-				setTimeout( function() { colorInputs.each( function() { updateRowSampler( this ) } ) }, 10 )
+			change: function () {
+				setTimeout(function () { colorInputs.each(function () { updateRowSampler(this) }) }, 10)
 			},
 			// Hide color picker controls on load
 			hide: true,
@@ -166,6 +196,6 @@ jQuery( document ).ready(
 		};
 
 		// Implement color picker
-		$( '.teccc-color-picker' ).wpColorPicker( myOptions );
+		$('.teccc-color-picker').wpColorPicker(myOptions);
 	}
 );

@@ -184,6 +184,7 @@ $teccc->setup_terms( $options );
 	</div>
 
 	<!-- Add Reset Button -->
+	<div id="legend_reset_button">
 	<div class="teccc_options_col1"> <?php esc_html_e( 'Reset Button', 'the-events-calendar-category-colors' ); ?> </div>
 	<div class="teccc_options_col2 legend_related_notice">
 		<?php esc_html_e( 'For this option you have to show the category legend at least on one view.', 'the-events-calendar-category-colors' ); ?>
@@ -201,31 +202,34 @@ $teccc->setup_terms( $options );
 		<label for="teccc_options[reset_url]"><?php esc_html_e( 'Reset button URL', 'the-events-calendar-category-colors' ); ?></label>
 		<p><?php esc_html_e( 'By default the reset button will point to the default calendar URL.', 'the-events-calendar-category-colors' ); ?></p>
 	</div>
+	</div>
 
 	<!-- Add Legend Superpowers -->
+	<div id="category_legend_superpowers">
 	<div class="teccc_options_col1"> <?php esc_html_e( 'Legend Superpowers', 'the-events-calendar-category-colors' ); ?> </div>
 	<div class="teccc_options_col2 legend_related_notice">
 		<?php esc_html_e( 'For this option you have to show the category legend at least on one view.', 'the-events-calendar-category-colors' ); ?>
 	</div>
-	<div class="teccc_options_col2 legend_related">
+	<div class="teccc_options_col2 legend_related legend_superpowers">
 		<label>
 			<input name="teccc_options[legend_superpowers]" type="checkbox" value="1" <?php checked( '1', $options['legend_superpowers'] ); ?> /> <?php esc_html_e( 'Check to add Legend Superpowers.', 'the-events-calendar-category-colors' ); ?>
 		</label>
 		<p><?php esc_html_e( 'Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it.', 'the-events-calendar-category-colors' ); ?> </p>
 	</div>
 
-	<div class="teccc_options_col1 legend_related"><!-- Show Hidden Categories --></div>
-	<div class="teccc_options_col2 legend_related">
+	<div class="teccc_options_col1 legend_related legend_related_superpowers"><!-- Show Hidden Categories --></div>
+	<div class="teccc_options_col2 legend_related legend_related_superpowers">
 		<label>
 			<input name="teccc_options[show_ignored_cats_legend]" type="checkbox" value="1" <?php checked( '1', $options['show_ignored_cats_legend'] ); ?> /> <?php esc_html_e( 'Show hidden categories in legend.', 'the-events-calendar-category-colors' ); ?>
 		</label>
 	</div>
 
-	<div class="teccc_options_col1 legend_related"><!-- Custom Legend CSS --></div>
-	<div class="teccc_options_col2 legend_related">
+	<div class="teccc_options_col1 legend_related legend_related_superpowers"><!-- Custom Legend CSS --></div>
+	<div class="teccc_options_col2 legend_related legend_related_superpowers">
 		<label>
 			<input name="teccc_options[custom_legend_css]" type="checkbox" value="1" <?php checked( '1', $options['custom_legend_css'] ); ?> /> <?php esc_html_e( 'Check to use your own CSS for category legend.', 'the-events-calendar-category-colors' ); ?>
 		</label>
+	</div>
 	</div>
 
 	<div class="teccc_options_col1"> <?php esc_html_e( 'Database Options', 'the-events-calendar-category-colors' ); ?> </div>
