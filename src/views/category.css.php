@@ -57,6 +57,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Extras::fix_category_background_css( $slug ); ?>
 	<?php Pro::add_map_background_css( $slug ); ?>
 	<?php Pro::add_week_background_css( $slug ); ?>
+	<?php Pro::add_summary_background_css( $slug ); ?>
 	<?php Extras::add_list_background_css( $slug ); ?>
 	<?php // Extras::add_deprecated_week_background_css( $slug ); ?>
 	<?php // Extras::add_deprecated_background_css( $slug ); ?>

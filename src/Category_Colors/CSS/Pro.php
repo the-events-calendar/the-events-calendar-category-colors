@@ -67,4 +67,10 @@ class Pro {
 		$css = [];
 		self::echo_css( $css );
 	}
+
+	public static function add_summary_background_css( $slug ) {
+		$css   = [];
+		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3,";
+		self::echo_css( $css );
+	}
 }

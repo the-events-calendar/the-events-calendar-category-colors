@@ -48,7 +48,6 @@ $teccc->setup_terms( $options );
 					echo tribe_get_events_link();
 				} else {
 					echo esc_html( $options['reset_url'] );
-
 				}
 				?>
 				">
