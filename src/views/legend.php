@@ -40,7 +40,7 @@ $teccc->setup_terms( $options );
 			<?php endforeach ?>
 		<?php endif ?>
 
-		<?php if ( isset( $options['reset_show'] ) ) : ?>
+		<?php if ( isset( $options['reset_show'] ) && empty( $options['legend_superpowers'] ) ) : ?>
 			<li class="teccc-reset">
 				<a href="
 				<?php
