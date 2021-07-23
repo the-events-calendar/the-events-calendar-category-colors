@@ -70,7 +70,7 @@ class Pro {
 
 	public static function add_summary_background_css( $slug ) {
 		$css   = [];
-		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3,";
+		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3.tribe-events-pro-summary__event-title,";
 		self::echo_css( $css );
 	}
 }
