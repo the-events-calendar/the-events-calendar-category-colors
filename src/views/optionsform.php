@@ -53,7 +53,7 @@ $teccc->setup_terms( $options );
 				</div>
 				<div class="colorselector">
 					<label>
-						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug; ?>-border]" value="<?php esc_attr_e( $options[ "{$slug}-border" ] ); ?>" />
+						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug; ?>-border]" value="<?php echo esc_attr( $options[ "{$slug}-border" ] ); ?>" />
 					</label>
 				</div>
 			</td>
@@ -71,7 +71,7 @@ $teccc->setup_terms( $options );
 				</div>
 				<div class="colorselector">
 					<label>
-						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug; ?>-background]" value="<?php esc_attr_e( $options[ "{$slug}-background" ] ); ?>" />
+						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug; ?>-background]" value="<?php echo esc_attr( $options[ "{$slug}-background" ] ); ?>" />
 					</label>
 				</div>
 			</td>
@@ -79,7 +79,7 @@ $teccc->setup_terms( $options );
 			<td>
 				<label> <select name="teccc_options[<?php echo $slug; ?>-text]">
 						<?php foreach ( (array) $teccc->text_colors as $key => $value ) : ?>
-							<option value="<?php esc_attr_e( $value ); ?>" <?php selected( $value, $options[ "{$slug}-text" ] ); ?> > <?php esc_html_e( $key ); ?> </option>
+							<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $options[ "{$slug}-text" ] ); ?> > <?php esc_html_e( $key ); ?> </option>
 						<?php endforeach ?>
 					</select> </label>
 			</td>
@@ -87,17 +87,17 @@ $teccc->setup_terms( $options );
 			<td>
 				<span style="
 				<?php if ( null !== $options[ "{$slug}-background" ] ) : ?>
-					background-color: <?php esc_attr_e( $options[ $slug . '-background' ] ); ?>;
+					background-color: <?php echo esc_attr( $options[ $slug . '-background' ] ); ?>;
 				<?php endif ?>
 				<?php if ( null !== $options[ "{$slug}-border" ] ) : ?>
-					border-left: 5px solid <?php esc_attr_e( $options[ "{$slug}-border" ] ); ?>;
+					border-left: 5px solid <?php echo esc_attr( $options[ "{$slug}-border" ] ); ?>;
 				<?php endif ?>
 					border-right: 5px solid transparent;
 				<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
-					color:<?php esc_attr_e( $options[ "{$slug}-text" ] ); ?>;
+					color:<?php echo esc_attr( $options[ "{$slug}-text" ] ); ?>;
 				<?php endif ?>
 					padding: 0.5em 1em;
-					font-weight: <?php esc_attr_e( $options['font_weight'] ); ?>;">
+					font-weight: <?php echo esc_attr( $options['font_weight'] ); ?>;">
 					<?php echo $name; ?>
 				</span>
 			</td>
@@ -121,7 +121,7 @@ $teccc->setup_terms( $options );
 			</div>
 			<div class="colorselector">
 				<label>
-					<input class="teccc-color-picker" type="text" name="teccc_options[featured-event]" value="<?php esc_attr_e( $options['featured-event'] ); ?>" />
+					<input class="teccc-color-picker" type="text" name="teccc_options[featured-event]" value="<?php echo esc_attr( $options['featured-event'] ); ?>" />
 				</label>
 			</div>
 		</td>
@@ -141,7 +141,7 @@ $teccc->setup_terms( $options );
 	<div class="teccc_options_col2">
 		<label> <select name="teccc_options[font_weight]" id="teccc_font_weight">
 				<?php foreach ( (array) $teccc->font_weights as $key => $value ) : ?>
-					<option value="<?php esc_attr_e( $value ); ?>" <?php selected( $value, $options['font_weight'] ); ?>>
+					<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $options['font_weight'] ); ?>>
 						<?php esc_html_e( $key ); ?>
 					</option>
 				<?php endforeach ?>
