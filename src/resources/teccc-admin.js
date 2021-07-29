@@ -3,23 +3,23 @@
  */
 jQuery(document).ready(
 	function ($) {
-		var legendOption = $("#category_legend_setting").find("input");
-		var legendOptions = $('#category_legend_checkboxes input[type=checkbox]');
-		var legendOptionsCheckedInitial = $('#category_legend_checkboxes input[type=checkbox]:checked').length;
-		var legendOptionsCheckedPrev;
-		//var superpowersOptions   = $( '.legend_related_superpowers input[type=checkbox]' );
-		var superpowersOptions = $('#category_legend_superpowers .legend_superpowers input[type=checkbox]');
-		var superpowersCheckedPrev;
-		var relatedOptions = $(".legend_related");
-		var relatedSuperpowers = $(".legend_related_superpowers");
-		var transparencySwitches = $("td.color-control").find("input[type='checkbox']");
+		let legendOption = $("#category_legend_setting").find("input");
+		let legendOptions = $('#category_legend_checkboxes input[type=checkbox]');
+		let legendOptionsCheckedInitial = $('#category_legend_checkboxes input[type=checkbox]:checked').length;
+		let legendOptionsCheckedPrev;
+		//let superpowersOptions   = $( '.legend_related_superpowers input[type=checkbox]' );
+		let superpowersOptions = $('#category_legend_superpowers .legend_superpowers input[type=checkbox]');
+		let superpowersCheckedPrev;
+		let relatedOptions = $(".legend_related");
+		let relatedSuperpowers = $(".legend_related_superpowers");
+		let transparencySwitches = $("td.color-control").find("input[type='checkbox']");
 
 		/**
 		 * Checks if the legend has been turned on. If so, the Legend Superpowers
 		 * option is displayed (or else it is hidden).
 		 */
 		function toggleSuperpowersVisibility() {
-			var legendOptionsCheckedNow = $('#category_legend_checkboxes input[type=checkbox]:checked').length;
+			let legendOptionsCheckedNow = $('#category_legend_checkboxes input[type=checkbox]:checked').length;
 
 			if (legendOptionsCheckedNow == 0) {
 				$('.legend_related_notice').slideDown();
@@ -41,8 +41,8 @@ jQuery(document).ready(
 		 * are displayed (or else they are hidden).
 		 */
 		function toggleSuperpowersOptions() {
-			var superpowersCheckedNow = $('#category_legend_superpowers .legend_superpowers input[type=checkbox]:checked').length;
-			var resetButton = $('#legend_reset_button');
+			let superpowersCheckedNow = $('#category_legend_superpowers .legend_superpowers input[type=checkbox]:checked').length;
+			let resetButton = $('#legend_reset_button');
 
 			if (superpowersCheckedNow == 0) {
 				$(relatedSuperpowers).slideUp();
@@ -62,7 +62,7 @@ jQuery(document).ready(
 		 * too).
 		 */
 		function toggleColorControls() {
-			var colorSelector = $(this).parents("td").find(".colorselector");
+			let colorSelector = $(this).parents("td").find(".colorselector");
 
 			if ($(this).prop("checked")) {
 				$(colorSelector).slideUp();
@@ -94,8 +94,8 @@ jQuery(document).ready(
 		 * @return {*|jQuery}
 		 */
 		function getRowSampler(row) {
-			var lastCell = $(row).find("td:last-child");
-			var sampler = $(lastCell).find("span");
+			let lastCell = $(row).find("td:last-child");
+			let sampler = $(lastCell).find("span");
 			return sampler;
 		}
 
@@ -105,26 +105,26 @@ jQuery(document).ready(
 		 * @param rowElement
 		 */
 		function updateRowSampler(rowElement) {
-			var row = $(rowElement).parents("tr");
-			var sampler = getRowSampler(row);
+			let row = $(rowElement).parents("tr");
+			let sampler = getRowSampler(row);
 
-			var borderColor = /-border]$/;
-			var backgroundColor = /-background]$/;
-			var borderTransparency = /-border_none]$/;
-			var backgroundTransparency = /-background_none]$/;
-			var fontColor = /-text]$/;
-			var fontWeight = $("select[name='teccc_options[font_weight]']").val();
+			let borderColor = /-border]$/;
+			let backgroundColor = /-background]$/;
+			let borderTransparency = /-border_none]$/;
+			let backgroundTransparency = /-background_none]$/;
+			let fontColor = /-text]$/;
+			let fontWeight = $("select[name='teccc_options[font_weight]']").val();
 
-			var newBorderColor = "#aaf";
-			var newBackgroundColor = "#eef";
-			var newBorderTransparency = false;
-			var newBackgroundTransparency = false;
-			var newFontColor = "#000";
+			let newBorderColor = "#aaf";
+			let newBackgroundColor = "#eef";
+			let newBorderTransparency = false;
+			let newBackgroundTransparency = false;
+			let newFontColor = "#000";
 
 			// Iterate across all input, select and anchor elements in the current row
 			row.find("input").add(row.find("select")).add(row.find("a")).each(
 				function () {
-					var inputName = $(this).attr("name");
+					let inputName = $(this).attr("name");
 					if (borderColor.test(inputName)) {
 						newBorderColor = $(this).val();
 					} else if (backgroundColor.test(inputName)) {
@@ -153,9 +153,9 @@ jQuery(document).ready(
 		}
 
 		// Live feedback: update background/border colors
-		var colorControls = $("table.teccc.form-table");
-		var colorInputs = colorControls.find("input").add(colorControls.find("a"));
-		var fontSelect = colorControls.find("select");
+		let colorControls = $("table.teccc.form-table");
+		let colorInputs = colorControls.find("input").add(colorControls.find("a"));
+		let fontSelect = colorControls.find("select");
 
 		$(colorInputs).add(fontSelect).click(
 			function () {
@@ -175,7 +175,7 @@ jQuery(document).ready(
 		);
 
 		// Options for Iris color picker
-		var myOptions = {
+		let myOptions = {
 			// Fires on change event: use to implement live preview ... this is a doubly awful hack:
 			//
 			// 1) the change will not have propagated back to the color input when this function runs,

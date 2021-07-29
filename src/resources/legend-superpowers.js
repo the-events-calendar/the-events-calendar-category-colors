@@ -4,8 +4,8 @@
  */
 jQuery(document).ready(
 	function ($) {
-		var legendEntries;
-		var status;
+		let legendEntries;
+		let status;
 
 		/**
 		 * Sets up/restores the status and legendEntries objects to their defaults.
@@ -45,8 +45,8 @@ jQuery(document).ready(
 		 * @param event
 		 */
 		function categorySelection(event) {
-			var isV2Ative = 0 !== $('.tribe-events-view').length;
-			var isV1Mobile = responsive_active();
+			let isV2Ative = 0 !== $('.tribe-events-view').length;
+			let isV1Mobile = responsive_active();
 			// If we're still working (or we're in responsive mode) don't do anything - the visitor can wait
 			if (status.working || (!isV2Ative && isV1Mobile)) {
 				// If we're still working (or we're in responsive mode) don't do anything - the visitor can wait
@@ -58,7 +58,7 @@ jQuery(document).ready(
 			}
 
 			// Look out for deselections!
-			var selection = $(this).data("categorySlug");
+			let selection = $(this).data("categorySlug");
 			if (selection === status.selected) {
 				deselect(selection);
 				event.stopPropagation();
@@ -69,8 +69,8 @@ jQuery(document).ready(
 			deselect(status.selected);
 
 			// Now focus in on the new selection
-			var slug = ".tribe-events-category-" + selection;
-			var slugv2 = ".tribe_events_cat-" + selection;
+			let slug = ".tribe-events-category-" + selection;
+			let slugv2 = ".tribe_events_cat-" + selection;
 			$(status.allEntries).not(slug).not(slugv2).fadeTo(
 				status.speed,
 				status.opacity,
@@ -92,17 +92,17 @@ jQuery(document).ready(
 		 * object for future use.
 		 */
 		function prepareElement() {
-			var link = $(this).find("a");
+			let link = $(this).find("a");
 			if (link.length !== 1) {
 				return; // Quit if preparation has already been completed (no <a> elements found)
 			}
 
 			// Convert the link(s) to span(s) but store the links address and slug
-			var linkAddr = $(link).attr("href");
-			var linkTitle = $(link).html();
-			var linkSlugField = $(this).find("input");
-			var linkSlug = $(linkSlugField).val();
-			var replacementText = '<span>' + linkTitle + '</span>';
+			let linkAddr = $(link).attr("href");
+			let linkTitle = $(link).html();
+			let linkSlugField = $(this).find("input");
+			let linkSlug = $(linkSlugField).val();
+			let replacementText = '<span>' + linkTitle + '</span>';
 
 			// Tidy up - remove unnecessary elements
 			$(link).remove();
@@ -129,7 +129,7 @@ jQuery(document).ready(
 
 		//$(document).on('afterSetup.tribeEvents', tribe.events.views.manager.selectors.container, function () {
 		$(document).on('afterSetup.tribeEvents', function () {
-			var $container = $(this);
+			let $container = $(this);
 			// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
 			// thanks Gustavo! <3
 			if (typeof $container !== 'undefined') {
