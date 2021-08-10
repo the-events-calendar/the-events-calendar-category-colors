@@ -5,6 +5,8 @@
 * update Settings UI to show/hide options
 * update for new Summary view in ECP
 * only use `esc_attr_e` for translating strings
+* add `teccc_legend_terms` filter
+* update `legend.php`
 
 #### 6.6.0 / 2021-07-07
 * add @10up GitHub Actions for WordPress SVN integration
