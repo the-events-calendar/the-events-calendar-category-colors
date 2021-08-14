@@ -4,17 +4,18 @@ namespace Fragen\Category_Colors;
 use Tribe__Events__Main;
 
 $teccc->setup_terms( $options );
+$terms = apply_filters( 'teccc_legend_terms', $teccc->terms );
 
 ?>
 <div id="legend_box" class="teccc-legend">
 
 	<ul id="legend">
 
-		<?php foreach ( $teccc->terms as $id => $attributes ) : ?>
+		<?php foreach ( $terms as $attributes ) : ?>
 			<?php
 			$slug = esc_attr( $attributes[ Main::SLUG ] );
 			$name = esc_attr( $attributes[ Main::NAME ] );
-			$link = get_term_link( $id, Tribe__Events__Main::TAXONOMY );
+			$link = get_term_link( $attributes[ Main::SLUG ], Tribe__Events__Main::TAXONOMY );
 			?>
 			<li class="tribe-events-category-<?php echo $slug; ?> tribe_events_cat-<?php echo $slug; ?>">
 				<a href="<?php echo $link; ?>">
@@ -27,9 +28,9 @@ $teccc->setup_terms( $options );
 		<?php if ( isset( $options['show_ignored_cats_legend'] ) ) : ?>
 			<?php foreach ( $teccc->ignored_terms as $ignored_term ) : ?>
 				<?php
-				$slug = esc_attr( $ignored_term[0] );
-				$name = esc_attr( $ignored_term[1] );
-				$link = get_term_link( $ignored_term[0], Tribe__Events__Main::TAXONOMY );
+				$slug = esc_attr( $ignored_term[ Main::SLUG ] );
+				$name = esc_attr( $ignored_term[ Main::NAME ] );
+				$link = get_term_link( $ignored_term[ Main::SLUG ], Tribe__Events__Main::TAXONOMY );
 				?>
 				<li class="teccc-hidden-category">
 					<a href="<?php echo $link; ?>">
@@ -40,7 +41,7 @@ $teccc->setup_terms( $options );
 			<?php endforeach ?>
 		<?php endif ?>
 
-		<?php if ( isset( $options['reset_show'] ) ) : ?>
+		<?php if ( isset( $options['reset_show'] ) && empty( $options['legend_superpowers'] ) ) : ?>
 			<li class="teccc-reset">
 				<a href="
 				<?php
@@ -48,7 +49,6 @@ $teccc->setup_terms( $options );
 					echo tribe_get_events_link();
 				} else {
 					echo esc_html( $options['reset_url'] );
-
 				}
 				?>
 				">

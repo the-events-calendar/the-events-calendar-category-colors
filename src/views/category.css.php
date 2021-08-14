@@ -11,7 +11,7 @@ use Fragen\Category_Colors\CSS\v2_Views;
 /* The Events Calendar Category Colors <?php echo Main::$version; ?> */
 .teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
 {
-	font-weight: <?php esc_attr_e( $options['font_weight'] ); ?>;
+	font-weight: <?php echo esc_attr( $options['font_weight'] ); ?>;
 }
 
 .tribe-events-list .vevent.hentry h2 {
@@ -48,7 +48,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Base_CSS::add_link_css( $slug ); ?>
 {
 	<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
-		color: <?php esc_attr_e( $options[ "{$slug}-text" ] ); ?>;
+		color: <?php echo esc_attr( $options[ "{$slug}-text" ] ); ?>;
 	<?php endif ?>
 	text-decoration: none;
 }
@@ -57,6 +57,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Extras::fix_category_background_css( $slug ); ?>
 	<?php Pro::add_map_background_css( $slug ); ?>
 	<?php Pro::add_week_background_css( $slug ); ?>
+	<?php Pro::add_summary_background_css( $slug ); ?>
 	<?php Extras::add_list_background_css( $slug ); ?>
 	<?php // Extras::add_deprecated_week_background_css( $slug ); ?>
 	<?php // Extras::add_deprecated_background_css( $slug ); ?>
@@ -65,14 +66,14 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Base_CSS::add_background_css( $slug ); ?>
 {
 	<?php if ( null !== $options[ "{$slug}-background" ] ) : ?>
-		background-color: <?php esc_attr_e( $options[ "{$slug}-background" ] ); ?>;
+		background-color: <?php echo esc_attr( $options[ "{$slug}-background" ] ); ?>;
 	<?php endif ?>
 	<?php if ( null !== $options[ "{$slug}-border" ] ) : ?>
-		border-left: 5px solid <?php esc_attr_e( $options[ "{$slug}-border" ] ); ?>;
+		border-left: 5px solid <?php echo esc_attr( $options[ "{$slug}-border" ] ); ?>;
 	<?php endif ?>
 		border-right: 5px solid transparent;
 	<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
-		color: <?php esc_attr_e( $options[ "{$slug}-text" ] ); ?>;
+		color: <?php echo esc_attr( $options[ "{$slug}-text" ] ); ?>;
 	<?php endif ?>
 	line-height: 1.4em;
 	padding-left: 5px;
@@ -92,7 +93,9 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 }
 <?php endforeach ?>
 
-<?php if ( ( '1' === $options['add_legend'] ) && null === $options['custom_legend_css'] ) : ?>
-	<?php $teccc->view( 'legend.css' ); ?>
-<?php endif ?>
+<?php
+if ( ! empty( $options['add_legend'] ) && null === $options['custom_legend_css'] ) {
+	$teccc->view( 'legend.css' );
+}
+?>
 <?php do_action( 'teccc_add_legend_css' ); ?>

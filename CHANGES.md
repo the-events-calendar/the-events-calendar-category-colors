@@ -1,5 +1,15 @@
 #### [unreleased]
 
+#### 6.7.0 / 2021-08-14
+* update JS for jQuery 3.0, thanks @andrasguseo
+* add Reset button for legend, thanks @andrasguseo
+* add legend for Summary view, thanks @andrasguseo
+* update Settings UI to show/hide options
+* update for new Summary view in ECP
+* only use `esc_attr_e` for translating strings
+* add `teccc_legend_terms` filter
+* update `legend.php`
+
 #### 6.6.0 / 2021-07-07
 * add @10up GitHub Actions for WordPress SVN integration
 * **Reset** button added to legend in settings, navigate back to main calendar, thanks @andrasgueso

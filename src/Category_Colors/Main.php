@@ -107,22 +107,25 @@ class Main {
 	public function show_legend_on_views() {
 		$options = get_option( 'teccc_options' );
 
-		if ( ! empty( $options['add_legend_list_view'] ) && $options['add_legend_list_view'] ) {
-			teccc_add_legend_view( 'list' );
-		}
-		if ( ! empty( $options['add_legend_day_view'] ) && $options['add_legend_day_view'] ) {
-			teccc_add_legend_view( 'day' );
-		}
-		if ( ! empty( $options['add_legend_week_view'] ) && $options['add_legend_week_view'] ) {
-			teccc_add_legend_view( 'week' );
-		}
-		if ( ! empty( $options['add_legend_photo_view'] ) && $options['add_legend_photo_view'] ) {
-			teccc_add_legend_view( 'photo' );
-		}
-		if ( ! empty( $options['add_legend_map_view'] ) && $options['add_legend_map_view'] ) {
-			teccc_add_legend_view( 'map' );
+		$views = [
+			'list',
+			'month',
+			'day',
+			'week',
+			'photo',
+			'map',
+			'summary',
+		];
+
+		if ( ! is_array( $options['add_legend'] ) ) {
+			$options = $this->update_view_options( $views, $options );
 		}
 
+		foreach ( $views as $view ) {
+			if ( in_array( $view, (array) $options['add_legend'], true ) ) {
+				teccc_add_legend_view( $view );
+			}
+		}
 	}
 
 	/**
@@ -401,5 +404,28 @@ class Main {
 	 */
 	public static function is_v2_active() {
 		return function_exists( 'tribe_events_views_v2_is_enabled' ) && \tribe_events_views_v2_is_enabled();
+	}
+
+	/**
+	 * Update the view options from single options to array
+	 *
+	 * @param $views
+	 * @param $options
+	 */
+	private function update_view_options( $views, $options ) {
+		if ( ! is_array( $options['add_legend'] ) && $options['add_legend'] == 1 ) {
+			$transfer[] = 'month';
+
+			foreach ( $views as $view ) {
+				if ( ! empty( $options[ "add_legend_{$view}_view" ] ) ) {
+					$transfer[] = $view;
+				}
+			}
+			$options['add_legend'] = $transfer;
+		}
+
+		update_option( 'teccc_options', $options );
+
+		return $options;
 	}
 }

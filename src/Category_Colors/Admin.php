@@ -34,7 +34,7 @@ class Admin {
 				echo '<div class="error"><p>' . sprintf(
 					wp_kses_post(
 						/* translators: %1$s, %2$s: href to The Events Calendar */
-						__( 'To begin using The Events Calendar Category Colors, please install the latest version of %1$sThe Events Calendar%2$.', 'the-events-calendar-category-colors' )
+						__( 'To begin using The Events Calendar Category Colors, please install the latest version of %1$sThe Events Calendar%2$s.', 'the-events-calendar-category-colors' )
 					),
 					'<a href="' . $url . '" class="thickbox" title="' . $title . '">',
 					'</a>'
@@ -201,6 +201,7 @@ class Admin {
 				'add_legend_week_view',
 				'add_legend_photo_view',
 				'add_legend_map_view',
+				'add_legend_summary_view',
 			];
 
 			$generalOptions = array_merge( $generalOptions, $ecp_settings );
@@ -208,7 +209,7 @@ class Admin {
 
 		foreach ( $generalOptions as $optionkey ) {
 			if ( ! isset( $options[ $optionkey ] ) ) {
-				$options[ $optionkey ] = null;
+				$options[ $optionkey ] = 'add_legend' === $optionkey ? [] : null;
 			}
 		}
 

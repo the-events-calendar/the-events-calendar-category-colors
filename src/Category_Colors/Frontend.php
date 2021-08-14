@@ -93,6 +93,9 @@ class Frontend {
 			case 'map':
 				$hook_name = 'events-pro/v2/map/top-bar';
 				break;
+			case 'summary':
+				$hook_name = 'events-pro/v2/summary/top-bar';
+				break;
 		}
 		if ( $hook_name ) {
 			$this->legendTargetHook = "tribe_template_before_include:{$hook_name}";
@@ -285,13 +288,19 @@ class Frontend {
 	public function show_legend() {
 		$v2_viewable   = false !== strpos( $this->legendTargetHook, $this->currentDisplay );
 		$is_extra_view = in_array( $this->currentDisplay, $this->legendExtraView, true );
+
 		if ( ! $v2_viewable && ! $is_extra_view ) {
 			return false;
 		}
 		if ( $this->legendFilterHasRun ) {
 			return false;
 		}
-		if ( ! ( isset( $this->options['add_legend'] ) && '1' === $this->options['add_legend'] ) ) {
+
+		if (
+			! isset( $this->options['add_legend'] )
+			|| null === $this->options['add_legend']
+			|| ! in_array( $this->currentDisplay, $this->options['add_legend'], true )
+		) {
 			return false;
 		}
 
@@ -300,6 +309,7 @@ class Frontend {
 			[
 				'options' => $this->options,
 				'teccc'   => $this->teccc,
+				'view'    => $this->currentDisplay,
 			],
 			false
 		);
