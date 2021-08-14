@@ -1,17 +1,17 @@
 # Copyright (C) 2021 Andy Fragen, Barry Hughes
-# This file is distributed under the same license as the The Events Calendar Category Colors plugin.
+# This file is distributed under the GNU General Public License v2.
 msgid ""
 msgstr ""
-"Project-Id-Version: The Events Calendar Category Colors 6.5.0\n"
+"Project-Id-Version: The Events Calendar Category Colors 6.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/the-events-calendar-category-colors\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-16T15:22:39+00:00\n"
+"POT-Creation-Date: 2021-08-14T19:39:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: the-events-calendar-category-colors\n"
 
 #. Plugin Name of the plugin
@@ -40,7 +40,7 @@ msgstr ""
 
 #. translators: %1$s, %2$s: href to The Events Calendar
 #: src/Category_Colors/Admin.php:37
-msgid "To begin using The Events Calendar Category Colors, please install the latest version of %1$sThe Events Calendar%2$."
+msgid "To begin using The Events Calendar Category Colors, please install the latest version of %1$sThe Events Calendar%2$s."
 msgstr ""
 
 #. translators: %1$s: TEC version, %2$s, %3$s: href to Events Calendar
@@ -79,6 +79,11 @@ msgstr ""
 
 #: src/functions/templatetags.php:60
 msgid "Use of this function is deprecated"
+msgstr ""
+
+#: src/views/legend.php:57
+#: src/views/optionsform.php:197
+msgid "Reset"
 msgstr ""
 
 #: src/views/optionsform.php:14
@@ -129,11 +134,11 @@ msgstr ""
 msgid "Font-Weight Options"
 msgstr ""
 
-#: src/views/optionsform.php:151
+#: src/views/optionsform.php:152
 msgid "Show Category Legend"
 msgstr ""
 
-#: src/views/optionsform.php:154
+#: src/views/optionsform.php:155
 msgid "Month view"
 msgstr ""
 
@@ -141,51 +146,80 @@ msgstr ""
 msgid "List view"
 msgstr ""
 
-#: src/views/optionsform.php:164
+#: src/views/optionsform.php:163
 msgid "Day view"
 msgstr ""
 
-#: src/views/optionsform.php:171
+#: src/views/optionsform.php:169
 msgid "Week view"
 msgstr ""
 
-#: src/views/optionsform.php:176
+#: src/views/optionsform.php:173
 msgid "Photo view"
 msgstr ""
 
-#: src/views/optionsform.php:181
+#: src/views/optionsform.php:177
 msgid "Map view"
 msgstr ""
 
-#: src/views/optionsform.php:187
-msgid "Legend Superpowers"
+#: src/views/optionsform.php:181
+msgid "Summary view"
+msgstr ""
+
+#: src/views/optionsform.php:188
+msgid "Reset Button"
 msgstr ""
 
 #: src/views/optionsform.php:190
-msgid "Check to add Legend Superpowers."
+#: src/views/optionsform.php:211
+msgid "For this option you have to show the category legend at least on one view."
 msgstr ""
 
-#: src/views/optionsform.php:192
-msgid "Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it."
+#: src/views/optionsform.php:194
+msgid "Show reset button"
 msgstr ""
 
 #: src/views/optionsform.php:198
-msgid "Show hidden categories in legend."
+msgid "Reset button label"
 msgstr ""
 
-#: src/views/optionsform.php:205
-msgid "Check to use your own CSS for category legend."
+#: src/views/optionsform.php:202
+msgid "Reset button URL"
+msgstr ""
+
+#: src/views/optionsform.php:203
+msgid "By default the reset button will point to the default calendar URL."
 msgstr ""
 
 #: src/views/optionsform.php:209
+msgid "Legend Superpowers"
+msgstr ""
+
+#: src/views/optionsform.php:215
+msgid "Check to add Legend Superpowers."
+msgstr ""
+
+#: src/views/optionsform.php:217
+msgid "Legend Superpowers are an optional visual effect allowing visitors to focus only on those events that belong to categories of interest - without reloading the page and without eliminating other categories from view completely. Click on the category of interest in the Legend for the effect; click again to remove it."
+msgstr ""
+
+#: src/views/optionsform.php:223
+msgid "Show hidden categories in legend."
+msgstr ""
+
+#: src/views/optionsform.php:230
+msgid "Check to use your own CSS for category legend."
+msgstr ""
+
+#: src/views/optionsform.php:235
 msgid "Database Options"
 msgstr ""
 
-#: src/views/optionsform.php:212
+#: src/views/optionsform.php:238
 msgid "Restore defaults upon plugin deactivation/reactivation"
 msgstr ""
 
-#: src/views/optionsform.php:214
+#: src/views/optionsform.php:240
 msgid "Only check this if you want to reset plugin settings upon Plugin reactivation"
 msgstr ""
 
