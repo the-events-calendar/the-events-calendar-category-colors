@@ -102,10 +102,14 @@ class Main {
 	}
 
 	/**
-	 * Add legend on the selected views
+	 * Add legend on the selected views.
 	 */
 	public function show_legend_on_views() {
 		$options = get_option( 'teccc_options' );
+
+		if ( ! isset( $options['add_legend'] ) ) {
+			return;
+		}
 
 		$views = [
 			'list',
