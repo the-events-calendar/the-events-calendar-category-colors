@@ -5,9 +5,9 @@
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '44a5a8f70678a3792c5456a385c31451e6416407',
+        'reference' => '9e9636845e5396c511b55be69870efb7125cbf29',
         'name' => 'afragen/the-events-calendar-category-colors',
-        'dev' => true,
+        'dev' => false,
     ),
     'versions' => array(
         'afragen/the-events-calendar-category-colors' => array(
@@ -16,7 +16,7 @@
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '44a5a8f70678a3792c5456a385c31451e6416407',
+            'reference' => '9e9636845e5396c511b55be69870efb7125cbf29',
             'dev_requirement' => false,
         ),
     ),
