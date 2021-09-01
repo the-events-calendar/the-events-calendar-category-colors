@@ -8,6 +8,7 @@ class v2_Views {
 		$css[] = ".teccc-legend .tribe_events_cat-{$slug} a,";
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a,";
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a:link,";
+		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a:visited,";
 
 		// $css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} .tribe-events-calendar-month__multiday-event-bar-inner h3,";
 		$css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} h3,";
