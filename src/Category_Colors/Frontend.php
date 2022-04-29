@@ -244,10 +244,20 @@ class Frontend {
 				unlink( $file );
 			}
 		}
-		file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );
-		file_put_contents( "{$css_dir}/{$this->cache_key}.min.css", $css_min );
-		chmod( "{$css_dir}/{$this->cache_key}.css", 0644 );
-		chmod( "{$css_dir}/{$this->cache_key}.min.css", 0644 );
+
+		/**
+		 * Filter to control whether to write CSS to a file. Some hosts do not permit file write operations.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param bool $write_files Whether to write CSS to disk.
+		 */
+		if ( apply_filters( 'teccc_write_files', true ) ) {
+			file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );
+			file_put_contents( "{$css_dir}/{$this->cache_key}.min.css", $css_min );
+			chmod( "{$css_dir}/{$this->cache_key}.css", 0644 );
+			chmod( "{$css_dir}/{$this->cache_key}.min.css", 0644 );
+		}
 
 		// Store in transient.
 		set_transient( 'teccc_cache_key', $this->cache_key, 4 * WEEK_IN_SECONDS );
