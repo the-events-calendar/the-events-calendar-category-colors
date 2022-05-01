@@ -1,4 +1,3 @@
-
 #legend_box
 {
 	font: bold 10px/4em sans-serif;
