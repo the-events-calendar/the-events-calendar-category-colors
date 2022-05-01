@@ -168,6 +168,8 @@ class Frontend {
 	 *
 	 * Removes comments, spaces after commas and colons, spaces around braces, and reduce whitespace.
 	 *
+	 * @link https://gist.github.com/manastungare/2625128
+	 *
 	 * @param  string $css
 	 * @return string $css Minified CSS.
 	 */

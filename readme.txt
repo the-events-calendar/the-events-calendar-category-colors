@@ -2,9 +2,9 @@
 Contributors: afragen, barry.hughes
 Donate link: https://thefragens.com/category-colors-donate
 Tags: events, color, modern tribe, tribe
-Requires at least: 4.7
-Requires PHP: 5.6
-Tested up to: 5.8
+Requires at least: 5.2
+Requires PHP: 7.1
+Tested up to: 6.0
 Stable tag: 6.7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
