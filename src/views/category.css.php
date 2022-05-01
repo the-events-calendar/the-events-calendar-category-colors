@@ -25,8 +25,6 @@ use Fragen\Category_Colors\CSS\v2_Views;
 <?php
 if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	$teccc->terms = $options['terms'];
-} else {
-	return false;
 }
 ?>
 
@@ -99,3 +97,4 @@ if ( ! empty( $options['add_legend'] ) && null === $options['custom_legend_css']
 }
 ?>
 <?php do_action( 'teccc_add_legend_css' ); ?>
+/* End The Events Calendar Category Colors CSS */
