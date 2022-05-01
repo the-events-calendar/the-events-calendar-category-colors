@@ -19,9 +19,8 @@ class Frontend {
 	public $currentDisplay        = null;
 
 	public function __construct( Main $teccc ) {
-		$this->teccc     = $teccc;
-		$this->options   = Admin::fetch_options( $teccc );
-		$this->cache_key = 'teccc_' . $this->options_hash();
+		$this->teccc   = $teccc;
+		$this->options = Admin::fetch_options( $teccc );
 
 		require_once $teccc->functions_dir . '/templatetags.php';
 		$this->uploads = wp_upload_dir();
@@ -37,10 +36,6 @@ class Frontend {
 		add_action( $this->legendTargetHook, [ $this, 'show_legend' ] );
 		add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 3 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'add_scripts_styles' ], PHP_INT_MAX - 100 );
-		add_action( 'init', [ $this, 'generate_css' ] );
-
-		// Not sure this is needed.
-		add_filter( 'upload_dir', [ $this, 'filter_upload_dir' ], 10, 1 );
 	}
 
 	/**
@@ -104,55 +99,12 @@ class Frontend {
 	}
 
 	/**
-	 * Sets SSL corrected URLs in wp_upload_dir().
-	 *
-	 * @link https://core.trac.wordpress.org/ticket/25449
-	 *
-	 * @param array $upload_dir
-	 *
-	 * @return array $upload_dir
-	 */
-	public function filter_upload_dir( $upload_dir ) {
-		$upload_dir['url']     = set_url_scheme( $upload_dir['url'] );
-		$upload_dir['baseurl'] = set_url_scheme( $upload_dir['baseurl'] );
-
-		return $upload_dir;
-	}
-
-	/**
-	 * Strips HTTP scheme from URL, avoids mixed media error.
-	 *
-	 * @param string $url URL.
-	 *
-	 * @return string $url
-	 */
-	private function strip_url_scheme( $url ) {
-		$url_args         = parse_url( $url );
-		$url_args['path'] = ltrim( $url_args['path'], '/' );
-		unset( $url_args['scheme'] );
-		if ( empty( $url_args['host'] ) ) {
-			unset( $url_args['host'] );
-		}
-		$protocol_relative = isset( $url_args['host'] ) ? '//' : '/';
-		if ( isset( $url_args['port'] ) ) {
-			$url_args['host'] = $url_args['host'] . ':' . $url_args['port'];
-			unset( $url_args['port'] );
-		}
-		$url = $protocol_relative . implode( '/', $url_args );
-
-		return $url;
-	}
-
-	/**
 	 * Enqueue stylesheets and scripts as appropriate.
 	 */
 	public function add_scripts_styles() {
-		$css_url        = $this->strip_url_scheme( $this->uploads['baseurl'] );
-		$min            = defined( 'WP_DEBUG' ) && WP_DEBUG ? null : '.min';
-		$stylesheet_url = "{$css_url}/{$this->cache_key}{$min}.css";
-		$version        = array_key_exists( 'refresh_css', $_GET ) ? microtime( true ) : Main::$version;
-		wp_register_style( 'teccc_stylesheet', $stylesheet_url, false, $version );
-		wp_enqueue_style( 'teccc_stylesheet' );
+		wp_register_style( 'teccc-nofile-stylesheet', false );
+		wp_enqueue_style( 'teccc-nofile-stylesheet' );
+		wp_add_inline_style( 'teccc-nofile-stylesheet', $this->generate_css() );
 
 		// Optionally add legend superpowers
 		if ( isset( $this->options['legend_superpowers'] ) &&
@@ -162,37 +114,6 @@ class Frontend {
 			wp_register_script( 'legend_superpowers', $this->teccc->resources_url . '/legend-superpowers.js', [ 'jquery' ], Main::$version, true );
 			wp_enqueue_script( 'legend_superpowers' );
 		}
-	}
-
-	/**
-	 * By generating a unique hash of the plugin options and other relevant settings
-	 * if these change so will the stylesheet URL, forcing the browser to grab an
-	 * updated copy.
-	 *
-	 * @return string
-	 */
-	protected function options_hash() {
-		// Current options are the basis of the current config.
-		$config = (array) $this->options;
-
-		// Terms are relevant but need to be flattened out.
-		foreach ( $config as $key => $value ) {
-			if ( isset( $key ) && is_array( $value ) ) {
-				$config[ $key ] = implode( '|', array_keys( $value ) );
-			}
-		}
-
-		// We also need to be cognizant of the mobile breakpoint.
-		$config['breakpoint'] = tribe_get_mobile_breakpoint();
-
-		$hash = hash( 'md5', implode( '|', $config ) );
-
-		/**
-		 * Filter options hash.
-		 *
-		 * @return string $hash
-		 */
-		return apply_filters( 'teccc_set_options_hash', $hash );
 	}
 
 	/**
