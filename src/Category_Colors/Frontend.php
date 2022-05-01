@@ -198,31 +198,24 @@ class Frontend {
 	/**
 	 * Create CSS for stylesheet, standard and minified.
 	 *
-	 * @link https://gist.github.com/manastungare/2625128
-	 *
 	 * @return mixed|string
 	 */
 	public function generate_css() {
-		// Look out for refresh requests.
-		$refresh_css = array_key_exists( 'refresh_css', $_GET );
-		$current     = get_transient( 'teccc_cache_key' );
+		// TODO: remove after a couple of updates.
+		$css_dir = apply_filters( 'teccc_uploads_dir', $this->uploads['basedir'] );
+		$css_dir = untrailingslashit( $css_dir );
+		foreach ( glob( "{$css_dir}/teccc*.css" ) as $file ) {
+			if ( file_exists( $file ) ) {
+				unlink( $file );
+			}
+		}
 
-		/**
-		 * Filter the path to `wp-content/uploads` for CSS.
-		 *
-		 * @since 6.4.13
-		 * @param string $this->uploads['basedir'] Path to uploads dir.
-		 */
-		$css_dir  = apply_filters( 'teccc_uploads_dir', $this->uploads['basedir'] );
-		$css_dir  = untrailingslashit( $css_dir );
-		$css_file = glob( "{$css_dir}/teccc*.css" );
-		$current  = ! empty( $css_file ) && strpos( $css_file[0], $this->cache_key )
-			? $current
-			: false;
+		$refresh = isset( $_GET['refresh_css'] );
+		$cache   = get_option( 'teccc_css' );
 
-		// Return if fresh CSS hasn't been requested.
-		if ( $current && ! $refresh_css ) {
-			return false;
+		// Return if cache not expired.
+		if ( ! $refresh && time() < $cache['timeout'] ) {
+				return $cache['css'];
 		}
 
 		// Else generate the CSS afresh.
@@ -239,20 +232,14 @@ class Frontend {
 		}
 		$css_min = $this->minify_css( $css );
 
-		foreach ( glob( "{$css_dir}/teccc*.css" ) as $file ) {
-			if ( file_exists( $file ) ) {
-				unlink( $file );
-			}
-		}
-		file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );
-		file_put_contents( "{$css_dir}/{$this->cache_key}.min.css", $css_min );
-		chmod( "{$css_dir}/{$this->cache_key}.css", 0644 );
-		chmod( "{$css_dir}/{$this->cache_key}.min.css", 0644 );
+		$css_data = [
+			'timeout' => strtotime( '+4 weeks' ),
+			'css'     => $css,
+		];
 
-		// Store in transient.
-		set_transient( 'teccc_cache_key', $this->cache_key, 4 * WEEK_IN_SECONDS );
+		update_option( 'teccc_css', $css_data, false );
 
-		return true;
+		return $css;
 	}
 
 	/**
