@@ -99,6 +99,7 @@ class Main {
 		$this->public->run();
 
 		add_action( 'init', [ $this, 'show_legend_on_views' ] );
+		add_action( 'update_option_teccc_options', [ $this->public, 'generate_css_on_update_option' ] );
 	}
 
 	/**

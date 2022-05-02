@@ -117,6 +117,16 @@ class Frontend {
 	}
 
 	/**
+	 * Set $_GET['refresh_css'] to true when settings are updated.
+	 *
+	 * @return void
+	 */
+	public function generate_css_on_update_option() {
+		$_GET['refresh_css'] = true;
+		$this->generate_css();
+	}
+
+	/**
 	 * Create CSS for stylesheet, standard and minified.
 	 *
 	 * @return mixed|string
