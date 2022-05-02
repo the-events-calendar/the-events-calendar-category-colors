@@ -153,12 +153,13 @@ class Frontend {
 		}
 		$css_min = $this->minify_css( $css );
 
-		$css_data = [
+		$new_css = [
 			'timeout' => strtotime( '+4 weeks' ),
 			'css'     => $css,
+			'css_min' => $css_min,
 		];
 
-		update_option( 'teccc_css', $css_data, false );
+		update_option( 'teccc_css', $new_css, false );
 
 		return $css;
 	}
