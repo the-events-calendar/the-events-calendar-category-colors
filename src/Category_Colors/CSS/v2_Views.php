@@ -1,7 +1,40 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
+
 namespace Fragen\Category_Colors\CSS;
 
-class v2_Views {
+/**
+ * Class V2_Views
+ */
+class V2_Views {
+
+	/**
+	 * Echo CSS
+	 *
+	 * @param array $css Array of CSS.
+	 *
+	 * @return void
+	 */
+	private static function echo_css( $css ) {
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo esc_attr( $css );
+	}
+
+	/**
+	 * Add link CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_link_css( $slug ) {
 		$css = [];
 
@@ -18,6 +51,13 @@ class v2_Views {
 		echo $css;
 	}
 
+	/**
+	 * Add background CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_background_css( $slug ) {
 		$css = [];
 
@@ -48,6 +88,11 @@ class v2_Views {
 		echo $css;
 	}
 
+	/**
+	 * Add v2 multiday background color.
+	 *
+	 * @return void
+	 */
 	public static function add_v2_multiday_background_color() {
 		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event-bar,';
 		$css[] = '.tribe-events .tribe-events-calendar-month__multiday-event-bar-inner,';

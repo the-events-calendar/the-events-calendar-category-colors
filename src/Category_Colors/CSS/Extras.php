@@ -1,11 +1,36 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
 
 namespace Fragen\Category_Colors\CSS;
 
 use Fragen\Category_Colors\Main;
 
+/**
+ * Class Extras
+ */
 class Extras {
 
+	/**
+	 * Echo CSS
+	 *
+	 * @param array $css Array of CSS.
+	 *
+	 * @return void
+	 */
+	/**
+	 * Add list link CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_list_link_css( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} h2.tribe-events-list-event-title.entry-title a,";
@@ -18,6 +43,13 @@ class Extras {
 		echo $css;
 	}
 
+	/**
+	 * Add list background CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_list_background_css( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} h3.tribe-events-list-event-title,";
@@ -26,6 +58,13 @@ class Extras {
 		echo $css;
 	}
 
+	/**
+	 * Add featured event link CSS
+	 *
+	 * @param sting $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_featured_event_link_css( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-events-list .tribe-events-loop .tribe-event-featured.tribe-events-category-{$slug} h3.tribe-events-list-event-title a:hover,";
@@ -35,6 +74,14 @@ class Extras {
 		echo $css;
 	}
 
+	/**
+	 * Add featured event border CSS
+	 *
+	 * @param string $slug    Slug.
+	 * @param array  $options Array of options.
+	 *
+	 * @return void
+	 */
 	public static function add_featured_event_border_css( $slug, $options ) {
 		$css   = [];
 		$css[] = ".tribe-events-calendar .tribe-event-featured.tribe-events-category-{$slug},";
@@ -47,6 +94,11 @@ class Extras {
 
 	}
 
+	/**
+	 * Add mobile CSS
+	 *
+	 * @return void
+	 */
 	public static function add_mobile_css() {
 		$css = Main::instance()->view(
 			'mobile.css',
@@ -65,6 +117,13 @@ class Extras {
 		echo apply_filters( 'teccc_mobile_css', $css );
 	}
 
+	/**
+	 * Fix category link CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function fix_category_link_css( $slug ) {
 		/**
 		 * Filter to add CSS selector that is overriding link color.
@@ -79,6 +138,13 @@ class Extras {
 		echo apply_filters( 'teccc_fix_category_link_color', null, '.tribe-events-category-' . $slug );
 	}
 
+	/**
+	 * Fix category background CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function fix_category_background_css( $slug ) {
 		/**
 		 * Filter to add CSS selector that is overriding background color.
@@ -93,6 +159,13 @@ class Extras {
 		echo apply_filters( 'teccc_fix_category_background_color', null, '.tribe-events-category-' . $slug );
 	}
 
+	/**
+	 * Add deprecated background CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_deprecated_background_css( $slug ) {
 		$css   = [];
 		$css[] = "#tribe-events-content .tribe-events-category-{$slug} > .tribe-events-tooltip h4,";
@@ -102,6 +175,13 @@ class Extras {
 		echo $css;
 	}
 
+	/**
+	 * Add deprecated link CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_deprecated_link_css( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} h2 a,";
@@ -112,6 +192,13 @@ class Extras {
 
 	}
 
+	/**
+	 * Override customizer
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function override_customizer( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-events-shortcode .tribe-events-month table .type-tribe_events.tribe-events-category-{$slug},";

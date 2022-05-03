@@ -1,4 +1,12 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
 
 namespace Fragen\Category_Colors;
 
@@ -8,22 +16,59 @@ namespace Fragen\Category_Colors;
  * @package Fragen\Category_Colors
  */
 class Frontend {
-	protected $teccc     = null;
-	protected $options   = [];
-	protected $cache_key = null;
-	protected $uploads   = null;
 
-	protected $legendTargetHook   = 'tribe_events_after_header';
+	/**
+	 * Variable
+	 *
+	 * @var mixed
+	 */
+	protected $teccc = null;
+
+	/**
+	 * Variable
+	 *
+	 * @var array
+	 */
+	protected $options = [];
+
+	/**
+	 * Variable
+	 *
+	 * @var string
+	 */
+	protected $legendTargetHook = 'tribe_events_after_header';
+
+	/**
+	 * Variable
+	 *
+	 * @var bool
+	 */
 	protected $legendFilterHasRun = false;
-	protected $legendExtraView    = [ 'month' ];
-	public $currentDisplay        = null;
 
+	/**
+	 * Variable
+	 *
+	 * @var array
+	 */
+	protected $legendExtraView = [ 'month' ];
+
+	/**
+	 * Variable
+	 *
+	 * @var string
+	 */
+	public $currentDisplay = null;
+
+	/**
+	 * Constructor
+	 *
+	 * @param Main $teccc Class Main.
+	 */
 	public function __construct( Main $teccc ) {
 		$this->teccc   = $teccc;
 		$this->options = Admin::fetch_options( $teccc );
 
 		require_once $teccc->functions_dir . '/templatetags.php';
-		$this->uploads = wp_upload_dir();
 	}
 
 	/**
@@ -41,7 +86,7 @@ class Frontend {
 	/**
 	 * Get current event display from `parse_query` filter.
 	 *
-	 * @param \WP_Query $query
+	 * @param \WP_Query $query Query object.
 	 *
 	 * @return void
 	 */
@@ -106,7 +151,7 @@ class Frontend {
 		wp_enqueue_style( 'teccc-nofile-stylesheet' );
 		wp_add_inline_style( 'teccc-nofile-stylesheet', $this->generate_css() );
 
-		// Optionally add legend superpowers
+		// Optionally add legend superpowers.
 		if ( isset( $this->options['legend_superpowers'] ) &&
 			'1' === $this->options['legend_superpowers'] &&
 			! wp_is_mobile()
@@ -141,6 +186,7 @@ class Frontend {
 			}
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$refresh = isset( $_GET['refresh_css'] );
 		$cache   = get_option( 'teccc_css' );
 
@@ -181,7 +227,7 @@ class Frontend {
 	 *
 	 * @link https://gist.github.com/manastungare/2625128
 	 *
-	 * @param  string $css
+	 * @param  string $css CSS.
 	 * @return string $css Minified CSS.
 	 */
 	private function minify_css( $css ) {
@@ -250,7 +296,7 @@ class Frontend {
 	 * Move legend to different position.
 	 *
 	 * @deprecated 6.8.4.3
-	 * @param $tribeViewFilter
+	 * @param string $tribeViewFilter Tribe View.
 	 *
 	 * @return bool
 	 */
@@ -298,10 +344,9 @@ class Frontend {
 	/**
 	 * Add legend to additional views.
 	 *
-	 * @param $view
+	 * @param string $view ('list', 'day', 'week', 'photo', 'map').
 	 */
 	public function add_legend_view( $view ) {
-		// 'list', 'day', 'week', 'photo', 'map' as parameters.
 		$this->legendExtraView[] = $view;
 	}
 }

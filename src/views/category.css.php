@@ -14,10 +14,10 @@ use Fragen\Category_Colors\CSS\Base_CSS;
 use Fragen\Category_Colors\CSS\Extras;
 use Fragen\Category_Colors\CSS\Widgets;
 use Fragen\Category_Colors\CSS\Pro;
-use Fragen\Category_Colors\CSS\v2_Views;
+use Fragen\Category_Colors\CSS\V2_Views;
 
 ?>
-/* The Events Calendar Category Colors <?php echo esc_html( Main::$version ); ?> */<br>
+/* The Events Calendar Category Colors <?php echo esc_html( Main::$version ); ?> */
 .teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
 {
 	font-weight: <?php echo esc_attr( $options['font_weight'] ); ?>;
@@ -29,7 +29,7 @@ use Fragen\Category_Colors\CSS\v2_Views;
 
 <?php Extras::add_mobile_css(); ?>
 <?php Pro::fix_default_week_background(); ?>
-<?php v2_Views::add_v2_multiday_background_color(); ?>
+<?php V2_Views::add_v2_multiday_background_color(); ?>
 
 <?php
 if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
@@ -43,7 +43,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	$name = $attributes[ Main::NAME ];
 	?>
 
-	<?php v2_Views::add_link_css( $slug ); ?>
+	<?php V2_Views::add_link_css( $slug ); ?>
 	<?php Extras::fix_category_link_css( $slug ); ?>
 	<?php Pro::add_map_link_css( $slug ); ?>
 	<?php Pro::add_week_link_css( $slug ); ?>
@@ -60,7 +60,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	text-decoration: none;
 }
 
-	<?php v2_Views::add_background_css( $slug ); ?>
+	<?php V2_Views::add_background_css( $slug ); ?>
 	<?php Extras::fix_category_background_css( $slug ); ?>
 	<?php Pro::add_map_background_css( $slug ); ?>
 	<?php Pro::add_week_background_css( $slug ); ?>
@@ -106,4 +106,4 @@ if ( ! empty( $options['add_legend'] ) && null === $options['custom_legend_css']
 }
 ?>
 <?php do_action( 'teccc_add_legend_css' ); ?>
-<br>/* End The Events Calendar Category Colors CSS */
+/* End The Events Calendar Category Colors CSS */

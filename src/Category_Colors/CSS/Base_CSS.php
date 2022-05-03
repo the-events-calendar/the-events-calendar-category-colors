@@ -1,8 +1,27 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
+
 namespace Fragen\Category_Colors\CSS;
 
+/**
+ * Class Base_CSS
+ */
 class Base_CSS {
 
+	/**
+	 * Add link CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_link_css( $slug ) {
 		$css = [];
 

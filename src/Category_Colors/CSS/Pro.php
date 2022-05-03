@@ -1,7 +1,27 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
+
 namespace Fragen\Category_Colors\CSS;
 
+/**
+ * Class Pro
+ */
 class Pro {
+
+	/**
+	 * Echo CSS
+	 *
+	 * @param array $css Array of CSS.
+	 *
+	 * @return string
+	 */
 	private static function echo_css( $css ) {
 		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			return false;
@@ -11,6 +31,13 @@ class Pro {
 		echo $css;
 	}
 
+	/**
+	 * Add map link CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_map_link_css( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
@@ -18,6 +45,13 @@ class Pro {
 		self::echo_css( $css );
 	}
 
+	/**
+	 * Add map background CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_map_background_css( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
@@ -25,6 +59,13 @@ class Pro {
 		self::echo_css( $css );
 	}
 
+	/**
+	 * Add week background CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_week_background_css( $slug ) {
 		$css   = [];
 		$css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent .tribe-events-tooltip h4.entry-title,";
@@ -34,6 +75,11 @@ class Pro {
 		self::echo_css( $css );
 	}
 
+	/**
+	 * Fix default week background
+	 *
+	 * @return void
+	 */
 	public static function fix_default_week_background() {
 		$css   = [];
 		$css[] = '.tribe-grid-body div[id*="tribe-events-event-"][class*="tribe-events-category-"].tribe-events-week-hourly-single';
@@ -41,6 +87,13 @@ class Pro {
 		self::echo_css( $css );
 	}
 
+	/**
+	 * Fix transparent week background
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function fix_transparent_week_background( $slug ) {
 		$options = get_option( 'teccc_options' );
 		$css     = [];
@@ -53,6 +106,13 @@ class Pro {
 		}
 	}
 
+	/**
+	 * Add week link CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_week_link_css( $slug ) {
 		$css   = [];
 		$css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent h3.entry-title a,";
@@ -63,11 +123,25 @@ class Pro {
 		self::echo_css( $css );
 	}
 
+	/**
+	 * Add deprecated week background CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_deprecated_week_background_css( $slug ) {
 		$css = [];
 		self::echo_css( $css );
 	}
 
+	/**
+	 * Add summary background CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_summary_background_css( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3.tribe-events-pro-summary__event-title,";
