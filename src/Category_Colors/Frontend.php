@@ -147,7 +147,7 @@ class Frontend {
 	 * Enqueue stylesheets and scripts as appropriate.
 	 */
 	public function add_scripts_styles() {
-		wp_register_style( 'teccc-nofile-stylesheet', false );
+		wp_register_style( 'teccc-nofile-stylesheet', false, [], Main::$version );
 		wp_enqueue_style( 'teccc-nofile-stylesheet' );
 		wp_add_inline_style( 'teccc-nofile-stylesheet', $this->generate_css() );
 
@@ -178,7 +178,7 @@ class Frontend {
 	 */
 	public function generate_css() {
 		// TODO: remove after a couple of updates.
-		$css_dir = apply_filters( 'teccc_uploads_dir', $this->uploads['basedir'] );
+		$css_dir = apply_filters( 'teccc_uploads_dir', wp_upload_dir()['basedir'] );
 		$css_dir = untrailingslashit( $css_dir );
 		foreach ( glob( "{$css_dir}/teccc*.css" ) as $file ) {
 			if ( file_exists( $file ) ) {
