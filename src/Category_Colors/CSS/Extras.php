@@ -27,6 +27,7 @@ class Extras {
 	private static function echo_css( $css ) {
 		$css[] = '';
 		$css   = implode( "\n", $css );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $css;
 	}
 

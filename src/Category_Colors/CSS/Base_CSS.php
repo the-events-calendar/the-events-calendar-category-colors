@@ -20,7 +20,7 @@ class Base_CSS {
 	 *
 	 * @param array $css Array of CSS.
 	 *
-	 * @return void
+	 * @return bool|void
 	 */
 	private static function echo_css( $css ) {
 		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
@@ -28,6 +28,7 @@ class Base_CSS {
 		}
 		$css[] = '';
 		$css   = implode( "\n", $css );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $css;
 	}
 

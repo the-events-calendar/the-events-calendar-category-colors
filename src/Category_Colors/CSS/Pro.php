@@ -28,6 +28,7 @@ class Pro {
 		}
 		$css[] = '';
 		$css   = implode( "\n", $css );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $css;
 	}
 
