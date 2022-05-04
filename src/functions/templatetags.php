@@ -18,8 +18,7 @@
  * @deprecated 6.8.4.3
  */
 function teccc_remove_default_legend() {
-	_doing_it_wrong( 'teccc_remove_default_legend', esc_html__( 'Use of this function is deprecated for TEC v2 views.', 'the-events-calendar-category-colors' ), '6.4.8.3' );
-	// return Fragen\Category_Colors\Main::instance()->public->remove_default_legend();
+	_doing_it_wrong( 'teccc_remove_default_legend', esc_html__( 'Use of this function is deprecated .', 'the-events-calendar-category-colors' ), '6.4.8.3' );
 }
 
 
@@ -35,23 +34,15 @@ function teccc_remove_default_legend() {
  * @deprecated 6.4.8.3
  */
 function teccc_reposition_legend() {
-	_doing_it_wrong( 'teccc_reposition_legend', esc_html__( 'Use of this function is deprecated for TEC v2 views.', 'the-events-calendar-category-colors' ), '6.4.8.3' );
-	// return Fragen\Category_Colors\Main::instance()->public->reposition_legend( $viewFilter );
+	_doing_it_wrong( 'teccc_reposition_legend', esc_html__( 'Use of this function is deprecated.', 'the-events-calendar-category-colors' ), '6.4.8.3' );
 }
 
 
 /**
  * Inserts the legend at the current position. The legend must be enabled in the
  * Events Category Colors settings.
- *
- * This will still work if called at the right moment in the request (ie, from within
- * a view filter) but use of teccc_remove_default_legend() and/or
- * teccc_reposition_legend() is preferred.
- *
- * @deprecated
  */
 function teccc_insert_legend() {
-	do_action( 'teccc_legend_hook' ); // Doesn't do anything now, retained for legacy purposes.
 	Fragen\Category_Colors\Main::instance()->public->show_legend();
 }
 
@@ -60,11 +51,10 @@ function teccc_insert_legend() {
  * An alias for teccc_insert_legend() - this function is deprecated and it is
  * preferred to call teccc_insert_legend() directly.
  *
- * @deprecated
+ * @deprecated 1.6.0B
  */
 function teccc_legend_hook() {
-	_doing_it_wrong( 'teccc_legend_hook', esc_html__( 'Use of this function is deprecated', 'the-events-calendar-category-colors' ), '1.6.0B' );
-	// teccc_insert_legend();
+	_doing_it_wrong( 'teccc_legend_hook', esc_html__( 'Use of this function is deprecated, use `teccc_insert_legend()`', 'the-events-calendar-category-colors' ), '1.6.0B' );
 }
 
 
