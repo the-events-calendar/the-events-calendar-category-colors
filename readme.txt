@@ -17,13 +17,13 @@ Add background colors to event categories displayed in the event views of The Ev
 
 Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page.
 
-To force a refresh of your CSS, add `?refresh_css` to the end of your events URL.
+To force a refresh of your CSS, add `?refresh_css` to the end of your events URL, or re-save the Settings.
 
 ## Frequently Asked Questions
 
 ### Does the plugin require The Events Calendar plugin?
 
-Yes. [The Events Calendar plugin](http://wordpress.org/plugins/the-events-calendar/) is written by Modern Tribe, Inc. It requires at least The Events Calendar v3.0.
+Yes. [The Events Calendar plugin](http://wordpress.org/plugins/the-events-calendar/) is written by Modern Tribe, Inc. It requires at least The Events Calendar v5.0.
 
 
 ### What if I use a version of The Events Calendar 2.x?
