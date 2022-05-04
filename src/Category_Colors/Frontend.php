@@ -288,7 +288,7 @@ class Frontend {
 		 *
 		 * @return string $content
 		 */
-		echo esc_html( apply_filters( 'teccc_legend_html', $content ) );
+		echo wp_kses_post( apply_filters( 'teccc_legend_html', $content ) );
 	}
 
 	/**
