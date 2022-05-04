@@ -1,4 +1,12 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
 
 namespace Fragen\Category_Colors;
 
@@ -8,23 +16,59 @@ namespace Fragen\Category_Colors;
  * @package Fragen\Category_Colors
  */
 class Frontend {
-	protected $teccc     = null;
-	protected $options   = [];
-	protected $cache_key = null;
-	protected $uploads   = null;
 
-	protected $legendTargetHook   = 'tribe_events_after_header';
+	/**
+	 * Variable
+	 *
+	 * @var mixed
+	 */
+	protected $teccc = null;
+
+	/**
+	 * Variable
+	 *
+	 * @var array
+	 */
+	protected $options = [];
+
+	/**
+	 * Variable
+	 *
+	 * @var string
+	 */
+	protected $legendTargetHook = 'tribe_events_after_header';
+
+	/**
+	 * Variable
+	 *
+	 * @var bool
+	 */
 	protected $legendFilterHasRun = false;
-	protected $legendExtraView    = [ 'month' ];
-	public $currentDisplay        = null;
 
+	/**
+	 * Variable
+	 *
+	 * @var array
+	 */
+	protected $legendExtraView = [ 'month' ];
+
+	/**
+	 * Variable
+	 *
+	 * @var string
+	 */
+	public $currentDisplay = null;
+
+	/**
+	 * Constructor
+	 *
+	 * @param Main $teccc Class Main.
+	 */
 	public function __construct( Main $teccc ) {
-		$this->teccc     = $teccc;
-		$this->options   = Admin::fetch_options( $teccc );
-		$this->cache_key = 'teccc_' . $this->options_hash();
+		$this->teccc   = $teccc;
+		$this->options = Admin::fetch_options( $teccc );
 
 		require_once $teccc->functions_dir . '/templatetags.php';
-		$this->uploads = wp_upload_dir();
 	}
 
 	/**
@@ -37,16 +81,12 @@ class Frontend {
 		add_action( $this->legendTargetHook, [ $this, 'show_legend' ] );
 		add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 3 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'add_scripts_styles' ], PHP_INT_MAX - 100 );
-		add_action( 'init', [ $this, 'generate_css' ] );
-
-		// Not sure this is needed.
-		add_filter( 'upload_dir', [ $this, 'filter_upload_dir' ], 10, 1 );
 	}
 
 	/**
 	 * Get current event display from `parse_query` filter.
 	 *
-	 * @param \WP_Query $query
+	 * @param \WP_Query $query Query object.
 	 *
 	 * @return void
 	 */
@@ -104,57 +144,14 @@ class Frontend {
 	}
 
 	/**
-	 * Sets SSL corrected URLs in wp_upload_dir().
-	 *
-	 * @link https://core.trac.wordpress.org/ticket/25449
-	 *
-	 * @param array $upload_dir
-	 *
-	 * @return array $upload_dir
-	 */
-	public function filter_upload_dir( $upload_dir ) {
-		$upload_dir['url']     = set_url_scheme( $upload_dir['url'] );
-		$upload_dir['baseurl'] = set_url_scheme( $upload_dir['baseurl'] );
-
-		return $upload_dir;
-	}
-
-	/**
-	 * Strips HTTP scheme from URL, avoids mixed media error.
-	 *
-	 * @param string $url URL.
-	 *
-	 * @return string $url
-	 */
-	private function strip_url_scheme( $url ) {
-		$url_args         = parse_url( $url );
-		$url_args['path'] = ltrim( $url_args['path'], '/' );
-		unset( $url_args['scheme'] );
-		if ( empty( $url_args['host'] ) ) {
-			unset( $url_args['host'] );
-		}
-		$protocol_relative = isset( $url_args['host'] ) ? '//' : '/';
-		if ( isset( $url_args['port'] ) ) {
-			$url_args['host'] = $url_args['host'] . ':' . $url_args['port'];
-			unset( $url_args['port'] );
-		}
-		$url = $protocol_relative . implode( '/', $url_args );
-
-		return $url;
-	}
-
-	/**
 	 * Enqueue stylesheets and scripts as appropriate.
 	 */
 	public function add_scripts_styles() {
-		$css_url        = $this->strip_url_scheme( $this->uploads['baseurl'] );
-		$min            = defined( 'WP_DEBUG' ) && WP_DEBUG ? null : '.min';
-		$stylesheet_url = "{$css_url}/{$this->cache_key}{$min}.css";
-		$version        = array_key_exists( 'refresh_css', $_GET ) ? microtime( true ) : Main::$version;
-		wp_register_style( 'teccc_stylesheet', $stylesheet_url, false, $version );
-		wp_enqueue_style( 'teccc_stylesheet' );
+		wp_register_style( 'teccc-nofile-stylesheet', false, [], Main::$version );
+		wp_enqueue_style( 'teccc-nofile-stylesheet' );
+		wp_add_inline_style( 'teccc-nofile-stylesheet', $this->generate_css() );
 
-		// Optionally add legend superpowers
+		// Optionally add legend superpowers.
 		if ( isset( $this->options['legend_superpowers'] ) &&
 			'1' === $this->options['legend_superpowers'] &&
 			! wp_is_mobile()
@@ -165,64 +162,37 @@ class Frontend {
 	}
 
 	/**
-	 * By generating a unique hash of the plugin options and other relevant settings
-	 * if these change so will the stylesheet URL, forcing the browser to grab an
-	 * updated copy.
+	 * Set $_GET['refresh_css'] to true when settings are updated.
 	 *
-	 * @return string
+	 * @return void
 	 */
-	protected function options_hash() {
-		// Current options are the basis of the current config.
-		$config = (array) $this->options;
-
-		// Terms are relevant but need to be flattened out.
-		foreach ( $config as $key => $value ) {
-			if ( isset( $key ) && is_array( $value ) ) {
-				$config[ $key ] = implode( '|', array_keys( $value ) );
-			}
-		}
-
-		// We also need to be cognizant of the mobile breakpoint.
-		$config['breakpoint'] = tribe_get_mobile_breakpoint();
-
-		$hash = hash( 'md5', implode( '|', $config ) );
-
-		/**
-		 * Filter options hash.
-		 *
-		 * @return string $hash
-		 */
-		return apply_filters( 'teccc_set_options_hash', $hash );
+	public function generate_css_on_update_option() {
+		$_GET['refresh_css'] = true;
+		$this->generate_css();
 	}
 
 	/**
 	 * Create CSS for stylesheet, standard and minified.
 	 *
-	 * @link https://gist.github.com/manastungare/2625128
-	 *
 	 * @return mixed|string
 	 */
 	public function generate_css() {
-		// Look out for refresh requests.
-		$refresh_css = array_key_exists( 'refresh_css', $_GET );
-		$current     = get_transient( 'teccc_cache_key' );
+		// TODO: remove after a couple of updates.
+		$css_dir = apply_filters( 'teccc_uploads_dir', wp_upload_dir()['basedir'] );
+		$css_dir = untrailingslashit( $css_dir );
+		foreach ( glob( "{$css_dir}/teccc*.css" ) as $file ) {
+			if ( file_exists( $file ) ) {
+				unlink( $file );
+			}
+		}
 
-		/**
-		 * Filter the path to `wp-content/uploads` for CSS.
-		 *
-		 * @since 6.4.13
-		 * @param string $this->uploads['basedir'] Path to uploads dir.
-		 */
-		$css_dir  = apply_filters( 'teccc_uploads_dir', $this->uploads['basedir'] );
-		$css_dir  = untrailingslashit( $css_dir );
-		$css_file = glob( "{$css_dir}/teccc*.css" );
-		$current  = ! empty( $css_file ) && strpos( $css_file[0], $this->cache_key )
-			? $current
-			: false;
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$refresh = isset( $_GET['refresh_css'] );
+		$cache   = get_option( 'teccc_css' );
 
-		// Return if fresh CSS hasn't been requested.
-		if ( $current && ! $refresh_css ) {
-			return false;
+		// Return if cache not expired.
+		if ( ! $refresh && time() < $cache['timeout'] ) {
+				return $cache['css'];
 		}
 
 		// Else generate the CSS afresh.
@@ -239,20 +209,15 @@ class Frontend {
 		}
 		$css_min = $this->minify_css( $css );
 
-		foreach ( glob( "{$css_dir}/teccc*.css" ) as $file ) {
-			if ( file_exists( $file ) ) {
-				unlink( $file );
-			}
-		}
-		file_put_contents( "{$css_dir}/{$this->cache_key}.css", $css );
-		file_put_contents( "{$css_dir}/{$this->cache_key}.min.css", $css_min );
-		chmod( "{$css_dir}/{$this->cache_key}.css", 0644 );
-		chmod( "{$css_dir}/{$this->cache_key}.min.css", 0644 );
+		$new_css = [
+			'timeout' => strtotime( '+4 weeks' ),
+			'css'     => $css,
+			'css_min' => $css_min,
+		];
 
-		// Store in transient.
-		set_transient( 'teccc_cache_key', $this->cache_key, 4 * WEEK_IN_SECONDS );
+		update_option( 'teccc_css', $new_css, false );
 
-		return true;
+		return $css;
 	}
 
 	/**
@@ -260,7 +225,9 @@ class Frontend {
 	 *
 	 * Removes comments, spaces after commas and colons, spaces around braces, and reduce whitespace.
 	 *
-	 * @param  string $css
+	 * @link https://gist.github.com/manastungare/2625128
+	 *
+	 * @param  string $css CSS.
 	 * @return string $css Minified CSS.
 	 */
 	private function minify_css( $css ) {
@@ -271,7 +238,6 @@ class Frontend {
 		 * 4. Remove space around braces and commas.
 		 * 5. Reduce multiple spaces to single space.
 		 */
-		// $css = preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css );
 		$css = preg_replace( "/[\n\r\t]/", '', $css );
 		$css = str_replace( ': ', ':', $css );
 		$css = preg_replace( '/\s?(,|{|})\s?/', '$1', $css );
@@ -322,14 +288,14 @@ class Frontend {
 		 *
 		 * @return string $content
 		 */
-		echo apply_filters( 'teccc_legend_html', $content );
+		echo wp_kses_post( apply_filters( 'teccc_legend_html', $content ) );
 	}
 
 	/**
 	 * Move legend to different position.
 	 *
 	 * @deprecated 6.8.4.3
-	 * @param $tribeViewFilter
+	 * @param string $tribeViewFilter Tribe View.
 	 *
 	 * @return bool
 	 */
@@ -377,10 +343,9 @@ class Frontend {
 	/**
 	 * Add legend to additional views.
 	 *
-	 * @param $view
+	 * @param string $view ('list', 'day', 'week', 'photo', 'map').
 	 */
 	public function add_legend_view( $view ) {
-		// 'list', 'day', 'week', 'photo', 'map' as parameters.
 		$this->legendExtraView[] = $view;
 	}
 }

@@ -1,4 +1,12 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
 
 namespace Fragen\Category_Colors;
 
@@ -6,18 +14,44 @@ use Tribe__Events__Main;
 
 /**
  * Class Main
- *
- * @package Fragen\Category_Colors
  */
 class Main {
 	const SLUG = 0;
 	const NAME = 1;
 
+	/**
+	 * Variable
+	 *
+	 * @var string
+	 */
 	public static $version;
+
+	/**
+	 * Variable
+	 *
+	 * @var string
+	 */
 	public $functions_dir;
+
+	/**
+	 * Variable
+	 *
+	 * @var string
+	 */
 	public $views_dir;
+
+	/**
+	 * Variable
+	 *
+	 * @var string
+	 */
 	public $resources_url;
 
+	/**
+	 * Variable
+	 *
+	 * @var array
+	 */
 	public $text_colors = [
 		'Default' => 'no_color',
 		'Black'   => '#000',
@@ -25,22 +59,43 @@ class Main {
 		'Gray'    => '#999',
 	];
 
+	/**
+	 * Variable
+	 *
+	 * @var array
+	 */
 	public $font_weights = [
 		'Bold'   => 'bold',
 		'Normal' => 'normal',
 	];
 
 	/**
-	 * Contains each term in an array structured as follows:
-	 *
-	 *    [ id => [ slug, name ], ... ]
+	 * Variable
 	 *
 	 * @var array
 	 */
-	public $terms         = [];
-	public $all_terms     = [];
+	public $terms = [];
+
+	/**
+	 * Variable
+	 *
+	 * @var array
+	 */
+	public $all_terms = [];
+
+	/**
+	 * Variable
+	 *
+	 * @var array
+	 */
 	public $ignored_terms = [];
-	public $count         = 0;
+
+	/**
+	 * Counter
+	 *
+	 * @var int
+	 */
+	public $count = 0;
 
 	/**
 	 * Category IDs (ints) and slugs (strings) to ignore.
@@ -50,10 +105,17 @@ class Main {
 	public $ignore_list = [];
 
 	/**
+	 * Variable
+	 *
 	 * @var Frontend
 	 */
 	public $public;
 
+	/**
+	 * Variable
+	 *
+	 * @var bool
+	 */
 	protected static $object = false;
 
 	/**
@@ -99,6 +161,7 @@ class Main {
 		$this->public->run();
 
 		add_action( 'init', [ $this, 'show_legend_on_views' ] );
+		add_action( 'update_option_teccc_options', [ $this->public, 'generate_css_on_update_option' ] );
 	}
 
 	/**
@@ -187,8 +250,8 @@ class Main {
 	/**
 	 * Create array of ignored terms from $ignore_list.
 	 *
-	 * @param  array $ignore_list
-	 * @return array $ignored_terms
+	 * @param  array $ignore_list   Array of terms to ignore.
+	 * @return array $ignored_terms Array of terms to ignore.
 	 */
 	public function get_ignored_terms( $ignore_list ) {
 		$ignored_terms = [];
@@ -205,7 +268,7 @@ class Main {
 	/**
 	 * Setup missing term data in Main.
 	 *
-	 * @param  array $options
+	 * @param  array $options Array of options.
 	 * @return void
 	 */
 	public function setup_terms( $options ) {
@@ -225,7 +288,7 @@ class Main {
 	 *
 	 * @param array $options TECCC options.
 	 *
-	 * @return array $options
+	 * @return array
 	 */
 	public function add_terms( $options ) {
 		$args      = [];
@@ -247,7 +310,7 @@ class Main {
 	/**
 	 * Delete category terms via filter.
 	 *
-	 * @param $all_terms
+	 * @param array $all_terms Array of terms.
 	 */
 	public function delete_terms( $all_terms ) {
 		$delete_terms = apply_filters( 'teccc_delete_terms', [] );
@@ -264,7 +327,7 @@ class Main {
 	/**
 	 * Removes terms on the ignore list from the list of terms recognised by the plugin.
 	 *
-	 * @param $term_list
+	 * @param arrat $term_list Array of terms.
 	 *
 	 * @return array
 	 */
@@ -295,7 +358,7 @@ class Main {
 	/**
 	 * Loads and returns the requested configuration array.
 	 *
-	 * @param $file
+	 * @param string $file File name.
 	 *
 	 * @return array
 	 */
@@ -311,7 +374,7 @@ class Main {
 	 * Maps to "{plugin_dir}/includes/$file.php" - the file itself is expected
 	 * to solely contain a PHP array definition.
 	 *
-	 * @param $file
+	 * @param string $file File name.
 	 *
 	 * @return array
 	 */
@@ -334,9 +397,9 @@ class Main {
 	 * If the optional array of $vars are supplied they will be extracted and
 	 * pulled into the same scope as the template.
 	 *
-	 * @param       $template
-	 * @param array    $vars
-	 * @param bool     $render
+	 * @param string $template Name of template.
+	 * @param array  $vars     Array of variables.
+	 * @param bool   $render   Bool to render.
 	 *
 	 * @return mixed
 	 */
@@ -350,6 +413,7 @@ class Main {
 			return false;
 		}
 		if ( null !== $vars ) {
+			// phpcs:ignore WordPress.PHP.DontExtract.extract_extract
 			extract( $vars, EXTR_OVERWRITE );
 		}
 
@@ -388,9 +452,9 @@ class Main {
 	/**
 	 * Returns current plugin version.
 	 *
-	 * @param $file Path to main plugin file.
+	 * @param string $file Path to main plugin file.
 	 *
-	 * @return string Plugin version
+	 * @return string
 	 */
 	public static function get_plugin_version( $file ) {
 		if ( ! function_exists( 'get_plugin_data' ) ) {
@@ -413,11 +477,13 @@ class Main {
 	/**
 	 * Update the view options from single options to array
 	 *
-	 * @param $views
-	 * @param $options
+	 * @param array $views   Array of views.
+	 * @param array $options Array of options.
+	 *
+	 * @return array
 	 */
 	private function update_view_options( $views, $options ) {
-		if ( ! is_array( $options['add_legend'] ) && $options['add_legend'] == 1 ) {
+		if ( ! is_array( $options['add_legend'] ) ) {
 			$transfer[] = 'month';
 
 			foreach ( $views as $view ) {

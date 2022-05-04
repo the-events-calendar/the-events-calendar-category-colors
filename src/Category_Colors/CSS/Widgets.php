@@ -1,9 +1,41 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
 
 namespace Fragen\Category_Colors\CSS;
 
+/**
+ * Class Widgets
+ */
 class Widgets {
 
+	/**
+	 * Echo CSS
+	 *
+	 * @param array $css Array of CSS.
+	 *
+	 * @return void
+	 */
+	private static function echo_css( $css ) {
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $css;
+	}
+
+	/**
+	 * Add widget link CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_widget_link_css( $slug ) {
 		$css = [];
 		if ( class_exists( 'Tribe__Events__Pro__Main' ) ) {
@@ -20,11 +52,16 @@ class Widgets {
 			$css[] = "li.tribe-events-list-widget-events.tribe-events-category-{$slug} a:link,"; // 3.10
 			$css[] = "li.tribe-events-list-widget-events.tribe-events-category-{$slug} a:visited,"; // 3.10
 		}
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
 
+	/**
+	 * Add widget background CSS
+	 *
+	 * @param string $slug Slug.
+	 *
+	 * @return void
+	 */
 	public static function add_widget_background_css( $slug ) {
 		$css = [];
 		if ( class_exists( 'Tribe__Events__Pro__Main' ) ) {
@@ -35,9 +72,6 @@ class Widgets {
 			$css[] = ".tribe-events-list-widget li.tribe-events-category-{$slug} h4,";
 			$css[] = "li.tribe-events-list-widget-events.tribe-events-category-{$slug} h4,";
 		}
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
-
 }

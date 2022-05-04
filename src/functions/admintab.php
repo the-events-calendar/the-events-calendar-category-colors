@@ -1,4 +1,16 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
+
+/**
+ * Return The Events Calendar Settings tab data.
+ */
 namespace Fragen\Category_Colors;
 
 return [
