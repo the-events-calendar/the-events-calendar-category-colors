@@ -5,7 +5,7 @@ Tags: events, color, modern tribe, tribe
 Requires at least: 5.2
 Requires PHP: 7.1
 Tested up to: 6.0
-Stable tag: 6.7.1
+Stable tag: 7.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,11 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 7.0.0 / 2022-05-04
+* rewrite to use `wp_add_inline_style()` for adding CSS, no more file writing
+* WPCS linting
+* update requirements, PHP 7.1, WP 5.2
 
 #### 6.7.1 / 2021-08-20
 * add some error checking, [#132](https://github.com/afragen/the-events-calendar-category-colors/issues/132)

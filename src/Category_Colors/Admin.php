@@ -77,7 +77,7 @@ class Admin {
 					'</a>'
 				)
 				. '</p></div>';
-			} elseif ( version_compare( Tribe__Events__Main::VERSION, '3.0', 'lt' ) ) {
+			} elseif ( version_compare( Tribe__Events__Main::VERSION, '5.0', 'lt' ) ) {
 				echo '<div class="error"><p>' . sprintf(
 					wp_kses_post(
 						/* translators: %1$s: TEC version, %2$s, %3$s: href to Events Calendar */

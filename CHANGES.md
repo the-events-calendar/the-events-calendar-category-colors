@@ -1,6 +1,9 @@
 #### [unreleased]
+
+#### 7.0.0 / 2022-05-04
 * rewrite to use `wp_add_inline_style()` for adding CSS, no more file writing
 * WPCS linting
+* update requirements, PHP 7.1, WP 5.2
 
 #### 6.7.1 / 2021-08-20
 * add some error checking, [#132](https://github.com/afragen/the-events-calendar-category-colors/issues/132)
