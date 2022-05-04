@@ -112,7 +112,7 @@ class Extras {
 		 * @since 4.4.6
 		 * @return string $css Default string returned is mobile.css.php.
 		 */
-		echo esc_attr( apply_filters( 'teccc_mobile_css', $css ) );
+		echo wp_kses_post( apply_filters( 'teccc_mobile_css', $css ) );
 	}
 
 	/**
@@ -133,7 +133,7 @@ class Extras {
 		 * @return string string is returned not echoed.
 		 *                default return string is empty.
 		 */
-		echo esc_attr( apply_filters( 'teccc_fix_category_link_color', null, '.tribe-events-category-' . $slug ) );
+		echo wp_kses_post( apply_filters( 'teccc_fix_category_link_color', null, '.tribe-events-category-' . $slug ) );
 	}
 
 	/**
@@ -154,7 +154,7 @@ class Extras {
 		 * @return string string is returned not echoed.
 		 *                default return string is empty.
 		 */
-		echo esc_attr( apply_filters( 'teccc_fix_category_background_color', null, '.tribe-events-category-' . $slug ) );
+		echo wp_kses_post( apply_filters( 'teccc_fix_category_background_color', null, '.tribe-events-category-' . $slug ) );
 	}
 
 	/**
