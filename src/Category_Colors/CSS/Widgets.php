@@ -25,7 +25,7 @@ class Widgets {
 	private static function echo_css( $css ) {
 		$css[] = '';
 		$css   = implode( "\n", $css );
-		echo esc_attr( $css );
+		echo $css;
 	}
 
 	/**
@@ -51,9 +51,7 @@ class Widgets {
 			$css[] = "li.tribe-events-list-widget-events.tribe-events-category-{$slug} a:link,"; // 3.10
 			$css[] = "li.tribe-events-list-widget-events.tribe-events-category-{$slug} a:visited,"; // 3.10
 		}
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
 
 	/**
@@ -73,8 +71,6 @@ class Widgets {
 			$css[] = ".tribe-events-list-widget li.tribe-events-category-{$slug} h4,";
 			$css[] = "li.tribe-events-list-widget-events.tribe-events-category-{$slug} h4,";
 		}
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
 }

@@ -289,7 +289,7 @@ class Frontend {
 		 *
 		 * @return string $content
 		 */
-		echo apply_filters( 'teccc_legend_html', $content );
+		echo esc_html( apply_filters( 'teccc_legend_html', $content ) );
 	}
 
 	/**

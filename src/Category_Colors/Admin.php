@@ -73,7 +73,7 @@ class Admin {
 						/* translators: %1$s, %2$s: href to The Events Calendar */
 						__( 'To begin using The Events Calendar Category Colors, please install the latest version of %1$sThe Events Calendar%2$s.', 'the-events-calendar-category-colors' )
 					),
-					'<a href="' . $url . '" class="thickbox" title="' . $title . '">',
+					'<a href="' . esc_attr( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">',
 					'</a>'
 				)
 				. '</p></div>';
@@ -83,8 +83,8 @@ class Admin {
 						/* translators: %1$s: TEC version, %2$s, %3$s: href to Events Calendar */
 						__( 'You have The Events Calendar v.%1$s. To begin using The Events Calendar Category Colors, please install the latest version of %2$sThe Events Calendar%3$s.', 'the-events-calendar-category-colors' )
 					),
-					Tribe__Events__Main::VERSION,
-					'<a href="' . $url . '" class="thickbox" title="' . $title . '">',
+					esc_html( Tribe__Events__Main::VERSION ),
+					'<a href="' . esc_attr( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">',
 					'</a>'
 				)
 				. '</p></div>';
@@ -188,10 +188,11 @@ class Admin {
 	 * Display 'saved' notice
 	 */
 	public function is_saved() {
-		if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['settings-updated'] ) && sanitize_key( wp_unslash( $_GET['settings-updated'] ) ) ) {
 			$message = esc_html__( 'Settings saved.', 'the-events-calendar-category-colors' );
-			$output  = '<div id="message" class="updated"><p><strong>' . $message . '</strong></p></div>';
-			echo apply_filters( 'tribe_settings_success_message', $output, 'category-colors' );
+			$output  = '<div id="message" class="updated"><p><strong>' . esc_html( $message ) . '</strong></p></div>';
+			echo wp_kses_post( apply_filters( 'tribe_settings_success_message', $output, 'category-colors' ) );
 		}
 	}
 

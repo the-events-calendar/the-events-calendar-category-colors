@@ -483,7 +483,7 @@ class Main {
 	 * @return array
 	 */
 	private function update_view_options( $views, $options ) {
-		if ( ! is_array( $options['add_legend'] ) && $options['add_legend'] == 1 ) {
+		if ( ! is_array( $options['add_legend'] ) ) {
 			$transfer[] = 'month';
 
 			foreach ( $views as $view ) {

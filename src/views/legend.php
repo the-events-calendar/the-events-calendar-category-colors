@@ -57,7 +57,7 @@ $terms = apply_filters( 'teccc_legend_terms', $teccc->terms );
 				if ( ! isset( $options['reset_url'] ) || empty( $options['reset_url'] ) ) {
 					echo esc_attr( tribe_get_events_link() );
 				} else {
-					echo esc_html( $options['reset_url'] );
+					echo esc_attr( $options['reset_url'] );
 				}
 				?>
 				">

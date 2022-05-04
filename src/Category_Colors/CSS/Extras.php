@@ -24,6 +24,12 @@ class Extras {
 	 *
 	 * @return void
 	 */
+	private static function echo_css( $css ) {
+		$css[] = '';
+		$css   = implode( "\n", $css );
+		echo $css;
+	}
+
 	/**
 	 * Add list link CSS
 	 *
@@ -38,9 +44,7 @@ class Extras {
 		$css[] = ".tribe-events-category-{$slug} h3.tribe-events-list-event-title a,";
 		$css[] = ".tribe-event-featured .tribe-events-category-{$slug} h3.tribe-events-list-event-title a,";
 		$css[] = ".tribe-events-list .tribe-events-loop .tribe-event-featured.tribe-events-category-{$slug} h3.tribe-events-list-event-title a,";
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
 
 	/**
@@ -53,9 +57,7 @@ class Extras {
 	public static function add_list_background_css( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} h3.tribe-events-list-event-title,";
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
 
 	/**
@@ -69,9 +71,7 @@ class Extras {
 		$css   = [];
 		$css[] = ".tribe-events-list .tribe-events-loop .tribe-event-featured.tribe-events-category-{$slug} h3.tribe-events-list-event-title a:hover,";
 		$css[] = "#tribe-events-content table.tribe-events-calendar .type-tribe_events.tribe-events-category-{$slug}.tribe-event-featured h3.tribe-events-month-event-title a:hover,";
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
 
 	/**
@@ -88,10 +88,7 @@ class Extras {
 		$css[] = "#tribe-events-content table.tribe-events-calendar .type-tribe_events.tribe-event-featured.tribe-events-category-{$slug},";
 		$css[] = ".tribe-grid-body div[id*='tribe-events-event-'][class*='tribe-events-category-'].tribe-events-week-hourly-single.tribe-event-featured ";
 		$css[] = "{ border-right: 5px solid {$options['featured-event']} }";
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
-
+		self::echo_css( $css );
 	}
 
 	/**
@@ -114,7 +111,7 @@ class Extras {
 		 * @since 4.4.6
 		 * @return string $css Default string returned is mobile.css.php.
 		 */
-		echo apply_filters( 'teccc_mobile_css', $css );
+		echo esc_attr( apply_filters( 'teccc_mobile_css', $css ) );
 	}
 
 	/**
@@ -135,7 +132,7 @@ class Extras {
 		 * @return string string is returned not echoed.
 		 *                default return string is empty.
 		 */
-		echo apply_filters( 'teccc_fix_category_link_color', null, '.tribe-events-category-' . $slug );
+		echo esc_attr( apply_filters( 'teccc_fix_category_link_color', null, '.tribe-events-category-' . $slug ) );
 	}
 
 	/**
@@ -156,7 +153,7 @@ class Extras {
 		 * @return string string is returned not echoed.
 		 *                default return string is empty.
 		 */
-		echo apply_filters( 'teccc_fix_category_background_color', null, '.tribe-events-category-' . $slug );
+		echo esc_attr( apply_filters( 'teccc_fix_category_background_color', null, '.tribe-events-category-' . $slug ) );
 	}
 
 	/**
@@ -170,9 +167,7 @@ class Extras {
 		$css   = [];
 		$css[] = "#tribe-events-content .tribe-events-category-{$slug} > .tribe-events-tooltip h4,";
 		$css[] = ".tribe-events-category-{$slug} h2,";
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
 
 	/**
@@ -186,10 +181,7 @@ class Extras {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} h2 a,";
 		$css[] = ".tribe-events-category-{$slug} h2.tribe-events-list-event-title.entry-title a,";
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
-
+		self::echo_css( $css );
 	}
 
 	/**
@@ -202,8 +194,6 @@ class Extras {
 	public static function override_customizer( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-events-shortcode .tribe-events-month table .type-tribe_events.tribe-events-category-{$slug},";
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
 }

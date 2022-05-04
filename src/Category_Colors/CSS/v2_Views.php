@@ -25,7 +25,7 @@ class V2_Views {
 	private static function echo_css( $css ) {
 		$css[] = '';
 		$css   = implode( "\n", $css );
-		echo esc_attr( $css );
+		echo $css;
 	}
 
 	/**
@@ -38,17 +38,14 @@ class V2_Views {
 	public static function add_link_css( $slug ) {
 		$css = [];
 
-		$css[] = ".teccc-legend .tribe_events_cat-{$slug} a,";
+		$css[] = ".teccc-legend li.tribe_events_cat-{$slug} a,";
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a,";
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a:link,";
 
 		// $css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} .tribe-events-calendar-month__multiday-event-bar-inner h3,";
 		$css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} h3,";
 		// $css[] = "article.tribe_events_cat-{$slug} .tribe-events-calendar-month__calendar-event-datetime";
-
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
 
 	/**
@@ -59,9 +56,8 @@ class V2_Views {
 	 * @return void
 	 */
 	public static function add_background_css( $slug ) {
-		$css = [];
-
-		$css[] = ".teccc-legend .tribe_events_cat-{$slug},";
+		$css   = [];
+		$css[] = ".teccc-legend li.tribe_events_cat-{$slug},";
 		$css[] = "article.tribe_events_cat-{$slug} header.tribe-events-widget-events-list__event-header h3,";
 		$css[] = "article.tribe-events-calendar-month__calendar-event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} .tribe-events-calendar-month__multiday-event-bar-inner,";
@@ -82,10 +78,7 @@ class V2_Views {
 		// $css[] = "article.tribe_events_cat-{$slug} .tribe-events-calendar-month__calendar-event-details,";
 		// $css[] = "article.tribe-events-calendar-month__calendar-event.tribe_events_cat-{$slug} .tribe-events-calendar-month__calendar-event-datetime,";
 		// $css[] = '.tribe-events article.tribe-events-calendar-month__calendar-event-datetime';
-
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
 
 	/**
@@ -101,9 +94,6 @@ class V2_Views {
 		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-bar-inner,';
 		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-wrapper';
 		$css[] = '{ background-color: #F7F6F6; }';
-
-		$css[] = '';
-		$css   = implode( "\n", $css );
-		echo $css;
+		self::echo_css( $css );
 	}
 }
