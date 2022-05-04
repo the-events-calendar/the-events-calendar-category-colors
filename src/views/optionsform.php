@@ -1,4 +1,13 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
+
 namespace Fragen\Category_Colors;
 
 $teccc->setup_terms( $options );
@@ -20,15 +29,15 @@ $teccc->setup_terms( $options );
 		<th><strong><?php esc_html_e( 'Current Display', 'the-events-calendar-category-colors' ); ?></strong></th>
 	</tr>
 
-	<?php foreach ( (array) $teccc->all_terms as $id => $attributes ) : ?>
+	<?php foreach ( (array) $teccc->all_terms as $attributes ) : ?>
 		<?php
-		$slug = esc_attr( $attributes[ Main::SLUG ] );
-		$name = esc_attr( $attributes[ Main::NAME ] );
+		$slug = $attributes[ Main::SLUG ];
+		$name = $attributes[ Main::NAME ];
 		?>
 		<tr>
 			<td>
 				<label>
-					<input name="teccc_options[hide][<?php echo $slug; ?>]" type="checkbox" value="<?php echo $slug; ?>" <?php checked( $slug, $options['hide'][ $slug ] ); ?> />
+					<input name="teccc_options[hide][<?php echo esc_attr( $slug ); ?>]" type="checkbox" value="<?php echo esc_attr( $slug ); ?>" <?php checked( $slug, $options['hide'][ $slug ] ); ?> />
 				</label>
 				<?php
 				if ( ! empty( $options['hide'][ $slug ] ) ) {
@@ -38,12 +47,12 @@ $teccc->setup_terms( $options );
 				?>
 			</td>
 
-			<td> <?php echo $slug; ?> </td>
+			<td> <?php echo esc_html( $slug ); ?> </td>
 
 			<td class="color-control">
 				<div class="transparency">
 					<label>
-						<input name="teccc_options[<?php echo $slug; ?>-border_none]" type="checkbox" value="1" <?php checked( '1', $options[ "{$slug}-border_none" ] ); ?> /> <?php esc_html_e( 'No Border', 'the-events-calendar-category-colors' ); ?>
+						<input name="teccc_options[<?php echo esc_attr( $slug ); ?>-border_none]" type="checkbox" value="1" <?php checked( '1', $options[ "{$slug}-border_none" ] ); ?> /> <?php esc_html_e( 'No Border', 'the-events-calendar-category-colors' ); ?>
 					</label><br>
 					<?php
 					if ( '1' === $options[ "{$slug}-border_none" ] ) :
@@ -53,7 +62,7 @@ $teccc->setup_terms( $options );
 				</div>
 				<div class="colorselector">
 					<label>
-						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug; ?>-border]" value="<?php echo esc_attr( $options[ "{$slug}-border" ] ); ?>" />
+						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo esc_attr( $slug ); ?>-border]" value="<?php echo esc_attr( $options[ "{$slug}-border" ] ); ?>" />
 					</label>
 				</div>
 			</td>
@@ -61,7 +70,7 @@ $teccc->setup_terms( $options );
 			<td class="color-control">
 				<div class="transparency">
 					<label>
-						<input name="teccc_options[<?php echo $slug; ?>-background_none]" type="checkbox" value="1" <?php checked( '1', $options[ "{$slug}-background_none" ] ); ?> /> <?php esc_html_e( 'No Background', 'the-events-calendar-category-colors' ); ?>
+						<input name="teccc_options[<?php echo esc_attr( $slug ); ?>-background_none]" type="checkbox" value="1" <?php checked( '1', $options[ "{$slug}-background_none" ] ); ?> /> <?php esc_html_e( 'No Background', 'the-events-calendar-category-colors' ); ?>
 					</label><br>
 					<?php
 					if ( '1' === $options[ "{$slug}-background_none" ] ) :
@@ -71,13 +80,13 @@ $teccc->setup_terms( $options );
 				</div>
 				<div class="colorselector">
 					<label>
-						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo $slug; ?>-background]" value="<?php echo esc_attr( $options[ "{$slug}-background" ] ); ?>" />
+						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo esc_attr( $slug ); ?>-background]" value="<?php echo esc_attr( $options[ "{$slug}-background" ] ); ?>" />
 					</label>
 				</div>
 			</td>
 
 			<td>
-				<label> <select name="teccc_options[<?php echo $slug; ?>-text]">
+				<label> <select name="teccc_options[<?php echo esc_attr( $slug ); ?>-text]">
 						<?php foreach ( (array) $teccc->text_colors as $key => $value ) : ?>
 							<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $options[ "{$slug}-text" ] ); ?> > <?php esc_html_e( $key ); ?> </option>
 						<?php endforeach ?>
@@ -98,7 +107,7 @@ $teccc->setup_terms( $options );
 				<?php endif ?>
 					padding: 0.5em 1em;
 					font-weight: <?php echo esc_attr( $options['font_weight'] ); ?>;">
-					<?php echo $name; ?>
+					<?php echo esc_html( $name ); ?>
 				</span>
 			</td>
 		</tr>
@@ -194,11 +203,11 @@ $teccc->setup_terms( $options );
 		<label for="teccc_options[reset_show]"><?php esc_html_e( 'Show reset button', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<div class="teccc_options_col2 legend_related">
-		<input name="teccc_options[reset_label]" type="text" placeholder="<?php esc_html_e( 'Reset', 'the-events-calendar-category-colors' ); ?>" value="<?php echo $options['reset_label']; ?>" />
+		<input name="teccc_options[reset_label]" type="text" placeholder="<?php esc_html_e( 'Reset', 'the-events-calendar-category-colors' ); ?>" value="<?php echo esc_attr( $options['reset_label'] ); ?>" />
 		<label for="teccc_options[reset_label]"><?php esc_html_e( 'Reset button label', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<div class="teccc_options_col2 legend_related">
-		<input name="teccc_options[reset_url]" type="text" placeholder="<?php echo tribe_get_events_link(); ?>" value="<?php echo $options['reset_url']; ?>" />
+		<input name="teccc_options[reset_url]" type="text" placeholder="<?php echo esc_attr( tribe_get_events_link() ); ?>" value="<?php echo esc_attr( $options['reset_url'] ); ?>" />
 		<label for="teccc_options[reset_url]"><?php esc_html_e( 'Reset button URL', 'the-events-calendar-category-colors' ); ?></label>
 		<p><?php esc_html_e( 'By default the reset button will point to the default calendar URL.', 'the-events-calendar-category-colors' ); ?></p>
 	</div>

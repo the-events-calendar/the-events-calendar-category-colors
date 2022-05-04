@@ -1,4 +1,13 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
+
 namespace Fragen\Category_Colors;
 
 use Tribe__Events__Main;
@@ -13,30 +22,30 @@ $terms = apply_filters( 'teccc_legend_terms', $teccc->terms );
 
 		<?php foreach ( $terms as $attributes ) : ?>
 			<?php
-			$slug = esc_attr( $attributes[ Main::SLUG ] );
-			$name = esc_attr( $attributes[ Main::NAME ] );
-			$link = get_term_link( $attributes[ Main::SLUG ], Tribe__Events__Main::TAXONOMY );
+			$slug     = $attributes[ Main::SLUG ];
+			$name     = $attributes[ Main::NAME ];
+			$link_url = get_term_link( $attributes[ Main::SLUG ], Tribe__Events__Main::TAXONOMY );
 			?>
-			<li class="tribe-events-category-<?php echo $slug; ?> tribe_events_cat-<?php echo $slug; ?>">
-				<a href="<?php echo $link; ?>">
-					<?php echo $name; ?>
+			<li class="tribe-events-category-<?php echo esc_attr( $slug ); ?> tribe_events_cat-<?php echo esc_attr( $slug ); ?>">
+				<a href="<?php echo esc_attr( $link_url ); ?>">
+					<?php echo esc_html( $name ); ?>
 				</a>
-				<input type="hidden" value="<?php echo $slug; ?>" />
+				<input type="hidden" value="<?php echo esc_attr( $slug ); ?>" />
 			</li>
 		<?php endforeach ?>
 
 		<?php if ( isset( $options['show_ignored_cats_legend'] ) ) : ?>
 			<?php foreach ( $teccc->ignored_terms as $ignored_term ) : ?>
 				<?php
-				$slug = esc_attr( $ignored_term[ Main::SLUG ] );
-				$name = esc_attr( $ignored_term[ Main::NAME ] );
-				$link = get_term_link( $ignored_term[ Main::SLUG ], Tribe__Events__Main::TAXONOMY );
+				$slug     = $ignored_term[ Main::SLUG ];
+				$name     = $ignored_term[ Main::NAME ];
+				$link_url = get_term_link( $ignored_term[ Main::SLUG ], Tribe__Events__Main::TAXONOMY );
 				?>
 				<li class="teccc-hidden-category">
-					<a href="<?php echo $link; ?>">
-						<?php echo $name; ?>
+					<a href="<?php echo esc_attr( $link_url ); ?>">
+						<?php echo esc_html( $name ); ?>
 					</a>
-					<input type="hidden" value="<?php echo $slug; ?>" />
+					<input type="hidden" value="<?php echo esc_attr( $slug ); ?>" />
 				</li>
 			<?php endforeach ?>
 		<?php endif ?>
@@ -45,15 +54,15 @@ $terms = apply_filters( 'teccc_legend_terms', $teccc->terms );
 			<li class="teccc-reset">
 				<a href="
 				<?php
-				if ( ! isset( $options['reset_url'] ) || $options['reset_url'] == '' ) {
-					echo tribe_get_events_link();
+				if ( ! isset( $options['reset_url'] ) || empty( $options['reset_url'] ) ) {
+					echo esc_attr( tribe_get_events_link() );
 				} else {
-					echo esc_html( $options['reset_url'] );
+					echo esc_attr( $options['reset_url'] );
 				}
 				?>
 				">
 					<?php
-					if ( ! isset( $options['reset_label'] ) || $options['reset_label'] == '' ) {
+					if ( ! isset( $options['reset_label'] ) || empty( $options['reset_label'] ) ) {
 						esc_html_e( 'Reset', 'the-events-calendar-category-colors' );
 					} else {
 						echo esc_html( $options['reset_label'] );

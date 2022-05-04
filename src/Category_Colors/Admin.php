@@ -1,20 +1,47 @@
 <?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
 
 namespace Fragen\Category_Colors;
 
 use Tribe__Events__Main;
 use Tribe__Settings_Tab;
 
+/**
+ * Class Admin
+ */
 class Admin {
 	const TAB_NAME      = 'category-colors';
 	const UPDATE_ACTION = 'category-colors-update-options';
-	protected $teccc    = null;
 
+	/**
+	 * Variable
+	 *
+	 * @var Main
+	 */
+	protected $teccc = null;
+
+	/**
+	 * Contructor
+	 *
+	 * @param Main $teccc Class Main.
+	 */
 	public function __construct( Main $teccc ) {
 		$this->teccc = $teccc;
 		$this->load_settings_tab();
 	}
 
+	/**
+	 * Load hooks
+	 *
+	 * @return void
+	 */
 	public function load_hooks() {
 		add_action( 'admin_init', [ $this, 'register_setting' ] );
 		add_action( 'admin_notices', [ $this, 'plugin_fail_msg' ] );
@@ -22,10 +49,20 @@ class Admin {
 		add_action( 'admin_enqueue_scripts', [ $this, 'load_teccc_js_css' ] );
 	}
 
+	/**
+	 * Register settings
+	 *
+	 * @return void
+	 */
 	public function register_setting() {
 		register_setting( 'teccc_category_colors', 'teccc_options', [ $this, 'validate_options' ] );
 	}
 
+	/**
+	 * Display plugin fail message.
+	 *
+	 * @return void
+	 */
 	public function plugin_fail_msg() {
 		if ( current_user_can( 'activate_plugins' ) && is_admin() ) {
 			$url   = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
@@ -36,7 +73,7 @@ class Admin {
 						/* translators: %1$s, %2$s: href to The Events Calendar */
 						__( 'To begin using The Events Calendar Category Colors, please install the latest version of %1$sThe Events Calendar%2$s.', 'the-events-calendar-category-colors' )
 					),
-					'<a href="' . $url . '" class="thickbox" title="' . $title . '">',
+					'<a href="' . esc_attr( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">',
 					'</a>'
 				)
 				. '</p></div>';
@@ -46,8 +83,8 @@ class Admin {
 						/* translators: %1$s: TEC version, %2$s, %3$s: href to Events Calendar */
 						__( 'You have The Events Calendar v.%1$s. To begin using The Events Calendar Category Colors, please install the latest version of %2$sThe Events Calendar%3$s.', 'the-events-calendar-category-colors' )
 					),
-					Tribe__Events__Main::VERSION,
-					'<a href="' . $url . '" class="thickbox" title="' . $title . '">',
+					esc_html( Tribe__Events__Main::VERSION ),
+					'<a href="' . esc_attr( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">',
 					'</a>'
 				)
 				. '</p></div>';
@@ -56,10 +93,12 @@ class Admin {
 	}
 
 	/**
-	 * @param array $input
+	 * Validate options
+	 *
+	 * @param array $input Options
 	 *
 	 * TODO: streamline validation/sanitization work, replace deprecated function calls.
-	 * @return array $input
+	 * @return array
 	 */
 	public function validate_options( $input ) {
 		$teccc   = $this->teccc;
@@ -104,12 +143,22 @@ class Admin {
 		return $input;
 	}
 
+	/**
+	 * Load settings tab
+	 *
+	 * @return void
+	 */
 	public function load_settings_tab() {
 		if ( class_exists( 'Tribe__Events__Main' ) ) {
 			add_action( 'tribe_settings_do_tabs', [ $this, 'add_category_colors_tab' ] );
 		}
 	}
 
+	/**
+	 * Add Category Colors tab
+	 *
+	 * @return void
+	 */
 	public function add_category_colors_tab() {
 		$categoryColorsTab = $this->teccc->load_config( 'admintab' );
 		add_action( 'tribe_settings_form_element_tab_category-colors', [ $this, 'form_header' ] );
@@ -117,22 +166,41 @@ class Admin {
 		new Tribe__Settings_Tab( self::TAB_NAME, esc_html__( 'Category Colors', 'the-events-calendar-category-colors' ), $categoryColorsTab );
 	}
 
+	/**
+	 * Form header
+	 *
+	 * @return void
+	 */
 	public function form_header() {
 		echo '<form method="post" action="options.php">';
 	}
 
+	/**
+	 * Settings fields
+	 *
+	 * @return void
+	 */
 	public function settings_fields() {
 		settings_fields( 'teccc_category_colors' );
 	}
 
+	/**
+	 * Display 'saved' notice
+	 */
 	public function is_saved() {
-		if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['settings-updated'] ) && sanitize_key( wp_unslash( $_GET['settings-updated'] ) ) ) {
 			$message = esc_html__( 'Settings saved.', 'the-events-calendar-category-colors' );
-			$output  = '<div id="message" class="updated"><p><strong>' . $message . '</strong></p></div>';
-			echo apply_filters( 'tribe_settings_success_message', $output, 'category-colors' );
+			$output  = '<div id="message" class="updated"><p><strong>' . esc_html( $message ) . '</strong></p></div>';
+			echo wp_kses_post( apply_filters( 'tribe_settings_success_message', $output, 'category-colors' ) );
 		}
 	}
 
+	/**
+	 * Options elements
+	 *
+	 * @return string
+	 */
 	public static function options_elements() {
 		$teccc = Main::instance();
 
@@ -152,7 +220,7 @@ class Admin {
 	 * Retrieves the options and pre-processes them to ensure we aren't trying to access non-existent
 	 * indices (can result in notices being emitted).
 	 *
-	 * @param Main $teccc
+	 * @param Main $teccc Class Main.
 	 *
 	 * @return array
 	 */
@@ -221,9 +289,9 @@ class Admin {
 	/**
 	 * Enqueue admin scripts and styles.
 	 *
-	 * @param $hook
+	 * @param string $hook Hook name.
 	 *
-	 * @return bool
+	 * @return bool|void
 	 */
 	public function load_teccc_js_css( $hook ) {
 		if ( 'tribe_events_page_tribe-events-calendar' !== $hook &&

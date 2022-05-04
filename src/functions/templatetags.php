@@ -1,5 +1,14 @@
 <?php
 /**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
+
+/**
  * Stops the default legend from being inserted, even if it is activated in the
  * settings.
  *
@@ -7,11 +16,9 @@
  * this will return (bool) false, else it returns true on success.
  *
  * @deprecated 6.8.4.3
- * @return bool
  */
 function teccc_remove_default_legend() {
-	_doing_it_wrong( 'teccc_remove_default_legend', esc_html__( 'Use of this function is deprecated for TEC v2 views.', 'the-events-calendar-category-colors' ), '6.4.8.3' );
-	// return Fragen\Category_Colors\Main::instance()->public->remove_default_legend();
+	_doing_it_wrong( 'teccc_remove_default_legend', esc_html__( 'Use of this function is deprecated .', 'the-events-calendar-category-colors' ), '6.4.8.3' );
 }
 
 
@@ -25,27 +32,17 @@ function teccc_remove_default_legend() {
  * wrong hook or a hook that has already run.
  *
  * @deprecated 6.4.8.3
- * @param $viewFilter
- * @return bool
  */
-function teccc_reposition_legend( $viewFilter ) {
-	_doing_it_wrong( 'teccc_reposition_legend', esc_html__( 'Use of this function is deprecated for TEC v2 views.', 'the-events-calendar-category-colors' ), '6.4.8.3' );
-	// return Fragen\Category_Colors\Main::instance()->public->reposition_legend( $viewFilter );
+function teccc_reposition_legend() {
+	_doing_it_wrong( 'teccc_reposition_legend', esc_html__( 'Use of this function is deprecated.', 'the-events-calendar-category-colors' ), '6.4.8.3' );
 }
 
 
 /**
  * Inserts the legend at the current position. The legend must be enabled in the
  * Events Category Colors settings.
- *
- * This will still work if called at the right moment in the request (ie, from within
- * a view filter) but use of teccc_remove_default_legend() and/or
- * teccc_reposition_legend() is preferred.
- *
- * @deprecated
  */
 function teccc_insert_legend() {
-	do_action( 'teccc_legend_hook' ); // Doesn't do anything now, retained for legacy purposes.
 	Fragen\Category_Colors\Main::instance()->public->show_legend();
 }
 
@@ -54,11 +51,10 @@ function teccc_insert_legend() {
  * An alias for teccc_insert_legend() - this function is deprecated and it is
  * preferred to call teccc_insert_legend() directly.
  *
- * @deprecated
+ * @deprecated 1.6.0B
  */
 function teccc_legend_hook() {
-	_doing_it_wrong( 'teccc_legend_hook', esc_html__( 'Use of this function is deprecated', 'the-events-calendar-category-colors' ), '1.6.0B' );
-	teccc_insert_legend();
+	_doing_it_wrong( 'teccc_legend_hook', esc_html__( 'Use of this function is deprecated, use `teccc_insert_legend()`', 'the-events-calendar-category-colors' ), '1.6.0B' );
 }
 
 
@@ -71,8 +67,8 @@ function teccc_legend_hook() {
  *  #ff0000
  *  Red
  *
- * @param $name
- * @param $value
+ * @param string $name  Color name.
+ * @param string $value Color value.
  */
 function teccc_add_text_color( $name, $value ) {
 	Fragen\Category_Colors\Main::instance()->text_colors[ $name ] = $value;
@@ -82,7 +78,7 @@ function teccc_add_text_color( $name, $value ) {
 /**
  * Sets categories (identified by their slugs) which should be ignored by the The Events Calendar Category Colors.
  *
- * @params $slug, $slug ...
+ * @params array $slug Array of slugs.
  */
 function teccc_ignore_slug() {
 	$slugs = func_get_args();
@@ -94,7 +90,7 @@ function teccc_ignore_slug() {
 /**
  * Shows the legend in an additional view.
  *
- * @param $view - 'list', 'day', 'week', or 'photo'
+ * @param string $view ('list', 'day', 'week', or 'photo').
  */
 function teccc_add_legend_view( $view ) {
 	Fragen\Category_Colors\Main::instance()->public->add_legend_view( $view );

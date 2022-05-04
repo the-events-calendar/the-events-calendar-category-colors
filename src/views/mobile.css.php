@@ -1,3 +1,15 @@
+<?php
+/**
+ * The Events Calendar Category Colors
+ *
+ * @author   Andy Fragen
+ * @license  MIT
+ * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @package  the-events-calendar-category-colors
+ */
+
+?>
+
 @media only screen and (max-width: <?php esc_attr_e( $breakpoint ); ?>px) {
 	.tribe-events-calendar td .hentry,
 	.tribe-events-calendar td .type-tribe_events {
