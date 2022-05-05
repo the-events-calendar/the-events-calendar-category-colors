@@ -44,7 +44,7 @@ class Extras {
 		$css[] = ".tribe-events-category-{$slug} h2.tribe-events-list-event-title a,";
 		$css[] = ".tribe-events-category-{$slug} h3.tribe-events-list-event-title a,";
 		$css[] = ".tribe-event-featured .tribe-events-category-{$slug} h3.tribe-events-list-event-title a,";
-		$css[] = ".tribe-events-list .tribe-events-loop .tribe-event-featured.tribe-events-category-{$slug} h3.tribe-events-list-event-title a,";
+		$css[] = ".tribe-events-list .tribe-events-loop .tribe-event-featured.tribe-events-category-{$slug} h3.tribe-events-list-event-title a";
 		self::echo_css( $css );
 	}
 

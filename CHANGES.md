@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 7.0.1 / 2022-05-04
+* hotfix, `Base_CSS` not being written, stupid mistake on my part
+
 #### 7.0.0 / 2022-05-04
 * rewrite to use `wp_add_inline_style()` for adding CSS, no more file writing
 * WPCS linting
