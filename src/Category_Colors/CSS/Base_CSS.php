@@ -23,9 +23,6 @@ class Base_CSS {
 	 * @return bool|void
 	 */
 	private static function echo_css( $css ) {
-		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
-			return false;
-		}
 		$css[] = '';
 		$css   = implode( "\n", $css );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

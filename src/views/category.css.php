@@ -43,7 +43,6 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	$name = $attributes[ Main::NAME ];
 	?>
 
-	<?php V2_Views::add_link_css( $slug ); ?>
 	<?php Extras::fix_category_link_css( $slug ); ?>
 	<?php Pro::add_map_link_css( $slug ); ?>
 	<?php Pro::add_week_link_css( $slug ); ?>
@@ -52,6 +51,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php // Extras::add_deprecated_link_css( $slug ); ?>
 	<?php Widgets::add_widget_link_css( $slug ); ?>
 	<?php Extras::add_featured_event_link_css( $slug ); ?>
+	<?php V2_Views::add_link_css( $slug ); ?>
 	<?php Base_CSS::add_link_css( $slug ); ?>
 {
 	<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
@@ -60,7 +60,6 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	text-decoration: none;
 }
 
-	<?php V2_Views::add_background_css( $slug ); ?>
 	<?php Extras::fix_category_background_css( $slug ); ?>
 	<?php Pro::add_map_background_css( $slug ); ?>
 	<?php Pro::add_week_background_css( $slug ); ?>
@@ -70,6 +69,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php // Extras::add_deprecated_background_css( $slug ); ?>
 	<?php Extras::override_customizer( $slug ); ?>
 	<?php Widgets::add_widget_background_css( $slug ); ?>
+	<?php V2_Views::add_background_css( $slug ); ?>
 	<?php Base_CSS::add_background_css( $slug ); ?>
 {
 	<?php if ( null !== $options[ "{$slug}-background" ] ) : ?>
