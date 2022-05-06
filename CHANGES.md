@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 7.0.2
+* fix PHP Warning
+
 #### 7.0.1 / 2022-05-04
 * hotfix, `Base_CSS` not being written, stupid mistake on my part
 

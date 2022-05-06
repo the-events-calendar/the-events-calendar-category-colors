@@ -191,7 +191,7 @@ class Frontend {
 		$cache   = get_option( 'teccc_css' );
 
 		// Return if cache not expired.
-		if ( ! $refresh && time() < $cache['timeout'] ) {
+		if ( ! $refresh && $cache && time() < $cache['timeout'] ) {
 				return $cache['css'];
 		}
 
