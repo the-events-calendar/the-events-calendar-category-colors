@@ -5,7 +5,7 @@ Tags: events, color, modern tribe, tribe
 Requires at least: 5.2
 Requires PHP: 7.1
 Tested up to: 6.0
-Stable tag: 7.0.2
+Stable tag: 7.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,7 +47,10 @@ There is more extensive documentation of the plugins features and usage on the [
 
 ## Changelog
 
-#### 7.0.2
+#### 7.0.3 / 2022-05-13
+* update past event CSS
+
+#### 7.0.2 / 2022-05-08
 * fix PHP Warning
 
 #### 7.0.1 / 2022-05-04

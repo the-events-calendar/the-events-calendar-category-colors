@@ -67,6 +67,7 @@ class V2_Views {
 		$css[] = "article.tribe-events-calendar-month-mobile-events__mobile-event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-calendar-day__event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-calendar-list__event.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe-events-calendar-latest-past__event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-photo__event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-map__event-card.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-week-grid__event.tribe_events_cat-{$slug} h3,";
