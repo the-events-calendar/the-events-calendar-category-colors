@@ -1,6 +1,10 @@
 #### [unreleased]
 
-#### 7.0.2
+#### 7.0.3 / 2022-05-13
+* update past event CSS
+* tooltip CSS no longer available
+
+#### 7.0.2 / 2022-05-08
 * fix PHP Warning
 
 #### 7.0.1 / 2022-05-04
