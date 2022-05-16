@@ -1,4 +1,5 @@
 #### [unreleased]
+* update Superpowers JS for jQuery `click`
 
 #### 7.0.3 / 2022-05-13
 * update past event CSS

@@ -58,7 +58,9 @@ jQuery(document).ready(
 			}
 
 			// Look out for deselections!
-			let selection = $(this).data("categorySlug");
+			//let selection = $(this).data("categorySlug");
+			let selection = event.target.innerText.replace(/\s/g, '-').toLowerCase();
+			console.log(selection);
 			if (selection === status.selected) {
 				deselect(selection);
 				event.stopPropagation();
@@ -119,7 +121,7 @@ jQuery(document).ready(
 		function setup() {
 			defaultStatus();
 			$(legendEntries).each(prepareElement);
-			$(legendEntries).click(categorySelection);
+			$(legendEntries).on('click', function (event) { categorySelection(event); });
 		}
 
 		/**
