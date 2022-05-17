@@ -152,9 +152,8 @@ class Frontend {
 		wp_add_inline_style( 'teccc-nofile-stylesheet', $this->generate_css() );
 
 		// Optionally add legend superpowers.
-		if ( isset( $this->options['legend_superpowers'] ) &&
-			'1' === $this->options['legend_superpowers'] &&
-			! wp_is_mobile()
+		if ( isset( $this->options['legend_superpowers'] )
+			&& '1' === $this->options['legend_superpowers']
 		) {
 			wp_register_script( 'legend_superpowers', $this->teccc->resources_url . '/legend-superpowers.js', [ 'jquery' ], Main::$version, true );
 			wp_enqueue_script( 'legend_superpowers' );
