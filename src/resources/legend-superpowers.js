@@ -59,7 +59,7 @@ jQuery(document).ready(
 
 			// Look out for deselections!
 			//let selection = $(this).data("categorySlug");
-			let selection = event.target.innerText.replace(/\s/g, '-').toLowerCase();
+			let selection = event.currentTarget.classList[1].replace(/tribe_events_cat-/, '');
 			console.log('legend slug: ' + selection);
 			if (selection === status.selected) {
 				deselect(selection);
