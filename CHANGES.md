@@ -1,4 +1,5 @@
 #### [unreleased]
+* load Superpowers JS on mobile too
 
 #### 7.0.4 / 2022-05-16
 * update Superpowers JS for jQuery `click` and slug selection
