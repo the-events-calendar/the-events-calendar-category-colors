@@ -1,4 +1,5 @@
 #### [unreleased]
+* move all Pro CSS to `CSS\Pro`
 
 #### 7.0.5 / 2022-05-17
 * load Superpowers JS on mobile too
