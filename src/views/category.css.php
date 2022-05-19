@@ -90,6 +90,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Extras::add_featured_event_border_css( $slug, $options ); ?>
 
 	<?php Pro::fix_transparent_week_background( $slug ); ?>
+	<?php Pro::fix_multiday_week_border_color( $slug ); ?>
 
 	<?php Pro::add_map_link_css( $slug ); ?>
 	<?php Widgets::add_widget_link_css( $slug ); ?>

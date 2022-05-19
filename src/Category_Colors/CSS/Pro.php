@@ -70,7 +70,7 @@ class Pro {
 	 * @return void
 	 */
 	public static function add_week_background_css( $slug ) {
-		$css = [];
+		$css   = [];
 		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single:hover.tribe-events-category-{$slug},";
 		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-{$slug},";
 		$css[] = ".tribe-grid-allday .tribe-events-week-allday-single.tribe-events-category-{$slug},";
@@ -79,6 +79,7 @@ class Pro {
 		$css[] = "article.tribe-events-pro-week-mobile-events__event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner h3,";
+		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner,";
 		self::echo_css( $css );
 	}
 
@@ -116,15 +117,30 @@ class Pro {
 	/**
 	 * Add v2 multiday week background color.
 	 *
-	 * Override skeleton.css.
+	 * Override view-skeleton.css.
 	 *
 	 * @return void
 	 */
 	public static function fix_multiday_week_background_color() {
+		$css   = [];
 		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-bar,';
-		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-bar-inner,';
+		// $css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-bar-inner,';
 		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-wrapper';
 		$css[] = '{ background-color: #F7F6F6 !important; }';
+		self::echo_css( $css );
+	}
+
+	/**
+	 * Fix double left border on all day week view event.
+	 *
+	 * @param string $slug
+	 *
+	 * @return void
+	 */
+	public static function fix_multiday_week_border_color( $slug ) {
+		$css   = [];
+		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} h3";
+		$css[] = '{ border-left: 0px solid transparent !important; }';
 		self::echo_css( $css );
 	}
 
