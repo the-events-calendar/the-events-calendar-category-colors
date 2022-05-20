@@ -1,5 +1,10 @@
 #### [unreleased]
 
+#### 7.0.6 / 2022-05-20
+* move all Pro CSS to `CSS\Pro`
+* fix CSS for all day multiday week view
+* update hook name for Events Calendar settings to load admin resources
+
 #### 7.0.5 / 2022-05-17
 * load Superpowers JS on mobile too
 * improve Superpowers JS slug selection, use vanilla JS

@@ -30,6 +30,7 @@ use Fragen\Category_Colors\CSS\V2_Views;
 <?php Extras::add_mobile_css(); ?>
 <?php Pro::fix_default_week_background(); ?>
 <?php V2_Views::add_v2_multiday_background_color(); ?>
+<?php Pro::fix_multiday_week_background_color(); ?>
 
 <?php
 if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
@@ -65,7 +66,6 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Pro::add_week_background_css( $slug ); ?>
 	<?php Pro::add_summary_background_css( $slug ); ?>
 	<?php Extras::add_list_background_css( $slug ); ?>
-	<?php // Extras::add_deprecated_week_background_css( $slug ); ?>
 	<?php // Extras::add_deprecated_background_css( $slug ); ?>
 	<?php Extras::override_customizer( $slug ); ?>
 	<?php Widgets::add_widget_background_css( $slug ); ?>
@@ -90,6 +90,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Extras::add_featured_event_border_css( $slug, $options ); ?>
 
 	<?php Pro::fix_transparent_week_background( $slug ); ?>
+	<?php Pro::fix_multiday_week_border_color( $slug ); ?>
 
 	<?php Pro::add_map_link_css( $slug ); ?>
 	<?php Widgets::add_widget_link_css( $slug ); ?>

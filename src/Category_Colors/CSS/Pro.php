@@ -57,6 +57,8 @@ class Pro {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:visited,";
+		$css[] = "article.tribe-events-pro-map__event-card.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe-events-pro-photo__event.tribe_events_cat-{$slug} h3,";
 		self::echo_css( $css );
 	}
 
@@ -68,11 +70,16 @@ class Pro {
 	 * @return void
 	 */
 	public static function add_week_background_css( $slug ) {
-		$css = [];
-		// $css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent .tribe-events-tooltip h4.entry-title,";
+		$css   = [];
 		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single:hover.tribe-events-category-{$slug},";
 		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-{$slug},";
 		$css[] = ".tribe-grid-allday .tribe-events-week-allday-single.tribe-events-category-{$slug},";
+
+		$css[] = "article.tribe-events-pro-week-grid__event.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe-events-pro-week-mobile-events__event.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner h3,";
+		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner,";
 		self::echo_css( $css );
 	}
 
@@ -108,6 +115,36 @@ class Pro {
 	}
 
 	/**
+	 * Add v2 multiday week background color.
+	 *
+	 * Override view-skeleton.css.
+	 *
+	 * @return void
+	 */
+	public static function fix_multiday_week_background_color() {
+		$css   = [];
+		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-bar,';
+		// $css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-bar-inner,';
+		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__multiday-event-wrapper';
+		$css[] = '{ background-color: #F7F6F6 !important; }';
+		self::echo_css( $css );
+	}
+
+	/**
+	 * Fix double left border on all day week view event.
+	 *
+	 * @param string $slug
+	 *
+	 * @return void
+	 */
+	public static function fix_multiday_week_border_color( $slug ) {
+		$css   = [];
+		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} h3";
+		$css[] = '{ border-left: 0px solid transparent !important; }';
+		self::echo_css( $css );
+	}
+
+	/**
 	 * Add week link CSS
 	 *
 	 * @param string $slug Slug.
@@ -117,22 +154,9 @@ class Pro {
 	public static function add_week_link_css( $slug ) {
 		$css   = [];
 		$css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent h3.entry-title a,";
-		// $css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent .tribe-events-tooltip h4.entry-title.summary,";
 		$css[] = ".tribe-grid-body .tribe-events-category-{$slug} a,";
 		$css[] = ".tribe-grid-body .type-tribe_events.tribe-events-category-{$slug} a,";
 		$css[] = ".tribe-grid-allday .tribe-events-category-{$slug} a,";
-		self::echo_css( $css );
-	}
-
-	/**
-	 * Add deprecated week background CSS
-	 *
-	 * @param string $slug Slug.
-	 *
-	 * @return void
-	 */
-	public static function add_deprecated_week_background_css( $slug ) {
-		$css = [];
 		self::echo_css( $css );
 	}
 
