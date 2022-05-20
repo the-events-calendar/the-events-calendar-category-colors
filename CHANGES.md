@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 7.0.6 / 2022-05-20
 * move all Pro CSS to `CSS\Pro`
 * fix CSS for all day multiday week view
 * update hook name for Events Calendar settings to load admin resources
