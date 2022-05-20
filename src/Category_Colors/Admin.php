@@ -294,9 +294,8 @@ class Admin {
 	 * @return bool|void
 	 */
 	public function load_teccc_js_css( $hook ) {
-		if ( 'tribe_events_page_tribe-events-calendar' !== $hook
-			&& 'tribe_events_page_tribe-common' !== $hook
-		) {
+		$tribe_events_pages = [ 'tribe_events_page_tribe-events-calendar', 'tribe_events_page_tribe-common', 'tribe_events_page_tec-events-settings' ];
+		if ( ! in_array( $hook, $tribe_events_pages, true ) ) {
 			return false;
 		}
 
