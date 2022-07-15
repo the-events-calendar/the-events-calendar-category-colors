@@ -109,7 +109,7 @@ class Pro {
 		$css[]   = ".tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-{$slug}:hover";
 		$css[]   = '{ background-color: #fff; }';
 
-		if ( 'transparent' === $options[ $slug . '-background' ] ) {
+		if ( isset( $options[ $slug . '-background' ] ) && 'transparent' === $options[ $slug . '-background' ] ) {
 			self::echo_css( $css );
 		}
 	}

@@ -55,7 +55,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php V2_Views::add_link_css( $slug ); ?>
 	<?php Base_CSS::add_link_css( $slug ); ?>
 {
-	<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
+	<?php if ( isset( $options[ "{$slug}-text" ] ) && 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
 		color: <?php echo esc_attr( $options[ "{$slug}-text" ] ); ?>;
 	<?php endif ?>
 	text-decoration: none;
@@ -72,14 +72,14 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php V2_Views::add_background_css( $slug ); ?>
 	<?php Base_CSS::add_background_css( $slug ); ?>
 {
-	<?php if ( null !== $options[ "{$slug}-background" ] ) : ?>
+	<?php if ( isset( $options[ "{$slug}-background" ] ) && null !== $options[ "{$slug}-background" ] ) : ?>
 		background-color: <?php echo esc_attr( $options[ "{$slug}-background" ] ); ?>;
 	<?php endif ?>
-	<?php if ( null !== $options[ "{$slug}-border" ] ) : ?>
+	<?php if ( isset( $options[ "{$slug}-border" ] ) && null !== $options[ "{$slug}-border" ] ) : ?>
 		border-left: 5px solid <?php echo esc_attr( $options[ "{$slug}-border" ] ); ?>;
 	<?php endif ?>
 		border-right: 5px solid transparent;
-	<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
+	<?php if ( isset( $options[ "{$slug}-text" ] ) && 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
 		color: <?php echo esc_attr( $options[ "{$slug}-text" ] ); ?>;
 	<?php endif ?>
 	line-height: 1.4em;
