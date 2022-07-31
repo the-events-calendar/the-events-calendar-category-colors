@@ -136,7 +136,7 @@ class Pro {
 	 * @return void
 	 */
 	public static function fix_pro_spacer_background() {
-		$css[] = 'tribe-events-pro-week-grid__multiday-event-wrapper tribe-events-pro-week-grid__multiday-event--empty';
+		$css[] = '.tribe-events-pro-week-grid__multiday-event-wrapper.tribe-events-pro-week-grid__multiday-event--empty';
 		$css[] = '{ background-color: transparent !important; }';
 		self::echo_css( $css );
 	}
