@@ -1,6 +1,6 @@
 <?php
 /**
- * The Events Calendar Category Colors
+ * The Events Calendar: Category Colors
  *
  * @author   Andy Fragen
  * @license  MIT
@@ -71,7 +71,7 @@ class Admin {
 				echo '<div class="error"><p>' . sprintf(
 					wp_kses_post(
 						/* translators: %1$s, %2$s: href to The Events Calendar */
-						__( 'To begin using The Events Calendar Category Colors, please install the latest version of %1$sThe Events Calendar%2$s.', 'the-events-calendar-category-colors' )
+						__( 'To begin using The Events Calendar: Category Colors, please install the latest version of %1$sThe Events Calendar%2$s.', 'the-events-calendar-category-colors' )
 					),
 					'<a href="' . esc_attr( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">',
 					'</a>'
@@ -81,7 +81,7 @@ class Admin {
 				echo '<div class="error"><p>' . sprintf(
 					wp_kses_post(
 						/* translators: %1$s: TEC version, %2$s, %3$s: href to Events Calendar */
-						__( 'You have The Events Calendar v.%1$s. To begin using The Events Calendar Category Colors, please install the latest version of %2$sThe Events Calendar%3$s.', 'the-events-calendar-category-colors' )
+						__( 'You have The Events Calendar v.%1$s. To begin using The Events Calendar: Category Colors, please install the latest version of %2$sThe Events Calendar%3$s.', 'the-events-calendar-category-colors' )
 					),
 					esc_html( Tribe__Events__Main::VERSION ),
 					'<a href="' . esc_attr( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">',

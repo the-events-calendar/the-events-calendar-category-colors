@@ -1,5 +1,5 @@
 /**
- * The Events Calendar Category Colors - options form behaviours.
+ * The Events Calendar: Category Colors - options form behaviours.
  */
 jQuery(document).ready(
 	function ($) {

@@ -1,5 +1,5 @@
-# Copyright (C) 2013 The Events Calendar Category Colors
-# This file is distributed under the same license as the The Events Calendar Category Colors package.
+# Copyright (C) 2013 The Events Calendar: Category Colors
+# This file is distributed under the same license as the The Events Calendar: Category Colors package.
 # Translators:
 # Francois-Xavier Bénard <fxb@wp-translations.org>, 2013
 # Francois-Xavier Bénard <fxb@wp-translations.org>, 2013
@@ -26,7 +26,7 @@ msgstr "Réglages de Category Colors"
 #: includes/admintab.php:19
 #, fuzzy, php-format
 msgid ""
-"The Events Calendar Category Colors plugin was inspired by the tutorial %sColoring Your Category "
+"The Events Calendar: Category Colors plugin was inspired by the tutorial %sColoring Your Category "
 "Events%s."
 msgstr ""
 "L'extension Events Calendar Category Colors a été inspirée par ce tutoriel <a href=\"http://tri.be/"
@@ -36,7 +36,7 @@ msgstr ""
 #, php-format
 msgid ""
 "Instructions for %1$sfilters%2$s, %1$shooks%2$s, %1$ssettings functions%2$s, and %1$shelp%2$s are "
-"on %3$sThe Events Calendar Category Colors wiki%4$s."
+"on %3$sThe Events Calendar: Category Colors wiki%4$s."
 msgstr ""
 
 #: includes/admintab.php:39
@@ -54,20 +54,20 @@ msgstr "The Events Calendar"
 #: src/Category_Colors/Admin.php:37
 #, fuzzy, php-format
 msgid ""
-"To begin using The Events Calendar Category Colors, please install the latest version of %sThe "
+"To begin using The Events Calendar: Category Colors, please install the latest version of %sThe "
 "Events Calendar%s."
 msgstr ""
-"Pour commencer à utiliser The Events Calendar Category Colors, s'il vous plaît installer la "
+"Pour commencer à utiliser The Events Calendar: Category Colors, s'il vous plaît installer la "
 "dernière version de <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</a>."
 
 #: src/Category_Colors/Admin.php:39
 #, fuzzy, php-format
 msgid ""
-"You have The Events Calendar v.%s. To begin using The Events Calendar Category Colors, please "
+"You have The Events Calendar v.%s. To begin using The Events Calendar: Category Colors, please "
 "install the latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</"
 "a>."
 msgstr ""
-"Pour commencer à utiliser The Events Calendar Category Colors, s'il vous plaît installer la "
+"Pour commencer à utiliser The Events Calendar: Category Colors, s'il vous plaît installer la "
 "dernière version de <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</a>."
 
 #: src/Category_Colors/Admin.php:98
@@ -185,8 +185,8 @@ msgstr ""
 "Ne cochez cela que si vous voulez réinitialiser les réglages de l'extension lors de sa réactivation"
 
 #. Plugin Name of the plugin/theme
-msgid "The Events Calendar Category Colors"
-msgstr "The Events Calendar Category Colors"
+msgid "The Events Calendar: Category Colors"
+msgstr "The Events Calendar: Category Colors"
 
 #. Plugin URI of the plugin/theme
 #, fuzzy
@@ -214,7 +214,7 @@ msgstr "http://thefragens.com/"
 #~ msgid ""
 #~ "Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</"
 #~ "strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-"
-#~ "calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
+#~ "calendar-category-colors/wiki\">The Events Calendar: Category Colors wiki</a>."
 #~ msgstr ""
 #~ "Les instructions pour les <strong>filtres</strong>, <strong>hooks</strong>, <strong>réglages "
 #~ "des fonctions</strong>, et <strong>l'aide</strong> se trouvent dans <a href=\"https://github."
@@ -229,7 +229,7 @@ msgstr "http://thefragens.com/"
 #~ msgstr "CSS personnalisé de la légende"
 
 #~ msgid ""
-#~ "You must have at least one event with a category for The Events Calendar Category Colors plugin "
+#~ "You must have at least one event with a category for The Events Calendar: Category Colors plugin "
 #~ "to function."
 #~ msgstr ""
 #~ "Vous devez avoir au moins un événement avec une catégorie pour que l'extension The Events "

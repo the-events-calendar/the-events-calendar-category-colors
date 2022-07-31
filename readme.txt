@@ -1,4 +1,4 @@
-# The Events Calendar Category Colors
+# The Events Calendar: Category Colors
 Contributors: afragen, barry.hughes
 Donate link: https://thefragens.com/category-colors-donate
 Tags: events, color, modern tribe, tribe
@@ -15,7 +15,7 @@ Add event category background colors to The Events Calendar events.
 
 Add background colors to event categories displayed in the event views of The Events Calendar. This is inspired by the post _Coloring Your Category Events_.
 
-Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page.
+Settings for The Events Calendar: Category Colors plugin are located in their own tab on The Events Calendar Settings page.
 
 To force a refresh of your CSS, add `?refresh_css` to the end of your events URL, or re-save the Settings.
 
@@ -28,11 +28,11 @@ Yes. [The Events Calendar plugin](http://wordpress.org/plugins/the-events-calend
 
 ### What if I use a version of The Events Calendar 2.x?
 
-The last compatible version of this plugin that works with TEC 2.x is [The Events Calendar Category Colors v1.6.3](http://downloads.wordpress.org/plugin/the-events-calendar-category-colors.1.6.3.zip).
+The last compatible version of this plugin that works with TEC 2.x is [The Events Calendar: Category Colors v1.6.3](http://downloads.wordpress.org/plugin/the-events-calendar-category-colors.1.6.3.zip).
 
 ### Where can I get more help?
 
-There is more extensive documentation of the plugins features and usage on the [The Events Calendar Category Colors wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki).
+There is more extensive documentation of the plugins features and usage on the [The Events Calendar: Category Colors wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki).
 
 ### Where can I report bugs?
 
@@ -41,9 +41,9 @@ There is more extensive documentation of the plugins features and usage on the [
 
 ## Screenshots
 
-1. The Events Calendar Category Colors Settings tab
-2. The Events Calendar Category Colors in action
-3. The Events Calendar Category Colors with Legend Superpowers in action
+1. The Events Calendar: Category Colors Settings tab
+2. The Events Calendar: Category Colors in action
+3. The Events Calendar: Category Colors with Legend Superpowers in action
 
 ## Changelog
 

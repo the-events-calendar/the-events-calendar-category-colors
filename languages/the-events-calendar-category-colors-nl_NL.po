@@ -1,5 +1,5 @@
-# Copyright (C) 2013 The Events Calendar Category Colors
-# This file is distributed under the same license as the The Events Calendar Category Colors package.
+# Copyright (C) 2013 The Events Calendar: Category Colors
+# This file is distributed under the same license as the The Events Calendar: Category Colors package.
 # Translators:
 # Francois-Xavier Bénard <fxb@wp-translations.org>, 2013
 # Janjaapvandijk <janjaapvandijk@gmail.com>, 2013
@@ -27,17 +27,17 @@ msgstr "Categorie kleurinstellingen"
 #: includes/admintab.php:19
 #, fuzzy, php-format
 msgid ""
-"The Events Calendar Category Colors plugin was inspired by the tutorial %sColoring Your Category "
+"The Events Calendar: Category Colors plugin was inspired by the tutorial %sColoring Your Category "
 "Events%s."
 msgstr ""
-"The Events Calendar Category Colors plugin werd ge&iuml;nspireerd door de handleiding <a href="
+"The Events Calendar: Category Colors plugin werd ge&iuml;nspireerd door de handleiding <a href="
 "\"http://tri.be/coloring-your-category-events/\">Coloring Your Category Events</a>."
 
 #: includes/admintab.php:23
 #, php-format
 msgid ""
 "Instructions for %1$sfilters%2$s, %1$shooks%2$s, %1$ssettings functions%2$s, and %1$shelp%2$s are "
-"on %3$sThe Events Calendar Category Colors wiki%4$s."
+"on %3$sThe Events Calendar: Category Colors wiki%4$s."
 msgstr ""
 
 #: includes/admintab.php:39
@@ -55,20 +55,20 @@ msgstr "De evenementenkalender"
 #: src/Category_Colors/Admin.php:37
 #, fuzzy, php-format
 msgid ""
-"To begin using The Events Calendar Category Colors, please install the latest version of %sThe "
+"To begin using The Events Calendar: Category Colors, please install the latest version of %sThe "
 "Events Calendar%s."
 msgstr ""
-"Om The Events Calendar Category Colors te gebruiken, installeer de laatste versie van <a href=\"%s"
+"Om The Events Calendar: Category Colors te gebruiken, installeer de laatste versie van <a href=\"%s"
 "\" class=\"thickbox\" title=\"%s\">The Events Calendar</a>."
 
 #: src/Category_Colors/Admin.php:39
 #, fuzzy, php-format
 msgid ""
-"You have The Events Calendar v.%s. To begin using The Events Calendar Category Colors, please "
+"You have The Events Calendar v.%s. To begin using The Events Calendar: Category Colors, please "
 "install the latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</"
 "a>."
 msgstr ""
-"Om The Events Calendar Category Colors te gebruiken, installeer de laatste versie van <a href=\"%s"
+"Om The Events Calendar: Category Colors te gebruiken, installeer de laatste versie van <a href=\"%s"
 "\" class=\"thickbox\" title=\"%s\">The Events Calendar</a>."
 
 #: src/Category_Colors/Admin.php:98
@@ -185,8 +185,8 @@ msgid "Only check this if you want to reset plugin settings upon Plugin reactiva
 msgstr "Vink aan als je de standaardwaarden van de plugin wilt laden bij heractivatie"
 
 #. Plugin Name of the plugin/theme
-msgid "The Events Calendar Category Colors"
-msgstr "The Events Calendar Category Colors"
+msgid "The Events Calendar: Category Colors"
+msgstr "The Events Calendar: Category Colors"
 
 #. Plugin URI of the plugin/theme
 #, fuzzy
@@ -214,11 +214,11 @@ msgstr "http://thefragens.com/"
 #~ msgid ""
 #~ "Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</"
 #~ "strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-"
-#~ "calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
+#~ "calendar-category-colors/wiki\">The Events Calendar: Category Colors wiki</a>."
 #~ msgstr ""
 #~ "Instructies voor <strong>filters</strong>, <strong>hooks</strong>, <strong>instellingen</"
 #~ "strong>, en <strong>hulp</strong> vindt u op <a href=\"https://github.com/afragen/the-events-"
-#~ "calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
+#~ "calendar-category-colors/wiki\">The Events Calendar: Category Colors wiki</a>."
 
 #, fuzzy
 #~ msgid "You have The Events Calendar v."
@@ -228,7 +228,7 @@ msgstr "http://thefragens.com/"
 #~ msgstr "Aangepaste CSS legenda"
 
 #~ msgid ""
-#~ "You must have at least one event with a category for The Events Calendar Category Colors plugin "
+#~ "You must have at least one event with a category for The Events Calendar: Category Colors plugin "
 #~ "to function."
 #~ msgstr ""
 #~ "U dient minstens een evenement met een categorie te hebben om de evenementenkalender-plugin te "

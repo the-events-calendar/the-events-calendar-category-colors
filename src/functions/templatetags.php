@@ -1,6 +1,6 @@
 <?php
 /**
- * The Events Calendar Category Colors
+ * The Events Calendar: Category Colors
  *
  * @author   Andy Fragen
  * @license  MIT
@@ -76,7 +76,7 @@ function teccc_add_text_color( $name, $value ) {
 
 
 /**
- * Sets categories (identified by their slugs) which should be ignored by the The Events Calendar Category Colors.
+ * Sets categories (identified by their slugs) which should be ignored by the The Events Calendar: Category Colors.
  *
  * @params array $slug Array of slugs.
  */

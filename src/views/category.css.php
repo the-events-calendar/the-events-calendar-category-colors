@@ -1,6 +1,6 @@
 <?php
 /**
- * The Events Calendar Category Colors
+ * The Events Calendar: Category Colors
  *
  * @author   Andy Fragen
  * @license  MIT
@@ -17,7 +17,7 @@ use Fragen\Category_Colors\CSS\Pro;
 use Fragen\Category_Colors\CSS\V2_Views;
 
 ?>
-/* The Events Calendar Category Colors <?php echo esc_html( Main::$version ); ?> */
+/* The Events Calendar: Category Colors <?php echo esc_html( Main::$version ); ?> */
 .teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
 {
 	font-weight: <?php echo esc_attr( $options['font_weight'] ); ?>;

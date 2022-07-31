@@ -1,5 +1,5 @@
 /**
- * The Events Calendar Category Colors - Legend Superpowers. Wait until the
+ * The Events Calendar: Category Colors - Legend Superpowers. Wait until the
  * document is ready then begin.
  */
 jQuery(document).ready(

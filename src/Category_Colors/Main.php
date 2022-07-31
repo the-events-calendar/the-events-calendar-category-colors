@@ -1,6 +1,6 @@
 <?php
 /**
- * The Events Calendar Category Colors
+ * The Events Calendar: Category Colors
  *
  * @author   Andy Fragen
  * @license  MIT
