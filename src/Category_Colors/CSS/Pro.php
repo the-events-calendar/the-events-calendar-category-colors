@@ -42,7 +42,7 @@ class Pro {
 	public static function add_map_link_css( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
-		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:visited,";
+		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:visited";
 		self::echo_css( $css );
 	}
 
@@ -58,7 +58,7 @@ class Pro {
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:visited,";
 		$css[] = "article.tribe-events-pro-map__event-card.tribe_events_cat-{$slug} h3,";
-		$css[] = "article.tribe-events-pro-photo__event.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe-events-pro-photo__event.tribe_events_cat-{$slug} h3";
 		self::echo_css( $css );
 	}
 
@@ -79,7 +79,7 @@ class Pro {
 		$css[] = "article.tribe-events-pro-week-mobile-events__event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner h3,";
-		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner,";
+		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner";
 		self::echo_css( $css );
 	}
 
@@ -156,7 +156,7 @@ class Pro {
 		$css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent h3.entry-title a,";
 		$css[] = ".tribe-grid-body .tribe-events-category-{$slug} a,";
 		$css[] = ".tribe-grid-body .type-tribe_events.tribe-events-category-{$slug} a,";
-		$css[] = ".tribe-grid-allday .tribe-events-category-{$slug} a,";
+		$css[] = ".tribe-grid-allday .tribe-events-category-{$slug} a";
 		self::echo_css( $css );
 	}
 
@@ -169,7 +169,7 @@ class Pro {
 	 */
 	public static function add_summary_background_css( $slug ) {
 		$css   = [];
-		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3.tribe-events-pro-summary__event-title,";
+		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3.tribe-events-pro-summary__event-title";
 		self::echo_css( $css );
 	}
 }

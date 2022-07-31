@@ -45,14 +45,14 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	?>
 
 	<?php Extras::fix_category_link_css( $slug ); ?>
-	<?php Pro::add_map_link_css( $slug ); ?>
-	<?php Pro::add_week_link_css( $slug ); ?>
-	<?php Extras::add_list_link_css( $slug ); ?>
-	<?php Extras::override_customizer( $slug ); ?>
+	<?php Pro::add_map_link_css( $slug ); ?>,
+	<?php Pro::add_week_link_css( $slug ); ?>,
+	<?php Extras::add_list_link_css( $slug ); ?>,
+	<?php Extras::override_customizer( $slug ); ?>,
 	<?php // Extras::add_deprecated_link_css( $slug ); ?>
-	<?php Widgets::add_widget_link_css( $slug ); ?>
-	<?php Extras::add_featured_event_link_css( $slug ); ?>
-	<?php V2_Views::add_link_css( $slug ); ?>
+	<?php Widgets::add_widget_link_css( $slug ); ?>,
+	<?php Extras::add_featured_event_link_css( $slug ); ?>,
+	<?php V2_Views::add_link_css( $slug ); ?>,
 	<?php Base_CSS::add_link_css( $slug ); ?>
 {
 	<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
@@ -62,14 +62,14 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 }
 
 	<?php Extras::fix_category_background_css( $slug ); ?>
-	<?php Pro::add_map_background_css( $slug ); ?>
-	<?php Pro::add_week_background_css( $slug ); ?>
-	<?php Pro::add_summary_background_css( $slug ); ?>
-	<?php Extras::add_list_background_css( $slug ); ?>
+	<?php Pro::add_map_background_css( $slug ); ?>,
+	<?php Pro::add_week_background_css( $slug ); ?>,
+	<?php Pro::add_summary_background_css( $slug ); ?>,
+	<?php Extras::add_list_background_css( $slug ); ?>,
 	<?php // Extras::add_deprecated_background_css( $slug ); ?>
-	<?php Extras::override_customizer( $slug ); ?>
-	<?php Widgets::add_widget_background_css( $slug ); ?>
-	<?php V2_Views::add_background_css( $slug ); ?>
+	<?php Extras::override_customizer( $slug ); ?>,
+	<?php Widgets::add_widget_background_css( $slug ); ?>,
+	<?php V2_Views::add_background_css( $slug ); ?>,
 	<?php Base_CSS::add_background_css( $slug ); ?>
 {
 	<?php if ( null !== $options[ "{$slug}-background" ] ) : ?>
@@ -90,10 +90,11 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php Extras::add_featured_event_border_css( $slug, $options ); ?>
 
 	<?php Pro::fix_transparent_week_background( $slug ); ?>
+
 	<?php Pro::fix_multiday_week_border_color( $slug ); ?>
 
-	<?php Pro::add_map_link_css( $slug ); ?>
-	<?php Widgets::add_widget_link_css( $slug ); ?>
+	<?php Pro::add_map_link_css( $slug ); ?>,
+	<?php Widgets::add_widget_link_css( $slug ); ?>,
 	<?php Extras::add_list_link_css( $slug ); ?>
 {
 	width: auto;
@@ -107,4 +108,4 @@ if ( ! empty( $options['add_legend'] ) && null === $options['custom_legend_css']
 }
 ?>
 <?php do_action( 'teccc_add_legend_css' ); ?>
-/* End The Events Calendar Category Colors CSS */
+/* End The Events Calendar: Category Colors CSS */

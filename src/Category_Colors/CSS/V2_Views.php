@@ -43,7 +43,7 @@ class V2_Views {
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a,";
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a:link,";
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a:visited,";
-		$css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} h3";
 		self::echo_css( $css );
 	}
 
@@ -63,7 +63,7 @@ class V2_Views {
 		$css[] = "article.tribe-events-calendar-month-mobile-events__mobile-event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-calendar-day__event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-calendar-list__event.tribe_events_cat-{$slug} h3,";
-		$css[] = "article.tribe-events-calendar-latest-past__event.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe-events-calendar-latest-past__event.tribe_events_cat-{$slug} h3";
 		self::echo_css( $css );
 	}
 
