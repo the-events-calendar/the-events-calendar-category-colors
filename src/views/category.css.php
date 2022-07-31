@@ -28,9 +28,16 @@ use Fragen\Category_Colors\CSS\V2_Views;
 }
 
 <?php Extras::add_mobile_css(); ?>
+
 <?php Pro::fix_default_week_background(); ?>
+
 <?php V2_Views::add_v2_multiday_background_color(); ?>
+
 <?php Pro::fix_multiday_week_background_color(); ?>
+
+<?php V2_Views::fix_spacer_background(); ?>
+
+<?php Pro::fix_pro_spacer_background(); ?>
 
 <?php
 if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {

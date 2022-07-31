@@ -79,4 +79,15 @@ class V2_Views {
 		$css[] = '{ background-color: #F7F6F6; }';
 		self::echo_css( $css );
 	}
+
+	/**
+	 * Make event spacer transparent.
+	 *
+	 * @return void
+	 */
+	public static function fix_spacer_background() {
+		$css[] = 'tribe-events-calendar-month__multiday-event-wrapper tribe-events-calendar-month__multiday-event--empty,';
+		$css[] = '{ background-color: transparent !important; }';
+		self::echo_css( $css );
+	}
 }
