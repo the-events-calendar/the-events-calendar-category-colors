@@ -191,7 +191,7 @@ class Frontend {
 
 		// Return if cache not expired.
 		if ( ! $refresh && $cache && time() < $cache['timeout'] ) {
-				return $cache['css'];
+			return $cache['css'];
 		}
 
 		// Else generate the CSS afresh.
