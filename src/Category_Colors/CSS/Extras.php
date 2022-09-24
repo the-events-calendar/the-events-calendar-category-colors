@@ -104,7 +104,6 @@ class Extras {
 		$css[] = '.tribe-common--breakpoint-medium.tribe-events .tribe-events-calendar-list__event-datetime-featured-text,';
 		$css[] = '.tribe-events-pro .tribe-events-pro-photo__event-datetime-featured-text,';
 		$css[] = '.tribe-events-calendar-day__event-datetime-featured-text,';
-		$css[] = '.tribe-common .tribe-common-c-svgicon';
 		$css[] = "{ color: {$options['featured-event']} !important; }";
 
 		$css[] = '';
