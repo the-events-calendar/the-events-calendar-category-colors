@@ -103,7 +103,8 @@ class Extras {
 		$css   = [];
 		$css[] = '.tribe-common--breakpoint-medium.tribe-events .tribe-events-calendar-list__event-datetime-featured-text,';
 		$css[] = '.tribe-events-calendar-month-mobile-events__mobile-event-datetime-featured-text,';
-		$css[] = '.tribe-events-calendar-day__event-datetime-featured-text';
+		$css[] = '.tribe-events-calendar-day__event-datetime-featured-text,';
+		$css[] = '.tribe-common-c-svgicon--featured';
 		$css[] = "{ color: {$options['featured-event']} !important; }";
 		$css[] = '';
 		$css[] = '.tribe-events-calendar-list__event-date-tag-datetime:after, ';
