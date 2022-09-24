@@ -40,6 +40,7 @@ use Fragen\Category_Colors\CSS\V2_Views;
 <?php Pro::fix_pro_spacer_background(); ?>
 
 <?php Extras::add_new_featured_event( $options ); ?>
+
 <?php Pro::add_new_featured_event( $options ); ?>
 
 <?php
