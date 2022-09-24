@@ -193,7 +193,8 @@ class Pro {
 	 */
 	public static function add_new_featured_event( $options ) {
 		$css   = [];
-		$css[] = '.tribe-events-pro .tribe-events-pro-photo__event-datetime-featured-text';
+		$css[] = '.tribe-events-pro .tribe-events-pro-photo__event-datetime-featured-text,';
+		$css[] = '.tribe-events-pro .tribe-events-pro-map__event-datetime-featured-text';
 		$css[] = "{ color: {$options['featured-event']} !important; }";
 		$css[] = '';
 		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__event--featured .tribe-events-pro-week-grid__event-link-inner:before';
