@@ -93,7 +93,7 @@ class Extras {
 	}
 
 	/**
-	 * Add new featured event styling for TEC/ECP 6.x
+	 * Add new featured event styling for TEC 6.x
 	 *
 	 * @param array $options Array of options.
 	 *
@@ -102,19 +102,15 @@ class Extras {
 	public static function add_new_featured_event( $options ) {
 		$css   = [];
 		$css[] = '.tribe-common--breakpoint-medium.tribe-events .tribe-events-calendar-list__event-datetime-featured-text,';
-		$css[] = '.tribe-events-pro .tribe-events-pro-photo__event-datetime-featured-text,';
-		$css[] = '.tribe-events-calendar-day__event-datetime-featured-text,';
+		$css[] = '.tribe-events-calendar-month-mobile-events__mobile-event-datetime-featured-text,';
+		$css[] = '.tribe-events-calendar-day__event-datetime-featured-text';
 		$css[] = "{ color: {$options['featured-event']} !important; }";
-
 		$css[] = '';
-
 		$css[] = '.tribe-events-calendar-list__event-date-tag-datetime:after, ';
 		$css[] = '.tribe-events-widget-events-list__event-date-tag-datetime:after, ';
-		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__event--featured .tribe-events-pro-week-grid__event-link-inner:before,';
 		$css[] = '.tribe-events .tribe-events-calendar-day__event--featured:after,';
 		$css[] = '.tribe-events .tribe-events-calendar-month__calendar-event--featured:before';
 		$css[] = "{ background-color: {$options['featured-event']} !important; }";
-
 		self::echo_css( $css );
 	}
 

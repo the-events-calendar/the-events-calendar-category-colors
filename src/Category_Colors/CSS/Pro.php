@@ -183,4 +183,21 @@ class Pro {
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3.tribe-events-pro-summary__event-title";
 		self::echo_css( $css );
 	}
+
+	/**
+	 * Add new featured event styling for ECP 6.x
+	 *
+	 * @param array $options Array of options.
+	 *
+	 * @return void
+	 */
+	public static function add_new_featured_event( $options ) {
+		$css   = [];
+		$css[] = '.tribe-events-pro .tribe-events-pro-photo__event-datetime-featured-text';
+		$css[] = "{ color: {$options['featured-event']} !important; }";
+		$css[] = '';
+		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__event--featured .tribe-events-pro-week-grid__event-link-inner:before';
+		$css[] = "{ background-color: {$options['featured-event']} !important; }";
+		self::echo_css( $css );
+	}
 }
