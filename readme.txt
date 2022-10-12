@@ -1,11 +1,11 @@
-# The Events Calendar Category Colors
+# The Events Calendar: Category Colors
 Contributors: afragen, barry.hughes
 Donate link: https://thefragens.com/category-colors-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 5.2
 Requires PHP: 7.1
-Tested up to: 6.0
-Stable tag: 7.0.6
+Tested up to: 6.1
+Stable tag: 7.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,7 @@ Add event category background colors to The Events Calendar events.
 
 Add background colors to event categories displayed in the event views of The Events Calendar. This is inspired by the post _Coloring Your Category Events_.
 
-Settings for The Events Calendar Category Colors plugin are located in their own tab on The Events Calendar Settings page.
+Settings for The Events Calendar: Category Colors plugin are located in their own tab on The Events Calendar Settings page.
 
 To force a refresh of your CSS, add `?refresh_css` to the end of your events URL, or re-save the Settings.
 
@@ -28,11 +28,11 @@ Yes. [The Events Calendar plugin](http://wordpress.org/plugins/the-events-calend
 
 ### What if I use a version of The Events Calendar 2.x?
 
-The last compatible version of this plugin that works with TEC 2.x is [The Events Calendar Category Colors v1.6.3](http://downloads.wordpress.org/plugin/the-events-calendar-category-colors.1.6.3.zip).
+The last compatible version of this plugin that works with TEC 2.x is [The Events Calendar: Category Colors v1.6.3](http://downloads.wordpress.org/plugin/the-events-calendar-category-colors.1.6.3.zip).
 
 ### Where can I get more help?
 
-There is more extensive documentation of the plugins features and usage on the [The Events Calendar Category Colors wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki).
+There is more extensive documentation of the plugins features and usage on the [The Events Calendar: Category Colors wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki).
 
 ### Where can I report bugs?
 
@@ -41,11 +41,17 @@ There is more extensive documentation of the plugins features and usage on the [
 
 ## Screenshots
 
-1. The Events Calendar Category Colors Settings tab
-2. The Events Calendar Category Colors in action
-3. The Events Calendar Category Colors with Legend Superpowers in action
+1. The Events Calendar: Category Colors Settings tab
+2. The Events Calendar: Category Colors in action
+3. The Events Calendar: Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 7.1.0 / 2022-10-12
+* rename title to correspond to The Events Calendar standard
+* retructure CSS additions to not end with comma, added in `category.css.php`
+* fix empty spacer classes to be transparent
+* add CSS for TEC/ECP 6.0 feature events
 
 #### 7.0.6 / 2022-05-20
 * move all Pro CSS to `CSS\Pro`

@@ -1,6 +1,6 @@
 <?php
 /**
- * The Events Calendar Category Colors
+ * The Events Calendar: Category Colors
  *
  * @author   Andy Fragen
  * @license  MIT
@@ -30,14 +30,14 @@ return [
 			'type' => 'html',
 			'html' => '<p>' . sprintf(
 				wp_kses_post(
-					__( 'The Events Calendar Category Colors plugin was inspired by the tutorial <i>Coloring Your Category Events</i>.', 'the-events-calendar-category-colors' )
+					__( 'The Events Calendar: Category Colors plugin was inspired by the tutorial <i>Coloring Your Category Events</i>.', 'the-events-calendar-category-colors' )
 				)
 			) . '</p>',
 		],
 		'legend'             => [
 			'type' => 'html',
 			'html' => '<p>' . sprintf(
-				wp_kses_post( __( 'Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</strong>, and <strong>help</strong> are on <a href="https://github.com/afragen/the-events-calendar-category-colors/wiki">The Events Calendar Category Colors wiki</a>.', 'the-events-calendar-category-colors' ) )
+				wp_kses_post( __( 'Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</strong>, and <strong>help</strong> are on <a href="https://github.com/afragen/the-events-calendar-category-colors/wiki">The Events Calendar: Category Colors wiki</a>.', 'the-events-calendar-category-colors' ) )
 			) . '</p>',
 		],
 		'info-end'           => [

@@ -1,6 +1,6 @@
 <?php
 /**
- * The Events Calendar Category Colors
+ * The Events Calendar: Category Colors
  *
  * @author   Andy Fragen
  * @license  MIT
@@ -191,7 +191,7 @@ class Frontend {
 
 		// Return if cache not expired.
 		if ( ! $refresh && $cache && time() < $cache['timeout'] ) {
-				return $cache['css'];
+			return $cache['css'];
 		}
 
 		// Else generate the CSS afresh.

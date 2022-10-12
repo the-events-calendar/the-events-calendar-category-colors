@@ -1,5 +1,5 @@
-# Copyright (C) 2013 The Events Calendar Category Colors
-# This file is distributed under the same license as the The Events Calendar Category Colors package.
+# Copyright (C) 2013 The Events Calendar: Category Colors
+# This file is distributed under the same license as the The Events Calendar: Category Colors package.
 # Translators:
 # Csaba Orban <vicsabi@gmail.com>, 2013
 msgid ""
@@ -25,7 +25,7 @@ msgstr "Kategória színbeállítások"
 #: includes/admintab.php:19
 #, fuzzy, php-format
 msgid ""
-"The Events Calendar Category Colors plugin was inspired by the tutorial %sColoring Your Category "
+"The Events Calendar: Category Colors plugin was inspired by the tutorial %sColoring Your Category "
 "Events%s."
 msgstr ""
 "A Színes Kategória Esemény Naptár plugin megalkotását inspirálta a <a href=\"http://tri.be/"
@@ -35,7 +35,7 @@ msgstr ""
 #, php-format
 msgid ""
 "Instructions for %1$sfilters%2$s, %1$shooks%2$s, %1$ssettings functions%2$s, and %1$shelp%2$s are "
-"on %3$sThe Events Calendar Category Colors wiki%4$s."
+"on %3$sThe Events Calendar: Category Colors wiki%4$s."
 msgstr ""
 
 #: includes/admintab.php:39
@@ -53,7 +53,7 @@ msgstr "The Events Calendar"
 #: src/Category_Colors/Admin.php:37
 #, fuzzy, php-format
 msgid ""
-"To begin using The Events Calendar Category Colors, please install the latest version of %sThe "
+"To begin using The Events Calendar: Category Colors, please install the latest version of %sThe "
 "Events Calendar%s."
 msgstr ""
 "Az Eseménynaptár Kategória Színek használata előtt kérjük telepítse az <a href=\"%s\" class="
@@ -62,7 +62,7 @@ msgstr ""
 #: src/Category_Colors/Admin.php:39
 #, fuzzy, php-format
 msgid ""
-"You have The Events Calendar v.%s. To begin using The Events Calendar Category Colors, please "
+"You have The Events Calendar v.%s. To begin using The Events Calendar: Category Colors, please "
 "install the latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</"
 "a>."
 msgstr ""
@@ -184,7 +184,7 @@ msgstr ""
 "reaktiválta"
 
 #. Plugin Name of the plugin/theme
-msgid "The Events Calendar Category Colors"
+msgid "The Events Calendar: Category Colors"
 msgstr "A Színes Kategória Esemény Naptár"
 
 #. Plugin URI of the plugin/theme
@@ -213,11 +213,11 @@ msgstr "http://thefragens.com/"
 #~ msgid ""
 #~ "Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</"
 #~ "strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-"
-#~ "calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
+#~ "calendar-category-colors/wiki\">The Events Calendar: Category Colors wiki</a>."
 #~ msgstr ""
 #~ "Útmutatás a <strong>szűrőkhöz</strong>, <strong>a használathoz</strong>, <strong>a "
 #~ "beállításokhoz</strong>, és <strong>segítség</strong>érhető el a <a href=\"https://github.com/"
-#~ "afragen/the-events-calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a> "
+#~ "afragen/the-events-calendar-category-colors/wiki\">The Events Calendar: Category Colors wiki</a> "
 #~ "oldalán."
 
 #, fuzzy
@@ -228,7 +228,7 @@ msgstr "http://thefragens.com/"
 #~ msgstr "Egyéni CSS magyarázat"
 
 #~ msgid ""
-#~ "You must have at least one event with a category for The Events Calendar Category Colors plugin "
+#~ "You must have at least one event with a category for The Events Calendar: Category Colors plugin "
 #~ "to function."
 #~ msgstr ""
 #~ "Meg kell adni legalább egy eseményt és egy kategóriát A Színes Kategória Esemény Naptár plugin "

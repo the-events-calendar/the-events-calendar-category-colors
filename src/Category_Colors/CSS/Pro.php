@@ -1,6 +1,6 @@
 <?php
 /**
- * The Events Calendar Category Colors
+ * The Events Calendar: Category Colors
  *
  * @author   Andy Fragen
  * @license  MIT
@@ -42,7 +42,7 @@ class Pro {
 	public static function add_map_link_css( $slug ) {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
-		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:visited,";
+		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:visited";
 		self::echo_css( $css );
 	}
 
@@ -58,7 +58,7 @@ class Pro {
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:visited,";
 		$css[] = "article.tribe-events-pro-map__event-card.tribe_events_cat-{$slug} h3,";
-		$css[] = "article.tribe-events-pro-photo__event.tribe_events_cat-{$slug} h3,";
+		$css[] = "article.tribe-events-pro-photo__event.tribe_events_cat-{$slug} h3";
 		self::echo_css( $css );
 	}
 
@@ -79,7 +79,7 @@ class Pro {
 		$css[] = "article.tribe-events-pro-week-mobile-events__event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner h3,";
-		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner,";
+		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner";
 		self::echo_css( $css );
 	}
 
@@ -131,9 +131,20 @@ class Pro {
 	}
 
 	/**
+	 * Make event spacer transparent.
+	 *
+	 * @return void
+	 */
+	public static function fix_pro_spacer_background() {
+		$css[] = '.tribe-events-pro-week-grid__multiday-event-wrapper.tribe-events-pro-week-grid__multiday-event--empty';
+		$css[] = '{ background-color: transparent !important; }';
+		self::echo_css( $css );
+	}
+
+	/**
 	 * Fix double left border on all day week view event.
 	 *
-	 * @param string $slug
+	 * @param string $slug Category slug.
 	 *
 	 * @return void
 	 */
@@ -156,7 +167,7 @@ class Pro {
 		$css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent h3.entry-title a,";
 		$css[] = ".tribe-grid-body .tribe-events-category-{$slug} a,";
 		$css[] = ".tribe-grid-body .type-tribe_events.tribe-events-category-{$slug} a,";
-		$css[] = ".tribe-grid-allday .tribe-events-category-{$slug} a,";
+		$css[] = ".tribe-grid-allday .tribe-events-category-{$slug} a";
 		self::echo_css( $css );
 	}
 
@@ -169,7 +180,25 @@ class Pro {
 	 */
 	public static function add_summary_background_css( $slug ) {
 		$css   = [];
-		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3.tribe-events-pro-summary__event-title,";
+		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3.tribe-events-pro-summary__event-title";
+		self::echo_css( $css );
+	}
+
+	/**
+	 * Add new featured event styling for ECP 6.x
+	 *
+	 * @param array $options Array of options.
+	 *
+	 * @return void
+	 */
+	public static function add_new_featured_event( $options ) {
+		$css   = [];
+		$css[] = '.tribe-events-pro .tribe-events-pro-photo__event-datetime-featured-text,';
+		$css[] = '.tribe-events-pro .tribe-events-pro-map__event-datetime-featured-text';
+		$css[] = "{ color: {$options['featured-event']} !important; }";
+		$css[] = '';
+		$css[] = '.tribe-events-pro .tribe-events-pro-week-grid__event--featured .tribe-events-pro-week-grid__event-link-inner:before';
+		$css[] = "{ background-color: {$options['featured-event']} !important; }";
 		self::echo_css( $css );
 	}
 }

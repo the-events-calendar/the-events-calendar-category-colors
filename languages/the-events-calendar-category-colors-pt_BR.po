@@ -1,5 +1,5 @@
-# Copyright (C) 2013 The Events Calendar Category Colors
-# This file is distributed under the same license as the The Events Calendar Category Colors package.
+# Copyright (C) 2013 The Events Calendar: Category Colors
+# This file is distributed under the same license as the The Events Calendar: Category Colors package.
 # Translators:
 # Dionizio Bonfim Bach <translations@djio.com.br>, 2013
 # Francois-Xavier Bénard <fxb@wp-translations.org>, 2013
@@ -26,7 +26,7 @@ msgstr "Configurações de Cores de Categoria"
 #: includes/admintab.php:19
 #, fuzzy, php-format
 msgid ""
-"The Events Calendar Category Colors plugin was inspired by the tutorial %sColoring Your Category "
+"The Events Calendar: Category Colors plugin was inspired by the tutorial %sColoring Your Category "
 "Events%s."
 msgstr ""
 "O plugin Cores de Categoria do The Events Calendar foi inspirado no tutorial <a href=\"http://tri."
@@ -36,7 +36,7 @@ msgstr ""
 #, php-format
 msgid ""
 "Instructions for %1$sfilters%2$s, %1$shooks%2$s, %1$ssettings functions%2$s, and %1$shelp%2$s are "
-"on %3$sThe Events Calendar Category Colors wiki%4$s."
+"on %3$sThe Events Calendar: Category Colors wiki%4$s."
 msgstr ""
 
 #: includes/admintab.php:39
@@ -54,7 +54,7 @@ msgstr "The Events Calendar"
 #: src/Category_Colors/Admin.php:37
 #, fuzzy, php-format
 msgid ""
-"To begin using The Events Calendar Category Colors, please install the latest version of %sThe "
+"To begin using The Events Calendar: Category Colors, please install the latest version of %sThe "
 "Events Calendar%s."
 msgstr ""
 "Para começar a usar as Cores de Categoria do The Events Calendar, por favor instale a versão mais "
@@ -63,7 +63,7 @@ msgstr ""
 #: src/Category_Colors/Admin.php:39
 #, fuzzy, php-format
 msgid ""
-"You have The Events Calendar v.%s. To begin using The Events Calendar Category Colors, please "
+"You have The Events Calendar v.%s. To begin using The Events Calendar: Category Colors, please "
 "install the latest version of <a href=\"%s\" class=\"thickbox\" title=\"%s\">The Events Calendar</"
 "a>."
 msgstr ""
@@ -183,8 +183,8 @@ msgid "Only check this if you want to reset plugin settings upon Plugin reactiva
 msgstr "Somente marque isto se você quiser redefinir as configurações padrão na reativação do plugin"
 
 #. Plugin Name of the plugin/theme
-msgid "The Events Calendar Category Colors"
-msgstr "The Events Calendar Category Colors"
+msgid "The Events Calendar: Category Colors"
+msgstr "The Events Calendar: Category Colors"
 
 #. Plugin URI of the plugin/theme
 #, fuzzy
@@ -212,11 +212,11 @@ msgstr "http://thefragens.com/"
 #~ msgid ""
 #~ "Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</"
 #~ "strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-"
-#~ "calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
+#~ "calendar-category-colors/wiki\">The Events Calendar: Category Colors wiki</a>."
 #~ msgstr ""
 #~ "Instruções para <strong>filtros</strong>, <strong>ganchos</strong>, <strong>funções de "
 #~ "configuração</strong>, e <strong>ajuda</strong> estão no <a href=\"https://github.com/afragen/"
-#~ "the-events-calendar-category-colors/wiki\">wiki do The Events Calendar Category Colors</a>."
+#~ "the-events-calendar-category-colors/wiki\">wiki do The Events Calendar: Category Colors</a>."
 
 #, fuzzy
 #~ msgid "You have The Events Calendar v."
@@ -226,7 +226,7 @@ msgstr "http://thefragens.com/"
 #~ msgstr "CSS Personalizado da Legenda"
 
 #~ msgid ""
-#~ "You must have at least one event with a category for The Events Calendar Category Colors plugin "
+#~ "You must have at least one event with a category for The Events Calendar: Category Colors plugin "
 #~ "to function."
 #~ msgstr ""
 #~ "Você deve ter pelo menos uma categoria de eventos cadastrada para que o plugin Cores de "

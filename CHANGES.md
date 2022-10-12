@@ -1,5 +1,11 @@
 #### [unreleased]
 
+#### 7.1.0 / 2022-10-12
+* rename title to correspond to The Events Calendar standard
+* retructure CSS additions to not end with comma, added in `category.css.php`
+* fix empty spacer classes to be transparent
+* add CSS for TEC/ECP 6.0 feature events
+
 #### 7.0.6 / 2022-05-20
 * move all Pro CSS to `CSS\Pro`
 * fix CSS for all day multiday week view

@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v2.
 msgid ""
 msgstr ""
-"Project-Id-Version: The Events Calendar Category Colors 7.0.0\n"
+"Project-Id-Version: The Events Calendar: Category Colors 7.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/the-events-calendar-category-colors\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Domain: the-events-calendar-category-colors\n"
 
 #. Plugin Name of the plugin
-msgid "The Events Calendar Category Colors"
+msgid "The Events Calendar: Category Colors"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -40,12 +40,12 @@ msgstr ""
 
 #. translators: %1$s, %2$s: href to The Events Calendar
 #: src/Category_Colors/Admin.php:74
-msgid "To begin using The Events Calendar Category Colors, please install the latest version of %1$sThe Events Calendar%2$s."
+msgid "To begin using The Events Calendar: Category Colors, please install the latest version of %1$sThe Events Calendar%2$s."
 msgstr ""
 
 #. translators: %1$s: TEC version, %2$s, %3$s: href to Events Calendar
 #: src/Category_Colors/Admin.php:84
-msgid "You have The Events Calendar v.%1$s. To begin using The Events Calendar Category Colors, please install the latest version of %2$sThe Events Calendar%3$s."
+msgid "You have The Events Calendar v.%1$s. To begin using The Events Calendar: Category Colors, please install the latest version of %2$sThe Events Calendar%3$s."
 msgstr ""
 
 #: src/Category_Colors/Admin.php:166
@@ -61,11 +61,11 @@ msgid "Category Colors Settings"
 msgstr ""
 
 #: src/functions/admintab.php:33
-msgid "The Events Calendar Category Colors plugin was inspired by the tutorial <i>Coloring Your Category Events</i>."
+msgid "The Events Calendar: Category Colors plugin was inspired by the tutorial <i>Coloring Your Category Events</i>."
 msgstr ""
 
 #: src/functions/admintab.php:40
-msgid "Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-calendar-category-colors/wiki\">The Events Calendar Category Colors wiki</a>."
+msgid "Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</strong>, and <strong>help</strong> are on <a href=\"https://github.com/afragen/the-events-calendar-category-colors/wiki\">The Events Calendar: Category Colors wiki</a>."
 msgstr ""
 
 #: src/functions/admintab.php:57

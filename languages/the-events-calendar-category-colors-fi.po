@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: The Events Calendar Category Colors\n"
+"Project-Id-Version: The Events Calendar: Category Colors\n"
 "POT-Creation-Date: 2015-08-09 18:45-0700\n"
 "PO-Revision-Date: 2016-05-24 14:07+0200\n"
 "Last-Translator: Roni Laukkarinen <roni@dude.fi>\n"
@@ -27,7 +27,7 @@ msgstr "Kategorioiden väriasetukset"
 #: includes/admintab.php:19
 #, php-format
 msgid ""
-"The Events Calendar Category Colors plugin was inspired by the tutorial "
+"The Events Calendar: Category Colors plugin was inspired by the tutorial "
 "%sColoring Your Category Events%s."
 msgstr ""
 "The Events Calendarin kategorioiden värit -lisäosan inspiroi ohje: "
@@ -37,10 +37,10 @@ msgstr ""
 #, php-format
 msgid ""
 "Instructions for %1$sfilters%2$s, %1$shooks%2$s, %1$ssettings functions%2$s, "
-"and %1$shelp%2$s are on %3$sThe Events Calendar Category Colors wiki%4$s."
+"and %1$shelp%2$s are on %3$sThe Events Calendar: Category Colors wiki%4$s."
 msgstr ""
 "Ohjeet %1$sfiltereiden%2$s, %1$shookien%2$s, %1$sasetus-funktioiden%2$s ja "
-"%1$savun%2$s löytyy %3$sThe Events Calendar Category Colors wikistä%4$s."
+"%1$savun%2$s löytyy %3$sThe Events Calendar: Category Colors wikistä%4$s."
 
 #: includes/admintab.php:39
 msgid "Save Changes"
@@ -57,7 +57,7 @@ msgstr "Tapahtumakalenteri"
 #: src/Category_Colors/Admin.php:37
 #, php-format
 msgid ""
-"To begin using The Events Calendar Category Colors, please install the "
+"To begin using The Events Calendar: Category Colors, please install the "
 "latest version of %sThe Events Calendar%s."
 msgstr ""
 "Käyttääksesi The Events Calendar kategoriavärilisäosaa, asenna ensin uusin "
@@ -191,7 +191,7 @@ msgstr ""
 "uudelleenaktivoinnin aikana"
 
 #. Plugin Name of the plugin/theme
-msgid "The Events Calendar Category Colors"
+msgid "The Events Calendar: Category Colors"
 msgstr "The Events Calendar kategorioiden värit"
 
 #. Plugin URI of the plugin/theme
