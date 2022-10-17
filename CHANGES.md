@@ -1,5 +1,8 @@
 #### [unreleased]
 
+#### 7.1.1 / 2022-10-16
+* add `$comma` parameter to `echo_css()` to simplify placement of selectors
+
 #### 7.1.0 / 2022-10-12
 * rename title to correspond to The Events Calendar standard
 * retructure CSS additions to not end with comma, added in `category.css.php`
