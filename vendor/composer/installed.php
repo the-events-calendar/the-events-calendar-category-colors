@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
+        'name' => 'afragen/the-events-calendar-category-colors',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
+        'reference' => '4824f3fe5528f70456220a24dee0330839e6515a',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '038f3ea735792f29f56bc61646405b90766e6449',
-        'name' => 'afragen/the-events-calendar-category-colors',
         'dev' => false,
     ),
     'versions' => array(
         'afragen/the-events-calendar-category-colors' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
+            'reference' => '4824f3fe5528f70456220a24dee0330839e6515a',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '038f3ea735792f29f56bc61646405b90766e6449',
             'dev_requirement' => false,
         ),
     ),
