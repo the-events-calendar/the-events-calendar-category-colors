@@ -18,13 +18,15 @@ class V2_Views {
 	/**
 	 * Echo CSS
 	 *
-	 * @param array $css Array of CSS.
+	 * @param array  $css Array of CSS.
+	 * @param string $comma Add a comma or not.
 	 *
 	 * @return void
 	 */
-	private static function echo_css( $css ) {
+	private static function echo_css( $css, $comma = '' ) {
 		$css[] = '';
 		$css   = implode( "\n", $css );
+		$css   = empty( $comma ) ? $css : rtrim( $css ) . $comma;
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $css;
 	}
@@ -33,10 +35,11 @@ class V2_Views {
 	 * Add link CSS
 	 *
 	 * @param string $slug Slug.
+	 * @param string $comma Add a comma or not.
 	 *
 	 * @return void
 	 */
-	public static function add_link_css( $slug ) {
+	public static function add_link_css( $slug, $comma ) {
 		$css = [];
 
 		$css[] = ".teccc-legend li.tribe_events_cat-{$slug} a,";
@@ -44,17 +47,18 @@ class V2_Views {
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a:link,";
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3 a:visited,";
 		$css[] = "article.tribe-events-calendar-month__multiday-event.tribe_events_cat-{$slug} h3";
-		self::echo_css( $css );
+		self::echo_css( $css, $comma );
 	}
 
 	/**
 	 * Add background CSS
 	 *
 	 * @param string $slug Slug.
+	 * @param string $comma Add a comma or not.
 	 *
 	 * @return void
 	 */
-	public static function add_background_css( $slug ) {
+	public static function add_background_css( $slug, $comma ) {
 		$css   = [];
 		$css[] = ".teccc-legend li.tribe_events_cat-{$slug},";
 		$css[] = "article.tribe_events_cat-{$slug} header.tribe-events-widget-events-list__event-header h3,";
@@ -64,7 +68,7 @@ class V2_Views {
 		$css[] = "article.tribe-events-calendar-day__event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-calendar-list__event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-calendar-latest-past__event.tribe_events_cat-{$slug} h3";
-		self::echo_css( $css );
+		self::echo_css( $css, $comma );
 	}
 
 	/**

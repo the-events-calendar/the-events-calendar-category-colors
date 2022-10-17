@@ -18,16 +18,18 @@ class Pro {
 	/**
 	 * Echo CSS
 	 *
-	 * @param array $css Array of CSS.
+	 * @param array  $css Array of CSS.
+	 * @param string $comma Add a comma or not.
 	 *
 	 * @return string
 	 */
-	private static function echo_css( $css ) {
+	private static function echo_css( $css, $comma = '' ) {
 		if ( ! class_exists( 'Tribe__Events__Pro__Main' ) ) {
 			return false;
 		}
 		$css[] = '';
 		$css   = implode( "\n", $css );
+		$css   = empty( $comma ) ? $css : rtrim( $css ) . $comma;
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $css;
 	}
@@ -36,40 +38,43 @@ class Pro {
 	 * Add map link CSS
 	 *
 	 * @param string $slug Slug.
+	 * @param string $comma Add a comma or not.
 	 *
 	 * @return void
 	 */
-	public static function add_map_link_css( $slug ) {
+	public static function add_map_link_css( $slug, $comma ) {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:visited";
-		self::echo_css( $css );
+		self::echo_css( $css, $comma );
 	}
 
 	/**
 	 * Add map background CSS
 	 *
 	 * @param string $slug Slug.
+	 * @param string $comma Add a comma or not.
 	 *
 	 * @return void
 	 */
-	public static function add_map_background_css( $slug ) {
+	public static function add_map_background_css( $slug, $comma ) {
 		$css   = [];
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:link,";
 		$css[] = ".tribe-events-category-{$slug} .tribe-events-map-event-title a:visited,";
 		$css[] = "article.tribe-events-pro-map__event-card.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-photo__event.tribe_events_cat-{$slug} h3";
-		self::echo_css( $css );
+		self::echo_css( $css, $comma );
 	}
 
 	/**
 	 * Add week background CSS
 	 *
 	 * @param string $slug Slug.
+	 * @param string $comma Add a comma or not.
 	 *
 	 * @return void
 	 */
-	public static function add_week_background_css( $slug ) {
+	public static function add_week_background_css( $slug, $comma ) {
 		$css   = [];
 		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single:hover.tribe-events-category-{$slug},";
 		$css[] = ".tribe-grid-body .tribe-events-week-hourly-single.tribe-events-category-{$slug},";
@@ -80,7 +85,7 @@ class Pro {
 		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} h3,";
 		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner h3,";
 		$css[] = "article.tribe-events-pro-week-grid__multiday-event.tribe_events_cat-{$slug} .tribe-events-pro-week-grid__multiday-event-bar-inner";
-		self::echo_css( $css );
+		self::echo_css( $css, $comma );
 	}
 
 	/**
@@ -159,29 +164,31 @@ class Pro {
 	 * Add week link CSS
 	 *
 	 * @param string $slug Slug.
+	 * @param string $comma Add a comma or not.
 	 *
 	 * @return void
 	 */
-	public static function add_week_link_css( $slug ) {
+	public static function add_week_link_css( $slug, $comma ) {
 		$css   = [];
 		$css[] = "#tribe-events-content div.tribe-events-category-{$slug}.hentry.vevent h3.entry-title a,";
 		$css[] = ".tribe-grid-body .tribe-events-category-{$slug} a,";
 		$css[] = ".tribe-grid-body .type-tribe_events.tribe-events-category-{$slug} a,";
 		$css[] = ".tribe-grid-allday .tribe-events-category-{$slug} a";
-		self::echo_css( $css );
+		self::echo_css( $css, $comma );
 	}
 
 	/**
 	 * Add summary background CSS
 	 *
 	 * @param string $slug Slug.
+	 * @param string $comma Add a comma or not.
 	 *
 	 * @return void
 	 */
-	public static function add_summary_background_css( $slug ) {
+	public static function add_summary_background_css( $slug, $comma ) {
 		$css   = [];
 		$css[] = ".tribe-common article.tribe_events_cat-{$slug} h3.tribe-events-pro-summary__event-title";
-		self::echo_css( $css );
+		self::echo_css( $css, $comma );
 	}
 
 	/**
