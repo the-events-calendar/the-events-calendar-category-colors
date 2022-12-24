@@ -109,8 +109,16 @@ class Frontend {
 		if ( ! $template instanceof \Tribe\Events\Views\V2\Template ) {
 			return false;
 		}
-		$this->currentDisplay = $template->get_view()->get_slug();
-		$hook_name            = false;
+
+		// https://github.com/the-events-calendar/the-events-calendar/pull/4091.
+		if ( method_exists( $template->get_view(), 'get_view_slug' ) ) {
+			$this->currentDisplay = $template->get_view()::get_view_slug();
+		}
+		if ( is_null( $this->currentDisplay ) && method_exists( $template->get_view(), 'get_slug' ) ) {
+			$this->currentDisplay = $template->get_view()->get_slug();
+		}
+
+		$hook_name = false;
 		if ( ! in_array( $this->currentDisplay, $this->legendExtraView, true ) ) {
 			return false;
 		}

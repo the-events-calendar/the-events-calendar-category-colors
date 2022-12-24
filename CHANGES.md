@@ -1,4 +1,5 @@
 #### [unreleased]
+* TEC converted `$view->get_slug()` to `$view::get_view_slug()` in https://github.com/the-events-calendar/the-events-calendar/pull/4091
 
 #### 7.1.1 / 2022-10-16
 * add `$comma` parameter to `echo_css()` to simplify placement of selectors
