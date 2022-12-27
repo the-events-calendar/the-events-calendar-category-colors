@@ -113,8 +113,7 @@ class Frontend {
 		// https://github.com/the-events-calendar/the-events-calendar/pull/4091.
 		if ( method_exists( $template->get_view(), 'get_view_slug' ) ) {
 			$this->currentDisplay = $template->get_view()::get_view_slug();
-		}
-		if ( is_null( $this->currentDisplay ) && method_exists( $template->get_view(), 'get_slug' ) ) {
+		} else {
 			$this->currentDisplay = $template->get_view()->get_slug();
 		}
 
