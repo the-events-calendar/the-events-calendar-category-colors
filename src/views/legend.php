@@ -13,6 +13,12 @@ namespace Fragen\Category_Colors;
 use Tribe__Events__Main;
 
 $teccc->setup_terms( $options );
+
+/*
+ * Filter terms for legend.
+ *
+ * @param array $terms Unordered array of terms, slug/name.
+ */
 $terms = apply_filters( 'teccc_legend_terms', $teccc->terms );
 
 ?>
