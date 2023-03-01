@@ -79,7 +79,7 @@ class Frontend {
 	public function run() {
 		add_action( 'parse_query', [ $this, 'get_current_event_display' ] );
 		add_action( $this->legendTargetHook, [ $this, 'show_legend' ] );
-		add_action( 'tribe_template_before_include', [ $this, 'set_legend_target_hook' ], 10, 3 );
+		add_action( 'tribe_template_before_include:events/v2/components/before', [ $this, 'set_legend_target_hook' ], 10, 3 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'add_scripts_styles' ], PHP_INT_MAX - 100 );
 	}
 

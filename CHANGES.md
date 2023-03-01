@@ -1,4 +1,5 @@
 #### [unreleased]
+* more specific hook for placing legend, works better with multiple calendars on single page, thanks @kpwawp
 
 #### 7.1.2 / 2023-01-27
 * TEC converted `$view->get_slug()` to `$view::get_view_slug()` in https://github.com/the-events-calendar/the-events-calendar/pull/4091
