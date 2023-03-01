@@ -41,9 +41,9 @@ class Frontend {
 	/**
 	 * Variable
 	 *
-	 * @var bool
+	 * @var array
 	 */
-	protected $legendFilterHasRun = false;
+	protected $legendFilterHasRun = [];
 
 	/**
 	 * Variable
@@ -264,7 +264,10 @@ class Frontend {
 		if ( ! $v2_viewable && ! $is_extra_view ) {
 			return false;
 		}
-		if ( $this->legendFilterHasRun ) {
+		if ( ! isset( $this->legendFilterHasRun[ $this->currentDisplay ] ) ) {
+			$this->legendFilterHasRun[ $this->currentDisplay ] = false;
+		}
+		if ( $this->legendFilterHasRun[ $this->currentDisplay ] ) {
 			return false;
 		}
 
@@ -286,7 +289,7 @@ class Frontend {
 			false
 		);
 
-		$this->legendFilterHasRun = true;
+		$this->legendFilterHasRun[ $this->currentDisplay ] = true;
 
 		/**
 		 * Filter legend html to return modified version.
