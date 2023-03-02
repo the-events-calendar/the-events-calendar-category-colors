@@ -1,17 +1,17 @@
-# Copyright (C) 2022 Andy Fragen, Barry Hughes
+# Copyright (C) 2023 Andy Fragen, Barry Hughes
 # This file is distributed under the GNU General Public License v2.
 msgid ""
 msgstr ""
-"Project-Id-Version: The Events Calendar: Category Colors 7.0.0\n"
+"Project-Id-Version: The Events Calendar: Category Colors 7.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/the-events-calendar-category-colors\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-05-04T17:14:44+00:00\n"
+"POT-Creation-Date: 2023-03-02T23:53:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: the-events-calendar-category-colors\n"
 
 #. Plugin Name of the plugin
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Use of this function is deprecated, use `teccc_insert_legend()`"
 msgstr ""
 
-#: src/views/legend.php:66
+#: src/views/legend.php:72
 #: src/views/optionsform.php:206
 msgid "Reset"
 msgstr ""
