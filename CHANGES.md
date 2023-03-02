@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 7.2.0 / 2023-03-02
 * update `Frontend::show_legend()` to accomodate multiple calendar views on single page
 
 #### 7.1.2 / 2023-01-27
