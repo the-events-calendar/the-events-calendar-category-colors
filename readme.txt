@@ -224,11 +224,6 @@ Thanks to jonahcoyote for some early help and direction.
 
 Big thanks to Barry Hughes (WebsiteBakery) for refactoring code and Legend Superpowers.
 
-Translations courtesy of:
-
- * Francois-Xavier B&eacute;nard and the group at [WP-Translations](http://wp-translations.org)
- * Andrew Kurtis and [WebHostingHub](http://www.webhostinghub.com)
-
 ## Upgrade Notice
 
 #### 0.5
