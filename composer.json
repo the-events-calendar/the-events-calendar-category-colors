@@ -36,6 +36,16 @@
     "require": {
         "php": ">=7.1"
     },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+        "squizlabs/php_codesniffer": "3.6.0",
+        "wp-coding-standards/wpcs": "~2.3.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
     "autoload": {
         "psr-4": {
             "Fragen\\Category_Colors\\": "src/Category_Colors/"
