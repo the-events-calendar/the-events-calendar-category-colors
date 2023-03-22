@@ -29,7 +29,7 @@ jQuery( document ).ready(
 		 * @param slug
 		 */
 		function deselect(slug) {
-			$( status.allEntries ).fadeTo(
+			$(status.allEntries).add(legendEntries).fadeTo(
 				status.speed,
 				1,
 				function () {
@@ -73,7 +73,8 @@ jQuery( document ).ready(
 			// Now focus in on the new selection
 			let slug   = ".tribe-events-category-" + selection;
 			let slugv2 = ".tribe_events_cat-" + selection;
-			$( status.allEntries ).not( slug ).not( slugv2 ).fadeTo(
+			const unselectedLegendEntries = legendEntries.not(slug);
+			$(status.allEntries).not(slug).not(slugv2).add(unselectedLegendEntries).fadeTo(
 				status.speed,
 				status.opacity,
 				function () {
