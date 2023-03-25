@@ -4,6 +4,7 @@
  */
 jQuery( document ).ready(
 	function ($) {
+		const storageKey = 'teccc';
 		let legendEntries;
 		let status;
 
@@ -29,6 +30,8 @@ jQuery( document ).ready(
 		 * @param slug
 		 */
 		function deselect(slug) {
+			persistSelection('');
+
 			$(status.allEntries).add(legendEntries).fadeTo(
 				status.speed,
 				1,
@@ -57,9 +60,11 @@ jQuery( document ).ready(
 				status.working = true;
 			}
 
-			// Look out for deselections!
-			// let selection = $(this).data("categorySlug");
-			let selection = event.currentTarget.classList[1].replace( /tribe_events_cat-/, '' );
+			// The event object may be a custom event with a selectedCategory property.
+			let selection = event.hasOwnProperty('selectedCategory')
+				? event.selectedCategory
+				: event.currentTarget.classList[1].replace(/tribe_events_cat-/, '');
+
 			console.log( 'legend slug: ' + selection );
 			if (selection === status.selected) {
 				deselect( selection );
@@ -71,17 +76,28 @@ jQuery( document ).ready(
 			deselect( status.selected );
 
 			// Now focus in on the new selection
-			let slug   = ".tribe-events-category-" + selection;
-			let slugv2 = ".tribe_events_cat-" + selection;
-			const unselectedLegendEntries = legendEntries.not(slug);
-			$(status.allEntries).not(slug).not(slugv2).add(unselectedLegendEntries).fadeTo(
-				status.speed,
-				status.opacity,
-				function () {
-					status.selected = selection;
-					status.working  = false;
-				}
-			);
+			const slug        = ".tribe-events-category-" + selection;
+			const slugv2      = ".tribe_events_cat-" + selection;
+			const $allEntries = $(status.allEntries);
+			const $unselected = $allEntries.not(slug).not(slugv2);
+
+			// We only need to fade out unselected entries if there are less unselected entries than selected entries...
+			if ($unselected.length < $allEntries.length) {
+				$unselected.add(legendEntries.not(slug)).fadeTo(
+					status.speed,
+					status.opacity,
+					function () {
+						status.selected = selection;
+						status.working = false;
+					}
+				);
+			}
+			// ...Otherwise, it's probable that the persisted category selection does not exist on the current page.
+			else {
+				selection = '';
+			}
+
+			persistSelection(selection);
 
 			event.stopPropagation();
 		}
@@ -117,12 +133,28 @@ jQuery( document ).ready(
 		}
 
 		/**
+		 * Applies the selection saved in session storage.
+		 */
+		function applyPersistedSelection() {
+			const categorySlug = getPersistedSelection();
+
+			if (! categorySlug.length) {
+				return;
+			}
+
+			const event = new Event('legendSuperpowers');
+			event.selectedCategory = categorySlug;
+			categorySelection(event);
+		}
+
+		/**
 		 * Prepares the legend and assigns superpowers.
 		 */
 		function setup() {
 			defaultStatus();
 			$( legendEntries ).each( prepareElement );
 			$( legendEntries ).on( 'click', function (event) { categorySelection( event ); } );
+			applyPersistedSelection();
 		}
 
 		/**
@@ -142,5 +174,30 @@ jQuery( document ).ready(
 				}
 			}
 		);
+
+		/**
+		 * Record the selection of a category. To wipe the current selection, simply provide
+		 * an empty string.
+		 *
+		 * @param {string} slug
+		 */
+		function persistSelection(slug) {
+			if ('object' !== typeof window.sessionStorage) {
+				return;
+			}
+
+			window.sessionStorage.setItem(storageKey, slug);
+		}
+
+		/**
+		 * Get the persisted selection (may be empty).
+		 *
+		 * @returns {string}
+		 */
+		function getPersistedSelection() {
+			return 'object' === typeof window.sessionStorage
+				? window.sessionStorage.getItem(storageKey) + ''
+				: '';
+		}
 	}
 );
