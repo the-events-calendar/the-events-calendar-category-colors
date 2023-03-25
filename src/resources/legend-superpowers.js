@@ -158,24 +158,6 @@ jQuery( document ).ready(
 		}
 
 		/**
-		 * Setup should occur when the document is ready and following ajax loads.
-		 */
-		setup();
-
-		// $(document).on('afterSetup.tribeEvents', tribe.events.views.manager.selectors.container, function () {
-		$( document ).on(
-			'afterSetup.tribeEvents',
-			function () {
-				let $container = $( this );
-				// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
-				// thanks Gustavo! <3
-				if (typeof $container !== 'undefined') {
-					setup();
-				}
-			}
-		);
-
-		/**
 		 * Record the selection of a category. To wipe the current selection, simply provide
 		 * an empty string.
 		 *
@@ -199,5 +181,19 @@ jQuery( document ).ready(
 				? window.sessionStorage.getItem(storageKey) + ''
 				: '';
 		}
+
+		// We set things up when event `afterSetup.tribeEvents` fires (which occurs when the calendar view is
+		// first initialized, and during ajax refreshes, etc).
+		$( document ).on(
+			'afterSetup.tribeEvents',
+			function () {
+				let $container = $( this );
+				// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
+				// thanks Gustavo! <3
+				if (typeof $container !== 'undefined') {
+					setup();
+				}
+			}
+		);
 	}
 );
