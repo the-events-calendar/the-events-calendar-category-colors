@@ -81,21 +81,14 @@ jQuery( document ).ready(
 			const $allEntries = $(status.allEntries);
 			const $unselected = $allEntries.not(slug).not(slugv2);
 
-			// We only need to fade out unselected entries if there are less unselected entries than selected entries...
-			if ($unselected.length < $allEntries.length) {
-				$unselected.add(legendEntries.not(slug)).fadeTo(
-					status.speed,
-					status.opacity,
-					function () {
-						status.selected = selection;
-						status.working = false;
-					}
-				);
-			}
-			// ...Otherwise, it's probable that the persisted category selection does not exist on the current page.
-			else {
-				selection = '';
-			}
+			$unselected.add(legendEntries.not(slug)).fadeTo(
+				status.speed,
+				status.opacity,
+				function () {
+					status.selected = selection;
+					status.working = false;
+				}
+			);
 
 			persistSelection(selection);
 
