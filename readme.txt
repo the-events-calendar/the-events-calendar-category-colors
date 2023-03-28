@@ -223,14 +223,3 @@ See [CHANGES.md](CHANGES.md) for complete list of changes.
 Thanks to jonahcoyote for some early help and direction.
 
 Big thanks to Barry Hughes (WebsiteBakery) for refactoring code and Legend Superpowers.
-
-## Upgrade Notice
-
-#### 0.5
-This version integrates more tightly with The Events Calendar plugin putting settings on the same page.
-
-#### 1.6.3
-This is the last version to work with The Events Calendar 2.x
-
-#### 4.0.0
-Requires PHP 5.3 or greater
