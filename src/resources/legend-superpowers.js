@@ -4,11 +4,27 @@
  */
 jQuery( document ).ready(
 	function ($) {
-		class TecccLegend {
+		/**
+		 * Manages legend super-powers for all event containers on the current page.
+		 */
+		class TecccLegendSuperPowers {
+			/**
+			 * Listens for a container being (re-)initialized, then creates a new instance to manage
+			 * superpowers within that container.
+			 *
+			 * @param event
+			 * @param containerIndex
+			 */
 			static setup( event, containerIndex ) {
-				( new TecccLegend( event.target, containerIndex ) ).activate();
+				( new TecccLegendSuperPowers( event.target, containerIndex ) ).activate();
 			}
 
+			/**
+			 * Prepares legend superpowers for an event container.
+			 *
+			 * @param container
+			 * @param containerIndex
+			 */
 			constructor( container, containerIndex ) {
 				this.$container     = $(container);
 				this.$legendEntries = this.$container.find('.teccc-legend > ul > li');
@@ -23,12 +39,18 @@ jQuery( document ).ready(
 				this.working    = false;
 			}
 
+			/**
+			 * Activates legend superpowers.
+			 */
 			activate() {
 				this.$legendEntries.each(this.convertLegendEntries);
 				this.$legendEntries.on( 'click', event => this.onSelection( event ) );
 				this.applyPersistedSelection();
 			}
 
+			/**
+			 * Converts legend entries from links into spans.
+			 */
 			convertLegendEntries() {
 				const $this = $( this );
 				const $link = $this.find( 'a' );
@@ -114,6 +136,9 @@ jQuery( document ).ready(
 				event.stopPropagation();
 			}
 
+			/**
+			 * Deselects everything.
+			 */
 			deselect() {
 				const self = this;
 				this.persistSelection('');
@@ -169,12 +194,17 @@ jQuery( document ).ready(
 			}
 		}
 
+		/**
+		 * Checks if the responsive breakpoint has been reached.
+		 *
+		 * @returns {boolean}
+		 */
 		function responsive_active() {
 			return $( "body" ).hasClass( "tribe-mobile" );
 		}
 
 		// We set things up when event `afterSetup.tribeEvents` fires (which occurs when the calendar view is
 		// first initialized, and during ajax refreshes, etc).
-		$( document ).on('afterSetup.tribeEvents', TecccLegend.setup);
+		$( document ).on('afterSetup.tribeEvents', TecccLegendSuperPowers.setup);
 	}
 );
