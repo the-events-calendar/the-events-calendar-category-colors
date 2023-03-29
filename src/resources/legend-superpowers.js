@@ -4,29 +4,29 @@
  */
 jQuery( document ).ready(
 	function ($) {
-		const storageKey = 'teccc';
-
 		class TecccLegend {
-			static setup( event ) {
-				( new TecccLegend( event.target ) ).activate();
+			static setup( event, containerIndex ) {
+				( new TecccLegend( event.target, containerIndex ) ).activate();
 			}
 
-			constructor( container ) {
+			constructor( container, containerIndex ) {
 				this.$container     = $(container);
 				this.$legendEntries = this.$container.find('.teccc-legend > ul > li');
 				this.$allEntries    = this.$container.find( 'div[class^=tribe-events-category-]' ).add(
 					this.$container.find( 'article[class*=tribe_events_cat-]' )
 				);
 
-				this.opacity  = 0.25;
-				this.selected = '';
-				this.speed    = 500;
-				this.working  = false;
+				this.storageKey = `tecccState-${containerIndex}`;
+				this.opacity    = 0.25;
+				this.selected   = '';
+				this.speed      = 500;
+				this.working    = false;
 			}
 
 			activate() {
 				this.$legendEntries.each(this.convertLegendEntries);
 				this.$legendEntries.on( 'click', event => this.onSelection( event ) );
+				this.applyPersistedSelection();
 			}
 
 			convertLegendEntries() {
@@ -109,14 +109,14 @@ jQuery( document ).ready(
 					}
 				);
 
-				persistSelection(selectedCategory);
+				this.persistSelection(selectedCategory);
 
 				event.stopPropagation();
 			}
 
 			deselect() {
 				const self = this;
-				persistSelection('');
+				this.persistSelection('');
 
 				this.$allEntries.add(this.$legendEntries).fadeTo(
 					this.speed,
@@ -127,51 +127,50 @@ jQuery( document ).ready(
 					}
 				);
 			}
+
+			/**
+			 * Applies the selection saved in session storage.
+			 */
+			applyPersistedSelection() {
+				const categorySlug = this.getPersistedSelection();
+
+				if (! categorySlug.length) {
+					return;
+				}
+
+				const event = new Event('legendSuperpowers');
+				event.selectedCategory = categorySlug;
+				this.onSelection(event);
+			}
+
+			/**
+			 * Record the selection of a category. To wipe the current selection, simply provide
+			 * an empty string.
+			 *
+			 * @param {string} slug
+			 */
+			persistSelection(slug) {
+				if ('object' !== typeof window.sessionStorage) {
+					return;
+				}
+
+				window.sessionStorage.setItem(this.storageKey, slug);
+			}
+
+			/**
+			 * Get the persisted selection (may be empty).
+			 *
+			 * @returns {string}
+			 */
+			getPersistedSelection() {
+				return 'object' === typeof window.sessionStorage
+					? window.sessionStorage.getItem(this.storageKey) + ''
+					: '';
+			}
 		}
 
 		function responsive_active() {
 			return $( "body" ).hasClass( "tribe-mobile" );
-		}
-
-
-		/**
-		 * Applies the selection saved in session storage.
-		 */
-		function applyPersistedSelection() {
-			const categorySlug = getPersistedSelection();
-
-			if (! categorySlug.length) {
-				return;
-			}
-
-			const event = new Event('legendSuperpowers');
-			event.selectedCategory = categorySlug;
-			categorySelection(event);
-		}
-
-		/**
-		 * Record the selection of a category. To wipe the current selection, simply provide
-		 * an empty string.
-		 *
-		 * @param {string} slug
-		 */
-		function persistSelection(slug) {
-			if ('object' !== typeof window.sessionStorage) {
-				return;
-			}
-
-			window.sessionStorage.setItem(storageKey, slug);
-		}
-
-		/**
-		 * Get the persisted selection (may be empty).
-		 *
-		 * @returns {string}
-		 */
-		function getPersistedSelection() {
-			return 'object' === typeof window.sessionStorage
-				? window.sessionStorage.getItem(storageKey) + ''
-				: '';
 		}
 
 		// We set things up when event `afterSetup.tribeEvents` fires (which occurs when the calendar view is
