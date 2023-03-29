@@ -5,125 +5,134 @@
 jQuery( document ).ready(
 	function ($) {
 		const storageKey = 'teccc';
-		let legendEntries;
-		let status;
 
-		/**
-		 * Sets up/restores the status and legendEntries objects to their defaults.
-		 */
-		function defaultStatus() {
-			legendEntries = $( "ul#legend" ).find( "li" );
-			status        = {
-				// allEntries: $( "#tribe-events-content" ).find( "div[class^=tribe-events-category-]" ),
-				allEntries: document.querySelectorAll( "#tribe-events-content div[class^=tribe-events-category-],.tribe-events article[class*=tribe_events_cat-]" ),
-				opacity: 0.25,
-				selected: false,
-				speed: 500,
-				working: false
-			};
-		}
-
-		/**
-		 * Deselects an element, bringing all categories back into focus (full
-		 * opacity, in this scenario).
-		 *
-		 * @param slug
-		 */
-		function deselect(slug) {
-			persistSelection('');
-
-			$(status.allEntries).add(legendEntries).fadeTo(
-				status.speed,
-				1,
-				function () {
-					status.selected = false;
-					status.working  = false;
-				}
-			);
-		}
-
-		/**
-		 * Handles selections and deselections of categories.
-		 *
-		 * @param event
-		 */
-		function categorySelection(event) {
-			let isV2Ative  = 0 !== $( '.tribe-events-view' ).length;
-			let isV1Mobile = responsive_active();
-			// If we're still working (or we're in responsive mode) don't do anything - the visitor can wait
-			if (status.working || ( ! isV2Ative && isV1Mobile)) {
-				// If we're still working (or we're in responsive mode) don't do anything - the visitor can wait
-				event.stopPropagation();
-				return;
-			} // Otherwise set the working flag so that we don't end up stacking - and delaying - effects
-			else {
-				status.working = true;
+		class TecccLegend {
+			static setup( event ) {
+				( new TecccLegend( event.target ) ).activate();
 			}
 
-			// The event object may be a custom event with a selectedCategory property.
-			let selection = event.hasOwnProperty('selectedCategory')
-				? event.selectedCategory
-				: event.currentTarget.classList[1].replace(/tribe_events_cat-/, '');
+			constructor( container ) {
+				this.$container     = $(container);
+				this.$legendEntries = this.$container.find('.teccc-legend > ul > li');
+				this.$allEntries    = this.$container.find( 'div[class^=tribe-events-category-]' ).add(
+					this.$container.find( 'article[class*=tribe_events_cat-]' )
+				);
 
-			console.log( 'legend slug: ' + selection );
-			if (selection === status.selected) {
-				deselect( selection );
-				event.stopPropagation();
-				return;
+				this.opacity  = 0.25;
+				this.selected = '';
+				this.speed    = 500;
+				this.working  = false;
 			}
 
-			// Handle selections: deselect existing selection first of all
-			deselect( status.selected );
+			activate() {
+				this.$legendEntries.each(this.convertLegendEntries);
+				this.$legendEntries.on( 'click', event => this.onSelection( event ) );
+			}
 
-			// Now focus in on the new selection
-			const slug        = ".tribe-events-category-" + selection;
-			const slugv2      = ".tribe_events_cat-" + selection;
-			const $allEntries = $(status.allEntries);
-			const $unselected = $allEntries.not(slug).not(slugv2);
+			convertLegendEntries() {
+				const $this = $( this );
+				const $link = $this.find( 'a' );
 
-			$unselected.add(legendEntries.not(slug)).fadeTo(
-				status.speed,
-				status.opacity,
-				function () {
-					status.selected = selection;
-					status.working = false;
+				// Quit if preparation has already been completed (no <a> elements found).
+				if ( $link.length !== 1 ) {
+					return;
 				}
-			);
 
-			persistSelection(selection);
+				// Use the legend's class list to find the category slug.
+				const matches = $this.attr('class').match('tribe_events_cat-([^\S]+)');
 
-			event.stopPropagation();
+				// If we cannot find the category slug, something is wrong; bail out.
+				if ( matches.length !== 2 ) {
+					return;
+				}
+
+				// Store the links address and slug.
+				const linkSlug        = matches[1];
+				const linkURL         = $link.attr( "href" );
+				const linkTitle       = $link.html().trim();
+				const replacementText = '<span>' + linkTitle + '</span>';
+
+				// Tidy up - remove unnecessary elements
+				$link.remove();
+				$this.find( "input" ).remove();
+
+				$this.html( replacementText )
+					.data( 'categoryURL', linkURL )
+					.data( 'categorySlug', linkSlug );
+			}
+
+			/**
+			 * Handles selections and deselections of categories.
+			 *
+			 * @param event
+			 */
+			onSelection( event ) {
+				const isV2Active = 0 !== $( '.tribe-events-view' ).length;
+				const isV1Mobile = responsive_active();
+				const self       = this;
+
+				// If we're already working (or if we're in responsive mode) don't do anything - the visitor can wait.
+				if ( this.working || ( ! isV2Active && isV1Mobile)) {
+					event.stopPropagation();
+					return;
+				}
+
+				// Otherwise set the working flag so that we don't end up stacking - and delaying - effects.
+				this.working = true;
+
+				// The event object may be a custom event with a selectedCategory property.
+				const selectedCategory = event.hasOwnProperty('selectedCategory')
+					? event.selectedCategory
+					: $(event.currentTarget).data('categorySlug');
+
+				if (selectedCategory === this.selected) {
+					this.deselect( selectedCategory );
+					this.working = false;
+					event.stopPropagation();
+					return;
+				}
+
+				// Handle selections: deselect existing selection first of all
+				this.deselect();
+
+				// Now focus in on the new selection.
+				const slug        = ".tribe-events-category-" + selectedCategory;
+				const slugv2      = ".tribe_events_cat-" + selectedCategory;
+				const $unselected = this.$allEntries.not(slug).not(slugv2);
+
+				$unselected.add(this.$legendEntries.not(slug)).fadeTo(
+					this.speed,
+					this.opacity,
+					function () {
+						self.selected = selectedCategory;
+						self.working = false;
+					}
+				);
+
+				persistSelection(selectedCategory);
+
+				event.stopPropagation();
+			}
+
+			deselect() {
+				const self = this;
+				persistSelection('');
+
+				this.$allEntries.add(this.$legendEntries).fadeTo(
+					this.speed,
+					1,
+					function () {
+						self.selected = false;
+						self.working  = false;
+					}
+				);
+			}
 		}
 
 		function responsive_active() {
 			return $( "body" ).hasClass( "tribe-mobile" );
 		}
 
-		/**
-		 * Converts a link to a span, storing the href URL in the jQuery cache
-		 * object for future use.
-		 */
-		function prepareElement() {
-			let link = $( this ).find( "a" );
-			if (link.length !== 1) {
-				return; // Quit if preparation has already been completed (no <a> elements found)
-			}
-
-			// Convert the link(s) to span(s) but store the links address and slug
-			let linkAddr        = $( link ).attr( "href" );
-			let linkTitle       = $( link ).html();
-			let linkSlugField   = $( this ).find( "input" );
-			let linkSlug        = $( linkSlugField ).val();
-			let replacementText = '<span>' + linkTitle + '</span>';
-
-			// Tidy up - remove unnecessary elements
-			$( link ).remove();
-			$( linkSlugField ).remove();
-
-			$( this ).html( replacementText )
-				.data( 'categoryURL', linkAddr )
-				.data( 'categorySlug', linkSlug );
-		}
 
 		/**
 		 * Applies the selection saved in session storage.
@@ -138,16 +147,6 @@ jQuery( document ).ready(
 			const event = new Event('legendSuperpowers');
 			event.selectedCategory = categorySlug;
 			categorySelection(event);
-		}
-
-		/**
-		 * Prepares the legend and assigns superpowers.
-		 */
-		function setup() {
-			defaultStatus();
-			$( legendEntries ).each( prepareElement );
-			$( legendEntries ).on( 'click', function (event) { categorySelection( event ); } );
-			applyPersistedSelection();
 		}
 
 		/**
@@ -177,16 +176,6 @@ jQuery( document ).ready(
 
 		// We set things up when event `afterSetup.tribeEvents` fires (which occurs when the calendar view is
 		// first initialized, and during ajax refreshes, etc).
-		$( document ).on(
-			'afterSetup.tribeEvents',
-			function () {
-				let $container = $( this );
-				// initialize the superpowers by using $container.find() for the elements so we can have multiple views on the same page.
-				// thanks Gustavo! <3
-				if (typeof $container !== 'undefined') {
-					setup();
-				}
-			}
-		);
+		$( document ).on('afterSetup.tribeEvents', TecccLegend.setup);
 	}
 );
