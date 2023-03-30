@@ -5,34 +5,79 @@
 jQuery( document ).ready(
 	function ($) {
 		/**
-		 * Manages legend super-powers for all event containers on the current page.
+		 * Manages the allocation of superpowers to individual event containers.
 		 */
-		class TecccLegendSuperPowers {
+		class Manager {
+			static containers = {};
+			static continuity = null;
+			static index      = 0;
+			static key        = 'tecccContainerIndex';
+
 			/**
-			 * Listens for a container being (re-)initialized, then creates a new instance to manage
-			 * superpowers within that container.
-			 *
-			 * @param event
-			 * @param containerIndex
+			 * Hook into TEC events in order to establish legend superpowers.
 			 */
-			static setup( event, containerIndex ) {
-				( new TecccLegendSuperPowers( event.target, containerIndex ) ).activate();
+			static start() {
+				$( document ).on( 'afterSetup.tribeEvents', Manager.onContainerUpdate );
+				document.addEventListener('containerReplaceBefore.tribeEvents', Manager.listenForReplacement);
 			}
 
 			/**
+			 * Whenever the container is updated (that could be when it is initially rendered, or when it is replaced
+			 * with fresh content following ajax navigation), (re-)assign a Superpowers instance.
+			 * @param event
+			 */
+			static onContainerUpdate( event ) {
+				const $container       = $( event.target );
+				const assignedIndex    = Manager.continuity === null ? $container.data( Manager.key ) : Manager.continuity;
+				const assignedIndexInt = parseInt( assignedIndex, 10 );
+
+				// Either the index is already known to us, or we need to assign a new one.
+				const index = Manager.containers[assignedIndexInt] === undefined ? Manager.index++ : assignedIndexInt;
+
+				// Create a new SuperPowers instance.
+				const superPowers = new SuperPowers( $container, index );
+				Manager.containers[index] = superPowers;
+				superPowers.activate();
+
+				// Store the index as container data.
+				$container.data( Manager.key, index );
+			}
+
+			/**
+			 * Maintain index continuity (important if multiple event containers are present on the same page).
+			 *
+			 * During ajax navigation the containers are completely replaced, and (as of TEC 6.0.11) the container index
+			 * supplied via the `afterSetup.tribeEvents` event is not reliable (it will always be zero following ajax
+			 * nav). So, we introduce our own means of maintaining index continuity. This is ultimately utilized to
+			 * persist category selections across page loads.
+			 *
+			 * @param event
+			 */
+			static listenForReplacement( event ) {
+				const $container    = event.detail;
+				const assignedIndex = $container.data( Manager.key );
+				Manager.continuity  = assignedIndex !== undefined ? assignedIndex : null;
+			}
+		}
+
+		/**
+		 * Provides legend superpowers to event containers.
+		 */
+		class SuperPowers {
+			/**
 			 * Prepares legend superpowers for an event container.
 			 *
-			 * @param container
-			 * @param containerIndex
+			 * @param {jQuery} $container
+			 * @param {number} index
 			 */
-			constructor( container, containerIndex ) {
-				this.$container     = $(container);
+			constructor( $container, index ) {
+				this.$container     = $container;
 				this.$legendEntries = this.$container.find('.teccc-legend > ul > li');
 				this.$allEntries    = this.$container.find( 'div[class^=tribe-events-category-]' ).add(
 					this.$container.find( 'article[class*=tribe_events_cat-]' )
 				);
 
-				this.storageKey = `tecccState-${containerIndex}`;
+				this.storageKey = `tecccState${index}`;
 				this.opacity    = 0.25;
 				this.selected   = '';
 				this.speed      = 500;
@@ -203,8 +248,6 @@ jQuery( document ).ready(
 			return $( "body" ).hasClass( "tribe-mobile" );
 		}
 
-		// We set things up when event `afterSetup.tribeEvents` fires (which occurs when the calendar view is
-		// first initialized, and during ajax refreshes, etc).
-		$( document ).on('afterSetup.tribeEvents', TecccLegendSuperPowers.setup);
+		Manager.start();
 	}
 );
