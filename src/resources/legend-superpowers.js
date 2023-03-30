@@ -34,6 +34,15 @@ jQuery( function ( $ ) {
 			// Either the index is already known to us, or we need to assign a new one.
 			const index = Manager.containers[assignedIndexInt] === undefined ? Manager.index++ : assignedIndexInt;
 
+			// Do we need to generate a new index, or reuse an existing one?
+			if ( Manager.containers[assignedIndexInt] === undefined ) {
+				const index = Manager.index++;
+			} else {
+				// Re-use the existing index, and deactivate the existing superpowers instance.
+				const index = assignedIndexInt;
+				Manager.containers[assignedIndexInt].deactivate();
+			}
+
 			// Create a new SuperPowers instance.
 			const superPowers = new SuperPowers( $container, index );
 			Manager.containers[index] = superPowers;
@@ -91,6 +100,13 @@ jQuery( function ( $ ) {
 			this.$legendEntries.each( this.convertLegendEntries );
 			this.$legendEntries.on( 'click', event => this.onSelection( event ) );
 			this.applyPersistedSelection();
+		}
+
+		/**
+		 * Remove event handlers.
+		 */
+		deactivate() {
+			this.$legendEntries.off( 'click' );
 		}
 
 		/**
