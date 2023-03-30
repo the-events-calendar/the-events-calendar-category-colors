@@ -233,9 +233,13 @@ jQuery( document ).ready(
 			 * @returns {string}
 			 */
 			getPersistedSelection() {
-				return 'object' === typeof window.sessionStorage
-					? window.sessionStorage.getItem(this.storageKey) + ''
-					: '';
+				// Return empty if session storage is not available.
+				if ('object' !== typeof window.sessionStorage) {
+					return '';
+				}
+
+				const storedSlug = window.sessionStorage.getItem( this.storageKey );
+				return 'string' === typeof( storedSlug ) ? storedSlug : '';
 			}
 		}
 
