@@ -134,7 +134,7 @@ jQuery(
 				const linkSlug        = matches[1];
 				const linkURL         = $link.attr( 'href' );
 				const linkTitle       = $link.html().trim();
-				const replacementText = ` < span > ${linkTitle} < / span > `;
+				const replacementText = `<span>${linkTitle}</span>`;
 
 				// Tidy up - remove unnecessary elements
 				$link.remove();
