@@ -3,7 +3,7 @@
         'name' => 'afragen/the-events-calendar-category-colors',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '08bdeef0ea6c2ad2c002b0899f177d7dbebfc5de',
+        'reference' => '0e0ce89c23eddee65b8fda92bfb5627aa547b83d',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'afragen/the-events-calendar-category-colors' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '08bdeef0ea6c2ad2c002b0899f177d7dbebfc5de',
+            'reference' => '0e0ce89c23eddee65b8fda92bfb5627aa547b83d',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -1,4 +1,6 @@
 #### [unreleased]
+
+#### 7.3.0 / 2023-04-29
 * updates to legend superpowers to maintain selection between time selections
 * dim/undim legend superpowers menu items
 * general code improvement of legend superpowers
