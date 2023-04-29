@@ -5,7 +5,7 @@ Tags: events, color, modern tribe, tribe
 Requires at least: 5.2
 Requires PHP: 7.1
 Tested up to: 6.2
-Stable tag: 7.2.0
+Stable tag: 7.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,12 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar: Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 7.3.0 / 2023-04-29
+* updates to legend superpowers to maintain selection between time selections
+* dim/undim legend superpowers menu items
+* general code improvement of legend superpowers
+* yeah Barry 🙌
 
 #### 7.2.0 / 2023-03-02
 * update `Frontend::show_legend()` to accomodate multiple calendar views on single page
@@ -223,14 +229,3 @@ See [CHANGES.md](CHANGES.md) for complete list of changes.
 Thanks to jonahcoyote for some early help and direction.
 
 Big thanks to Barry Hughes (WebsiteBakery) for refactoring code and Legend Superpowers.
-
-## Upgrade Notice
-
-#### 0.5
-This version integrates more tightly with The Events Calendar plugin putting settings on the same page.
-
-#### 1.6.3
-This is the last version to work with The Events Calendar 2.x
-
-#### 4.0.0
-Requires PHP 5.3 or greater

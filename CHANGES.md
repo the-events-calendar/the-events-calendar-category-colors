@@ -1,5 +1,11 @@
 #### [unreleased]
 
+#### 7.3.0 / 2023-04-29
+* updates to legend superpowers to maintain selection between time selections
+* dim/undim legend superpowers menu items
+* general code improvement of legend superpowers
+* yeah Barry 🙌
+
 #### 7.2.0 / 2023-03-02
 * update `Frontend::show_legend()` to accomodate multiple calendar views on single page
 
