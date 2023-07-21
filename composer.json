@@ -54,6 +54,9 @@
     "scripts": {
         "post-update-cmd": [
             "wp i18n make-pot . languages/the-events-calendar-category-colors.pot"
+        ],
+        "wpcs": [
+            "vendor/bin/phpcbf .; vendor/bin/phpcs ."
         ]
     }
 }
