@@ -4,7 +4,7 @@ Donate link: https://thefragens.com/category-colors-donate
 Tags: events, color, modern tribe, tribe
 Requires at least: 5.2
 Requires PHP: 7.1
-Tested up to: 6.2
+Tested up to: 6.3
 Stable tag: 7.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
