@@ -1,7 +1,7 @@
 # The Events Calendar: Category Colors
-Contributors: afragen, barry.hughes
-Donate link: https://thefragens.com/category-colors-donate
-Tags: events, color, modern tribe, tribe
+Contributors: theeventscalendar, afragen, barry.hughes
+Donate link: https://theeventscalendar.com
+Tags: events, color, calendar, category
 Requires at least: 5.2
 Requires PHP: 7.1
 Tested up to: 6.3
@@ -23,7 +23,7 @@ To force a refresh of your CSS, add `?refresh_css` to the end of your events URL
 
 ### Does the plugin require The Events Calendar plugin?
 
-Yes. [The Events Calendar plugin](http://wordpress.org/plugins/the-events-calendar/) is written by Modern Tribe, Inc. It requires at least The Events Calendar v5.0.
+Yes. [The Events Calendar plugin](http://wordpress.org/plugins/the-events-calendar/) is written by StellarWP. It requires at least The Events Calendar v5.0.
 
 
 ### What if I use a version of The Events Calendar 2.x?
@@ -37,7 +37,7 @@ There is more extensive documentation of the plugins features and usage on the [
 ### Where can I report bugs?
 
 1. Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
-2. Add a new issue on the [github repo](https://github.com/afragen/the-events-calendar-category-colors/issues?state=open).
+2. Add a new issue on the [github repo](https://github.com/the-events-calendar/the-events-calendar-category-colors/issues?state=open).
 
 ## Screenshots
 
