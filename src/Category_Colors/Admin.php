@@ -25,7 +25,7 @@ class Admin {
 	 *
 	 * @var Main
 	 */
-	protected $teccc = null;
+	protected $teccc;
 
 	/**
 	 * Contructor
@@ -122,10 +122,10 @@ class Admin {
 
 			// Sets value when checked.
 			if ( isset( $input[ "{$slug}-border_none" ] ) ) {
-				$input[ "{$slug}-border" ] = null;
+				$input[ "{$slug}-border" ] = '';
 			}
 			if ( isset( $input[ "{$slug}-background_none" ] ) ) {
-				$input[ "{$slug}-background" ] = null;
+				$input[ "{$slug}-background" ] = '';
 			}
 
 			// Sanitize dropdown input (make sure value is one of options allowed).
@@ -239,12 +239,12 @@ class Admin {
 
 			foreach ( $categoryOptions as $optionkey ) {
 				if ( ! isset( $options[ $slug . $optionkey ] ) ) {
-					$options[ $slug . $optionkey ] = null;
+					$options[ $slug . $optionkey ] = '';
 				}
 			}
 
 			if ( ! isset( $options['hide'][ $slug ] ) ) {
-				$options['hide'][ $slug ] = null;
+				$options['hide'][ $slug ] = '';
 			}
 		}
 
@@ -277,7 +277,7 @@ class Admin {
 
 		foreach ( $generalOptions as $optionkey ) {
 			if ( ! isset( $options[ $optionkey ] ) ) {
-				$options[ $optionkey ] = 'add_legend' === $optionkey ? [] : null;
+				$options[ $optionkey ] = 'add_legend' === $optionkey ? [] : '';
 			}
 		}
 

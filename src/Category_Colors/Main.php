@@ -257,8 +257,10 @@ class Main {
 		$ignored_terms = [];
 		if ( ! empty( $ignore_list ) ) {
 			foreach ( $ignore_list as $ignored ) {
-				$name            = ucwords( str_replace( '-', ' ', $ignored ) );
-				$ignored_terms[] = [ $ignored, preg_replace( '/\s/', '&nbsp;', $name ) ];
+				$name = ucwords( str_replace( '-', ' ', $ignored ) );
+				if ( ! empty( $name ) ) {
+					$ignored_terms[] = [ $ignored, preg_replace( '/\s/', '&nbsp;', $name ) ];
+				}
 			}
 		}
 
@@ -403,7 +405,7 @@ class Main {
 	 *
 	 * @return mixed
 	 */
-	public function view( $template, array $vars = null, $render = true ) {
+	public function view( $template, array $vars = [], $render = true ) {
 		$path = locate_template( "tribe-events/teccc/{$template}.php" );
 		if ( empty( $path ) ) {
 			$path = $this->views_dir . "/{$template}.php";
@@ -412,7 +414,7 @@ class Main {
 		if ( ! file_exists( $path ) ) {
 			return false;
 		}
-		if ( null !== $vars ) {
+		if ( ! empty( $vars ) ) {
 			// phpcs:ignore WordPress.PHP.DontExtract.extract_extract
 			extract( $vars, EXTR_OVERWRITE );
 		}

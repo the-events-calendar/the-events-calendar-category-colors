@@ -1,4 +1,5 @@
 #### [unreleased]
+* fixes for PHP 8+ to not pass `null` to functions
 
 #### 7.3.0 / 2023-04-29
 * updates to legend superpowers to maintain selection between time selections
