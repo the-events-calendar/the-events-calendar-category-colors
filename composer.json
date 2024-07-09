@@ -25,12 +25,12 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/afragen/the-events-calendar-category-colors"
+            "url": "https://github.com/the-events-calendar/the-events-calendar-category-colors"
         }
     ],
     "support": {
-        "issues": "https://github.com/afragen/the-events-calendar-category-colors/issues",
-        "source": "https://github.com/afragen/the-events-calendar-category-colors"
+        "issues": "https://github.com/the-events-calendar/the-events-calendar-category-colors/issues",
+        "source": "https://github.com/the-events-calendar/the-events-calendar-category-colors"
     },
     "prefer-stable": true,
     "require": {
