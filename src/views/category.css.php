@@ -83,10 +83,10 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 	<?php V2_Views::add_background_css( $slug, ',' ); ?>
 	<?php Base_CSS::add_background_css( $slug, '' ); ?>
 {
-	<?php if ( isset( $options[ "{$slug}-background" ] ) && null !== $options[ "{$slug}-background" ] ) : ?>
+	<?php if ( isset( $options[ "{$slug}-background" ] ) && ! empty( $options[ "{$slug}-background" ] ) ) : ?>
 		background-color: <?php echo esc_attr( $options[ "{$slug}-background" ] ); ?>;
 	<?php endif ?>
-	<?php if ( isset( $options[ "{$slug}-border" ] ) && null !== $options[ "{$slug}-border" ] ) : ?>
+	<?php if ( isset( $options[ "{$slug}-border" ] ) && ! empty( $options[ "{$slug}-border" ] ) ) : ?>
 		border-left: 5px solid <?php echo esc_attr( $options[ "{$slug}-border" ] ); ?>;
 	<?php endif ?>
 		border-right: 5px solid transparent;
@@ -114,7 +114,7 @@ if ( empty( $teccc->terms ) && ! empty( $options['terms'] ) ) {
 <?php endforeach ?>
 
 <?php
-if ( ! empty( $options['add_legend'] ) && null === $options['custom_legend_css'] ) {
+if ( ! empty( $options['add_legend'] ) && empty( $options['custom_legend_css'] ) ) {
 	$teccc->view( 'legend.css' );
 }
 ?>

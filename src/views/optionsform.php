@@ -41,8 +41,8 @@ $teccc->setup_terms( $options );
 				</label>
 				<?php
 				if ( ! empty( $options['hide'][ $slug ] ) ) {
-					$options[ "{$slug}-border_none" ]     = isset( $options[ "{$slug}-border_none" ] ) ? $options[ "{$slug}-border_none" ] : null;
-					$options[ "{$slug}-background_none" ] = isset( $options[ "{$slug}-background_none" ] ) ? $options[ "{$slug}-background_none" ] : null;
+					$options[ "{$slug}-border_none" ]     = isset( $options[ "{$slug}-border_none" ] ) ? $options[ "{$slug}-border_none" ] : '';
+					$options[ "{$slug}-background_none" ] = isset( $options[ "{$slug}-background_none" ] ) ? $options[ "{$slug}-background_none" ] : '';
 				}
 				?>
 			</td>
@@ -56,7 +56,7 @@ $teccc->setup_terms( $options );
 					</label><br>
 					<?php
 					if ( '1' === $options[ "{$slug}-border_none" ] ) :
-						$options[ "{$slug}-border" ] = null;
+						$options[ "{$slug}-border" ] = '';
 						?>
 					<?php endif ?>
 				</div>
@@ -74,7 +74,7 @@ $teccc->setup_terms( $options );
 					</label><br>
 					<?php
 					if ( '1' === $options[ "{$slug}-background_none" ] ) :
-						$options[ "{$slug}-background" ] = null;
+						$options[ "{$slug}-background" ] = '';
 						?>
 					<?php endif ?>
 				</div>
@@ -95,10 +95,10 @@ $teccc->setup_terms( $options );
 
 			<td>
 				<span style="
-				<?php if ( null !== $options[ "{$slug}-background" ] ) : ?>
+				<?php if ( ! empty( $options[ "{$slug}-background" ] ) ) : ?>
 					background-color: <?php echo esc_attr( $options[ $slug . '-background' ] ); ?>;
 				<?php endif ?>
-				<?php if ( null !== $options[ "{$slug}-border" ] ) : ?>
+				<?php if ( ! empty( $options[ "{$slug}-border" ] ) ) : ?>
 					border-left: 5px solid <?php echo esc_attr( $options[ "{$slug}-border" ] ); ?>;
 				<?php endif ?>
 					border-right: 5px solid transparent;

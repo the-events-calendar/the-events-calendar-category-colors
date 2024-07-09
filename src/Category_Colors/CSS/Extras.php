@@ -161,7 +161,7 @@ class Extras {
 		 * @return string string is returned not echoed.
 		 *                default return string is empty.
 		 */
-		echo wp_kses_post( apply_filters( 'teccc_fix_category_link_color', null, '.tribe-events-category-' . $slug ) );
+		echo wp_kses_post( apply_filters( 'teccc_fix_category_link_color', '', '.tribe-events-category-' . $slug ) );
 	}
 
 	/**
@@ -182,7 +182,7 @@ class Extras {
 		 * @return string string is returned not echoed.
 		 *                default return string is empty.
 		 */
-		echo wp_kses_post( apply_filters( 'teccc_fix_category_background_color', null, '.tribe-events-category-' . $slug ) );
+		echo wp_kses_post( apply_filters( 'teccc_fix_category_background_color', '', '.tribe-events-category-' . $slug ) );
 	}
 
 	/**

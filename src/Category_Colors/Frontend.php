@@ -22,7 +22,7 @@ class Frontend {
 	 *
 	 * @var mixed
 	 */
-	protected $teccc = null;
+	protected $teccc;
 
 	/**
 	 * Variable
@@ -57,7 +57,7 @@ class Frontend {
 	 *
 	 * @var string
 	 */
-	public $currentDisplay = null;
+	public $currentDisplay = '';
 
 	/**
 	 * Constructor
@@ -273,7 +273,7 @@ class Frontend {
 
 		if (
 			! isset( $this->options['add_legend'] )
-			|| null === $this->options['add_legend']
+			|| empty( $this->options['add_legend'] )
 			|| ! in_array( $this->currentDisplay, $this->options['add_legend'], true )
 		) {
 			return false;
@@ -343,7 +343,7 @@ class Frontend {
 		}
 
 		// Remove the hook regardless of whether they are _doing_it_wrong or not (in case of creative usage).
-		$this->legendTargetHook = null;
+		$this->legendTargetHook = '';
 
 		// Indicate if they were doing it wrong (or not).
 		return ! $this->legendFilterHasRun;
