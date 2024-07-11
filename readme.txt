@@ -5,7 +5,7 @@ Tags: events, color, calendar, category
 Requires at least: 5.2
 Requires PHP: 7.1
 Tested up to: 6.6
-Stable tag: 7.3.0
+Stable tag: 7.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,7 +32,7 @@ The last compatible version of this plugin that works with TEC 2.x is [The Event
 
 ### Where can I get more help?
 
-There is more extensive documentation of the plugins features and usage on the [The Events Calendar: Category Colors wiki](https://github.com/afragen/the-events-calendar-category-colors/wiki).
+There is more extensive documentation of the plugins features and usage on the [The Events Calendar: Category Colors wiki](https://github.com/the-events-calendar/the-events-calendar-category-colors/wiki).
 
 ### Where can I report bugs?
 
@@ -46,6 +46,10 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar: Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 7.3.1 / 2024-07-09
+
+* Fix - Resolve problem for PHP 8+, avoid passing pass `null` to string specific functions. (props @afragen) [TECENG-58]
 
 #### 7.3.0 / 2023-04-29
 * updates to legend superpowers to maintain selection between time selections
