@@ -40,7 +40,7 @@ $terms = apply_filters( 'teccc_legend_terms', $teccc->terms );
 			</li>
 		<?php endforeach ?>
 
-		<?php if ( isset( $options['show_ignored_cats_legend'] ) ) : ?>
+		<?php if ( ! empty( $options['show_ignored_cats_legend'] ) ) : ?>
 			<?php foreach ( $teccc->ignored_terms as $ignored_term ) : ?>
 				<?php
 				$slug     = $ignored_term[ Main::SLUG ];
