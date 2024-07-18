@@ -123,7 +123,7 @@ jQuery(
 				}
 
 				// Use the legend's class list to find the category slug.
-				const matches = $this.attr( 'class' ).match( 'tribe_events_cat-([^\S]+)' );
+				const matches = $this.attr( 'class' ).match( 'tribe_events_cat-([^\S]+)' ) || [];
 
 				// If we cannot find the category slug, something is wrong; bail out.
 				if ( matches.length !== 2 ) {
