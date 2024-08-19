@@ -40,12 +40,15 @@ $terms = apply_filters( 'teccc_legend_terms', $teccc->terms );
 			</li>
 		<?php endforeach ?>
 
-		<?php if ( isset( $options['show_ignored_cats_legend'] ) ) : ?>
+		<?php if ( ! empty( $options['show_ignored_cats_legend'] ) ) : ?>
 			<?php foreach ( $teccc->ignored_terms as $ignored_term ) : ?>
 				<?php
 				$slug     = $ignored_term[ Main::SLUG ];
 				$name     = $ignored_term[ Main::NAME ];
 				$link_url = get_term_link( $ignored_term[ Main::SLUG ], Tribe__Events__Main::TAXONOMY );
+				if ( is_wp_error( $link_url ) ) {
+					continue;
+				}
 				?>
 				<li class="teccc-hidden-category">
 					<a href="<?php echo esc_attr( $link_url ); ?>">
