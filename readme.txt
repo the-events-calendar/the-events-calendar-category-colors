@@ -5,7 +5,7 @@ Tags: events, color, calendar, category
 Requires at least: 5.2
 Requires PHP: 7.1
 Tested up to: 6.6
-Stable tag: 7.3.1
+Stable tag: 7.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,10 @@ There is more extensive documentation of the plugins features and usage on the [
 3. The Events Calendar: Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 7.3.2 / 2024-08-20
+
+* Fix - Resolve problems when Hide option not hiding categories on the frontend. (props @afragen) [TEC-5139]
 
 #### 7.3.1 / 2024-07-09
 
