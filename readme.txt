@@ -34,6 +34,14 @@ The last compatible version of this plugin that works with TEC 2.x is [The Event
 
 There is more extensive documentation of the plugins features and usage on the [The Events Calendar: Category Colors wiki](https://github.com/the-events-calendar/the-events-calendar-category-colors/wiki).
 
+### Found a security vulnerability?
+
+Make sure you are reporting in a safe and responsible way. We take security very seriously. If you discover a security issue, please bring it to our attention right away! Below you will find all the methods to report security vulnerabilities:
+
+* [Report security bugs through the Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/the-events-calendar-category-colors)
+* Reach out directly to us on `security [at] stellarwp.com`.
+* Check our [Bug Bounty Program](https://www.liquidweb.com/policies/bug-bounty-program/)
+
 ### Where can I report bugs?
 
 1. Add a new topic on the [WordPress Support Forum](http://wordpress.org/tags/the-events-calendar-category-colors).
