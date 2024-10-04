@@ -15,10 +15,6 @@ $teccc->setup_terms( $options );
 ?>
 <table class="teccc form-table" xmlns="http://www.w3.org/1999/html">
 
-	<style type="text/css">.form-table th {
-			font-size: 12px;
-		}</style>
-
 	<tr>
 		<th style="width:10px;"><strong><?php esc_html_e( 'Hide', 'the-events-calendar-category-colors' ); ?></strong>
 		</th>
@@ -199,16 +195,16 @@ $teccc->setup_terms( $options );
 		<?php esc_html_e( 'For this option you have to show the category legend at least on one view.', 'the-events-calendar-category-colors' ); ?>
 	</div>
 	<div class="teccc_options_col2 legend_related">
-		<input name="teccc_options[reset_show]" type="checkbox" value="1" <?php checked( '1', $options['reset_show'] ); ?> />
-		<label for="teccc_options[reset_show]"><?php esc_html_e( 'Show reset button', 'the-events-calendar-category-colors' ); ?></label>
+		<input id="teccc_options_reset_show" name="teccc_options[reset_show]" type="checkbox" value="1" <?php checked( '1', $options['reset_show'] ); ?> />
+		<label for="teccc_options_reset_show"><?php esc_html_e( 'Show reset button', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<div class="teccc_options_col2 legend_related">
-		<input name="teccc_options[reset_label]" type="text" placeholder="<?php esc_html_e( 'Reset', 'the-events-calendar-category-colors' ); ?>" value="<?php echo esc_attr( $options['reset_label'] ); ?>" />
-		<label for="teccc_options[reset_label]"><?php esc_html_e( 'Reset button label', 'the-events-calendar-category-colors' ); ?></label>
+		<input id="teccc_options_reset_label" name="teccc_options[reset_label]" type="text" placeholder="<?php esc_html_e( 'Reset', 'the-events-calendar-category-colors' ); ?>" value="<?php echo esc_attr( $options['reset_label'] ); ?>" />
+		<label for="teccc_options_reset_label"><?php esc_html_e( 'Reset button label', 'the-events-calendar-category-colors' ); ?></label>
 	</div>
 	<div class="teccc_options_col2 legend_related">
-		<input name="teccc_options[reset_url]" type="text" placeholder="<?php echo esc_attr( tribe_get_events_link() ); ?>" value="<?php echo esc_attr( $options['reset_url'] ); ?>" />
-		<label for="teccc_options[reset_url]"><?php esc_html_e( 'Reset button URL', 'the-events-calendar-category-colors' ); ?></label>
+		<input id="teccc_options_reset_url" name="teccc_options[reset_url]" type="text" placeholder="<?php echo esc_attr( tribe_get_events_link() ); ?>" value="<?php echo esc_attr( $options['reset_url'] ); ?>" />
+		<label for="teccc_options_reset_url"><?php esc_html_e( 'Reset button URL', 'the-events-calendar-category-colors' ); ?></label>
 		<p><?php esc_html_e( 'By default the reset button will point to the default calendar URL.', 'the-events-calendar-category-colors' ); ?></p>
 	</div>
 	</div>
