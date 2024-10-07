@@ -4,7 +4,7 @@
  *
  * @author   Andy Fragen
  * @license  MIT
- * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
  * @package  the-events-calendar-category-colors
  */
 
@@ -327,9 +327,9 @@ class Main {
 	}
 
 	/**
-	 * Removes terms on the ignore list from the list of terms recognised by the plugin.
+	 * Removes terms on the ignore list from the list of terms recognized by the plugin.
 	 *
-	 * @param arrat $term_list Array of terms.
+	 * @param array $term_list Array of terms.
 	 *
 	 * @return array
 	 */
@@ -442,8 +442,8 @@ class Main {
 			delete_option( 'teccc_options' );
 			for ( $i = 0; $i < $teccc->count; $i++ ) {
 				$arr[ $teccc->slugs[ $i ] . '-text' ]       = '#000';
-				$arr[ $teccc->slugs[ $i ] . '-background' ] = '#CFCFCF';
-				$arr[ $teccc->slugs[ $i ] . '-border' ]     = '#CFCFCF';
+				$arr[ $teccc->slugs[ $i ] . '-background' ] = '#cfcfcf';
+				$arr[ $teccc->slugs[ $i ] . '-border' ]     = '#cfcfcf';
 			}
 			$arr['font_weight']    = 'bold';
 			$arr['featured-event'] = '#0ea0d7';

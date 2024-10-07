@@ -4,16 +4,18 @@
  *
  * @author   Andy Fragen
  * @license  MIT
- * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
  * @package  the-events-calendar-category-colors
  */
 
 namespace Fragen\Category_Colors;
 
+_deprecated_file( __FILE__, 'TBD', 'the-events-calendar-category-colors' );
+
 $teccc->setup_terms( $options );
 
 ?>
-<table class="teccc form-table" xmlns="http://www.w3.org/1999/html">
+<table class="teccc form-table tec-settings-form__content-section" xmlns="http://www.w3.org/1999/html">
 
 	<tr>
 		<th style="width:10px;"><strong><?php esc_html_e( 'Hide', 'the-events-calendar-category-colors' ); ?></strong>
@@ -37,8 +39,8 @@ $teccc->setup_terms( $options );
 				</label>
 				<?php
 				if ( ! empty( $options['hide'][ $slug ] ) ) {
-					$options[ "{$slug}-border_none" ]     = isset( $options[ "{$slug}-border_none" ] ) ? $options[ "{$slug}-border_none" ] : '';
-					$options[ "{$slug}-background_none" ] = isset( $options[ "{$slug}-background_none" ] ) ? $options[ "{$slug}-background_none" ] : '';
+					$options[ "{$slug}-border_none" ]     = $options[ "{$slug}-border_none" ] ?? '';
+					$options[ "{$slug}-background_none" ] = $options[ "{$slug}-background_none" ] ?? '';
 				}
 				?>
 			</td>
@@ -56,7 +58,7 @@ $teccc->setup_terms( $options );
 						?>
 					<?php endif ?>
 				</div>
-				<div class="colorselector">
+				<div class="color-selector">
 					<label>
 						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo esc_attr( $slug ); ?>-border]" value="<?php echo esc_attr( $options[ "{$slug}-border" ] ); ?>" />
 					</label>
@@ -74,7 +76,7 @@ $teccc->setup_terms( $options );
 						?>
 					<?php endif ?>
 				</div>
-				<div class="colorselector">
+				<div class="color-selector">
 					<label>
 						<input class="teccc-color-picker" type="text" name="teccc_options[<?php echo esc_attr( $slug ); ?>-background]" value="<?php echo esc_attr( $options[ "{$slug}-background" ] ); ?>" />
 					</label>
@@ -88,21 +90,28 @@ $teccc->setup_terms( $options );
 						<?php endforeach ?>
 					</select> </label>
 			</td>
+			<?php
+				$style = '';
+				if ( ! empty( $options[ "{$slug}-background" ] ) ) :
+					$option = $options[ "{$slug}-background" ];
+					$style .= "background-color: {$option};";
+				endif;
 
+				if ( ! empty( $options[ "{$slug}-border" ] ) ) :
+					$option = $options[ "{$slug}-border" ];
+					$style .= "border-left: 5px solid {$option};";
+				endif;
+
+				if ( 'no_color' !== $options[ "{$slug}-text" ] ) :
+					$option = $options[ "{$slug}-text" ];
+					$style .= "color: {$option};";
+				endif;
+
+				$option = $options[ 'font_weight' ];
+				$style .= "border-right: 5px solid transparent; font-weight: {$option}; padding: 0.5em 1em;"
+			?>
 			<td>
-				<span style="
-				<?php if ( ! empty( $options[ "{$slug}-background" ] ) ) : ?>
-					background-color: <?php echo esc_attr( $options[ $slug . '-background' ] ); ?>;
-				<?php endif ?>
-				<?php if ( ! empty( $options[ "{$slug}-border" ] ) ) : ?>
-					border-left: 5px solid <?php echo esc_attr( $options[ "{$slug}-border" ] ); ?>;
-				<?php endif ?>
-					border-right: 5px solid transparent;
-				<?php if ( 'no_color' !== $options[ "{$slug}-text" ] ) : ?>
-					color:<?php echo esc_attr( $options[ "{$slug}-text" ] ); ?>;
-				<?php endif ?>
-					padding: 0.5em 1em;
-					font-weight: <?php echo esc_attr( $options['font_weight'] ); ?>;">
+				<span style="<?php echo esc_attr( $style ); ?>">
 					<?php echo esc_html( $name ); ?>
 				</span>
 			</td>
@@ -124,7 +133,7 @@ $teccc->setup_terms( $options );
 					?>
 				<?php endif ?>
 			</div>
-			<div class="colorselector">
+			<div class="color-selector">
 				<label>
 					<input class="teccc-color-picker" type="text" name="teccc_options[featured-event]" value="<?php echo esc_attr( $options['featured-event'] ); ?>" />
 				</label>

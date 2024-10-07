@@ -1,11 +1,10 @@
 # The Events Calendar: Category Colors
 Contributors: theeventscalendar, afragen, barry.hughes
-Donate link: https://theeventscalendar.com
 Tags: events, color, calendar, category
-Requires at least: 5.2
-Requires PHP: 7.1
+Requires at least: 6.3
+Requires PHP: 7.4
 Tested up to: 6.6
-Stable tag: 7.3.2
+Stable tag: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +54,10 @@ Make sure you are reporting in a safe and responsible way. We take security very
 
 ## Changelog
 
+#### 7.4.0 / 2024-10-07
+
+* Version -
+
 #### 7.3.2 / 2024-08-20
 
 * Fix - Resolve problems when Hide option not hiding categories on the frontend. (props @afragen) [TEC-5139]
@@ -70,7 +73,7 @@ Make sure you are reporting in a safe and responsible way. We take security very
 * yeah Barry 🙌
 
 #### 7.2.0 / 2023-03-02
-* update `Frontend::show_legend()` to accomodate multiple calendar views on single page
+* update `Frontend::show_legend()` to accommodate multiple calendar views on single page
 
 #### 7.1.2 / 2023-01-27
 * TEC converted `$view->get_slug()` to `$view::get_view_slug()` in https://github.com/the-events-calendar/the-events-calendar/pull/4091
@@ -81,7 +84,7 @@ Make sure you are reporting in a safe and responsible way. We take security very
 
 #### 7.1.0 / 2022-10-12
 * rename title to correspond to The Events Calendar standard
-* retructure CSS additions to not end with comma, added in `category.css.php`
+* restructure CSS additions to not end with comma, added in `category.css.php`
 * fix empty spacer classes to be transparent
 * add CSS for TEC/ECP 6.0 feature events
 
@@ -126,7 +129,7 @@ Make sure you are reporting in a safe and responsible way. We take security very
 
 #### 6.6.0 / 2021-07-07
 * add @10up GitHub Actions for WordPress SVN integration
-* **Reset** button added to legend in settings, navigate back to main calendar, thanks @andrasgueso
+* **Reset** button added to legend in settings, navigate back to main calendar, thanks @andrasguseo
 
 #### 6.5.0 / 2021-05-16
 * updated to fix CSS url if running on non-standard port
@@ -165,7 +168,7 @@ Make sure you are reporting in a safe and responsible way. We take security very
 * now strip CSS URL scheme to avoid mixed media errors from server
 
 #### 6.4.1 - 6.4.3 / 2020-01-28
-* test explicity for `$template instanceof \Tribe\Events\Views\V2\Template`, fixes bug when also using Events Tickets
+* test explicitly for `$template instanceof \Tribe\Events\Views\V2\Template`, fixes bug when also using Events Tickets
 * fix Superpowers JS error, `ReferenceError: Can't find variable: tribe` and `views`
 
 #### 6.4.0 / 2020-01-27
@@ -210,7 +213,7 @@ Make sure you are reporting in a safe and responsible way. We take security very
 * refactor setup of ignored terms and term data
 * add `border-right` to featured events
 * updated validation code upon saving options
-* use `wp_upload_url()` to for stylesheet to accomodate user directory preferences
+* use `wp_upload_url()` to for stylesheet to accommodate user directory preferences
 * set SSL corrected URLs for `wp_upload_url()`, <https://core.trac.wordpress.org/ticket/25449>
 
 #### 5.2.2 / 2018-07-28

@@ -4,7 +4,7 @@
  *
  * @author   Andy Fragen
  * @license  MIT
- * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
  * @package  the-events-calendar-category-colors
  */
 
@@ -13,48 +13,38 @@
  */
 namespace Fragen\Category_Colors;
 
-return [
+use Fragen\Category_Colors\Settings as Settings;
+
+$settings = [
 	'priority'      => 40,
-	'show_save'     => false,
-	'parent_option' => 'teccc_options',
 	'fields'        => [
-		'info-start'         => [
+		'tec-settings-category-colors-title' => [
 			'type' => 'html',
-			'html' => '<div id="modern-tribe-info">',
+			'html' => '<div class="tec-settings-form__header-block tec-settings-form__header-block--horizontal">'
+					. '<h3 id="tec-settings-category-colors-title" class="tec-settings-form__section-header">'
+					. _x( 'Category Colors Settings', 'Title for the category colors tab.', 'the-events-calendar-category-colors' )
+					. '</h3>'
+					. '<p>' . sprintf(
+						wp_kses_post(
+							__( 'The Events Calendar: Category Colors plugin was inspired by the tutorial <i>Coloring Your Category Events</i>.', 'the-events-calendar-category-colors' )
+						)
+					) . '</p>'
+					.'<p>' . sprintf(
+						wp_kses_post( __( 'Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</strong>, and <strong>help</strong> are on <a href="https://github.com/the-events-calendar/the-events-calendar-category-colors/wiki">The Events Calendar: Category Colors wiki</a>.', 'the-events-calendar-category-colors' ) )
+					) . '</p>'
+					. '</div>',
 		],
-		'title'              => [
-			'type' => 'html',
-			'html' => '<h2>' . esc_html__( 'Category Colors Settings', 'the-events-calendar-category-colors' ) . '</h2>',
-		],
-		'blurb'              => [
-			'type' => 'html',
-			'html' => '<p>' . sprintf(
-				wp_kses_post(
-					__( 'The Events Calendar: Category Colors plugin was inspired by the tutorial <i>Coloring Your Category Events</i>.', 'the-events-calendar-category-colors' )
-				)
-			) . '</p>',
-		],
-		'legend'             => [
-			'type' => 'html',
-			'html' => '<p>' . sprintf(
-				wp_kses_post( __( 'Instructions for <strong>filters</strong>, <strong>hooks</strong>, <strong>settings functions</strong>, and <strong>help</strong> are on <a href="https://github.com/afragen/the-events-calendar-category-colors/wiki">The Events Calendar: Category Colors wiki</a>.', 'the-events-calendar-category-colors' ) )
-			) . '</p>',
-		],
-		'info-end'           => [
-			'type' => 'html',
-			'html' => '</div>',
-		],
-		'form-elements'      => [
-			'type' => 'html',
-			'html' => Admin::options_elements(),
-		],
-		'minicolors-console' => [
-			'type' => 'html',
-			'html' => '<div id="console"></div>',
-		],
-		'save-button'        => [
-			'type' => 'html',
-			'html' => '<p class="submit"><input type="submit" class="button-primary" value="' . esc_html__( 'Save Changes', 'the-events-calendar-category-colors' ) . '" /></p>',
-		],
+
 	],
 ];
+
+$settings_obj       = new Settings();
+$settings_fields    = $settings_obj->do_settings();
+$settings['fields'] = array_merge( $settings['fields'], $settings_fields );
+
+$settings['fields']['minicolors-console'] = [
+	'type' => 'html',
+	'html' => '<div id="console"></div>',
+];
+
+return $settings;

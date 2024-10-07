@@ -21,6 +21,21 @@
 	margin-left: 1em;
 }
 
+table.teccc.form-table {
+	margin: 0;
+}
+
 table.teccc.form-table td {
-	vertical-align: top;
+	vertical-align: text-top;
+}
+
+table.teccc.form-table th {
+	font-weight: var(--tec-font-weight-bold);
+	font-size: var(--tec-font-size-1);
+}
+
+@media screen and (min-width: 1024px) {
+	table.teccc.form-table {
+		margin-left: var(--tec-spacer-7);
+	}
 }

@@ -4,7 +4,7 @@
  *
  * @author   Andy Fragen
  * @license  MIT
- * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
  * @package  the-events-calendar-category-colors
  */
 
@@ -309,6 +309,8 @@ class Frontend {
 	 * @return bool
 	 */
 	public function reposition_legend( $tribeViewFilter ) {
+		_deprecated_function( __FUNCTION__, '6.8.4.3' );
+
 		// If the legend has already run they are probably doing something wrong.
 		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong(
@@ -333,6 +335,8 @@ class Frontend {
 	 * @return bool
 	 */
 	public function remove_default_legend() {
+		_deprecated_function( __FUNCTION__, '6.8.4.3' );
+
 		// If the legend has already run they are probably doing something wrong.
 		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong(

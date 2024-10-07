@@ -4,7 +4,7 @@
  *
  * @author   Andy Fragen
  * @license  MIT
- * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
  * @package  the-events-calendar-category-colors
  */
 
@@ -12,6 +12,7 @@ namespace Fragen\Category_Colors;
 
 use Tribe__Events__Main;
 use Tribe__Settings_Tab;
+use Tribe\Events\Admin\Settings;
 
 /**
  * Class Admin
@@ -28,7 +29,7 @@ class Admin {
 	protected $teccc;
 
 	/**
-	 * Contructor
+	 * Constructor
 	 *
 	 * @param Main $teccc Class Main.
 	 */
@@ -45,7 +46,7 @@ class Admin {
 	public function load_hooks() {
 		add_action( 'admin_init', [ $this, 'register_setting' ] );
 		add_action( 'admin_notices', [ $this, 'plugin_fail_msg' ] );
-		add_action( 'tribe_settings_below_tabs_tab_category-colors', [ $this, 'is_saved' ] );
+		//add_action( 'tribe_settings_below_tabs_tab_category-colors', [ $this, 'is_saved' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'load_teccc_js_css' ] );
 	}
 
@@ -55,7 +56,7 @@ class Admin {
 	 * @return void
 	 */
 	public function register_setting() {
-		register_setting( 'teccc_category_colors', 'teccc_options', [ $this, 'validate_options' ] );
+		register_setting( 'teccc_category_colors', 'teccc_options' );
 	}
 
 	/**
@@ -160,18 +161,29 @@ class Admin {
 	 * @return void
 	 */
 	public function add_category_colors_tab() {
-		$categoryColorsTab = $this->teccc->load_config( 'admintab' );
-		add_action( 'tribe_settings_form_element_tab_category-colors', [ $this, 'form_header' ] );
+		// Only load on event settings, not ticket settings.
+		if ( ! tribe( Settings::class )->is_tec_events_settings() ) {
+			return;
+		}
+
+		// add_action( 'tribe_settings_form_element_tab_category-colors', [ $this, 'form_header' ] );
 		add_action( 'tribe_settings_before_content_tab_category-colors', [ $this, 'settings_fields' ] );
-		new Tribe__Settings_Tab( self::TAB_NAME, esc_html__( 'Category Colors', 'the-events-calendar-category-colors' ), $categoryColorsTab );
+
+		new Tribe__Settings_Tab(
+			self::TAB_NAME,
+			esc_html__( 'Category Colors', 'the-events-calendar-category-colors' ),
+			$this->teccc->load_config( 'admintab' )
+		);
 	}
 
 	/**
 	 * Form header
 	 *
+	 * @deprecated TBD
 	 * @return void
 	 */
 	public function form_header() {
+		_deprecated_function( __METHOD__, 'TBD', 'Now uses the settings form.' );
 		echo '<form method="post" action="options.php">';
 	}
 
@@ -186,8 +198,11 @@ class Admin {
 
 	/**
 	 * Display 'saved' notice
+	 *
+	 * @deprecated TBD
 	 */
 	public function is_saved() {
+		_deprecated_function( __METHOD__, 'TBD', "Now uses the settings form's built-in message." );
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_GET['settings-updated'] ) && sanitize_key( wp_unslash( $_GET['settings-updated'] ) ) ) {
 			$message = esc_html__( 'Settings saved.', 'the-events-calendar-category-colors' );
@@ -199,9 +214,13 @@ class Admin {
 	/**
 	 * Options elements
 	 *
+	 * @deprecated TBD
+	 *
 	 * @return string
 	 */
 	public static function options_elements() {
+		_deprecated_function( __METHOD__, 'TBD', 'Now uses the settings form API.' );
+
 		$teccc = Main::instance();
 
 		$content = $teccc->view(

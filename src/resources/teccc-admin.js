@@ -60,7 +60,7 @@ jQuery( document ).ready(
 		 * too).
 		 */
 		function toggleColorControls() {
-			let colorSelector = $( this ).parents( "td" ).find( ".colorselector" );
+			let colorSelector = $( this ).parents( "td" ).find( ".color-selector" );
 
 			if ($( this ).prop( "checked" )) {
 				$( colorSelector ).slideUp();

@@ -1,12 +1,11 @@
 # The Events Calendar: Category Colors
 
 * Contributors: theeventscalendar, afragen, barry.hughes
-* Donate link: <https://thefragens.com/category-colors-donate>
 * Tags: events, color, calendar, category
 * License: GPLv2 or later
 * License URI: <https://www.gnu.org/licenses/gpl-2.0.html>
-* Requires at least: 5.2
-* Requires PHP: 7.1
+* Requires at least: 6.3
+* Requires PHP: 7.4
 
 Add event category background colors to The Events Calendar events.
 
