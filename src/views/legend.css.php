@@ -9,7 +9,6 @@
  */
 
 ?>
-<style>
 	#legend_box
 	{
 		font: bold 10px/4em sans-serif;
@@ -34,4 +33,3 @@
 	{
 		line-height: 1.4px;
 	}
-</style>

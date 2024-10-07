@@ -279,8 +279,6 @@ class Frontend {
 			return false;
 		}
 
-		error_log( 'adding legend to view: ' . $this->currentDisplay );
-
 		$content = $this->teccc->view(
 			'legend',
 			[
