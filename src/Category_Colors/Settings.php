@@ -7,6 +7,8 @@
 
 namespace Fragen\Category_Colors;
 
+use Tribe\Events\Views\V2\Manager;
+
 /**
  * Settings class.
  *
@@ -79,21 +81,33 @@ class Settings {
 		];
 
 
-		foreach ( (array) $this->teccc->all_terms as $option ) {
-			$this->do_color_settings_row( $option );
+		foreach ( (array) $this->teccc->all_terms as $term ) {
+			$this->do_color_settings_row( $term );
 		}
+
+		$this->do_featured_event_row();
 
 		$this->teccc_settings['tec_category_colors_table_end'] = [
 			'type' => 'html',
 			'html' => '</table>',
 		];
 
+		$this->do_additional_options();
+
 		return $this->teccc_settings;
 	}
 
-	private function do_color_settings_row( $option ) {
-		$slug = $option[ Main::SLUG ];
-		$name = $option[ Main::NAME ];
+	/**
+	 * Output a color settings row.
+	 *
+	 * @since TBD
+	 *
+	 * @param [type] $option
+	 * @return void
+	 */
+	private function do_color_settings_row( $term ) {
+		$slug = $term[ Main::SLUG ];
+		$name = $term[ Main::NAME ];
 
 		$this->teccc_settings[ "{$slug}_row_start" ] = [
 			'type' => 'html',
@@ -120,10 +134,28 @@ class Settings {
 		return $this->teccc_settings;
 	}
 
-	private function generate_field_name( $slug, $field ) {
-		return esc_attr($slug) . '-' . esc_attr($field);
+	/**
+	 * Generate a field name.
+	 *
+	 * @since TBD
+	 *
+	 * @param string $slug  The category slug.
+	 * @param string $field The field name.
+	 */
+	private function generate_field_name( $slug, $field ): string {
+		return esc_attr( $slug ) . '-' . esc_attr( $field );
 	}
 
+	/**
+	 * Output the "hide" cell.
+	 *
+	 * @since TBD
+	 *
+	 * @param string $slug  The category slug.
+	 * @param string $field The field name.
+	 *
+	 * @return void
+	 */
 	private function do_hide_cell( $slug, $name ) {
 
 		$this->teccc_settings[ $this->generate_field_name( $slug, 'hide_cell_start' ) ] = [
@@ -131,7 +163,7 @@ class Settings {
 			'html' => '<td>',
 		];
 
-		$this->teccc_settings[ $this->generate_field_name( $slug, 'hide' ) ] = [
+		$this->teccc_settings[ "hide[{$slug}]" ] = [
 			'type'            => 'checkbox_bool',
 			'default'         => false,
 			'validation_type' => 'boolean',
@@ -162,6 +194,14 @@ class Settings {
 		}
 	}
 
+	/**
+	 * Output the slug display cell.
+	 *
+	 * @since TBD
+	 *
+	 * @param string $slug  The category slug.
+	 * @return void
+	 */
 	private function do_slug_cell( $slug ) {
 		$this->teccc_settings[ "{$slug}_slug_cell" ] = [
 			'type' => 'html',
@@ -169,6 +209,16 @@ class Settings {
 		];
 	}
 
+	/**
+	 * Output the border color cell.
+	 *
+	 * @since TBD
+	 *
+	 * @param string $slug  The category slug.
+	 * @param string $name  The category name.
+	 *
+	 * @return void
+	 */
 	private function do_border_cell(  $slug, $name ) {
 		$this->teccc_settings[ "{$slug}_border_cell_start" ] = [
 			'type' => 'html',
@@ -179,7 +229,8 @@ class Settings {
 
 		$this->teccc_settings[  $this->generate_field_name( $slug, 'border_none' ) ] = [
 			'type'            => 'checkbox_bool',
-			'label'           => esc_html__( 'No Border', 'the-events-calendar-category-colors' ),
+			'label'           => '',
+			'tooltip'         => esc_html__( 'No Border', 'the-events-calendar-category-colors' ),
 			'default'         => false,
 			'validation_type' => 'boolean',
 			'parent_option'   => 'teccc_options',
@@ -188,7 +239,8 @@ class Settings {
 
 		$this->teccc_settings[ $this->generate_field_name( $slug, 'border' ) ] = [
 			'type'                => 'text',
-			'label'               => esc_html__( 'Border Color', 'the-events-calendar-category-colors' ),
+			'label'               => '',
+			'tooltip'             => esc_html__( 'Border Color', 'the-events-calendar-category-colors' ),
 			'class'               => 'color-selector',
 			'attributes'          => [ 'id' => $this->generate_field_name( $slug, 'border' ), 'class' => 'teccc-color-picker' ],
 			'validation_type'     => 'color',
@@ -202,6 +254,16 @@ class Settings {
 		];
 	}
 
+	/**
+	 * Output the background color cell.
+	 *
+	 * @since TBD
+	 *
+	 * @param string $slug  The category slug.
+	 * @param string $name  The category name.
+	 *
+	 * @return void
+	 */
 	private function do_background_cell(  $slug, $name ) {
 		$this->teccc_settings[ "{$slug}_background_cell_start" ] = [
 			'type' => 'html',
@@ -212,7 +274,8 @@ class Settings {
 
 		$this->teccc_settings[  $this->generate_field_name( $slug, 'background_none' ) ] = [
 			'type'            => 'checkbox_bool',
-			'label'           => esc_html__( 'No Background', 'the-events-calendar-category-colors' ),
+			'label'           => '',
+			'tooltip'         => esc_html__( 'No Background', 'the-events-calendar-category-colors' ),
 			'default'         => false,
 			'validation_type' => 'boolean',
 			'parent_option'   => 'teccc_options',
@@ -221,17 +284,13 @@ class Settings {
 
 		$this->teccc_settings[ $this->generate_field_name( $slug, 'background' ) ] = [
 			'type'                => 'text',
-			'label'               => esc_html__( 'Background Color', 'the-events-calendar-category-colors' ),
+			'label'               => '',
+			'tooltip'             => esc_html__( 'Background Color', 'the-events-calendar-category-colors' ),
 			'class'               => 'color-selector',
 			'validation_type'     => 'color',
 			'attributes'          => [ 'id' => $this->generate_field_name( $slug, 'background' ), 'class' => 'teccc-color-picker' ],
 			'can_be_empty'        => true,
 			'parent_option'       => 'teccc_options',
-		];
-
-		$this->teccc_settings[ $this->generate_field_name( $slug, 'background-color-selector' ) ] = [
-			'type' => 'html',
-			'html' => '<div class=""></div>',
 		];
 
 		$this->teccc_settings[ "{$slug}_background_cell_end" ] = [
@@ -240,6 +299,16 @@ class Settings {
 		];
 	}
 
+	/**
+	 * Output the text color cell.
+	 *
+	 * @since TBD
+	 *
+	 * @param string $slug  The category slug.
+	 * @param string $name  The category name.
+	 *
+	 * @return void
+	 */
 	private function do_text_cell(  $slug, $name ) {
 		$this->teccc_settings[ "{$slug}_text_cell_start" ] = [
 			'type' => 'html',
@@ -253,6 +322,7 @@ class Settings {
 			'options'         => array_flip( $this->teccc->text_colors ),
 			'default'         => 'no_color',
 			'validation_type' => 'options',
+			'size'            => 'small',
 			'parent_option'   => 'teccc_options',
 			'can_be_empty'    => true,
 		];
@@ -263,6 +333,16 @@ class Settings {
 		];
 	}
 
+	/**
+	 * Output the current display cell. This is a live demo of the row settings.
+	 *
+	 * @since TBD
+	 *
+	 * @param string $slug  The category slug.
+	 * @param string $name  The category name.
+	 *
+	 * @return void
+	 */
 	private function do_current_display_cell(  $slug, $name ) {
 		$style  = '';
 
@@ -291,109 +371,182 @@ class Settings {
 			'html' => '<td>' . esc_html( $name ) . '</td>',
 		];
 	}
+
+	/**
+	 * Output the featured event row.
+	 *
+	 * @since TBD
+	 *
+	 * @return void
+	 */
+	private function do_featured_event_row() {
+		$this->teccc_settings[ 'featured_event_row_start' ] = [
+			'type' => 'html',
+			'html' => '<tr>',
+		];
+
+		$this->teccc_settings[ 'featured_event_cell_start' ] = [
+			'type' => 'html',
+			'html' => '<td colspan="2">',
+		];
+
+		$this->teccc_settings[ 'featured_event_label' ] = [
+			'type' => 'html',
+			'html' => '<div>' . esc_html__( 'Featured Event Color', 'the-events-calendar-category-colors' ) . '</div>',
+		];
+
+		$this->teccc_settings[ 'featured_event_cell_end' ] = [
+			'type' => 'html',
+			'html' => '</td>',
+		];
+
+		$this->teccc_settings[ 'featured_event_color_control_start' ] = [
+			'type' => 'html',
+			'html' => '<td class="color-control" colspan="2">',
+		];
+
+		$featured_border_field_id = sanitize_title( 'featured-event_none' );
+
+		$this->teccc_settings[  'featured-event_none' ] = [
+			'type'            => 'checkbox_bool',
+			'label'           => '',//
+			'tooltip'         => esc_html__( 'Transparent', 'the-events-calendar-category-colors' ),
+			'default'         => false,
+			'validation_type' => 'boolean',
+			'parent_option'   => 'teccc_options',
+			'attributes'      => [ 'id' => $featured_border_field_id ],
+		];
+
+		$this->teccc_settings[ 'featured-event' ] = [
+			'type'                => 'text',
+			'label'               => '',
+			'class'               => 'color-selector',
+			'attributes'          => [ 'id' => 'featured-event', 'class' => 'teccc-color-picker' ],
+			'validation_type'     => 'color',
+			'parent_option'       => 'teccc_options',
+			'tooltip'             => esc_html__( 'Add right border for featured events.', 'the-events-calendar-category-colors' ),
+			'can_be_empty'        => true,
+		];
+
+		$this->teccc_settings[ 'featured_event_color_control_end' ] = [
+			'type' => 'html',
+			'html' => '</td>',
+		];
+	}
+
+	/**
+	 * Output the additional options.
+	 *
+	 * @since TBD
+	 *
+	 * @return void
+	 */
+	private function do_additional_options() {
+		$this->teccc_settings['additional_options_title'] = [
+		'type' => 'html',
+		'html' => '<h3 id="teccc-settings-additional-options" class="tec-settings-form__section-header">' . esc_html_x( 'Additional Options', 'Additional options settings section header', 'the-events-calendar-category-colors' ) . '</h3>',
+		];
+
+		$this->teccc_settings['font_weight'] = [
+			'type'            => 'dropdown',
+			'label'           => __( 'Font-Weight Options', 'the-events-calendar-category-colors' ),
+			'tooltip'         => __( 'Choose the font weight for the category legend.', 'the-events-calendar-category-colors' ),
+			'options'         => $this->teccc->font_weights,
+			'attributes'      => [ 'id' => 'teccc_font_weight' ],
+			'parent_option'   => 'teccc_options',
+		];
+
+		$this->teccc_settings['add_legend'] = [
+			'type'          => 'checkbox_list',
+			'label'         => __( 'Show Category Legend', 'the-events-calendar-category-colors' ),
+			'tooltip'       => __( 'Choose where to show the category legend.', 'the-events-calendar-category-colors' ),
+			'parent_option' => 'teccc_options',
+			'options'       => array_map(
+				static function ( $view ) {
+					return tribe( Manager::class )->get_view_label_by_class( $view );
+				},
+				tribe( Manager::class )->get_publicly_visible_views( false )
+			),
+		];
+
+		$this->teccc_settings['reset_options_title'] = [
+			'type' => 'html',
+			'html' => '<h3 id="teccc-settings-additional-options" class="tec-settings-form__section-header">' . esc_html_x( 'Reset Options', 'Reset options settings section header', 'the-events-calendar-category-colors' ) . '</h3>',
+		];
+
+		$this->teccc_settings['reset_show'] = [
+			'type'            => 'checkbox_bool',
+			'label'           => __( 'Show Reset Button', 'the-events-calendar-category-colors' ),
+			'default'         => false,
+			'validation_type' => 'boolean',
+			'parent_option'   => 'teccc_options',
+		];
+
+		$this->teccc_settings['reset_label'] = [
+			'type'            => 'text',
+			'label'           => __( 'Reset Button Label', 'the-events-calendar-category-colors' ),
+			'parent_option'   => 'teccc_options',
+
+		];
+
+		$this->teccc_settings['reset_url'] = [
+			'type'            => 'text',
+			'label'           => __( 'Reset Button URL', 'the-events-calendar-category-colors' ),
+			'tooltip'         => __( 'By default the reset button will point to the default calendar URL.', 'the-events-calendar-category-colors' ),
+			'placeholder'     => tribe_get_events_link(),
+			'parent_option'   => 'teccc_options',
+		];
+
+		$this->teccc_settings['legend_superpowers_options_title'] = [
+			'type' => 'html',
+			'html' => '<h3 id="teccc-settings-legend-superpowers-options" class="tec-settings-form__section-header">' . esc_html_x( 'Legend Superpowers', 'Legend Superpowers settings section header', 'the-events-calendar-category-colors' ) . '</h3>',
+			];
+
+		$this->teccc_settings['legend_superpowers'] = [
+			'type'            => 'checkbox_bool',
+			'label'           => __( 'Legend Superpowers', 'the-events-calendar-category-colors' ),
+			'default'         => false,
+			'validation_type' => 'boolean',
+			'parent_option'   => 'teccc_options',
+		];
+
+		$this->teccc_settings['show_ignored_cats_legend'] = [
+			'type'            => 'checkbox_bool',
+			'label'           => __( 'Show hidden categories in legend', 'the-events-calendar-category-colors' ),
+			'default'         => false,
+			'validation_type' => 'boolean',
+			'parent_option'   => 'teccc_options',
+		];
+
+		$this->teccc_settings['custom_legend_css'] = [
+			'type'            => 'checkbox_bool',
+			'label'           => __( 'Check to use your own CSS for category legend', 'the-events-calendar-category-colors' ),
+			'default'         => false,
+			'validation_type' => 'boolean',
+			'parent_option'   => 'teccc_options',
+		];
+
+		$this->teccc_settings['database_options_title'] = [
+			'type' => 'html',
+			'html' => '<h3 id="teccc-settings-database-options" class="tec-settings-form__section-header">' . esc_html_x( 'Database Options', 'Database options settings section header', 'the-events-calendar-category-colors' ) . '</h3>',
+		];
+
+		$this->teccc_settings['chk_default_options_db'] = [
+			'type'            => 'checkbox_bool',
+			'label'           => __( 'Restore defaults upon plugin deactivation/reactivation', 'the-events-calendar-category-colors' ),
+			'tooltip'         => __( 'Only check this if you want to reset plugin settings upon Plugin reactivation!', 'the-events-calendar-category-colors' ),
+			'default'         => false,
+			'validation_type' => 'boolean',
+			'parent_option'   => 'teccc_options',
+		];
+	}
 }
 
 /*
 
-			<tr>
-				<td  colspan="2">
-					<div><?php esc_html_e( 'Featured Event Color', 'the-events-calendar-category-colors' ); ?></div>
-				</td>
-				<td class="color-control">
-					<div class="transparency">
-						<label>
-							<input name="teccc_options[featured-event_none]" type="checkbox" value="1" <?php checked( '1', $options['featured-event_none'] ); ?> /> <?php esc_html_e( 'Transparent', 'the-events-calendar-category-colors' ); ?>
-						</label><br>
-						<?php
-						if ( '1' === $options['featured-event_none'] ) :
-							$options['featured-event'] = 'transparent';
-							?>
-						<?php endif ?>
-					</div>
-					<div class="color-selector">
-						<label>
-							<input class="teccc-color-picker" type="text" name="teccc_options[featured-event]" value="<?php echo esc_attr( $options['featured-event'] ); ?>" />
-						</label>
-					</div>
-				</td>
-				<td colspan="2">
-					<p><?php esc_html_e( 'Add right border for featured events.', 'the-events-calendar-category-colors' ); ?></p>
-				</td>
-			</tr>
-			<tr valign="top" style="border-top:#dddddd 1px solid;">
-				<td colspan="5"></td>
-			</tr>
-
-		</table>
-
 		<div id="teccc_options">
 
-			<div class="teccc_options_col1"> <?php esc_html_e( 'Font-Weight Options', 'the-events-calendar-category-colors' ); ?> </div>
-			<div class="teccc_options_col2">
-				<label> <select name="teccc_options[font_weight]" id="teccc_font_weight">
-						<?php foreach ( (array) $teccc->font_weights as $key => $value ) : ?>
-							<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $value, $options['font_weight'] ); ?>>
-								<?php esc_html_e( $key ); ?>
-							</option>
-						<?php endforeach ?>
-					</select> </label>
-			</div>
 
-			<div id="category_legend_checkboxes">
-				<div class="teccc_options_col1"> <?php esc_html_e( 'Show Category Legend', 'the-events-calendar-category-colors' ); ?> </div>
-				<div id="category_legend_setting" class="teccc_options_col2">
-					<input id="add_legend_month_view" name="teccc_options[add_legend][]" type="checkbox" value="month" <?php checked( 1, in_array( 'month', $options['add_legend'], true ) ); ?>>
-					<label for="add_legend_month_view"><?php esc_html_e( 'Month view', 'the-events-calendar-category-colors' ); ?></label>
-				</div>
-				<div id="category_legend_setting_list_view" class="teccc_options_col2">
-					<input id="add_legend_list_view" name="teccc_options[add_legend][]" type="checkbox" value="list" <?php checked( '1', in_array( 'list', $options['add_legend'], true ) ); ?>>
-					<label for="add_legend_list_view"><?php esc_html_e( 'List view', 'the-events-calendar-category-colors' ); ?></label>
-				</div>
-				<div id="category_legend_setting_day_view" class="teccc_options_col2">
-					<input id="add_legend_day_view" name="teccc_options[add_legend][]" type="checkbox" value="day" <?php checked( '1', in_array( 'day', $options['add_legend'], true ) ); ?>>
-					<label for="add_legend_day_view"><?php esc_html_e( 'Day view', 'the-events-calendar-category-colors' ); ?></label>
-				</div>
-
-				<?php if ( class_exists( 'Tribe__Events__Pro__Main' ) ) : ?>
-				<div id="category_legend_setting_week_view" class="teccc_options_col2">
-					<input id="add_legend_week_view" name="teccc_options[add_legend][]" type="checkbox" value="week" <?php checked( '1', in_array( 'week', $options['add_legend'], true ) ); ?>>
-					<label for="add_legend_week_view"><?php esc_html_e( 'Week view', 'the-events-calendar-category-colors' ); ?></label>
-				</div>
-				<div id="category_legend_setting_photo_view" class="teccc_options_col2">
-					<input id="add_legend_photo_view" name="teccc_options[add_legend][]" type="checkbox" value="photo" <?php checked( '1', in_array( 'photo', $options['add_legend'], true ) ); ?>>
-					<label for="add_legend_photo_view"><?php esc_html_e( 'Photo view', 'the-events-calendar-category-colors' ); ?></label>
-				</div>
-				<div id="category_legend_setting_map_view" class="teccc_options_col2">
-					<input id="add_legend_map_view" name="teccc_options[add_legend][]" type="checkbox" value="map" <?php checked( '1', in_array( 'map', $options['add_legend'], true ) ); ?>>
-					<label for="add_legend_map_view"><?php esc_html_e( 'Map view', 'the-events-calendar-category-colors' ); ?></label>
-				</div>
-				<div id="category_legend_setting_summary_view" class="teccc_options_col2">
-					<input id="add_legend_summary_view" name="teccc_options[add_legend][]" type="checkbox" value="summary" <?php checked( '1', in_array( 'summary', $options['add_legend'], true ) ); ?>>
-					<label for="add_legend_summary_view"><?php esc_html_e( 'Summary view', 'the-events-calendar-category-colors' ); ?></label>
-				</div>
-				<?php endif; ?>
-			</div>
-
-			<!-- Add Reset Button -->
-			<div id="legend_reset_button">
-			<div class="teccc_options_col1"> <?php esc_html_e( 'Reset Button', 'the-events-calendar-category-colors' ); ?> </div>
-			<div class="teccc_options_col2 legend_related_notice">
-				<?php esc_html_e( 'For this option you have to show the category legend at least on one view.', 'the-events-calendar-category-colors' ); ?>
-			</div>
-			<div class="teccc_options_col2 legend_related">
-				<input id="teccc_options_reset_show" name="teccc_options[reset_show]" type="checkbox" value="1" <?php checked( '1', $options['reset_show'] ); ?> />
-				<label for="teccc_options_reset_show"><?php esc_html_e( 'Show reset button', 'the-events-calendar-category-colors' ); ?></label>
-			</div>
-			<div class="teccc_options_col2 legend_related">
-				<input id="teccc_options_reset_label" name="teccc_options[reset_label]" type="text" placeholder="<?php esc_html_e( 'Reset', 'the-events-calendar-category-colors' ); ?>" value="<?php echo esc_attr( $options['reset_label'] ); ?>" />
-				<label for="teccc_options_reset_label"><?php esc_html_e( 'Reset button label', 'the-events-calendar-category-colors' ); ?></label>
-			</div>
-			<div class="teccc_options_col2 legend_related">
-				<input id="teccc_options_reset_url" name="teccc_options[reset_url]" type="text" placeholder="<?php echo esc_attr( tribe_get_events_link() ); ?>" value="<?php echo esc_attr( $options['reset_url'] ); ?>" />
-				<label for="teccc_options_reset_url"><?php esc_html_e( 'Reset button URL', 'the-events-calendar-category-colors' ); ?></label>
-				<p><?php esc_html_e( 'By default the reset button will point to the default calendar URL.', 'the-events-calendar-category-colors' ); ?></p>
-			</div>
-			</div>
 
 			<!-- Add Legend Superpowers -->
 			<div id="category_legend_superpowers">
