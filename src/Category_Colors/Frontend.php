@@ -290,10 +290,6 @@ class Frontend {
 			false
 		);
 
-		if ( ! empty( $this->options['add_legend'] ) && empty( $this->options['custom_legend_css'] ) ) {
-			$content .= $this->teccc->view( 'legend.css' );
-		}
-
 		$this->legendFilterHasRun[ $this->currentDisplay ] = true;
 
 		/**
