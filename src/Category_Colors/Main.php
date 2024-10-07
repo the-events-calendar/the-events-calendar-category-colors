@@ -163,7 +163,6 @@ class Main {
 
 		add_action( 'init', [ $this, 'show_legend_on_views' ] );
 		add_action( 'update_option_teccc_options', [ $this->public, 'generate_css_on_update_option' ] );
-		add_action( 'teccc_add_legend_css', [ $this, 'enqueue_legend_css' ] );
 	}
 
 	/**
@@ -494,11 +493,5 @@ class Main {
 		update_option( 'teccc_options', $options );
 
 		return $options;
-	}
-
-	public function enqueue_legend_css() {
-		if ( ! empty( $options['add_legend'] ) && empty( $options['custom_legend_css'] ) ) {
-			$this->view( 'legend.css' );
-		}
 	}
 }

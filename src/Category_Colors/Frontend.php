@@ -156,6 +156,7 @@ class Frontend {
 	public function add_scripts_styles() {
 		wp_register_style( 'teccc-nofile-stylesheet', false, [], Main::$version );
 		wp_enqueue_style( 'teccc-nofile-stylesheet' );
+		error_log( print_r( $this->generate_css(), true) );
 		wp_add_inline_style( 'teccc-nofile-stylesheet', $this->generate_css() );
 
 		// Optionally add legend superpowers.
