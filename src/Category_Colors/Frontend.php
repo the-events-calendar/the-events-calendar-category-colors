@@ -264,9 +264,9 @@ class Frontend {
 		if ( ! $v2_viewable && ! $is_extra_view ) {
 			return false;
 		}
-		if ( ! isset( $this->legendFilterHasRun[ $this->currentDisplay ] ) ) {
-			$this->legendFilterHasRun[ $this->currentDisplay ] = false;
-		}
+
+		$this->legendFilterHasRun[ $this->currentDisplay ] = $this->legendFilterHasRun[ $this->currentDisplay ] ?? false;
+
 		if ( $this->legendFilterHasRun[ $this->currentDisplay ] ) {
 			return false;
 		}
@@ -279,6 +279,8 @@ class Frontend {
 			return false;
 		}
 
+		error_log( 'adding legend to view: ' . $this->currentDisplay );
+
 		$content = $this->teccc->view(
 			'legend',
 			[
@@ -288,6 +290,10 @@ class Frontend {
 			],
 			false
 		);
+
+		if ( ! empty( $this->options['add_legend'] ) && empty( $this->options['custom_legend_css'] ) ) {
+			$content .= $this->teccc->view( 'legend.css' );
+		}
 
 		$this->legendFilterHasRun[ $this->currentDisplay ] = true;
 

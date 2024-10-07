@@ -76,6 +76,10 @@ table.teccc.form-table th {
 	margin-bottom: 0;
 }
 
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table td:first-child .tooltip {
+	display: none;
+}
+
 .tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table fieldset[id$="_text"] .tooltip {
 	display: none;
 }

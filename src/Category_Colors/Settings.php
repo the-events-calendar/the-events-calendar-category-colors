@@ -457,15 +457,16 @@ class Settings {
 		];
 
 		$this->teccc_settings['add_legend'] = [
-			'type'          => 'checkbox_list',
-			'label'         => __( 'Show Category Legend', 'the-events-calendar-category-colors' ),
-			'tooltip'       => __( 'Choose where to show the category legend.', 'the-events-calendar-category-colors' ),
-			'parent_option' => 'teccc_options',
-			'options'       => array_map(
+			'type'            => 'checkbox_list',
+			'label'           => __( 'Show Category Legend', 'the-events-calendar-category-colors' ),
+			'tooltip'         => __( 'Choose where to show the category legend.', 'the-events-calendar-category-colors' ),
+			'parent_option'   => 'teccc_options',
+			'validation_type' => 'options_multi',
+			'options'         => array_map(
 				static function ( $view ) {
 					return tribe( Manager::class )->get_view_label_by_class( $view );
 				},
-				tribe( Manager::class )->get_publicly_visible_views( false )
+				tribe( Manager::class )->get_publicly_visible_views()
 			),
 		];
 
