@@ -487,6 +487,7 @@ class Settings {
 			'type'            => 'text',
 			'label'           => __( 'Reset Button Label', 'the-events-calendar-category-colors' ),
 			'parent_option'   => 'teccc_options',
+			'validation_type' => 'textarea',
 
 		];
 
@@ -496,6 +497,7 @@ class Settings {
 			'tooltip'         => __( 'By default the reset button will point to the default calendar URL.', 'the-events-calendar-category-colors' ),
 			'placeholder'     => tribe_get_events_link(),
 			'parent_option'   => 'teccc_options',
+			'validation_type' => 'url',
 		];
 
 		$this->teccc_settings['legend_superpowers_options_title'] = [
