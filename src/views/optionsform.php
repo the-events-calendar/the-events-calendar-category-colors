@@ -53,7 +53,7 @@ $teccc->setup_terms( $options );
 						<input name="teccc_options[<?php echo esc_attr( $slug ); ?>-border_none]" type="checkbox" value="1" <?php checked( '1', $options[ "{$slug}-border_none" ] ); ?> /> <?php esc_html_e( 'No Border', 'the-events-calendar-category-colors' ); ?>
 					</label><br>
 					<?php
-					if ( '1' === $options[ "{$slug}-border_none" ] ) :
+					if ( ! empty( $options[ "{$slug}-border_none" ] ) ) :
 						$options[ "{$slug}-border" ] = '';
 						?>
 					<?php endif ?>
@@ -71,7 +71,7 @@ $teccc->setup_terms( $options );
 						<input name="teccc_options[<?php echo esc_attr( $slug ); ?>-background_none]" type="checkbox" value="1" <?php checked( '1', $options[ "{$slug}-background_none" ] ); ?> /> <?php esc_html_e( 'No Background', 'the-events-calendar-category-colors' ); ?>
 					</label><br>
 					<?php
-					if ( '1' === $options[ "{$slug}-background_none" ] ) :
+					if ( ! empty( $options[ "{$slug}-background_none" ] ) ) :
 						$options[ "{$slug}-background" ] = '';
 						?>
 					<?php endif ?>
@@ -128,7 +128,7 @@ $teccc->setup_terms( $options );
 					<input name="teccc_options[featured-event_none]" type="checkbox" value="1" <?php checked( '1', $options['featured-event_none'] ); ?> /> <?php esc_html_e( 'Transparent', 'the-events-calendar-category-colors' ); ?>
 				</label><br>
 				<?php
-				if ( '1' === $options['featured-event_none'] ) :
+				if ( ! empty( $options['featured-event_none'] ) ) :
 					$options['featured-event'] = 'transparent';
 					?>
 				<?php endif ?>

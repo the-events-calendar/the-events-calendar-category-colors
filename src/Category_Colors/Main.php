@@ -432,7 +432,7 @@ class Main {
 		if ( ! isset( $tmp['chk_default_options_db'] ) ) {
 			return false;
 		}
-		if ( '1' === $tmp['chk_default_options_db'] || ! is_array( $tmp ) ) {
+		if ( ! empty( $tmp['chk_default_options_db'] ) || ! is_array( $tmp ) ) {
 			delete_option( 'teccc_options' );
 			for ( $i = 0; $i < $teccc->count; $i++ ) {
 				$arr[ $teccc->slugs[ $i ] . '-text' ]       = '#000';
