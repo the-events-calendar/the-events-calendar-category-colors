@@ -454,6 +454,7 @@ class Settings {
 			'options'         => $this->teccc->font_weights,
 			'attributes'      => [ 'id' => 'teccc_font_weight' ],
 			'parent_option'   => 'teccc_options',
+			'validation_type' => 'options',
 		];
 
 		$this->teccc_settings['add_legend'] = [
