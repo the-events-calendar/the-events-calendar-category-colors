@@ -4,7 +4,7 @@
  *
  * @author   Andy Fragen
  * @license  MIT
- * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
  * @package  the-events-calendar-category-colors
  */
 
@@ -59,11 +59,11 @@ $terms = apply_filters( 'teccc_legend_terms', $teccc->terms );
 			<?php endforeach ?>
 		<?php endif ?>
 
-		<?php if ( isset( $options['reset_show'] ) && empty( $options['legend_superpowers'] ) ) : ?>
+		<?php if ( ! empty( $options['reset_show'] ) && empty( $options['legend_superpowers'] ) ) : ?>
 			<li class="teccc-reset">
 				<a href="
 				<?php
-				if ( ! isset( $options['reset_url'] ) || empty( $options['reset_url'] ) ) {
+				if ( empty( $options['reset_url'] ) ) {
 					echo esc_attr( tribe_get_events_link() );
 				} else {
 					echo esc_attr( $options['reset_url'] );
@@ -71,7 +71,7 @@ $terms = apply_filters( 'teccc_legend_terms', $teccc->terms );
 				?>
 				">
 					<?php
-					if ( ! isset( $options['reset_label'] ) || empty( $options['reset_label'] ) ) {
+					if ( empty( $options['reset_label'] ) ) {
 						esc_html_e( 'Reset', 'the-events-calendar-category-colors' );
 					} else {
 						echo esc_html( $options['reset_label'] );

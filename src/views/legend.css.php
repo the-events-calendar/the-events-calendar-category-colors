@@ -4,12 +4,11 @@
  *
  * @author   Andy Fragen
  * @license  MIT
- * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
  * @package  the-events-calendar-category-colors
  */
 
 ?>
-
 #legend_box
 {
 	font: bold 10px/4em sans-serif;

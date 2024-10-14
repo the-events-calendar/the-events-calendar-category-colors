@@ -4,7 +4,7 @@
  *
  * @author   Andy Fragen
  * @license  MIT
- * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
  * @package  the-events-calendar-category-colors
  */
 
@@ -18,7 +18,7 @@
  * @deprecated 6.8.4.3
  */
 function teccc_remove_default_legend() {
-	_doing_it_wrong( 'teccc_remove_default_legend', esc_html__( 'Use of this function is deprecated .', 'the-events-calendar-category-colors' ), '6.4.8.3' );
+	_deprecated_function( __FUNCTION__, '6.4.8.3' );
 }
 
 
@@ -34,7 +34,7 @@ function teccc_remove_default_legend() {
  * @deprecated 6.4.8.3
  */
 function teccc_reposition_legend() {
-	_doing_it_wrong( 'teccc_reposition_legend', esc_html__( 'Use of this function is deprecated.', 'the-events-calendar-category-colors' ), '6.4.8.3' );
+	_deprecated_function( __FUNCTION__, '6.4.8.3' );
 }
 
 
@@ -45,18 +45,6 @@ function teccc_reposition_legend() {
 function teccc_insert_legend() {
 	Fragen\Category_Colors\Main::instance()->public->show_legend();
 }
-
-
-/**
- * An alias for teccc_insert_legend() - this function is deprecated and it is
- * preferred to call teccc_insert_legend() directly.
- *
- * @deprecated 1.6.0B
- */
-function teccc_legend_hook() {
-	_doing_it_wrong( 'teccc_legend_hook', esc_html__( 'Use of this function is deprecated, use `teccc_insert_legend()`', 'the-events-calendar-category-colors' ), '1.6.0B' );
-}
-
 
 /**
  * Registers an additional text color.

@@ -4,7 +4,7 @@
  *
  * @author   Andy Fragen
  * @license  MIT
- * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
  * @package  the-events-calendar-category-colors
  */
 
@@ -156,12 +156,11 @@ class Frontend {
 	public function add_scripts_styles() {
 		wp_register_style( 'teccc-nofile-stylesheet', false, [], Main::$version );
 		wp_enqueue_style( 'teccc-nofile-stylesheet' );
+		error_log( print_r( $this->generate_css(), true) );
 		wp_add_inline_style( 'teccc-nofile-stylesheet', $this->generate_css() );
 
 		// Optionally add legend superpowers.
-		if ( isset( $this->options['legend_superpowers'] )
-			&& '1' === $this->options['legend_superpowers']
-		) {
+		if ( ! empty( $this->options['legend_superpowers'] ) ) {
 			wp_register_script( 'legend_superpowers', $this->teccc->resources_url . '/legend-superpowers.js', [ 'jquery' ], Main::$version, true );
 			wp_enqueue_script( 'legend_superpowers' );
 		}
@@ -264,9 +263,9 @@ class Frontend {
 		if ( ! $v2_viewable && ! $is_extra_view ) {
 			return false;
 		}
-		if ( ! isset( $this->legendFilterHasRun[ $this->currentDisplay ] ) ) {
-			$this->legendFilterHasRun[ $this->currentDisplay ] = false;
-		}
+
+		$this->legendFilterHasRun[ $this->currentDisplay ] = $this->legendFilterHasRun[ $this->currentDisplay ] ?? false;
+
 		if ( $this->legendFilterHasRun[ $this->currentDisplay ] ) {
 			return false;
 		}
@@ -309,6 +308,8 @@ class Frontend {
 	 * @return bool
 	 */
 	public function reposition_legend( $tribeViewFilter ) {
+		_deprecated_function( __FUNCTION__, '6.8.4.3' );
+
 		// If the legend has already run they are probably doing something wrong.
 		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong(
@@ -333,6 +334,8 @@ class Frontend {
 	 * @return bool
 	 */
 	public function remove_default_legend() {
+		_deprecated_function( __FUNCTION__, '6.8.4.3' );
+
 		// If the legend has already run they are probably doing something wrong.
 		if ( $this->legendFilterHasRun ) {
 			_doing_it_wrong(

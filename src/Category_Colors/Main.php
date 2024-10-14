@@ -4,13 +4,14 @@
  *
  * @author   Andy Fragen
  * @license  MIT
- * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
  * @package  the-events-calendar-category-colors
  */
 
 namespace Fragen\Category_Colors;
 
 use Tribe__Events__Main;
+use Tribe\Events\Views\V2\Manager;
 
 /**
  * Class Main
@@ -174,15 +175,8 @@ class Main {
 			return;
 		}
 
-		$views = [
-			'list',
-			'month',
-			'day',
-			'week',
-			'photo',
-			'map',
-			'summary',
-		];
+		// Only add the active views.
+		$views = array_keys( tribe( Manager::class )->get_publicly_visible_views() );
 
 		if ( ! is_array( $options['add_legend'] ) ) {
 			$options = $this->update_view_options( $views, $options );
@@ -327,9 +321,9 @@ class Main {
 	}
 
 	/**
-	 * Removes terms on the ignore list from the list of terms recognised by the plugin.
+	 * Removes terms on the ignore list from the list of terms recognized by the plugin.
 	 *
-	 * @param arrat $term_list Array of terms.
+	 * @param array $term_list Array of terms.
 	 *
 	 * @return array
 	 */
@@ -438,12 +432,12 @@ class Main {
 		if ( ! isset( $tmp['chk_default_options_db'] ) ) {
 			return false;
 		}
-		if ( '1' === $tmp['chk_default_options_db'] || ! is_array( $tmp ) ) {
+		if ( ! empty( $tmp['chk_default_options_db'] ) || ! is_array( $tmp ) ) {
 			delete_option( 'teccc_options' );
 			for ( $i = 0; $i < $teccc->count; $i++ ) {
 				$arr[ $teccc->slugs[ $i ] . '-text' ]       = '#000';
-				$arr[ $teccc->slugs[ $i ] . '-background' ] = '#CFCFCF';
-				$arr[ $teccc->slugs[ $i ] . '-border' ]     = '#CFCFCF';
+				$arr[ $teccc->slugs[ $i ] . '-background' ] = '#cfcfcf';
+				$arr[ $teccc->slugs[ $i ] . '-border' ]     = '#cfcfcf';
 			}
 			$arr['font_weight']    = 'bold';
 			$arr['featured-event'] = '#0ea0d7';

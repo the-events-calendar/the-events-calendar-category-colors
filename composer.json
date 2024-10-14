@@ -1,5 +1,5 @@
 {
-    "name": "afragen/the-events-calendar-category-colors",
+    "name": "the-events-calendar/the-events-calendar-category-colors",
     "description": "This plugin adds event category background coloring to The Events Calendar plugin.",
     "type": "wordpress-plugin",
     "keywords": [
@@ -11,6 +11,11 @@
     ],
     "license": "GPL-3.0-or-later",
     "authors": [
+		{
+			"name": "The Events Calendar",
+			"homepage": "https://evnt.is/1x",
+			"role": "Developer"
+		},
         {
             "name": "Andy Fragen",
             "email": "andy@thefragens.com",
@@ -34,7 +39,7 @@
     },
     "prefer-stable": true,
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.4"
     },
     "require-dev": {
         "wp-coding-standards/wpcs": "^3.0.0"

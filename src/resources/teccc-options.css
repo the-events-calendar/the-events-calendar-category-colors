@@ -21,6 +21,73 @@
 	margin-left: 1em;
 }
 
+table.teccc.form-table {
+	margin: 0;
+	padding-left: var(--tec-spacer-settings-form-right-gap);
+}
+
 table.teccc.form-table td {
-	vertical-align: top;
+	vertical-align: middle;
+}
+table.teccc.form-table td:nth-child(5) {
+    vertical-align: bottom;
+}
+
+table.teccc.form-table th {
+	font-weight: var(--tec-font-weight-bold);
+	font-size: var(--tec-font-size-1);
+	text-align: center;
+}
+
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table .tribe-field-label {
+	display: inline-block;
+	font-weight: var(--tec-font-weight-regular);
+}
+
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table .tribe-field-wrap {
+	display: inline-block;
+}
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table .tooltip {
+	text-wrap: nowrap;
+}
+
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table .color-selector .tooltip {
+	display: none;
+}
+
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table #tribe-field-featured-event .tooltip {
+	display: block;
+}
+
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table fieldset {
+	margin-left: 0;
+}
+
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table .tribe-field-checkbox_bool input[type="checkbox"] {
+	margin-top: 0;
+	vertical-align: text-bottom;
+}
+
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table .tribe-field-checkbox_bool .tribe-field-wrap {
+	margin-bottom: var(--tec-spacer-2);
+}
+
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table td:first-child .tribe-field-checkbox_bool .tribe-field-wrap {
+	margin-bottom: 0;
+}
+
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table td:first-child .tooltip {
+	display: none;
+}
+
+.tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table fieldset[id$="_text"] .tooltip {
+	display: none;
+}
+
+// .tribe_events_page_tec-events-settings #tec-settings-form table.teccc.form-table .color-selector:not['#tribe-field-featured-event'] .tooltip {
+
+@media screen and (min-width: 1024px) {
+	table.teccc.form-table {
+		margin-left: var(--tec-spacer-7);
+	}
 }

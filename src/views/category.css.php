@@ -4,7 +4,7 @@
  *
  * @author   Andy Fragen
  * @license  MIT
- * @link     https://github.com/afragen/the-events-calendar-category-colors
+ * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
  * @package  the-events-calendar-category-colors
  */
 
@@ -17,7 +17,7 @@ use Fragen\Category_Colors\CSS\Pro;
 use Fragen\Category_Colors\CSS\V2_Views;
 
 ?>
-/* The Events Calendar: Category Colors <?php echo esc_html( Main::$version ); ?> */
+
 .teccc-legend a, .tribe-events-calendar a, #tribe-events-content .tribe-events-tooltip h4
 {
 	font-weight: <?php echo esc_attr( $options['font_weight'] ); ?>;
