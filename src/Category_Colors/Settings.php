@@ -471,49 +471,6 @@ class Settings {
 			),
 		];
 
-		$this->teccc_settings['reset_options_title'] = [
-			'type' => 'html',
-			'html' => '<h3 id="teccc-settings-additional-options" class="tec-settings-form__section-header">' . esc_html_x( 'Reset Options', 'Reset options settings section header', 'the-events-calendar-category-colors' ) . '</h3>',
-		];
-
-		$this->teccc_settings['reset_show'] = [
-			'type'            => 'checkbox_bool',
-			'label'           => __( 'Show Reset Button', 'the-events-calendar-category-colors' ),
-			'default'         => false,
-			'validation_type' => 'boolean',
-			'parent_option'   => 'teccc_options',
-		];
-
-		$this->teccc_settings['reset_label'] = [
-			'type'            => 'text',
-			'label'           => __( 'Reset Button Label', 'the-events-calendar-category-colors' ),
-			'parent_option'   => 'teccc_options',
-			'validation_type' => 'textarea',
-
-		];
-
-		$this->teccc_settings['reset_url'] = [
-			'type'            => 'text',
-			'label'           => __( 'Reset Button URL', 'the-events-calendar-category-colors' ),
-			'tooltip'         => __( 'By default the reset button will point to the default calendar URL.', 'the-events-calendar-category-colors' ),
-			'placeholder'     => tribe_get_events_link(),
-			'parent_option'   => 'teccc_options',
-			'validation_type' => 'url',
-		];
-
-		$this->teccc_settings['legend_superpowers_options_title'] = [
-			'type' => 'html',
-			'html' => '<h3 id="teccc-settings-legend-superpowers-options" class="tec-settings-form__section-header">' . esc_html_x( 'Legend Superpowers', 'Legend Superpowers settings section header', 'the-events-calendar-category-colors' ) . '</h3>',
-			];
-
-		$this->teccc_settings['legend_superpowers'] = [
-			'type'            => 'checkbox_bool',
-			'label'           => __( 'Legend Superpowers', 'the-events-calendar-category-colors' ),
-			'default'         => false,
-			'validation_type' => 'boolean',
-			'parent_option'   => 'teccc_options',
-		];
-
 		$this->teccc_settings['show_ignored_cats_legend'] = [
 			'type'            => 'checkbox_bool',
 			'label'           => __( 'Show hidden categories in legend', 'the-events-calendar-category-colors' ),
@@ -525,6 +482,59 @@ class Settings {
 		$this->teccc_settings['custom_legend_css'] = [
 			'type'            => 'checkbox_bool',
 			'label'           => __( 'Check to use your own CSS for category legend', 'the-events-calendar-category-colors' ),
+			'default'         => false,
+			'validation_type' => 'boolean',
+			'parent_option'   => 'teccc_options',
+		];
+
+		$this->teccc_settings['reset_options_title'] = [
+			'type' => 'html',
+			'html' => '<h3 id="teccc-settings-additional-options" class="tec-settings-form__section-header">' . esc_html_x( 'Reset Options', 'Reset options settings section header', 'the-events-calendar-category-colors' ) . '</h3>',
+		];
+
+		$this->teccc_settings['reset_show'] = [
+			'type'            => 'checkbox_bool',
+			'label'           => __( 'Show Reset Button', 'the-events-calendar-category-colors' ),
+			'default'         => false,
+			'validation_type' => 'boolean',
+			'parent_option'   => 'teccc_options',
+			'attributes'      => [ 'id' => 'reset_show_field' ],
+		];
+
+		$this->teccc_settings['reset_label'] = [
+			'type'            => 'text',
+			'label'           => __( 'Reset Button Label', 'the-events-calendar-category-colors' ),
+			'parent_option'   => 'teccc_options',
+			'validation_type' => 'textarea',
+			'class'               => 'tribe-dependent',
+			'fieldset_attributes' => [
+				'data-depends'           => '#reset_show_field',
+				'data-condition-checked' => true,
+			],
+		];
+
+		$this->teccc_settings['reset_url'] = [
+			'type'            => 'text',
+			'label'           => __( 'Reset Button URL', 'the-events-calendar-category-colors' ),
+			'tooltip'         => __( 'By default the reset button will point to the default calendar URL.', 'the-events-calendar-category-colors' ),
+			'placeholder'     => tribe_get_events_link(),
+			'parent_option'   => 'teccc_options',
+			'validation_type' => 'url',
+			'class'               => 'tribe-dependent',
+			'fieldset_attributes' => [
+				'data-depends'           => '#reset_show_field',
+				'data-condition-checked' => true,
+			],
+		];
+
+		$this->teccc_settings['legend_superpowers_options_title'] = [
+			'type' => 'html',
+			'html' => '<h3 id="teccc-settings-legend-superpowers-options" class="tec-settings-form__section-header">' . esc_html_x( 'Legend Superpowers', 'Legend Superpowers settings section header', 'the-events-calendar-category-colors' ) . '</h3>',
+			];
+
+		$this->teccc_settings['legend_superpowers'] = [
+			'type'            => 'checkbox_bool',
+			'label'           => __( 'Legend Superpowers', 'the-events-calendar-category-colors' ),
 			'default'         => false,
 			'validation_type' => 'boolean',
 			'parent_option'   => 'teccc_options',
