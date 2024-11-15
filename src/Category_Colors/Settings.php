@@ -163,7 +163,7 @@ class Settings {
 			'html' => '<td>',
 		];
 
-		$this->teccc_settings[ "hide[{$slug}]" ] = [
+		$this->teccc_settings[ "{$slug}-hide" ] = [
 			'type'            => 'checkbox_bool',
 			'default'         => false,
 			'validation_type' => 'boolean',
@@ -188,9 +188,9 @@ class Settings {
 		];
 
 		// Unset these if the category is hidden;
-		if ( ! empty( $this->options['hide'][ $slug ] ) ) {
-			$this->options[ "{$slug}-border_none" ]     = '';
-			$this->options[ "{$slug}-background_none" ] = '';
+		if ( ! empty( $this->options["{$slug}-hide"] ) ) {
+			$this->options[ "{$slug}-hide-border_none" ]     = '';
+			$this->options[ "{$slug}-hide-background_none" ] = '';
 		}
 	}
 
