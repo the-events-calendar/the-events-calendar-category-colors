@@ -124,7 +124,7 @@ class Main {
 	 * method - this prevents unnecessary work in rebuilding the object and
 	 * querying to construct a list of categories, etc.
 	 *
-	 * @return bool|object Main
+	 * @return Main
 	 */
 	public static function instance() {
 		$class = __CLASS__;
@@ -162,7 +162,7 @@ class Main {
 		$this->public->run();
 
 		add_action( 'init', [ $this, 'show_legend_on_views' ] );
-		add_action( 'update_option_teccc_options', [ $this->public, 'generate_css_on_update_option' ] );
+		add_action( 'tribe_settings_after_save_' . Admin::TAB_NAME, [ $this->public, 'generate_css_on_update_option' ] );
 	}
 
 	/**

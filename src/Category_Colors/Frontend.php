@@ -156,8 +156,8 @@ class Frontend {
 	public function add_scripts_styles() {
 		wp_register_style( 'teccc-nofile-stylesheet', false, [], Main::$version );
 		wp_enqueue_style( 'teccc-nofile-stylesheet' );
-		error_log( print_r( $this->generate_css(), true) );
-		wp_add_inline_style( 'teccc-nofile-stylesheet', $this->generate_css() );
+
+		wp_add_inline_style( 'teccc-nofile-stylesheet', $this->generate_css( tribe_get_request_var( 'refresh_css' ) ) );
 
 		// Optionally add legend superpowers.
 		if ( ! empty( $this->options['legend_superpowers'] ) ) {
@@ -172,8 +172,7 @@ class Frontend {
 	 * @return void
 	 */
 	public function generate_css_on_update_option() {
-		$_GET['refresh_css'] = true;
-		$this->generate_css();
+		$this->generate_css( true );
 	}
 
 	/**
@@ -181,18 +180,8 @@ class Frontend {
 	 *
 	 * @return mixed|string
 	 */
-	public function generate_css() {
-		// TODO: remove after a couple of updates.
-		$css_dir = apply_filters( 'teccc_uploads_dir', wp_upload_dir()['basedir'] );
-		$css_dir = untrailingslashit( $css_dir );
-		foreach ( glob( "{$css_dir}/teccc*.css" ) as $file ) {
-			if ( file_exists( $file ) ) {
-				unlink( $file );
-			}
-		}
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$refresh = isset( $_GET['refresh_css'] );
+	public function generate_css( $refresh = false ) {
+		$refresh = tribe_is_truthy( $refresh );
 		$cache   = get_option( 'teccc_css' );
 
 		// Return if cache not expired.
@@ -200,11 +189,23 @@ class Frontend {
 			return $cache['css'];
 		}
 
+		$options = Admin::fetch_options( Main::instance() );
+
+		// TODO: remove after a couple of updates.
+		$css_dir = apply_filters( 'teccc_uploads_dir', wp_upload_dir()['basedir'] );
+		$css_dir = untrailingslashit( $css_dir );
+		foreach ( glob( "{$css_dir}/teccc*.css" ) as $file ) {
+			if ( ! file_exists( $file ) ) {
+				continue;
+			}
+			unlink( $file );
+		}
+
 		// Else generate the CSS afresh.
 		$css = $this->teccc->view(
 			'category.css',
 			[
-				'options' => $this->options,
+				'options' => $options,
 				'teccc'   => $this->teccc,
 			],
 			false
