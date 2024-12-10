@@ -3,8 +3,8 @@ Contributors: theeventscalendar, afragen, barry.hughes
 Tags: events, color, calendar, category
 Requires at least: 6.3
 Requires PHP: 7.4
-Tested up to: 6.6
-Stable tag: 7.4
+Tested up to: 6.7
+Stable tag: 7.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,9 +54,9 @@ Make sure you are reporting in a safe and responsible way. We take security very
 
 ## Changelog
 
-#### 7.4.0 / 2024-10-07
+#### 7.4.0 / 2024-11-14
 
-* Version -
+* Fix - Make sure we have fully compatible settings save with the new TEC settings page.
 
 #### 7.3.2 / 2024-08-20
 

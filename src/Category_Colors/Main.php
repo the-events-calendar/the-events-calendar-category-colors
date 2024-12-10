@@ -2,9 +2,9 @@
 /**
  * The Events Calendar: Category Colors
  *
- * @author   Andy Fragen
- * @license  MIT
  * @link     https://github.com/the-events-calendar/the-events-calendar-category-colors
+ * @license  MIT
+ * @author   Andy Fragen
  * @package  the-events-calendar-category-colors
  */
 
@@ -18,6 +18,7 @@ use Tribe\Events\Views\V2\Manager;
  */
 class Main {
 	const SLUG = 0;
+
 	const NAME = 1;
 
 	/**
@@ -124,7 +125,7 @@ class Main {
 	 * method - this prevents unnecessary work in rebuilding the object and
 	 * querying to construct a list of categories, etc.
 	 *
-	 * @return bool|object Main
+	 * @return Main
 	 */
 	public static function instance() {
 		$class = __CLASS__;
@@ -162,7 +163,7 @@ class Main {
 		$this->public->run();
 
 		add_action( 'init', [ $this, 'show_legend_on_views' ] );
-		add_action( 'update_option_teccc_options', [ $this->public, 'generate_css_on_update_option' ] );
+		add_action( 'tribe_settings_after_save_' . Admin::TAB_NAME, [ $this->public, 'generate_css_on_update_option' ] );
 	}
 
 	/**
@@ -244,7 +245,8 @@ class Main {
 	/**
 	 * Create array of ignored terms from $ignore_list.
 	 *
-	 * @param  array $ignore_list   Array of terms to ignore.
+	 * @param array $ignore_list Array of terms to ignore.
+	 *
 	 * @return array $ignored_terms Array of terms to ignore.
 	 */
 	public function get_ignored_terms( $ignore_list ) {
@@ -264,19 +266,19 @@ class Main {
 	/**
 	 * Setup missing term data in Main.
 	 *
-	 * @param  array $options Array of options.
+	 * @param array $options Array of options.
+	 *
 	 * @return void
 	 */
 	public function setup_terms( $options ) {
 		$this->all_terms = ! empty( $this->all_terms ) ? $this->all_terms : $options['all_terms'];
-		$hide            = isset( $options['hide'] ) ? $options['hide'] : [];
 		if ( empty( $this->ignore_list ) ) {
-			$this->ignore_list = array_merge( $this->ignore_list, (array) $hide );
+			$this->ignore_list = array_merge( $this->ignore_list, $this->get_hidden_terms() );
 			$this->ignore_list = array_unique( $this->ignore_list );
 		}
 		$this->ignored_terms = ! empty( $this->ignored_terms )
-		? $this->ignored_terms
-		: $this->get_ignored_terms( $this->ignore_list );
+			? $this->ignored_terms
+			: $this->get_ignored_terms( $this->ignore_list );
 	}
 
 	/**
@@ -320,6 +322,28 @@ class Main {
 		}
 	}
 
+	public function get_hidden_terms(): array {
+		$options = get_option( 'teccc_options' );
+
+		if ( ! $options ) {
+			return [];
+		}
+
+		// Use array_filter to filter items whose index ends with "-hide"
+		$filtered_options = array_filter( $options, static function ( $value, $key ) {
+			return substr( $key, -5 ) === '-hide' && tribe_is_truthy( $value );
+		}, ARRAY_FILTER_USE_BOTH );
+
+		if ( ! $filtered_options ) {
+			return [];
+		}
+
+		// Extract the rest of the key strings into a new array
+		return array_map( static function ( $key ) {
+			return substr( $key, 0, -5 );
+		}, array_keys( $filtered_options ) );
+	}
+
 	/**
 	 * Removes terms on the ignore list from the list of terms recognized by the plugin.
 	 *
@@ -328,14 +352,10 @@ class Main {
 	 * @return array
 	 */
 	public function remove_terms( $term_list ) {
-		$options      = get_option( 'teccc_options' );
 		$revised_list = [];
+		$hidden_terms = $this->get_hidden_terms();
 
-		if ( ! isset( $options['hide'] ) ) {
-			$options['hide'] = [];
-		}
-
-		$this->ignore_list = array_merge( $this->ignore_list, (array) $options['hide'] );
+		$this->ignore_list = array_merge( $this->ignore_list, $hidden_terms );
 		$this->ignore_list = array_unique( $this->ignore_list );
 
 		foreach ( (array) $term_list as $src_id => $src_term ) {
@@ -478,7 +498,7 @@ class Main {
 			$transfer[] = 'month';
 
 			foreach ( $views as $view ) {
-				if ( ! empty( $options[ "add_legend_{$view}_view" ] ) ) {
+				if ( ! empty( $options["add_legend_{$view}_view"] ) ) {
 					$transfer[] = $view;
 				}
 			}

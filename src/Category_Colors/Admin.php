@@ -251,6 +251,7 @@ class Admin {
 			'-border',
 			'-border_none',
 			'-text',
+			'-hide',
 		];
 
 		foreach ( $teccc->terms as $attributes ) {
@@ -260,10 +261,6 @@ class Admin {
 				if ( ! isset( $options[ $slug . $optionkey ] ) ) {
 					$options[ $slug . $optionkey ] = '';
 				}
-			}
-
-			if ( ! isset( $options['hide'][ $slug ] ) ) {
-				$options['hide'][ $slug ] = '';
 			}
 		}
 
