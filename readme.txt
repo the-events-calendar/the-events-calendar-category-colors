@@ -54,6 +54,10 @@ Make sure you are reporting in a safe and responsible way. We take security very
 
 ## Changelog
 
+#### 7.4.1 / 2025-01-15
+
+* Fix - Resolve translation issue that can occur with get_plugin_data(). [TEC-5350]
+
 #### 7.4.0 / 2024-11-14
 
 * Fix - Make sure we have fully compatible settings save with the new TEC settings page.

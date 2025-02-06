@@ -473,12 +473,7 @@ class Main {
 	 * @return string
 	 */
 	public static function get_plugin_version( $file ) {
-		if ( ! function_exists( 'get_plugin_data' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-		$plugin_data = \get_plugin_data( $file );
-
-		return $plugin_data['Version'];
+		return get_file_data( $file, [ 'Version' => 'Version' ] )['Version'];
 	}
 
 	/**

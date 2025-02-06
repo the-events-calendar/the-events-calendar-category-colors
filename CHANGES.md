@@ -1,3 +1,7 @@
+#### 7.4.1 / 2025-01-15
+
+* Fix - Resolve translation issue that can occur with get_plugin_data(). [TEC-5350]
+
 #### 7.3.1 / 2024-07-09
 
 * Fix - Resolve problem for PHP 8+, avoid passing pass `null` to string specific functions. (props @afragen) [TECENG-58]
