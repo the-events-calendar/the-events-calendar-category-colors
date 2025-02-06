@@ -4,7 +4,7 @@ Tags: events, color, calendar, category
 Requires at least: 6.3
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 7.4.0
+Stable tag: 7.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,7 +54,7 @@ Make sure you are reporting in a safe and responsible way. We take security very
 
 ## Changelog
 
-#### 7.4.1 / 2025-01-15
+#### 7.4.1 / 2025-02-06
 
 * Fix - Resolve translation issue that can occur with get_plugin_data(). [TEC-5350]
 
