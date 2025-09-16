@@ -4,7 +4,7 @@ Tags: events, color, calendar, category
 Requires at least: 6.3
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 7.4.1
+Stable tag: 7.4.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ Make sure you are reporting in a safe and responsible way. We take security very
 3. The Events Calendar: Category Colors with Legend Superpowers in action
 
 ## Changelog
+
+#### 7.4.2 / 2025-09-16
+
+* Fix - Resolve problems related to loading the plugin with newer versions of The Events Calendar 6.14+
 
 #### 7.4.1 / 2025-02-06
 

@@ -1,3 +1,7 @@
+#### 7.4.2 / 2025-09-16
+
+* Fix - Resolve problems related to loading the plugin with newer versions of The Events Calendar 6.14+
+
 #### 7.4.1 / 2025-01-15
 
 * Fix - Resolve translation issue that can occur with get_plugin_data(). [TEC-5350]
