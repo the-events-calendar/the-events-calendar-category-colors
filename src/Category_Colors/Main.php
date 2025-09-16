@@ -147,6 +147,19 @@ class Main {
 	}
 
 	/**
+	 * Get the taxonomy name safely
+	 *
+	 * @return string
+	 */
+	public static function get_taxonomy() {
+		// We know TEC is loaded at this point since we check in plugins_loaded
+		if ( defined( 'Tribe__Events__Main::TAXONOMY' ) ) {
+			return Tribe__Events__Main::TAXONOMY;
+		}
+		return 'tribe_events_cat';
+	}
+
+	/**
 	 * Let's get going.
 	 *
 	 * @return void
@@ -210,7 +223,8 @@ class Main {
 		}
 
 		$options   = get_option( 'teccc_options' );
-		$all_terms = get_terms( Tribe__Events__Main::TAXONOMY, [ 'hide_empty' => false ] );
+		$taxonomy  = self::get_taxonomy();
+		$all_terms = get_terms( $taxonomy, [ 'hide_empty' => false ] );
 
 		/**
 		 * Add and remove terms via filters.
@@ -294,8 +308,9 @@ class Main {
 		foreach ( (array) $add_terms as $add_term ) {
 			$args['name'] = ucwords( str_replace( '-', ' ', $add_term ) );
 			$args['slug'] = $add_term;
-			if ( ! term_exists( $args['name'], Tribe__Events__Main::TAXONOMY ) ) {
-				wp_insert_term( $args['name'], Tribe__Events__Main::TAXONOMY, $args );
+			$taxonomy = self::get_taxonomy();
+			if ( ! term_exists( $args['name'], $taxonomy ) ) {
+				wp_insert_term( $args['name'], $taxonomy, $args );
 				$options[ $add_term . '-text' ]       = '#000';
 				$options[ $add_term . '-background' ] = '#CFCFCF';
 				$options[ $add_term . '-border' ]     = '#CFCFCF';
@@ -315,7 +330,8 @@ class Main {
 		foreach ( (array) $delete_terms as $delete_term ) {
 			foreach ( (array) $all_terms as $term ) {
 				if ( $delete_term === $term->slug ) {
-					wp_delete_term( $term->term_id, Tribe__Events__Main::TAXONOMY );
+					$taxonomy = self::get_taxonomy();
+					wp_delete_term( $term->term_id, $taxonomy );
 					break;
 				}
 			}

@@ -20,9 +20,6 @@ class Bootstrap {
 	 * @return void
 	 */
 	public function run() {
-		// Autoloading.
-		require_once TECCC_DIR . '/vendor/autoload.php';
-
 		// Set-up Action and Filter Hooks.
 		register_activation_hook( TECCC_FILE, [ 'Fragen\Category_Colors\Main', 'add_defaults' ] );
 
