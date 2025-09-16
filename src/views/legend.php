@@ -12,6 +12,9 @@ namespace Fragen\Category_Colors;
 
 use Tribe__Events__Main;
 
+// Get the taxonomy name safely
+$taxonomy = Main::get_taxonomy();
+
 $teccc->setup_terms( $options );
 
 /*
@@ -30,7 +33,7 @@ $terms = apply_filters( 'teccc_legend_terms', $teccc->terms );
 			<?php
 			$slug     = $attributes[ Main::SLUG ];
 			$name     = $attributes[ Main::NAME ];
-			$link_url = get_term_link( $attributes[ Main::SLUG ], Tribe__Events__Main::TAXONOMY );
+			$link_url = get_term_link( $attributes[ Main::SLUG ], $taxonomy );
 			?>
 			<li class="tribe-events-category-<?php echo esc_attr( $slug ); ?> tribe_events_cat-<?php echo esc_attr( $slug ); ?>">
 				<a href="<?php echo esc_attr( $link_url ); ?>">
@@ -45,7 +48,7 @@ $terms = apply_filters( 'teccc_legend_terms', $teccc->terms );
 				<?php
 				$slug     = $ignored_term[ Main::SLUG ];
 				$name     = $ignored_term[ Main::NAME ];
-				$link_url = get_term_link( $ignored_term[ Main::SLUG ], Tribe__Events__Main::TAXONOMY );
+				$link_url = get_term_link( $ignored_term[ Main::SLUG ], $taxonomy );
 				if ( is_wp_error( $link_url ) ) {
 					continue;
 				}
